@@ -1,42 +1,63 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Typography, styled } from "@mui/material";
+import {
+    Box,
+    Typography,
+    styled,
+    useTheme,
+    useMediaQuery,
+} from "@mui/material";
+
+// Styled Components
 
 const Container = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: "2rem",
     maxWidth: "98rem",
     margin: "0 auto",
     padding: "2rem",
     "@media (max-width: 600px)": {
         flexDirection: "column",
+        padding: "1rem",
     },
 }));
 
-const Card = styled(Box)(({ theme, expanded, expandDirection }) => ({
-    position: "relative",
-    width: expanded ? "calc(100% - 1rem)" : "calc(50% - 1rem)",
-    minHeight: "52rem",
-    borderRadius: "10px",
-    overflow: "hidden",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    backgroundImage: "url('/g9.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    marginLeft: expanded && expandDirection === "right" ? "0" : "auto",
-    marginRight: expanded && expandDirection === "left" ? "0" : "auto",
-    "@media (max-width: 900px)": {
-        minHeight: "35rem",
-        height: "100%",
-        width: "100%",
-    },
-}));
+const Card = styled(Box)(
+    ({ theme, expanded, expandDirection, isSmallScreen }) => ({
+        position: "relative",
+        width: isSmallScreen
+            ? "100%"
+            : expanded
+                ? "calc(100% - 1rem)"
+                : "calc(50% - 1rem)",
+        minHeight: isSmallScreen ? "35rem" : "52rem",
+        borderRadius: "10px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        display: "flex",
+        alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
+        justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
+        backgroundImage: "url('/g9.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        marginLeft:
+            !isSmallScreen && expanded && expandDirection === "right"
+                ? "0"
+                : "auto",
+        marginRight:
+            !isSmallScreen && expanded && expandDirection === "left"
+                ? "0"
+                : "auto",
+        "@media (max-width: 900px)": {
+            minHeight: "35rem",
+            height: "100%",
+            width: "100%",
+        },
+    })
+);
 
 const BackgroundImage = styled(Box)(({ theme }) => ({
     position: "absolute",
@@ -49,6 +70,9 @@ const BackgroundImage = styled(Box)(({ theme }) => ({
     backgroundPosition: "center",
     filter: "brightness(0.3)",
     zIndex: 1,
+    "@media (max-width: 600px)": {
+        filter: "brightness(0.6)",
+    },
 }));
 
 const Overlay = styled(Box)(({ theme }) => ({
@@ -59,42 +83,60 @@ const Overlay = styled(Box)(({ theme }) => ({
     height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.6)",
     zIndex: 2,
-}));
-
-const Content = styled(Box)(({ theme, expanded }) => ({
-    position: "relative",
-    zIndex: 3,
-    padding: "5rem",
-    color: "#fff",
-    width: "100%",
-    transition: "opacity 0.3s ease",
-    "@media (max-width: 900px)": {
-        padding: "3rem",
+    "@media (max-width: 600px)": {
+        backgroundColor: "rgba(0, 0, 0, 0)",
     },
 }));
 
-const Number = styled(Typography)({
-    fontSize: "4rem",
+const Content = styled(Box)(
+    ({ theme, expanded, isSmallScreen }) => ({
+        position: "relative",
+        zIndex: 3,
+        padding: isSmallScreen ? (expanded ? "3rem" : "0") : "5rem",
+        color: "#fff",
+        width: "100%",
+        transition: "opacity 0.3s ease, padding 0.3s ease",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
+        justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
+        textAlign: isSmallScreen && !expanded ? "left" : "left",
+        "@media (max-width: 900px)": {
+            padding: isSmallScreen ? (expanded ? "3rem" : "0") : "3rem",
+        },
+        "@media (max-width: 600px)": {
+            padding: isSmallScreen ? (expanded ? "2rem" : "6rem") : "2rem",
+        },
+    })
+);
+
+const Number = styled(Typography)(({ isSmallScreen, expanded }) => ({
+    fontSize: isSmallScreen
+        ? "3.6rem"
+        : "4rem",
     fontWeight: 500,
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
     },
     "@media (max-width: 600px)": {
-        fontSize: "2.2rem",
+        fontSize: "3.6rem",
+        alignSelf: "flex-start",
     },
-});
+}));
 
-const Heading = styled(Typography)(({ showHeading }) => ({
-    fontSize: "4rem",
+const Heading = styled(Typography)(({ showHeading, isSmallScreen }) => ({
+    fontSize: isSmallScreen
+        ? "2.4rem"
+        : "4rem",
     fontWeight: 500,
     lineHeight: "1.2",
-    opacity: showHeading ? 1 : 0,
-    transition: "opacity 0.3s ease",
+    opacity: isSmallScreen || showHeading ? 1 : 1,
+    transition: "opacity 0.3s ease, font-size 0.3s ease",
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
     },
     "@media (max-width: 600px)": {
-        fontSize: "2.2rem",
+        fontSize: "2.4rem",
     },
 }));
 
@@ -138,6 +180,7 @@ const CheckmarkIcon = styled("img")({
     marginRight: "1rem",
 });
 
+// Card Data
 const cardData = [
     {
         id: 1,
@@ -163,61 +206,101 @@ const cardData = [
     },
 ];
 
+// Main Component
 export default function ExpandableCards() {
-    const [expandedCard, setExpandedCard] = useState(null);
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Typically <600px
+    const [expandedCard, setExpandedCard] = useState(null); // For large screens (hover)
+    const [clickedCards, setClickedCards] = useState([]); // For small screens (click)
 
+    // Handlers for large screens (hover)
+    const handleCardMouseEnter = (id) => {
+        if (!isSmallScreen) {
+            setExpandedCard(id);
+        }
+    };
+
+    const handleCardMouseLeave = () => {
+        if (!isSmallScreen) {
+            setExpandedCard(null);
+        }
+    };
+
+    // Handlers for small screens (click)
     const handleCardClick = (id) => {
-        setExpandedCard((prev) => (prev === id ? null : id));
+        if (isSmallScreen) {
+            setClickedCards((prev) =>
+                prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
+            );
+        }
     };
 
     return (
         <Container>
-            {cardData.map((card, index) => (
-                <Card
-                    key={card.id}
-                    expanded={expandedCard === card.id}
-                    expandDirection={index === 0 ? "right" : "left"}
-                    onClick={() => handleCardClick(card.id)}
-                >
-                    <BackgroundImage />
-                    <Overlay />
-                    <Content expanded={expandedCard === card.id}>
-                        <Number>0{card.id}</Number>
-                        <Heading
-                            showHeading={expandedCard === null || expandedCard === card.id}
-                        >
-                            {card.title}
-                        </Heading>
-                        {expandedCard === card.id && (
-                            <ExpandedContent>
-                                <Typography
-                                    variant="body1"
-                                    sx={{
-                                        marginBottom: "2rem",
-                                        fontSize: "2.2rem",
-                                        "@media (max-width: 900px)": {
-                                            fontSize: "1.6rem",
-                                        },
-                                        "@media (max-width: 600px)": {
-                                            fontSize: "1.4rem",
-                                        },
-                                    }}
-                                >
-                                    {card.subpara}
-                                </Typography>
-                                <BulletList>
-                                    {card.details.map((detail, idx) => (
-                                        <BulletItem key={idx}>
-                                            <CheckmarkIcon src="/Checkmark.png" alt="checkmark" />
-                                            {detail}
-                                        </BulletItem>
-                                    ))}
-                                </BulletList>
-                            </ExpandedContent>
-                        )}
-                    </Content>
-                </Card>
-            ))}
+            {cardData.map((card, index) => {
+                // Determine if the card should be expanded
+                const isExpanded = isSmallScreen
+                    ? clickedCards.includes(card.id)
+                    : expandedCard === card.id;
+
+                return (
+                    <Card
+                        key={card.id}
+                        expanded={isExpanded}
+                        expandDirection={index === 0 ? "right" : "left"}
+                        isSmallScreen={isSmallScreen}
+                        onMouseEnter={() => handleCardMouseEnter(card.id)}
+                        onMouseLeave={handleCardMouseLeave}
+                        onClick={() => handleCardClick(card.id)}
+                        // To indicate clickable area on small screens
+                        style={{ userSelect: "none" }}
+                    >
+                        <BackgroundImage />
+                        <Overlay />
+                        <Content expanded={isExpanded} isSmallScreen={isSmallScreen}>
+                            <Number isSmallScreen={isSmallScreen} expanded={isExpanded}>
+                                0{card.id}
+                            </Number>
+                            <Heading
+                                showHeading={isExpanded}
+                                isSmallScreen={isSmallScreen}
+                            >
+                                {card.title}
+                            </Heading>
+                            {isExpanded && (
+                                <ExpandedContent>
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            marginBottom: "2rem",
+                                            fontSize: "2.2rem",
+                                            "@media (max-width: 900px)": {
+                                                fontSize: "1.6rem",
+                                            },
+                                            "@media (max-width: 600px)": {
+                                                fontSize: "1.4rem",
+                                            },
+                                        }}
+                                    >
+                                        {card.subpara}
+                                    </Typography>
+                                    <BulletList>
+                                        {card.details.map((detail, idx) => (
+                                            <BulletItem key={idx}>
+                                                <CheckmarkIcon
+                                                    src="/Checkmark.png"
+                                                    alt="checkmark"
+                                                />
+                                                {detail}
+                                            </BulletItem>
+                                        ))}
+                                    </BulletList>
+                                </ExpandedContent>
+                            )}
+                        </Content>
+                    </Card>
+                );
+            })}
         </Container>
     );
 }
