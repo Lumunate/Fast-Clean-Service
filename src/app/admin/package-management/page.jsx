@@ -203,7 +203,7 @@ const Page = () => {
       if (tabValue === 0) {
         await updateAutocarePackages(selectedPackage._id, selectedPackage);
       } else {
-        await handleSubscriptionSubmit(selectedPackage._id, selectedPackage);
+        await updateSubscriptionPackages(selectedPackage._id, selectedPackage);
       }
 
       handleCloseModal();

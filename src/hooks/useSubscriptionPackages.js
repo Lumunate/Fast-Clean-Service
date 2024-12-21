@@ -51,10 +51,10 @@ export const useSubscriptionPackages = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`/api/packages/subscription/${id}`, {
-        method: 'PUT',
+      const response = await fetch(`/api/packages/subscription?id=${id}`, {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(packageData),
       });
@@ -62,9 +62,7 @@ export const useSubscriptionPackages = () => {
         throw new Error('Failed to update subscription package');
       }
       const data = await response.json();
-      setPackages(prev => 
-        prev.map(pkg => pkg.id === id ? data : pkg)
-      );
+      setPackages((prev) => prev.map((pkg) => (pkg._id === packageData._id ? data : pkg)));
       return data;
     } catch (err) {
       setError(err.message);

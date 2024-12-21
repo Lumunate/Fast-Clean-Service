@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     if (id) {
       const pkg = await SubscriptionPackageService.getPackageById(id as string);
       if (!pkg) {
-        return NextResponse.json({ message: 'Subscription pkg not found' });
+        return NextResponse.json({ message: 'Subscription pkg not found' }, { status: 404 });
       }
       return NextResponse.json(pkg);
     }
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(packages);
   } catch (error) {
     console.error('Error in handleGet:', error);
-    return NextResponse.json({ message: 'Internal server error' });
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -35,9 +35,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(pkg);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: 'Validation error', errors: error.errors });
+      return NextResponse.json({ message: 'Validation error', errors: error.errors }, { status: 400 });
     }
-    return NextResponse.json({ message: 'Internal server error' });
+
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -46,17 +47,18 @@ export async function PUT(req: NextRequest) {
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
 
-    const pkg = await SubscriptionPackageService.updatePackage(id as string, req.body);
+    const pkg = await SubscriptionPackageService.updatePackage(id as string, await req.json());
     if (!pkg) {
-      return NextResponse.json({ message: 'Subscription pkg not found' });
+      return NextResponse.json({ message: 'Subscription pkg not found' }, { status: 404 });
     }
     return NextResponse.json(pkg);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: 'Validation error', errors: error.errors });
+      return NextResponse.json({ message: 'Validation error', errors: error.errors }, { status: 400 });
     }
+    
     console.error('Error in handlePut:', error);
-    return NextResponse.json({ message: 'Internal server error' });
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -65,7 +67,7 @@ export async function PATCH(req: NextRequest) {
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
 
-    const pkg = await SubscriptionPackageService.updatePartialPackage(id as string, req.body);
+    const pkg = await SubscriptionPackageService.updatePartialPackage(id as string, await req.json());
     if (!pkg) {
       return NextResponse.json({ message: 'Subscription pkg not found' });
     }
