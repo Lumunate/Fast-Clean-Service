@@ -22,15 +22,26 @@ export class AutocareServiceRepository {
   }
 
   async update(id: string, data: any) {
+    const updatePath = data.id.split("-")[1];
+
+    const existingDoc = await AutocareService.findOne({
+      [`${updatePath}.id`]: data.id
+    });
+    
+    // Then attempt the update
     const result = await AutocareService.findOneAndUpdate(
-      { $or: [
-        { 'standard.id': id },
-        { 'deluxe.id': id },
-        { 'premium.id': id }
-      ]},
-      { $set: data },
-      { new: true }
+      { [`${updatePath}.id`]: data.id },
+      {
+        $set: {
+          [`${updatePath}.$[elem]`]: data,
+        },
+      },
+      {
+        arrayFilters: [{ "elem.id": data.id }],
+        new: true,
+      }
     );
+
     return result;
   }
 

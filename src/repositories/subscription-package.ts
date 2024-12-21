@@ -19,11 +19,7 @@ export class SubscriptionPackageRepository {
   }
 
   async update(id: string, data: any) {
-    return await SubscriptionPackage.findOneAndUpdate(
-      { id },
-      data,
-      { new: true }
-    );
+    return await SubscriptionPackage.findOneAndUpdate({ _id: id }, data, { new: true });
   }
 
   async updatePartial(id: string, data: any) {
