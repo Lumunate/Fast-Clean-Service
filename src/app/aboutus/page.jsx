@@ -22,9 +22,9 @@ export default function AboutUs() {
 
         <BackgroundSection />
 
-        <DecorativeSpacer reversed />
+        <DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} />
         <HowItWork />
-        <DecorativeSpacer />
+        <DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} />
 
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
@@ -45,37 +45,37 @@ export default function AboutUs() {
             <ExpandableCards />
         </Box>
 
-        <Box sx={{marginTop: "12.1rem"}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>Our Comprehensive Services</HeadingLinesAnimation>
             </Box>
             <CompServices />
         </Box>
 
-        <Box sx={{marginTop: "11.3rem"}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "11.3rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>FAST CLEAN X TESLA</HeadingLinesAnimation>
             </Box>
             <CollabSection />
         </Box>
 
-      <HomeWrapper sx={{ marginTop: "8rem" }}>
+      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
           <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-              <HeadingLinesAnimation>MEET THE TEAM</HeadingLinesAnimation>
+              <HeadingLinesAnimation>MEET THE FOUNDER</HeadingLinesAnimation>
           </Box>
         <MeetTeam />
       </HomeWrapper>
 
-        <DecorativeSpacer reversed />
-        <Box sx={{marginTop: "8rem"}}>
+        <DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} />
+        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
             </Box>
             <Reviews />
         </Box>
-        <DecorativeSpacer />
+        <DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} />
 
-        <Box sx={{marginTop: "8rem"}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
             <CallToActionBox hideImage={true} />
         </Box>
         <DecorativeBackgroundImage top="50rem" right="0" width="92rem" height="68.2rem" />
