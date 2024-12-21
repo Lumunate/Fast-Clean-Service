@@ -21,11 +21,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(services);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: "Validation error", errors: error.errors });
+      return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
 
     console.log(error);
-    return NextResponse.json({ message: "Internal server error" });
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
 
@@ -38,9 +38,9 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.log(error);
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: "Validation error", errors: error.errors });
+      return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
-    return NextResponse.json({ message: "Internal server error" });
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
 
@@ -51,16 +51,18 @@ export async function PUT(req: NextRequest) {
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
 
-    const service = await AutocareServiceService.updateService(id as string, req.body);
+    const service = await AutocareServiceService.updateService(id as string, await req.json());
     if (!service) {
-      return NextResponse.json({ message: "Service not found" });
+      return NextResponse.json({ message: "Service not found" }, { status: 404 });
     }
     return NextResponse.json(service);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: "Validation error", errors: error.errors });
+      return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
-    return NextResponse.json({ message: "Internal server error" });
+
+    console.error(error);
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
 
@@ -71,16 +73,16 @@ export async function PATCH(req: NextRequest) {
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
 
-    const service = await AutocareServiceService.updatePartialService(id as string, req.body);
+    const service = await AutocareServiceService.updatePartialService(id as string, await req.json());
     if (!service) {
       return NextResponse.json({ message: "Service not found" });
     }
     return NextResponse.json(service);
   } catch (error) {
     if (error instanceof ZodError) {
-      return NextResponse.json({ message: "Validation error", errors: error.errors });
+      return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
-    return NextResponse.json({ message: "Internal server error" });
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }
 
@@ -97,6 +99,6 @@ export async function DELETE(req: NextRequest) {
     }
     return NextResponse.json({ message: "Service deleted successfully" });
   } catch (error) {
-    return NextResponse.json({ message: "Internal server error" });
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }

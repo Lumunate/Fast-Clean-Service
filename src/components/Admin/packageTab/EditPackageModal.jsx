@@ -22,7 +22,15 @@ const formatPackageName = (id) => {
   return `${capitalizedWords.join(" ")} Package`;
 };
 
-const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, handleInputChange }) => {
+const EditPackageModal = ({
+  open,
+  handleClose,
+  selectedPackage,
+  isSubscription,
+  handleInputChange,
+  handleAddAdditionalOption,
+  handleSubmit,
+}) => {
   if (!selectedPackage) return null;
 
   const displayName = formatPackageName(selectedPackage.id);
@@ -72,11 +80,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
             variant="outlined"
             type="number"
             inputProps={{ step: "0.01" }}
-            value={
-              selectedPackage.vehicleOptions
-                ? Object.values(selectedPackage.vehicleOptions)[0].basePrice
-                : parseFloat(selectedPackage.price.replace("€", ""))
-            }
+            value={parseFloat(selectedPackage.price.replace("€ ", ""))}
             onChange={(e) => handleInputChange("price", parseFloat(e.target.value))}
             fullWidth
             sx={{
@@ -204,22 +208,24 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
 
         {/* Add-Ons */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "2rem",
-            }}
-          >
-            <SubSectionTitle>Add-Ons</SubSectionTitle>
-            <StyledButton variant="contained">Add Add-On</StyledButton>
-          </Box>
+          <SubSectionTitle>Add-Ons</SubSectionTitle>
 
           {/* Interior Add-Ons */}
           {selectedPackage.additionalOptions?.interior && (
             <Box sx={{ marginBottom: "2rem" }}>
-              <Typography sx={{ fontWeight: "400", fontSize: "1.6rem", marginBottom: "8px" }}>Interior Add-Ons</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "2rem",
+                }}
+              >
+                <Typography sx={{ fontWeight: "400", fontSize: "1.6rem", marginBottom: "8px" }}>Interior Add-Ons</Typography>
+                <StyledButton variant="contained" onClick={() => handleAddAdditionalOption("interior")}>
+                  Add Interior Add-On
+                </StyledButton>
+              </Box>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={4}></Grid>
                 <Grid item xs={12} sm={4}>
@@ -239,7 +245,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                     <TextField
                       variant="outlined"
                       value={addon.name}
-                      disabled
+                      onChange={(e) => handleInputChange("addonName_interior", e.target.value, idx, "interior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -256,7 +262,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalCost}
-                      onChange={(e) => handleInputChange("additionalCost", parseFloat(e.target.value), idx, "interior")}
+                      onChange={(e) => handleInputChange("addonPrice_interior", parseFloat(e.target.value), idx, "interior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -273,7 +279,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalTime || 0}
-                      onChange={(e) => handleInputChange("additionalTime", parseInt(e.target.value), idx, "interior")}
+                      onChange={(e) => handleInputChange("addonTime_interior", parseInt(e.target.value), idx, "interior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -293,7 +299,19 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
           {/* Exterior Add-Ons */}
           {selectedPackage.additionalOptions?.exterior && (
             <Box sx={{ marginBottom: "2rem" }}>
-              <Typography sx={{ fontWeight: "400", fontSize: "1.6rem", marginBottom: "8px" }}>Exterior Add-Ons</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "2rem",
+                }}
+              >
+                <Typography sx={{ fontWeight: "400", fontSize: "1.6rem", marginBottom: "8px" }}>Exterior Add-Ons</Typography>
+                <StyledButton variant="contained" onClick={() => handleAddAdditionalOption("exterior")}>
+                  Add Exterior Add-On
+                </StyledButton>
+              </Box>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={4}></Grid>
                 <Grid item xs={12} sm={4}>
@@ -313,7 +331,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                     <TextField
                       variant="outlined"
                       value={addon.name}
-                      disabled
+                      onChange={(e) => handleInputChange("addonName_exterior", e.target.value, idx, "exterior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -330,7 +348,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalCost}
-                      onChange={(e) => handleInputChange("additionalCost", parseFloat(e.target.value), idx, "exterior")}
+                      onChange={(e) => handleInputChange("addonPrice_exterior", parseFloat(e.target.value), idx, "exterior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -347,7 +365,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalTime || 0}
-                      onChange={(e) => handleInputChange("additionalTime", parseInt(e.target.value), idx, "exterior")}
+                      onChange={(e) => handleInputChange("addonTime_exterior", parseInt(e.target.value), idx, "exterior")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -376,7 +394,9 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                 }}
               >
                 <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem" }}>Detailing Options</Typography>
-                <StyledButton variant="contained">Add Detailing</StyledButton>
+                <StyledButton variant="contained" onClick={() => handleAddAdditionalOption("detailing")}>
+                  Add Detailing Option
+                </StyledButton>
               </Box>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={4}></Grid>
@@ -397,7 +417,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                     <TextField
                       variant="outlined"
                       value={addon.name}
-                      disabled
+                      onChange={(e) => handleInputChange("addonName_detailing", e.target.value, idx, "detailing")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -414,7 +434,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalCost}
-                      onChange={(e) => handleInputChange("additionalCost", parseFloat(e.target.value), idx, "detailing")}
+                      onChange={(e) => handleInputChange("addonPrice_detailing", parseFloat(e.target.value), idx, "detailing")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -431,7 +451,7 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
                       variant="outlined"
                       type="number"
                       value={addon.additionalTime || 0}
-                      onChange={(e) => handleInputChange("additionalTime", parseInt(e.target.value), idx, "detailing")}
+                      onChange={(e) => handleInputChange("addonTime_detailing", parseInt(e.target.value), idx, "detailing")}
                       fullWidth
                       sx={{
                         fontSize: "1.6rem",
@@ -450,7 +470,9 @@ const EditPackageModal = ({ open, handleClose, selectedPackage, isSubscription, 
         </Box>
       </StyledDialogContent>
       <StyledDialogActions>
-        <SaveButton variant="contained">Save Changes</SaveButton>
+        <SaveButton variant="contained" onClick={handleSubmit}>
+          Save Changes
+        </SaveButton>
       </StyledDialogActions>
     </Dialog>
   );

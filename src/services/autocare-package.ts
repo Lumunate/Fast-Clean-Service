@@ -1,5 +1,5 @@
 import { AutocareServiceRepository } from "../repositories/autocare-package";
-import { carServiceValidation, serviceOptionsValidation } from "../types/autocare-package";
+import { carServiceValidation, packageValidation, serviceOptionsValidation } from "../types/autocare-package";
 
 class AutocareServiceService {
   private repository: AutocareServiceRepository;
@@ -17,12 +17,8 @@ class AutocareServiceService {
   }
 
   async createService(data: any) {
-    console.log("data", data);
     const validatedPackages = carServiceValidation.parse(data.packages);
-    console.log("validatedPackages", validatedPackages)
-
     const validatedOptions = serviceOptionsValidation.parse(data.options);
-    console.log("validatedOptions", validatedOptions)
 
     return await this.repository.create({
       packages: validatedPackages,
@@ -31,7 +27,7 @@ class AutocareServiceService {
   }
 
   async updateService(id: string, data: any) {
-    const validatedData = carServiceValidation.parse(data);
+    const validatedData = packageValidation.parse(data);
     return await this.repository.update(id, validatedData);
   }
 

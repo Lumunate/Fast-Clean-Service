@@ -15,7 +15,7 @@ const additionalOptionsValidation = z.object({
   detailing: z.array(optionValidation).optional()
 });
 
-const packageValidation = z.object({
+export const packageValidation = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string().optional(),

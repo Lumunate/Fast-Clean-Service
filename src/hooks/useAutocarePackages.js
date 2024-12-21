@@ -51,20 +51,23 @@ export const useAutocarePackages = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`/api/packages/autocare/${id}`, {
-        method: 'PUT',
+      const response = await fetch(`/api/packages/autocare?id=${id}`, {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(packageData),
       });
       if (!response.ok) {
-        throw new Error('Failed to update autocare package');
+        throw new Error("Failed to update autocare package");
       }
       const data = await response.json();
-      setPackages(prev => 
-        prev.map(pkg => pkg.id === id ? data : pkg)
-      );
+      setPackages(prev => {
+        return {
+          packages: data,
+          options: prev.options,
+        }
+      });
       return data;
     } catch (err) {
       setError(err.message);

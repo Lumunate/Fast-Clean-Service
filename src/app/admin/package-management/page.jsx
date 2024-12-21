@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider } from "@mui/material";
 
-// Import data
+// Import data, updatePackages: updateAutocarePackages
 import { useAutocarePackages } from "../../../hooks/useAutocarePackages";
 import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages";
 
@@ -23,12 +23,14 @@ import {
   SubSectionTitle,
   SectionTitle,
 } from "../../../components/Admin/packageTab/StyledComponents";
+import useSnackbar from "../../../hooks/useSnackbar";
 
 const Page = () => {
   const [tabValue, setTabValue] = useState(0); // 0: Service Packages, 1: Subscription Packages
   const [openModal, setOpenModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isSubscription, setIsSubscription] = useState(false);
+  const { openSnackbar } = useSnackbar();
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -56,19 +58,23 @@ const Page = () => {
       const updatedPackage = { ...prev };
 
       if (field === "price") {
-        if (updatedPackage.vehicleOptions) {
-          // Update basePrice for all vehicle types (assuming the first one)
-          const firstVehicle = Object.keys(updatedPackage.vehicleOptions)[0];
-          updatedPackage.vehicleOptions[firstVehicle].basePrice = value;
-        } else {
-          updatedPackage.price = `€${value.toFixed(2)}`;
-        }
+        updatedPackage.price = `€ ${value.toFixed(2)}`;
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
+      } else if (field.startsWith("addonName")) {
+        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
+        if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
+          updatedPackage.additionalOptions[addonType][index].name = value;
+        }
       } else if (field.startsWith("addonPrice")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
           updatedPackage.additionalOptions[addonType][index].additionalCost = value;
+        }
+      } else if (field.startsWith("addonTime")) {
+        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
+        if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
+          updatedPackage.additionalOptions[addonType][index].additionalTime = value;
         }
       } else if (field.startsWith("basePrice") || field.startsWith("additionalPrice") || field.startsWith("additionalTime")) {
         // Handle vehicle-specific pricing updates
@@ -80,6 +86,29 @@ const Page = () => {
           updatedPackage.vehicleOptions[vehicle][vehicleField] = value;
         }
       }
+
+      return updatedPackage;
+    });
+  };
+
+  const handleAddAdditionalOption = (addonType) => {
+    setSelectedPackage((prev) => {
+      if (!prev) return prev;
+
+      const updatedPackage = { ...prev };
+
+      if (!updatedPackage.additionalOptions) {
+        updatedPackage.additionalOptions = {};
+      }
+
+      if (!updatedPackage.additionalOptions[addonType]) {
+        updatedPackage.additionalOptions[addonType] = [];
+      }
+
+      updatedPackage.additionalOptions[addonType].push({
+        name: "",
+        additionalCost: 0,
+      });
 
       return updatedPackage;
     });
@@ -151,8 +180,12 @@ const Page = () => {
     );
   };
 
-  const { packages, fetchPackages: fetchAutocarePackages } = useAutocarePackages();
-  const { packages: subscriptionPackages, fetchPackages: fetchSubscriptionPackages } = useSubscriptionPackages();
+  const { packages, fetchPackages: fetchAutocarePackages, updatePackage: updateAutocarePackages } = useAutocarePackages();
+  const {
+    packages: subscriptionPackages,
+    fetchPackages: fetchSubscriptionPackages,
+    updatePackage: updateSubscriptionPackages,
+  } = useSubscriptionPackages();
 
   useEffect(() => {
     fetchAutocarePackages();
@@ -165,7 +198,20 @@ const Page = () => {
 
   const autocarePackages = packages?.packages;
 
-  console.log("packages", autocarePackages, subscriptionPackages);
+  const handleSubmit = async () => {
+    try {
+      if (tabValue === 0) {
+        await updateAutocarePackages(selectedPackage._id, selectedPackage);
+      } else {
+        await handleSubscriptionSubmit(selectedPackage._id, selectedPackage);
+      }
+
+      handleCloseModal();
+    } catch (error) {
+      console.log(error);
+      openSnackbar("Failed to update package", 5000);
+    }
+  };
 
   return (
     <PageContainer>
@@ -219,6 +265,8 @@ const Page = () => {
         selectedPackage={selectedPackage}
         isSubscription={isSubscription}
         handleInputChange={handleInputChange}
+        handleAddAdditionalOption={handleAddAdditionalOption}
+        handleSubmit={handleSubmit}
       />
     </PageContainer>
   );
