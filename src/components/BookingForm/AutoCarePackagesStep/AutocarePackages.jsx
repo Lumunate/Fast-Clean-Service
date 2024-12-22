@@ -1,21 +1,17 @@
 "use client";
 import { Box, Typography, useMediaQuery } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { calculateFilter } from "../../../lib/colorFilters";
-import { packages } from "../../../app/autocare/data";
 import { useTheme } from "../../../contexts/themeContext";
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
 import { useValidation } from "../../../contexts/ValidationContext";
 import Image from "next/image";
 import bg from "../../../../public/voor1.jpg";
 import CheckMark from "../../../../public/bookingFormIcons/CheckMark.svg";
-import {
-    AutoCareContainer,
-    AutoCarePackageSubheading,
-    AutoCarePackageTagline,
-} from "../../mui/BookingFormPackages";
+import { AutoCareContainer, AutoCarePackageSubheading, AutoCarePackageTagline } from "../../mui/BookingFormPackages";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useAutocarePackages } from "../../../hooks/useAutocarePackages";
 
 const AutocarePackages = () => {
     const { theme } = useTheme();
@@ -62,8 +58,18 @@ const AutocarePackages = () => {
         }
     };
 
+
+    const { packages, loading, error, fetchPackages } = useAutocarePackages();
+    useEffect(() => {
+      fetchPackages();
+    }, [fetchPackages]);
+
+    if (!packages) {
+      return null;
+    }
+
     const packageTypeName = form.formData?.packageType.name.toLocaleLowerCase();
-    const allPackages = packages[packageTypeName];
+    const allPackages = packages.packages[packageTypeName];
     let displayedPackages = allPackages;
 
     // Apply filtering based on carType

@@ -3,14 +3,14 @@ import { IBooking } from "../models/Booking";
 import BookingConfirmationEmail from "../templates/booking";
 import RescheduledBookingUserEmail from "../templates/reschedule";
 import sendEmail from "./sendEmail";
-import { packages as subscriptionPackages } from "../app/subscribe/data";
-import { packages } from "../app/autocare/data";
 import notificationRepository from "../repositories/Notifications";
+import subscriptionPackageService from "./subscription-package";
+import AutocarService from "./autocare-package";
 
 class BookingService {
   async createBooking(bookingData: Partial<IBooking>): Promise<IBooking> {
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    const { price, duration } = this.calculatePrice(bookingData);
+    const { price, duration } = await this.calculatePrice(bookingData);
     // Ensure userId is included in the bookingData
     // if (!bookingData.userId) {
     //   throw new Error("User ID is required.");
@@ -129,7 +129,12 @@ class BookingService {
     return Math.max(...numbers);
   }
 
-  calculatePrice(bookingData: Partial<IBooking>) {
+  async calculatePrice(bookingData: Partial<IBooking>) {
+    const [packages, subscriptionPackages] = await Promise.all([
+      AutocarService.getAllServices(),
+      subscriptionPackageService.getAllPackages()
+    ]);
+
     console.log(bookingData);
     // calculate duration as well as price
     let price: number = 0;
