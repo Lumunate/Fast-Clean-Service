@@ -130,7 +130,7 @@ const Heading = styled(Typography)(({ showHeading, isSmallScreen }) => ({
         : "4rem",
     fontWeight: 500,
     lineHeight: "1.2",
-    opacity: isSmallScreen || showHeading ? 1 : 1,
+    opacity: isSmallScreen ? 1 : showHeading ? 1 : 0,
     transition: "opacity 0.3s ease, font-size 0.3s ease",
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
@@ -210,38 +210,37 @@ const cardData = [
 export default function ExpandableCards() {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Typically <600px
-    const [expandedCard, setExpandedCard] = useState(null); // For large screens (hover)
-    const [clickedCards, setClickedCards] = useState([]); // For small screens (click)
+    const [activeCard, setActiveCard] = useState(null); // Tracks the currently active card
 
     // Handlers for large screens (hover)
     const handleCardMouseEnter = (id) => {
         if (!isSmallScreen) {
-            setExpandedCard(id);
+            setActiveCard(id);
         }
     };
 
     const handleCardMouseLeave = () => {
         if (!isSmallScreen) {
-            setExpandedCard(null);
+            setActiveCard(null);
         }
     };
 
     // Handlers for small screens (click)
     const handleCardClick = (id) => {
         if (isSmallScreen) {
-            setClickedCards((prev) =>
-                prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
-            );
+            setActiveCard((prev) => (prev === id ? null : id));
         }
     };
 
     return (
         <Container>
             {cardData.map((card, index) => {
-                // Determine if the card should be expanded
-                const isExpanded = isSmallScreen
-                    ? clickedCards.includes(card.id)
-                    : expandedCard === card.id;
+                // Determine if the current card is expanded
+                const isExpanded = activeCard === card.id;
+
+                // Determine if any other card is expanded
+                const anyOtherExpanded =
+                    activeCard !== null && activeCard !== card.id;
 
                 return (
                     <Card
@@ -252,7 +251,6 @@ export default function ExpandableCards() {
                         onMouseEnter={() => handleCardMouseEnter(card.id)}
                         onMouseLeave={handleCardMouseLeave}
                         onClick={() => handleCardClick(card.id)}
-                        // To indicate clickable area on small screens
                         style={{ userSelect: "none" }}
                     >
                         <BackgroundImage />
@@ -261,12 +259,14 @@ export default function ExpandableCards() {
                             <Number isSmallScreen={isSmallScreen} expanded={isExpanded}>
                                 0{card.id}
                             </Number>
-                            <Heading
-                                showHeading={isExpanded}
-                                isSmallScreen={isSmallScreen}
-                            >
-                                {card.title}
-                            </Heading>
+                            {(!anyOtherExpanded || isExpanded) && (
+                                <Heading
+                                    showHeading={isExpanded || !anyOtherExpanded}
+                                    isSmallScreen={isSmallScreen}
+                                >
+                                    {card.title}
+                                </Heading>
+                            )}
                             {isExpanded && (
                                 <ExpandedContent>
                                     <Typography
@@ -304,3 +304,72 @@ export default function ExpandableCards() {
         </Container>
     );
 }
+
+// Exporting styled components for potential reuse or testing
+export const StatCardContainer = styled(Box)(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "1rem 1.5rem",
+    width: "300px",
+    margin: "0 auto",
+
+    "@media (max-width: 600px)": {
+        width: "100%",
+    },
+}));
+
+export const StatCardHeading = styled(Typography)(({ theme }) => ({
+    fontWeight: 700,
+    fontSize: "3.5rem",
+    color: "white",
+    marginBottom: "0.5rem",
+
+    "@media (max-width: 900px)": {
+        fontSize: "2rem",
+    },
+}));
+
+export const StatCardSubheading = styled(Typography)(({ theme }) => ({
+    fontSize: "1.6rem",
+    fontWeight: 500,
+    color: "white",
+
+    "@media (max-width: 900px)": {
+        fontSize: "1.2rem",
+    },
+}));
+
+export const StatAnimatedIcon = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "50px",
+    height: "50px",
+    color: "white",
+    marginBottom: "1rem",
+
+    "& svg g, & svg path": {
+        width: "100%",
+        height: "100%",
+        fill: "white",
+        stroke: "rgb(255,255,255) !important",
+    },
+
+    "@media (max-width: 900px)": { transform: "scale(0.6)" },
+}));
+
+const StatsCard = ({ icon, head, desc }) => {
+    // const getStatIcon = (iconComponent) => {
+    //   return <StatAnimatedIcon>{React.createElement(iconComponent)}</StatAnimatedIcon>;
+    // };
+
+    return (
+        <StatCardContainer>
+            {/* {getStatIcon(icon)} */}
+            <StatCardHeading variant="h2">{head}</StatCardHeading>
+            <StatCardSubheading variant="p">{desc}</StatCardSubheading>
+        </StatCardContainer>
+    );
+};
