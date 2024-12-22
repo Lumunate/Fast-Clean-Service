@@ -1,7 +1,7 @@
 // components/ExitIntentModal.js
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 
@@ -109,7 +109,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                             variant="h5"
                             sx={{
                                 fontFamily: "Unbounded",
-                                fontSize: "2.8rem",
+                                fontSize: "1.8rem",
                                 fontWeight: "bold",
                                 color: "#232E4A",
                                 padding: "1rem 0",
@@ -122,7 +122,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                             id="exit-intent-modal-description"
                             variant="body1"
                             sx={{
-                                fontSize: "1.6rem",
+                                fontSize: "1.4rem",
                                 color: "#555",
                                 textAlign: "center",
                                 marginBottom: "1rem",
@@ -160,7 +160,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                         variant="h5"
                         sx={{
                             fontFamily: "Unbounded",
-                            fontSize: "1.5rem",
+                            fontSize: "1.8rem",
                             fontWeight: "bold",
                             color: "#232E4A",
                             padding: "1rem 0",
@@ -173,7 +173,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                         id="exit-intent-modal-description"
                         variant="body1"
                         sx={{
-                            fontSize: "1rem",
+                            fontSize: "1.4rem",
                             color: "#555",
                             textAlign: "center",
                             marginBottom: "1rem",
