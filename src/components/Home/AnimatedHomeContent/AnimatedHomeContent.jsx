@@ -89,6 +89,9 @@ const AnimatedHomeContent = () => {
             flexDirection: "column",
             // justifyContent: "space-between",
             alignItems: "center",
+              "@media (max-width: 600px)": {
+                padding: "2rem",
+              },
           }}
         >
           <Typography

@@ -51,7 +51,7 @@ export default function Footer() {
                         transform: 'translate(-50%, -50%)',
                         gap: "9.3rem",
                         '@media (max-width: 1368px)': {
-                            gap: '6rem',
+                            gap: '4rem',
                         },
                         '@media (max-width: 900px)': {
                             flexDirection: 'column',
@@ -73,7 +73,7 @@ export default function Footer() {
                     </MuiLink>
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "3rem", '@media (max-width: 768px)': { gap: "2rem" } }}>
+                <Box sx={{ display: "flex", gap: "3rem", '@media (max-width: 768px)': { gap: "2rem" }, '@media (max-width: 1366px)': { gap: "1rem" } }}>
                     <IconButton href="https://facebook.com" sx={{ color: "#FFF" }}>
                         <Facebook sx={{ fontSize: "1.8rem" }} />
                     </IconButton>
