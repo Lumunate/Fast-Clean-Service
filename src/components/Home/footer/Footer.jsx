@@ -152,13 +152,13 @@ export default function Footer() {
                         textDecoration: "none",
                     }}
                 >
-                    <MuiLink href="/">Home</MuiLink>
+                    <MuiLink href="/" sx={{ color: "#D2D2D2" }}>Home</MuiLink>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                    <MuiLink href="/aboutus">About</MuiLink>
+                    <MuiLink href="/aboutus" sx={{ color: "#D2D2D2" }}>About</MuiLink>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                    <MuiLink href="/contact">Contact Us</MuiLink>
+                    <MuiLink href="/contact" sx={{ color: "#D2D2D2" }}>Contact Us</MuiLink>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                    <MuiLink href="/">Services</MuiLink>
+                    <MuiLink href="/" sx={{ color: "#D2D2D2" }}>Services</MuiLink>
                 </Box>
 
                 <Typography
