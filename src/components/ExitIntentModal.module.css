@@ -1,0 +1,18 @@
+/* components/ExitIntentModal.module.css */
+.modalEnter {
+    transform: translateY(100%);
+}
+
+.modalEnterActive {
+    transform: translateY(0);
+    transition: transform 300ms ease-in-out;
+}
+
+.modalExit {
+    transform: translateY(0);
+}
+
+.modalExitActive {
+    transform: translateY(100%);
+    transition: transform 300ms ease-in-out;
+}
