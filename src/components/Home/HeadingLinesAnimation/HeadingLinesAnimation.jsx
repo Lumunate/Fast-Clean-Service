@@ -2,10 +2,42 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { useTheme } from "../../../contexts/themeContext";
+import styles from "./HeadingLinesAnimation.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const Line = styled("div")(({ theme }) => ({
+    position: "absolute",
+    width: "80%",
+    height: "3px",
+    transition: "all 0.3s ease",
+    background: `linear-gradient(to right, rgba(207, 207, 207, 0.05), ${theme.palette.primary.accent})`,
+
+    [theme.breakpoints.down("sm")]: {
+        width: "50%",
+    },
+}));
+
+const AboveLine = styled(Line)(({ theme }) => ({
+    left: "-50%",
+    top: "0",
+
+    [theme.breakpoints.down("sm")]: {
+        left: "-25%",
+    },
+}));
+
+const BelowLine = styled(Line)(({ theme }) => ({
+    right: "-50%",
+    bottom: "1px",
+    background: `linear-gradient(to left, rgba(207, 207, 207, 0.3), ${theme.palette.primary.accent})`,
+
+    [theme.breakpoints.down("sm")]: {
+        right: "-25%",
+    },
+}));
 
 export default function HeadingLinesAnimation({ text, children }) {
     const scrollRef = useRef();
@@ -82,17 +114,7 @@ export default function HeadingLinesAnimation({ text, children }) {
                 margin: "20px 0",
             }}
         >
-            <div
-                className="above-line"
-                style={{
-                    position: "absolute",
-                    left: "-50%",
-                    width: "80%",
-                    height: "3px",
-                    background: `linear-gradient(to right, #cfcfcf05, ${theme.palette.primary.accent})`,
-                    top: "0",
-                }}
-            ></div>
+            <AboveLine className="above-line" />
             <Typography
                 className="heading"
                 sx={{
@@ -109,17 +131,7 @@ export default function HeadingLinesAnimation({ text, children }) {
             >
                 {text || children}
             </Typography>
-            <div
-                className="below-line"
-                style={{
-                    position: "absolute",
-                    right: "-50%",
-                    width: "80%",
-                    height: "3px",
-                    background: `linear-gradient(to left, #cfcfcf30, ${theme.palette.primary.accent})`,
-                    bottom: "1px",
-                }}
-            ></div>
+            <BelowLine className="below-line" />
         </div>
     );
 }

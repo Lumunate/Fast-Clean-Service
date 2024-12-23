@@ -31,7 +31,8 @@ const CallToActionBox = ({ hideImage = false }) => {
 
                 <CTADescription>
                     Experience the best in professional car care today. Whether you’re at home, at work, or on the go, we’ll bring our
-                    expertise to you! Don’t wait – your car deserves the best.
+                    expertise to you! <br />
+                    Don’t wait – your car deserves the best.
                 </CTADescription>
 
                 <CTAInnerBox>

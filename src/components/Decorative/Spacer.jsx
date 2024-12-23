@@ -14,6 +14,9 @@ const DecorativeSpacer = ({ reversed }) => {
         alignItems: "center",
         margin: "11.1rem 6.6rem 5rem",
         zIndex: 100,
+          "@media (max-width: 600px)": {
+              display: "none"
+          },
       }}
     >
       <Box
