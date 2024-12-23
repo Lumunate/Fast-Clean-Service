@@ -56,29 +56,163 @@ const cardData = [
 ];
 
 function getTransitionStyles(index, curIndex, len) {
-  return index === curIndex
-    ? {
-        left: 0,
-        top: 0,
-        transform: "translate(0, 0)",
-        borderRadius: 0,
-        width: "100%",
-        height: "100%",
-        boxShadow: "none",
-        "& div": {
-          display: "block",
-          zIndex: 5,
-        },
-      }
-    : index > curIndex
-    ? {
-        left: `calc(26% + ${285 * (index - curIndex)}px)`,
-        zIndex: index + 10,
-      }
-    : {
-        left: `calc(26% + ${265 * (len - 2) - (curIndex - index - 2) * 305}px)`,
-        zIndex: index + 10,
-      };
+    return index === curIndex
+        ? {
+            left: 0,
+            top: 0,
+            transform: "translate(0, 0)",
+            borderRadius: 0,
+            width: "100%",
+            height: "100%",
+            boxShadow: "none",
+            "& div": {
+                display: "block",
+                zIndex: 5,
+            },
+        }
+        : index > curIndex
+            ? {
+                left: {
+                    xl: `calc(21% + ${305 * (index - curIndex)}px)`,
+                    lg: `calc(21% + ${305 * (index - curIndex)}px)`,
+                    md: `calc(14% + ${275 * (index - curIndex)}px)`,
+                    sm: `calc(-10% + ${275 * (index - curIndex)}px)`,
+                },
+                zIndex: index + 10,
+
+                '@media only screen and (max-width: 1050px)': {
+                    left: `calc(12% + ${275 * (index - curIndex)}px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 1000px)': {
+                    left: `calc(4% + ${275 * (index - curIndex)}px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 950px)': {
+                    left: `calc(${275 * (index - curIndex)}px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 900px)': {
+                    left: `calc(-47% + ${275 * (index - curIndex)}px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 600px)': {
+                    left: `calc(-38% + ${220 * (index - curIndex)}px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 550px)': {
+                    left: `calc(-40% + ${220 * (index - curIndex)}px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 530px)': {
+                    left: `calc(-45% + ${220 * (index - curIndex)}px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 500px)': {
+                    left: `calc(-35% + ${180 * (index - curIndex)}px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 430px)': {
+                    left: `calc(-40% + ${180 * (index - curIndex)}px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 400px)': {
+                    left: `calc(-40% + ${180 * (index - curIndex)}px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+            }
+            : {
+                left: {
+                    xl: `calc(20% + ${305 * (len - 2) - (curIndex - index - 2) * 305}px)`,
+                    lg: `calc(20% + ${305 * (len - 2) - (curIndex - index - 2) * 305}px)`,
+                    md: `calc(14% + ${275 * (len - 2) - (curIndex - index - 2) * 275}px)`,
+                    sm: `calc(-10% + ${
+                        275 * (len - 2) - (curIndex - index - 2) * 275
+                    }px)`,
+                },
+                zIndex: index + 10,
+
+                '@media only screen and (max-width: 1050px)': {
+                    left: `calc(12% + ${
+                        275 * (len - 2) - (curIndex - index - 2) * 275
+                    }px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+
+                '@media only screen and (max-width: 1000px)': {
+                    left: `calc(4% + ${
+                        275 * (len - 2) - (curIndex - index - 2) * 275
+                    }px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+
+                '@media only screen and (max-width: 950px)': {
+                    left: `calc(${275 * (len - 2) - (curIndex - index - 2) * 275}px + 50px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 900px)': {
+                    left: `calc(-47% + ${
+                        275 * (len - 2) - (curIndex - index - 2) * 275
+                    }px + 60px)`,
+                    width: "230px",
+                    height: "123px",
+                },
+                '@media only screen and (max-width: 600px)': {
+                    left: `calc(-38% + ${
+                        220 * (len - 2) - (curIndex - index - 2) * 220
+                    }px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 550px)': {
+                    left: `calc(-40% + ${
+                        220 * (len - 2) - (curIndex - index - 2) * 220
+                    }px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 530px)': {
+                    left: `calc(-45% + ${
+                        220 * (len - 2) - (curIndex - index - 2) * 220
+                    }px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 500px)': {
+                    left: `calc(-35% + ${
+                        180 * (len - 2) - (curIndex - index - 2) * 160
+                    }px + 20px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 430px)': {
+                    left: `calc(-40% + ${
+                        180 * (len - 2) - (curIndex - index - 2) * 160
+                    }px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+                '@media only screen and (max-width: 400px)': {
+                    left: `calc(-40% + ${
+                        180 * (len - 2) - (curIndex - index - 2) * 160
+                    }px)`,
+                    width: "157px",
+                    height: "87px",
+                },
+            };
 }
 
 export default function LongTermVehicleCare() {
@@ -87,7 +221,7 @@ export default function LongTermVehicleCare() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
-    }, 10000);
+    }, 1000000000);
 
     return () => {
       clearTimeout(timer);
@@ -112,6 +246,8 @@ export default function LongTermVehicleCare() {
           zIndex: 10,
           flexDirection: "column",
           marginBottom: "12rem",
+            "@media (max-width:1150px)": { width: "100%" },
+          "@media (max-width:1258px)": { padding: "2rem", marginBottom: "0" },
         }}
       >
         <FadeIn direction="up" distance={100} duration={1}>
@@ -129,8 +265,18 @@ export default function LongTermVehicleCare() {
         </ServiceDescription>
       </HomePkgsInBox>
 
-      <Box sx={{ width: "1200px" }}>
-        <CardContainer className={styles.cardContainer}>
+      <Box sx={{ alignItems: "center", display: "flex", justifyContent: "center", width: "1200px", "@media (max-width:1258px)": { width: "100%", padding: "2rem", }, }}>
+        <CardContainer className={styles.cardContainer} sx={{
+                maxWidth: {
+                    xs: '100%',
+                    sm: '600px',
+                    md: '1000px',
+                    lg: '1200px',
+                    xl: '1200px',
+                },
+                '@media only screen and (max-width: 450px)': {
+                    padding: 0,
+                },}}>
           <Cards>
             {cardData.map((card, index) => (
               <Card
@@ -153,6 +299,7 @@ export default function LongTermVehicleCare() {
                         style={{
                           color: "#90EE90",
                           marginRight: "1rem",
+                            "@media (max-width:1258px)": { alignSelf: "flex-start", marginTop: "0.5rem" },
                         }}
                       />
                       <Typography
@@ -162,6 +309,7 @@ export default function LongTermVehicleCare() {
                           color: "#FFFFFF",
                           fontSize: "1.6rem",
                           fontWeight: "300",
+                            "@media (max-width:1258px)": { fontSize: "1.4rem" },
                         }}
                       >
                         {pkg}

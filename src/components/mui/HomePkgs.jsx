@@ -249,6 +249,7 @@ export const CardContainer = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   // boxShadow: "0 0 2px 2px #dbdbdb",
   borderRadius: "20px",
+  "@media (max-width:900px)": { maxHeight: "510px", },
 }));
 
 export const Cards = styled(Box)(({ theme }) => ({
@@ -284,6 +285,61 @@ export const Card = styled(Box)(({ theme }) => ({
     transform: "translate(0, -50%)",
     display: "none",
   },
+
+  "@media (max-width:1258px)": {
+    "& div": {
+      position: "absolute",
+      top: "38%",
+      left: "30px",
+      width: "70%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+
+  "@media (max-width:1250px)": {
+    "& div": {
+      position: "absolute",
+      top: "40%",
+      left: "70px",
+      width: "70%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+
+  "@media (max-width:900px)": {
+    "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "70px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+  "@media (max-width:600px)": {
+    "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "30px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
 }));
 
 export const CardName = styled(Typography)(({ theme }) => ({
@@ -305,6 +361,8 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   color: "#FFFFFF",
+  "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
+
 }));
 
 export const CardBtn = styled(Button)(({ theme }) => ({
