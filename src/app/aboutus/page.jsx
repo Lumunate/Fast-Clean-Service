@@ -54,7 +54,7 @@ export default function AboutUs() {
 
         <Box sx={{marginTop: { xs: "4rem", lg: "11.3rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>FAST CLEAN X TESLA</HeadingLinesAnimation>
+                <HeadingLinesAnimation>FAST CLEAN X AtTheCarWashCompany</HeadingLinesAnimation>
             </Box>
             <CollabSection />
         </Box>

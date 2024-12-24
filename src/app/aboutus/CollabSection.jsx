@@ -123,7 +123,7 @@ export default function CollabSection() {
                     },
                 }}>
                     <ResponsiveTypography>
-                        Elevating the Tesla experience through meticulous care and cutting-edge detailing
+                        Transforming the cleaning experience through eco-friendly solutions and innovative goat waste applications.
                     </ResponsiveTypography>
                 </IconContainer>
 
@@ -137,7 +137,7 @@ export default function CollabSection() {
                     <Box
                         component="img"
                         src="/cross-roads_svgrepo.com.svg"
-                        alt="Tesla Icon"
+                        alt="Eco Partnership Icon"
                         sx={{ width: { xs: "100px", sm: "150px" }, height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
@@ -150,7 +150,7 @@ export default function CollabSection() {
 
                 <IconContainer>
                     <ResponsiveSubText>
-                        The collaboration between Fast Clean Service and Tesla represents a perfect synergy of innovation and precision. Together, we&apos;re setting new standards in automotive care.
+                        The collaboration between Fast Clean Service and AtTheCarWashCompany sets new benchmarks in eco-friendly cleaning. Together, we aim to provide sustainable, goat-waste-powered cleaning innovations.
                     </ResponsiveSubText>
                 </IconContainer>
             </BlurBox>
