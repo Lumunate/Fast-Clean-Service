@@ -580,7 +580,26 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
     },
   },
   "@media (max-width: 600px)": {
-    width: "270px",
+    width: "530px",
+    height: "400px",
+  },
+  "@media (max-width: 550px)": {
+    width: "480px",
+  },
+  "@media (max-width: 500px)": {
+    width: "430px",
+  },
+  "@media (max-width: 450px)": {
+    width: "360px",
+  },
+  "@media (max-width: 400px)": {
+    width: "290px",
+  },
+  "@media (max-width: 350px)": {
+    width: "290px",
+  },
+  "@media (max-width: 300px)": {
+    width: "210px",
   },
 }));
 
@@ -615,6 +634,8 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   transition: "all 0.3s ease-in",
   "@media (max-width: 600px)": {
     backdropFilter: "none",
+    bottom: "-80%",
+    minHeight: "400px",
   },
 }));
 
@@ -638,6 +659,7 @@ export const ServiceCat = styled(Typography)(({ theme }) => ({
   fontWeight: "300",
   "@media (max-width: 600px)": {
     fontSize: "1.2rem !important",
+    marginBottom: "3rem",
   },
 }));
 

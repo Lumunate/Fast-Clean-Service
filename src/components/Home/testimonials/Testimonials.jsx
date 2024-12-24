@@ -174,9 +174,12 @@ export default function Testimonials() {
             flexDirection: "column",
             alignItems: "center",
             position: "relative",
+              "@media (max-width: 1150px)": {
+                  width: "100%",
+              },
           }}
         >
-          <Carousel sx={{ width: "90%" }}>
+          <Carousel sx={{ width: "90%", "@media (max-width: 1024px)": {width: "100%",}, }}>
             <CarouselContentContainer
               ref={sliderRef}
               sx={{

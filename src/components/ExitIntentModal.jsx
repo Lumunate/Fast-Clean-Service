@@ -21,7 +21,7 @@ const Backdrop = styled(Box)(({ theme }) => ({
 // Modal Container with conditional styling based on 'isMultiple'
 const ModalContainer = styled(Box)(({ theme, isMultiple }) => ({
     position: 'fixed',
-    top: isMultiple ? '18%' : '50%',
+    top: isMultiple ? '18%' : '30%',
     left: '50%',
     transform: isMultiple ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
     width: isMultiple ? '80%' : '90%',
