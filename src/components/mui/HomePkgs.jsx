@@ -31,6 +31,12 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   "@media (max-width: 1150px)": {
     width: "80%",
   },
+  "@media (max-width: 600px)": {
+    width: "100%",
+    padding: "2rem",
+    gap: "1rem",
+  },
+
 }));
 
 export const HomePkgBox = styled(Box)(({ theme, bg = null }) => ({
@@ -444,6 +450,10 @@ export const HomeServicesBox = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   gap: "3rem",
+  "@media (max-width: 600px)": {
+    padding: "2rem 0",
+    marginTop: "-10rem",
+  },
 }));
 
 export const SectionHeading = styled(Typography)(({ theme }) => ({

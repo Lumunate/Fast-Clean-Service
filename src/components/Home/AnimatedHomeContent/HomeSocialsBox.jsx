@@ -29,12 +29,13 @@ const HomeSocialsBox = () => {
           color: "white",
           "& svg": {
             fontSize: "3rem",
-              "@media (max-width: 600px)": {
-                  fontSize: "1.2rem",
-              },
               "@media (max-width: 1380px)": {
                   fontSize: "2rem",
               },
+              "@media (max-width: 600px)": {
+                  fontSize: "1.2rem",
+              },
+
           },
           "&:hover": {
             color: theme.palette.primary.accentDark,

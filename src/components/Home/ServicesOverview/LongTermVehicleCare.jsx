@@ -238,6 +238,10 @@ export default function LongTermVehicleCare() {
         position: "relative",
         padding: "5rem 0",
         marginBottom: "10rem",
+          "@media (max-width: 600px)": {
+              padding: "2rem 0",
+              marginBottom: "2rem",
+          },
       }}
     >
       <HomePkgsInBox

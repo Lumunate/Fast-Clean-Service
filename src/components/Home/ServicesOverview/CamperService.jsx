@@ -71,6 +71,7 @@ export default function CamperService() {
           gap: "4rem",
           flexDirection: "column",
           alignItems: "center",
+          marginBottom: "2rem",
         },
       }}
     >
