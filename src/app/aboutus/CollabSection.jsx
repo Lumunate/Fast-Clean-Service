@@ -101,7 +101,7 @@ const ResponsiveSubText = styled(Typography)(({ theme }) => ({
     color: "white",
     "@media (max-width: 900px)": {
         fontSize: "1.2rem",
-        marginTop: "0",
+        marginTop: "2rem",
     },
     "@media (max-width: 600px)": {
         display: "none"
@@ -132,7 +132,7 @@ export default function CollabSection() {
                         component="img"
                         src="/logo.png"
                         alt="Fast Clean Service"
-                        sx={{ width: "150px", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
                         component="img"
@@ -144,7 +144,7 @@ export default function CollabSection() {
                         component="img"
                         src="/logo-reason_svgrepo.com.svg"
                         alt="Cross Icon"
-                        sx={{ width: "150px", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                 </IconContainer>
 

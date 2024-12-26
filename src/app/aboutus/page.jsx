@@ -15,16 +15,16 @@ import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../component
 
 export default function AboutUs() {
   return (
-    <Box sx={{marginTop: "15rem"}}>
+    <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", }, }}>
         <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
             <HeadingLinesAnimation>ABOUT</HeadingLinesAnimation>
         </Box>
 
         <BackgroundSection />
 
-        <DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} />
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <HowItWork />
-        <DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} />
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
 
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
@@ -66,14 +66,14 @@ export default function AboutUs() {
         <MeetTeam />
       </HomeWrapper>
 
-        <DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} />
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
             </Box>
             <Reviews />
         </Box>
-        <DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} />
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
 
         <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
             <CallToActionBox hideImage={true} />

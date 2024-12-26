@@ -63,9 +63,13 @@ export default function MeetTeam() {
                         top: isDarkMode ? "62%" : "65%",
                         left: "5%",
                         transform: "translateY(-50%)",
-                        "@media (max-width: 600px)": {
+                        "@media (max-width: 900px)": {
                             width: "250px",
                             height: "200px",
+                            top: "61%",
+                            left: "5%"
+                        },
+                        "@media (max-width: 600px)": {
                             top: "39%",
                             left: "12%"
                         },
@@ -82,7 +86,7 @@ export default function MeetTeam() {
                         objectFit: "cover",
                         position: "relative",
                         zIndex: 2,
-                        "@media (max-width: 600px)": {
+                        "@media (max-width: 900px)": {
                             width: "300px",
                             height: "300px",
                         },
