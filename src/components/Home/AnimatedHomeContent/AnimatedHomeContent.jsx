@@ -81,6 +81,12 @@ const AnimatedHomeContent = () => {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
+            "@media (max-width: 1380px)": {
+                marginTop: "-5%",
+            },
+            "@media (max-width: 900px)": {
+                marginTop: "8%",
+            },
         }}
       >
         <Box

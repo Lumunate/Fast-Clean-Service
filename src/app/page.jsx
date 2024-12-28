@@ -46,13 +46,13 @@ export default function Home() {
 
           <ServicesOverview />
 
-          <DecorativeSpacer reversed />
+            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed /></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
             <Services />
           </HomePkgsInBox>
 
-          <DecorativeSpacer />
+            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer /></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
             <Box

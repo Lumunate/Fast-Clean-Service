@@ -100,6 +100,9 @@ export default function Autocare() {
                     marginBottom: "3rem",
                     width: "100%",
                     justifyContent: "space-between",
+                    "@media (max-width: 600px)": {
+                      marginBottom: "0.5rem",
+                    },
                   }}
                 >
                   <ServiceBtn1>

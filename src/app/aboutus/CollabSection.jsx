@@ -101,7 +101,7 @@ const ResponsiveSubText = styled(Typography)(({ theme }) => ({
     color: "white",
     "@media (max-width: 900px)": {
         fontSize: "1.2rem",
-        marginTop: "0",
+        marginTop: "2rem",
     },
     "@media (max-width: 600px)": {
         display: "none"
@@ -123,7 +123,7 @@ export default function CollabSection() {
                     },
                 }}>
                     <ResponsiveTypography>
-                        Elevating the Tesla experience through meticulous care and cutting-edge detailing
+                        Transforming the cleaning experience through eco-friendly solutions and innovative goat waste applications.
                     </ResponsiveTypography>
                 </IconContainer>
 
@@ -132,25 +132,25 @@ export default function CollabSection() {
                         component="img"
                         src="/logo.png"
                         alt="Fast Clean Service"
-                        sx={{ width: "150px", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
                         component="img"
                         src="/cross-roads_svgrepo.com.svg"
-                        alt="Tesla Icon"
+                        alt="Eco Partnership Icon"
                         sx={{ width: { xs: "100px", sm: "150px" }, height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
                         component="img"
                         src="/logo-reason_svgrepo.com.svg"
                         alt="Cross Icon"
-                        sx={{ width: "150px", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                 </IconContainer>
 
                 <IconContainer>
                     <ResponsiveSubText>
-                        The collaboration between Fast Clean Service and Tesla represents a perfect synergy of innovation and precision. Together, we&apos;re setting new standards in automotive care.
+                        The collaboration between Fast Clean Service and AtTheCarWashCompany sets new benchmarks in eco-friendly cleaning. Together, we aim to provide sustainable, goat-waste-powered cleaning innovations.
                     </ResponsiveSubText>
                 </IconContainer>
             </BlurBox>

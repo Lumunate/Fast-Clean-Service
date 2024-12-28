@@ -23,6 +23,7 @@ const CallToActionBox = ({ hideImage = false }) => {
                     style={{
                         transform: "scaleX(-1)",
                     }}
+                    sx={{ "@media (max-width: 700px)": { display: "none"}}}
                 />
             )}
 

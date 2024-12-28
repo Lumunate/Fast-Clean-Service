@@ -12,7 +12,8 @@ export const CTAContainer = styled(Box)(({ theme }) => ({
   padding: "0 2rem",
   marginTop: "12.6rem",
   "@media (max-width: 600px)": {
-
+    marginBottom: "4rem",
+    marginTop: "2rem",
   },
 }));
 

@@ -82,8 +82,15 @@ export default function HowItWork() {
                     width: "90%",
                     margin: "0 auto",
                     paddingLeft: "15rem",
+                    "@media (max-width: 1366px)": {
+                        paddingLeft: "0",
+                        alignItems: "center",
+                    },
                     "@media (max-width: 1200px)": {
                         padding: "2rem",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "2rem",
                     },
                     "@media (max-width: 900px)": {
                         padding: "2rem",
@@ -152,6 +159,10 @@ export default function HowItWork() {
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
                             filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                            "@media (max-width: 1380px)": {
+                                left: "calc(23% - 13px)",
+                                width: "70px",
+                            },
                         }}
                     />
                     <Box
@@ -166,6 +177,10 @@ export default function HowItWork() {
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
                             filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                            "@media (max-width: 1380px)": {
+                                left: "calc(47% - 13px)",
+                                width: "70px",
+                            },
                         }}
                     />
                     <Box
@@ -180,6 +195,10 @@ export default function HowItWork() {
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
                             filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                            "@media (max-width: 1380px)": {
+                                left: "calc(72% - 13px)",
+                                width: "70px",
+                            },
                         }}
                     />
                 </Box>
