@@ -632,7 +632,7 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   justifyContent: "space-between",
   flexBasis: "50%",
-  backgroundColor: "rgba(255, 255, 255, 0.04)",
+  backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.04)",
   border: "0.5px solid rgba(255, 255, 255, 0.11)",
   boxShadow: "0 0 6px 2px rgba(0, 0, 0, 0.1)",
   backdropFilter: "blur(14.4px)",
@@ -814,7 +814,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   height: "23rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
-  "@media (max-width: 900px)": {
+  "@media (max-width: 1200px)": {
     height: "auto",
   },
 }));
@@ -950,6 +950,7 @@ export const CarouselBtn = styled(Button)(({ theme }) => ({
     height: "100%",
     width: "100%",
   },
+  "@media (max-width: 600px)": { height: "4rem" },
 }));
 
 
