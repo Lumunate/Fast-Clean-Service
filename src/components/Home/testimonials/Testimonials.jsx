@@ -20,7 +20,6 @@ import { Box } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar } from "@fortawesome/free-solid-svg-icons";
 
-// ====== YOUR TESTIMONIALS DATA (unchanged) ======
 const testimonials = [
     {
         stars: 5,
@@ -79,14 +78,11 @@ const testimonials = [
 export default function Testimonials() {
     const sliderRef = useRef(null);
 
-    // ====== State for controlling active item, container height, & large screen ======
     const [activeStep, setActiveStep] = useState(0);
     const [activeHeight, setActiveHeight] = useState("auto");
     const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-    // ====== Detect screen size (new code’s logic) ======
     useEffect(() => {
-        // Set initial
         setIsLargeScreen(window.innerWidth > 1100);
 
         const handleResize = () => {
@@ -96,7 +92,6 @@ export default function Testimonials() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // ====== Height Calculation (from main site’s code) ======
     useLayoutEffect(() => {
         if (sliderRef.current) {
             const children = sliderRef.current.childNodes;
@@ -108,7 +103,6 @@ export default function Testimonials() {
                 let tempHeight = 0;
                 if (list.includes("active")) indexActive = index;
 
-                // If it's the current active or the immediate next, measure its total child height
                 if (list.includes("active") || index === indexActive + 1) {
                     for (let i = 0; i < el.children.length; i++) {
                         tempHeight += el.children[i].offsetHeight;
@@ -121,7 +115,6 @@ export default function Testimonials() {
         }
     }, [activeStep]);
 
-    // ====== Navigation logic (from new code) ======
     const handleNext = () => {
         setActiveStep((prev) =>
             prev === testimonials.length - 1 ? 0 : prev + 1
@@ -153,18 +146,15 @@ export default function Testimonials() {
                     },
                 }}
             >
-                {/* Carousel wrapper (same styled component from main site) */}
                 <Carousel
                     sx={{
                         width: "90%",
                         "@media (max-width: 1200px)": { width: "100%" },
                     }}
                 >
-                    {/* This is our sliding container */}
                     <CarouselContentContainer
                         ref={sliderRef}
                         sx={{
-                            // from the new code: fluid sizing, transitions, set height
                             display: "flex",
                             transition: "all 600ms ease-in-out",
                             marginBottom: "3rem",
@@ -172,7 +162,6 @@ export default function Testimonials() {
                         }}
                     >
                         {testimonials.map((testimonial, index) => {
-                            // from new code: whether this item is "active" or "the next" if large screen
                             const isActive = activeStep === index;
                             const isActiveNext =
                                 isLargeScreen &&
@@ -198,7 +187,6 @@ export default function Testimonials() {
                                         justifyContent: "stretch",
                                     }}
                                 >
-                                    {/* The content inside each testimonial item */}
                                     <CarouselItemInner
                                         sx={{
                                             padding: "2rem",
@@ -209,7 +197,6 @@ export default function Testimonials() {
                                                     : "rgba(0, 0, 0, 0.6)",
                                         }}
                                     >
-                                        {/* Star rating row */}
                                         <CarouselStarsBox
                                             sx={{
                                                 display: "flex",
@@ -233,12 +220,10 @@ export default function Testimonials() {
                                             ))}
                                         </CarouselStarsBox>
 
-                                        {/* Main testimonial text */}
                                         <CarouselDetails>
                                             <p>{testimonial.details}</p>
                                         </CarouselDetails>
 
-                                        {/* Signature area (name, date, avatar, social icons) */}
                                         <CarouselSignatures
                                             sx={{
                                                 display: "flex",
@@ -247,7 +232,6 @@ export default function Testimonials() {
                                                 marginTop: "1rem",
                                             }}
                                         >
-                                            {/* Left side: user pic + name/date */}
                                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                                 <CarouselImg
                                                     src={testimonial.image}
@@ -265,7 +249,6 @@ export default function Testimonials() {
                                                 </Box>
                                             </Box>
 
-                                            {/* Right side: social icons */}
                                             <Box sx={{ display: "flex", gap: "0.5rem" }}>
                                                 {testimonial.socialIcons?.map((iconObj, idx) => (
                                                     <Box
@@ -288,7 +271,6 @@ export default function Testimonials() {
                     </CarouselContentContainer>
                 </Carousel>
 
-                {/* Carousel Buttons (kept from main site’s styled components) */}
                 <CarouselControls>
                     <CarouselBtn onClick={handleBack} sx={{ left: "-8rem", "@media (max-width: 1700px)": { left: "0rem" }, "@media (max-width: 1200px)": { left: "-6rem" }, "@media (max-width: 600px)": { left: "-2rem" }, }}>
                         <FontAwesomeIcon icon={faChevronLeft} />

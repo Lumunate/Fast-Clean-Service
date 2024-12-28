@@ -221,7 +221,7 @@ export default function LongTermVehicleCare() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
-    }, 1000000000);
+    }, 10000);
 
     return () => {
       clearTimeout(timer);
