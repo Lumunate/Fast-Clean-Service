@@ -27,6 +27,7 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   gap: "4rem",
   position: "relative",
+  zIndex: "2",
 
   "@media (max-width: 1150px)": {
     width: "80%",
@@ -814,6 +815,9 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   height: "23rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
+  "@media (max-width: 1380px)": {
+    height: "27rem",
+  },
   "@media (max-width: 1200px)": {
     height: "auto",
   },

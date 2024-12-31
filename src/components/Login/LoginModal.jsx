@@ -93,6 +93,9 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                         boxShadow: "2px 2px 20px #00000060 !important",
                         maxWidth: "600px",
                         width: "100%",
+                        "@media (max-width: 1400px)": {
+                            margin: "2rem",
+                        },
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >
