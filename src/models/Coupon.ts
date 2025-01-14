@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose';
+import mongoose, { Schema, model, Document } from 'mongoose';
 
 export interface ICoupon extends Document {
   code: string;
@@ -51,4 +51,4 @@ const couponSchema = new Schema({
   timestamps: true
 });
 
-export const Coupon = model<ICoupon>('Coupon', couponSchema);
+export const Coupon = mongoose.models.Coupon || model<ICoupon>("Coupon", couponSchema);
