@@ -59,23 +59,21 @@ const StatsContainer = styled(Box)(({ theme }) => ({
 
   "@media (min-width: 600px) and (max-width: 1280px)": {
     flexWrap: "nowrap",
-    flexDirection: "row",
     justifyContent: "space-around",
     gap: "1rem",
   },
 }));
 
 const StatsCardDivider = styled(Box)(({ theme }) => ({
-  height: "60px",
+  height: "12rem",
   width: "1px",
   margin: "0 3rem",
   backgroundColor: "white",
 
   "@media (max-width: 600px)": {
     height: "1px",
-    width: "12rem",
-    marginTop: "1rem",
-    marginBottom: "1rem",
+    width: "70%",
+    margin: "2rem 0",
   },
 }));
 
@@ -123,10 +121,10 @@ export default function Stats() {
 
           <StatsContainer>
             {stats.map((stat, index) => (
-                <React.Fragment key={index}>
-                  <StatsCard icon={stat.icon} head={stat.head} desc={stat.desc} />
-                  {index !== stats.length - 1 && <StatsCardDivider />}
-                </React.Fragment>
+              <Box key={index}>
+                <StatsCard  icon={stat.icon} head={stat.head} desc={stat.desc} />
+                {index !== stats.length - 1 && <StatsCardDivider />}
+              </Box>
             ))}
           </StatsContainer>
         </StatsBox>

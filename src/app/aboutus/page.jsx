@@ -15,16 +15,16 @@ import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../component
 
 export default function AboutUs() {
   return (
-    <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", }, }}>
+    <Box sx={{marginTop: "15rem"}}>
         <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
             <HeadingLinesAnimation>ABOUT</HeadingLinesAnimation>
         </Box>
 
         <BackgroundSection />
 
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <DecorativeSpacer reversed />
         <HowItWork />
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <DecorativeSpacer />
 
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
@@ -45,37 +45,37 @@ export default function AboutUs() {
             <ExpandableCards />
         </Box>
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
+        <Box sx={{marginTop: "12.1rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>Our Comprehensive Services</HeadingLinesAnimation>
             </Box>
             <CompServices />
         </Box>
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "11.3rem"}}}>
+        <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>FAST CLEAN X AtTheCarWashCompany</HeadingLinesAnimation>
+                <HeadingLinesAnimation>FAST CLEAN X TESLA</HeadingLinesAnimation>
             </Box>
             <CollabSection />
         </Box>
 
-      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
+      <HomeWrapper sx={{ marginTop: "8rem" }}>
           <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-              <HeadingLinesAnimation>MEET THE FOUNDER</HeadingLinesAnimation>
+              <HeadingLinesAnimation>MEET THE TEAM</HeadingLinesAnimation>
           </Box>
         <MeetTeam />
       </HomeWrapper>
 
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <DecorativeSpacer reversed />
+        <Box sx={{marginTop: "8rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
             </Box>
             <Reviews />
         </Box>
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <DecorativeSpacer />
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <Box sx={{marginTop: "8rem"}}>
             <CallToActionBox hideImage={true} />
         </Box>
         <DecorativeBackgroundImage top="50rem" right="0" width="92rem" height="68.2rem" />

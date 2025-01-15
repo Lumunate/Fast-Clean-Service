@@ -6,13 +6,6 @@ const Container = styled(Box)(({ theme }) => ({
     maxWidth: "101rem",
     margin: "7.8rem auto 0",
     padding: "0 4rem",
-    "@media (max-width: 1050px)": {
-        maxWidth: "auto",
-        margin: "auto",
-        padding: "2rem",
-        display: "flex",
-        alignItems: "center",
-    },
 }));
 
 const ServiceCard = styled(Box)(({ theme }) => ({
@@ -33,9 +26,8 @@ const ServiceCard = styled(Box)(({ theme }) => ({
     "&:hover": {
         boxShadow: "0 6px 15px rgba(0, 0, 0, 0.15)",
     },
-    "@media (max-width: 1050px)": {
+    "@media (max-width: 900px)": {
         minWidth: 0,
-        padding: "2rem",
     },
 }));
 

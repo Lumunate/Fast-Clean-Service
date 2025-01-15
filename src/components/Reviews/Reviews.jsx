@@ -206,7 +206,7 @@ export default function Reviews() {
                 ))}
             </Swiper>
 
-            <Box sx={{ height: { xs: "1rem", sm: "2rem"} }} />
+            <Box sx={{ height: "2rem" }} />
 
             <Swiper
                 modules={[Autoplay]}

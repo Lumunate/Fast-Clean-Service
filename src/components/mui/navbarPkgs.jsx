@@ -49,7 +49,7 @@ export const NavBarLinksContainer = styled(NavLinksContainer)(({ theme }) => ({
   width: "100%",
   zIndex: 10,
 
-  "@media (max-width: 1380px)": {
+  "@media (max-width: 1200px)": {
     maxWidth: "400px",
   },
 

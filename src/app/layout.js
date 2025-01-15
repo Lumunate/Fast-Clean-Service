@@ -5,7 +5,6 @@ import {ThemeProvider} from "../contexts/themeContext";
 import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "../contexts/SnackBarContext";
 import {ValidationProvider} from "../contexts/ValidationContext";
-import { ExitIntentProvider } from "../contexts/ExitIntentContext";
 
 export const metadata = {
   title: "Fast Clean Service",
@@ -79,10 +78,8 @@ export default async function RootLayout({ children }) {
           <ThemeProvider>
             <SnackbarProvider>
               <ValidationProvider>
-                <ExitIntentProvider>
                 <CssBaseline />
                 {children}
-                </ExitIntentProvider>
               </ValidationProvider>
             </SnackbarProvider>
           </ThemeProvider>

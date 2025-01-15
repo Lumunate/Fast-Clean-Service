@@ -74,9 +74,6 @@ export default function Services() {
                 margin: "5rem auto 16.8rem",
                 paddingBottom: "7.5rem",
                 width: "100%",
-                "@media (max-width: 600px)": {
-                    margin: "2rem auto 2rem",
-                },
             }}
         >
             <Box

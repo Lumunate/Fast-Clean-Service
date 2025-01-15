@@ -11,7 +11,6 @@ import { useTheme } from "../../contexts/themeContext";
 
 const Index = () => {
     const { theme } = useTheme();
-
   return (
     <ValidationProvider>
       <FormProvider>
