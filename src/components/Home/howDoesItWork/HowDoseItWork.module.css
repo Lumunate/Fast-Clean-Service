@@ -1,0 +1,35 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+  }
+  
+  .card {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(20px);
+    background: none;
+    border: none;
+  }
+  
+  .card.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr; /* Stack items in a single column on smaller screens */
+    }
+  }
+  

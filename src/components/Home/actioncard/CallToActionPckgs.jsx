@@ -57,7 +57,7 @@ export const CTAHeading = styled(Typography)(({ theme }) => ({
 }));
 
 export const CTADescription = styled(Typography)(({ theme }) => ({
-  fontSize: "1.6rem",
+  fontSize: "16px",
   fontWeight: 400,
   color: "#FFFFFF",
   "@media (max-width: 600px)": {
