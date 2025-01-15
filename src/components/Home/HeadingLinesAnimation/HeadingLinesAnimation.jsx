@@ -8,36 +8,36 @@ import styles from "./HeadingLinesAnimation.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// const Line = styled("div")(({ theme }) => ({
-//     position: "absolute",
-//     width: "80%",
-//     height: "3px",
-//     transition: "all 0.3s ease",
-//     background: `linear-gradient(to right, rgba(207, 207, 207, 0.05), ${theme.palette.primary.accent})`,
+const Line = styled("div")(({ theme }) => ({
+    position: "absolute",
+    width: "80%",
+    height: "3px",
+    transition: "all 0.3s ease",
+    background: `linear-gradient(to right, rgba(207, 207, 207, 0.05), ${theme.palette.primary.accent})`,
 
-//     [theme.breakpoints.down("sm")]: {
-//         width: "50%",
-//     },
-// }));
+    [theme.breakpoints.down("sm")]: {
+        width: "50%",
+    },
+}));
 
-// const AboveLine = styled(Line)(({ theme }) => ({
-//     left: "-50%",
-//     top: "0",
+const AboveLine = styled(Line)(({ theme }) => ({
+    left: "-50%",
+    top: "0",
 
-//     [theme.breakpoints.down("sm")]: {
-//         left: "-25%",
-//     },
-// }));
+    [theme.breakpoints.down("sm")]: {
+        left: "-25%",
+    },
+}));
 
-// const BelowLine = styled(Line)(({ theme }) => ({
-//     right: "-50%",
-//     bottom: "1px",
-//     background: `linear-gradient(to left, rgba(207, 207, 207, 0.3), ${theme.palette.primary.accent})`,
+const BelowLine = styled(Line)(({ theme }) => ({
+    right: "-50%",
+    bottom: "1px",
+    background: `linear-gradient(to left, rgba(207, 207, 207, 0.3), ${theme.palette.primary.accent})`,
 
-//     [theme.breakpoints.down("sm")]: {
-//         right: "-25%",
-//     },
-// }));
+    [theme.breakpoints.down("sm")]: {
+        right: "-25%",
+    },
+}));
 
 export default function HeadingLinesAnimation({ text, children }) {
   const scrollRef = useRef();
@@ -67,41 +67,41 @@ export default function HeadingLinesAnimation({ text, children }) {
       }
     );
 
-    // gsap.fromTo(
-    //     element.querySelector(".above-line"),
-    //     {
-    //         x: "-200%",
-    //     },
-    //     {
-    //         x: "0%",
-    //         duration: 1,
-    //         delay: 1.5, // 1.5-second delay
-    //         ease: "power3.out",
-    //         scrollTrigger: {
-    //             trigger: element,
-    //             start: "bottom bottom",
-    //             once: true,
-    //         },
-    //     }
-    // );
+    gsap.fromTo(
+        element.querySelector(".above-line"),
+        {
+            x: "-200%",
+        },
+        {
+            x: "0%",
+            duration: 1,
+            delay: 1.5, // 1.5-second delay
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: element,
+                start: "bottom bottom",
+                once: true,
+            },
+        }
+    );
 
-    // gsap.fromTo(
-    //     element.querySelector(".below-line"),
-    //     {
-    //         x: "200%",
-    //     },
-    //     {
-    //         x: "0%",
-    //         duration: 1,
-    //         delay: 1.5, // 1.5-second delay
-    //         ease: "power3.out",
-    //         scrollTrigger: {
-    //             trigger: element,
-    //             start: "bottom bottom",
-    //             once: true,
-    //         },
-    //     }
-    // );
+    gsap.fromTo(
+        element.querySelector(".below-line"),
+        {
+            x: "200%",
+        },
+        {
+            x: "0%",
+            duration: 1,
+            delay: 1.5, // 1.5-second delay
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: element,
+                start: "bottom bottom",
+                once: true,
+            },
+        }
+    );
   }, []);
 
   return (
@@ -114,11 +114,11 @@ export default function HeadingLinesAnimation({ text, children }) {
         margin: "10px 0",
       }}
     >
-      {/* <AboveLine className="above-line" /> */}
+      <AboveLine className="above-line" />
       <Typography
         className="heading"
         sx={{
-          fontSize: { md: "32px", sm: "20px", xs: "18px" },
+          fontSize: { md: "4.8rem", sm: "2.8rem", xs: '2.4rem'},
           fontWeight: "400",
           fontFamily: "Unbounded !important",
           display: "inline-block",
@@ -131,14 +131,9 @@ export default function HeadingLinesAnimation({ text, children }) {
             display: { lg: "inline", md: "none" },
           },
         }}
-      >
-        The Best Care for Your Car{" "}
-        <span className="line-break">
-          <br />
-        </span>
-        Wherever You Want!
+      >{text || children}
       </Typography>
-      {/* <BelowLine className="below-line" /> */}
+      <BelowLine className="below-line" />
     </div>
   );
 }

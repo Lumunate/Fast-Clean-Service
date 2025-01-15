@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Box, Button, Link, List, ListItem, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTheme } from "../../../contexts/themeContext";
-import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
+import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
 
@@ -118,7 +118,11 @@ export default function About() {
                   },
                 }}
               >
-                <HeadingLinesAnimation />
+                <BestCareHeading> The Best Care for Your Car{" "}
+        <span className="line-break">
+          <br />
+        </span>
+        Wherever You Want! </BestCareHeading>
               </Box>
 
               <Typography
