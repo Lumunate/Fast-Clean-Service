@@ -8,6 +8,7 @@ import Testimonials from "../components/Home/testimonials/Testimonials";
 import ServicesOverview from "../components/Home/ServicesOverview/ServicesOverview";
 import About from "../components/Home/about/About";
 import Services from "../components/Home/services/Services";
+import HowDoesItWork from "../components/Home/howDoesItWork/HowDoesItWork";
 import { Box } from "@mui/material";
 import HeadingLinesAnimation from "../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import CallToActionBox from "../components/Home/actioncard/CallToActionBox";
@@ -43,6 +44,8 @@ export default function Home() {
           <Stats />
 
           <DecorativeSpacer />
+
+          <HowDoesItWork/>
 
           <ServicesOverview />
 
