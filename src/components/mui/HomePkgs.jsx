@@ -31,6 +31,12 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   "@media (max-width: 1150px)": {
     width: "80%",
   },
+  "@media (max-width: 600px)": {
+    width: "100%",
+    padding: "2rem",
+    gap: "1rem",
+  },
+
 }));
 
 export const HomePkgBox = styled(Box)(({ theme, bg = null }) => ({
@@ -249,6 +255,7 @@ export const CardContainer = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   // boxShadow: "0 0 2px 2px #dbdbdb",
   borderRadius: "20px",
+  "@media (max-width:900px)": { maxHeight: "510px", },
 }));
 
 export const Cards = styled(Box)(({ theme }) => ({
@@ -284,6 +291,61 @@ export const Card = styled(Box)(({ theme }) => ({
     transform: "translate(0, -50%)",
     display: "none",
   },
+
+  "@media (max-width:1258px)": {
+    "& div": {
+      position: "absolute",
+      top: "38%",
+      left: "30px",
+      width: "70%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+
+  "@media (max-width:1250px)": {
+    "& div": {
+      position: "absolute",
+      top: "40%",
+      left: "70px",
+      width: "70%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+
+  "@media (max-width:900px)": {
+    "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "70px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
+  "@media (max-width:600px)": {
+    "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "30px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  },
 }));
 
 export const CardName = styled(Typography)(({ theme }) => ({
@@ -305,6 +367,8 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   color: "#FFFFFF",
+  "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
+
 }));
 
 export const CardBtn = styled(Button)(({ theme }) => ({
@@ -386,6 +450,10 @@ export const HomeServicesBox = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   gap: "3rem",
+  "@media (max-width: 600px)": {
+    padding: "2rem 0",
+    marginTop: "-10rem",
+  },
 }));
 
 export const SectionHeading = styled(Typography)(({ theme }) => ({
@@ -522,7 +590,26 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
     },
   },
   "@media (max-width: 600px)": {
-    width: "270px",
+    width: "530px",
+    height: "400px",
+  },
+  "@media (max-width: 550px)": {
+    width: "480px",
+  },
+  "@media (max-width: 500px)": {
+    width: "430px",
+  },
+  "@media (max-width: 450px)": {
+    width: "360px",
+  },
+  "@media (max-width: 400px)": {
+    width: "290px",
+  },
+  "@media (max-width: 350px)": {
+    width: "290px",
+  },
+  "@media (max-width: 300px)": {
+    width: "210px",
   },
 }));
 
@@ -545,7 +632,7 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   justifyContent: "space-between",
   flexBasis: "50%",
-  backgroundColor: "rgba(255, 255, 255, 0.04)",
+  backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.04)",
   border: "0.5px solid rgba(255, 255, 255, 0.11)",
   boxShadow: "0 0 6px 2px rgba(0, 0, 0, 0.1)",
   backdropFilter: "blur(14.4px)",
@@ -557,6 +644,8 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   transition: "all 0.3s ease-in",
   "@media (max-width: 600px)": {
     backdropFilter: "none",
+    bottom: "-80%",
+    minHeight: "400px",
   },
 }));
 
@@ -580,6 +669,7 @@ export const ServiceCat = styled(Typography)(({ theme }) => ({
   fontWeight: "300",
   "@media (max-width: 600px)": {
     fontSize: "1.2rem !important",
+    marginBottom: "3rem",
   },
 }));
 
@@ -724,7 +814,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   height: "23rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
-  "@media (max-width: 900px)": {
+  "@media (max-width: 1200px)": {
     height: "auto",
   },
 }));
@@ -860,6 +950,7 @@ export const CarouselBtn = styled(Button)(({ theme }) => ({
     height: "100%",
     width: "100%",
   },
+  "@media (max-width: 600px)": { height: "4rem" },
 }));
 
 

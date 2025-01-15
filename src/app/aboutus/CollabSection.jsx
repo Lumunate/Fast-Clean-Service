@@ -2,6 +2,8 @@
 import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 
+// Styled Components
+
 const Background = styled(Box)(({ theme }) => ({
     width: "100vw",
     height: "750px",
@@ -14,7 +16,9 @@ const Background = styled(Box)(({ theme }) => ({
     backgroundPosition: "center",
     overflow: "hidden",
     marginTop: "7.8rem",
-    "@media (max-width: 900px)": { height: "auto" },
+    "@media (max-width: 900px)": {
+        height: "auto"
+    },
 }));
 
 const Overlay = styled(Box)(({ theme }) => ({
@@ -28,7 +32,7 @@ const Overlay = styled(Box)(({ theme }) => ({
 }));
 
 const BlurBox = styled(Box)(({ theme }) => ({
-    zIndex: "3",
+    zIndex: 3,
     minWidth: "179rem",
     maxHeight: "59.1rem",
     padding: "8rem",
@@ -39,7 +43,13 @@ const BlurBox = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    "@media (max-width: 900px)": { maxHeight: 0, minWidth: "100%", minHeight: "100vh", padding: "5rem 2rem", justifyContent: "center", },
+    "@media (max-width: 900px)": {
+        maxHeight: "none",
+        minWidth: "calc(100% - 1.8rem)",
+        margin: "2.1rem 0.9rem",
+        padding: "6rem",
+        justifyContent: "center",
+    },
 }));
 
 const IconContainer = styled(Box)(({ theme }) => ({
@@ -47,7 +57,55 @@ const IconContainer = styled(Box)(({ theme }) => ({
     justifyContent: "space-between",
     width: "78rem",
     height: "16.6rem",
-    "@media (max-width: 900px)": { width: "100%", height: "auto", flexDirection: "column", alignItems: "center" },
+    "@media (max-width: 900px)": {
+        width: "100%",
+        height: "auto",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+}));
+
+const ResponsiveTypography = styled(Typography)(({ theme }) => ({
+    fontSize: "1.8rem",
+    fontWeight: 400,
+    textAlign: "center",
+    marginBottom: "6.8rem",
+    color: "white",
+    "@media (max-width: 600px)": {
+        fontSize: "1.2rem",
+        marginBottom: "2rem",
+        marginTop: "-1rem",
+    },
+}));
+
+const ResponsiveHeading = styled(Typography)(({ theme }) => ({
+    fontSize: "4rem",
+    fontWeight: 600,
+    textAlign: "center",
+    marginBottom: "1rem",
+    color: "white",
+    "@media (max-width: 900px)": {
+        fontSize: "2.8rem"
+    },
+    "@media (max-width: 600px)": {
+        fontSize: "2.4rem",
+        marginBottom: "0.6rem",
+    },
+}));
+
+const ResponsiveSubText = styled(Typography)(({ theme }) => ({
+    fontSize: "1.8rem",
+    fontWeight: 400,
+    textAlign: "center",
+    marginTop: "5.3rem",
+    color: "white",
+    "@media (max-width: 900px)": {
+        fontSize: "1.2rem",
+        marginTop: "2rem",
+    },
+    "@media (max-width: 600px)": {
+        display: "none"
+    },
 }));
 
 export default function CollabSection() {
@@ -55,31 +113,18 @@ export default function CollabSection() {
         <Background>
             <Overlay />
             <BlurBox>
-                <Typography
-                    variant="h1"
-                    sx={{
-                        fontSize: "4rem",
-                        fontWeight: 600,
-                        textAlign: "center",
-                        marginBottom: "1rem",
-                        color: "white",
-                    }}
-                >
+                <ResponsiveHeading variant="h1">
                     Exclusive Partnership
-                </Typography>
+                </ResponsiveHeading>
 
-                <IconContainer sx={{"@media (max-width: 900px)": { marginTop: "2rem" },}}>
-                    <Typography
-                        sx={{
-                            fontSize: "1.8rem",
-                            fontWeight: 400,
-                            textAlign: "center",
-                            marginBottom: "6.8rem",
-                            color: "white",
-                        }}
-                    >
-                        Elevating the Tesla experience through meticulous care and cutting-edge detailing
-                    </Typography>
+                <IconContainer sx={{
+                    "@media (max-width: 900px)": {
+                        marginTop: "2rem"
+                    },
+                }}>
+                    <ResponsiveTypography>
+                        Transforming the cleaning experience through eco-friendly solutions and innovative goat waste applications.
+                    </ResponsiveTypography>
                 </IconContainer>
 
                 <IconContainer>
@@ -87,34 +132,26 @@ export default function CollabSection() {
                         component="img"
                         src="/logo.png"
                         alt="Fast Clean Service"
-                        sx={{ width: "150px", height: "auto" }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
                         component="img"
                         src="/cross-roads_svgrepo.com.svg"
-                        alt="Tesla Icon"
-                        sx={{ width: "150px", height: "auto" }}
+                        alt="Eco Partnership Icon"
+                        sx={{ width: { xs: "100px", sm: "150px" }, height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                     <Box
                         component="img"
                         src="/logo-reason_svgrepo.com.svg"
                         alt="Cross Icon"
-                        sx={{ width: "150px", height: "auto" }}
+                        sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />
                 </IconContainer>
 
                 <IconContainer>
-                    <Typography
-                        sx={{
-                            fontSize: "1.8rem",
-                            fontWeight: 400,
-                            textAlign: "center",
-                            marginTop: "5.3rem",
-                            color: "white",
-                        }}
-                    >
-                        The collaboration between Fast Clean Service and Tesla represents a perfect synergy of innovation and precision. Together, we&apos;re setting new standards in automotive care.
-                    </Typography>
+                    <ResponsiveSubText>
+                        The collaboration between Fast Clean Service and AtTheCarWashCompany sets new benchmarks in eco-friendly cleaning. Together, we aim to provide sustainable, goat-waste-powered cleaning innovations.
+                    </ResponsiveSubText>
                 </IconContainer>
             </BlurBox>
         </Background>

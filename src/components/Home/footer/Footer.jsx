@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, IconButton, Typography, Link as MuiLink } from "@mui/material";
+import { Box, IconButton, Divider, Typography, Link as MuiLink } from "@mui/material";
 import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-material";
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
@@ -13,7 +13,7 @@ export default function Footer() {
         <footer
             style={{
                 backgroundColor: "#000000",
-                color: theme.palette.mode === "light" ? `#212121` : "#fff",
+                color: theme.palette.mode === "light" ? "#212121" : "#fff",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -31,9 +31,8 @@ export default function Footer() {
                     '@media (max-width: 1368px)': {
                         padding: "0 6rem",
                     },
-                    '@media (max-width: 768px)': {
-                        flexDirection: 'column',
-                        alignItems: 'center',
+                    '@media (max-width: 900px)': {
+                        display: "none",
                     },
                 }}
             >
@@ -45,16 +44,16 @@ export default function Footer() {
                     sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: 'center', // Center horizontally
+                        justifyContent: 'center',
                         position: 'absolute',
                         top: '30%',
                         left: '50%',
-                        transform: 'translate(-50%, -50%)', // Move to exact center
+                        transform: 'translate(-50%, -50%)',
                         gap: "9.3rem",
                         '@media (max-width: 1368px)': {
-                            gap: '6rem',
+                            gap: '4rem',
                         },
-                        '@media (max-width: 768px)': {
+                        '@media (max-width: 900px)': {
                             flexDirection: 'column',
                             gap: '2rem',
                         },
@@ -74,7 +73,7 @@ export default function Footer() {
                     </MuiLink>
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "3rem", '@media (max-width: 768px)': { gap: "2rem" } }}>
+                <Box sx={{ display: "flex", gap: "3rem", '@media (max-width: 768px)': { gap: "2rem" }, '@media (max-width: 1366px)': { gap: "1rem" } }}>
                     <IconButton href="https://facebook.com" sx={{ color: "#FFF" }}>
                         <Facebook sx={{ fontSize: "1.8rem" }} />
                     </IconButton>
@@ -98,12 +97,81 @@ export default function Footer() {
                     textAlign: "center",
                     paddingTop: "1rem",
                     paddingBottom: "2rem",
-                    '@media (max-width: 768px)': {
-                        paddingBottom: "1rem",
+                    '@media (max-width: 900px)': {
+                        display: "none",
                     },
                 }}
             >
                 <Typography variant="body2" sx={{ color: theme.palette.mode === "light" ? "#fff" : "#fff", fontSize: "1.5rem", fontWeight: "500", fontFamily: "DMSans" }}>
+                    © 2024 Fast Clean Service. All rights reserved.
+                </Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    display: 'none',
+                    '@media (max-width: 900px)': {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        padding: '1rem',
+                    },
+                }}
+            >
+                <Box>
+                    <Image src={Logo} alt="logo" width={70} height={45} style={{ objectFit: "contain" }} />
+                </Box>
+
+                <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
+                    <IconButton href="https://facebook.com" sx={{ color: "#FFF" }}>
+                        <Facebook sx={{ fontSize: "1.5rem" }} />
+                    </IconButton>
+                    <IconButton href="https://instagram.com" sx={{ color: "#FFF" }}>
+                        <Instagram sx={{ fontSize: "1.5rem" }} />
+                    </IconButton>
+                    <IconButton href="https://twitter.com" sx={{ color: "#FFF" }}>
+                        <Twitter sx={{ fontSize: "1.5rem" }} />
+                    </IconButton>
+                    <IconButton href="https://youtube.com" sx={{ color: "#FFF" }}>
+                        <YouTube sx={{ fontSize: "1.5rem" }} />
+                    </IconButton>
+                    <IconButton href="mailto:support@fastclean.com" sx={{ color: "#FFF" }}>
+                        <Email sx={{ fontSize: "1.5rem" }} />
+                    </IconButton>
+                </Box>
+
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: "1rem",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "1.2rem",
+                        fontFamily: "DMSans",
+                        color: "#D2D2D2",
+                        textDecoration: "none",
+                    }}
+                >
+                    <MuiLink href="/" sx={{ color: "#D2D2D2" }}>Home</MuiLink>
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
+                    <MuiLink href="/aboutus" sx={{ color: "#D2D2D2" }}>About</MuiLink>
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
+                    <MuiLink href="/contact" sx={{ color: "#D2D2D2" }}>Contact Us</MuiLink>
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
+                    <MuiLink href="/" sx={{ color: "#D2D2D2" }}>Services</MuiLink>
+                </Box>
+
+                <Typography
+                    variant="body2"
+                    sx={{
+                        color: theme.palette.mode === "light" ? "#D2D2D2" : "#D2D2D2",
+                        fontSize: "1.2rem",
+                        fontWeight: "400",
+                        fontFamily: "DMSans",
+                        textAlign: "center",
+                        marginTop: "1rem",
+                    }}
+                >
                     © 2024 Fast Clean Service. All rights reserved.
                 </Typography>
             </Box>

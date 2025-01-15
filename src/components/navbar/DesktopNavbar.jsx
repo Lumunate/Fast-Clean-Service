@@ -1,18 +1,26 @@
-import {signOut, useSession} from "next-auth/react";
-import React, {useEffect, useRef, useState} from "react";
-import {Loader} from "../..//components/mui/Loader";
+// components/navbar/DesktopNavbar.js
+'use client';
+
+import { signOut, useSession } from "next-auth/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Loader } from "../../components/mui/Loader";
 import {
     DropDownLink,
     LogoContainer,
     LogoImage,
-    NavbarContainer, NavbarCTA,
+    NavbarContainer,
+    NavbarCTA,
     NavbarInnerContainer,
-    NavBarLinksContainer, NavbarRightContainer, NavLinkButton, NavLinkDropDownContainer, NavLinksContainer
-} from "../..//components/mui/navbarPkgs";
+    NavBarLinksContainer,
+    NavbarRightContainer,
+    NavLinkButton,
+    NavLinkDropDownContainer,
+    NavLinksContainer
+} from "../../components/mui/navbarPkgs";
 import Logo from "../../../public/logo.png";
-import Link from "next/link";
+import CustomLink from "../CustomLink"; // Import CustomLink instead of next/link
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import {Box, Button, IconButton} from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { useTheme } from "../../contexts/themeContext";
 import Badge from "@mui/material/Badge";
 import UserIcon from "../../../public/navbar/User.svg";
@@ -85,17 +93,19 @@ const DesktopNavbar = () => {
         <NavbarContainer>
             <NavbarInnerContainer>
                 <LogoContainer>
-                    <LogoImage src={Logo} alt="logo" width={99} height={61} />
+                    <CustomLink href="/">
+                        <LogoImage src={Logo} alt="logo" width={99} height={61} />
+                    </CustomLink>
                 </LogoContainer>
 
                 <NavBarLinksContainer>
-                    <Link href="/" passHref>
+                    <CustomLink href="/">
                         <NavLinkButton>Home</NavLinkButton>
-                    </Link>
+                    </CustomLink>
 
-                    <Link href="/aboutus" passHref>
+                    <CustomLink href="/aboutus">
                         <NavLinkButton>About</NavLinkButton>
-                    </Link>
+                    </CustomLink>
 
                     <NavLinkDropDownContainer>
                         <NavLinkButton
@@ -130,38 +140,26 @@ const DesktopNavbar = () => {
                                     paddingTop: "8rem !important",
                                 }}
                             >
-                                <DropDownLink
-                                    onClick={() => {
-                                        window.location.href = "/fleet";
-                                        setIsServicesOpen(false);
-                                    }}
-                                >
-                                    FleetCare Pro
-                                </DropDownLink>
-                                <DropDownLink
-                                    onClick={() => {
-                                        window.location.href = "/autocare";
-                                        setIsServicesOpen(false);
-                                    }}
-                                >
-                                    Anywhere AutoCare
-                                </DropDownLink>
-                                <DropDownLink
-                                    onClick={() => {
-                                        window.location.href = "/subscribe";
-                                        setIsServicesOpen(false);
-                                    }}
-                                >
-                                    Subscription Plans
-                                </DropDownLink>
-                                <DropDownLink
-                                    onClick={() => {
-                                        window.location.href = "/other-vehicles";
-                                        setIsServicesOpen(false);
-                                    }}
-                                >
-                                    Diverse Vehicles
-                                </DropDownLink>
+                                <CustomLink href="/fleet">
+                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                        FleetCare Pro
+                                    </DropDownLink>
+                                </CustomLink>
+                                <CustomLink href="/autocare">
+                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                        Anywhere AutoCare
+                                    </DropDownLink>
+                                </CustomLink>
+                                <CustomLink href="/subscribe">
+                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                        Subscription Plans
+                                    </DropDownLink>
+                                </CustomLink>
+                                <CustomLink href="/other-vehicles">
+                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                        Diverse Vehicles
+                                    </DropDownLink>
+                                </CustomLink>
                                 <DropDownLink
                                     sx={{
                                         display: "flex",
@@ -175,19 +173,20 @@ const DesktopNavbar = () => {
                         )}
                     </NavLinkDropDownContainer>
 
-                    <Link href="/contact" passHref>
+                    <CustomLink href="/contact">
                         <NavLinkButton>Contact</NavLinkButton>
-                    </Link>
+                    </CustomLink>
                 </NavBarLinksContainer>
 
                 <NavLinksContainer>
-                    {sessionStatus === "authenticated" &&
-                        <Link href="/booking" passHref>
+                    {sessionStatus === "authenticated" && (
+                        <CustomLink href="/booking">
                             <NavbarCTA>Book Now</NavbarCTA>
-                        </Link>}
+                        </CustomLink>
+                    )}
 
-                    {sessionStatus === "authenticated" ?
-                        (<NavbarRightContainer>
+                    {sessionStatus === "authenticated" ? (
+                        <NavbarRightContainer>
                             <NavLinkDropDownContainer>
                                 <IconButton
                                     onClick={handleUserMenuToggle}
@@ -225,30 +224,24 @@ const DesktopNavbar = () => {
                                             paddingTop: "8rem !important",
                                         }}
                                     >
-                                        <DropDownLink
-                                            onClick={() => {
-                                                window.location.href = "/admin";
-                                                setIsServicesOpen(false);
-                                            }}
-                                        >
-                                            <Image style={{ marginRight: "1rem" }} src={Users_Plus} alt="User Icon" width={20} height={20} />
-                                            Admin
-                                        </DropDownLink>
-                                        <DropDownLink
-                                            onClick={() => {
-                                                window.location.href = "/customer-portal";
-                                                setIsServicesOpen(false);
-                                            }}
-                                        >
-                                            <Badge
-                                                badgeContent={unreadCount}
-                                                color="error"
-                                                sx={{ marginRight: "1rem" }}
-                                            >
-                                                <MailIcon color="primary" />
-                                            </Badge>
-                                            Customer
-                                        </DropDownLink>
+                                        <CustomLink href="/admin">
+                                            <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                                <Image style={{ marginRight: "1rem" }} src={Users_Plus} alt="User Icon" width={20} height={20} />
+                                                Admin
+                                            </DropDownLink>
+                                        </CustomLink>
+                                        <CustomLink href="/customer-portal">
+                                            <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                                                <Badge
+                                                    badgeContent={unreadCount}
+                                                    color="error"
+                                                    sx={{ marginRight: "1rem" }}
+                                                >
+                                                    <MailIcon color="primary" />
+                                                </Badge>
+                                                Customer
+                                            </DropDownLink>
+                                        </CustomLink>
                                         <DropDownLink onClick={handleLogout}>
                                             <LogoutIcon style={{ marginRight: "1rem", fontSize: 20 }} />
                                             Logout
@@ -256,53 +249,52 @@ const DesktopNavbar = () => {
                                     </Box>
                                 )}
                             </NavLinkDropDownContainer>
-
-                        </NavbarRightContainer>)
-                        : (
-                            <Box
+                        </NavbarRightContainer>
+                    ) : (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                gap: '1rem',
+                                width: '200px',
+                            }}>
+                            <Button
+                                variant="outlined"
                                 sx={{
-                                    display: 'flex',
-                                    gap: '1rem',
-                                    width: '200px',
-                                }}>
-                                <Button
-                                    variant="outlined"
-                                    sx={{
-                                        color: 'white',
-                                        borderColor: 'white',
-                                        textTransform: 'none',
-                                        borderRadius: '20px',
-                                        padding: '0.5rem 1.5rem',
-                                        transition: 'background-color 0.3s, color 0.3s',
-                                        '&:hover': {
-                                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                            borderColor: 'rgba(255, 255, 255, 0.7)'
-                                        },
-                                    }}
-                                    onClick={() => handleOpenModal('login')}
-                                >
-                                    Log In
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    sx={{
-                                        backgroundColor: '#1976d2',
-                                        color: 'white',
-                                        borderRadius: '20px',
-                                        padding: '0.5rem 1.5rem',
-                                        textTransform: 'none',
-                                        transition: 'background-color 0.3s, transform 0.3s',
-                                        '&:hover': {
-                                            backgroundColor: '#125a9a',
-                                            transform: 'scale(1.05)',
-                                        },
-                                    }}
-                                    onClick={() => handleOpenModal('signup')}
-                                >
-                                    Sign Up
-                                </Button>
-                            </Box>
-                        )}
+                                    color: 'white',
+                                    borderColor: 'white',
+                                    textTransform: 'none',
+                                    borderRadius: '20px',
+                                    padding: '0.5rem 1.5rem',
+                                    transition: 'background-color 0.3s, color 0.3s',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                        borderColor: 'rgba(255, 255, 255, 0.7)'
+                                    },
+                                }}
+                                onClick={() => handleOpenModal('login')}
+                            >
+                                Log In
+                            </Button>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: '#1976d2',
+                                    color: 'white',
+                                    borderRadius: '20px',
+                                    padding: '0.5rem 1.5rem',
+                                    textTransform: 'none',
+                                    transition: 'background-color 0.3s, transform 0.3s',
+                                    '&:hover': {
+                                        backgroundColor: '#125a9a',
+                                        transform: 'scale(1.05)',
+                                    },
+                                }}
+                                onClick={() => handleOpenModal('signup')}
+                            >
+                                Sign Up
+                            </Button>
+                        </Box>
+                    )}
                     <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
                         {theme.palette.mode === "dark" ? (
                             <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />

@@ -12,6 +12,8 @@ export const CTAContainer = styled(Box)(({ theme }) => ({
   padding: "0 2rem",
   marginTop: "12.6rem",
   "@media (max-width: 600px)": {
+    marginBottom: "4rem",
+    marginTop: "2rem",
   },
 }));
 
@@ -36,7 +38,9 @@ export const CTAContentBox = styled(Paper)(({ theme }) => ({
   position: "relative",
   zIndex: 2,
   "@media (max-width: 600px)": {
-    padding: "2rem",
+    padding: "5rem 1.3rem",
+    borderRadius: "1.5rem",
+    backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.001)" : "rgba(0,0,0,0.9)",
 
   },
 }));
@@ -47,17 +51,17 @@ export const CTAHeading = styled(Typography)(({ theme }) => ({
   marginBottom: "3rem",
   color: "white",
   "@media (max-width: 600px)": {
-    fontSize: "2.8rem",
-    marginBottom: "1.5rem",
+    fontSize: "2.4rem",
+    marginBottom: "1rem",
   },
 }));
 
 export const CTADescription = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
-  fontWeight: 500,
+  fontWeight: 400,
   color: "#FFFFFF",
   "@media (max-width: 600px)": {
-    fontSize: "1.6rem",
+    fontSize: "1.4rem",
   },
 }));
 
