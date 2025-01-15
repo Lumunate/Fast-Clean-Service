@@ -48,6 +48,7 @@ export default function Home() {
 
           <HowDoesItWork/>
           <OverServiceOverview/>
+          <Testimonials />
 
           <ServicesOverview />
 
@@ -60,7 +61,7 @@ export default function Home() {
             <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer /></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
-            <Box
+            {/* <Box
               sx={{
                 margin: "0 auto",
               }}
@@ -75,7 +76,7 @@ export default function Home() {
               </HeadingLinesAnimation>
             </Box>
 
-            <Testimonials />
+            <Testimonials /> */}
             <DecorativeBackgroundImage top="-50rem" right="-40rem" width="92rem" height="68.2rem" />
             <DecorativeBackgroundImage top="80rem" left="-40rem" width="54rem" height="68rem" flip={true} />
           </HomePkgsInBox>
