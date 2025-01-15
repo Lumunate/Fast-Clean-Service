@@ -79,13 +79,13 @@ export default function CamperService() {
       <CamperServiceBox>
         <FadeIn direction="left" distance={100} duration={1}>
           <Box>
-            <ServiceHeading>FleetCare Pro</ServiceHeading>
-            <ServiceItemDesciptionB>
+        <ServiceHeading sx={{ fontSize:"40px", fontWeight:500 }} >FleetCare Pro</ServiceHeading>
+            <ServiceItemDesciptionB sx={{ fontSize:"20px", fontWeight:300 }}>
               Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings
               professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and
               ready for the road - anywhere, anytime.
             </ServiceItemDesciptionB>
-            <ServiceItemHighlight>With FleetCare Pro, pristine vehicles are just a booking away.</ServiceItemHighlight>
+            <ServiceItemHighlight sx={{ color:"#A4A4A4" }}>With FleetCare Pro, pristine vehicles are just a booking away.</ServiceItemHighlight>
           </Box>
           <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
             Book Now
@@ -96,12 +96,11 @@ export default function CamperService() {
       <CamperServiceBox>
         <FadeIn direction="right" distance={100} duration={1}>
           <Box>
-            <ServiceHeading>Subscriptions</ServiceHeading>
-            <ServiceItemDesciptionB>
-              Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to
-              your schedule and preferences.
+            <ServiceHeading sx={{ fontSize:"40px", fontWeight:500 }} >Subscriptions</ServiceHeading>
+            <ServiceItemDesciptionB sx={{ fontSize:"20px" }}>
+            Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences. 
             </ServiceItemDesciptionB>
-            <ServiceItemHighlight>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
+            <ServiceItemHighlight sx={{ color:"#A4A4A4" }}>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
 
             <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>
           </Box>
