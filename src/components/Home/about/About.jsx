@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Link, List, ListItem, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
@@ -61,14 +61,14 @@ export default function About() {
               width: "49.5rem",
               height: "35.14rem",
               margin: "0",
-                "@media (max-width: 900px)": {
-                    width: "100%",
-                    height: "auto",
-                    paddingLeft: "4rem",
-                    paddingRight: "4rem",
-                    display: "flex",
-                    justifyContent: "center",
-                },
+              "@media (max-width: 900px)": {
+                width: "100%",
+                height: "auto",
+                paddingLeft: "4rem",
+                paddingRight: "4rem",
+                display: "flex",
+                justifyContent: "center",
+              },
             }}
           >
             <Image
@@ -82,61 +82,131 @@ export default function About() {
                 objectFit: "cover",
                 width: "100%",
                 height: "100%",
-                  maxHeight: "350px",
-                  maxWidth: "600px",
+                maxHeight: "350px",
+                maxWidth: "600px",
               }}
             />
           </Box>
 
-          <HomePkgsInBox sx={{
+          <HomePkgsInBox
+            sx={{
               margin: "0 auto",
-              marginTop: "8rem",
+              marginTop: "6rem",
               marginBottom: "4rem",
               "@media (max-width: 600px)": {
-                  marginTop: "3rem",
+                marginTop: "3rem",
               },
-          }}>
+            }}
+          >
             <Box
               sx={{
                 width: "100%",
                 margin: "0 auto",
                 marginRight: "45%",
                 marginLeft: "5rem",
-                  "@media (max-width: 900px)": {
-                      marginRight: "2rem",
-                      marginLeft: "2rem",
-                  },
+                "@media (max-width: 900px)": {
+                  marginRight: "2rem",
+                  marginLeft: "2rem",
+                },
               }}
             >
-              <Box sx={{
+              <Box
+                sx={{
                   textAlign: "left",
-                  marginBottom: "1.5rem",
                   "@media (max-width: 900px)": {
-                      textAlign: "center",
+                    textAlign: "center",
                   },
-              }}>
-                <HeadingLinesAnimation text="ABOUT" />
+                }}
+              >
+                <HeadingLinesAnimation />
               </Box>
 
               <Typography
                 sx={{
                   color: theme.palette.text.secondary,
-                  fontSize: "1.6rem",
+                  fontSize: "1.55rem",
                   lineHeight: 1.7,
-                    "@media (max-width: 900px)": {
-                        textAlign: "center"
-                    },
-                    "@media (max-width: 600px)": {
-                        fontSize: "1rem",
-                        textAlign: "center"
-                    },
+                  "@media (max-width: 900px)": {
+                    textAlign: "center",
+                  },
+                  "@media (max-width: 600px)": {
+                    fontSize: "1rem",
+                    textAlign: "center",
+                  },
                 }}
               >
-                We bring professional car cleaning to your location, any time. Our advanced steam cleaning technology ensures a
-                deep clean for all vehicle types. With fully-equipped mobile units and expert technicians, we deliver efficient,
-                high-quality service that fits your schedule. Choose FAST CLEAN SERVICE for convenient, thorough car cleaning on
-                your terms.
+                At Fast Clean Service, we provide professional steam cleaning
+                and car detailing—on location or at our branch. Using
+                eco-friendly techniques, we ensure your car is cleaned and
+                protected with exceptional attention to detail.
               </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: theme.palette.text.primary,
+                  fontWeight: 500,
+                  marginTop: 2,
+                  textAlign: "left",
+                  fontSize: "1.55rem",
+                  "@media (max-width: 600px)": {
+                    fontSize: "1rem",
+                  },
+                }}
+              >
+                Why Choose Fast Clean Service?
+              </Typography>
+
+              <List
+                sx={{
+                  paddingLeft: { sm: 2, xs: 0 },
+                  color: theme.palette.text.secondary,
+                  listStyleType: "disc",
+                }}
+              >
+                <ListItem sx={{ display: "list-item", py: '0px', }}>
+                  <ListItemText primary="Convenience: Cleaning on location or at our branch." />
+                </ListItem>
+                <ListItem sx={{ display: "list-item", py: '0px' }}>
+                  <ListItemText primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
+                </ListItem>
+                <ListItem sx={{ display: "list-item", py: '0px' }}>
+                  <ListItemText primary="Quality Guaranteed: Exceptional results every time." />
+                </ListItem>
+              </List>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: theme.palette.text.primary,
+                  fontWeight: 500,
+                  marginTop: "1rem",
+                  textAlign: "left",
+                  fontSize: "1.55rem",
+                  "@media (max-width: 600px)": {
+                    fontSize: "1rem",
+                  },
+                }}
+              >
+                Book online or request a free quote today!
+              </Typography>
+              <Link href="#" passHref>
+                <Button
+                    variant="contained"
+                    sx={{
+                        marginTop:"1rem",
+                        padding: "1.5rem 3rem",
+                        fontSize: "1.5rem",
+                        fontWeight: 500,
+                        backgroundColor: "primary.accentDark",
+                        color: "white",
+                        fontFamily: "DMSans",
+                        "&:hover": {
+                            backgroundColor: theme.palette.primary.accent,
+                        },
+                    }}
+                >
+                    Learn More 
+                </Button>
+            </Link>
             </Box>
           </HomePkgsInBox>
         </Box>
@@ -146,9 +216,9 @@ export default function About() {
             left: "60%",
             height: "auto",
             marginTop: "15rem",
-              "@media (max-width: 900px)": {
-                  display: "none",
-              },
+            "@media (max-width: 900px)": {
+              display: "none",
+            },
           }}
         >
           <Image
@@ -167,7 +237,11 @@ export default function About() {
           />
         </Box>
       </Box>
-      <DecorativeBackgroundImage right={"-32rem"} width="90rem" height="66rem" />
+      <DecorativeBackgroundImage
+        right={"-32rem"}
+        width="90rem"
+        height="66rem"
+      />
     </Box>
   );
 }
