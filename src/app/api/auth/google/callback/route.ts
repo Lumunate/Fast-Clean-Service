@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     // Set credentials for immediate use
     oauth2Client.setCredentials(tokens);
 
-    return Response.json({ success: true });
+    return Response.redirect("/");
   } catch (error) {
     console.error("Error in callback:", error);
     return Response.json({ error: "Failed to process callback" }, { status: 500 });
