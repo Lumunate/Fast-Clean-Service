@@ -8,25 +8,25 @@ import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimatio
 const works = [
     {
         id: 1,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
+        icon: "/howdoesitworkicons/Map-Pin.png",
         title: "Choose your location:",
         description: "We come to you or you bring your car to us.",
     },
     {
         id: 2,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
+        icon: "/howdoesitworkicons/Settings-Search.png",
         title: "Choose your service:",
         description: "Select from our extensive range of cleaning and cleaning services detailing services.",
     },
     {
         id: 3,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
+        icon: "/howdoesitworkicons/Report--Streamline-Tabler.png",
         title: "Make an appointment:",
         description: "Choose a date and time that suits you",
     },
     {
         id: 4,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
+        icon: "/howdoesitworkicons/Checks--Streamline.png",
         title: "We will do the rest",
         description: "Enjoy your perfectly cleaned car!",
     },
@@ -191,7 +191,7 @@ export default function HowDoesItWork() {
                         sx={{
                             position: "absolute",
                             top: "4rem",
-                            left: "calc(74% - 22px)",
+                            left: "calc(76% - 22px)",
                             transform: "translateY(-50%)",
                             backgroundImage: 'url("/Arrow_04.svg")',
                             width: "75px",
