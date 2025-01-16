@@ -17,7 +17,7 @@ import {
     HomePkgsInBox,
     ServicesOverviewWrapper,
 } from "../../mui/HomePkgs";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Link, Typography } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
@@ -51,31 +51,6 @@ const testimonials = [
         date: "30/01/24",
         socialIcons: [{ icon: "/Google.png", alt: "Google" }],
     },
-    // {
-    //     stars: 4,
-    //     name: "Steven",
-    //     details:
-    //         "It took a little time but was a near perfect job. They are passionate about detailing, always friendly but most importantly do an amazing job.",
-    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
-    //     date: "30/01/24",
-    //     socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    // },
-    // {
-    //     stars: 3,
-    //     name: "Alex Johnson",
-    //     details: "A great experience overall. Exceeded my expectations.",
-    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
-    //     date: "30/01/24",
-    //     socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    // },
-    // {
-    //     stars: 3,
-    //     name: "Alex Johnson",
-    //     details: "A great experience overall. Exceeded my expectations.",
-    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
-    //     date: "30/01/24",
-    //     socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    // },
 ];
 
 export default function Testimonials() {
@@ -181,6 +156,25 @@ export default function Testimonials() {
                         >
                         Leave Your Review and tell us how we helped you!
                       </Typography>
+                      <Link href="#" passHref>
+                <Button
+                    variant="contained"
+                    sx={{
+                        marginTop:"1rem",
+                        padding: "1.5rem 3rem",
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        backgroundColor: "primary.accentDark",
+                        color: "white",
+                        fontFamily: "DMSans",
+                        "&:hover": {
+                            backgroundColor: "#00BEFF",
+                        },
+                    }}
+                >
+                    Submit a Review 
+                </Button>
+            </Link>
                           </ServicesOverviewWrapper>
             <HomePkgsInBox
                 sx={{
