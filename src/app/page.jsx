@@ -12,6 +12,7 @@ import OverServiceOverview from "..//components/Home/overServices/OverServiceOve
 import HowDoesItWork from "../components/Home/howDoesItWork/HowDoesItWork";
 import { Box } from "@mui/material";
 import HeadingLinesAnimation from "../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import Subscription from "./../components/Home/subscription/Subscription"
 import CallToActionBox from "../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../components/Decorative/Spacer";
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../components/Decorative/Decorative.style";
@@ -49,6 +50,7 @@ export default function Home() {
           <HowDoesItWork/>
           <OverServiceOverview/>
           <Testimonials />
+          <Subscription/>
 
           <ServicesOverview />
 
