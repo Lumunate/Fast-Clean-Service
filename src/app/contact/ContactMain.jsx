@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import Form from "./Form";
 import {
     GrayBox,
@@ -37,8 +37,15 @@ export default function ContactMain() {
                         padding: "2rem 0",
                     }}
                 >
-                    <Box sx={{ marginBottom: "2rem", textAlign: "center" }}>
+                    <Box sx={{ marginBottom: "2rem", textAlign: "center" ,marginBottom: "2rem", }}>
                         <HeadingLinesAnimation text="CONTACT US" />
+                        
+                    </Box>
+                    <Box sx={{maxWidth:"768px", textAlign:"center"}}>
+                        <Typography sx={{ fontSize:"22px", fontWeight:400}}>Always Available for You</Typography>
+                        <Typography sx={{ fontSize:"15px", fontWeight:300,textAlign:"left"}}>Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.</Typography>
+
+
                     </Box>
 
                     <Form />
