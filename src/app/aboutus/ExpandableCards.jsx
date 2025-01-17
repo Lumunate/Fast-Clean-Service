@@ -40,7 +40,7 @@ const Card = styled(Box)(
         display: "flex",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
-        backgroundImage: "url('/g9.jpg')",
+        backgroundImage: "url('/about/car3.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         marginLeft:
@@ -59,16 +59,17 @@ const Card = styled(Box)(
     })
 );
 
-const BackgroundImage = styled(Box)(({ theme }) => ({
+const BackgroundImage = styled(Box)(({bgImage, theme }) => ({
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage: "url('/g9.jpg')",
+    backgroundImage:bgImage,
     backgroundSize: "cover",
     backgroundPosition: "center",
-    filter: "brightness(0.3)",
+    backgroundRepeat:"no-repeat",
+    filter: "brightness(0.9)",
     zIndex: 1,
     "@media (max-width: 600px)": {
         filter: "brightness(0.6)",
@@ -81,7 +82,7 @@ const Overlay = styled(Box)(({ theme }) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
     zIndex: 2,
     "@media (max-width: 600px)": {
         backgroundColor: "rgba(0, 0, 0, 0)",
@@ -132,6 +133,7 @@ const Heading = styled(Typography)(({ showHeading, isSmallScreen }) => ({
     lineHeight: "1.2",
     opacity: isSmallScreen ? 1 : showHeading ? 1 : 0,
     transition: "opacity 0.3s ease, font-size 0.3s ease",
+    transitionDelay:"0.3s",
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
     },
@@ -184,6 +186,7 @@ const CheckmarkIcon = styled("img")({
 const cardData = [
     {
         id: 1,
+        bgImg:"url('/about/car6.png')",
         title: "Professional Equipment",
         subpara: "Our detailing shop is equipped with cutting-edge tools:",
         details: [
@@ -195,6 +198,7 @@ const cardData = [
     },
     {
         id: 2,
+        bgImg:"url('/about/car7.png')",
         title: "Expert Technicians",
         subpara: "Our certified detailing experts bring unparalleled skill to every job:",
         details: [
@@ -253,7 +257,7 @@ export default function ExpandableCards() {
                         onClick={() => handleCardClick(card.id)}
                         style={{ userSelect: "none" }}
                     >
-                        <BackgroundImage />
+                        <BackgroundImage bgImage={card.bgImg} />
                         <Overlay />
                         <Content expanded={isExpanded} isSmallScreen={isSmallScreen}>
                             <Number isSmallScreen={isSmallScreen} expanded={isExpanded}>
@@ -268,7 +272,13 @@ export default function ExpandableCards() {
                                 </Heading>
                             )}
                             {isExpanded && (
-                                <ExpandedContent>
+                                <ExpandedContent
+                                sx={{
+                                    opacity: 0,
+                                    transition: "opacity 0.5s ease-in-out 0.3s",
+                                    animation: isExpanded ? "fadeIn 0.5s ease-in-out 0.3s forwards" : undefined,
+                                  }}
+                                >
                                     <Typography
                                         variant="body1"
                                         sx={{
