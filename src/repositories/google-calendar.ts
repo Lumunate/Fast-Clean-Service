@@ -30,7 +30,6 @@ export class GoogleCalendar {
     });
 
     googleTokensRepository.getTokens("fast-clean-service-website").then((tokens) => {
-      console.log("Tokens:", tokens);
       if (tokens) {
         oauth2Client.setCredentials(tokens);
       }
