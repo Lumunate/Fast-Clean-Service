@@ -20,6 +20,7 @@ import { cleanPkgs } from "../../lib/data/Autocare";
 import {ServiceHeading} from "../Home/ServicesOverview/ServiceColumnGroup";
 import RadialCircle from "../Decorative/RadialCircle";
 import {DecorativeBackgroundImage} from "../Decorative/Decorative.style";
+import FleetCare from "./FleetCare"
 
 const ModdedCard = ({ card, color }) => {
     const { theme } = useTheme();
@@ -205,9 +206,10 @@ const AutoCare = () => {
                     }}
                 />
             )}
-            <ServiceHeading sx={{ fontSize: "5.6rem", marginTop: "15rem" }}>
-                ANYWHERE AUTOCARE
-            </ServiceHeading>
+            {/* <ServiceHeading sx={{ fontSize: "3.5rem",fontWeight:600, marginTop: "15rem" }}>
+            FleetCare
+            </ServiceHeading> */}
+            <FleetCare/>
             <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
             <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
