@@ -11,6 +11,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import CallToActionBox from "../../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../../components/Decorative/Spacer";
+import Priority from "../../components/priority/priority"
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../components/Decorative/Decorative.style";
 
 export default function AboutUs() {
@@ -21,6 +22,8 @@ export default function AboutUs() {
         </Box>
 
         <BackgroundSection />
+
+        <Priority/>
 
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <HowItWork />
