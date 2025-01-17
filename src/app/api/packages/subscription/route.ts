@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
     await dbConnect();
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
+    await dbConnect();
 
     if (id) {
       const pkg = await SubscriptionPackageService.getPackageById(id as string);
