@@ -3,8 +3,9 @@ export const cleanPkgs = {
     types: [
       {
         type: "Exterior",
+        description:"Restore the Shine and Protect Your Vehicle's Exterior with Premium Detailing",
         price: {
-          one: "59.95",
+          one: "74.95",
           duur: "45",
         },
         pros: [ "Exterior washing", "Cleaning windows and mirrors", "Applying spray wax", "Rims" ],
@@ -63,8 +64,9 @@ export const cleanPkgs = {
       },
       {
         type: "Complete",
+        description:"The Complete Package for Ultimate Interior and Exterior Protection and Shine",
         price: {
-          one: "94.95",
+          one: "139.95",
           duur: "90",
         },
         pros: ["Exterior package", "Interior package", "Complete car care: inside and out"],
@@ -123,8 +125,9 @@ export const cleanPkgs = {
       },
       {
         type: "Interior",
+        description:"Thorough Care for the Inside, Leaving Your Vehicle Fresh and Clean.",
         price: {
-          one: "69.95",
+          one: "89.95",
           duur: "60",
         },
         pros: ["Windows", "Sills", "Steam cleaning", "Vacuuming", "Dashboard", "Feeding plastic parts", "Steaming mats"],

@@ -7,7 +7,7 @@ import FadeIn from "../../components/Animations/FadeIn";
 
 export const FleetCareHeading = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  fontSize: "2rem ",
+  fontSize: "32px",
   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
   fontWeight: "bold",
   marginTop:"60px",
