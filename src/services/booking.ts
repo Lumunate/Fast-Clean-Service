@@ -6,6 +6,9 @@ import sendEmail from "./sendEmail";
 import notificationRepository from "../repositories/Notifications";
 import subscriptionPackageService from "./subscription-package";
 import AutocarService from "./autocare-package";
+import { GoogleCalendar } from "../repositories/google-calendar";
+
+const calendar = new GoogleCalendar();
 
 class BookingService {
   async createBooking(bookingData: Partial<IBooking>): Promise<IBooking> {
@@ -40,14 +43,23 @@ class BookingService {
 
     console.log(bookingData.lockTime);
 
+    const calendarEvent = await calendar.createEvent({
+      summary: `Appointment - ${bookingData.serviceName}`,
+      description: bookingData.packageName,
+      startTime: bookingData.appointmentTimestamp.toISOString(),
+      endTime: bookingData.appointmentEndTimestamp.toISOString(),
+      attendees: [{ email: bookingData.email }, { email: process.env.GOOGLE_CALENDAR_ORGANIZER as string }],
+      location: `${bookingData.street}, ${bookingData.city}, ${bookingData.zipCode}`,
+    });
+
     const newBooking = await bookingRepository.create({
       ...bookingData,
       price,
       duration,
+      calendarEventId: calendarEvent.id,
     });
 
     const appointment = new Date(bookingData.appointmentTimestamp);
-
     await this.sendConfirmationEmail(
       bookingData.email,
       bookingData.firstName,
@@ -132,7 +144,7 @@ class BookingService {
   async calculatePrice(bookingData: Partial<IBooking>) {
     const [packages, subscriptionPackages] = await Promise.all([
       AutocarService.getAllServices(),
-      subscriptionPackageService.getAllPackages()
+      subscriptionPackageService.getAllPackages(),
     ]);
 
     console.log(bookingData);
