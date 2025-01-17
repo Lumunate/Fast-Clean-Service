@@ -13,13 +13,14 @@ import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
 export default function ServicesOverview() {
   return (
     <HomePkgsInBox
-      sx={{
+      sx={{ 
         margin: "0 auto",
-        "@media (max-width: 1200px)": { width: "100%" }
+        "@media (max-width: 1200px)": { width: "100%" },
+        marginTop:"14rem",
       }}
     >
       <ServicesOverviewWrapper>
-        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>SERVICES</HeadingLinesAnimation>
+        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>OUR PACKAGES</HeadingLinesAnimation>
 
         <Box sx={{ position: "relative" }}>
           <CarService />

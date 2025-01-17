@@ -8,6 +8,8 @@ import Testimonials from "../components/Home/testimonials/Testimonials";
 import ServicesOverview from "../components/Home/ServicesOverview/ServicesOverview";
 import About from "../components/Home/about/About";
 import Services from "../components/Home/services/Services";
+import OverServiceOverview from "..//components/Home/overServices/OverServiceOverview"
+import HowDoesItWork from "../components/Home/howDoesItWork/HowDoesItWork";
 import { Box } from "@mui/material";
 import HeadingLinesAnimation from "../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import CallToActionBox from "../components/Home/actioncard/CallToActionBox";
@@ -44,6 +46,10 @@ export default function Home() {
 
           <DecorativeSpacer />
 
+          <HowDoesItWork/>
+          <OverServiceOverview/>
+          <Testimonials />
+
           <ServicesOverview />
 
             <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed /></Box>
@@ -55,7 +61,7 @@ export default function Home() {
             <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer /></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
-            <Box
+            {/* <Box
               sx={{
                 margin: "0 auto",
               }}
@@ -70,7 +76,7 @@ export default function Home() {
               </HeadingLinesAnimation>
             </Box>
 
-            <Testimonials />
+            <Testimonials /> */}
             <DecorativeBackgroundImage top="-50rem" right="-40rem" width="92rem" height="68.2rem" />
             <DecorativeBackgroundImage top="80rem" left="-40rem" width="54rem" height="68rem" flip={true} />
           </HomePkgsInBox>
