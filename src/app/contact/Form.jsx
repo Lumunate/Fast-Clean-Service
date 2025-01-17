@@ -106,13 +106,13 @@ export default function Form() {
                 display: "flex",
                 gap: "2rem",
                 flexDirection: { xs: "column", sm: "row" },
-                margin: "0 auto",
             }}
         >
             <Button
                 variant="contained"
                 type="submit"
                 sx={{
+                  width:"100%",
                     padding: "1.5rem 3rem",
                     fontSize: "1.6rem",
                     fontWeight: "bold",
