@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { oauth2Client } from "../../../../../lib/googleapis";
 import googleTokensRepository from "../../../../../repositories/google-tokens";
 
@@ -24,7 +25,7 @@ export async function GET(request: Request) {
     // Set credentials for immediate use
     oauth2Client.setCredentials(tokens);
 
-    return Response.redirect("/");
+    return NextResponse.json("ok");
   } catch (error) {
     console.error("Error in callback:", error);
     return Response.json({ error: "Failed to process callback" }, { status: 500 });
