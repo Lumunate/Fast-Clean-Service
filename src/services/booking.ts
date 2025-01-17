@@ -233,6 +233,11 @@ class BookingService {
       throw new Error("Booking not found");
     }
 
+    const event = calendar.updateEvent(booking.calendarEventId, {
+      startTime: dateTime.toISOString(),
+      endTime: new Date(dateTime.getTime() + booking.duration * 60 * 1000).toISOString(),
+    });
+
     const formattedDate = new Date(dateTime).toLocaleDateString("en-US", {
       weekday: "long",
       day: "numeric",
