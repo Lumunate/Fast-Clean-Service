@@ -251,7 +251,7 @@ const AutoCare = () => {
                                     left: "-32%",
                                     width: "120%",
                                     height: "60px",
-                                    backgroundColor: "#7ed56f",
+                                    backgroundColor: "#4EE744",
                                     transform: "rotate(-40deg)",
                                     display: "flex",
                                     alignItems: "center",
@@ -263,9 +263,9 @@ const AutoCare = () => {
                                     sx={{
                                         position: "absolute",
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: 300,
                                         transform: "rotate(-1deg)",
-                                        fontSize: "1.6rem !important",
+                                        fontSize: "18px",
                                     }}
                                 >
                                     Economy
@@ -305,9 +305,9 @@ const AutoCare = () => {
                                         marginBottom: "0.5rem",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Price:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
                                     <Typography sx={{ fontWeight: "500", color: "#7ed56f" }}>
-                                        From €74
+                                         €74.95
                                     </Typography>
                                 </Box>
                                 <Box
@@ -317,8 +317,8 @@ const AutoCare = () => {
                                         width: "80%",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "500" }}>± 36 min.</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>45 min.</Typography>
                                 </Box>
                             </Box>
                         </div>
@@ -360,7 +360,7 @@ const AutoCare = () => {
                                 <Typography
                                     sx={{
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: 300,
                                         transform: "rotate(-1deg)",
                                         fontSize: "1.6rem !important",
                                     }}
@@ -377,8 +377,8 @@ const AutoCare = () => {
                                 className="heading"
                                 sx={{
                                     marginTop: "1rem",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "bold",
+                                    fontSize: "20px",
+                                    fontWeight: 600,
                                     textAlign: "center",
                                 }}
                             >
@@ -402,9 +402,9 @@ const AutoCare = () => {
                                         marginBottom: "0.5rem",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Price:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
                                     <Typography sx={{ fontWeight: "500", color: "#2998ff" }}>
-                                        From €94
+                                         €89.98
                                     </Typography>
                                 </Box>
                                 <Box
@@ -414,8 +414,8 @@ const AutoCare = () => {
                                         width: "80%",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "500" }}>± 45 min.</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>60 min.</Typography>
                                 </Box>
                             </Box>
                         </div>
@@ -447,7 +447,7 @@ const AutoCare = () => {
                                     left: "-32%",
                                     width: "120%",
                                     height: "60px",
-                                    backgroundColor: "#FF9960",
+                                    backgroundColor: "#EED502",
                                     transform: "rotate(-40deg)",
                                     display: "flex",
                                     alignItems: "center",
@@ -458,9 +458,9 @@ const AutoCare = () => {
                                 <Typography
                                     sx={{
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: 300,
                                         transform: "rotate(-1deg)",
-                                        fontSize: "1.6rem !important",
+                                        fontSize: "18px",
                                     }}
                                 >
                                     Bespoke
@@ -499,9 +499,9 @@ const AutoCare = () => {
                                         marginBottom: "0.5rem",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Price:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
                                     <Typography sx={{ fontWeight: "500", color: "#ff7730" }}>
-                                        From €149
+                                         €180
                                     </Typography>
                                 </Box>
                                 <Box
@@ -511,8 +511,8 @@ const AutoCare = () => {
                                         width: "80%",
                                     }}
                                 >
-                                    <Typography sx={{ fontWeight: "500" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "500" }}>± 101 min.</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>180 min.</Typography>
                                 </Box>
                             </Box>
                         </div>
@@ -528,7 +528,7 @@ const AutoCare = () => {
             </HomePkgsBox>
             <HomePkgsBox sx={{ "@media (max-width: 1200px)": {flexDirection: "column", alignItems: "center",}}}>
                 <HomePkgsInBox
-                    sx={{ justifyContent: "center", position: "relative", "@media (max-width: 1200px)": {flexDirection: "column", alignItems: "center",}, }}
+                    sx={{ justifyContent: "center", position: "relative", "@media (max-width: 1200px)": {flexDirection: "column", alignItems: "center",}, zIndex:10 }}
                     ref={sectionRef}
                 >
                     <CardContainer
@@ -547,19 +547,17 @@ const AutoCare = () => {
                                     <div className="style style--1" />
                                     <CardHeader color={color}>
                                         <Typography className="heading">{pkg?.type}</Typography>
-                                        <Typography className="tagline">
-                                            {pkg?.description || ""}
-                                        </Typography>
                                     </CardHeader>
                                     <CardInfo color={color} sx={{ flexDirection: "column" }}>
                                         <Typography
                                             sx={{
-                                                fontSize: "0.9rem",
+                                                fontSize: "14px !important",
                                                 color: "black",
                                                 marginBottom: "0.1rem",
+                                                fontWeight:300
                                             }}
                                         >
-                                            Starting from -
+                                            {pkg.description}
                                         </Typography>
                                         <Typography
                                             className="price"
@@ -587,6 +585,21 @@ const AutoCare = () => {
                                             );
                                         })}
                                     </CardDetails>
+                                    <Box sx={{marginTop: "auto",display:"flex",gap:"8px"}}>
+                                    <CardButton
+                                        onClick={() => handleSubCatChange(pkg?.type)}
+                                        sx={{
+                                            backgroundColor: "#1C79CC",
+                                            color: "white",
+                                            justifyContent: "center",
+                                            "&:hover": {
+                                                color: "black",
+                                                backgroundColor:"#2998ff",
+                                            },
+                                        }}
+                                    >
+                                       Book Now
+                                    </CardButton>
                                     <CardButton
                                         onClick={() => handleSubCatChange(pkg?.type)}
                                         sx={{
@@ -601,6 +614,8 @@ const AutoCare = () => {
                                     >
                                         Add Ons
                                     </CardButton>
+                                    </Box>
+                                    
                                 </Card>
                             );
                         })}
