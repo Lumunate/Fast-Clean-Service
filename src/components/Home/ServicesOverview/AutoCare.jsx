@@ -16,8 +16,6 @@ import {
     ServiceBtn1,
     ServiceDetailHeading,
 } from "../../mui/HomePkgs";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {useTheme} from "../../../contexts/themeContext";
 
 export default function Autocare() {
@@ -55,21 +53,14 @@ export default function Autocare() {
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Interior</ServiceDetailHeading> */}
                     <Box>
                       <div className="innerdeet">
                       From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€74.95</span>
                       </div>
-                      {/* <div className="innerdeet">
-                        Price: <span>€89.95</span>
-                      </div> */}
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#ffd500" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Exterior</ServiceDetailHeading> */}
+                  <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
                       Included
@@ -95,11 +86,8 @@ export default function Autocare() {
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Combi</ServiceDetailHeading> */}
-                    <Box>
+                  <ServiceDetail>
+                   <Box>
                       <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
                       Book Now for a quick and thorough cleaning.
                       </div>
@@ -137,21 +125,14 @@ export default function Autocare() {
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Interior</ServiceDetailHeading> */}
                     <Box>
                       <div className="innerdeet">
                       From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
                       </div>
-                      {/* <div className="innerdeet">
-                        Price: <span>€89.95</span>
-                      </div> */}
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#ffd500" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Exterior</ServiceDetailHeading> */}
+                  <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
                       Included
@@ -177,10 +158,7 @@ export default function Autocare() {
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Combi</ServiceDetailHeading> */}
+                  <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
                       Choose Deluxe for a complete treatment of your car.
@@ -215,21 +193,14 @@ export default function Autocare() {
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Interior</ServiceDetailHeading> */}
                     <Box>
                       <div className="innerdeet">
                       From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€189.95</span>
                       </div>
-                      {/* <div className="innerdeet">
-                        Price: <span>€89.95</span>
-                      </div> */}
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#ffd500" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Exterior</ServiceDetailHeading> */}
+                  <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
                       Included
@@ -255,16 +226,13 @@ export default function Autocare() {
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    {/* <ServiceDetailHeading sx={{color: "#2998ff" }}>Combi</ServiceDetailHeading> */}
+                  <ServiceDetailHeading>
                     <Box>
                       <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
                       Book Now for the ultimate showroom finish.
                       </div>
                     </Box>
-                  </ServiceDetail>
+                  </ServiceDetailHeading>
                 </ServiceDetails>
                 <Box
                   sx={{
