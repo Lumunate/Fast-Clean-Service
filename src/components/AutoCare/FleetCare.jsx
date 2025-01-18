@@ -31,7 +31,6 @@ export const FleetCareContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-around",
   flexWrap: "wrap",
-  //   maxWidth: "80%",
   marginBottom: "3rem",
   gap: "9.7rem",
   "@media (max-width: 600px)": {
@@ -146,7 +145,7 @@ export default function FleetCare() {
         <FleetCareItemContainer>
           <FleetCareItemImageContainer>
             <FleetCareItemImage
-              src="/car-service.png"
+              src="/servicesicons/car-service.png"
               alt="car Service"
               width={39}
               height={40}
@@ -163,7 +162,7 @@ export default function FleetCare() {
         <FleetCareItemContainer>
           <FleetCareItemImageContainer>
             <FleetCareItemImage
-              src="/steering-wheel.png"
+              src="/servicesicons/steering-wheel.png"
               alt="steering Wheel"
               width={39}
               height={40}
@@ -181,7 +180,7 @@ export default function FleetCare() {
         <FleetCareItemContainer>
           <FleetCareItemImageContainer>
             <FleetCareItemImage
-              src="/Vector.png"
+              src="/servicesicons/Vector.png"
               alt="Vector"
               width={48}
               height={48}
