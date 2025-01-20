@@ -25,7 +25,11 @@ const defaultValues = {
 export default function FeedbackForm() {
     const theme = useTheme()
 
-    const {showSnackbar} = useSnackbar();
+    const snackbarContext = useSnackbar();
+
+    console.log(snackbarContext);
+
+    const { showSnackbar } = snackbarContext || {};
 
     const {
     control,
@@ -40,20 +44,18 @@ export default function FeedbackForm() {
 
   const { submitForm, loading, error } = useSubmitFeedbackForm();
 
-const onSubmit = async (data) => {
-  const formattedData = {
-    ...data,
-    experience: String(data.experience),
-  };
+    const onSubmit = async (data) => {
+        const formattedData = { ...data, experience: String(data.experience) };
 
-  try {
-    await submitForm(formattedData);
-    showSnackbar('Form submitted successfully!');
-    reset(); // Reset the form if needed
-  } catch (err) {
-    showSnackbar('Failed to submit Contact Form. Please try again later!');
-  }
-};
+        try {
+            await submitForm(formattedData);
+            if (showSnackbar) showSnackbar('Form submitted successfully!');
+            reset();
+        } catch (err) {
+            if (showSnackbar) showSnackbar('Failed to submit Contact Form. Please try again later!');
+        }
+    };
+
 
   return (
     <>

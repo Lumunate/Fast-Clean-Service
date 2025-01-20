@@ -22,10 +22,6 @@ export default function AboutUs() {
 
         <BackgroundSection />
 
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-        <HowItWork />
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
                 <HeadingLinesAnimation>DETAILING SHOP</HeadingLinesAnimation>
@@ -50,13 +46,6 @@ export default function AboutUs() {
                 <HeadingLinesAnimation>Our Comprehensive Services</HeadingLinesAnimation>
             </Box>
             <CompServices />
-        </Box>
-
-        <Box sx={{marginTop: { xs: "4rem", lg: "11.3rem"}}}>
-            <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>FAST CLEAN X AtTheCarWashCompany</HeadingLinesAnimation>
-            </Box>
-            <CollabSection />
         </Box>
 
       <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
