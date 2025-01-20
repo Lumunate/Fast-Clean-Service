@@ -48,12 +48,13 @@ const SelectLocationInput = () => {
   const handlePlaceSelect = async (place) => {
     if (place) {
       try {
-        const { distance: distanceInMeters } = await calculateDistance(place.description);
+        const { distance: distanceInMeters, duration } = await calculateDistance(place.description);
         const distanceInKm = Math.round(distanceInMeters / 1000);
 
         form.updateFormData({
           location: place.description,
           travelDistance: distanceInKm,
+          travelDuration: duration, 
         });
         updateValidation(true);
       } catch (error) {
