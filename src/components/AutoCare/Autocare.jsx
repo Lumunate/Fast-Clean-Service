@@ -261,7 +261,7 @@ const AutoCare = () => {
                                     sx={{
                                         position: "absolute",
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: "300",
                                         transform: "rotate(-1deg)",
                                         fontSize: "1.6rem !important",
                                     }}
@@ -358,7 +358,7 @@ const AutoCare = () => {
                                 <Typography
                                     sx={{
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: "300",
                                         transform: "rotate(-1deg)",
                                         fontSize: "1.6rem !important",
                                     }}
@@ -456,7 +456,7 @@ const AutoCare = () => {
                                 <Typography
                                     sx={{
                                         color: "white",
-                                        fontWeight: "bold",
+                                        fontWeight: "300",
                                         transform: "rotate(-1deg)",
                                         fontSize: "1.6rem !important",
                                     }}
