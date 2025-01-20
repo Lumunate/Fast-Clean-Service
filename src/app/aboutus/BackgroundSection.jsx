@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 import Image from "next/image";
 
-const imageArray = ["/g1.jpg", "/g2.jpg", "/g3.jpg", "/g4.jpg"];
+const imageArray = ["/a1.png", "/a2.png", "/a3.png", "/a4.png"];
 
 const SectionContainer = styled(Box)(({ theme }) => ({
   display: "flex",

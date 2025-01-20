@@ -8,7 +8,6 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
-// Styled Components
 
 const Container = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -59,13 +58,13 @@ const Card = styled(Box)(
     })
 );
 
-const BackgroundImage = styled(Box)(({ theme }) => ({
+const BackgroundImage = styled(Box)(({ theme, bgImage }) => ({
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage: "url('/g9.jpg')",
+    backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     filter: "brightness(0.3)",
@@ -75,13 +74,14 @@ const BackgroundImage = styled(Box)(({ theme }) => ({
     },
 }));
 
+
 const Overlay = styled(Box)(({ theme }) => ({
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
     zIndex: 2,
     "@media (max-width: 600px)": {
         backgroundColor: "rgba(0, 0, 0, 0)",
@@ -242,6 +242,8 @@ export default function ExpandableCards() {
                 const anyOtherExpanded =
                     activeCard !== null && activeCard !== card.id;
 
+                const bgImage = index === 0 ? "/about/aboutdet2.png" : "/about/aboutdet1.png";
+
                 return (
                     <Card
                         key={card.id}
@@ -253,7 +255,7 @@ export default function ExpandableCards() {
                         onClick={() => handleCardClick(card.id)}
                         style={{ userSelect: "none" }}
                     >
-                        <BackgroundImage />
+                        <BackgroundImage bgImage={bgImage} />
                         <Overlay />
                         <Content expanded={isExpanded} isSmallScreen={isSmallScreen}>
                             <Number isSmallScreen={isSmallScreen} expanded={isExpanded}>

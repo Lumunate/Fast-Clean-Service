@@ -2,6 +2,7 @@
 import {HomeWrapper} from "../../components/mui/HomePkgs";
 import MeetTeam from "./MeetTeam";
 import BackgroundSection from "./BackgroundSection";
+import ValueProposition from "./GeneralComp";
 import HowItWork from "../../components/Home/howitwork/HowItWork";
 import CollabSection from "./CollabSection";
 import CompServices from "./CompServices";
@@ -22,6 +23,10 @@ export default function AboutUs() {
 
         <BackgroundSection />
 
+        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
+            <ValueProposition />
+        </Box>
+
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
                 <HeadingLinesAnimation>DETAILING SHOP</HeadingLinesAnimation>
@@ -39,13 +44,6 @@ export default function AboutUs() {
                 </Box>
             </Box>
             <ExpandableCards />
-        </Box>
-
-        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
-            <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>Our Comprehensive Services</HeadingLinesAnimation>
-            </Box>
-            <CompServices />
         </Box>
 
       <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
