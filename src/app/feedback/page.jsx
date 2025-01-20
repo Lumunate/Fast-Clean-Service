@@ -6,7 +6,6 @@ import {
   FeedbackParaTypography,
 } from "./feedback.style";
 import FeedbackForm from "../../components/feedback/FeedbackForm";
-import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
 
 export default function FeedbackPage() {
   return (

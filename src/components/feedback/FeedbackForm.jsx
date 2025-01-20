@@ -1,19 +1,57 @@
 'use client';
 import React from 'react'
 import { CustomFormControl, CustomInputLabel, FeedbackFormContainer, StyledSelectField, StyledTextField } from './FeedbackForm.style'
-import { Box, Grid, InputLabel, MenuItem, Rating,Button } from '@mui/material'
+import { Box, Grid, InputLabel, MenuItem, Rating,Button, FormHelperText, CircularProgress } from '@mui/material'
 import { Controller, useForm } from "react-hook-form"
 import DatePicker from "react-datepicker"
+import {zodResolver} from "@hookform/resolvers/zod"
 import 'react-datepicker/dist/react-datepicker.css';
 import Image from 'next/image';
 import { DecorativeBackgroundImage } from '../Decorative/Decorative.style';
+import useSnackbar from '../../hooks/useSnackbar';
+import { feedbackSchema } from '../../types/feedback';
+import {useSubmitFeedbackForm} from '../../hooks/useFeedbackForm'
+
+const defaultValues = {
+  name: '',
+  lastName: '',
+  Service: '',
+  Appointment: new Date(),
+  experience: '4', 
+  feedback: '',
+}
 
 export default function FeedbackForm() {
-    const { control, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        console.log('Form Data:', data);
-        // Handle form submission logic here
-      };
+
+    const {showSnackbar} = useSnackbar();
+
+    const {
+    control,
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(feedbackSchema),
+    defaultValues,
+  });
+
+  const { submitForm, loading, error } = useSubmitFeedbackForm();
+
+const onSubmit = async (data) => {
+  const formattedData = {
+    ...data,
+    experience: String(data.experience),
+  };
+
+  try {
+    await submitForm(formattedData);
+    showSnackbar('Form submitted successfully!');
+    reset(); // Reset the form if needed
+  } catch (err) {
+    showSnackbar('Failed to submit Contact Form. Please try again later!');
+  }
+};
 
   return (
     <>
@@ -30,8 +68,7 @@ export default function FeedbackForm() {
         <Grid
             container
             columns={24}
-            // columnSpacing={{ xs: '20px', lg: '40px' }}
-            // rowSpacing={{ xs: '20px', lg: '40px' }}
+          
             alignItems={'start'}
             sx={{ mb: '40px' }}
           >
@@ -41,6 +78,9 @@ export default function FeedbackForm() {
                  variant='standard'
                  fullWidth
                  margin='none'
+                 error={!!errors.name}
+                 helperText={errors.name?.message}
+                 {...register('name')}
                  inputfontsize='18px'
                  labelfontsize='16px'
                 />
@@ -52,18 +92,22 @@ export default function FeedbackForm() {
                 variant='standard'
                 fullWidth
                 margin='none'
+                error={!!errors.lastName}
+                helperText={errors.lastName?.message}
+                {...register('lastName')}
                  inputfontsize='18px'
                  labelfontsize='16px'
                 />
             </Grid>
+
             <Grid sx={{marginTop:"44px"}}  xs={24} md={12}>
-                <CustomFormControl fullWidth variant='standard' labelfontsize='16px' >
-                <InputLabel id='course'>Service</InputLabel>
-                <Controller  name='course'
+                <CustomFormControl fullWidth variant='standard' labelfontsize='16px' error={!!errors.Service}>
+                <InputLabel id='Service'>Service</InputLabel>
+                <Controller  name='Service'
                       control={control}
                   render={({ field }) => (
                 <StyledSelectField
-                label='course'
+                label='Service'
                 value={field.value}
                 onChange={field.onChange}
                 variant='standard'
@@ -75,11 +119,11 @@ export default function FeedbackForm() {
                 MenuProps={{
                   disableScrollLock: true,
                 }} >
-                <MenuItem value='math'>Math</MenuItem>
-                <MenuItem value='physics'>Physics</MenuItem>
-                <MenuItem value='chemistry'>Chemistry</MenuItem>
+                <MenuItem value='Standard'>Standard</MenuItem>
+                <MenuItem value='Deluxe'>Deluxe</MenuItem>
+                <MenuItem value='Premium'>Premium</MenuItem>
               </StyledSelectField>
-            )}/>
+            )}/>{errors.Service && <FormHelperText error>{errors.Service?.message}</FormHelperText>}
                 </CustomFormControl>
             </Grid>
 
@@ -98,18 +142,22 @@ export default function FeedbackForm() {
                   }}
                 />
                 <Controller
-                  name='sessionDate'
+                  name='Appointment'
                   control={control}
                   render={({ field }) => (
                     <DatePicker
                       selected={field.value}
                       onChange={(date) => field.onChange(date)}
                       className='feedback-datepicker'
-                      placeholderText='Date of Session'
+                      placeholderText='Date of Appointment'
                     />
                   )}
                 />
-                
+                 {errors.Appointment && (
+                  <FormHelperText error sx={{ fontSize: '10px' }}>
+                    {errors.Appointment?.message}
+                  </FormHelperText>
+                )}
               </Box>
             </Grid>
 
@@ -135,6 +183,7 @@ export default function FeedbackForm() {
                     />
                   )}
                 />
+                 {errors.experience && <FormHelperText error>{errors.experience?.message}</FormHelperText>}
               </Box>
             </Grid>
 
@@ -146,6 +195,9 @@ export default function FeedbackForm() {
                 multiline
                 rows={5}
                 margin='none'
+                error={!!errors.feedback}
+                helperText={errors.feedback?.message}
+                {...register('feedback')}
                 inputfontsize='18px'
                 labelfontsize='16px'
               />
@@ -161,7 +213,7 @@ export default function FeedbackForm() {
                 background:"#02B4EB",
                 color:"white"
             }} type='submit' special >
-            Submit Feedback
+            {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
             
         </form>
