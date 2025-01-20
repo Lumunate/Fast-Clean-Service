@@ -10,8 +10,10 @@ import {
 } from "../mui/ServiceOverviewPckgs";
 import { Box } from "@mui/material";
 import { ContactCardContainer } from "./Contact.style";
+import { useTheme } from "../../contexts/themeContext";
 
 export default function ContactCard2() {
+    const { theme } = useTheme();
   return (
     <ContactCardContainer>
       <ServiceItemBox
@@ -32,14 +34,14 @@ export default function ContactCard2() {
                 fontSize: "2.4rem !important",
                 marginTop: "1.25rem",
                 fontWeight: "400",
-                color: "#232E4A",
+                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
             }}
           >
             WORKING HOURS
           </ServiceItemHeading>
         </Box>
 
-        <ServiceItemDescription sx={{ fontWeight: "400", fontSize: "1.4rem", color: "#606060"}}>
+        <ServiceItemDescription sx={{ fontWeight: "400", fontSize: "1.4rem", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#606060"}}>
             We provide the cleaning service for your vehicle at your home, your business or other desired location!
         </ServiceItemDescription>
 

@@ -173,11 +173,11 @@ export default function FleetCareProForm() {
                   <InputLabel
                       id="vehicleType-label"
                       sx={{
-                        fontSize: "1rem",
+                        fontSize: "1.4rem",
                         color:  theme.palette.mode === "dark" ? "#fff" : "#050505",
-                        transform: "translate(0%, -120%) scale(1)",
+                        transform: "translate(10%, 70%) scale(1)",
                           "&.Mui-focused": {
-                              color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
+                              color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                           },
                       }}
                   >
@@ -199,7 +199,7 @@ export default function FleetCareProForm() {
                         "& .MuiOutlinedInput-input": {
                           padding: "1rem 1.5rem",
                             color: theme.palette.mode === "dark" ? "#fff" : "#050505",
-                          fontSize: "1.2rem",
+                          fontSize: "1.8rem",
                           fontWeight: "300",
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
@@ -242,9 +242,9 @@ export default function FleetCareProForm() {
                   <InputLabel
                       id="fleetSize-label"
                       sx={{
-                        fontSize: "1rem",
+                        fontSize: "1.4rem",
                         color:  theme.palette.mode === "dark" ? "#fff" : "#050505",
-                        transform: "translate(0%, -120%) scale(1)",
+                        transform: "translate(10%, 70%) scale(1)",
                           "&.Mui-focused": {
                               color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                           },
@@ -268,7 +268,7 @@ export default function FleetCareProForm() {
                         "& .MuiOutlinedInput-input": {
                           padding: "1rem 1.5rem",
                             color: theme.palette.mode === "dark" ? "#fff" : "#050505",
-                          fontSize: "1.2rem",
+                          fontSize: "1.8rem",
                           fontWeight: "300",
                         },
                         "& .MuiOutlinedInput-notchedOutline": {

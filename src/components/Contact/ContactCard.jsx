@@ -11,9 +11,12 @@ import {
 import { LocationCityOutlined, Mail, Phone, WhatsApp } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { ContactCardContainer } from "./Contact.style";
+import { useTheme } from "../../contexts/themeContext";
 
 export default function ContactCard() {
-  return (
+    const { theme } = useTheme();
+
+    return (
     <ContactCardContainer>
       <ServiceItemBox
         sx={{
@@ -33,7 +36,7 @@ export default function ContactCard() {
                       fontSize: "2.4rem !important",
                       marginTop: "1.25rem",
                       fontWeight: "400",
-                      color: "#232E4A",
+                      color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                   }}
               >
                   Our Contact Options:

@@ -46,7 +46,7 @@ export default function ContactMain() {
                             sx={{
                                 fontSize: "2.2rem",
                                 fontWeight: 400,
-                                color: "#232E4A",
+                                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                                 "@media (max-width: 600px)": {
                                     fontSize: "1.6rem",
                                 },
@@ -59,7 +59,7 @@ export default function ContactMain() {
                                 marginTop: "1.6rem",
                                 fontSize: "1.6rem",
                                 fontWeight: 300,
-                                color: "#232E4A",
+                                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                                 "@media (max-width: 600px)": {
                                     fontSize: "1.2rem",
                                 },

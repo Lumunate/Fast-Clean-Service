@@ -8,18 +8,18 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: "1rem 1.5rem",
     color: theme.palette.mode === "light" ? "#000" : "#fff",
-    fontSize: "1.2rem",
+    fontSize: "1.8rem",
     fontWeight: "300",
   },
 
   "& label": {
     border: "none",
     color: theme.palette.mode === "light" ? "#000" : "#fff",
-    fontSize: "1rem",
+    fontSize: "1.4rem",
     fontWeight: 400,
     lineHeight: 1.21,
     position: "relative",
-    transform: "translate(0%, -30%) scale(1)",
+    transform: "translate(2%, 180%) scale(1)",
   },
 
   "& label.Mui-focused": {
