@@ -12,13 +12,12 @@ import DetailingStep from "./DetailingStep";
 import ScheduleAppointmentStep from "./ScheduleAppointmentStep";
 import SummaryStep from "./SummaryStep";
 import PersonParticularsStep from "./PersonParticularsStep";
-import SelectCityStep from "./SelectCityStep";
+import SelectCityStep from "./SelectCityStep/SelectLocationInput";
 
 const BookingForm = () => {
   const { currentStep, formData, nextStep } = useMultiStepForm();
 
 
-  if (currentStep === 1) return <SelectCityStep />;
   if (currentStep === 1) return <LocationSelection />;
   else if (currentStep === 2) return <LiscencePlateStep />;
   else if (currentStep === 3) return <CarTypeStep />;
