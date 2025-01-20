@@ -6,6 +6,7 @@ import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "../contexts/SnackBarContext";
 import {ValidationProvider} from "../contexts/ValidationContext";
 import { ExitIntentProvider } from "../contexts/ExitIntentContext";
+import Script from "next/script";
 
 export const metadata = {
   title: "Fast Clean Service",
@@ -80,13 +81,17 @@ export default async function RootLayout({ children }) {
             <SnackbarProvider>
               <ValidationProvider>
                 <ExitIntentProvider>
-                <CssBaseline />
-                {children}
+                  <CssBaseline />
+                  {children}
                 </ExitIntentProvider>
               </ValidationProvider>
             </SnackbarProvider>
           </ThemeProvider>
         </SessionProvider>
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
