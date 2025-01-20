@@ -1,11 +1,11 @@
 import { Grid, styled, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
 import { useValidation } from "../../../contexts/ValidationContext";
 import { useTheme } from "../../../contexts/themeContext";
 import { SummaryHeading } from "../../mui/BookingFormPackages";
-import { packages } from "../../../app/autocare/data";
+import { useAutocarePackages } from "../../../hooks/useAutocarePackages";
 
 
 const Summary = () => {
@@ -14,8 +14,19 @@ const Summary = () => {
   updateValidation(true);
     const {theme} = useTheme();
 
+    const { packages, loading, error, fetchPackages } = useAutocarePackages();
+
+    useEffect(() => {
+      fetchPackages();
+    }, [fetchPackages]);
+
+    if(!packages) {
+      return null;
+    }
+
     const getOptionPrice = (optionName, category) => {
         for (const pkgCategory of Object.values(packages)) {
+          console.log(pkgCategory);
             for (const pkg of pkgCategory) {
                 const optionsList = pkg.additionalOptions?.[category] || pkg.additionalOptions?.detailing || [];
                 const matchedOption = optionsList.find((option) => option.name === optionName);

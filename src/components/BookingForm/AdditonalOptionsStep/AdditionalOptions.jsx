@@ -130,15 +130,15 @@ const AdditionalOptions = () => {
                 </AdditionalContent>
             ) : (
                 Object.keys(pkg.additionalOptions)
-                    .filter((category) => category !== "detailing")
+                    .filter((category) => category !== "detailing" && category !== "_id")
                     .map((category, index) => (
                         <Box key={index} sx={{ width: "100%" }}>
                             <AdditionalName variant="h5">
                                 {category.toUpperCase()}
                             </AdditionalName>
                             <AdditionalContent>
-                                {pkg.additionalOptions[category]?.length !== 0 ? (
-                                    pkg.additionalOptions[category].map((option, optionIndex) => (
+                                {pkg.additionalOptions[category] && pkg.additionalOptions[category]?.length !== 0 ? (
+                                    pkg.additionalOptions[category]?.map((option, optionIndex) => (
                                         <AdditionalOptionsBox
                                             key={optionIndex}
                                             name={option.name}

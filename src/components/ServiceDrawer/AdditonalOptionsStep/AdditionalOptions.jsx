@@ -3,9 +3,9 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../../../contexts/themeContext";
 import { Box, Typography } from "@mui/material";
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
-import { packages } from "../../../app/subscribe/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useValidation } from "../../../contexts/ValidationContext";
+import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages";
 
 const AdditionalOptionsBox = ({ selected, name, price, onClick }) => {
   const { theme } = useTheme();
@@ -73,6 +73,16 @@ const AdditionalOptions = () => {
   const form = useMultiStepForm();
   const selectedPackage = form.formData.selectedPackage;
   const { updateValidation } = useValidation();
+
+  const { packages, loading, error, fetchPackages } = useSubscriptionPackages();
+
+  useEffect(() => {
+    fetchPackages();
+  }, [fetchPackages]);
+  
+  if(!packages) {
+    return null;
+  }
 
   const additionalOptions = packages.find((pkg) => pkg.name === selectedPackage).additionalOptions;
 

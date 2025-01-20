@@ -31,9 +31,7 @@ const CallToActionBox = ({ hideImage = false }) => {
                 <CTAHeading>Ready for a Sparkling Clean Ride?</CTAHeading>
 
                 <CTADescription>
-                    Experience the best in professional car care today. Whether you’re at home, at work, or on the go, we’ll bring our
-                    expertise to you! <br />
-                    Don’t wait – your car deserves the best.
+                Now Ready to make your car shine? Book online now and experience for yourself why so<br/>many customers choose Fast Clean Service!
                 </CTADescription>
 
                 <CTAInnerBox>

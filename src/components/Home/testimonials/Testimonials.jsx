@@ -15,64 +15,67 @@ import {
     CarouselStarsBox,
     HomePkgsBox,
     HomePkgsInBox,
+    ServicesOverviewWrapper,
 } from "../../mui/HomePkgs";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar } from "@fortawesome/free-solid-svg-icons";
+import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
+import quote from "../../../../public/SVG.png"
 
 const testimonials = [
     {
         stars: 5,
-        name: "Igor Dotsenko",
+        name: "Linda V.",
         details:
-            "I ordered exterior washing a few times already. Both times washerman arrived in time and did the work very well and professionally.",
+            "I definitely recommend Fast Clean Service, the team is professional and friendly.",
         image: "https://swiperjs.com/demos/images/nature-1.jpg",
-        date: "30/01/24",
+        date: "30/04/24",
         socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
     },
     {
         stars: 5,
-        name: "Jane Smith",
+        name: "Anna R.",
         details:
-            "They catered to the delicate paint job and i hope to come back in the future",
+            "Quick and easy. The best cleaning my car has ever had!",
         image: "https://swiperjs.com/demos/images/nature-2.jpg",
-        date: "30/01/24",
+        date: "11/02/24",
         socialIcons: [{ icon: "/Google.png", alt: "Google" }],
     },
     {
         stars: 5,
-        name: "Katherina",
+        name: "Mark J.",
         details:
-            "Very professional service, prompt response and flexible. We’d definitely recommend.",
-        image: "https://swiperjs.com/demos/images/nature-3.jpg",
-        date: "30/01/24",
-        socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-        stars: 4,
-        name: "Steven",
-        details:
-            "It took a little time but was a near perfect job. They are passionate about detailing, always friendly but most importantly do an amazing job.",
+            "Great service! My car looked better than new! ",
         image: "https://swiperjs.com/demos/images/nature-3.jpg",
         date: "30/01/24",
         socialIcons: [{ icon: "/Google.png", alt: "Google" }],
     },
-    {
-        stars: 3,
-        name: "Alex Johnson",
-        details: "A great experience overall. Exceeded my expectations.",
-        image: "https://swiperjs.com/demos/images/nature-3.jpg",
-        date: "30/01/24",
-        socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-        stars: 3,
-        name: "Alex Johnson",
-        details: "A great experience overall. Exceeded my expectations.",
-        image: "https://swiperjs.com/demos/images/nature-3.jpg",
-        date: "30/01/24",
-        socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
+    // {
+    //     stars: 4,
+    //     name: "Steven",
+    //     details:
+    //         "It took a little time but was a near perfect job. They are passionate about detailing, always friendly but most importantly do an amazing job.",
+    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
+    //     date: "30/01/24",
+    //     socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+    // },
+    // {
+    //     stars: 3,
+    //     name: "Alex Johnson",
+    //     details: "A great experience overall. Exceeded my expectations.",
+    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
+    //     date: "30/01/24",
+    //     socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+    // },
+    // {
+    //     stars: 3,
+    //     name: "Alex Johnson",
+    //     details: "A great experience overall. Exceeded my expectations.",
+    //     image: "https://swiperjs.com/demos/images/nature-3.jpg",
+    //     date: "30/01/24",
+    //     socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+    // },
 ];
 
 export default function Testimonials() {
@@ -127,14 +130,58 @@ export default function Testimonials() {
     };
 
     return (
-        <HomePkgsBox
+        <HomePkgsInBox
             sx={{
                 margin: "0 auto",
                 position: "relative",
                 backgroundColor: "transparent",
                 padding: "2rem",
+                marginTop:"14rem"
             }}
-        >
+        > 
+        <ServicesOverviewWrapper>
+
+                <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>What Our Customers Say</HeadingLinesAnimation>
+                <Typography
+                        sx={{
+                            textAlign:"center",
+                            fontSize: "1.55rem",
+                            lineHeight: 1.7,
+                            "@media (max-width: 900px)": {
+                                textAlign: "center",
+                            },
+                            "@media (max-width: 600px)": {
+                                fontSize: "1rem",
+                                textAlign: "center",
+                            },
+                            "& .line-break": {
+                                display: { lg: "inline", md: "none" },
+                            },
+                        }}
+                        >
+                        At Fast Clean Service we have already helped many satisfied customers.
+                      </Typography>
+                      <Typography
+                        sx={{
+                            textAlign:"center",
+                            fontSize: "1.55rem",
+                            fontWeight:"500",
+                            lineHeight: 1.7,
+                            "@media (max-width: 900px)": {
+                                textAlign: "center",
+                            },
+                            "@media (max-width: 600px)": {
+                                fontSize: "1rem",
+                                textAlign: "center",
+                            },
+                            "& .line-break": {
+                                display: { lg: "inline", md: "none" },
+                            },
+                        }}
+                        >
+                        Leave Your Review and tell us how we helped you!
+                      </Typography>
+                          </ServicesOverviewWrapper>
             <HomePkgsInBox
                 sx={{
                     display: "flex",
@@ -202,6 +249,7 @@ export default function Testimonials() {
                                                 display: "flex",
                                                 alignItems: "center",
                                                 paddingBottom: "1rem",
+                                                justifyContent:"space-between",
                                                 "& svg": {
                                                     fontSize: "1.4rem",
                                                     marginRight: "0.3rem",
@@ -209,15 +257,28 @@ export default function Testimonials() {
                                                 },
                                             }}
                                         >
+                                            <Box>
+                                            
                                             {Array.from({ length: 5 }, (_, i) => (
                                                 <FontAwesomeIcon
-                                                    icon={faStar}
-                                                    key={i}
-                                                    className={
-                                                        i < testimonial.stars ? "colorstar" : ""
-                                                    }
+                                                icon={faStar}
+                                                key={i}
+                                                className={
+                                                    i < testimonial.stars ? "colorstar" : ""
+                                                }
                                                 />
                                             ))}
+                                            </Box>
+                                            <Box
+                                                        component="img"
+                                                        
+                                                        src='/testimonialQou.svg'
+                                                        alt="asd"
+                                                        sx={{
+                                                            width: "37px",
+                                                            height: "26px",
+                                                        }}
+                                                    />
                                         </CarouselStarsBox>
 
                                         <CarouselDetails>
@@ -281,6 +342,6 @@ export default function Testimonials() {
                     </CarouselBtn>
                 </CarouselControls>
             </HomePkgsInBox>
-        </HomePkgsBox>
+        </HomePkgsInBox>
     );
 }

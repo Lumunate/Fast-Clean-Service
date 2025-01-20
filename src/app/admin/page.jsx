@@ -1,15 +1,7 @@
-'use client'
-import { useRouter } from 'next/navigation';
-import React from 'react';
+import { redirect } from "next/navigation";
 
 const Page = () => {
+  return redirect("/admin/dashboard");
+};
 
-  const router = useRouter();
-  router.push('/admin/dashboard');
-
-  return (
-    <div></div>
-  )
-}
-
-export default Page
+export default Page;

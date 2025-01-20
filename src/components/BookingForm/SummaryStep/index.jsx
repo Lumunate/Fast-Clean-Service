@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import {BookingFormHeading, BookingFormSubHeading, BookingFormTagline} from "../../mui/BookingFormPackages";
 import Summary from "./Summary";
 import React from "react";
+import CouponApplier from "./ApplyCouponCode";
 
 const Index = () => {
   return (
@@ -15,6 +16,8 @@ const Index = () => {
         </BookingFormSubHeading>
       <Box>
         <Summary />
+
+        <CouponApplier /> 
       </Box>
     </Box>
   );

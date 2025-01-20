@@ -1,7 +1,6 @@
 "use client";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { packages as subscriptionPackages } from "../../../app/subscribe/data";
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
 import { useValidation } from "../../../contexts/ValidationContext";
 import Image from "next/image";
@@ -22,6 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages";
 
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 
@@ -31,11 +31,6 @@ const SubscriptionPackages = () => {
   const { updateValidation } = useValidation();
   const { theme } = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const packages =
-      form.formData?.selectedPackageType === "Anywhere Autocare"
-          ? options
-          : subscriptionPackages;
 
   const subscriptionTaglines = {
     "autocare-standard": "Ideal for regular maintenance of your vehicle.",
@@ -48,77 +43,86 @@ const SubscriptionPackages = () => {
   }, [selectedPackage, updateValidation]);
 
   const handleClick = (type, pkg) => {
-      setSelectedPackage(pkg.id);
-      form.updateFormData({ packageType: type, selectedPackage: pkg });
+    setSelectedPackage(pkg.id);
+    form.updateFormData({ packageType: type, selectedPackage: pkg });
   };
 
+  const { packages: subscriptionPackages, loading, error, fetchPackages } = useSubscriptionPackages();
+
+  useEffect(() => {
+    fetchPackages();
+  }, [fetchPackages]);
+
+  if(!subscriptionPackages) {
+    return null;
+  }
+
+  const packages = form.formData?.selectedPackageType === "Anywhere Autocare" ? options : subscriptionPackages;
+
   return (
-      <SubscriptionPkgsContainer isMobile={isMobile}>
-        {isMobile ? (
-            <Swiper
-                modules={[Pagination]}
-                slidesPerView="1.75"
-                centeredSlides={true}
-                spaceBetween={14}
-                pagination={{ clickable: true }}
-                breakpoints={{
-                  300: {
-                    slidesPerView: 2,
-                  },
-                  350: {
-                    slidesPerView: 2.25,
-                  },
-                  390: {
-                    slidesPerView: 2.55,
-                  },
-                  420: {
-                    slidesPerView: 2.75,
-                  },
-                  470: {
-                    slidesPerView: 3,
-                  },
-                }}
-                style={{ height: "25rem" }}
-            >
-              {packages.map((pkg, index) => (
-                  <SwiperSlide
-                      key={index}
-                      style={{ width: "100%", height: "100%" }}
-                  >
-                    <SubscriptionPackagesCard
-                        image={bg}
-                        color={colors[index]}
-                        packageType={pkg.name}
-                        tagline={subscriptionTaglines[pkg.id]}
-                        descriptionItems={[
-                          { label: "Price", value: pkg.price, highlighted: true },
-                          { label: "Duration", value: pkg.duration, highlighted: false },
-                        ]}
-                        selected={form.formData.selectedPackage?.id === pkg.id}
-                        onClick={() => handleClick(pkg, pkg)}
-                        key={index}
-                    />
-                  </SwiperSlide>
-              ))}
-            </Swiper>
-        ) : (
-            packages.map((pkg, index) => (
-                <SubscriptionPackagesCard
-                    key={index}
-                    image={bg}
-                    color={colors[index]}
-                    packageType={pkg.name}
-                    tagline={subscriptionTaglines[pkg.id]}
-                    descriptionItems={[
-                      { label: "Price", value: pkg.price, highlighted: true },
-                      { label: "Duration", value: pkg.duration, highlighted: false },
-                    ]}
-                    selected={form.formData.selectedPackage?.id === pkg.id}
-                    onClick={() => handleClick(pkg, pkg)}
-                />
-            ))
-        )}
-      </SubscriptionPkgsContainer>
+    <SubscriptionPkgsContainer isMobile={isMobile}>
+      {isMobile ? (
+        <Swiper
+          modules={[Pagination]}
+          slidesPerView="1.75"
+          centeredSlides={true}
+          spaceBetween={14}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            300: {
+              slidesPerView: 2,
+            },
+            350: {
+              slidesPerView: 2.25,
+            },
+            390: {
+              slidesPerView: 2.55,
+            },
+            420: {
+              slidesPerView: 2.75,
+            },
+            470: {
+              slidesPerView: 3,
+            },
+          }}
+          style={{ height: "25rem" }}
+        >
+          {packages.map((pkg, index) => (
+            <SwiperSlide key={index} style={{ width: "100%", height: "100%" }}>
+              <SubscriptionPackagesCard
+                image={bg}
+                color={colors[index]}
+                packageType={pkg.name}
+                tagline={subscriptionTaglines[pkg.id]}
+                descriptionItems={[
+                  { label: "Price", value: pkg.price, highlighted: true },
+                  { label: "Duration", value: pkg.duration, highlighted: false },
+                ]}
+                selected={form.formData.selectedPackage?.id === pkg.id}
+                onClick={() => handleClick(pkg, pkg)}
+                key={index}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        packages.map((pkg, index) => (
+          <SubscriptionPackagesCard
+            key={index}
+            image={bg}
+            color={colors[index]}
+            packageType={pkg.name}
+            tagline={subscriptionTaglines[pkg.id]}
+            descriptionItems={[
+              { label: "Price", value: pkg.price, highlighted: true },
+              { label: "Duration", value: pkg.duration, highlighted: false },
+            ]}
+            selected={form.formData.selectedPackage?.id === pkg.id}
+            onClick={() => handleClick(pkg, pkg)}
+          />
+        ))
+      )}
+    </SubscriptionPkgsContainer>
   );
 };
 

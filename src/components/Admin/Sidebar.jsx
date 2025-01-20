@@ -6,6 +6,7 @@ import DirectionsBoatIcon from "@mui/icons-material/DirectionsBoat";
 import StoreIcon from "@mui/icons-material/Store";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PackageIcon from "@mui/icons-material/Category";
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import {useState} from 'react';
 import { useRouter } from "next/navigation";
 
@@ -35,13 +36,15 @@ const Sidebar = ({ drawerOpen, handleSignOut }) => {
       case "Package Management":
         route = "/admin/package-management";
         break;
+      case "Coupon Management":
+        route = "/admin/coupons";
+        break;
       default:
         route = "/admin";
         break;
     }
 
     router.push(route);
-    console.log("tabss", tab);
   };
 
   return (
@@ -71,6 +74,7 @@ const Sidebar = ({ drawerOpen, handleSignOut }) => {
                 { text: "Other Vehicles Management", icon: <DirectionsBoatIcon /> },
                 { text: "Shop Management", icon: <StoreIcon /> },
                 { text: "Package Management", icon: <PackageIcon /> },
+                { text: "Coupon Management", icon: <LocalActivityIcon /> },
               ].map((item) => (
                   <ListItem
                       button
