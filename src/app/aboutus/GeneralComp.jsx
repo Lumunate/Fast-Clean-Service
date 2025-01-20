@@ -3,11 +3,13 @@ import {
     Box,
     Typography,
     Grid,
-    Paper,
+    Card,
     Container
 } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
 
 const ValueProposition = () => {
+    const theme = useTheme();
     const features = [
         {
             title: "Quality as a Priority",
@@ -28,8 +30,20 @@ const ValueProposition = () => {
     ];
 
     return (
-        <Container maxWidth="lg">
-            <Paper elevation={0} sx={{ p: 4 }}>
+        <Container>
+            <Card
+                elevation={3}
+                sx={{
+                    maxWidth: "1200px",
+                    p: 4,
+                    paddingLeft: "5rem",
+                    paddingRight: "5rem",
+                    borderRadius: "10px",
+                    background: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.1)",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                    border: theme.palette.mode === "dark" ? "0.3px solid rgba(255, 255, 255, 0.12)" : "0.3px solid rgba(0, 0, 0, 0.12)",
+                }}
+            >
                 <Box sx={{ flexGrow: 1 }}>
                     {features.map((feature, index) => (
                         <Grid
@@ -38,14 +52,14 @@ const ValueProposition = () => {
                             spacing={3}
                             sx={{
                                 borderTop: index !== 0 ? '1px solid #e0e0e0' : 'none',
-                                py: 3
+                                padding: "2rem",
                             }}
                         >
                             <Grid item xs={12} md={4}>
                                 <Typography
                                     sx={{
                                         fontWeight: 600,
-                                        color: '#232E4A',
+                                        color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
                                         fontSize: "2.2rem",
                                     }}
                                 >
@@ -56,8 +70,9 @@ const ValueProposition = () => {
                                 <Typography
                                     sx={{
                                         lineHeight: 1.6,
-                                        color: '#5A5E69',
+                                        color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                                         fontSize: "1.6rem",
+                                        marginBottom: "1.4rem",
                                 }}
                                 >
                                     {feature.description}
@@ -66,7 +81,7 @@ const ValueProposition = () => {
                         </Grid>
                     ))}
                 </Box>
-            </Paper>
+            </Card>
         </Container>
     );
 };

@@ -17,6 +17,8 @@ const Container = styled(Box)(({ theme }) => ({
     maxWidth: "98rem",
     margin: "0 auto",
     padding: "2rem",
+    // Add transition to container for smoother child animations
+    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
     "@media (max-width: 600px)": {
         flexDirection: "column",
         padding: "1rem",
@@ -35,21 +37,19 @@ const Card = styled(Box)(
         borderRadius: "10px",
         overflow: "hidden",
         cursor: "pointer",
-        transition: "all 0.3s ease",
+        // Updated transition properties for smoother animation
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
         backgroundImage: "url('/g9.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        marginLeft:
-            !isSmallScreen && expanded && expandDirection === "right"
-                ? "0"
-                : "auto",
-        marginRight:
-            !isSmallScreen && expanded && expandDirection === "left"
-                ? "0"
-                : "auto",
+        // Updated margin transitions
+        marginLeft: !isSmallScreen && expanded && expandDirection === "right" ? "0" : "auto",
+        marginRight: !isSmallScreen && expanded && expandDirection === "left" ? "0" : "auto",
+        transform: expanded ? "scale(1)" : "scale(1)", // This helps maintain smooth transitions
+        willChange: "width, margin", // Optimize for animation performance
         "@media (max-width: 900px)": {
             minHeight: "35rem",
             height: "100%",
@@ -95,12 +95,15 @@ const Content = styled(Box)(
         padding: isSmallScreen ? (expanded ? "3rem" : "0") : "5rem",
         color: "#fff",
         width: "100%",
-        transition: "opacity 0.3s ease, padding 0.3s ease",
+        // Updated transition for content
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
         flexDirection: "column",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
         textAlign: isSmallScreen && !expanded ? "left" : "left",
+        opacity: 1,
+        willChange: "padding, opacity", // Optimize for animation performance
         "@media (max-width: 900px)": {
             padding: isSmallScreen ? (expanded ? "3rem" : "0") : "3rem",
         },
@@ -144,6 +147,10 @@ const ExpandedContent = styled(Box)(({ theme }) => ({
     marginTop: "3rem",
     fontWeight: 300,
     lineHeight: 1.5,
+    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+    opacity: 1,
+    transform: "translateY(0)",
+    willChange: "opacity, transform",
     "@media (max-width: 900px)": {
         fontSize: "2rem",
     },
