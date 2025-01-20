@@ -11,6 +11,7 @@ import { DecorativeBackgroundImage } from '../Decorative/Decorative.style';
 import useSnackbar from '../../hooks/useSnackbar';
 import { feedbackSchema } from '../../types/feedback';
 import {useSubmitFeedbackForm} from '../../hooks/useFeedbackForm'
+import { useTheme } from '../../contexts/themeContext';
 
 const defaultValues = {
   name: '',
@@ -22,6 +23,7 @@ const defaultValues = {
 }
 
 export default function FeedbackForm() {
+    const theme = useTheme()
 
     const {showSnackbar} = useSnackbar();
 
@@ -205,13 +207,16 @@ const onSubmit = async (data) => {
 
           </Grid>
             <Button sx={{ 
-                marginTop:"44px",
+                marginTop:"24px",
                 borderRadius:"4px",
                 fontSize:"14px",
                 width:"170px",
                 height:"41px",
-                background:"#02B4EB",
-                color:"white"
+                backgroundColor: "primary.accentDark",
+                color:"white",
+                "& :hover":{
+                            backgroundColor: "#02B4EB",
+                        },
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
