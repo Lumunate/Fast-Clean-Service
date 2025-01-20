@@ -18,7 +18,7 @@ export default function AboutUs() {
   return (
     <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", }, }}>
         <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-            <HeadingLinesAnimation>ABOUT</HeadingLinesAnimation>
+            <HeadingLinesAnimation sx={{fontSize:"56px"}}>ABOUT</HeadingLinesAnimation>
         </Box>
 
         <BackgroundSection />

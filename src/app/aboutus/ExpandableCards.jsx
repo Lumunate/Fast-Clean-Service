@@ -42,7 +42,7 @@ const Card = styled(Box)(
         display: "flex",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
-        backgroundImage: "url('/g9.jpg')",
+        backgroundImage: "url('/about/car3.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         // Updated margin transitions
@@ -135,6 +135,7 @@ const Heading = styled(Typography)(({ showHeading, isSmallScreen }) => ({
     lineHeight: "1.2",
     opacity: isSmallScreen ? 1 : showHeading ? 1 : 0,
     transition: "opacity 0.3s ease, font-size 0.3s ease",
+    transitionDelay:"0.3s",
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
     },

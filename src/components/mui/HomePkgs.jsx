@@ -653,12 +653,12 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
 export const ServiceName = styled(Typography)(({ theme }) => ({
   fontFamily: "Unbounded",
   textTransform: "uppercase",
-  fontSize: "2.8rem !important",
+  fontSize: "26px !important",
   fontWeight: "600",
   color: theme.palette.primary.accent,
   textAlign: "left",
   "@media (max-width: 600px)": {
-    fontSize: "1.6rem !important",
+    fontSize: "26px !important",
   },
 }));
 
@@ -697,6 +697,7 @@ export const ServiceDetail = styled(Box)(({ theme }) => ({
   textAlign: "left",
   color: "white",
   marginBottom: "1rem",
+  marginTop: "26px",
   display: "flex",
   flexDirection: "column",
   width: "100%",
