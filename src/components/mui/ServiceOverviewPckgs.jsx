@@ -39,7 +39,7 @@ export const ServiceItemBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  margin: "3.5rem 1.8rem",
+  margin: "2.7rem 2.2rem",
 }));
 
 export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({

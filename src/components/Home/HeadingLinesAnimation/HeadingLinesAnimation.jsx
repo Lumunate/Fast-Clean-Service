@@ -119,7 +119,7 @@ export default function HeadingLinesAnimation({ text, children }) {
         className="heading"
         sx={{
           fontSize: { md: "4.8rem", sm: "2.8rem", xs: '2.4rem'},
-          fontWeight: "400",
+          fontWeight: "600",
           fontFamily: "Unbounded !important",
           display: "inline-block",
           margin: "0",
