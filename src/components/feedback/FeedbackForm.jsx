@@ -25,7 +25,10 @@ const defaultValues = {
 export default function FeedbackForm() {
     const theme = useTheme()
 
-    const {showSnackbar} = useSnackbar();
+    const snackbarContext = useSnackbar();
+console.log(snackbarContext);
+const { showSnackbar } = snackbarContext || {};
+
 
     const {
     control,
@@ -40,19 +43,16 @@ export default function FeedbackForm() {
 
   const { submitForm, loading, error } = useSubmitFeedbackForm();
 
-const onSubmit = async (data) => {
-  const formattedData = {
-    ...data,
-    experience: String(data.experience),
-  };
+  const onSubmit = async (data) => {
+    const formattedData = { ...data, experience: String(data.experience) };
 
-  try {
-    await submitForm(formattedData);
-    showSnackbar('Form submitted successfully!');
-    reset(); // Reset the form if needed
-  } catch (err) {
-    showSnackbar('Failed to submit Contact Form. Please try again later!');
-  }
+    try {
+        await submitForm(formattedData);
+        if (showSnackbar) showSnackbar('Form submitted successfully!');
+        reset();
+    } catch (err) {
+        if (showSnackbar) showSnackbar('Failed to submit Contact Form. Please try again later!');
+    }
 };
 
   return (
@@ -214,9 +214,9 @@ const onSubmit = async (data) => {
                 height:"41px",
                 backgroundColor: "primary.accentDark",
                 color:"white",
-                "& :hover":{
-                            backgroundColor: "#02B4EB",
-                        },
+                "&:hover": {
+                  backgroundColor: "#02B4EB !important", // Proper hover selector
+                },
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
