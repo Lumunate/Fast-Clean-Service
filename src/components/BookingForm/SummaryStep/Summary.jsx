@@ -25,8 +25,8 @@ const Summary = () => {
     }
 
     const getOptionPrice = (optionName, category) => {
-        for (const pkgCategory of Object.values(packages)) {
-          console.log(pkgCategory);
+      for (const pkgCategory of Object.values(packages)) {
+        console.log('packageCategory', pkgCategory);
             for (const pkg of pkgCategory) {
                 const optionsList = pkg.additionalOptions?.[category] || pkg.additionalOptions?.detailing || [];
                 const matchedOption = optionsList.find((option) => option.name === optionName);
