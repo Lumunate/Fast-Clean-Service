@@ -118,6 +118,7 @@ export default function Form() {
                     fontWeight: "bold",
                     backgroundColor: "#4AD1FF",
                     color: "white",
+                    width: "100%",
                     fontFamily: "DMSans",
                     "&:hover": {
                         backgroundColor: theme.palette.primary.accent,

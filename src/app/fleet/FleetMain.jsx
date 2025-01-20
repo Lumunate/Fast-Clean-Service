@@ -74,7 +74,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
     },
 }));
 
-const ServiceTitle = styled(Typography)(({ theme }) => ({
+export const ServiceTitle = styled(Typography)(({ theme }) => ({
     color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
     fontSize: '5.6rem',
     fontWeight: '600',
@@ -85,7 +85,7 @@ const ServiceTitle = styled(Typography)(({ theme }) => ({
     },
 }));
 
-const ServiceSubtitle = styled(Typography)(({ theme }) => ({
+export const ServiceSubtitle = styled(Typography)(({ theme }) => ({
     color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
     fontSize: '2.4rem',
     textAlign: 'center',
@@ -97,7 +97,7 @@ const ServiceSubtitle = styled(Typography)(({ theme }) => ({
     },
 }));
 
-const ServiceCard = styled(Box)(({ theme }) => ({
+export const ServiceCard = styled(Box)(({ theme }) => ({
     textAlign: 'center',
     display: "flex",
     flexDirection: "column",
@@ -106,7 +106,7 @@ const ServiceCard = styled(Box)(({ theme }) => ({
     padding: '2rem',
 }));
 
-const ServiceIcon = styled(Box)(({ theme }) => ({
+export const ServiceIcon = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "transparent" : '#FCFCFC',
     marginBottom: "1.7rem",
     borderRadius: '50%',

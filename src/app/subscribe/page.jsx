@@ -1,13 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "../../contexts/themeContext";
+import {Box, Grid, Typography, Container} from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { ServiceHeading } from "../../components/Home/ServicesOverview/ServiceColumnGroup";
 import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
 import RadialCircle from "../../components/Decorative/RadialCircle";
 import Image from "next/image";
+import {
+  ServiceTitle,
+    ServiceSubtitle,
+    ServiceCard,
+    ServiceIcon,
+} from "../fleet/FleetMain";
 import {
   SubsciptionsContainer,
   StyledCard,
@@ -18,6 +23,8 @@ import {
   ImageWrapper,
 } from "./Subscribe.style";
 import { useSubscriptionPackages } from "../../hooks/useSubscriptionPackages";
+import { useTheme } from "@mui/material/styles";
+
 
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 const gradients = [
@@ -152,14 +159,158 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
 
 const Page = () => {
   const { packages, loading, error, fetchPackages } = useSubscriptionPackages();
+  const theme = useTheme();
 
   useEffect(() => {
     fetchPackages();
   }, [fetchPackages]);
 
   if (error) {
-    return "Error loading packages...";
+    return (
+        <Box sx={{ marginTop: "15rem" }}>
+          <ServiceHeading sx={{ fontSize: "5.6rem", marginBottom: "3rem" }}>SUBSCRIPTIONS</ServiceHeading>
+          <Container
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+          >
+            <DecorativeBackgroundImage
+                top={"30%"}
+                right={"0"}
+                width="90rem"
+                height="85rem"
+                sx={{ zIndex: "1" }}
+            />
+            <RadialCircle
+                top={"20rem"}
+                right={"20rem"}
+                sx={{
+                  width: "10rem !important",
+                  height: "10rem !important",
+                  zIndex: "1",
+                }}
+            />
+            <Box sx={{ maxWidth: "1110px", mb: 10 }}>
+              <Box sx={{ mb: 8 }}>
+                <ServiceSubtitle>
+                  Subscription Plans – Worry-Free Maintenance for your Vehicle
+                </ServiceSubtitle>
+                <Typography
+                    sx={{
+                      textAlign: "center",
+                      maxWidth: "1110px",
+                      margin: "0 auto",
+                      fontWeight: "300",
+                      color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                      fontSize: "1.8rem",
+                      lineHeight: 1.6,
+                    }}
+                >
+                  With our Fast Clean Service Subscription Plans we offer a
+                  flexible and economical way to always keep your vehicle in top
+                  condition. Choose from several options tailored to your needs
+                  and driving style, with regular maintenance and exclusive
+                  benefits.
+                </Typography>
+              </Box>
+
+              <Box sx={{ mb: 8, alignItems: "center", display: "flex", flexDirection: "column" }}>
+                <Typography
+                    variant="h3"
+                    sx={{
+                      textAlign: "center",
+                      color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                      fontSize: "3.2rem",
+                      mb: 2,
+                    }}
+                >
+                  What do we offer:
+                </Typography>
+
+                <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                  <Grid container spacing={4} justifyContent="center">
+                    <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
+                      <ServiceCard>
+                        <ServiceIcon>
+                          <img src="/s1.png" alt="Expert Care" />
+                        </ServiceIcon>
+                        <Typography
+                            sx={{
+                              color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                              mb: 0.6,
+                              fontWeight: "400",
+                              fontSize: "1.8rem",
+                            }}
+                        >
+                          Expert Care
+                        </Typography>
+                        <Typography
+                            sx={{
+                              color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                              fontSize: "1.4rem",
+                              fontWeight: "300",
+                            }}
+                        >
+                          Periodic cleaning and maintenance of both interior and exterior.
+                          Better rates for returning customers.
+                        </Typography>
+                      </ServiceCard>
+                    </Grid>
+
+                    <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
+                      <ServiceCard>
+                        <ServiceIcon>
+                          <img src="/s2.png" alt="Flexibility" />
+                        </ServiceIcon>
+                        <Typography
+                            sx={{
+                              color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                              mb: 0.6,
+                              fontWeight: "400",
+                              fontSize: "1.8rem",
+                            }}
+                        >
+                          Flexibility
+                        </Typography>
+                        <Typography
+                            sx={{
+                              color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                              fontSize: "1.4rem",
+                              fontWeight: "300",
+                            }}
+                        >
+                          Flexibility in choosing the desired frequency (monthly, quarterly, etc.).
+                        </Typography>
+                      </ServiceCard>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+
+
+              <Typography
+                  sx={{
+                    textAlign: "center",
+                    color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                    fontSize: "1.8rem",
+                    maxWidth: "750px",
+                    margin: "0 auto",
+                    lineHeight: 1.6,
+                    fontWeight: "300",
+                  }}
+              >
+                Choose one of our subscription options and enjoy convenience and
+                quality, without a hassle!
+              </Typography>
+            </Box>
+          </Container>
+        </Box>
+    );
   }
+
 
   if (!packages) {
     return null;
@@ -168,6 +319,90 @@ const Page = () => {
   return (
     <Box sx={{ marginTop: "15rem" }}>
       <ServiceHeading sx={{ fontSize: "5.6rem" }}>SUBSCRIPTIONS</ServiceHeading>
+      <Container sx={{ padding: "8rem", marginTop: "6rem", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <Box sx={{ maxWidth: "1110px", mb: 10 }}>
+          <Box sx={{ mb: 8 }}>
+            <ServiceSubtitle>
+              Subscription Plans – Worry-Free Maintenance for your Vehicle
+            </ServiceSubtitle>
+            <Typography sx={{
+              textAlign: 'center',
+              maxWidth: '1110px',
+              margin: '0 auto',
+              fontWeight: "300",
+              color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+              fontSize: '1.8rem',
+              lineHeight: 1.6
+            }}>
+              With our Fast Clean Service Subscription Plans we offer a flexible and economical
+              way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits
+            </Typography>
+          </Box>
+
+          <Box sx={{ mb: 8 }}>
+            <Typography variant="h3" sx={{
+              textAlign: 'center',
+              color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
+              fontSize: '3.2rem',
+              mb: 2
+            }}>
+              What do we offer:
+            </Typography>
+
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={4}>
+                <ServiceCard>
+                  <ServiceIcon>
+                    <img src="/s1.png" alt="Expert Care"/>
+                  </ServiceIcon>
+                  <Typography sx={{
+                    color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
+                    mb: 0.6,
+                    fontWeight: '400',
+                    fontSize: "1.8rem",
+                  }}>
+                    Expert Care
+                  </Typography>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000", fontSize: "1.4rem", fontWeight: "300" }}>
+                    Periodic cleaning and maintenance of both interior and exterior Better rates for returning customers
+                  </Typography>
+                </ServiceCard>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <ServiceCard>
+                  <ServiceIcon>
+                    <img src="/s2.png" alt="Flexibility"/>
+                  </ServiceIcon>
+                  <Typography sx={{
+                    color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
+                    mb: 0.6,
+                    fontWeight: '400',
+                    fontSize: "1.8rem",
+                  }}>
+                    Flexibility
+                  </Typography>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000", fontSize: "1.4rem", fontWeight: "300" }}>
+                    Flexibility in choosing the desired frequency (monthly, quarterly, etc.)
+                  </Typography>
+                </ServiceCard>
+              </Grid>
+            </Grid>
+          </Box>
+
+          <Typography sx={{
+            textAlign: 'center',
+            color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+            fontSize: '1.8rem',
+            maxWidth: '900px',
+            margin: '0 auto',
+            lineHeight: 1.6,
+            fontWeight: "300",
+          }}>
+            Choose one of our subscription options and enjoy convenience and quality, without a hassle!
+          </Typography>
+        </Box>
+      </Container>
       <SubsciptionsContainer>
         {packages.map((pkg, index) => (
           <PackageCard key={index} pkg={pkg} index={index} highlightColor={colors[index % 3]} />
