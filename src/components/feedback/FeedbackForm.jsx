@@ -216,9 +216,9 @@ export default function FeedbackForm() {
                 height:"41px",
                 backgroundColor: "#02B4EB",
                 color:"white",
-                "& :hover":{
-                            backgroundColor: "#02B4EB",
-                        },
+                "&:hover": {
+                  backgroundColor: "#02B4EB !important", // Proper hover selector
+                },
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
