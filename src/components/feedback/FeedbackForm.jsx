@@ -214,7 +214,7 @@ export default function FeedbackForm() {
                 fontSize:"14px",
                 width:"170px",
                 height:"41px",
-                backgroundColor: "primary.accentDark",
+                backgroundColor: "#02B4EB",
                 color:"white",
                 "& :hover":{
                             backgroundColor: "#02B4EB",

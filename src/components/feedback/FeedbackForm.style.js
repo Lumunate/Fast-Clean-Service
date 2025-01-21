@@ -4,8 +4,8 @@ import { Box, FormControl, MenuItem, Select, styled, TextField } from '@mui/mate
 
 export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
   padding: '70px 58px 36px',
-  borderRadius: '20px',
-  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+  borderRadius: '32px',
+  border: "1px solid #8D8D8D69",
   zIndex: 1,
   [theme.breakpoints.down('xl')]: {
     padding: '50px 40px',
@@ -32,13 +32,11 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     color: '#000 !important',
     fontWeight: 600,
     height: '36px !important',
-    fontFamily: 'Jost, sans-serif !important',
     marginTop: '15px'
   },
 
   '& .feedback-datepicker::placeholder': {
     color: '#818181 !important',
-    fontFamily: 'Jost, sans-serif !important',
     fontSize: '16px !important',
     textTransform: 'capitalize !important',
     fontWeight: 500,
@@ -48,7 +46,6 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     borderBottom: '1px solid #000 !important',
   },
   '& .react-datepicker': {
-    fontFamily: 'Lato, sans-serif',
     borderRadius: '12px',
     overflow: 'hidden',
     border: 'none',
@@ -127,7 +124,6 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     input: {
       fontWeight: 600,
       fontSize: inputfontsize,
-      fontFamily: 'Jost, sans-serif',
       height: '36px',
       minHeight: '36px',
       padding: '0',
@@ -137,12 +133,10 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
       fontWeight: 600,
       fontSize: labelfontsize,
       textTransform: 'capitalize',
-      fontFamily: 'Lato, sans-serif',
     },
     '& .MuiInputBase-input.MuiInput-input': {
       fontWeight: 600,
-      fontSize: inputfontsize, 
-      fontFamily: 'Jost, sans-serif',
+      fontSize: inputfontsize,
     },
     '& .MuiFormHelperText-root.Mui-error ': {
       fontSize: '10px',
@@ -169,7 +163,6 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
       fontWeight: 600,
       fontSize: labelfontsize, 
       textTransform: 'capitalize',
-      fontFamily: 'Lato, sans-serif',
     },
   
     '& .MuiFormHelperText-root.Mui-error ': {
@@ -187,7 +180,6 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     textAlign: 'start',
     fontWeight: 600,
     fontSize: inputfontsize,
-    fontFamily: 'Jost, sans-serif',
     overflow: 'hidden',
     height: '36px',
     minHeight: '36px',
@@ -218,7 +210,6 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     fontWeight: 600,
     fontSize: '16px', 
     textTransform: 'capitalize',
-    fontFamily: 'Lato, sans-serif',
     padding: '0',
     background: 'none',
     '&:hover ': {

@@ -13,7 +13,7 @@ export default function FeedbackPage() {
       <Grid
         container
         columns={24}
-        sx={{ px: { xs: "0", md: "40px" }, maxWidth: "900px", mx: "auto" }}
+        sx={{ px: { xs: "0", md: "40px" }, mx: "auto" }}
       >
         <Grid xs={24} sx={{ position: "relative" }}>
           <FeedbackHeadingTypography>

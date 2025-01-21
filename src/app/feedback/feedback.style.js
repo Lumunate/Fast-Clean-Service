@@ -20,8 +20,7 @@ export const FeedbackContainer = styled(Box)(({ theme }) => ({
 
   export const FeedbackHeadingTypography = styled(Typography)(({ theme }) => ({
     fontWeight: 600,
-    fontFamily: 'Jost, sans-serif',
-    color: '#1F1F1F',
+    color: '#232E4A',
     fontSize: '56px',
     textAlign:"center",
     [theme.breakpoints.down('xl')]: {
@@ -41,8 +40,7 @@ export const FeedbackContainer = styled(Box)(({ theme }) => ({
 
   export const FeedbackParaTypography = styled(Typography)(({ theme }) => ({
     fontWeight: 400,
-    fontFamily: 'Lato, sans-serif',
-    color: '#000000',
+    color: '#232E4A',
     fontSize: '18px',
     marginBottom: '30px',
     [theme.breakpoints.down('sm')]: {
