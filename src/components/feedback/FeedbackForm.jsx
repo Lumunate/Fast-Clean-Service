@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useState } from 'react';
 import { CustomFormControl, CustomInputLabel, FeedbackFormContainer, StyledSelectField, StyledTextField } from './FeedbackForm.style'
 import { Box, Grid, InputLabel, MenuItem, Rating,Button, FormHelperText, CircularProgress } from '@mui/material'
 import { Controller, useForm } from "react-hook-form"
@@ -18,7 +18,7 @@ const defaultValues = {
   lastName: '',
   Service: '',
   Appointment: new Date(),
-  experience: '4', 
+  experience: '4',
   feedback: '',
 }
 
@@ -30,6 +30,8 @@ export default function FeedbackForm() {
     console.log(snackbarContext);
 
     const { showSnackbar } = snackbarContext || {};
+
+    const [successMessage, setSuccessMessage] = useState(false);
 
     const {
     control,
@@ -50,6 +52,8 @@ export default function FeedbackForm() {
         try {
             await submitForm(formattedData);
             if (showSnackbar) showSnackbar('Form submitted successfully!');
+            setSuccessMessage(true);
+            setTimeout(() => setSuccessMessage(false), 5000);
             reset();
         } catch (err) {
             if (showSnackbar) showSnackbar('Failed to submit Contact Form. Please try again later!');
@@ -66,18 +70,35 @@ export default function FeedbackForm() {
       left: 0,
       right: 0,
       bottom: 0,
-       backdropFilter:"blur(2px)",
+       backdropFilter:"blur(14px)",
        }}}>
+        {successMessage && (
+            <Box sx={{
+                position: 'absolute',
+                top: '-40px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#4CAF50',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '4px',
+                textAlign: 'center',
+                fontWeight: 'bold',
+                zIndex: 10,
+            }}>
+                Feedback sent successfully!
+            </Box>
+        )}
         <form  onSubmit={handleSubmit(onSubmit)}>
         <Grid
             container
             columns={24}
-          
+
             alignItems={'start'}
             sx={{ mb: '40px' }}
           >
             <Grid  xs={24} md={12}>
-                <StyledTextField 
+                <StyledTextField
                  label='Name'
                  variant='standard'
                  fullWidth
@@ -91,7 +112,7 @@ export default function FeedbackForm() {
             </Grid>
 
             <Grid  xs={24} md={12}>
-                <StyledTextField 
+                <StyledTextField
                  label='Last Name'
                 variant='standard'
                 fullWidth
@@ -174,14 +195,14 @@ export default function FeedbackForm() {
                   render={({ field }) => (
                     <Rating
                       name='experience'
-                      value={field.value ? Number(field.value) : 4} 
-                      onChange={(_, newValue) => field.onChange(String(newValue))}  
+                      value={field.value ? Number(field.value) : 4}
+                      onChange={(_, newValue) => field.onChange(String(newValue))}
                       size='large'
-                      icon={<Image src='/feedback/yellowStar.svg' alt='Filled Star' width={26} height={25} />} 
-                      emptyIcon={<Image src='/feedback/whiteStar.svg' alt='Outlined Star' width={26} height={25} />} 
+                      icon={<Image src='/feedback/yellowStar.svg' alt='Filled Star' width={26} height={25} />}
+                      emptyIcon={<Image src='/feedback/whiteStar.svg' alt='Outlined Star' width={26} height={25} />}
                       sx={{
                         '& .MuiRating-icon': {
-                          marginRight: '5px', 
+                          marginRight: '5px',
                         }
                       }}
                     />
@@ -208,7 +229,7 @@ export default function FeedbackForm() {
             </Grid>
 
           </Grid>
-            <Button sx={{ 
+            <Button sx={{
                 marginTop:"24px",
                 borderRadius:"4px",
                 fontSize:"14px",
@@ -222,7 +243,7 @@ export default function FeedbackForm() {
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
-            
+
         </form>
 
         <DecorativeBackgroundImage
