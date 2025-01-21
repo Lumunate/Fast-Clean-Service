@@ -116,20 +116,23 @@ export default function FeedbackForm() {
                  labelfontsize='16px'
                 />
             </Grid>
-
-            <Grid  xs={24} md={12}>
-                <StyledTextField
-                 label='Last Name'
-                variant='standard'
-                fullWidth
-                margin='none'
-                error={!!errors.lastName}
-                helperText={errors.lastName?.message}
-                {...register('lastName')}
-                 inputfontsize='18px'
-                 labelfontsize='16px'
-                />
-            </Grid>
+                <Grid  xs={24} md={12} sx={{
+                    "@media (max-width: 900px)": {
+                        marginTop: "3rem"
+                    },
+                }}>
+                    <StyledTextField
+                     label='Last Name'
+                    variant='standard'
+                    fullWidth
+                    margin='none'
+                    error={!!errors.lastName}
+                    helperText={errors.lastName?.message}
+                    {...register('lastName')}
+                     inputfontsize='18px'
+                     labelfontsize='16px'
+                    />
+                </Grid>
 
             <Grid sx={{marginTop:"44px"}}  xs={24} md={12}>
                 <CustomFormControl fullWidth variant='standard' labelfontsize='16px' error={!!errors.Service}>
@@ -261,6 +264,13 @@ export default function FeedbackForm() {
                 "&:hover": {
                   backgroundColor: "#02B4EB !important",
                 },
+                "@media (max-width: 768px)": {
+                    fontSize: "1.2rem",
+                },
+                "@media (max-width: 508px)": {
+                    fontSize: "1rem",
+                    width: "50%"
+                },
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
             </Button>
@@ -268,7 +278,7 @@ export default function FeedbackForm() {
         </form>
 
         <DecorativeBackgroundImage
-        top="14rem"
+        top="10rem"
         right="-59rem"
         width="92rem"
         height="68.2rem"

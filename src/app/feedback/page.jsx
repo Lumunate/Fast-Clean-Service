@@ -25,7 +25,7 @@ export default function FeedbackPage() {
         </Grid>
 
         <Grid xs={24}>
-          <Box sx={{ maxWidth: "832px", mx: "auto" }}>
+          <Box sx={{ maxWidth: "832px", mx: "auto", width: "100%", padding: "3rem" }}>
             <FeedbackForm />
           </Box>
         </Grid>
