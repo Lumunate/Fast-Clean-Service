@@ -10,32 +10,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Line = styled("div")(({ theme }) => ({
     position: "absolute",
-    width: "80%",
+    width: "50%",
     height: "3px",
     transition: "all 0.3s ease",
     background: `linear-gradient(to right, rgba(207, 207, 207, 0.05), ${theme.palette.primary.accent})`,
-
-    [theme.breakpoints.down("sm")]: {
-        width: "50%",
+    "@media (max-width: 600px)": {
+        width: "40%",
     },
 }));
 
 const AboveLine = styled(Line)(({ theme }) => ({
-    left: "-50%",
+    left: "-30%",
     top: "0",
 
-    [theme.breakpoints.down("sm")]: {
-        left: "-25%",
+    "@media (max-width: 600px)": {
+        left: "-10%",
     },
 }));
 
 const BelowLine = styled(Line)(({ theme }) => ({
-    right: "-50%",
+    right: "-30%",
     bottom: "1px",
     background: `linear-gradient(to left, rgba(207, 207, 207, 0.3), ${theme.palette.primary.accent})`,
 
-    [theme.breakpoints.down("sm")]: {
-        right: "-25%",
+    "@media (max-width: 600px)": {
+        right: "-10%",
     },
 }));
 
@@ -62,7 +61,7 @@ export default function HeadingLinesAnimation({ text, children }) {
         scrollTrigger: {
           trigger: element,
           start: "bottom bottom",
-          once: true,
+            toggleActions: "play reverse play reverse",
         },
       }
     );
@@ -80,7 +79,7 @@ export default function HeadingLinesAnimation({ text, children }) {
             scrollTrigger: {
                 trigger: element,
                 start: "bottom bottom",
-                once: true,
+                toggleActions: "play reverse play reverse",
             },
         }
     );
@@ -98,7 +97,7 @@ export default function HeadingLinesAnimation({ text, children }) {
             scrollTrigger: {
                 trigger: element,
                 start: "bottom bottom",
-                once: true,
+                toggleActions: "play reverse play reverse",
             },
         }
     );
@@ -119,7 +118,8 @@ export default function HeadingLinesAnimation({ text, children }) {
         className="heading"
         sx={{
           fontSize: { md: "4.8rem", sm: "2.8rem", xs: '2.4rem'},
-          fontWeight: { md: 700, sm: 600},
+          fontWeight: "700",
+            textAlign: "center",
           fontFamily: "Unbounded !important",
           display: "inline-block",
           margin: "0",

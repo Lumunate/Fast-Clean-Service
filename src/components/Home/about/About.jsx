@@ -84,6 +84,9 @@ export default function About() {
                 height: "100%",
                 maxHeight: "350px",
                 maxWidth: "600px",
+                  "@media (max-width: 1400px)": {
+                      maxHeight: "330px",
+                  },
               }}
             />
           </Box>
@@ -96,6 +99,9 @@ export default function About() {
               "@media (max-width: 600px)": {
                 marginTop: "3rem",
               },
+                "@media (max-width: 1400px)": {
+                    marginTop: "0",
+                },
             }}
           >
             <Box
@@ -104,10 +110,14 @@ export default function About() {
                 margin: "0 auto",
                 marginRight: "48%",
                 marginLeft: "1rem",
+                  "@media (max-width: 1400px)": {
+                      marginLeft: "5rem",
+                  },
                 "@media (max-width: 900px)": {
                   marginRight: "2rem",
                   marginLeft: "2rem",
                 },
+
               }}
             >
               <Box
@@ -119,10 +129,10 @@ export default function About() {
                 }}
               >
                 <BestCareHeading> The Best Care for Your Car{" "}
-        <span className="line-break">
-          <br />
-        </span>
-        Wherever You Want! </BestCareHeading>
+                    <span className="line-break">
+                      <br />
+                    </span>
+                    Wherever You Want! </BestCareHeading>
               </Box>
 
               <Typography
@@ -153,7 +163,7 @@ export default function About() {
                   textAlign: "left",
                   fontSize: "1.55rem",
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
+                    fontSize: "1.4rem",
                   },
                 }}
               >
@@ -168,13 +178,13 @@ export default function About() {
                 }}
               >
                 <ListItem sx={{ display: "list-item", py: '0px', }}>
-                  <ListItemText primaryTypographyProps={{fontSize: '16px !important', fontWeight:"300"}} primary="Convenience: Cleaning on location or at our branch." />
+                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Convenience: Cleaning on location or at our branch." />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", py: '0px' }}>
-                  <ListItemText primaryTypographyProps={{fontSize: '16px !important',fontWeight:"300"}} primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
+                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", py: '0px' }}>
-                  <ListItemText primaryTypographyProps={{fontSize: '16px !important',fontWeight:"300"}} primary="Quality Guaranteed: Exceptional results every time." />
+                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Quality Guaranteed: Exceptional results every time." />
                 </ListItem>
               </List>
               <Typography
@@ -186,7 +196,7 @@ export default function About() {
                   textAlign: "left",
                   fontSize: "1.55rem",
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
+                    fontSize: "1.4rem",
                   },
                 }}
               >
