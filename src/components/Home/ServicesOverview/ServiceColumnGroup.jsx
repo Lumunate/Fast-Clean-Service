@@ -6,10 +6,10 @@ import { HomePkgsBox, HomePkgsInBox } from "../../mui/HomePkgs";
 import FadeIn from "../../Animations/FadeIn";
 
 export const ServiceHeading = styled(Typography)(({ theme }) => ({
+  fontSize:"40px", 
+  fontWeight:500,
   textAlign: "center",
-  fontSize: "4rem ",
   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
-  fontWeight: "bold",
   marginBottom: "0.9rem",
   "@media (max-width: 600px)": {
     fontSize: "2.2rem ",

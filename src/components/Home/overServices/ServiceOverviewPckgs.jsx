@@ -58,10 +58,10 @@ export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemIcon = styled(Image)(({ theme }) => ({
-  // filter:
-  //     theme.palette.mode === "dark"
-  //         ? "invert(41%) sepia(100%) saturate(493%) hue-rotate(170deg) brightness(92%) contrast(96%)"
-  //         : "invert(55%) sepia(82%) saturate(653%) hue-rotate(176deg) brightness(95%) contrast(101%)",
+  filter:
+      theme.palette.mode === "dark"
+          ? "invert(41%) sepia(100%) saturate(493%) hue-rotate(170deg) brightness(92%) contrast(96%)"
+          : "",
 }));
 
 
