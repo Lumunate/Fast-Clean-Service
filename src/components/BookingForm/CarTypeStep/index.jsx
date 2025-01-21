@@ -20,13 +20,14 @@ import Union2 from "../../../../public/carsIcons/Union-2.svg";
 import Union3 from "../../../../public/carsIcons/Union-3.svg";
 import UnionIcon from "../../../../public/carsIcons/Union.svg";
 import BikeIcon from "../../../../public/bookingFormIcons/BikeIcon.png";
+import SuvIcon from "../../../../public/carsIcons/suv.webp";
 
 const CarTypeBox = ({ name, icon, selected }) => {
     const { theme } = useTheme();
 
     const styledIcon = React.cloneElement(icon, {
         sx: {
-            fontSize: 32,
+            fontSize: 50,
             color: theme.palette.primary.contrastText,
 
             "@media (max-width: 600px)": {
@@ -45,8 +46,8 @@ const CarTypeBox = ({ name, icon, selected }) => {
                 padding: "1rem",
                 border: `1px solid ${selected ? "#1C79CC" : "#A5A5A5"}`,
                 borderRadius: "10px",
-                width: "80px",
-                height: "80px",
+                width: "140px",
+                height: "140px",
                 backgroundColor: theme.palette.primary.main,
                 cursor: "pointer",
                 transition: "background-color 0.3s ease",
@@ -67,7 +68,7 @@ const CarTypeBox = ({ name, icon, selected }) => {
                 sx={{
                     marginTop: "6.5px",
                     fontFamily: "Unbounded",
-                    fontSize: 7,
+                    fontSize: 12,
                     fontWeight: "light",
                     color: theme.palette.mode === "dark" ? "#fff" : "#434343",
 
@@ -98,8 +99,8 @@ const Index = () => {
                 <Image
                     src={Subtract}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -110,8 +111,20 @@ const Index = () => {
                 <Image
                     src={UnionIcon}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
+                    style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
+                />
+            ),
+        },
+        {
+            name: "SUV",
+            icon: (
+                <Image
+                    src={SuvIcon}
+                    alt={"car type"}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -122,8 +135,8 @@ const Index = () => {
                 <Image
                     src={Subtract2}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -134,8 +147,8 @@ const Index = () => {
                 <Image
                     src={UnionIcon}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -146,8 +159,8 @@ const Index = () => {
                 <Image
                     src={Union2}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -158,8 +171,8 @@ const Index = () => {
                 <Image
                     src={Subtract1}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -170,8 +183,8 @@ const Index = () => {
                 <Image
                     src={Subtract3}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -182,8 +195,8 @@ const Index = () => {
                 <Image
                     src={Union3}
                     alt={"car type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),
@@ -194,8 +207,8 @@ const Index = () => {
                 <Image
                     src={BikeIcon}
                     alt={"Motor type"}
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                     style={{ filter: theme.palette.mode === "dark" ? "invert(1)" : "" }}
                 />
             ),

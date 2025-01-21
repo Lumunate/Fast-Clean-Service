@@ -75,7 +75,7 @@ export default function FeedbackForm() {
         {successMessage && (
             <Box sx={{
                 position: 'absolute',
-                top: '-40px',
+                top: '40px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 backgroundColor: '#4CAF50',

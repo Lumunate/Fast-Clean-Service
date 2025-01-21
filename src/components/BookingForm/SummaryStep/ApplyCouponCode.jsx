@@ -45,7 +45,7 @@ export default function CouponApplier({ basePrice, onDiscount }) {
             borderRadius: "8px",
           }}
         />
-        <NextPrevButton onClick={handleApplyCoupon} disabled={loading || code}>
+        <NextPrevButton sx={{ padding: "1.6rem 2.2rem", width: "200px" }} onClick={handleApplyCoupon} disabled={loading || code}>
           {loading ? "Applying..." : "Apply Coupon"}
         </NextPrevButton>
 
