@@ -362,7 +362,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
   fontWeight: "300",
   lineHeight: "210%",
-  width: "70%",
+  width: "50%",
   opacity: 0,
   animation: "showContent 1s ease-in-out 0.3s 1 forwards",
   display: "flex",
@@ -831,7 +831,7 @@ export const CarouselItemInner = styled(Box)(({ theme }) => ({
   padding: "4rem",
   borderRadius: "21px",
   backdropFilter: "blur(14px)",
-  boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
+  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
   height: "100%",
 

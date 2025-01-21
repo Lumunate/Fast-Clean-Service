@@ -9,7 +9,7 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
-  gap: "1rem",
+  gap: "2rem",
   maxWidth: "1454px",
 
   "@media (max-width: 600px)": {
@@ -18,7 +18,7 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
-  width: "470px",
+  width: "456px",
   minHeight: "325px",
   maxHeight: "330px",
   textAlign: "center",

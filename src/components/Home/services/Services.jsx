@@ -127,7 +127,7 @@ export default function Services() {
                             justifyContent: "space-between",
                             alignItems: "flex-start",
                             marginBottom: "6rem",
-                            padding: "0 10rem",
+                            padding: "0 9rem",
                             gap: "3rem",
                             "@media (max-width: 600px)": {
                                 flexDirection: "column",
@@ -145,7 +145,7 @@ export default function Services() {
                             <React.Fragment key={index}>
                                 <Box
                                     sx={{
-                                        maxWidth: "270px",
+                                        maxWidth: "288px",
                                         height: "auto",
                                         display: "flex",
                                         flexDirection: "column",

@@ -50,7 +50,7 @@ export default function Home() {
           <HowDoesItWork/>
           <OverServiceOverview/>
           <Testimonials />
-          <Subscription/>
+          {/* <Subscription/> */}
 
           <ServicesOverview />
 

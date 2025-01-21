@@ -93,18 +93,18 @@ export default function CamperService() {
         </FadeIn>
       </CamperServiceBox>
 
-      <CamperServiceBox>
+      <CamperServiceBox >
         <FadeIn direction="right" distance={100} duration={1}>
           <Box>
             <ServiceHeading sx={{ fontSize:"40px", fontWeight:500 }} >Subscriptions</ServiceHeading>
-            <ServiceItemDesciptionB sx={{ fontSize:"20px" }}>
+            <ServiceItemDesciptionB sx={{ fontSize:"20px", fontWeight:300 }}>
             Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences. 
             </ServiceItemDesciptionB>
-            <ServiceItemHighlight sx={{ color:"#A4A4A4" }}>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
+            <ServiceItemHighlight sx={{ color:"#A4A4A4",paddingTop:"14px" }}>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
 
             <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>
           </Box>
-          <ServiceItemCTA special onClick={() => (window.location.href = "/subscribe")}>
+          <ServiceItemCTA  special onClick={() => (window.location.href = "/subscribe")}>
             Book Now
           </ServiceItemCTA>
         </FadeIn>
