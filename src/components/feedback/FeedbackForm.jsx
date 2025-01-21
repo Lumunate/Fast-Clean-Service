@@ -13,11 +13,17 @@ import { feedbackSchema } from '../../types/feedback';
 import {useSubmitFeedbackForm} from '../../hooks/useFeedbackForm'
 import { useTheme } from '../../contexts/themeContext';
 
+const datePickerStyles = `
+  .feedback-datepicker::placeholder {
+    color: #818181;
+  }
+`;
+
 const defaultValues = {
   name: '',
   lastName: '',
   Service: '',
-  Appointment: new Date(),
+    Appointment: null,
   experience: '4',
   feedback: '',
 }
@@ -132,12 +138,12 @@ export default function FeedbackForm() {
                       control={control}
                   render={({ field }) => (
                 <StyledSelectField
+                    sx={{ width: "90%" }}
                 label='Service'
                 value={field.value}
                 onChange={field.onChange}
                 variant='standard'
                 inputfontsize='18px'
-                fullWidth
                 IconComponent={() => (
                   <Image src='/feedback/down.svg' alt='Custom Dropdown Icon' width={7} height={8} />
                 )}
@@ -153,16 +159,21 @@ export default function FeedbackForm() {
             </Grid>
 
             <Grid sx={{marginTop:"44px"}} xs={24} md={12}>
-              <Box sx={{ position: 'relative' }}>
+              <Box sx={{
+                  position: 'relative',
+                  '& .feedback-datepicker::placeholder': {
+                      color: '#818181'
+                  }
+              }}>
                 <Image
                   src={'/feedback/calender.svg'}
-                  width={10}
-                  height={12}
+                  width={20}
+                  height={22}
                   alt='icon'
                   style={{
                     position: 'absolute',
                     right: '36px',
-                    top: '28px',
+                    top: '25px',
                     zIndex: 2,
                   }}
                 />
@@ -175,6 +186,8 @@ export default function FeedbackForm() {
                       onChange={(date) => field.onChange(date)}
                       className='feedback-datepicker'
                       placeholderText='Date of Appointment'
+                      dateFormat='MM/dd/yyyy'
+                      isClearable
                     />
                   )}
                 />
@@ -225,6 +238,13 @@ export default function FeedbackForm() {
                 {...register('feedback')}
                 inputfontsize='18px'
                 labelfontsize='16px'
+                sx={{
+                    height: "36px",
+                    '& .MuiInput-root': {
+                        height: "36px",
+                    },
+                }}
+
               />
             </Grid>
 
@@ -232,13 +252,14 @@ export default function FeedbackForm() {
             <Button sx={{
                 marginTop:"24px",
                 borderRadius:"4px",
-                fontSize:"14px",
-                width:"170px",
+                fontSize:"16px",
+                fontWeight: "400",
+                width:"35%",
                 height:"41px",
                 backgroundColor: "#02B4EB",
                 color:"white",
                 "&:hover": {
-                  backgroundColor: "#02B4EB !important", // Proper hover selector
+                  backgroundColor: "#02B4EB !important",
                 },
             }} type='submit' special >
             {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
