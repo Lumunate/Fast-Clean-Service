@@ -12,7 +12,7 @@ import DetailingStep from "./DetailingStep";
 import ScheduleAppointmentStep from "./ScheduleAppointmentStep";
 import SummaryStep from "./SummaryStep";
 import PersonParticularsStep from "./PersonParticularsStep";
-import SelectCityStep from "./SelectCityStep";
+import SelectCityStep from "./SelectCityStep/SelectLocationInput";
 
 const BookingForm = () => {
   const { currentStep, formData, nextStep } = useMultiStepForm();
