@@ -183,7 +183,6 @@ const AutoCare = () => {
         <Box
             sx={{
                 position: "relative",
-                backgroundColor: "primary.main",
                 //backgroundImage:
                 //    theme.palette.mode === "light"
                 //        ? "url(/bg3.jpg)"
@@ -209,7 +208,7 @@ const AutoCare = () => {
             {/* <ServiceHeading sx={{ fontSize: "3.5rem",fontWeight:600, marginTop: "15rem" }}>
             FleetCare
             </ServiceHeading> */}
-            <FleetCare/>
+            {/*<FleetCare/>*/}
             <ServiceHeading sx={{ fontSize: "5.6rem", marginTop: "15rem" }}>
                 Anywhere Auto Care
             </ServiceHeading>

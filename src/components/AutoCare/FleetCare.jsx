@@ -124,7 +124,7 @@ export default function FleetCare() {
         }}
       >
         <FadeIn direction="up" distance={100} duration={0.5}>
-          <FleetCareHeading>FleetCareS</FleetCareHeading>
+          <FleetCareHeading>FleetCare</FleetCareHeading>
         </FadeIn>
         <FleetCareDescription sx={{ fontSize: "20px", fontWeight: 400 }}>
           WagenPark Maintenance – Professional Maintenance for your Fleet

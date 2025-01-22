@@ -95,6 +95,7 @@ export default function FleetCareProForm() {
         borderRadius: "10px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         padding: "2rem",
+          marginBottom: "5rem",
       }}
     >
       <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
@@ -106,6 +107,7 @@ export default function FleetCareProForm() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+              "@media (max-width: 600px)": { padding: "2rem" }
           }}
         >
           <Grid container spacing={4}>

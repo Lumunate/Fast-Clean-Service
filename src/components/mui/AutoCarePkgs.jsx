@@ -59,7 +59,7 @@ export const AutoTab = styled(Box)(({ theme }) => ({
       backgroundColor:
         theme.palette.mode === "light"
           ? `${theme.palette.primary.main}90`
-          : `rgba(255,255,255,0.5)`,
+          : `rgba(255,255,255,0.05)`,
       backdropFilter: "blur(30px)",
       height: "40rem",
     },

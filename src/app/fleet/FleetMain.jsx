@@ -249,7 +249,7 @@ export default function FleetMain() {
     );
     */
     return (
-        <Container sx={{ padding: "8rem", marginTop: "6rem", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <Container sx={{ padding: "8rem", marginTop: "6rem", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", "@media (max-width: 600px)": { padding: "2rem" } }}>
             <DecorativeBackgroundImage top={"100%"} right={"0"} width="90rem" height="85rem" sx={{ zIndex: "1" }} />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
             <Box sx={{ maxWidth: "1110px", mb: 10 }}>

@@ -62,10 +62,10 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
     },
 
     "& label": {
-      fontSize: "1rem",
+      fontSize: "1.4rem",
       fontWeight: 400,
       lineHeight: 1.2,
-      transform: "translate(0%, -20%) scale(1)",
+      transform: "translate(5%, 200%) scale(1)",
     },
 
     "& .MuiOutlinedInput-root": {
