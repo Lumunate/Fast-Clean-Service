@@ -23,7 +23,7 @@ export default function AboutUs() {
 
         <BackgroundSection />
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <ValueProposition />
         </Box>
 
@@ -46,7 +46,7 @@ export default function AboutUs() {
             <ExpandableCards />
         </Box>
 
-      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
+      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "10rem"} }}>
           <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
               <HeadingLinesAnimation>MEET THE FOUNDER</HeadingLinesAnimation>
           </Box>
@@ -54,7 +54,7 @@ export default function AboutUs() {
       </HomeWrapper>
 
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
             </Box>
@@ -62,7 +62,7 @@ export default function AboutUs() {
         </Box>
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "2rem"}}}>
             <CallToActionBox hideImage={true} />
         </Box>
         <DecorativeBackgroundImage top="50rem" right="0" width="92rem" height="68.2rem" />

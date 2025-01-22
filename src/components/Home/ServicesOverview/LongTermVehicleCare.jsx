@@ -243,8 +243,8 @@ export default function LongTermVehicleCare() {
     <Box
       sx={{
         position: "relative",
-        padding: "5rem 0",
-        marginBottom: "10rem",
+        padding: "0",
+        marginBottom: "6rem",
         "@media (max-width: 600px)": {
           padding: "2rem 0",
           marginBottom: "2rem",

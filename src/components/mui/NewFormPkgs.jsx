@@ -19,16 +19,16 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
     fontWeight: 400,
     lineHeight: 1.21,
     position: "relative",
-    transform: "translate(2%, 180%) scale(1)",
+    transform: "translate(3%, 180%) scale(1)",
   },
   "& label.MuiInputLabel-shrink": {
-    transform: "translate(2%, 0%) scale(1)", 
+    transform: "translate(3%, 0%) scale(1)",
   },
 
   "& label.Mui-focused": {
     border: "none",
     color: theme.palette.mode === "light" ? "#818181 " : "#fff",
-    transform: "translate(2%, 0%) scale(1)",
+    transform: "translate(3%, 0%) scale(1)",
   },
 
   "& .MuiInput-underline:after": {

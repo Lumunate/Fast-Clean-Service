@@ -31,6 +31,10 @@ export default function CouponApplier({ basePrice, onDiscount }) {
         alignItems: "center",
         marginTop: "2rem",
         marginBottom: "1rem",
+              "@media (max-width: 600px)": {
+                  marginTop: "-2rem",
+                  marginBottom: "3rem",
+              },
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
@@ -45,7 +49,7 @@ export default function CouponApplier({ basePrice, onDiscount }) {
             borderRadius: "8px",
           }}
         />
-        <NextPrevButton sx={{ padding: "1.6rem 2.2rem", width: "200px" }} onClick={handleApplyCoupon} disabled={loading || code}>
+        <NextPrevButton sx={{ padding: "1.6rem 2.2rem", width: "217px", top: "1rem", "@media (max-width: 600px)": { top: "1.5rem", fontSize: "1.2rem", width: "140px", height: "auto", padding: "1.6rem 0.8rem" } }} onClick={handleApplyCoupon} disabled={loading || code}>
           {loading ? "Applying..." : "Apply Coupon"}
         </NextPrevButton>
 

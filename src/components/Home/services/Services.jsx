@@ -71,8 +71,7 @@ export default function Services() {
     return (
         <HomePkgBox
             sx={{
-                margin: "5rem auto 16.8rem",
-                paddingBottom: "7.5rem",
+                margin: "5rem auto 6rem",
                 width: "100%",
                 "@media (max-width: 600px)": {
                     margin: "2rem auto 2rem",

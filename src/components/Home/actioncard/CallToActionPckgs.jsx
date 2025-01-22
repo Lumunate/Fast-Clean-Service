@@ -79,4 +79,7 @@ export const CTAButton = styled(ServiceBtn1)(({ theme }) => ({
   fontWeight: "bold",
   backgroundColor: "#0085FF",
   color: "white",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.accent,
+  },
 }));
