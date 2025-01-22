@@ -67,7 +67,7 @@ const BackgroundImage = styled(Box)(({ theme, bgImage }) => ({
     backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
-    filter: "brightness(0.3)",
+    filter: theme.palette.mode === "dark" ? "brightness(0.7)" : "brightness(0.3)",
     zIndex: 1,
     "@media (max-width: 600px)": {
         filter: "brightness(0.6)",

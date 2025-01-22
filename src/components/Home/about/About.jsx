@@ -202,7 +202,7 @@ export default function About() {
               >
                 Book online or request a free quote today!
               </Typography>
-              <Link href="#" passHref>
+              <Link href="/booking" passHref>
                 <Button
                     variant="contained"
                     sx={{

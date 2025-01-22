@@ -69,15 +69,7 @@ export default function FeedbackForm() {
 
   return (
     <>
-    <FeedbackFormContainer sx={{ position:"relative" ,"&::before": {
-      content: '""',
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-       backdropFilter:"blur(14px)",
-       }}}>
+    <FeedbackFormContainer>
         {successMessage && (
             <Box sx={{
                 position: 'absolute',
@@ -103,7 +95,7 @@ export default function FeedbackForm() {
             alignItems={'start'}
             sx={{ mb: '40px' }}
           >
-            <Grid  xs={24} md={12}>
+            <Grid xs={24} md={12}>
                 <StyledTextField
                  label='Name'
                  variant='standard'
@@ -161,8 +153,9 @@ export default function FeedbackForm() {
                 </CustomFormControl>
             </Grid>
 
-            <Grid sx={{marginTop:"44px"}} xs={24} md={12}>
+            <Grid sx={{marginTop:"44px",}} xs={24} md={12}>
               <Box sx={{
+                width:"93%",
                   position: 'relative',
                   '& .feedback-datepicker::placeholder': {
                       color: '#818181'
@@ -175,7 +168,7 @@ export default function FeedbackForm() {
                   alt='icon'
                   style={{
                     position: 'absolute',
-                    right: '36px',
+                    right: '8px',
                     top: '25px',
                     zIndex: 2,
                   }}
@@ -184,7 +177,7 @@ export default function FeedbackForm() {
                   name='Appointment'
                   control={control}
                   render={({ field }) => (
-                    <DatePicker
+                    <DatePicker 
                       selected={field.value}
                       onChange={(date) => field.onChange(date)}
                       className='feedback-datepicker'

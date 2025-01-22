@@ -116,12 +116,15 @@ export const ServiceIcon = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: theme.palette.mode === "dark" ? "0.4px solid #fff" : "0.4px solid #9B9B9B",
+    border: `0.4px solid ${theme.palette.mode === "dark" ? "transparent" : "#c4c4c4"}`,
     '& img': {
-        width: '42px',
-        height: '42px',
+        width: theme.palette.mode === 'dark'? "62px":'42px',
+        height: theme.palette.mode === 'dark'? "62px":'42px',
         objectFit: 'contain',
-        filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+        filter:
+    theme.palette.mode === "dark"
+      ? "invert(41%) sepia(100%) saturate(493%) hue-rotate(170deg) brightness(92%) contrast(96%)"
+      : "invert(20%) sepia(13%) saturate(227%) hue-rotate(204deg) brightness(93%) contrast(91%)",
     },
 }));
 
