@@ -71,10 +71,13 @@ export const FleetCareItemImageContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const FleetCareItemImage = styled(Image)(({ theme }) => ({
+  width: theme.palette.mode === 'dark'? "62px":'42px',
+  height: theme.palette.mode === 'dark'? "62px":'42px',
   filter:
     theme.palette.mode === "dark"
       ? "invert(41%) sepia(100%) saturate(493%) hue-rotate(170deg) brightness(92%) contrast(96%)"
       : "invert(20%) sepia(13%) saturate(227%) hue-rotate(204deg) brightness(93%) contrast(91%)",
+  "@media (max-width: 600px)": { transform: "scale(0.6)" }
 }));
 
 export const FleetCareItemHeading = styled(Typography)(({ theme }) => ({
@@ -149,7 +152,6 @@ export default function FleetCare() {
               alt="car Service"
               width={39}
               height={40}
-              sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
             />
           </FleetCareItemImageContainer>
           <FleetCareItemHeading variant="h5">
@@ -166,7 +168,6 @@ export default function FleetCare() {
               alt="steering Wheel"
               width={39}
               height={40}
-              sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
             />
           </FleetCareItemImageContainer>
           <FleetCareItemHeading variant="h5">
@@ -184,7 +185,6 @@ export default function FleetCare() {
               alt="Vector"
               width={48}
               height={48}
-              sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
             />
           </FleetCareItemImageContainer>
           <FleetCareItemHeading variant="h5">

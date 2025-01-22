@@ -262,6 +262,8 @@ const Index = () => {
                     gridTemplateColumns: {
                         xs: "repeat(3, 1fr)",
                         sm: "repeat(4, 1fr)",
+                        md: "repeat(5, 1fr)",
+
                     },
                     gridAutoFlow: "dense",
                     gap: "1rem",

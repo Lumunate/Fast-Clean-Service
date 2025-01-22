@@ -555,7 +555,7 @@ const AutoCare = () => {
                                         <Typography
                                             sx={{
                                                 fontSize: "14px !important",
-                                                color: "black",
+                                                color:theme.palette.mode === "dark" ?"white":"",
                                                 marginBottom: "0.1rem",
                                                 fontWeight:300
                                             }}

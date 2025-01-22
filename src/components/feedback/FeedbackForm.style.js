@@ -16,7 +16,7 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
 
   '& .react-datepicker-wrapper': {
     width: '100% !important',
-    background: '#ffffff !important',
+    background: 'transparent !important',
     color: 'black !important',
     border: 'none !important',
     outline: 'none !important',
@@ -24,12 +24,12 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
 
   '& .feedback-datepicker': {
     width: '100% !important',
-    background: '#ffffff !important',
+    background: 'transparent !important',
     border: 'none !important',
     outline: 'none !important',
     borderBottom: '1px solid #818181 !important',
     fontSize: '18px !important',
-    color: '#000 !important',
+    color: theme.palette.mode === "dark" ? "white":'#000',
     fontWeight: 600,
     height: '36px !important',
     marginTop: '15px'
@@ -37,9 +37,9 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
 
   '& .feedback-datepicker::placeholder': {
     color: '#818181 !important',
-    fontSize: '16px !important',
+    fontSize: '18px !important',
     textTransform: 'capitalize !important',
-    fontWeight: 500,
+    fontWeight: 600,
   },
 
   '& .feedback-datepicker:focus': {
@@ -53,7 +53,7 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     width: '220px',
   },
   '& .react-datepicker__month-container': {
-    width: '100%',
+    width: '90%',
   },
   '& .react-datepicker__header': {
     background: '#fff',
@@ -102,17 +102,17 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
   '& .react-datepicker__navigation-icon::before': {
     borderColor: '#000',
     borderWidth: '1px 1px 0 0'
-  },
-  '& .css-1tijnqy-MuiInputBase-root-MuiInput-root':{
-    width:"90%"
-  },
+  }, 
   '& .react-datepicker__input-container':{
-    width:"90% !important",
      display:"flex !important"
 },
 '& .css-1omtzk2-MuiFormControl-root': {
     width:"90% !important",
     display:"flex !important"
+},
+'& .css-mu6khw-MuiFormControl-root-MuiTextField-root':{
+  width:'90% !important',
+  marginRight:"24px"
 }
 }));
 
