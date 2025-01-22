@@ -78,7 +78,8 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                     right: 0,
                     bottom: 0,
                     zIndex: 100000,
-                    backdropFilter: "blur(8px)",
+                    backdropFilter: "blur(10px)",
+                    
                 }}
                 onClick={() => setOpenLogin(false)}
             >
@@ -93,6 +94,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                         boxShadow: "2px 2px 20px #00000060 !important",
                         maxWidth: "600px",
                         width: "100%",
+                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.05)",
                         "@media (max-width: 1400px)": {
                             margin: "2rem",
                         },

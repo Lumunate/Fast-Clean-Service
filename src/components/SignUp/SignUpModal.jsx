@@ -89,7 +89,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    margin: "5rem auto",
+                    paddingTop: "5rem",
                     width: "100%",
                     height: "calc(100vh - 5rem)",
                     position: "fixed",
@@ -98,7 +98,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     right: 0,
                     bottom: 0,
                     zIndex: 100000,
-                    backdropFilter: "blur(8px)",
+                    backdropFilter: "blur(10px)",
                 }}
                 onClick={() => setOpenSignup(false)}
             >
@@ -115,6 +115,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         overflowY: "auto",
                         maxWidth: "700px",
                         width: "100%",
+                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.05)",
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >
