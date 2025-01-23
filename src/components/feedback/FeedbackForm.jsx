@@ -252,10 +252,11 @@ export default function FeedbackForm() {
                 fontWeight: "400",
                 width:"35%",
                 height:"41px",
-                backgroundColor: "#02B4EB",
+                backgroundColor: "#0085FF",
                 color:"white",
                 "&:hover": {
                   backgroundColor: "#02B4EB !important",
+                  color:"black",
                 },
                 "@media (max-width: 768px)": {
                     fontSize: "1.2rem",

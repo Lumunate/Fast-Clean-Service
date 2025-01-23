@@ -43,7 +43,7 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
   },
 
   '& .feedback-datepicker:focus': {
-    borderBottom: '1px solid #000 !important',
+    borderBottom: '1px solid #818181 !important',
   },
   '& .react-datepicker': {
     borderRadius: '12px',
@@ -107,11 +107,11 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
      display:"flex !important"
 },
 '& .css-1omtzk2-MuiFormControl-root': {
-    width:"90% !important",
+    width:"100% !important",
     display:"flex !important"
 },
 '& .css-mu6khw-MuiFormControl-root-MuiTextField-root':{
-  width:'90% !important',
+  width:'100% !important',
   marginRight:"24px"
 }
 }));
@@ -121,12 +121,13 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     [theme.breakpoints.down('sm')]: {
       marginTop: '6px',
     },
+    paddingRight:"32px",
     input: {
       fontWeight: 600,
       fontSize: inputfontsize,
       height: '36px',
       minHeight: '36px',
-      padding: '0',
+      paddingRight: '0',
     },
     '& .MuiInputLabel-root': {
       color: '#818181',
@@ -148,10 +149,10 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
       borderBottom: '1px solid #818181',
     },
     '& .MuiInput-underline:after': {
-      borderBottom: '1px solid black',
+      borderBottom: '1px solid #818181',
     },
     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-      borderBottom: '1px solid black',
+      borderBottom: '1px solid #818181',
     },
   }));
 
@@ -194,13 +195,13 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     },
   
     '&.MuiInput-underline:before': {
-      borderBottom: '1px solid black',
+      borderBottom: '1px solid #818181 !important',
     },
     '&.MuiInput-underline:after': {
-      borderBottom: '1px solid black',
+      borderBottom: '1px solid #818181 !important',
     },
     '&:hover .MuiInput-underline:before': {
-      borderBottom: '1px solid black !important',
+      borderBottom: '1px solid #818181 !important',
     },
   }));
 

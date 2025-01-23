@@ -712,7 +712,7 @@ export const ServiceDetail = styled(Box)(({ theme }) => ({
     "& .innerdeet": {
       display: "flex",
       justifyContent: "space-between",
-      fontSize: "1.6rem !important",
+      fontSize: "16px",
       fontWeight: "300",
       marginBottom: "0.2rem",
 

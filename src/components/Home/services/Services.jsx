@@ -125,14 +125,14 @@ export default function Services() {
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "flex-start",
-                            marginBottom: "6rem",
+                            marginBottom: rowIndex === rows.length - 1 ? 0 : "6rem",
                             padding: "0 9rem",
                             gap: "3rem",
                             "@media (max-width: 600px)": {
                                 flexDirection: "column",
                                 padding: 0,
                                 alignItems: "center",
-                                marginBottom: "2rem",
+                                marginBottom: rowIndex === rows.length -1 ? 0 : "2rem",
                             },
                             "@media (max-width: 1280px)": {
                                 padding: "0 3rem",
