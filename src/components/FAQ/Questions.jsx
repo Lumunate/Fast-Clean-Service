@@ -12,7 +12,7 @@ const questionsData = [
         answer: (
             <>
                 <p>
-                    Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we’ll handle the rest. Your vehicle will be cleaned and detailed to perfection.
+                    Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we&#39;ll handle the rest. Your vehicle will be cleaned and detailed to perfection.
                 </p>
             </>
         ),
@@ -28,7 +28,7 @@ const questionsData = [
         ),
     },
     {
-        question: "What makes FAST Clean’s mobile cleaning service unique?",
+        question: "What makes FAST Clean&#39;s mobile cleaning service unique?",
         answer: (
             <>
                 <p>
@@ -52,7 +52,7 @@ const questionsData = [
         answer: (
             <>
                 <p>
-                    The Long-Term Vehicle Care plan is designed to maintain your vehicle’s peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs.
+                    The Long-Term Vehicle Care plan is designed to maintain your vehicle&#39;s peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs.
                 </p>
             </>
         ),
@@ -72,7 +72,7 @@ const questionsData = [
         answer: (
             <>
                 <p>
-                    The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It’s perfect for regular upkeep of your vehicle.
+                    The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It&#39;s perfect for regular upkeep of your vehicle.
                 </p>
             </>
         ),
@@ -92,7 +92,7 @@ const questionsData = [
         answer: (
             <>
                 <p>
-                    Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It’s an excellent add-on to any package.
+                    Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It&#39;s an excellent add-on to any package.
                 </p>
             </>
         ),
@@ -122,12 +122,13 @@ const questionsData = [
         answer: (
             <>
                 <p>
-                    Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle's mechanical components are fresh and functioning efficiently.
+                    Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle&#39;s mechanical components are fresh and functioning efficiently.
                 </p>
             </>
         ),
     },
 ];
+
 
 
 
