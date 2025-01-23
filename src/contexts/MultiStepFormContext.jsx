@@ -199,6 +199,7 @@ export const FormProvider = ({ children }) => {
       // Submit the form
       try {
         const data = {
+          type: formData.service,
           firstName: formData.firstName,
           surname: formData.surname,
           companyName: formData.companyName,
