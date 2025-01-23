@@ -156,10 +156,11 @@ class BookingService {
     if (bookingData.serviceName === "Subscription Plans") {
       pkg = subscriptionPackages.find((pkg) => pkg.name.toLowerCase() === bookingData.packageName.toLowerCase());
     } else {
-      pkg = packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg.name === bookingData.packageName);
+      pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg.name === bookingData.packageName);
     }
 
     if (!pkg) {
+      console.log(packages);
       console.log("Booking Data:", bookingData.packageName, bookingData.serviceName, bookingData.packageType);
       throw new Error("Package not found");
     }
