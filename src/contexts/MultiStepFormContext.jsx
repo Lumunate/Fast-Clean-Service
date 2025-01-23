@@ -47,7 +47,7 @@ export const FormProvider = ({ children }) => {
     }
 
     duration += pkg.vehicleOptions[carType]?.additionalTime || 0;
-    newPrice += pkg.vehicleOptions[carType]?.additionalPrice || 0;
+    newPrice += pkg.vehicleOptions[carType]?.additionalCost || 0;
 
     newPrice += parseFloat(pkg.price.replace("€", "").trim());
     duration += parseHighestDuration(pkg.duration);
