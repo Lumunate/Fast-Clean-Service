@@ -1,4 +1,4 @@
-import { Grid, styled, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect } from 'react';
 import useMultiStepForm from '../../../hooks/useMultiStepForm';
