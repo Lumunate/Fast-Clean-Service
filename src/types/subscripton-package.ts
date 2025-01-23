@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 export const vehicleOptionValidation = z.object({
   basePrice: z.number(),
-  additionalPrice: z.number(),
+  additionalCost: z.number(),
   additionalTime: z.number(),
-  notes: z.string().optional()
+  notes: z.string().optional(),
 });
 
 export const subscriptionPackageValidation = z.object({

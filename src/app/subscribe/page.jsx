@@ -83,7 +83,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                 <Box key={option.duration} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
                   <Typography sx={{ fontWeight: "600" }}>{option.duration}</Typography>
                   <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
-                    {option.additionalCost === 0 ? "" : `+ €${option.additionalPrice}`}
+                    {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
               ))}
@@ -107,7 +107,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                 <Box key={option.frequency} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
                   <Typography sx={{ fontWeight: "600" }}>{option.frequency}</Typography>
                   <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
-                    {option.additionalCost === 0 ? "" : `+ €${option.additionalPrice}`}
+                    {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
               ))}
@@ -131,7 +131,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                 <Box key={option.option} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
                   <Typography sx={{ fontWeight: "600" }}>{option.option}</Typography>
                   <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
-                    {option.additionalCost === 0 ? "" : `+ €${option.additionalPrice}`}
+                    {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
               ))}

@@ -165,7 +165,7 @@ class BookingService {
     }
 
     const carType = bookingData.vehicleType;
-    price += pkg.vehicleOptions[carType]?.additionalPrice || 0;
+    price += pkg.vehicleOptions[carType]?.additionalCost || 0;
     price += pkg.vehicleOptions[carType]?.additionalTime || 0;
 
     price += parseFloat(pkg.price.replace("€", "").trim());

@@ -76,10 +76,10 @@ const Page = () => {
         if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
           updatedPackage.additionalOptions[addonType][index].additionalTime = value;
         }
-      } else if (field.startsWith("basePrice") || field.startsWith("additionalPrice") || field.startsWith("additionalTime")) {
+      } else if (field.startsWith("basePrice") || field.startsWith("additionalCost") || field.startsWith("additionalTime")) {
         // Handle vehicle-specific pricing updates
         // Assuming 'field' is one of the vehicle fields
-        const vehicleFields = ["basePrice", "additionalPrice", "additionalTime"];
+        const vehicleFields = ["basePrice", "additionalCost", "additionalTime"];
         const vehicleField = vehicleFields.find((f) => field.includes(f));
         if (vehicleField) {
           const vehicle = Object.keys(updatedPackage.vehicleOptions)[index];
@@ -125,8 +125,8 @@ const Page = () => {
               <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>{vehicle}</Typography>
               <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
                 €{vehicleOptions[vehicle].basePrice.toFixed(2)}
-                {vehicleOptions[vehicle].additionalPrice !== 0 && (
-                  <span> + €{vehicleOptions[vehicle].additionalPrice.toFixed(2)}</span>
+                {vehicleOptions[vehicle].additionalCost !== 0 && (
+                  <span> + €{vehicleOptions[vehicle].additionalCost.toFixed(2)}</span>
                 )}
                 {vehicleOptions[vehicle].additionalTime !== 0 && <span> (± {vehicleOptions[vehicle].additionalTime} min.)</span>}
               </Typography>
