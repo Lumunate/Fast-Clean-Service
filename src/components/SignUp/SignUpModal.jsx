@@ -117,7 +117,11 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         overflowY: "auto",
                         maxWidth: "700px",
                         width: "100%",
-                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.05)",
+                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.4)",
+                        "@media (max-width: 600px)": {
+                            margin: "2rem",
+                            padding: "2rem",
+                        },
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >

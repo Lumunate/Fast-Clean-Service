@@ -88,9 +88,9 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           {duration && (
             <Box>
               {pkg.durationOptions.map((option) => (
-                <Box key={option.duration} sx={{ display: "flex", justifyContent: "space-between", padding: "1rem",mx:{xs:"24px",md: "61px"}, backgroundColor: theme.palette.mode === "dark" ? "white":" #78D53F", borderRadius:"12px", my:"8px" }}>
-                  <Typography sx={{ color: "#585858", }}>{option.duration}</Typography>
-                  <Typography sx={{ color: "#585858", }}>
+                <Box key={option.duration} sx={{ display: "flex", border: theme.palette.mode === "dark" ? "0.05px solid #C1C1C1" : "none", justifyContent: "space-between", padding: "1rem",mx:{xs:"24px",md: "61px"}, backgroundColor: theme.palette.mode === "dark" ? "transparent":" #78D53F", borderRadius:"12px", my:"8px" }}>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#C1C1C1" : "#585858", }}>{option.duration}</Typography>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#C1C1C1" : "#585858", }}>
                     {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
@@ -112,9 +112,9 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           {frequency && (
             <Box>
               {pkg.cleaningFrequencyOptions.map((option) => (
-                <Box key={option.frequency} sx={{ display: "flex", justifyContent: "space-between", padding: "1rem", mx:{xs:"24px",md: "61px"}, backgroundColor:theme.palette.mode === "dark" ? "white":" #78D53F", borderRadius:"12px", my:"8px"  }}>
-                  <Typography sx={{ color: "#585858" }}>{option.frequency}</Typography>
-                  <Typography sx={{ color: "#585858" }}>
+                <Box key={option.frequency} sx={{ display: "flex", justifyContent: "space-between", padding: "1rem", mx:{xs:"24px",md: "61px"}, border: theme.palette.mode === "dark" ? "0.05px solid #C1C1C1" : "none", backgroundColor:theme.palette.mode === "dark" ? "transparent":" #78D53F", borderRadius:"12px", my:"8px"  }}>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#C1C1C1" : "#585858" }}>{option.frequency}</Typography>
+                  <Typography sx={{ color: theme.palette.mode === "dark" ? "#C1C1C1" : "#585858" }}>
                     {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
