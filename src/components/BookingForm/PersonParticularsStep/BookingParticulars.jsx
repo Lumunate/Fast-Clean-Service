@@ -17,29 +17,7 @@ import useMultiStepForm from "../../../hooks/useMultiStepForm";
 import React, { useEffect, useState } from "react";
 import { useValidation } from "../../../contexts/ValidationContext";
 import { useSession } from "next-auth/react";
-
-const cities = [
-    { name: "Rotterdam", distance: 80 },
-    { name: "The Hague", distance: 65 },
-    { name: "Utrecht", distance: 45 },
-    { name: "Eindhoven", distance: 125 },
-    { name: "Tilburg", distance: 110 },
-    { name: "Groningen", distance: 180 },
-    { name: "Almere", distance: 30 },
-    { name: "Breda", distance: 105 },
-    { name: "Nijmegen", distance: 120 },
-    { name: "Enschede", distance: 160 },
-    { name: "Apeldoorn", distance: 90 },
-    { name: "Haarlem", distance: 20 },
-    { name: "Arnhem", distance: 100 },
-    { name: "Amersfoort", distance: 50 },
-    { name: "Zaanstad", distance: 15 },
-    { name: "Den Bosch", distance: 90 },
-    { name: "Haarlemmermeer", distance: 20 },
-    { name: "Zwolle", distance: 110 },
-    { name: "Maastricht", distance: 210 },
-    { name: "Leiden", distance: 45 },
-];
+import SelectLocationInput from "../SelectCityStep/SelectLocationInput";
 
 const BookingParticulars = () => {
     const form = useMultiStepForm();
@@ -58,7 +36,7 @@ const BookingParticulars = () => {
         email: "",
         phoneNumber: "",
         makeModel: "",
-        city: "",
+        location: "",
         travelDistance: 0,
     });
 
@@ -79,27 +57,27 @@ const BookingParticulars = () => {
         if (session?.user) {
             setBookingForm((prevBookingForm) => ({
                 ...prevBookingForm,
-                email: session.user.email,
-                firstName: session.user.firstName,
-                surname: session.user.lastName,
-                companyName: session.user.companyName,
-                street: session.user.street,
-                city: session.user.city,
-                phoneNumber: session.user.phoneNumber,
+                email: session?.user.email,
+                firstName: session?.user.firstName,
+                surname: session?.user.lastName,
+                companyName: session?.user.companyName,
+                street: session?.user.street,
+                location: session?.user.location,
+                phoneNumber: session?.user.phoneNumber,
             }));
 
             form.updateFormData((prevFormData) => ({
                 ...prevFormData,
-                email: session.user.email,
-                firstName: session.user.firstName,
-                surname: session.user.lastName,
-                companyName: session.user.companyName,
-                street: session.user.street,
-                city: session.user.city,
-                phoneNumber: session.user.phoneNumber,
+                email: session?.user.email,
+                firstName: session?.user.firstName,
+                surname: session?.user.lastName,
+                companyName: session?.user.companyName,
+                street: session?.user.street,
+                location: session?.user.location,
+                phoneNumber: session?.user.phoneNumber,
             }));
         }
-    }, [session?.user]);
+    }, [form, session?.user]);
 
     useEffect(() => {
         const vehicleDetails = form.formData.vehicleDetails || {};
@@ -132,22 +110,6 @@ const BookingParticulars = () => {
         });
 
         form.updateFormData({ [name]: value });
-    };
-
-    const handleCityChange = (e) => {
-        const selectedCity = e.target.value;
-        const cityData = cities.find((city) => city.name === selectedCity);
-
-        setBookingForm((prevForm) => ({
-            ...prevForm,
-            city: selectedCity,
-            travelDistance: cityData.distance,
-        }));
-
-        form.updateFormData({
-            city: selectedCity,
-            travelDistance: cityData.distance,
-        });
     };
 
     const handleCheckboxChange = (e) => {
@@ -231,55 +193,14 @@ const BookingParticulars = () => {
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
-                            <CustomFormTextField
-                                label="Street"
-                                name="street"
-                                value={bookingForm.street}
-                                onChange={handleChange}
-                                fullWidth
-                                sx={{
-                                    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "8px",
-                                    marginTop: "1.5rem",
-                                }}
-                            />
-                        </Grid>
 
-                        <Grid item xs={6} md={3}>
-                            <CustomFormTextField
-                                label="City"
-                                name="city"
-                                value={bookingForm.city}
-                                onChange={handleChange}
-                                fullWidth
-                                sx={{
-                                    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "8px",
-                                    marginTop: "1.5rem",
-                                    "@media (max-width: 600px)": {
-                                        marginTop: "0.9rem",
-                                    },
-                                }}
-                            />
+                        <Grid item xs={12} md={12}>
+                            <SelectLocationInput hoist={({...data}) => setBookingForm((prevBookingForm) => ({
+                                ...prevBookingForm,
+                                ...data
+                            }))} />
                         </Grid>
-                        <Grid item xs={6} md={3}>
-                            <CustomFormTextField
-                                label="Zip Code"
-                                name="zipCode"
-                                value={bookingForm.zipCode}
-                                onChange={handleChange}
-                                fullWidth
-                                sx={{
-                                    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                                    borderRadius: "8px",
-                                    marginTop: "1.5rem",
-                                    "@media (max-width: 600px)": {
-                                        marginTop: "0.9rem",
-                                    },
-                                }}
-                            />
-                        </Grid>
+                       
                     </Grid>
 
                     <Grid container spacing={2}>

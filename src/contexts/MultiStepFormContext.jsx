@@ -9,7 +9,6 @@ export const FormContext = createContext();
 // Create a provider component
 export const FormProvider = ({ children }) => {
   const { openSnackbar } = useSnackbar();
-  const { data: session, status } = useSession();
   const [formData, setFormData] = useState({ service: "Remote" });
   const [price, setPrice] = useState(0);
   const [duration, setDuration] = useState(0);
