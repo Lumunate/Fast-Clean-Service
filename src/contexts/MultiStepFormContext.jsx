@@ -131,6 +131,22 @@ export const FormProvider = ({ children }) => {
     setDuration(duration);
   }, [formData, price]);
 
+  const calculateFormColors = useCallback(() => {
+    const colors = {
+      Standard: '#5dfa48',
+      Interior: '#5dfa48',
+      Deluxe: '#0088ff',
+      Exterior: '#0088ff',
+      Premium: '#ffd02b',
+      Combi: '#ffd02b',
+    };
+
+    const pkg = formData?.packageType?.name;
+    const _color = pkg ? colors[pkg] : null;
+    if (!_color) return '#000000';
+    setColor(_color);
+  }, [formData]);
+
   const updateFormData = (newData) => {
     console.log(newData);
     setFormData((prevData) => {
@@ -175,7 +191,8 @@ export const FormProvider = ({ children }) => {
   // Recalculate pricing whenever formData is updated
   useEffect(() => {
     calculatePricing();
-  }, [formData, calculatePricing]);
+    if (currentStep > 3) calculateFormColors();
+  }, [formData, currentStep, calculatePricing, calculateFormColors]);
 
   const nextStep = async (step = 1) => {
     if (currentStep === 11) {
@@ -209,8 +226,6 @@ export const FormProvider = ({ children }) => {
           },
         };
 
-        console.log('data', data);
-
         const response = await fetch('/api/booking', {
           method: 'POST',
           headers: {
@@ -237,26 +252,6 @@ export const FormProvider = ({ children }) => {
     }
 
     setCurrentStep((prevStep) => prevStep + step);
-
-    if (currentStep > 3) {
-      calculateFormColors();
-    }
-  };
-
-  const calculateFormColors = () => {
-    const colors = {
-      Standard: '#5dfa48',
-      Interior: '#5dfa48',
-      Deluxe: '#0088ff',
-      Exterior: '#0088ff',
-      Premium: '#ffd02b',
-      Combi: '#ffd02b',
-    };
-
-    const pkg = formData?.packageType?.name;
-    const _color = pkg ? colors[pkg] : null;
-    if (!_color) return '#000000';
-    setColor(_color);
   };
 
   const prevStep = () => {
