@@ -70,8 +70,6 @@ const SubscriptionPackages = () => {
       ? options
       : subscriptionPackages;
 
-  console.log(form?.formData);
-
   return (
     <SubscriptionPkgsContainer isMobile={isMobile}>
       {isMobile ? (

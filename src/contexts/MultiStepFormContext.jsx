@@ -27,10 +27,6 @@ export const FormProvider = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [color, setColor] = useState('#000000');
 
-  console.log(formData);
-  console.log(price);
-  console.log(currentStep);
-
   function parseHighestDuration(durationStr) {
     // Remove all non-numeric and non-slash characters
     const cleaned = durationStr.replace(/[^\d/-]/g, '');
@@ -65,7 +61,7 @@ export const FormProvider = ({ children }) => {
     }
 
     duration += pkg.vehicleOptions[carType]?.additionalTime || 0;
-    newPrice += pkg.vehicleOptions[carType]?.additionalPrice || 0;
+    newPrice += pkg.vehicleOptions[carType]?.additionalCost || 0;
 
     newPrice += parseFloat(pkg.price.replace('€', '').trim());
     duration += parseHighestDuration(pkg.duration);
@@ -162,7 +158,10 @@ export const FormProvider = ({ children }) => {
         updatedData.selectedDetailingOptions = [];
       }
 
-      if (newData?.selectedPackage?.id !== prevData?.selectedPackage?.id) {
+      if (
+        newData.selectedPackage &&
+        newData?.selectedPackage?.id !== prevData?.selectedPackage?.id
+      ) {
         setPrice(0);
         setDuration(0);
         updatedData.selectedAdditionalOptions = [];

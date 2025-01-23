@@ -46,8 +46,8 @@ class BookingService {
     const calendarEvent = await calendar.createEvent({
       summary: `Appointment - ${bookingData.serviceName}`,
       description: bookingData.packageName,
-      startTime: bookingData.appointmentTimestamp.toISOString(),
-      endTime: bookingData.appointmentEndTimestamp.toISOString(),
+      startTime: new Date(bookingData.appointmentTimestamp).toISOString(),
+      endTime: new Date(bookingData.appointmentEndTimestamp).toISOString(),
       attendees: [{ email: bookingData.email }, { email: process.env.GOOGLE_CALENDAR_ORGANIZER as string }],
       location: `${bookingData.street}, ${bookingData.city}, ${bookingData.zipCode}`,
     });
@@ -165,7 +165,7 @@ class BookingService {
     }
 
     const carType = bookingData.vehicleType;
-    price += pkg.vehicleOptions[carType]?.additionalPrice || 0;
+    price += pkg.vehicleOptions[carType]?.additionalCost || 0;
     price += pkg.vehicleOptions[carType]?.additionalTime || 0;
 
     price += parseFloat(pkg.price.replace("€", "").trim());
@@ -210,6 +210,17 @@ class BookingService {
           price += addonPrice;
         });
       }
+    }
+
+    if (bookingData.travelDistance) {
+      let travelCost = 0;
+      if (bookingData.travelDistance > 20) {
+        travelCost = (bookingData.travelDistance - 20) * 0.5;
+      } else if (bookingData.travelDistance > 75) {
+        travelCost = bookingData.travelDistance * 0.6;
+      }
+
+      price += travelCost;
     }
 
     return { price, duration };

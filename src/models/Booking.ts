@@ -27,6 +27,7 @@ export interface IBooking extends Document {
   appointmentEndTimestamp: Date;
   price: number;
   duration: number;
+  travelDistance?: number;
   travelDuration?: number;
   type: "Onsite" | "Remote";
   vehicleDetails?: LicensePlateData | undefined | null;
