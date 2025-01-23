@@ -140,7 +140,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         onSubmit={handleSubmit}
                         sx={{ mt: 3, width: "100%", maxWidth: "80%" }}
                     >
-                        <Grid container spacing={isSmallScreen ? 2 : 4}>
+                        <Grid container spacing={isSmallScreen ? 1 : 4}>
                             <Grid item xs={12} sm={6}>
                                 <CustomFormTextField
                                     autoComplete="given-name"
@@ -236,7 +236,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     sx={{
-                                        margin: "-1rem auto 2.5rem",
+                                        margin: "1rem auto 2.5rem",
                                         "& span": {
                                             fontSize: "1.5rem",
                                         },

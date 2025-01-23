@@ -75,6 +75,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
         ))}
       </StyledOptionsList>
 
+      <Box>
       {pkg.durationOptions && (
         <Box sx={{ borderTop: "1px solid #e0e0e0", marginTop: "2.1rem", paddingTop: "1rem" }}>
           <Typography
@@ -87,9 +88,9 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           {duration && (
             <Box>
               {pkg.durationOptions.map((option) => (
-                <Box key={option.duration} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
-                  <Typography sx={{ fontWeight: "600" }}>{option.duration}</Typography>
-                  <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
+                <Box key={option.duration} sx={{ display: "flex", justifyContent: "space-between", padding: "1rem",mx:{xs:"24px",md: "61px"}, backgroundColor: theme.palette.mode === "dark" ? "white":" #78D53F", borderRadius:"12px", my:"8px" }}>
+                  <Typography sx={{ color: "#585858", }}>{option.duration}</Typography>
+                  <Typography sx={{ color: "#585858", }}>
                     {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
@@ -111,9 +112,9 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           {frequency && (
             <Box>
               {pkg.cleaningFrequencyOptions.map((option) => (
-                <Box key={option.frequency} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
-                  <Typography sx={{ fontWeight: "600" }}>{option.frequency}</Typography>
-                  <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
+                <Box key={option.frequency} sx={{ display: "flex", justifyContent: "space-between", padding: "1rem", mx:{xs:"24px",md: "61px"}, backgroundColor:theme.palette.mode === "dark" ? "white":" #78D53F", borderRadius:"12px", my:"8px"  }}>
+                  <Typography sx={{ color: "#585858" }}>{option.frequency}</Typography>
+                  <Typography sx={{ color: "#585858" }}>
                     {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
                   </Typography>
                 </Box>
@@ -124,7 +125,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
       )}
 
       {pkg.additionalOptions.length > 0 ? (
-        <Box sx={{ borderTop: "1px solid #e0e0e0", marginTop: "2.1rem", paddingTop: "1rem" }}>
+        <Box sx={{ borderTop: "1px solid #e0e0e0", marginTop: "2.1rem", paddingTop: "1rem",paddingBottom: "3.9rem" }}>
           <Typography
             onClick={() => setAdditional(!additional)}
             sx={{ fontSize: "1.6rem", fontWeight: "600", cursor: "pointer", textAlign: "center" }}
@@ -135,7 +136,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           {additional && (
             <Box>
               {pkg.additionalOptions.map((option) => (
-                <Box key={option.option} sx={{ display: "flex", justifyContent: "space-between", paddingTop: "1rem" }}>
+                <Box key={option.option} sx={{ display: "flex", justifyContent: "center", paddingTop: "1rem",}}>
                   <Typography sx={{ fontWeight: "600" }}>{option.option}</Typography>
                   <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
                     {option.additionalCost === 0 ? "" : `+ €${option.additionalCost}`}
@@ -153,6 +154,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
           </Typography>
         </Box>
       )}
+      </Box>
     </StyledCard>
   );
 };
@@ -319,7 +321,7 @@ const Page = () => {
   return (
     <Box sx={{ marginTop: "15rem" }}>
       <ServiceHeading sx={{ fontSize: "5.6rem" }}>SUBSCRIPTIONS</ServiceHeading>
-      <Container sx={{ padding: "8rem", marginTop: "6rem", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <Container sx={{ padding: {xs:"20px", md:"8rem"}, marginTop: "6rem", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <Box sx={{ maxWidth: "1110px", mb: 10 }}>
           <Box sx={{ mb: 8 }}>
             <ServiceSubtitle>
