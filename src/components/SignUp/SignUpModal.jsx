@@ -9,6 +9,7 @@ import {
     Grid,
     Typography,
     Button,
+    useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "../../contexts/themeContext";
 import { CustomFormTextField } from "../../components/mui/NewFormPkgs";
@@ -20,6 +21,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
     const router = useRouter();
     const [error, setError] = useState("");
     const { data: session, status: sessionStatus } = useSession();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect(() => {
         if (sessionStatus === "authenticated") {
@@ -89,9 +91,9 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    paddingTop: "5rem",
+                    // paddingTop: "5rem",
                     width: "100%",
-                    height: "calc(100vh - 5rem)",
+                    height: "100vh",
                     position: "fixed",
                     top: 0,
                     left: 0,
@@ -107,7 +109,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        justifyContent: "center",
+                        justifyContent: "normal",
                         padding: "4rem",
                         borderRadius: "10px",
                         boxShadow: "2px 2px 20px #00000060 !important",
@@ -138,7 +140,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         onSubmit={handleSubmit}
                         sx={{ mt: 3, width: "100%", maxWidth: "80%" }}
                     >
-                        <Grid container spacing={4}>
+                        <Grid container spacing={isSmallScreen ? 2 : 4}>
                             <Grid item xs={12} sm={6}>
                                 <CustomFormTextField
                                     autoComplete="given-name"
