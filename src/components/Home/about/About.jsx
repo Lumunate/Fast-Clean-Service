@@ -16,7 +16,7 @@ export default function About() {
     "& .css-1a7tj5u-MuiTypography-root":{
       fontSize:"16px !important",
       fontWeight:300,
-      "@media (max-width: 600px)": { fontSize: "1rem !important", },
+      "@media (max-width: 600px)": { fontSize: "10px !important", },
     }
   }))
 
@@ -152,8 +152,8 @@ export default function About() {
                     textAlign: "center",
                   },
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
-                    textAlign: "center",
+                    fontSize: "12px",
+                    textAlign: "left",
                   },
                 }}
               >

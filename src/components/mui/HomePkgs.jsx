@@ -592,7 +592,7 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
   },
   "@media (max-width: 600px)": {
     width: "530px",
-    height: "400px",
+    height: "524px",
   },
   "@media (max-width: 550px)": {
     width: "480px",

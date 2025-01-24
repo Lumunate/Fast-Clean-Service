@@ -22,22 +22,25 @@ export default function OverServiceOverview() {
                   textAlign:"center",
                   fontSize: "1.55rem",
                   lineHeight: 1.7,
-                  paddingTop:"16px",
+                  paddingTop:"24px",
+                  px:'20px',
                   "@media (max-width: 900px)": {
                     textAlign: "center",
                   },
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
+                    fontSize: "12px",
                     textAlign: "center",
                   },
                   "& .line-break": {
-            display: { lg: "inline", md: "none" },
-          },
+                    display: "inline", 
+                    "@media (max-width: 960px)": { 
+                      display: "none",
+          },}
                 }}
               >
                 At Fast Clean Service we offer a wide range of services to keep your car in top condition to<span className="line-break">
           <br />
-        </span>keep. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.
+        </span> keep. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.
               </Typography>
 
         <Box sx={{ position: "relative" }}>

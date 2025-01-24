@@ -120,15 +120,13 @@ export default function Testimonials() {
             textAlign: "center",
             fontSize: "1.55rem",
             lineHeight: 1.7,
+            paddingTop:"24px",
             "@media (max-width: 900px)": {
               textAlign: "center",
             },
             "@media (max-width: 600px)": {
-              fontSize: "1rem",
+              fontSize: "12px",
               textAlign: "center",
-            },
-            "& .line-break": {
-              display: { lg: "inline", md: "none" },
             },
           }}
         >
@@ -144,11 +142,8 @@ export default function Testimonials() {
               textAlign: "center",
             },
             "@media (max-width: 600px)": {
-              fontSize: "1rem",
+              fontSize: "12px",
               textAlign: "center",
-            },
-            "& .line-break": {
-              display: { lg: "inline", md: "none" },
             },
           }}
         >

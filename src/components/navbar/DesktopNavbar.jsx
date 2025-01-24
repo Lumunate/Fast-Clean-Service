@@ -124,7 +124,7 @@ const DesktopNavbar = () => {
                                     top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
                                     left: { xs: "-2rem", sm: "-4rem", md: "-6rem" },
                                     zIndex: 2,
-                                    backgroundColor: "rgba(35, 35, 35, 0.3)", 
+                                    backgroundColor: "rgba(35, 35, 35, 0.6)", 
                                     backdropFilter: "blur(10px)", 
                                     WebkitBackdropFilter: "blur(10px)",
                                     padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
