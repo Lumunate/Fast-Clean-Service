@@ -9,7 +9,7 @@ export const metadata = {
   keywords:
     "Auto detailing, mobile steam cleaning, car wash, vehicle cleaning, premium auto care, Fast Clean Service, professional detailing, fleet services, mobile car wash, eco-friendly cleaning",
   canonical: process.env.NEXT_PUBLIC_BASE_URL,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
     type: "website",

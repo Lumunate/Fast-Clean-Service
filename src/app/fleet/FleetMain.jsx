@@ -18,6 +18,7 @@ import Autocare from "../../components/AutoCare/Autocare";
 import { HomePkgsInBox } from "../../components/mui/HomePkgs";
 import {DecorativeBackgroundImage} from "../../components/Decorative/Decorative.style";
 import RadialCircle from "../../components/Decorative/RadialCircle";
+import Image from "next/image";
 
 export const FleetSubheading = styled(Typography)(({ theme }) => ({
     color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
@@ -287,7 +288,7 @@ export default function FleetMain() {
                         <Grid item xs={12} md={4}>
                             <ServiceCard>
                                 <ServiceIcon>
-                                    <img src="/f1.png" alt="Exterior Maintenance"/>
+                                    <Image src="/exterior-maintenance.svg" alt="Exterior Maintenance Icon" width={100} height={100} />
                                 </ServiceIcon>
                                 <Typography sx={{
                                     color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
@@ -306,7 +307,7 @@ export default function FleetMain() {
                         <Grid item xs={12} md={4}>
                             <ServiceCard>
                                 <ServiceIcon>
-                                    <img src="/f2.png" alt="Interior Maintenance"/>
+                                    <Image src="/f2.png" alt="Interior Maintenance" width={100} height={100} />
                                 </ServiceIcon>
                                 <Typography sx={{
                                     color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
@@ -325,7 +326,7 @@ export default function FleetMain() {
                         <Grid item xs={12} md={4}>
                             <ServiceCard>
                                 <ServiceIcon>
-                                    <img src="/f3.png" alt="Protective Coatings"/>
+                                    <Image src="/f3.png" alt="Protective Coatings" width={100} height={100} />
                                 </ServiceIcon>
                                 <Typography sx={{
                                     color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',

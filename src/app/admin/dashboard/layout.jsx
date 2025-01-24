@@ -6,7 +6,7 @@ export const metadata = {
   keywords:
     "admin dashboard, Fast Clean Service admin, fleet management, customer management, auto detailing administration, service tracking, bookings management",
   canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+
   robots: "noindex, nofollow",
   openGraph: {
     type: "website",

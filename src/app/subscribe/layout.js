@@ -8,7 +8,7 @@ export const metadata = {
   keywords:
     "auto detailing subscription, exterior cleaning plan, interior detailing package, total car care, auto detailing subscription, vehicle maintenance package, car wash plan",
   canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe`,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
     type: "website",

@@ -235,7 +235,7 @@ const Page = () => {
                     <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                       <ServiceCard>
                         <ServiceIcon>
-                          <img src="/s1.png" alt="Expert Care" />
+                          <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
                         </ServiceIcon>
                         <Typography
                             sx={{
@@ -263,7 +263,7 @@ const Page = () => {
                     <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                       <ServiceCard>
                         <ServiceIcon>
-                          <img src="/s2.png" alt="Flexibility" />
+                          <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
                         </ServiceIcon>
                         <Typography
                             sx={{
@@ -357,7 +357,7 @@ const Page = () => {
                         <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                             <ServiceCard>
                                 <ServiceIcon>
-                                    <img src="/s1.png" alt="Expert Care" />
+                                    <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
                                 </ServiceIcon>
                                 <Typography
                                     sx={{
@@ -385,7 +385,7 @@ const Page = () => {
                         <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                             <ServiceCard>
                                 <ServiceIcon>
-                                    <img src="/s2.png" alt="Flexibility" />
+                                    <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
                                 </ServiceIcon>
                                 <Typography
                                     sx={{

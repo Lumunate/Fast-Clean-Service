@@ -8,7 +8,7 @@ export const metadata = {
   keywords:
     "mobile auto detailing, on-location car cleaning, premium detailing service, steam cleaning, doorstep car care, professional car detailing, Netherlands auto service",
   canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/autocare`,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
     type: "website",

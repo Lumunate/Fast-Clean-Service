@@ -6,7 +6,7 @@ export const metadata = {
   keywords:
     "customer portal, Fast Clean Service login, manage services, vehicle cleaning account, fleet service management, auto detailing portal, subscription dashboard",
   canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/customer-portal`,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
     type: "website",
