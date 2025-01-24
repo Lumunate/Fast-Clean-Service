@@ -49,29 +49,7 @@ export const metadata = {
       areaServed: "NL",
       availableLanguage: "Dutch",
     },
-  },
-  additionalMetaTags: [
-    { name: "application-name", content: "Fast Clean Service" },
-    { name: "theme-color", content: "#0c7fcf" },
-    { name: "mobile-web-app-capable", content: "yes" },
-    { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-    { property: "fb:app_id", content: "1492949054316243" },
-  ],
-  link: [
-    {
-      rel: "icon",
-      href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png",
-      sizes: "16x16",
-      type: "image/png",
-    },
-    {
-      rel: "icon",
-      href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png",
-      sizes: "32x32",
-      type: "image/png",
-    },
-    { rel: "canonical", href: process.env.NEXT_PUBLIC_BASE_URL },
-  ],
+  }
 };
   
 
