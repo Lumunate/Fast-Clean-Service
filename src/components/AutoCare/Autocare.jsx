@@ -21,6 +21,7 @@ import {ServiceHeading} from "../Home/ServicesOverview/ServiceColumnGroup";
 import RadialCircle from "../Decorative/RadialCircle";
 import {DecorativeBackgroundImage} from "../Decorative/Decorative.style";
 import FleetCare from "./FleetCare"
+import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
 
 const ModdedCard = ({ card, color }) => {
     const { theme } = useTheme();
@@ -209,9 +210,13 @@ const AutoCare = () => {
             FleetCare
             </ServiceHeading> */}
             {/*<FleetCare/>*/}
-            <ServiceHeading sx={{ fontSize: "5.6rem", marginTop: "15rem" }}>
-                Anywhere Auto Care
-            </ServiceHeading>
+             <Box
+                    sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem",marginTop: "15rem" }}
+                  >
+
+            <HeadingLinesAnimation text=" Anywhere Auto Care"/>
+                  </Box>
+           
             <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
             <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
