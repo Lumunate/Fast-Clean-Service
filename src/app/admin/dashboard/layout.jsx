@@ -5,7 +5,7 @@ export const metadata = {
     "Manage bookings, subscriptions, customer feedback, and fleet services efficiently with the Fast Clean Service Admin Dashboard.",
   keywords:
     "admin dashboard, Fast Clean Service admin, fleet management, customer management, auto detailing administration, service tracking, bookings management",
-  canonical: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
+  canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   robots: "noindex, nofollow",
   openGraph: {
@@ -14,7 +14,7 @@ export const metadata = {
     title: "Admin Dashboard | Fast Clean Service Management",
     description:
       "Access the Fast Clean Service Admin Dashboard to oversee bookings, subscriptions, customer feedback, and fleet service operations.",
-    url: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
     siteName: "Fast Clean Service",
     image: {
       url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/admin-dashboard.jpg",
@@ -35,7 +35,7 @@ export const metadata = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Admin Dashboard",
-    url: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
     isPartOf: {
       "@type": "WebSite",
       name: "Fast Clean Service",
@@ -59,7 +59,7 @@ export const metadata = {
 };
 
 const Layout = ({ children }) => {
-  return children;
+  return <>{children}</>;
 };
 
 export default Layout;
