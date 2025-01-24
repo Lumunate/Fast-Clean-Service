@@ -79,7 +79,7 @@ export default function Form() {
             backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
             border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
             backdropFilter: "blur(2.4px)",
-            borderRadius: "10px",
+            borderRadius: "32px",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
             padding: "2rem",
         }}>
@@ -160,6 +160,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },
@@ -225,6 +228,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },
@@ -288,6 +294,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },

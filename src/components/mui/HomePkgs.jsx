@@ -356,6 +356,7 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+
 }));
 
 export const CardDesc = styled(Typography)(({ theme }) => ({
@@ -369,6 +370,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   alignItems: "center",
   color: "#FFFFFF",
   "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
+  "@media (max-width:600px)": { alignItems: "flex-start" },
 
 }));
 
@@ -592,7 +594,7 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
   },
   "@media (max-width: 600px)": {
     width: "530px",
-    height: "400px",
+    height: "524px",
   },
   "@media (max-width: 550px)": {
     width: "480px",

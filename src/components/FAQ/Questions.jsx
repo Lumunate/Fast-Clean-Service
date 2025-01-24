@@ -8,66 +8,128 @@ import { useTheme } from "../../contexts/themeContext";
 
 const questionsData = [
     {
-        question: "What services do you offer at FAST Clean?",
+        question: "What is the process for booking a cleaning service with FAST Clean?",
         answer: (
             <>
                 <p>
-                    At FAST Clean, we provide a variety of car care services, including exterior and interior cleaning, waxing, paint protection, and specialized FleetCare Pro services for businesses. We also offer mobile cleaning services to fit your convenience.
+                    Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we&#39;ll handle the rest. Your vehicle will be cleaned and detailed to perfection.
                 </p>
             </>
         ),
     },
     {
-        question: "How do I book a service with FAST Clean?",
+        question: "What are the key benefits of the Deluxe package?",
         answer: (
             <>
                 <p>
-                    You can book a service through our online booking page. Choose your service type, select a package, and provide your vehicle details. If you’re unsure about which package is right for you, feel free to reach out for assistance.
+                    The Deluxe package is one of our most popular choices, offering a complete cleaning experience. It includes thorough steam cleaning, interior and exterior polishing, and the application of protective wax. Perfect for those who want their vehicle to look brand new.
                 </p>
             </>
         ),
     },
     {
-        question: "Can I modify or cancel my booking?",
+        question: "What makes FAST Clean&#39;s mobile cleaning service unique?",
         answer: (
             <>
                 <p>
-                    Yes, you can modify or cancel your booking by logging into your customer portal or contacting us directly. Please try to notify us at least 24 hours in advance if you need to reschedule.
+                    Our mobile cleaning service, part of Anywhere Auto-Care, brings professional cleaning directly to your doorstep. We use advanced steam cleaning technology to ensure your vehicle is spotless and ready to go, without you needing to visit our facility.
                 </p>
             </>
         ),
     },
     {
-        question: "Do you offer any subscription plans for regular services?",
+        question: "Do you provide cleaning services for larger vehicles like campers and boats?",
         answer: (
             <>
                 <p>
-                    Yes, we offer subscription packages such as the FleetCare Pro plan, which is perfect for businesses with multiple vehicles. Regular car owners can also choose subscription plans for monthly or bi-weekly cleaning services.
+                    Yes, we specialize in cleaning larger vehicles such as campers, caravans, boats, and trucks. Services include engine cleaning, interior and exterior detailing, tire cleaning, and advanced steam cleaning for ultimate freshness and performance.
                 </p>
             </>
         ),
     },
     {
-        question: "Can you clean my vehicle at my home or office?",
+        question: "What are the features of the Long-Term Vehicle Care plan?",
         answer: (
             <>
                 <p>
-                    Absolutely! Our mobile cleaning service allows us to come to your location, whether it’s your home, office, or any other place. Just make sure the location is within our service area when booking.
+                    The Long-Term Vehicle Care plan is designed to maintain your vehicle&#39;s peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs.
                 </p>
             </>
         ),
     },
     {
-        question: "What types of vehicles do you service?",
+        question: "What is the FleetCare Pro package and who is it for?",
         answer: (
             <>
                 <p>
-                    We service a wide range of vehicles including cars, trucks, bikes, SUVs, campers, and boats. Our specialized packages cater to all types of vehicles to ensure they receive the best care possible.
+                    FleetCare Pro is a tailored solution for businesses with multiple vehicles. It ensures your fleet stays clean, spotless, and road-ready with flexible service plans and professional detailing for every vehicle in your fleet.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "What types of cleaning services are included in the Standard package?",
+        answer: (
+            <>
+                <p>
+                    The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It&#39;s perfect for regular upkeep of your vehicle.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "What additional options can I add to my cleaning package?",
+        answer: (
+            <>
+                <p>
+                    FAST Clean allows you to customize your package with additional options like paint protection, intensive steam cleaning, tire polishing, and headlight restoration. Tailor your cleaning experience to match your needs.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "How does the polishing and headlight restoration service work?",
+        answer: (
+            <>
+                <p>
+                    Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It&#39;s an excellent add-on to any package.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "What cleaning options are available for vehicles with leather interiors?",
+        answer: (
+            <>
+                <p>
+                    For vehicles with leather interiors, we provide specialized cleaning and treatment services, including leather conditioning and polishing to ensure durability and a luxurious finish.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "How does the subscription plan work for regular maintenance?",
+        answer: (
+            <>
+                <p>
+                    Our subscription plan offers worry-free maintenance for your vehicle. Choose from flexible options like monthly or bi-weekly cleanings, enjoy discounted rates, and ensure your car stays in top condition all year round.
+                </p>
+            </>
+        ),
+    },
+    {
+        question: "Can I book a package specifically for engine cleaning and mechanical parts?",
+        answer: (
+            <>
+                <p>
+                    Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle&#39;s mechanical components are fresh and functioning efficiently.
                 </p>
             </>
         ),
     },
 ];
+
+
 
 
 const Questions = () => {

@@ -8,6 +8,7 @@ import { Container, GrayBox } from "../../components/mui/FleetPkgs";
 import { HomePkgsInBox } from "../../components/mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
 import RadialCircle from "../../components/Decorative/RadialCircle";
+import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 
 export const VehicleSubheading = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
@@ -95,19 +96,17 @@ export default function OtherVehiclesMain() {
             <VehicleSubheading
                 sx={{
                     fontSize: "5.6rem",
-                    fontWeight: "600",
                     marginBottom: "7.4rem",
                     "@media (max-width: 900px)": {
                         fontSize: "4rem",
                         marginBottom: "4rem",
                     },
                     "@media (max-width: 600px)": {
-                        fontSize: "2.8rem",
                         marginBottom: "0",
                     },
                 }}
             >
-              DIVERSE VEHICLES
+              <HeadingLinesAnimation text="DIVERSE VEHICLES" />
             </VehicleSubheading>
           </Box>
 

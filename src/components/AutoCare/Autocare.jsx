@@ -21,6 +21,7 @@ import {ServiceHeading} from "../Home/ServicesOverview/ServiceColumnGroup";
 import RadialCircle from "../Decorative/RadialCircle";
 import {DecorativeBackgroundImage} from "../Decorative/Decorative.style";
 import FleetCare from "./FleetCare"
+import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
 
 const ModdedCard = ({ card, color }) => {
     const { theme } = useTheme();
@@ -42,6 +43,7 @@ const ModdedCard = ({ card, color }) => {
                 "@media (max-width: 600px)": {
                     flex: "1 1 90%",
                     maxWidth: "calc(100% - 1rem)",
+                    padding: "2rem",
                 },
             }}
         >
@@ -92,8 +94,8 @@ const ModdedCard = ({ card, color }) => {
                                     justifyContent: "space-between",
                                 }}
                             >
-                                <Typography>{option.name}</Typography>
-                                <Typography>{option.price}</Typography>
+                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.name}</Typography>
+                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.price}</Typography>
                             </Box>
                         </ListItem>
                     );
@@ -160,7 +162,7 @@ const AutoCare = () => {
     const handleTabChange = (tab) => {
         setSelectedTab(tab);
         setSubCat("");
-        const height = headerRef.current.clientHeight - 100;
+        const height = headerRef.current.clientHeight - 80;
         setTimeout(() => {
             window.scrollBy({
                 top: height,
@@ -209,9 +211,13 @@ const AutoCare = () => {
             FleetCare
             </ServiceHeading> */}
             {/*<FleetCare/>*/}
-            <ServiceHeading sx={{ fontSize: "5.6rem", marginTop: "15rem" }}>
-                Anywhere Auto Care
-            </ServiceHeading>
+             <Box
+                    sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem",marginTop: "15rem", "@media (max-width: 600px)": {marginTop:"5rem"} }}
+                  >
+
+            <HeadingLinesAnimation text=" Anywhere Auto Care"/>
+                  </Box>
+           
             <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
             <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
@@ -220,6 +226,7 @@ const AutoCare = () => {
                 sx={{
                     position: "relative",
                     padding: "5rem 5rem 5rem",
+                    "@media (max-width: 600px)": {padding: '0 5rem'}
                 }}
             >
                 <AutoTabContainer
@@ -628,11 +635,12 @@ const AutoCare = () => {
                 sx={{
                     padding: "15rem 5rem 5rem",
                     flexDirection: "column",
+                    "@media (max-width: 600px)": {padding: "2rem",}
                 }}
                 ref={subSectionRef}
             >
                 <HomePkgsInBox
-                    sx={{ justifyContent: "center", alignSelf: "center" }}
+                    sx={{ justifyContent: "center", alignSelf: "center", "@media (max-width: 600px)": {flexDirection: "column",} }}
                 >
                     <CardContainer
                         ref={addonsContainerRef}
