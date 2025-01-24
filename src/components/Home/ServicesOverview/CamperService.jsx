@@ -109,25 +109,25 @@ export default function CamperService() {
         </FadeIn>
       </CamperServiceBox>
 
-      <CamperServiceBox sx={{height:"100%"}}>
-        <FadeIn sx={{height:"100%"}} direction="right" distance={100} duration={1}>
-          <ServiceBox>
-            <ServiceHeading>Subscriptions</ServiceHeading>
-            <ServiceItemDesciptionB>
-            Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences. 
-            </ServiceItemDesciptionB>
-            <ServiceItemHighlight sx={{ color:"#A4A4A4"}}>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
+      {/*<CamperServiceBox sx={{height:"100%"}}>*/}
+      {/*  <FadeIn sx={{height:"100%"}} direction="right" distance={100} duration={1}>*/}
+      {/*    <ServiceBox>*/}
+      {/*      <ServiceHeading>Subscriptions</ServiceHeading>*/}
+      {/*      <ServiceItemDesciptionB>*/}
+      {/*      Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences. */}
+      {/*      </ServiceItemDesciptionB>*/}
+      {/*      <ServiceItemHighlight sx={{ color:"#A4A4A4"}}>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>*/}
 
-            <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>
-            <Box>
+      {/*      <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>*/}
+      {/*      <Box>*/}
 
-          <ServiceItemCTA  special onClick={() => (window.location.href = "/subscribe")}>
-            Book Now
-          </ServiceItemCTA>
-            </Box>
-          </ServiceBox>
-        </FadeIn>
-      </CamperServiceBox>
+      {/*    <ServiceItemCTA  special onClick={() => (window.location.href = "/subscribe")}>*/}
+      {/*      Book Now*/}
+      {/*    </ServiceItemCTA>*/}
+      {/*      </Box>*/}
+      {/*    </ServiceBox>*/}
+      {/*  </FadeIn>*/}
+      {/*</CamperServiceBox>*/}
     </HomeServicesBox>
   );
 }

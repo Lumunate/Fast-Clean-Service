@@ -356,6 +356,7 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+
 }));
 
 export const CardDesc = styled(Typography)(({ theme }) => ({

@@ -226,7 +226,7 @@ export default function LongTermVehicleCare() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
-    }, 10000);
+    }, 1000000);
 
     return () => {
       clearTimeout(timer);
@@ -312,7 +312,15 @@ export default function LongTermVehicleCare() {
                 onClick={() => handleIndexChange(index)}
               >
                 <div>
-                  <CardName>{card.name}</CardName>
+                  <CardName
+                      sx={{
+                          "@media (max-width: 600px)": {
+                              marginTop: currentIndex === 2 ? "4rem" : "4rem",
+                          },
+                      }}
+                  >
+                      {card.name}
+                  </CardName>
 
                   {card.pkgs.map((pkg) => (
                     <CardDesc key={pkg}>
