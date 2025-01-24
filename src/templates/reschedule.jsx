@@ -40,7 +40,7 @@ const RescheduledBookingUserEmail = ({ name, packageName, newDate, newTime, loca
           </Section>
           <Text style={paragraph}>If you need to make further adjustments, please feel free to contact us.</Text>
           <Section style={btnSection}>
-            <Button px={20} py={12} style={btn} href="https://fast-clean-service.onrender.com/">
+            <Button px={20} py={12} style={btn} href={process.env.NEXT_PUBLIC_BASE_URL}>
               View Booking Details
             </Button>
           </Section>

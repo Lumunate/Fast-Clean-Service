@@ -7,7 +7,7 @@ export const metadata = {
     title: "Customer Feedback - Fast Clean Service",
     description: "Read what our customers have to say about Fast Clean Service. Share your experience and help us improve our premium auto detailing and fleet maintenance services.",
     keywords: "customer feedback, Fast Clean Service reviews, auto detailing testimonials, fleet service reviews, vehicle cleaning feedback, client testimonials, service ratings",
-    canonical: "https://fast-clean-service.onrender.com/feedback",
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/feedback`,
     viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     openGraph: {
@@ -15,7 +15,7 @@ export const metadata = {
         locale: "en_US",
         title: "Customer Feedback | Reviews & Testimonials | Fast Clean Service",
         description: "See what our satisfied customers have to say about our vehicle cleaning and maintenance services. Leave your own review and help us grow!",
-        url: "https://fast-clean-service.onrender.com/feedback",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/feedback`,
         siteName: "Fast Clean Service",
         image: {
             url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/customer-reviews.jpg",

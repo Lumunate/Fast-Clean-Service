@@ -5,7 +5,7 @@ export const metadata = {
     title: "Diverse Vehicles - Fast Clean Service",
     description: "Fast Clean Service offers specialized auto care for a wide range of vehicles, including bikes, boats, planes, and more. Discover our tailored maintenance and detailing solutions for your unique vehicle.",
     keywords: "specialized auto care, bike detailing, boat maintenance, aircraft cleaning, vehicle detailing, mobile detailing for diverse vehicles, Fast Clean Service",
-    canonical: "https://fast-clean-service.onrender.com/other-vehicles",
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/other-vehicles`,
     viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     openGraph: {
@@ -13,7 +13,7 @@ export const metadata = {
         locale: "en_US",
         title: "Diverse Vehicles - Fast Clean Service",
         description: "Get specialized auto care services for bikes, boats, planes, and more. Fast Clean Service provides tailored maintenance and detailing for various vehicles at your location.",
-        url: "https://fast-clean-service.onrender.com/other-vehicles",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/other-vehicles`,
         siteName: "Fast Clean Service",
         image: {
             url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/20210516110850_IMG_4636-scaled.jpg",
@@ -35,7 +35,7 @@ export const metadata = {
         "@type": "Service",
         name: "Diverse Vehicle Care - Fast Clean Service",
         description: "Fast Clean Service offers specialized auto care and detailing services for a wide range of vehicles, including bikes, boats, planes, and other specialty vehicles.",
-        url: "https://fast-clean-service.onrender.com/other-vehicles",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/other-vehicles`,
         serviceType: "Specialized Vehicle Detailing",
         provider: {
             "@type": "Organization",
@@ -53,7 +53,7 @@ export const metadata = {
         },
         potentialAction: {
             "@type": "OrderAction",
-            target: "https://fast-clean-service.onrender.com/other-vehicles",
+            target: `${process.env.NEXT_PUBLIC_BASE_URL}/other-vehicles`,
         },
     },
     additionalMetaTags: [
@@ -66,7 +66,7 @@ export const metadata = {
     link: [
         { rel: "icon", href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png", sizes: "16x16", type: "image/png" },
         { rel: "icon", href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png", sizes: "32x32", type: "image/png" },
-        { rel: "canonical", href: "https://fast-clean-service.onrender.com/diverse-vehicles" },
+        { rel: "canonical", href: `${process.env.NEXT_PUBLIC_BASE_URL}/diverse-vehicles` },
     ],
 };
 

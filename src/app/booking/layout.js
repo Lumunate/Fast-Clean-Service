@@ -5,7 +5,7 @@ export const metadata = {
     title: "Book a Service - Fast Clean Service",
     description: "Easily book a service with Fast Clean Service. Follow our multi-step form to choose your location, vehicle type, package, and additional options, and schedule your appointment conveniently.",
     keywords: "booking form, book a service, auto detailing booking, Fast Clean Service booking, vehicle cleaning, mobile detailing appointment, car cleaning booking",
-    canonical: "https://fast-clean-service.onrender.com/booking",
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/booking`,
     viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     openGraph: {
@@ -13,7 +13,7 @@ export const metadata = {
         locale: "en_US",
         title: "Book a Service - Fast Clean Service",
         description: "Use our booking form to select your location, vehicle type, package, and additional options. Schedule an appointment for professional mobile detailing with Fast Clean Service.",
-        url: "https://fast-clean-service.onrender.com/booking",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking`,
         siteName: "Fast Clean Service",
         image: {
             url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/20210516111139_IMG_4648-scaled-boost.jpg",
@@ -35,7 +35,7 @@ export const metadata = {
         "@type": "Service",
         name: "Book a Service - Fast Clean Service",
         description: "Fast Clean Service offers a streamlined booking form to schedule vehicle cleaning appointments. Choose your package, location, and additional options, and book online.",
-        url: "https://fast-clean-service.onrender.com/booking",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking`,
         provider: {
             "@type": "Organization",
             name: "Fast Clean Service",
@@ -52,7 +52,7 @@ export const metadata = {
         },
         potentialAction: {
             "@type": "ReserveAction",
-            target: "https://fast-clean-service.onrender.com/booking",
+            target: `${process.env.NEXT_PUBLIC_BASE_URL}/booking`,
         },
     },
     additionalMetaTags: [
@@ -65,7 +65,7 @@ export const metadata = {
     link: [
         { rel: "icon", href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png", sizes: "16x16", type: "image/png" },
         { rel: "icon", href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png", sizes: "32x32", type: "image/png" },
-        { rel: "canonical", href: "https://fast-clean-service.onrender.com/booking" },
+        { rel: "canonical", href: `${process.env.NEXT_PUBLIC_BASE_URL}/booking` },
     ],
 };
 

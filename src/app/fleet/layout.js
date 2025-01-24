@@ -5,7 +5,7 @@ export const metadata = {
     title: "Fleet Care - Fast Clean Service",
     description: "Fleet Care Pro by Fast Clean Service provides professional fleet maintenance and cleaning services. We ensure your company's vehicles remain in top condition with customized packages and regular upkeep.",
     keywords: "fleet maintenance, fleet cleaning, corporate vehicle care, professional fleet service, commercial vehicle detailing, company car cleaning, fleet service packages, Fast Clean Service",
-    canonical: "https://fast-clean-service.onrender.com/fleet-care-pro",
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/fleet-care-pro`,
     viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     openGraph: {
@@ -13,7 +13,7 @@ export const metadata = {
         locale: "en_US",
         title: "Fleet Care Pro | Comprehensive Fleet Maintenance & Cleaning",
         description: "Fleet Care Pro offers expert cleaning and maintenance services for corporate and business fleets, ensuring top performance and a professional appearance.",
-        url: "https://fast-clean-service.onrender.com/fleet-care-pro",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/fleet-care-pro`,
         siteName: "Fast Clean Service",
         image: {
             url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/fleet-cleaning.jpg",

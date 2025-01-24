@@ -7,7 +7,7 @@ export const metadata = {
     "Choose from three professional auto detailing subscriptions: Exterior (€59.95), Interior (€69.95), or Total (€94.95) packages. Enjoy comprehensive cleaning services with flexible durations.",
   keywords:
     "auto detailing subscription, exterior cleaning plan, interior detailing package, total car care, auto detailing subscription, vehicle maintenance package, car wash plan",
-  canonical: "https://fast-clean-service.onrender.com/subscribe",
+  canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe`,
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
@@ -16,7 +16,7 @@ export const metadata = {
     title: "Professional Subscription Plans | Fast Clean Service",
     description:
       "Select from three comprehensive cleaning packages: Exterior (45 min), Interior (60 min), or Total (90-120 min) care. Professional detailing with guaranteed quality.",
-    url: "https://fast-clean-service.onrender.com/subscribe",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe`,
     siteName: "Fast Clean Service",
     images: [
       {
@@ -60,7 +60,7 @@ export const metadata = {
           priceCurrency: "EUR",
           description: "45-minute exterior cleaning service including wax treatment",
           availability: "https://schema.org/InStock",
-          url: "https://fast-clean-service.onrender.com/subscribe#exterior",
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe#exterior`,
           itemOffered: {
             "@type": "Service",
             name: "Exterior Cleaning Package",
@@ -74,7 +74,7 @@ export const metadata = {
           priceCurrency: "EUR",
           description: "60-minute interior detailing service",
           availability: "https://schema.org/InStock",
-          url: "https://fast-clean-service.onrender.com/subscribe#interior",
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe#interior`,
           itemOffered: {
             "@type": "Service",
             name: "Interior Cleaning Package",
@@ -89,7 +89,7 @@ export const metadata = {
           priceCurrency: "EUR",
           description: "90-120 minute complete detailing service",
           availability: "https://schema.org/InStock",
-          url: "https://fast-clean-service.onrender.com/subscribe#total",
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe#total`,
           itemOffered: {
             "@type": "Service",
             name: "Total Care Package",
@@ -106,7 +106,7 @@ export const metadata = {
       "@type": "BuyAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://fast-clean-service.onrender.com/subscribe",
+        urlTemplate: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe`,
         actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
       },
     },
@@ -135,7 +135,7 @@ export const metadata = {
       type: "image/png",
     },
     { rel: "apple-touch-icon", href: "https://fastcleanservice.nl/wp-content/uploads/2018/07/favicon.png" },
-    { rel: "canonical", href: "https://fast-clean-service.onrender.com/subscribe" },
+    { rel: "canonical", href: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe` },
   ],
 };
 
