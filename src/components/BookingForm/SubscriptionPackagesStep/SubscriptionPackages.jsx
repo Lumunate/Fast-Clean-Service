@@ -22,6 +22,7 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useSubscriptionPackages } from '../../../hooks/useSubscriptionPackages';
+import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
 
 const colors = ['#5DFA48', '#005BAC', '#BA8B1D'];
 
@@ -158,7 +159,29 @@ const SubscriptionPackagesCard = ({
     <SubscriptionCardContainer
       onClick={onClick}
       selected={form?.formData?.packageType?.id === id}
+      sx={{ position: 'relative' }}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 3,
+          right: 3,
+          zIndex: 11,
+          backgroundColor: '#fff',
+          padding: 0,
+          width: '20px',
+          height: '20px',
+          borderRadius: '50%',
+          display: form?.formData?.packageType?.id === id ? 'block' : 'none',
+
+          '& img': {
+            width: '100%',
+            height: '100%',
+          },
+        }}
+      >
+        <Image alt="check icon" width={20} height={20} src={CheckMark} />
+      </Box>
       <SubscriptionCardBanner color={color}>
         <SubscriptionCardHeading>{packageType}</SubscriptionCardHeading>
       </SubscriptionCardBanner>

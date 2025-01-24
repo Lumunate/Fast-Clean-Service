@@ -148,7 +148,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                 }}
               />
@@ -161,7 +160,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                 }}
               />
@@ -176,7 +174,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                   marginTop: '1.5rem',
                 }}
@@ -190,7 +187,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                   marginTop: '1.5rem',
                 }}
@@ -219,7 +215,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                   marginTop: '1.5rem',
                   '@media (max-width: 600px)': {
@@ -236,7 +231,6 @@ const BookingParticulars = () => {
                 onChange={handleChange}
                 fullWidth
                 sx={{
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
                   marginTop: '1.5rem',
                   '@media (max-width: 600px)': {
