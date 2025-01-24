@@ -9,8 +9,10 @@ import {
     CTAButton,
     CTAImage,
 } from "./CallToActionPckgs";
+import {useTheme} from "../../../contexts/themeContext"
 
 const CallToActionBox = ({ hideImage = false }) => {
+    const {theme} = useTheme();
     return (
         <CTAContainer>
             {!hideImage && (

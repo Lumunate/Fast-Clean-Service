@@ -42,8 +42,6 @@ const cardData = [
       "Advanced Steam Cleaning",
       "Flexible Services",
       "Engine & Mechanical Cleaning",
-      "Cleaning rims",
-      "Blackening tires",
     ],
     description:
       " we offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization, and engine cleaning for ultimate freshness and performance.",

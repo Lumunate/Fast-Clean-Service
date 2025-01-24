@@ -42,9 +42,14 @@ export const ServiceItemDesciptionB = styled(ServiceItemSubheading)(({ theme }) 
 }));
 
 export const ServiceItemCTA = styled(ServiceBtn1)(({ theme }) => ({
-  padding: "1.4rem 3.7rem",
-  "@media (max-width: 600px)": {
-    padding: "1rem 1.7rem",
+  fontSize: "1.5rem !important",
+  padding: "1.5rem 3rem",
+  fontWeight: 500,
+  backgroundColor: theme.palette.primary.accentDark,
+  color: "white",
+  border:"none",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.accent,
   },
 }));
 

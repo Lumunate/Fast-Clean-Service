@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { Box, Button, Link, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Button, Link, List, ListItem, ListItemText, styled, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
@@ -11,6 +11,14 @@ export default function About() {
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
+
+  const ListItemsText = styled(ListItemText)(({theme})=>({
+    "& .css-1a7tj5u-MuiTypography-root":{
+      fontSize:"16px !important",
+      fontWeight:300,
+      "@media (max-width: 600px)": { fontSize: "1rem !important", },
+    }
+  }))
 
   useEffect(() => {
     const currentSection = sectionRef.current;
@@ -178,13 +186,13 @@ export default function About() {
                 }}
               >
                 <ListItem sx={{ display: "list-item", py: '0px', }}>
-                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Convenience: Cleaning on location or at our branch." />
+                  <ListItemsText  primary="Convenience: Cleaning on location or at our branch." />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", py: '0px' }}>
-                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
+                  <ListItemsText  primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", py: '0px' }}>
-                  <ListItemText sx={{fontSize: '16px', fontWeight:"300", "@media (max-width: 600px)": { fontSize: "1rem", },}} primary="Quality Guaranteed: Exceptional results every time." />
+                  <ListItemsText  primary="Quality Guaranteed: Exceptional results every time." />
                 </ListItem>
               </List>
               <Typography
