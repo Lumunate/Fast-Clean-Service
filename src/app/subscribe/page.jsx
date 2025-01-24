@@ -127,7 +127,8 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               />
             </Typography>
             {duration && (
-              <Box>
+              <Box sx={{ transition: "height 1s ease",
+                height: duration ? "auto" : "0",}}>
                 {pkg.durationOptions.map((option) => (
                   <Box
                     key={option.duration}
@@ -197,7 +198,8 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               />
             </Typography>
             {frequency && (
-              <Box>
+              <Box sx={{ transition: "height 1s ease", // Smooth animation
+                height: duration ? "auto" : "0",}}>
                 {pkg.cleaningFrequencyOptions.map((option) => (
                   <Box
                     key={option.frequency}
@@ -268,7 +270,8 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               />
             </Typography>
             {additional && (
-              <Box>
+              <Box sx={{ transition: "height 1s ease",
+                height: duration ? "auto" : "0",}}>
                 {pkg.additionalOptions.map((option) => (
                   <Box
                     key={option.option}
@@ -332,9 +335,15 @@ const Page = () => {
   if (error) {
     return (
       <Box sx={{ marginTop: "15rem" }}>
-        <ServiceHeading sx={{ fontSize: "5.6rem", marginBottom: "3rem" }}>
-          SUBSCRIPTIONS
-        </ServiceHeading>
+       <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "2rem",
+        }}
+      >
+        <HeadingLinesAnimation text="SUBSCRIPTIONS" />
+      </Box>
         <Container
           sx={{
             display: "flex",
@@ -530,17 +539,16 @@ const Page = () => {
       </Box>
       <Container
         sx={{
-          padding: { xs: "20px", md: "8rem" },
-          marginTop: "6rem",
+          padding: { xs: "0px 20px", md: "0px 8rem" },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Box sx={{ maxWidth: "1110px", mb: 10 }}>
+        <Box sx={{ maxWidth: "1110px"}}>
           <Box sx={{ mb: 8 }}>
-            <ServiceSubtitle>
+            <ServiceSubtitle sx={{ margin: "0 auto 26px"}}>
               Subscription Plans – Worry-Free Maintenance for your Vehicle
             </ServiceSubtitle>
             <Typography
@@ -563,7 +571,7 @@ const Page = () => {
 
           <Box
             sx={{
-              mb: 8,
+              mb: 4,
               alignItems: "center",
               display: "flex",
               flexDirection: "column",
