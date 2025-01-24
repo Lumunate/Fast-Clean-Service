@@ -382,6 +382,7 @@ const Page = () => {
                   color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                   fontSize: "1.8rem",
                   lineHeight: 1.6,
+                    "@media (max-width: 600px)": { fontSize: "1.2rem" },
                 }}
               >
                 With our Fast Clean Service Subscription Plans we offer a
@@ -407,6 +408,7 @@ const Page = () => {
                   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                   fontSize: "3.2rem",
                   mb: 2,
+                    "@media (max-width: 600px)": { fontSize: "2rem" },
                 }}
               >
                 What do we offer:
@@ -444,6 +446,7 @@ const Page = () => {
                           mb: 0.6,
                           fontWeight: "400",
                           fontSize: "1.8rem",
+                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
                         }}
                       >
                         Expert Care
@@ -454,6 +457,7 @@ const Page = () => {
                             theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                           fontSize: "1.4rem",
                           fontWeight: "300",
+                            "@media (max-width: 600px)": { fontSize: "1.2rem" },
                         }}
                       >
                         Periodic cleaning and maintenance of both interior and
@@ -481,6 +485,7 @@ const Page = () => {
                           mb: 0.6,
                           fontWeight: "400",
                           fontSize: "1.8rem",
+                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
                         }}
                       >
                         Flexibility
@@ -491,6 +496,7 @@ const Page = () => {
                             theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                           fontSize: "1.4rem",
                           fontWeight: "300",
+                            "@media (max-width: 600px)": { fontSize: "1.2rem" },
                         }}
                       >
                         Flexibility in choosing the desired frequency (monthly,
@@ -511,6 +517,7 @@ const Page = () => {
                 margin: "0 auto",
                 lineHeight: 1.6,
                 fontWeight: "300",
+                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
               Choose one of our subscription options and enjoy convenience and
@@ -560,6 +567,7 @@ const Page = () => {
                 color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                 fontSize: "1.8rem",
                 lineHeight: 1.6,
+                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
               With our Fast Clean Service Subscription Plans we offer a flexible
@@ -584,6 +592,7 @@ const Page = () => {
                 color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                 fontSize: "3.2rem",
                 mb: 2,
+                  "@media (max-width: 600px)": { fontSize: "2rem" },
               }}
             >
               What do we offer:
@@ -617,6 +626,7 @@ const Page = () => {
                         mb: 0.6,
                         fontWeight: "400",
                         fontSize: "1.8rem",
+                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
                       }}
                     >
                       Expert Care
@@ -627,6 +637,7 @@ const Page = () => {
                           theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                         fontSize: "1.4rem",
                         fontWeight: "300",
+                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
                       }}
                     >
                       Periodic cleaning and maintenance of both interior and
@@ -654,6 +665,7 @@ const Page = () => {
                         mb: 0.6,
                         fontWeight: "400",
                         fontSize: "1.8rem",
+                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
                       }}
                     >
                       Flexibility
@@ -664,6 +676,7 @@ const Page = () => {
                           theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                         fontSize: "1.4rem",
                         fontWeight: "300",
+                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
                       }}
                     >
                       Flexibility in choosing the desired frequency (monthly,
@@ -683,6 +696,7 @@ const Page = () => {
                 margin: "0 auto",
                 lineHeight: 1.6,
                 fontWeight: "300",
+                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
               Choose one of our subscription options and enjoy convenience and

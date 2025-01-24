@@ -300,6 +300,7 @@ export default function FleetMain() {
               color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
               fontSize: "1.8rem",
               lineHeight: 1.6,
+                "@media (max-width: 600px)": { fontSize: "1.2rem" },
             }}
           >
             At Fast Clean Service we offer a complete and worry-free service
@@ -320,6 +321,7 @@ export default function FleetMain() {
               color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
               fontSize: "3.2rem",
               mb: 2,
+                "@media (max-width: 600px)": { fontSize: "2rem" },
             }}
           >
             Our Services
@@ -337,6 +339,7 @@ export default function FleetMain() {
                     mb: 0.6,
                     fontWeight: "400",
                     fontSize: "1.8rem",
+                      "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
                   Exterior maintenance
@@ -346,6 +349,7 @@ export default function FleetMain() {
                     color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                     fontSize: "1.4rem",
                     fontWeight: "300",
+                      "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
                   Thorough stream cleaning, washing and protection of the paint
@@ -364,6 +368,7 @@ export default function FleetMain() {
                     mb: 0.6,
                     fontWeight: "400",
                     fontSize: "1.8rem",
+                      "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
                   Interior maintenance
@@ -373,6 +378,7 @@ export default function FleetMain() {
                     color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                     fontSize: "1.4rem",
                     fontWeight: "300",
+                      "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
                   Deep cleaning with steam, vacuuming, dashboard cleaning and
@@ -392,6 +398,7 @@ export default function FleetMain() {
                     mb: 0.6,
                     fontWeight: "400",
                     fontSize: "1.8rem",
+                      "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
                   Protective Coatings
@@ -401,6 +408,7 @@ export default function FleetMain() {
                     color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                     fontSize: "1.4rem",
                     fontWeight: "300",
+                      "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
                   Long-lasting protection with high-quality waxes coating
@@ -420,6 +428,7 @@ export default function FleetMain() {
             margin: "0 auto",
             lineHeight: 1.6,
             fontWeight: "300",
+              "@media (max-width: 600px)": { fontSize: "1.2rem" },
           }}
         >
           We focus on high quality using the latest techniques and

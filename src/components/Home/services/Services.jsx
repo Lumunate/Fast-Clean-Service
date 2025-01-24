@@ -84,6 +84,7 @@ export default function Services() {
                     margin: "0 auto",
                     paddingLeft: "9rem",
                     "@media (max-width: 1280px)": { paddingLeft: 0 },
+                    "@media (max-width: 600px)": { width: "100%" },
                 }}
             >
                 <HeadingLinesAnimation text="WHY CHOOSE US" sx={{ width: "50%" }} />

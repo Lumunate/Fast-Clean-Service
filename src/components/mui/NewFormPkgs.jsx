@@ -28,7 +28,7 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
   "& label.Mui-focused": {
     border: "none",
     color: theme.palette.mode === "light" ? "#818181 " : "#fff",
-    transform: "translate(3%, -10%) scale(1)",
+    transform: "translate(3%, -40%) scale(1)",
   },
 
   "& .MuiInput-underline:after": {

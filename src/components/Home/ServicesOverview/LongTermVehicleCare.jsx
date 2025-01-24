@@ -329,10 +329,7 @@ export default function LongTermVehicleCare() {
                         style={{
                           color: "#90EE90",
                           marginRight: "1rem",
-                          "@media (max-width:1258px)": {
-                            alignSelf: "flex-start",
                             marginTop: "0.5rem",
-                          },
                         }}
                       />
                       <Typography

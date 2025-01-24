@@ -43,6 +43,7 @@ const ModdedCard = ({ card, color }) => {
                 "@media (max-width: 600px)": {
                     flex: "1 1 90%",
                     maxWidth: "calc(100% - 1rem)",
+                    padding: "2rem",
                 },
             }}
         >
@@ -93,8 +94,8 @@ const ModdedCard = ({ card, color }) => {
                                     justifyContent: "space-between",
                                 }}
                             >
-                                <Typography>{option.name}</Typography>
-                                <Typography>{option.price}</Typography>
+                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.name}</Typography>
+                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.price}</Typography>
                             </Box>
                         </ListItem>
                     );
@@ -161,7 +162,7 @@ const AutoCare = () => {
     const handleTabChange = (tab) => {
         setSelectedTab(tab);
         setSubCat("");
-        const height = headerRef.current.clientHeight - 100;
+        const height = headerRef.current.clientHeight - 80;
         setTimeout(() => {
             window.scrollBy({
                 top: height,
@@ -211,7 +212,7 @@ const AutoCare = () => {
             </ServiceHeading> */}
             {/*<FleetCare/>*/}
              <Box
-                    sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem",marginTop: "15rem" }}
+                    sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem",marginTop: "15rem", "@media (max-width: 600px)": {marginTop:"5rem"} }}
                   >
 
             <HeadingLinesAnimation text=" Anywhere Auto Care"/>
@@ -225,6 +226,7 @@ const AutoCare = () => {
                 sx={{
                     position: "relative",
                     padding: "5rem 5rem 5rem",
+                    "@media (max-width: 600px)": {padding: '0 5rem'}
                 }}
             >
                 <AutoTabContainer
@@ -633,11 +635,12 @@ const AutoCare = () => {
                 sx={{
                     padding: "15rem 5rem 5rem",
                     flexDirection: "column",
+                    "@media (max-width: 600px)": {padding: "2rem",}
                 }}
                 ref={subSectionRef}
             >
                 <HomePkgsInBox
-                    sx={{ justifyContent: "center", alignSelf: "center" }}
+                    sx={{ justifyContent: "center", alignSelf: "center", "@media (max-width: 600px)": {flexDirection: "column",} }}
                 >
                     <CardContainer
                         ref={addonsContainerRef}
