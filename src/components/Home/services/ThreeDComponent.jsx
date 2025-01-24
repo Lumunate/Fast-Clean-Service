@@ -54,7 +54,7 @@ function Model({ url }) {
       draggable={false}
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <primitive object={scene} position={[0, -6, -1]} draggable={false} />
+      <primitive object={scene} position={[0, -6, -5]} draggable={false} />
     </group>
   );
 }
@@ -69,6 +69,7 @@ export default function ThreeDComponent({ modelUrl }) {
       >
         <ambientLight intensity={1} />
         <directionalLight position={[0, 10, 0]} intensity={0.8} color={"0xffffff"} />
+        <directionalLight position={[0, 0, 10]} intensity={0.8} color={"0xffffff"} />
         <directionalLight position={[10, 10, 10]} intensity={0.8} color={"0xffffff"} />
         <directionalLight position={[-10, 10, -10]} intensity={0.8} color={"0xffffff"} />
         <directionalLight position={[-10, 10, 100]} intensity={0.8} color={"0xffffff"} />
