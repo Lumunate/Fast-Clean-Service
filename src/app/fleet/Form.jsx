@@ -86,6 +86,7 @@ export default function FleetCareProForm() {
   return (
     <CustomCard
       sx={{
+        zIndex:"10",
         backgroundColor:
           theme.palette.mode === "dark"
             ? "rgba(255,255,255,0.05)"
@@ -224,7 +225,7 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                     transform: "translate(10%, 70%) scale(1)",
                     "&.MuiInputLabel-shrink": {
-                      transform: "translate(10%, -90%) scale(1)",
+                      transform: "translate(10%, -105%) scale(1)",
                     },
                     "&.Mui-focused": {
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505",
@@ -304,7 +305,7 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                     transform: "translate(10%, 70%) scale(1)",
                     "&.MuiInputLabel-shrink": {
-                      transform: "translate(10%, -90%) scale(1)",
+                      transform: "translate(10%, -105%) scale(1)",
                     },
                     "&.Mui-focused": {
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
