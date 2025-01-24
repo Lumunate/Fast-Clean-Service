@@ -182,55 +182,60 @@ export default function Reviews() {
 
     return (
         <Box sx={{ width: "100%", padding: "3rem 0" }}>
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={20}
-                slidesPerView={isBelow900px ? 1 : 3}
-                loop={true}
-                autoplay={{ delay: 0, disableOnInteraction: false, reverseDirection: true }}
-                speed={5000}
-                allowTouchMove={false}
-                breakpoints={{
-                    900: {
-                        slidesPerView: 2,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                    },
-                }}
-            >
-                {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index}>
-                        {renderTestimonial(testimonial, index)}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-
+            <Box sx={{ minHeight: "250px" }}>
+                <Swiper
+                    sx={{ "& .swiper": {
+                            minHeight: "250px",
+                        }, }}
+                    modules={[Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={isBelow900px ? 1 : 3}
+                    loop={true}
+                    autoplay={{ delay: 0, disableOnInteraction: false, reverseDirection: true }}
+                    speed={5000}
+                    allowTouchMove={false}
+                    breakpoints={{
+                        900: {
+                            slidesPerView: 2,
+                        },
+                        600: {
+                            slidesPerView: 3,
+                        },
+                    }}
+                >
+                    {testimonials.map((testimonial, index) => (
+                        <SwiperSlide key={index}>
+                            {renderTestimonial(testimonial, index)}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </Box>
             <Box sx={{ height: { xs: "1rem", sm: "2rem"} }} />
-
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={20}
-                slidesPerView={isBelow900px ? 1 : 3}
-                loop={true}
-                autoplay={{ delay: 0, disableOnInteraction: false }}
-                speed={5000}
-                allowTouchMove={false}
-                breakpoints={{
-                    900: {
-                        slidesPerView: 2,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                    },
-                }}
-            >
-                {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index}>
-                        {renderTestimonial(testimonial, index)}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <Box sx={{ minHeight: "250px" }}>
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={isBelow900px ? 1 : 3}
+                    loop={true}
+                    autoplay={{ delay: 0, disableOnInteraction: false }}
+                    speed={5000}
+                    allowTouchMove={false}
+                    breakpoints={{
+                        900: {
+                            slidesPerView: 2,
+                        },
+                        600: {
+                            slidesPerView: 3,
+                        },
+                    }}
+                >
+                    {testimonials.map((testimonial, index) => (
+                        <SwiperSlide key={index}>
+                            {renderTestimonial(testimonial, index)}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </Box>
         </Box>
     );
 }

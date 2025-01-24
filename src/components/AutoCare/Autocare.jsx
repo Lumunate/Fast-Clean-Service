@@ -183,7 +183,6 @@ const AutoCare = () => {
         <Box
             sx={{
                 position: "relative",
-                backgroundColor: "primary.main",
                 //backgroundImage:
                 //    theme.palette.mode === "light"
                 //        ? "url(/bg3.jpg)"
@@ -209,7 +208,10 @@ const AutoCare = () => {
             {/* <ServiceHeading sx={{ fontSize: "3.5rem",fontWeight:600, marginTop: "15rem" }}>
             FleetCare
             </ServiceHeading> */}
-            <FleetCare/>
+            {/*<FleetCare/>*/}
+            <ServiceHeading sx={{ fontSize: "5.6rem", marginTop: "15rem" }}>
+                Anywhere Auto Care
+            </ServiceHeading>
             <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
             <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
@@ -552,7 +554,7 @@ const AutoCare = () => {
                                         <Typography
                                             sx={{
                                                 fontSize: "14px !important",
-                                                color: "black",
+                                                color:theme.palette.mode === "dark" ?"white":"",
                                                 marginBottom: "0.1rem",
                                                 fontWeight:300
                                             }}
@@ -615,7 +617,7 @@ const AutoCare = () => {
                                         Add Ons
                                     </CardButton>
                                     </Box>
-                                    
+
                                 </Card>
                             );
                         })}

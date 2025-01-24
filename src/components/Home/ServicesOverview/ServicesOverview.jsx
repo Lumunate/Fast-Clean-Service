@@ -37,7 +37,7 @@ export default function ServicesOverview() {
           <RadialCircle bottom={"10rem"} left={"0rem"} />
         </Box>
 
-        <CamperService />
+        {/*<CamperService />*/}
       </ServicesOverviewWrapper>
 
       <Box sx={{ margin: "0 auto" }}>

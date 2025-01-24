@@ -80,6 +80,9 @@ export default function OtherVehiclesMain() {
                 "@media (max-width: 1150px)": {
                    width: "100%",
                 },
+                "@media (max-width: 600px)": {
+                    marginTop: "7rem",
+                },
             }}
         >
           <Box
@@ -100,7 +103,7 @@ export default function OtherVehiclesMain() {
                     },
                     "@media (max-width: 600px)": {
                         fontSize: "2.8rem",
-                        marginBottom: "2rem",
+                        marginBottom: "0",
                     },
                 }}
             >

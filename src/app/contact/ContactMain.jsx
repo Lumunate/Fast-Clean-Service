@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import {Box, Typography, useMediaQuery} from "@mui/material";
 import Form from "./Form";
 import {
     GrayBox,
@@ -20,7 +20,7 @@ export default function ContactMain() {
     const isVerySmallScreen = useMediaQuery('(max-width:600px)');
 
     const largeScreenLayout = (
-        <Container sx={{ paddingLeft: "2rem !important" }}>
+        <Container sx={{ paddingLeft: "9rem", paddingRight: "9rem", "@media (max-width: 600px)": { padding: "2rem" }, }}>
             <GrayBox flex={1}>
                 <ImageWrapper>
                     <MapComponent />
@@ -37,15 +37,36 @@ export default function ContactMain() {
                         padding: "2rem 0",
                     }}
                 >
-                    <Box sx={{ marginBottom: "2rem", textAlign: "center" ,marginBottom: "2rem", }}>
+                    <Box sx={{ marginBottom: "2rem", textAlign: "center" }}>
                         <HeadingLinesAnimation text="CONTACT US" />
-                        
                     </Box>
-                    <Box sx={{maxWidth:"768px", textAlign:"center"}}>
-                        <Typography sx={{ fontSize:"22px", fontWeight:400}}>Always Available for You</Typography>
-                        <Typography sx={{ fontSize:"15px", fontWeight:300,textAlign:"left"}}>Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.</Typography>
 
-
+                    <Box sx={{ marginBottom: "2rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                        <Typography
+                            sx={{
+                                fontSize: "2.2rem",
+                                fontWeight: 400,
+                                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                                "@media (max-width: 600px)": {
+                                    fontSize: "1.6rem",
+                                },
+                            }}
+                        >  Always Available for You
+                        </Typography>
+                        <Box sx={{ textAlign: "left" }}>
+                        <Typography
+                            sx={{
+                                marginTop: "1.6rem",
+                                fontSize: "1.6rem",
+                                fontWeight: 300,
+                                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                                "@media (max-width: 600px)": {
+                                    fontSize: "1.2rem",
+                                },
+                            }}
+                        >  Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.
+                        </Typography>
+                        </Box>
                     </Box>
 
                     <Form />
@@ -62,6 +83,8 @@ export default function ContactMain() {
                                 boxShadow:
                                     theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
                                 transition: "box-shadow 0.3s ease",
+                                border: "1px solid #8D8D8D69",
+                                borderRadius: "1px",
                             }}
                         />
                         <ContactCard2
@@ -69,6 +92,8 @@ export default function ContactMain() {
                                 boxShadow:
                                     theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
                                 transition: "box-shadow 0.3s ease",
+                                border: "1px solid #8D8D8D69",
+                                borderRadius: "1px",
                             }}
                         />
                     </Box>

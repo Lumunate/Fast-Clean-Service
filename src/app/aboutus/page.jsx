@@ -2,6 +2,7 @@
 import {HomeWrapper} from "../../components/mui/HomePkgs";
 import MeetTeam from "./MeetTeam";
 import BackgroundSection from "./BackgroundSection";
+import ValueProposition from "./GeneralComp";
 import HowItWork from "../../components/Home/howitwork/HowItWork";
 import CollabSection from "./CollabSection";
 import CompServices from "./CompServices";
@@ -11,7 +12,6 @@ import Reviews from "../../components/Reviews/Reviews";
 import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import CallToActionBox from "../../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../../components/Decorative/Spacer";
-import Priority from "../../components/priority/priority"
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../components/Decorative/Decorative.style";
 
 export default function AboutUs() {
@@ -23,11 +23,9 @@ export default function AboutUs() {
 
         <BackgroundSection />
 
-        <Priority/>
-
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-        <HowItWork />
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
+            <ValueProposition />
+        </Box>
 
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
@@ -48,21 +46,7 @@ export default function AboutUs() {
             <ExpandableCards />
         </Box>
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "12.1rem"}}}>
-            <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>Our Comprehensive Services</HeadingLinesAnimation>
-            </Box>
-            <CompServices />
-        </Box>
-
-        <Box sx={{marginTop: { xs: "4rem", lg: "11.3rem"}}}>
-            <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>FAST CLEAN X AtTheCarWashCompany</HeadingLinesAnimation>
-            </Box>
-            <CollabSection />
-        </Box>
-
-      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "8rem"} }}>
+      <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "10rem"} }}>
           <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
               <HeadingLinesAnimation>MEET THE FOUNDER</HeadingLinesAnimation>
           </Box>
@@ -70,7 +54,7 @@ export default function AboutUs() {
       </HomeWrapper>
 
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
             </Box>
@@ -78,7 +62,7 @@ export default function AboutUs() {
         </Box>
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer sx={{ display: { xs: "none", sm: "block"} }} /></Box>
 
-        <Box sx={{marginTop: { xs: "4rem", lg: "8rem"}}}>
+        <Box sx={{marginTop: { xs: "4rem", lg: "2rem"}}}>
             <CallToActionBox hideImage={true} />
         </Box>
         <DecorativeBackgroundImage top="50rem" right="0" width="92rem" height="68.2rem" />

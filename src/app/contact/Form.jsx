@@ -67,10 +67,9 @@ export default function Form() {
   return (
     <FormContainer component="form" onSubmit={handleSubmit} sx={{
       backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
-      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
+      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
       backdropFilter: "blur(2.4px)",
-        borderRadius: "10px",
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        borderRadius: "32px",
       padding: "2rem",
     }}>
       <CustomFormTextField label="Name" name="name" value={formData.name} onChange={handleChange} fullWidth required />
@@ -106,18 +105,20 @@ export default function Form() {
                 display: "flex",
                 gap: "2rem",
                 flexDirection: { xs: "column", sm: "row" },
+                margin: "0 auto",
+                width: "100%",
             }}
         >
             <Button
                 variant="contained"
                 type="submit"
                 sx={{
-                  width:"100%",
                     padding: "1.5rem 3rem",
                     fontSize: "1.6rem",
                     fontWeight: "bold",
-                    backgroundColor: "primary.accentDark",
+                    backgroundColor: "#4AD1FF",
                     color: "white",
+                    width: "100%",
                     fontFamily: "DMSans",
                     "&:hover": {
                         backgroundColor: theme.palette.primary.accent,

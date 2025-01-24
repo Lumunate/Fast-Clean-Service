@@ -9,7 +9,7 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
-  gap: "1rem",
+  gap: "2rem",
   maxWidth: "1454px",
 
   "@media (max-width: 600px)": {
@@ -18,7 +18,7 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
-  width: "470px",
+  width: "456px",
   minHeight: "325px",
   maxHeight: "330px",
   textAlign: "center",
@@ -58,10 +58,10 @@ export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemIcon = styled(Image)(({ theme }) => ({
-  // filter:
-  //     theme.palette.mode === "dark"
-  //         ? "invert(41%) sepia(100%) saturate(493%) hue-rotate(170deg) brightness(92%) contrast(96%)"
-  //         : "invert(55%) sepia(82%) saturate(653%) hue-rotate(176deg) brightness(95%) contrast(101%)",
+  filter:
+      theme.palette.mode === "dark"
+          ? "invert(1)"
+          : "",
 }));
 
 

@@ -74,8 +74,12 @@ export const CTAInnerBox = styled(Box)(({ theme }) => ({
 }));
 
 export const CTAButton = styled(ServiceBtn1)(({ theme }) => ({
-  fontSize: "1.6rem",
+  fontSize: "1.6rem !important",
+  padding: "2rem 3.7rem",
   fontWeight: "bold",
   backgroundColor: "#0085FF",
   color: "white",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.accent,
+  },
 }));

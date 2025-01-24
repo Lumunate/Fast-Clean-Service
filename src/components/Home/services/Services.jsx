@@ -71,8 +71,7 @@ export default function Services() {
     return (
         <HomePkgBox
             sx={{
-                margin: "5rem auto 16.8rem",
-                paddingBottom: "7.5rem",
+                margin: "5rem auto 6rem",
                 width: "100%",
                 "@media (max-width: 600px)": {
                     margin: "2rem auto 2rem",
@@ -126,14 +125,14 @@ export default function Services() {
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "flex-start",
-                            marginBottom: "6rem",
-                            padding: "0 10rem",
+                            marginBottom: rowIndex === rows.length - 1 ? 0 : "6rem",
+                            padding: "0 9rem",
                             gap: "3rem",
                             "@media (max-width: 600px)": {
                                 flexDirection: "column",
                                 padding: 0,
                                 alignItems: "center",
-                                marginBottom: "2rem",
+                                marginBottom: rowIndex === rows.length -1 ? 0 : "2rem",
                             },
                             "@media (max-width: 1280px)": {
                                 padding: "0 3rem",
@@ -145,7 +144,7 @@ export default function Services() {
                             <React.Fragment key={index}>
                                 <Box
                                     sx={{
-                                        maxWidth: "270px",
+                                        maxWidth: "288px",
                                         height: "auto",
                                         display: "flex",
                                         flexDirection: "column",

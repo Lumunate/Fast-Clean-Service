@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 import Image from "next/image";
 
-const imageArray = ["/about/car.png", "/about/car2.png", "/about/car3.jpg", "/about/car4.png"];
+const imageArray = ["/a1.png", "/a3.png", "/a2.png", "/a4.png"];
 
 const SectionContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -101,10 +101,13 @@ const MainImage = styled(Image)(({ theme }) => ({
 
 
 const Description = styled(Typography)(({ theme }) => ({
-  fontSize: "15px",
+  fontSize: "1.6rem",
   color: theme.palette.mode === "dark" ? "#fff" : "#050505",
   lineHeight: "3.5rem",
   fontWeight: "400",
+  "@media (max-width: 900px)": {
+    fontSize: "1.2rem",
+  },
 }));
 
 export default function BackgroundSection() {
@@ -113,7 +116,7 @@ export default function BackgroundSection() {
         <SectionContainer>
           <TextContainer>
             <Description>
-            Fast Clean Service started in 2018 out of pure passion for cars and a commitment to sustainability. By using innovative steam cleaning techniques we thoroughly clean vehicles without harming the environment. Our goal? Affordable, but high-quality detailing for anyone who wants the best for their vehicle.
+              We offer mobile car cleaning at your convenience anytime and anywhere. Our steam cleaning technique ensures a deep, thorough clean, reaching even the toughest spots. Equipped with modern supplies in our vans, we provide efficient, professional service for all types of vehicles.
             </Description>
           </TextContainer>
 

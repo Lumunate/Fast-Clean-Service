@@ -25,7 +25,7 @@ export default function Autocare() {
       <HomePkgsBox
         sx={{
           width: "100%",
-          marginBottom: "18rem",
+          marginBottom: "8rem",
           "@media (max-width: 600px)": {
             marginBottom: "8rem",
           },
@@ -88,7 +88,7 @@ export default function Autocare() {
 
                   <ServiceDetail>
                    <Box>
-                      <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
+                      <div className="innerdeet">
                       Book Now for a quick and thorough cleaning.
                       </div>
                     </Box>
@@ -127,7 +127,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
+                      From: <span style={{color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -160,7 +160,7 @@ export default function Autocare() {
 
                   <ServiceDetail>
                     <Box>
-                      <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
+                      <div className="innerdeet">
                       Choose Deluxe for a complete treatment of your car.
                       </div>
                     </Box>
@@ -226,13 +226,13 @@ export default function Autocare() {
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
-                      <div style={{ fontSize:"16px !important", fontWeight:300}} className="innerdeet">
+                      <div className="innerdeet">
                       Book Now for the ultimate showroom finish.
                       </div>
                     </Box>
-                  </ServiceDetailHeading>
+                  </ServiceDetail>
                 </ServiceDetails>
                 <Box
                   sx={{

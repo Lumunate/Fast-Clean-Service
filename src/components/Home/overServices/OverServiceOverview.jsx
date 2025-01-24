@@ -22,6 +22,7 @@ export default function OverServiceOverview() {
                   textAlign:"center",
                   fontSize: "1.55rem",
                   lineHeight: 1.7,
+                  paddingTop:"16px",
                   "@media (max-width: 900px)": {
                     textAlign: "center",
                   },

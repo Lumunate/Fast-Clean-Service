@@ -8,7 +8,6 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
-// Styled Components
 
 const Container = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -18,6 +17,8 @@ const Container = styled(Box)(({ theme }) => ({
     maxWidth: "98rem",
     margin: "0 auto",
     padding: "2rem",
+    // Add transition to container for smoother child animations
+    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
     "@media (max-width: 600px)": {
         flexDirection: "column",
         padding: "1rem",
@@ -36,21 +37,19 @@ const Card = styled(Box)(
         borderRadius: "10px",
         overflow: "hidden",
         cursor: "pointer",
-        transition: "all 0.3s ease",
+        // Updated transition properties for smoother animation
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
         backgroundImage: "url('/about/car3.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        marginLeft:
-            !isSmallScreen && expanded && expandDirection === "right"
-                ? "0"
-                : "auto",
-        marginRight:
-            !isSmallScreen && expanded && expandDirection === "left"
-                ? "0"
-                : "auto",
+        // Updated margin transitions
+        marginLeft: !isSmallScreen && expanded && expandDirection === "right" ? "0" : "auto",
+        marginRight: !isSmallScreen && expanded && expandDirection === "left" ? "0" : "auto",
+        transform: expanded ? "scale(1)" : "scale(1)", // This helps maintain smooth transitions
+        willChange: "width, margin", // Optimize for animation performance
         "@media (max-width: 900px)": {
             minHeight: "35rem",
             height: "100%",
@@ -59,22 +58,22 @@ const Card = styled(Box)(
     })
 );
 
-const BackgroundImage = styled(Box)(({bgImage, theme }) => ({
+const BackgroundImage = styled(Box)(({ theme, bgImage }) => ({
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage:bgImage,
+    backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundRepeat:"no-repeat",
-    filter: "brightness(0.9)",
+    filter: theme.palette.mode === "dark" ? "brightness(0.7)" : "brightness(0.8)",
     zIndex: 1,
     "@media (max-width: 600px)": {
-        filter: "brightness(0.6)",
+        filter: "brightness(0.8)",
     },
 }));
+
 
 const Overlay = styled(Box)(({ theme }) => ({
     position: "absolute",
@@ -82,7 +81,7 @@ const Overlay = styled(Box)(({ theme }) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
     zIndex: 2,
     "@media (max-width: 600px)": {
         backgroundColor: "rgba(0, 0, 0, 0)",
@@ -96,12 +95,15 @@ const Content = styled(Box)(
         padding: isSmallScreen ? (expanded ? "3rem" : "0") : "5rem",
         color: "#fff",
         width: "100%",
-        transition: "opacity 0.3s ease, padding 0.3s ease",
+        // Updated transition for content
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
         flexDirection: "column",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",
         justifyContent: isSmallScreen && !expanded ? "center" : "flex-start",
         textAlign: isSmallScreen && !expanded ? "left" : "left",
+        opacity: 1,
+        willChange: "padding, opacity", // Optimize for animation performance
         "@media (max-width: 900px)": {
             padding: isSmallScreen ? (expanded ? "3rem" : "0") : "3rem",
         },
@@ -146,6 +148,10 @@ const ExpandedContent = styled(Box)(({ theme }) => ({
     marginTop: "3rem",
     fontWeight: 300,
     lineHeight: 1.5,
+    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+    opacity: 1,
+    transform: "translateY(0)",
+    willChange: "opacity, transform",
     "@media (max-width: 900px)": {
         fontSize: "2rem",
     },
@@ -186,7 +192,6 @@ const CheckmarkIcon = styled("img")({
 const cardData = [
     {
         id: 1,
-        bgImg:"url('/about/car6.png')",
         title: "Professional Equipment",
         subpara: "Our detailing shop is equipped with cutting-edge tools:",
         details: [
@@ -198,7 +203,6 @@ const cardData = [
     },
     {
         id: 2,
-        bgImg:"url('/about/car7.png')",
         title: "Expert Technicians",
         subpara: "Our certified detailing experts bring unparalleled skill to every job:",
         details: [
@@ -246,6 +250,8 @@ export default function ExpandableCards() {
                 const anyOtherExpanded =
                     activeCard !== null && activeCard !== card.id;
 
+                const bgImage = index === 0 ? "/about/aboutdet2.png" : "/about/aboutdet1.png";
+
                 return (
                     <Card
                         key={card.id}
@@ -257,7 +263,7 @@ export default function ExpandableCards() {
                         onClick={() => handleCardClick(card.id)}
                         style={{ userSelect: "none" }}
                     >
-                        <BackgroundImage bgImage={card.bgImg} />
+                        <BackgroundImage bgImage={bgImage} />
                         <Overlay />
                         <Content expanded={isExpanded} isSmallScreen={isSmallScreen}>
                             <Number isSmallScreen={isSmallScreen} expanded={isExpanded}>
@@ -272,13 +278,7 @@ export default function ExpandableCards() {
                                 </Heading>
                             )}
                             {isExpanded && (
-                                <ExpandedContent
-                                sx={{
-                                    opacity: 0,
-                                    transition: "opacity 0.5s ease-in-out 0.3s",
-                                    animation: isExpanded ? "fadeIn 0.5s ease-in-out 0.3s forwards" : undefined,
-                                  }}
-                                >
+                                <ExpandedContent>
                                     <Typography
                                         variant="body1"
                                         sx={{
