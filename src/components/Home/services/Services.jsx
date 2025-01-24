@@ -20,9 +20,6 @@ export default function Services() {
     const { theme } = useTheme();
     const isSmDown = useMediaQuery("(max-width:900px)");
     const isXsDown = useMediaQuery("(max-width:600px)");
-        {/* <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
-          <ThreeDComponent modelUrl="/models/car_project/CAR_glb.glb" />
-        </Box> */}
 
     const services = [
         {
@@ -95,7 +92,7 @@ export default function Services() {
         </Box>
 
         <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
-          <ThreeDComponent modelUrl="/models/car_project/CAR_glb.glb" />
+          <ThreeDComponent modelUrl="/models/bmw_m5_cs/bmw_m5_cs.glb" />
         </Box>
 
         <Box
