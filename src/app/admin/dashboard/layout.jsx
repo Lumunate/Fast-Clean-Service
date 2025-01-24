@@ -5,7 +5,7 @@ export const metadata = {
     "Manage bookings, subscriptions, customer feedback, and fleet services efficiently with the Fast Clean Service Admin Dashboard.",
   keywords:
     "admin dashboard, Fast Clean Service admin, fleet management, customer management, auto detailing administration, service tracking, bookings management",
-  canonical: "https://fast-clean-service.onrender.com/admin-dashboard",
+  canonical: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   robots: "noindex, nofollow",
   openGraph: {
@@ -14,7 +14,7 @@ export const metadata = {
     title: "Admin Dashboard | Fast Clean Service Management",
     description:
       "Access the Fast Clean Service Admin Dashboard to oversee bookings, subscriptions, customer feedback, and fleet service operations.",
-    url: "https://fast-clean-service.onrender.com/admin-dashboard",
+    url: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
     siteName: "Fast Clean Service",
     image: {
       url: "https://fastcleanservice.nl/wp-content/uploads/2022/05/admin-dashboard.jpg",
@@ -35,11 +35,11 @@ export const metadata = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Admin Dashboard",
-    url: "https://fast-clean-service.onrender.com/admin-dashboard",
+    url: `${NEXT_PUBLIC_BASE_URL}/admin-dashboard`,
     isPartOf: {
       "@type": "WebSite",
       name: "Fast Clean Service",
-      url: "https://fast-clean-service.onrender.com/",
+      url: process.env.NEXT_PUBLIC_BASE_URL,
     },
     about: {
       "@type": "Service",
@@ -47,7 +47,7 @@ export const metadata = {
       provider: {
         "@type": "Organization",
         name: "Fast Clean Service",
-        url: "https://fast-clean-service.onrender.com/",
+        url: process.env.NEXT_PUBLIC_BASE_URL,
       },
     },
   },
