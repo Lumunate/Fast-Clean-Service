@@ -160,6 +160,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },
@@ -225,6 +228,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },
@@ -288,6 +294,9 @@ export default function Form() {
                                         fontSize: "1.4rem",
                                         color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                                         transform: "translate(10%, 70%) scale(1)",
+                                        "&.MuiInputLabel-shrink": {
+                      transform: "translate(10%, -105%) scale(1)",
+                    },
                                         "&.Mui-focused": {
                                             color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
                                         },
