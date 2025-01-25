@@ -18,7 +18,7 @@ export default function ContactCard2() {
     <ContactCardContainer>
       <ServiceItemBox
         sx={{
-          alignItems: "flex-start !important",
+          alignItems: "flex-start !important",margin:{ lg:"2.7rem 0.2rem"}
         }}
       >
         <Box
@@ -31,7 +31,7 @@ export default function ContactCard2() {
         >
           <ServiceItemHeading
             sx={{
-                fontSize: "2.4rem !important",
+                fontSize: "2rem !important",
                 marginTop: "1.25rem",
                 fontWeight: "400",
                 color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
