@@ -35,8 +35,8 @@ const BookingFormFooter = () => {
   const step = currentStep;
 
   useEffect(() => {
-    if (currentStep === 1 && !formData.service) setIsBtnInvalid(true);
-    else if (currentStep === 2) {
+    if (currentStep === 0 && !formData.service) setIsBtnInvalid(true);
+    else if (currentStep === 1) {
       if (
         !formData.proceedWithoutLicensePlate &&
         (!formData.licensePlate || formData.licensePlate.trim().length === 0)
@@ -45,19 +45,19 @@ const BookingFormFooter = () => {
       } else {
         setIsBtnInvalid(false);
       }
-    } else if (!formData.carType && currentStep === 3) {
+    } else if (!formData.carType && currentStep === 2) {
       setIsBtnInvalid(true);
-    } else if (!formData.selectedPackageType && currentStep === 4) {
+    } else if (!formData.selectedPackageType && currentStep === 3) {
       setIsBtnInvalid(true);
-    } else if (!formData.packageType && currentStep === 5) {
+    } else if (!formData.packageType && currentStep === 4) {
       setIsBtnInvalid(true);
     } else if (
       formData.selectedPackageType === 'Anywhere Autocare' &&
       !formData?.selectedPackage?.packages &&
-      currentStep === 6
+      currentStep === 5
     ) {
       setIsBtnInvalid(true);
-    } else if (currentStep === 9) {
+    } else if (currentStep === 8) {
       setIsBtnInvalid(!formData.selectedTime);
     } else {
       setIsBtnInvalid(false);

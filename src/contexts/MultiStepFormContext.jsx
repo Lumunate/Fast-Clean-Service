@@ -20,11 +20,11 @@ export const FormProvider = ({ children }) => {
     packageType: null,
     selectedAdditionalOptions: [],
     selectedDetailingOptions: [],
-    selectedTime: '',
+    selectedTime: new Date(2023, 0, 1),
   });
   const [price, setPrice] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [color, setColor] = useState('#000000');
 
   function parseHighestDuration(durationStr) {
@@ -127,6 +127,10 @@ export const FormProvider = ({ children }) => {
       newPrice += travelCost;
     }
 
+    if (formData.discount) {
+      newPrice = newPrice * ((100 - formData.discount) / 100);
+    }
+
     setPrice(newPrice);
     setDuration(duration);
   }, [formData, price]);
@@ -191,11 +195,11 @@ export const FormProvider = ({ children }) => {
   // Recalculate pricing whenever formData is updated
   useEffect(() => {
     calculatePricing();
-    if (currentStep > 3) calculateFormColors();
+    if (currentStep > 2) calculateFormColors();
   }, [formData, currentStep, calculatePricing, calculateFormColors]);
 
   const nextStep = async (step = 1) => {
-    if (currentStep === 11) {
+    if (currentStep === 10) {
       // Submit the form
       try {
         const data = {
@@ -242,7 +246,7 @@ export const FormProvider = ({ children }) => {
           openSnackbar('Form submitted successfully!');
           setPrice(0);
           setFormData({});
-          setCurrentStep(1);
+          setCurrentStep(0);
         }
       } catch (err) {
         console.error('Error submitting form:', err);
@@ -256,9 +260,9 @@ export const FormProvider = ({ children }) => {
   };
 
   const prevStep = () => {
-    if (currentStep === 1) return;
+    if (currentStep === 0) return;
     if (
-      currentStep === 7 &&
+      currentStep === 6 &&
       formData?.selectedPackageType === 'Subscription Plans'
     ) {
       setCurrentStep((prevStep) => prevStep - 2);

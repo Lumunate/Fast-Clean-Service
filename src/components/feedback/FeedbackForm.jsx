@@ -169,7 +169,7 @@ export default function FeedbackForm() {
                   style={{
                     position: 'absolute',
                     right: '8px',
-                    top: '25px',
+                    bottom: '10px',
                     zIndex: 2,
                   }}
                 />
@@ -234,6 +234,14 @@ export default function FeedbackForm() {
                 {...register('feedback')}
                 inputfontsize='18px'
                 labelfontsize='16px'
+                InputLabelProps={{
+                  sx: {
+                    transition: "transform 0.3s ease",
+                    "&.Mui-focused": {
+                      transform: "translate(0, -30px) scale(0.75)",
+                    },
+                  },
+                }}
                 sx={{
                     height: "36px",
                     '& .MuiInput-root': {

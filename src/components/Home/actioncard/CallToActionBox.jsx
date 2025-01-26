@@ -9,8 +9,11 @@ import {
     CTAButton,
     CTAImage,
 } from "./CallToActionPckgs";
+import {useTheme} from "../../../contexts/themeContext"
+import {Button} from "@mui/material";
 
 const CallToActionBox = ({ hideImage = false }) => {
+    const {theme} = useTheme();
     return (
         <CTAContainer>
             {!hideImage && (
@@ -35,9 +38,25 @@ const CallToActionBox = ({ hideImage = false }) => {
                 </CTADescription>
 
                 <CTAInnerBox>
-                    <CTAButton variant="contained" onClick={() => (window.location.href = "/booking")}>
+                    <Button
+                        variant="contained"
+                        onClick={() => (window.location.href = "/booking")}
+                        sx={{
+                            marginTop: "1rem",
+                            padding: "1.5rem 3rem",
+                            fontSize: "16px",
+                            fontWeight: 500,
+                            backgroundColor: "primary.accentDark",
+                            color: "white",
+                            fontFamily: "DMSans",
+                            "&:hover": {
+                                backgroundColor: "#00BEFF",
+                            },
+                        }}
+                    >
                         Book Now
-                    </CTAButton>
+                    </Button>
+
                 </CTAInnerBox>
             </CTAContentBox>
         </CTAContainer>

@@ -46,7 +46,7 @@ const StatsBox = styled(Box)(({ theme }) => ({
   boxShadow: "0 0 7.4px 0 rgba(0, 0, 0, 0.25)",
 
   "@media (max-width: 900px)": {
-    margin: "0 2rem",
+    margin: "0 3rem",
   },
 }));
 
@@ -146,6 +146,7 @@ export const StatCardContainer = styled(Box)(({ theme }) => ({
 
   "@media (max-width: 600px)": {
     width: "100%",
+    padding: "3rem 1rem",
   },
 }));
 

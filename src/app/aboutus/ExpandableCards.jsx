@@ -28,6 +28,7 @@ const Container = styled(Box)(({ theme }) => ({
 const Card = styled(Box)(
     ({ theme, expanded, expandDirection, isSmallScreen }) => ({
         position: "relative",
+        maxHeight:"520px",
         width: isSmallScreen
             ? "100%"
             : expanded
@@ -95,8 +96,7 @@ const Content = styled(Box)(
         padding: isSmallScreen ? (expanded ? "3rem" : "0") : "5rem",
         color: "#fff",
         width: "100%",
-        // Updated transition for content
-        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s",
         display: "flex",
         flexDirection: "column",
         alignItems: isSmallScreen && !expanded ? "center" : "flex-start",

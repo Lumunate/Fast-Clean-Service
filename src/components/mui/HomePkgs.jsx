@@ -356,6 +356,7 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+
 }));
 
 export const CardDesc = styled(Typography)(({ theme }) => ({
@@ -369,6 +370,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   alignItems: "center",
   color: "#FFFFFF",
   "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
+  "@media (max-width:600px)": { alignItems: "flex-start" },
 
 }));
 
@@ -592,7 +594,7 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
   },
   "@media (max-width: 600px)": {
     width: "530px",
-    height: "400px",
+    height: "524px",
   },
   "@media (max-width: 550px)": {
     width: "480px",
@@ -813,7 +815,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   transition: "all 300ms ease-in-out",
   padding: "1rem",
-  height: "26rem",
+  height: "32rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
   "@media (max-width: 1380px)": {
@@ -886,6 +888,7 @@ export const CarouselStarsBox = styled(Box)(({ theme, stars }) => ({
 export const CarouselDetails = styled(Box)(({ theme }) => ({
   marginBottom: "2.6rem",
   textAlign: "left",
+  height: '100%',
   fontSize: "1.8rem !important",
 
   // "& h5": {

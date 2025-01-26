@@ -2,7 +2,7 @@
 import { Box, styled, Typography } from "@mui/material";
 
 export const FeedbackContainer = styled(Box)(({ theme }) => ({
-    padding: '150px 0 100px',
+    padding: '150px 0 69px',
     textAlign: 'center',
     display: 'flex', 
     flexDirection: 'column', 

@@ -6,6 +6,7 @@ import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "../contexts/SnackBarContext";
 import {ValidationProvider} from "../contexts/ValidationContext";
 import { ExitIntentProvider } from "../contexts/ExitIntentContext";
+import CookieConsentPrompt from "../components/CookieConsentPrompt";
 import Script from "next/script";
 
 import { metadataJSON } from "./metadata";
@@ -23,6 +24,7 @@ export default async function RootLayout({ children }) {
               <ValidationProvider>
                 <ExitIntentProvider>
                   <CssBaseline />
+                  <CookieConsentPrompt />
                   {children}
                 </ExitIntentProvider>
               </ValidationProvider>

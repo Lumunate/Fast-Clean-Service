@@ -61,6 +61,7 @@ const ValueProposition = () => {
                                         fontWeight: 600,
                                         color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
                                         fontSize: "2.2rem",
+                                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
                                     }}
                                 >
                                     {feature.title}
@@ -73,6 +74,7 @@ const ValueProposition = () => {
                                         color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                                         fontSize: "1.6rem",
                                         marginBottom: "1.4rem",
+                                        "@media (max-width: 600px)": { fontSize: "1.2rem" },
                                 }}
                                 >
                                     {feature.description}

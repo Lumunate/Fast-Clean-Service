@@ -6,18 +6,21 @@ import {
     IconButton,
     useTheme,
 } from "@mui/material";
-import { YouTube, Instagram, Facebook } from "@mui/icons-material";
+import { Instagram, Facebook } from "@mui/icons-material";
+import EmailIcon from "@mui/icons-material/Email";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const teamMember = {
-    name: "John Doe",
-    title: "CEO",
+    name: "Felicio Perk",
+    title: "Founder & CEO",
     imgSrc: "/peoplemain.png",
     description:
-        "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+        "Wij zijn een gespecialiseerd mobiel poetsbedrijf voor elk type voertuig",
     socialLinks: {
-        youtube: "https://youtube.com",
-        instagram: "https://instagram.com",
-        facebook: "https://facebook.com",
+        email: "mailto:felicio.perk@example.com",
+        whatsapp: "https://wa.me/1234567890",
+        instagram: "https://www.instagram.com/fastcleanservice/",
+        facebook: "https://www.facebook.com/FastCleanServiceNL/",
     },
 };
 
@@ -151,12 +154,20 @@ export default function MeetTeam() {
                         }}
                     >
                         <IconButton
-                            href={teamMember.socialLinks.youtube}
+                            href={teamMember.socialLinks.email}
                             target="_blank"
                             rel="noopener noreferrer"
                             sx={{ color: isDarkMode ? "#fff" : "#000" }}
                         >
-                            <YouTube />
+                            <EmailIcon />
+                        </IconButton>
+                        <IconButton
+                            href={teamMember.socialLinks.whatsapp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ color: isDarkMode ? "#fff" : "#000" }}
+                        >
+                            <WhatsAppIcon />
                         </IconButton>
                         <IconButton
                             href={teamMember.socialLinks.instagram}

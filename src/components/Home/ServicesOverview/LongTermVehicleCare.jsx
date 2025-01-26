@@ -42,8 +42,6 @@ const cardData = [
       "Advanced Steam Cleaning",
       "Flexible Services",
       "Engine & Mechanical Cleaning",
-      "Cleaning rims",
-      "Blackening tires",
     ],
     description:
       " we offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization, and engine cleaning for ultimate freshness and performance.",
@@ -314,7 +312,15 @@ export default function LongTermVehicleCare() {
                 onClick={() => handleIndexChange(index)}
               >
                 <div>
-                  <CardName>{card.name}</CardName>
+                  <CardName
+                      sx={{
+                          "@media (max-width: 600px)": {
+                              marginTop: currentIndex === 2 ? "4rem" : "4rem",
+                          },
+                      }}
+                  >
+                      {card.name}
+                  </CardName>
 
                   {card.pkgs.map((pkg) => (
                     <CardDesc key={pkg}>
@@ -323,10 +329,7 @@ export default function LongTermVehicleCare() {
                         style={{
                           color: "#90EE90",
                           marginRight: "1rem",
-                          "@media (max-width:1258px)": {
-                            alignSelf: "flex-start",
                             marginTop: "0.5rem",
-                          },
                         }}
                       />
                       <Typography

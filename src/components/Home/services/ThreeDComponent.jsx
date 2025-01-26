@@ -52,32 +52,34 @@ function Model({ url }) {
     <group
       ref={meshRef}
       draggable={false}
-      style={{ translateY: 10 }}
-      translateY={"100px"}
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <primitive object={scene} position={[0, -0.5, -1]} draggable={false} />
+      <primitive object={scene} position={[0, -6, -5]} draggable={false} />
     </group>
   );
 }
 
 export default function ThreeDComponent({ modelUrl }) {
   return (
-    <Box style={{ maxWidth: "1400px", width: "100%", minWidth: "1200px", height: "600px" }}>
+    <Box style={{ maxWidth: "1400px", width: "100%", minWidth: "1200px", height: "600px"}}>
       <Canvas
-        camera={{ position: [15, 2, 15], fov: 7 }}
+        camera={{ position: [0,20,80], fov: 25 }}
         draggable={false}
         onPointerDown={(e) => e.stopPropagation()} // Prevents interaction with canvas
       >
         <ambientLight intensity={1} />
-        <directionalLight position={[0, 10, 0]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[10, 10, 10]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[-10, 10, -10]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[-10, 10, 100]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[20, 15, 25]} intensity={0.8} color={"0xffffff"} />
-        <spotLight position={[15, 5, 10]} color={"0x80ff80"} angle={1} penumbra={1} intensity={1} />
-        <spotLight position={[5, 5, 5]} color={"0x80ff80"} angle={1} penumbra={1} intensity={1} />
-        <pointLight position={[10, 20, 10]} />
+        <directionalLight position={[0, 10, 0]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[5, 0, -10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, 0, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, 2, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, -2, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[10, 10, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[-10, 10, -10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[-10, 10, 100]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[20, 15, 25]} intensity={1} color={"0xffffff"} />
+        <spotLight position={[15, 5, 10]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
+        <spotLight position={[15, 10, 20]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
+        <spotLight position={[5, 5, 5]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
         <Suspense fallback={"Loading..."}>
           <Model url={modelUrl} />
         </Suspense>
