@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, Link as MuiLink } from "@mui/material";
 import Link from "next/link";
 import CircleIcon from "@mui/icons-material/Circle";
+import {styled} from "@mui/material/styles";
 
 const bannerStyles = {
     position: "fixed",
@@ -11,7 +12,6 @@ const bannerStyles = {
     transform: "translate(-50%, -50%)", // center it horizontally & vertically
     width: "50vw",
     height: "50vh",
-    zIndex: 9999,
     backgroundColor: "#f5f5f5",
     padding: "2rem",
     border: "1px solid #ccc",
@@ -20,6 +20,18 @@ const bannerStyles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    zIndex: "1300",
+};
+
+const backdropStyles = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backdropFilter: "blur(4px)",
+    zIndex: 1200,
 };
 
 const rgbCirclesStyles = {
@@ -64,6 +76,8 @@ export default function CookieConsentPrompt() {
     if (!showBanner) return null;
 
     return (
+        <>
+            <Box sx={backdropStyles} />
         <Box sx={bannerStyles}>
             {/*<Box sx={rgbCirclesStyles}>*/}
             {/*    <Box sx={circleStyles("red")} />*/}
@@ -136,5 +150,6 @@ export default function CookieConsentPrompt() {
                 </Button>
             </Box>
         </Box>
+        </>
     );
 }
