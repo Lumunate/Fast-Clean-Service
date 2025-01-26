@@ -22,7 +22,7 @@ export const SubsciptionsContainer = styled(Box)(({ theme }) => ({
 
 export const StyledCard = styled(Box)(({ theme }) => ({
   width: "393px",
-  height: "1005px",
+  // height: "1005px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",

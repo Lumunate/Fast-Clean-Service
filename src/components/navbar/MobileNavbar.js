@@ -99,8 +99,8 @@ const MobileNavbar = () => {
                                     }
                                 }}
                             >
-                                <ListItemText primary={item.label} />
-                                {item.more && item.more.length > 0 && <>{isServicesOpen ? <ExpandLess /> : <ExpandMore />}</>}
+                                <ListItemText sx={{ color: "#fff" }} primary={item.label}  />
+                                {item.more && item.more.length > 0 && <>{isServicesOpen ? <ExpandLess sx={{ color: "#fff" }} /> : <ExpandMore sx={{ color: "#fff" }} />}</>}
                             </ListItemButton>
                         </ListItem>
 
@@ -108,7 +108,7 @@ const MobileNavbar = () => {
                             <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {item.more.map((subItem, index) => (
-                                        <ListItemButton sx={{ pl: 4 }} key={subItem.label} onClick={() => (window.location.href = subItem.href)}>
+                                        <ListItemButton sx={{ pl: 4, "& .MuiTypography-root": { color: "#fff" }, }} key={subItem.label} onClick={() => (window.location.href = subItem.href)}>
                                             <ListItemText primary={subItem.label} />
                                         </ListItemButton>
                                     ))}
@@ -164,9 +164,25 @@ const MobileNavbar = () => {
                             <LogoImage src={UserIcon} alt="User Icon" width={15} height={15} style={{ objectFit: "contain" }} />
                         </IconButton>
 
-                        <SwipeableDrawer open={drawerOpen} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+                        <SwipeableDrawer
+                            open={drawerOpen}
+                            onOpen={toggleDrawer(true)}
+                            onClose={toggleDrawer(false)}
+                            PaperProps={{
+                                sx: {
+                                    backgroundColor: "rgba(35, 35, 35, 0.6)",
+                                    backdropFilter: "blur(10px)",
+                                    WebkitBackdropFilter: "blur(10px)",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
+                                    padding: "1rem",
+                                },
+                            }}
+                        >
                             {NavbarDrawerList}
                         </SwipeableDrawer>
+
 
                         {userMenuOpen && (
                             <Box

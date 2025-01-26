@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Box, Paper, styled, Typography } from "@mui/material";
 
 export const CarServicesContainer = styled(Box)(({ theme }) => ({
-  margin: "7.8rem auto 17.5rem",
+  margin: "7.8rem auto 14rem",
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",

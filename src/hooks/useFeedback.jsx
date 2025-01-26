@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 
 export const useFeedback = () => {
   // State for feedback list and pagination
@@ -107,6 +107,10 @@ export const useFeedback = () => {
       setIsLoading(false);
     }
   }, []);
+
+  useEffect(() => {
+    fetchFeedbacks();
+  }, [fetchFeedbacks]);
 
   // Memoized pagination information
   const paginationInfo = useMemo(() => ({

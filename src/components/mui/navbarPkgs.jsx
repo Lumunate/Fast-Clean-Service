@@ -45,7 +45,7 @@ export const NavBarLinksContainer = styled(NavLinksContainer)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  maxWidth: "600px",
+  maxWidth: "480px",
   width: "100%",
   zIndex: 10,
 

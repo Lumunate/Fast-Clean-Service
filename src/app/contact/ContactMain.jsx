@@ -76,6 +76,7 @@ export default function ContactMain() {
                             display: "flex",
                             gap: "2rem",
                             marginTop: "2rem",
+                            "@media (max-width: 600px)": { padding: "1rem" },
                         }}
                     >
                         <ContactCard
@@ -161,7 +162,7 @@ export default function ContactMain() {
                     justifyContent: "center",
                     marginTop: "0",
                     width: "100%",
-                    padding: "0",
+                    padding: "1rem",
                     alignItems: "center",
                     height: "100%",
                 }}
@@ -236,6 +237,7 @@ export default function ContactMain() {
                     justifyContent: "center",
                     width: "100%",
                     alignItems: "center",
+                    padding: "1rem"
                 }}
             >
                 <ContactCard

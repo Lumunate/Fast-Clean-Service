@@ -117,7 +117,11 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         overflowY: "auto",
                         maxWidth: "700px",
                         width: "100%",
-                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.05)",
+                        backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.4)",
+                        "@media (max-width: 600px)": {
+                            margin: "2rem",
+                            padding: "2rem",
+                        },
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >
@@ -140,7 +144,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                         onSubmit={handleSubmit}
                         sx={{ mt: 3, width: "100%", maxWidth: "80%" }}
                     >
-                        <Grid container spacing={isSmallScreen ? 2 : 4}>
+                        <Grid container spacing={isSmallScreen ? 1 : 4}>
                             <Grid item xs={12} sm={6}>
                                 <CustomFormTextField
                                     autoComplete="given-name"
@@ -236,7 +240,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     sx={{
-                                        margin: "-1rem auto 2.5rem",
+                                        margin: "1rem auto 2.5rem",
                                         "& span": {
                                             fontSize: "1.5rem",
                                         },

@@ -309,7 +309,7 @@ export const CardDetails = styled(List)(({ theme }) => ({
     paddingRight: 0,
 
     "@media (max-width: 600px)": {
-      fontSize: "1rem",
+      fontSize: "1.2rem",
     },
   },
 }));
