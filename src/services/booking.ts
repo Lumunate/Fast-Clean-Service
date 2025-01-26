@@ -156,16 +156,17 @@ class BookingService {
     if (bookingData.serviceName === "Subscription Plans") {
       pkg = subscriptionPackages.find((pkg) => pkg.name.toLowerCase() === bookingData.packageName.toLowerCase());
     } else {
-      pkg = packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg.name === bookingData.packageName);
+      pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg.name === bookingData.packageName);
     }
 
     if (!pkg) {
+      console.log(packages);
       console.log("Booking Data:", bookingData.packageName, bookingData.serviceName, bookingData.packageType);
       throw new Error("Package not found");
     }
 
     const carType = bookingData.vehicleType;
-    price += pkg.vehicleOptions[carType]?.additionalPrice || 0;
+    price += pkg.vehicleOptions[carType]?.additionalCost || 0;
     price += pkg.vehicleOptions[carType]?.additionalTime || 0;
 
     price += parseFloat(pkg.price.replace("€", "").trim());
