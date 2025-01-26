@@ -100,7 +100,7 @@ const AdditionalOptions = () => {
   const noAddonsAvailable =
     isSubscriptionPackage ||
     !pkg ||
-    Object.keys(pkg.additionalOptions).length === 0;
+    Object.keys(pkg?.additionalOptions || {}).length === 0;
 
   const handleClick = (optionName) => {
     const selectedOptions = form.formData.selectedAdditionalOptions || [];

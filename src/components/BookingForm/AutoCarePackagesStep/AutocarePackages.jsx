@@ -72,9 +72,9 @@ const AutocarePackages = () => {
     return null;
   }
 
-  const packageTypeName = form.formData?.packageType.name.toLocaleLowerCase();
+  const packageTypeName = form.formData?.packageType?.name?.toLocaleLowerCase();
   const allPackages = packages.packages[packageTypeName];
-  let displayedPackages = allPackages;
+  let displayedPackages = allPackages || [];
 
   // Apply filtering based on carType
   if (form.formData.carType === 'Motor') {
@@ -96,7 +96,7 @@ const AutocarePackages = () => {
       }}
     >
       <AutoCarePackageSubheading sx={{ color: COLOR }}>
-        {form.formData?.packageType.name.toLocaleUpperCase()}
+        {form.formData?.packageType?.name?.toLocaleUpperCase()}
       </AutoCarePackageSubheading>
 
       {isMobile ? (
