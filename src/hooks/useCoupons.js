@@ -132,7 +132,7 @@ export const useCoupons = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/coupons/apply/${code}`, {
+      const response = await fetch(`/api/coupons/redeem/${code}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

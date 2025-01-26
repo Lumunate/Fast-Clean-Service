@@ -67,11 +67,19 @@ class UserService {
 
   async sendMagicLink(user: IUserInfo): Promise<void> {
     console.log(user);
-    await sendEmail(user.email, EmailVerificationEmail, {
-      name: `${user.firstName} ${user.lastName}`,
-      email: user.email,
-      verificationLink: this.generateMagicLink(user),
-    });
+    await sendEmail(
+      {
+        to: user.email,
+        from: "fizoneechan@gmail.com",
+        subject: "Email Verification Link",
+      },
+      EmailVerificationEmail,
+      {
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        verificationLink: this.generateMagicLink(user),
+      }
+    );
   }
 
   async authenticateEmail(token: string): Promise<void> {
