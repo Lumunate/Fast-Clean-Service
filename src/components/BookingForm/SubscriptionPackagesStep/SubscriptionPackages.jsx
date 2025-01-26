@@ -15,7 +15,7 @@ import {
   SubscriptionContentLabel,
   SubscriptionContentValue,
 } from '../../mui/BookingFormPackages';
-import { options } from "../../../app/(main)/autocare/data";
+import { options } from '../../../app/autocare/data';
 import { useTheme } from '../../../contexts/themeContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
