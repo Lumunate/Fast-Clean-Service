@@ -20,7 +20,7 @@ export default function CouponApplier({ basePrice }) {
       setDiscountInfo({
         originalPrice: form.price,
         discountAmount: result.discount,
-        finalPrice: form.price * ((100 - formData.discount) / 100),
+        finalPrice: form.price * ((100 - result.discount) / 100),
       });
 
       form.updateFormData({ discount: result.discount });
