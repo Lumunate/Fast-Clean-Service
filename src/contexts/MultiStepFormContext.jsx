@@ -127,6 +127,10 @@ export const FormProvider = ({ children }) => {
       newPrice += travelCost;
     }
 
+    if (formData.discount) {
+      newPrice = newPrice * ((100 - formData.discount) / 100);
+    }
+
     setPrice(newPrice);
     setDuration(duration);
   }, [formData, price]);
