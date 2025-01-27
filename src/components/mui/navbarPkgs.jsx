@@ -45,12 +45,12 @@ export const NavBarLinksContainer = styled(NavLinksContainer)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  maxWidth: "480px",
+  maxWidth: "450px",
   width: "100%",
   zIndex: 10,
 
   "@media (max-width: 1380px)": {
-    maxWidth: "400px",
+    maxWidth: "380px",
   },
 
   "@media (max-width: 1000px)": {
@@ -123,7 +123,11 @@ export const NavLinkButton = styled(ButtonBase)(({ theme }) => ({
   color: "#FFF",
   textTransform: "none",
   fontFamily: "DMSans",
-  fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+  fontSize: "1.6rem",
+  letterSpacing: "1px",
+    "&:hover": {
+        color: "#00BEFF",
+    },
 }));
 
 export const NavLinkD = styled(Link)(({ theme }) => ({

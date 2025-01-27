@@ -6,8 +6,8 @@ import Link from "next/link";
 const bannerStyles = {
     position: "fixed",
     bottom: 0,
-    left: 0,
-    width: "100%",
+    left: "2rem",
+    right: "2rem",
     backgroundColor: "#f5f5f5",
     padding: "2rem 2rem 1rem 2rem",
     borderTop: "1px solid #ccc",
@@ -88,7 +88,7 @@ export default function CookieConsentPrompt() {
                     </Link>{" "}for further details.
                 </Typography>
 
-                <Box sx={{ display: "flex", gap: 3, mt: 2, mb: 2 }}>
+                <Box sx={{ display: "flex", gap: 3, mt: 2}}>
                     <Button
                         variant="outlined"
                         onClick={handleDeny}

@@ -18,8 +18,8 @@ import {
     NavLinksContainer
 } from "../../components/mui/navbarPkgs";
 import Logo from "../../../public/logo.png";
-import CustomLink from "../CustomLink"; // Import CustomLink instead of next/link
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import CustomLink from "../CustomLink";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Box, Button, IconButton } from "@mui/material";
 import { useTheme } from "../../contexts/themeContext";
 import Badge from "@mui/material/Badge";
@@ -41,12 +41,19 @@ const DesktopNavbar = () => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [unreadCount, setUnreadCount] = useState(0);
+    const dropdownRef = useRef(null);
 
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
 
     const handleUserMenuToggle = () => {
         setUserMenuOpen((prev) => !prev);
+    };
+
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsServicesOpen(false);
+        }
     };
 
     const handleServicesToggle = () => {
@@ -66,6 +73,19 @@ const DesktopNavbar = () => {
         await signOut();
         setLoading(false);
     };
+
+    useEffect(() => {
+        if (isServicesOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isServicesOpen]);
+
 
     useEffect(() => {
         const fetchNotifications = async () => {
@@ -107,14 +127,26 @@ const DesktopNavbar = () => {
                         <NavLinkButton>About</NavLinkButton>
                     </CustomLink>
 
-                    <NavLinkDropDownContainer>
+                    <NavLinkDropDownContainer ref={dropdownRef}>
                         <NavLinkButton
                             onClick={handleServicesToggle}
-                            endIcon={<ArrowDropDownIcon sx={{ marginLeft: "0.5rem", color: "#FFF" }} />}
-                            sx={{ zIndex: "10" }}
+                            endIcon={<ChevronRightIcon
+                                sx={{
+                                    marginLeft: "0.5rem",
+                                    color: "#FFF",
+                                    transform: isServicesOpen ? "rotate(90deg)" : "rotate(0deg)", // Rotate based on state
+                                    transition: "transform 0.3s ease-in-out",
+                                }}
+                            />}
+                            sx={{ zIndex: "10", fontWeight: isServicesOpen ? "bold" : "normal", }}
                         >
                             Services
-                            <ArrowDropDownIcon />
+                            <ChevronRightIcon sx={{
+                                marginLeft: "0.5rem",
+                                color: "#FFF",
+                                transform: isServicesOpen ? "rotate(-90deg)" : "rotate(90deg)", // Rotate based on state
+                                transition: "transform 0.3s ease-in-out",
+                            }}/>
                         </NavLinkButton>
 
                         {isServicesOpen && (
@@ -159,7 +191,7 @@ const DesktopNavbar = () => {
                                 </CustomLink>
                                 <CustomLink href="/other-vehicles">
                                     <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                        Diverse Vehicles
+                                        Other Vehicles
                                     </DropDownLink>
                                 </CustomLink>
                                 <DropDownLink
@@ -200,7 +232,7 @@ const DesktopNavbar = () => {
                                         zIndex: "10",
                                     }}
                                 >
-                                    <LogoImage src={UserIcon} alt="User Icon" width={15} height={15} style={{ objectFit: "contain" }} />
+                                    <LogoImage src={UserIcon} alt="User Icon" width={30} height={30} style={{ objectFit: "contain" }} />
                                 </IconButton>
 
                                 {userMenuOpen && (
@@ -258,6 +290,7 @@ const DesktopNavbar = () => {
                                 display: 'flex',
                                 gap: '1rem',
                                 width: '200px',
+                                justifyContent: "flex-end",
                             }}>
                             <Button
                                 variant="outlined"
@@ -265,8 +298,9 @@ const DesktopNavbar = () => {
                                     color: 'white',
                                     borderColor: 'white',
                                     textTransform: 'none',
-                                    borderRadius: '20px',
-                                    padding: '0.5rem 1.5rem',
+                                    borderRadius: '50px',
+                                    padding: '0.8rem 1.6rem',
+                                    fontSize: "1.4rem",
                                     transition: 'background-color 0.3s, color 0.3s',
                                     '&:hover': {
                                         backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -282,9 +316,10 @@ const DesktopNavbar = () => {
                                 sx={{
                                     backgroundColor: '#1976d2',
                                     color: 'white',
-                                    borderRadius: '20px',
-                                    padding: '0.5rem 1.5rem',
+                                    borderRadius: '50px',
+                                    padding: '0.8rem 1.6rem',
                                     textTransform: 'none',
+                                    fontSize: "1.4rem",
                                     transition: 'background-color 0.3s, transform 0.3s',
                                     '&:hover': {
                                         backgroundColor: '#125a9a',
@@ -299,9 +334,9 @@ const DesktopNavbar = () => {
                     )}
                     <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
                         {theme.palette.mode === "dark" ? (
-                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
+                            <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
                         ) : (
-                            <Image src={MoonIcon} alt="Moon Icon" width={21} height={21} style={{ objectFit: "contain" }} />
+                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
                         )}
                     </IconButton>
                 </NavLinksContainer>
