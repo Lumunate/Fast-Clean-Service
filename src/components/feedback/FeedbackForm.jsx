@@ -90,8 +90,8 @@ export default function FeedbackForm() {
           </Box>
         )}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container columns={24} alignItems={"start"} sx={{ mb: "40px" }}>
-            <Grid xs={24} md={12}>
+          <Grid container columns={24} gap={2} alignItems={"start"} sx={{ mb: "40px" }}>
+            <Grid xs={24} md={11.5}>
               <StyledTextField
                 label="Name"
                 variant="standard"
@@ -106,7 +106,7 @@ export default function FeedbackForm() {
             </Grid>
             <Grid
               xs={24}
-              md={12}
+              md={11.5}
               sx={{
                 "@media (max-width: 900px)": {
                   marginTop: "3rem",
@@ -126,7 +126,7 @@ export default function FeedbackForm() {
               />
             </Grid>
 
-            <Grid sx={{ marginTop: "44px" }} xs={24} md={12}>
+            <Grid sx={{ marginTop: "44px" }} xs={24} md={11.5}>
               <CustomFormControl fullWidth variant="standard" labelfontsize="16px" error={!!errors.Service}>
                 <InputLabel id="Service">Service</InputLabel>
                 <Controller
@@ -134,7 +134,6 @@ export default function FeedbackForm() {
                   control={control}
                   render={({ field }) => (
                     <StyledSelectField
-                      sx={{ width: "90%" }}
                       label="Service"
                       value={field.value}
                       onChange={field.onChange}
@@ -155,10 +154,9 @@ export default function FeedbackForm() {
               </CustomFormControl>
             </Grid>
 
-            <Grid sx={{ marginTop: "44px" }} xs={24} md={12}>
+            <Grid sx={{ marginTop: "44px" }} xs={24} md={11.5}>
               <Box
                 sx={{
-                  width: "93%",
                   position: "relative",
                   "& .feedback-datepicker::placeholder": {
                     color: "#818181",
