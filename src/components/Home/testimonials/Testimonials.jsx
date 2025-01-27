@@ -27,6 +27,7 @@ import {
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import { useFeedback } from "../../../hooks/useFeedback";
 import { useTheme } from "../../../contexts/themeContext";
+import Image from "next/image";
 
 const TESTIMONIALS = [
   {
@@ -456,7 +457,7 @@ export default function Testimonials() {
               "@media (max-width: 600px)": { left: "-2rem" },
             }}
           >
-            <FontAwesomeIcon icon={faChevronLeft} />
+            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} style={{transform: "rotate(180deg)"}} />
           </CarouselBtn>
 
           <CarouselBtn
@@ -468,8 +469,8 @@ export default function Testimonials() {
               "@media (max-width: 600px)": { right: "-2rem" },
             }}
           >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </CarouselBtn>
+            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} />
+            </CarouselBtn>
         </CarouselControls>
       </HomePkgsInBox>
     </HomePkgsInBox>

@@ -256,7 +256,7 @@ export const CardContainer = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   // boxShadow: "0 0 2px 2px #dbdbdb",
   borderRadius: "20px",
-  "@media (max-width:900px)": { maxHeight: "510px", },
+  "@media (max-width:900px)": { height: "510px", },
 }));
 
 export const Cards = styled(Box)(({ theme }) => ({
@@ -431,7 +431,7 @@ export const ServicesImgContainer = styled(Typography)(({ theme }) => ({
     backgroundColor: "transparent",
     overflow: "hidden",
     clipPath: "polygon(100% 0, 100% 100%, 5% 100%, 5% 70%, 0 50%, 5% 30%, 5% 0)",
-    maxHeight: "580px",
+    height: "580px",
 
     "& svg": {
       "& path": {
@@ -818,12 +818,6 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   height: "32rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
-  "@media (max-width: 1380px)": {
-    height: "27rem",
-  },
-  "@media (max-width: 1200px)": {
-    height: "auto",
-  },
 }));
 
 export const CarouselItemInner = styled(Box)(({ theme }) => ({
