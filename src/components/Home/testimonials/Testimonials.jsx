@@ -26,6 +26,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import { useFeedback } from "../../../hooks/useFeedback";
+import { useTheme } from "../../../contexts/themeContext";
 
 const TESTIMONIALS = [
   {
@@ -167,6 +168,7 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
+  const { theme } = useTheme();
   const sliderRef = useRef(null);
 
   const [testimonials, setTestimonials] = useState(TESTIMONIALS);
@@ -182,14 +184,14 @@ export default function Testimonials() {
       const feedbackObj = {
         stars: feedback.stars,
         name: `${feedback.name} ${feedback.lastName}`,
-        details: feedback.feedback ?? '',
-        image: '/logo.png',
-        date: new Date(feedback.createdAt).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit',
+        details: feedback.feedback ?? "",
+        image: "https://swiperjs.com/demos/images/nature-2.jpg",
+        date: new Date(feedback.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
         }),
-        socialIcons: feedback.socialIcons,
+        socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
       };
       updatedTestimonials.splice((index + 1) * 3, 0, feedbackObj);
     });
@@ -342,10 +344,10 @@ export default function Testimonials() {
                     flexDirection: "column",
                     transition: "opacity 600ms ease-in-out",
                     width: isLargeScreen ? "50%" : "100%",
-                    opacity: isActive || isActiveNext ? 1 : 0,
+                    backdropFilter: isActive || isActiveNext ? "blur(0px)" : "blur(10px)",
                     visibility: isActive || isActiveNext ? "visible" : "hidden",
                     position: isActive || isActiveNext ? "relative" : "absolute",
-                    background: "none",
+                    background: "transparent",
                     border: "none",
                     alignSelf: "flex-start",
                     justifyContent: "stretch",
@@ -355,8 +357,10 @@ export default function Testimonials() {
                     sx={{
                       padding: "2rem",
                       borderRadius: "20px",
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)",
+
+                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "white",
+                      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
+                      backdropFilter: "blur(10.4px)",
                     }}
                   >
                     <CarouselStarsBox
@@ -429,7 +433,7 @@ export default function Testimonials() {
                             alt={iconObj.alt}
                             sx={{
                               width: "50px",
-                              height: "50px",
+                              // height: "50px",
                             }}
                           />
                         ))}
