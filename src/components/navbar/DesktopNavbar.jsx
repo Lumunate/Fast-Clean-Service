@@ -148,7 +148,7 @@ const DesktopNavbar = () => {
                   sx={{
                     marginLeft: "0.5rem",
                     color: "#FFF",
-                    transform: isServicesOpen ? "rotate(-90deg)" : "rotate(90deg)", // Rotate based on state
+                    transform: isServicesOpen ? "translateY(2px) rotate(-90deg)" : "translateY(2px) rotate(90deg)", // Rotate based on state
                     transition: "transform 0.3s ease-in-out",
                   }}
                 />

@@ -292,6 +292,7 @@ export default function Testimonials() {
               fontWeight: 500,
               backgroundColor: "primary.accentDark",
               color: "white",
+              borderRadius: "50px",
               fontFamily: "DMSans",
               "&:hover": {
                 backgroundColor: "#00BEFF",

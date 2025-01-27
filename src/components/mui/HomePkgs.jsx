@@ -735,6 +735,7 @@ export const ServiceBtn1 = styled(ButtonBase)(({ theme, special = false }) => ({
   border: `1px solid ${special ? theme.palette.primary.accentDark : "rgba(218, 218, 218, 0.45)"}`,
   borderRadius: "1.2rem",
   padding: "1rem 2rem",
+  borderRadius: "50px",
   fontSize: "1.4rem !important",
   color: "white",
   fontWeight: "regular",

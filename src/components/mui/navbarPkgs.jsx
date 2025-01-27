@@ -172,6 +172,7 @@ export const NavbarCTA = styled(ButtonBase)(({ theme }) => ({
   fontWeight: "500",
   lineHeight: "15px",
   transition: "all 0.3s ease",
+  borderRadius: "50px",
   // marginLeft: "21rem",
 
   "@media (max-width: 1368px)": {

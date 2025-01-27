@@ -47,6 +47,7 @@ export const ServiceItemCTA = styled(ServiceBtn1)(({ theme }) => ({
   fontWeight: 500,
   backgroundColor: theme.palette.primary.accentDark,
   color: "white",
+  borderRadius: "50px",
   border:"none",
   "&:hover": {
     backgroundColor: theme.palette.primary.accent,
