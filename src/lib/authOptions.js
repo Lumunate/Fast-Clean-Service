@@ -16,7 +16,7 @@ export const authOptions = {
         await connectToDb();
         try {
           console.log(credentials.password);
-          const user = await User.findOne({ email: credentials.email });
+          const user = await User.findOne({ email: credentials.email?.toLowerCase() });
           console.log(user);
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
