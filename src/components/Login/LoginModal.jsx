@@ -82,9 +82,10 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                     
                 }}
                 onClick={() => setOpenLogin(false)}
-            >
+                >
                 <CustomCard
                     sx={{
+                        backdropFilter: "blur(10px)",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
