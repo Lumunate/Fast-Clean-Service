@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Box, styled, Typography } from "@mui/material";
 // import Star from "../../AnimatedSvgs/Star";
 // import Bars from "../../AnimatedSvgs/Bars";
@@ -7,22 +7,29 @@ import { Box, styled, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
 import Arrow from "../../../../public/decorative/Arrow_01.svg";
+import l6 from "../../../../public/l6.png";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
+import Star from "../../AnimatedSvgs/Star";
+import Bars from "../../AnimatedSvgs/Bars";
+import Customer from "../../AnimatedSvgs/Customer";
 
 const stats = [
   {
-    // icon: Star,
-    head: "4.5/5",
+    icon: Star,
+    type: "rating",
+    head: "4.7/5",         // We'll parse '4.7' from this for the count
     desc: "Stars on Trustpilot",
   },
   {
-    // icon: Bars,
-    head: "4+",
+    icon: Bars,
+    type: "ranking",
+    head: "4+",            // We'll parse '4' from this for the count
     desc: "Years of Experience",
   },
   {
-    // icon: Customer,
-    head: "1500+",
+    icon: Customer,
+    type: "customer",
+    head: "1250+",         // We'll parse '1250' from this for the count
     desc: "Happy Customers",
   },
 ];
@@ -45,8 +52,8 @@ const StatsBox = styled(Box)(({ theme }) => ({
   borderRadius: "4rem",
   boxShadow: "0 0 7.4px 0 rgba(0, 0, 0, 0.25)",
 
-  "@media (max-width: 900px)": {
-    margin: "0 3rem",
+  "@media (max-width: 1300px)": {
+    margin: "0",
   },
 }));
 
@@ -124,8 +131,24 @@ export default function Stats() {
           <StatsContainer>
             {stats.map((stat, index) => (
                 <React.Fragment key={index}>
-                  <StatsCard icon={stat.icon} head={stat.head} desc={stat.desc} />
-                  {index !== stats.length - 1 && <StatsCardDivider />}
+                  <StatsCard
+                      icon={stat.icon}
+                      type={stat.type}
+                      head={stat.head}
+                      desc={stat.desc}
+                  />
+                  {/* Divider */}
+                  {index !== stats.length - 1 && (
+                      <Image
+                          src={l6}
+                          alt="Divider"
+                          style={{
+                            height: "60px",
+                            width: "1px",
+                            margin: "0 3rem",
+                          }}
+                      />
+                  )}
                 </React.Fragment>
             ))}
           </StatsContainer>
@@ -190,16 +213,120 @@ export const StatAnimatedIcon = styled(Box)(({ theme }) => ({
   "@media (max-width: 900px)": { transform: "scale(0.6)" },
 }));
 
-const StatsCard = ({ icon, head, desc }) => {
-  // const getStatIcon = (iconComponent) => {
-  //   return <StatAnimatedIcon>{React.createElement(iconComponent)}</StatAnimatedIcon>;
-  // };
+function StatsCard({ icon, head, desc, type }) {
+  const [count, setCount] = useState(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const cardRef = useRef(null);
+
+  // Example: parse numeric portion from `head`
+  // For "4.7/5", we parse "4.7"
+  // For "4+", we parse "4"
+  // For "1250+", we parse "1250"
+  const parseNumberFromHead = () => {
+    // Example 1: rating => "4.7/5"
+    if (type === "rating") {
+      // Extract '4.7' from "4.7/5"
+      const [numberPart] = head.split("/");
+      return parseFloat(numberPart);
+    }
+    // Example 2: ranking => "4+"
+    else if (type === "ranking") {
+      return parseFloat(head.replace("+", ""));
+    }
+    // Example 3: customer => "1250+"
+    else if (type === "customer") {
+      return parseFloat(head.replace("+", ""));
+    }
+    return 0;
+  };
+
+  useEffect(() => {
+    const finalValue = parseNumberFromHead();
+
+    // Decide initialValue if needed
+    // (From your old code: ranking started from 1, customer started from 1300, etc.)
+    let initialValue = 0;
+    let animate = true;
+
+    if (type === "ranking") {
+      initialValue = 1; // start from 1
+    } else if (type === "customer") {
+      initialValue = 1000; // old code started at 1300
+    } else if (type === "rating") {
+      initialValue = 2;
+      // rating was basically not incrementing from 0;
+      // if you prefer it to animate, set it to 0 or something else
+    }
+
+    // Intersection Observer
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasAnimated && animate) {
+            setHasAnimated(true);
+
+            // Start the count-up
+            let current = initialValue;
+            const duration = 2000; // 2 seconds
+            const stepTime = 100;
+            const steps = Math.floor(duration / stepTime);
+            const increment = (finalValue - initialValue) / steps;
+
+            const interval = setInterval(() => {
+              current += increment;
+              if (current >= finalValue) {
+                clearInterval(interval);
+                setCount(finalValue);
+              } else {
+                // Round or ceil as you see fit
+                setCount(Math.ceil(current));
+              }
+            }, stepTime);
+          }
+        },
+        { threshold: 0.5 } // 50% in view triggers animation
+    );
+
+    if (cardRef.current) observer.observe(cardRef.current);
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, [head, type, hasAnimated]);
+
+  // Format final display of `count`
+  // e.g. "4.7/5", "1500+", etc.
+  const displayValue = () => {
+    if (count === null) {
+      // Not yet animated => show the original string or 0
+      return head;
+    }
+    // For rating, put /5
+    if (type === "rating") {
+      return `${count.toFixed(1)}/5`; // or skip .toFixed(1) if you want an integer
+    }
+    // For others, add '+' if it had it
+    if (type === "ranking" || type === "customer") {
+      return `${Math.floor(count)}+`;
+    }
+    return head; // fallback
+  };
 
   return (
-    <StatCardContainer>
-      {/* {getStatIcon(icon)} */}
-      <StatCardHeading variant="h2">{head}</StatCardHeading>
-      <StatCardSubheading variant="p">{desc}</StatCardSubheading>
-    </StatCardContainer>
+      <StatCardContainer ref={cardRef}>
+        {/* Show the animated icon */}
+        <StatAnimatedIcon>
+          {React.createElement(icon)}
+        </StatAnimatedIcon>
+
+        {/* Heading that shows the count-up number */}
+        <StatCardHeading variant="h2">
+          {displayValue()}
+        </StatCardHeading>
+
+        {/* Subheading/description */}
+        <StatCardSubheading variant="p">
+          {desc}
+        </StatCardSubheading>
+      </StatCardContainer>
   );
-};
+}
