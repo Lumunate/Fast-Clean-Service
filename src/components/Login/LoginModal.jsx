@@ -84,7 +84,6 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
         >
           <CustomCard
             sx={{
-              backdropFilter: "blur(10px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -94,7 +93,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
               boxShadow: "2px 2px 20px #00000060 !important",
               maxWidth: "600px",
               width: "100%",
-              backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.4)",
+              backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 255, 1)" : "rgba(255, 255, 255, 0.4)",
               "@media (max-width: 1400px)": {
                 margin: "2rem",
               },
