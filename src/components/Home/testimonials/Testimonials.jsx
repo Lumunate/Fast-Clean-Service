@@ -181,7 +181,7 @@ export default function Testimonials() {
     feedbacks.slice(0, 5).forEach((feedback, index) => {
       const feedbackObj = {
         stars: feedback.stars,
-        name: `${feedback.name} ${feedback.lastname}`,
+        name: `${feedback.name} ${feedback.lastName}`,
         details: feedback.feedback ?? '',
         image: '/logo.png',
         date: new Date(feedback.createdAt).toLocaleDateString('en-US', {
