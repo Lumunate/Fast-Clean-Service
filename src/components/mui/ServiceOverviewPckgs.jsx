@@ -27,11 +27,11 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
 
   backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.0001)" : "white",
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-  backdropFilter: "blur(2.4px)",
+  backdropFilter: "blur(12.4px)",
   "@media (max-width: 600px)": {
-    width: "80%",
+    // width: "80%",
     minHeight: 0,
-    backdropFilter: 0,
+    // backdropFilter: 0,
   },
 }));
 

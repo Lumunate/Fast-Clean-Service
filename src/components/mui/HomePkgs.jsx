@@ -646,7 +646,6 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   right: "0",
   transition: "all 0.3s ease-in",
   "@media (max-width: 600px)": {
-    backdropFilter: "none",
     bottom: "-80%",
     minHeight: "400px",
   },
