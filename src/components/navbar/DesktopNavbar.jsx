@@ -53,6 +53,7 @@ const DesktopNavbar = () => {
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsServicesOpen(false);
+            setUserMenuOpen(false);
         }
     };
 
@@ -75,7 +76,7 @@ const DesktopNavbar = () => {
     };
 
     useEffect(() => {
-        if (isServicesOpen) {
+        if (isServicesOpen || userMenuOpen) {
             document.addEventListener("mousedown", handleClickOutside);
         } else {
             document.removeEventListener("mousedown", handleClickOutside);
@@ -84,7 +85,7 @@ const DesktopNavbar = () => {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [isServicesOpen]);
+    }, [isServicesOpen, userMenuOpen]);
 
 
     useEffect(() => {
@@ -110,241 +111,254 @@ const DesktopNavbar = () => {
     if (loading) return <Loader />;
 
     return (
-        <NavbarContainer>
-            <NavbarInnerContainer>
-                <LogoContainer>
-                    <CustomLink href="/">
-                        <LogoImage src={Logo} alt="logo" width={99} height={61} />
-                    </CustomLink>
-                </LogoContainer>
+      <NavbarContainer>
+        <NavbarInnerContainer>
+          <LogoContainer>
+            <CustomLink href="/">
+              <LogoImage src={Logo} alt="logo" width={99} height={61} />
+            </CustomLink>
+          </LogoContainer>
 
-                <NavBarLinksContainer>
-                    <CustomLink href="/">
-                        <NavLinkButton>Home</NavLinkButton>
-                    </CustomLink>
+          <NavBarLinksContainer>
+            <CustomLink href="/">
+              <NavLinkButton>Home</NavLinkButton>
+            </CustomLink>
 
-                    <CustomLink href="/aboutus">
-                        <NavLinkButton>About</NavLinkButton>
-                    </CustomLink>
+            <CustomLink href="/aboutus">
+              <NavLinkButton>About</NavLinkButton>
+            </CustomLink>
 
-                    <NavLinkDropDownContainer ref={dropdownRef}>
-                        <NavLinkButton
-                            onClick={handleServicesToggle}
-                            endIcon={<ChevronRightIcon
-                                sx={{
-                                    marginLeft: "0.5rem",
-                                    color: "#FFF",
-                                    transform: isServicesOpen ? "rotate(90deg)" : "rotate(0deg)", // Rotate based on state
-                                    transition: "transform 0.3s ease-in-out",
-                                }}
-                            />}
-                            sx={{ zIndex: "10", fontWeight: isServicesOpen ? "bold" : "normal", }}
-                        >
-                            Services
-                            <ChevronRightIcon sx={{
-                                marginLeft: "0.5rem",
-                                color: "#FFF",
-                                transform: isServicesOpen ? "rotate(-90deg)" : "rotate(90deg)", // Rotate based on state
-                                transition: "transform 0.3s ease-in-out",
-                            }}/>
-                        </NavLinkButton>
+            <NavLinkDropDownContainer ref={dropdownRef}>
+              <NavLinkButton
+                onClick={handleServicesToggle}
+                endIcon={
+                  <ChevronRightIcon
+                    sx={{
+                      marginLeft: "0.5rem",
+                      color: "#FFF",
+                      transform: isServicesOpen ? "rotate(90deg)" : "rotate(0deg)", // Rotate based on state
+                      transition: "transform 0.3s ease-in-out",
+                    }}
+                  />
+                }
+                sx={{ zIndex: "10", fontWeight: isServicesOpen ? "bold" : "normal" }}
+              >
+                Services
+                <ChevronRightIcon
+                  sx={{
+                    marginLeft: "0.5rem",
+                    color: "#FFF",
+                    transform: isServicesOpen ? "translateY(2px) rotate(-90deg)" : "translateY(2px) rotate(90deg)", // Rotate based on state
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                />
+              </NavLinkButton>
 
-                        {isServicesOpen && (
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
-                                    left: { xs: "-2rem", sm: "-4rem", md: "-6rem" },
-                                    zIndex: 2,
-                                    backgroundColor: "rgba(35, 35, 35, 0.6)", 
-                                    backdropFilter: "blur(10px)", 
-                                    WebkitBackdropFilter: "blur(10px)",
-                                    padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
-                                    borderRadius: "4px",
-                                    border: "0.01px solid #FFFFFF4F",
-                                    width: {
-                                        xs: "15rem",
-                                        sm: "17rem",
-                                        md: "19.4rem",
-                                        xl: "23.4rem",
-                                    },
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
-                                    paddingTop: "8rem !important",
-                                }}
-                            >
-                                <CustomLink href="/fleet">
-                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                        FleetCare Pro
-                                    </DropDownLink>
-                                </CustomLink>
-                                <CustomLink href="/autocare">
-                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                        Anywhere AutoCare
-                                    </DropDownLink>
-                                </CustomLink>
-                                <CustomLink href="/subscribe">
-                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                        Subscription Plans
-                                    </DropDownLink>
-                                </CustomLink>
-                                <CustomLink href="/other-vehicles">
-                                    <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                        Other Vehicles
-                                    </DropDownLink>
-                                </CustomLink>
-                                <DropDownLink
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        cursor: "not-allowed",
-                                    }}
-                                >
-                                    Store <Badge sx={{ whiteSpace: "nowrap" }}>Coming Soon</Badge>
-                                </DropDownLink>
-                            </Box>
-                        )}
-                    </NavLinkDropDownContainer>
+              {isServicesOpen && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
+                    left: { xs: "-2rem", sm: "-4rem", md: "-6rem" },
+                    zIndex: 2,
+                    backgroundColor: "rgba(35, 35, 35, 0.6)",
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
+                    padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
+                    borderRadius: "4px",
+                    border: "0.01px solid #FFFFFF4F",
+                    width: {
+                      xs: "15rem",
+                      sm: "17rem",
+                      md: "19.4rem",
+                      xl: "23.4rem",
+                    },
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
+                    paddingTop: "8rem !important",
 
-                    <CustomLink href="/contact">
-                        <NavLinkButton>Contact</NavLinkButton>
-                    </CustomLink>
-                </NavBarLinksContainer>
+                    border: "none",
+                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                    backdropFilter: "blur(10px)",
+                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
+                  }}
+                >
+                  <CustomLink href="/fleet">
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>FleetCare Pro</DropDownLink>
+                  </CustomLink>
+                  <CustomLink href="/autocare">
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Anywhere AutoCare</DropDownLink>
+                  </CustomLink>
+                  <CustomLink href="/subscribe">
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Subscription Plans</DropDownLink>
+                  </CustomLink>
+                  <CustomLink href="/other-vehicles">
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Other Vehicles</DropDownLink>
+                  </CustomLink>
+                  <DropDownLink
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      cursor: "not-allowed",
+                    }}
+                  >
+                    Store <Badge sx={{ whiteSpace: "nowrap" }}>Coming Soon</Badge>
+                  </DropDownLink>
+                </Box>
+              )}
+            </NavLinkDropDownContainer>
 
-                <NavLinksContainer>
-                    {sessionStatus === "authenticated" && (
-                        <CustomLink href="/booking">
-                            <NavbarCTA>Book Now</NavbarCTA>
+            <CustomLink href="/contact">
+              <NavLinkButton>Contact</NavLinkButton>
+            </CustomLink>
+          </NavBarLinksContainer>
+
+          <NavLinksContainer>
+            {sessionStatus === "authenticated" && (
+              <CustomLink href="/booking">
+                <NavbarCTA>Book Now</NavbarCTA>
+              </CustomLink>
+            )}
+
+            {sessionStatus === "authenticated" ? (
+              <NavbarRightContainer>
+                <NavLinkDropDownContainer>
+                  <IconButton
+                    onClick={handleUserMenuToggle}
+                    ref={anchorEl}
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    sx={{
+                      zIndex: "10",
+                    }}
+                  >
+                    <LogoImage src={UserIcon} alt="User Icon" width={20} height={20} style={{ objectFit: "contain" }} />
+                  </IconButton>
+
+                  {userMenuOpen && (
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
+                        left: "-2rem",
+                        zIndex: 2,
+                        padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
+                        borderRadius: "4px",
+                        border: "0.01px solid #fff",
+                        width: {
+                          xs: "28rem",
+                          sm: "30rem",
+                          md: "37.8rem",
+                          xl: "43.2rem",
+                        },
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
+                        paddingTop: "10rem !important",
+
+                        border: "none",
+                        backgroundColor: "rgba(35, 35, 35, 0.5)",
+                        backdropFilter: "blur(10px)",
+                        boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
+                      }}
+                    >
+                      {session.user.isAdmin && (
+                        <CustomLink href="/admin">
+                          <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                            <Image
+                              style={{ marginRight: "1rem", transform: "translateY(4px)" }}
+                              src={Users_Plus}
+                              alt="User Icon"
+                              width={20}
+                              height={20}
+                            />
+                            Admin
+                          </DropDownLink>
                         </CustomLink>
-                    )}
+                      )}
+                      <CustomLink href="/customer-portal">
+                        <DropDownLink onClick={() => setIsServicesOpen(false)}>
+                          <Badge badgeContent={unreadCount} color="error" sx={{ marginRight: "1rem" }}>
+                            <MailIcon
+                              color="primary"
+                              sx={{ transform: "translateY(2px)", filter: theme.palette.mode === "dark" ? "invert(1)" : "unset" }}
+                            />
+                          </Badge>
+                          Dashboard
+                        </DropDownLink>
+                      </CustomLink>
+                      <DropDownLink onClick={handleLogout}>
+                        <LogoutIcon style={{ marginRight: "1rem", fontSize: 20, transform: "translateY(4px)" }} />
+                        Logout
+                      </DropDownLink>
+                    </Box>
+                  )}
+                </NavLinkDropDownContainer>
+              </NavbarRightContainer>
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "1rem",
+                  width: "200px",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    borderColor: "white",
+                    textTransform: "none",
+                    borderRadius: "50px",
+                    padding: "0.8rem 1.6rem",
+                    fontSize: "1.4rem",
+                    transition: "background-color 0.3s, color 0.3s",
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      borderColor: "rgba(255, 255, 255, 0.7)",
+                    },
+                  }}
+                  onClick={() => handleOpenModal("login")}
+                >
+                  Log In
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#1976d2",
+                    color: "white",
+                    borderRadius: "50px",
+                    padding: "0.8rem 1.6rem",
+                    textTransform: "none",
+                    fontSize: "1.4rem",
+                    transition: "background-color 0.3s, transform 0.3s",
+                    "&:hover": {
+                      backgroundColor: "#125a9a",
+                      transform: "scale(1.05)",
+                    },
+                  }}
+                  onClick={() => handleOpenModal("signup")}
+                >
+                  Sign Up
+                </Button>
+              </Box>
+            )}
+            <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
+              {theme.palette.mode === "dark" ? (
+                <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
+              ) : (
+                <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
+              )}
+            </IconButton>
+          </NavLinksContainer>
+        </NavbarInnerContainer>
 
-                    {sessionStatus === "authenticated" ? (
-                        <NavbarRightContainer>
-                            <NavLinkDropDownContainer>
-                                <IconButton
-                                    onClick={handleUserMenuToggle}
-                                    ref={anchorEl}
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    sx={{
-                                        zIndex: "10",
-                                    }}
-                                >
-                                    <LogoImage src={UserIcon} alt="User Icon" width={30} height={30} style={{ objectFit: "contain" }} />
-                                </IconButton>
-
-                                {userMenuOpen && (
-                                    <Box
-                                        sx={{
-                                            position: "absolute",
-                                            top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
-                                            left: "-2rem",
-                                            zIndex: 2,
-                                            backgroundColor: "rgba(35, 35, 35, 0.9)",
-                                            padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
-                                            borderRadius: "4px",
-                                            border: "0.01px solid #fff",
-                                            width: {
-                                                xs: "26rem",
-                                                sm: "28rem",
-                                                md: "35.8rem",
-                                                xl: "41.2rem",
-                                            },
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
-                                            paddingTop: "8rem !important",
-                                        }}
-                                    >
-                                        <CustomLink href="/admin">
-                                            <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                                <Image style={{ marginRight: "1rem" }} src={Users_Plus} alt="User Icon" width={20} height={20} />
-                                                Admin
-                                            </DropDownLink>
-                                        </CustomLink>
-                                        <CustomLink href="/customer-portal">
-                                            <DropDownLink onClick={() => setIsServicesOpen(false)}>
-                                                <Badge
-                                                    badgeContent={unreadCount}
-                                                    color="error"
-                                                    sx={{ marginRight: "1rem" }}
-                                                >
-                                                    <MailIcon color="primary" />
-                                                </Badge>
-                                                Customer
-                                            </DropDownLink>
-                                        </CustomLink>
-                                        <DropDownLink onClick={handleLogout}>
-                                            <LogoutIcon style={{ marginRight: "1rem", fontSize: 20 }} />
-                                            Logout
-                                        </DropDownLink>
-                                    </Box>
-                                )}
-                            </NavLinkDropDownContainer>
-                        </NavbarRightContainer>
-                    ) : (
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                gap: '1rem',
-                                width: '200px',
-                                justifyContent: "flex-end",
-                            }}>
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    color: 'white',
-                                    borderColor: 'white',
-                                    textTransform: 'none',
-                                    borderRadius: '50px',
-                                    padding: '0.8rem 1.6rem',
-                                    fontSize: "1.4rem",
-                                    transition: 'background-color 0.3s, color 0.3s',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                        borderColor: 'rgba(255, 255, 255, 0.7)'
-                                    },
-                                }}
-                                onClick={() => handleOpenModal('login')}
-                            >
-                                Log In
-                            </Button>
-                            <Button
-                                variant="contained"
-                                sx={{
-                                    backgroundColor: '#1976d2',
-                                    color: 'white',
-                                    borderRadius: '50px',
-                                    padding: '0.8rem 1.6rem',
-                                    textTransform: 'none',
-                                    fontSize: "1.4rem",
-                                    transition: 'background-color 0.3s, transform 0.3s',
-                                    '&:hover': {
-                                        backgroundColor: '#125a9a',
-                                        transform: 'scale(1.05)',
-                                    },
-                                }}
-                                onClick={() => handleOpenModal('signup')}
-                            >
-                                Sign Up
-                            </Button>
-                        </Box>
-                    )}
-                    <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
-                        {theme.palette.mode === "dark" ? (
-                            <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
-                        ) : (
-                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
-                        )}
-                    </IconButton>
-                </NavLinksContainer>
-            </NavbarInnerContainer>
-
-            {openLogin && <LoginModal setOpenLogin={setOpenLogin} setOpenSignup={setOpenSignup} />}
-            {openSignup && <SignUpModal setOpenSignup={setOpenSignup} setOpenLogin={setOpenLogin} />}
-        </NavbarContainer>
+        {openLogin && <LoginModal setOpenLogin={setOpenLogin} setOpenSignup={setOpenSignup} />}
+        {openSignup && <SignUpModal setOpenSignup={setOpenSignup} setOpenLogin={setOpenLogin} />}
+      </NavbarContainer>
     );
 };
 

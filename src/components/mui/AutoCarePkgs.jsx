@@ -324,6 +324,7 @@ export const CardButton = styled(Button)(({ theme }) => ({
   paddingRight: "22px",
   paddingLeft: "22px",
   fontSize: "13px",
+  borderRadius: "50px",
 
   "@media (max-width: 600px)": {
     alignSelf: "center",

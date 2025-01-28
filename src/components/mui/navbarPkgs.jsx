@@ -91,12 +91,24 @@ export const NavbarRightContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const DropDownLink = styled(Typography)(({ theme }) => ({
-  fontSize: "1.5rem" ,
+  fontSize: "1.6rem",
   color: "#D5D5D5",
   cursor: "pointer",
-  // marginTop: "4.5rem",
   fontFamily: "DMSans",
   fontWeight: "300",
+  alignItems: 'center',
+
+  "&:hover": {
+    color: theme.palette.primary.accentDark,
+
+    "& svg": {
+      color: `${theme.palette.primary.accentDark} !important`,
+    },
+
+    "& img": {
+      filter: "brightness(60%) saturate(100%) invert(32%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(90%) contrast(90%)",
+    }
+  }
 }));
 
 export const NavLinkT = styled(Link)(({ theme }) => ({
@@ -160,6 +172,7 @@ export const NavbarCTA = styled(ButtonBase)(({ theme }) => ({
   fontWeight: "500",
   lineHeight: "15px",
   transition: "all 0.3s ease",
+  borderRadius: "50px",
   // marginLeft: "21rem",
 
   "@media (max-width: 1368px)": {

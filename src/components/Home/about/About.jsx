@@ -92,7 +92,7 @@ export default function About() {
                 paddingLeft: "4rem",
                 paddingRight: "4rem",
                 display: "flex",
-                justifyContent: "center",          
+                justifyContent: "center",
               },
             }}
           >
@@ -109,9 +109,9 @@ export default function About() {
                 height: "100%",
                 maxHeight: "350px",
                 maxWidth: "600px",
-                  "@media (max-width: 1400px)": {
-                      maxHeight: "330px",
-                  },
+                "@media (max-width: 1400px)": {
+                  maxHeight: "330px",
+                },
               }}
             />
           </Box>
@@ -143,7 +143,6 @@ export default function About() {
                   marginRight: "2rem",
                   marginLeft: "2rem",
                 },
-
               }}
             >
               <Box

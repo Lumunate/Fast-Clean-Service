@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Typography, Box, useMediaQuery } from "@mui/material";
-import { ServicesDivider } from "./ServicesPckgs";
+import { HorizontalServicesDivider, ServicesDivider } from "./ServicesPckgs";
 
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import { HomePkgBox } from "../../mui/HomePkgs";
@@ -18,7 +18,7 @@ import Image from "next/image";
 
 export default function Services() {
   const { theme } = useTheme();
-  const isSmDown = useMediaQuery("(max-width:900px)");
+  const isSmDown = useMediaQuery("(max-width:1050px)");
   const isXsDown = useMediaQuery("(max-width:600px)");
   {
     /* <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
@@ -94,7 +94,7 @@ export default function Services() {
           "@media (max-width: 600px)": { width: "100%" },
         }}
       >
-        <HeadingLinesAnimation text="WHY CHOOSE US" sx={{ width: "50%" }} />
+        <HeadingLinesAnimation text="WHY CHOOSE US" sx={{ width: "100%" }} />
       </Box>
 
       {/*<Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>*/}
@@ -111,6 +111,7 @@ export default function Services() {
           margin: "0 auto",
           textAlign: "left",
           backgroundColor: "rgba(255,255,255,0.05)",
+          backdropFilter: "blur(2.4px)",
           border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.32)" : "rgba(141,141,141,0.4)"}`,
           "& img": {
             filter:
@@ -118,7 +119,7 @@ export default function Services() {
                 ? "brightness(0) saturate(100%) invert(36%) sepia(79%) saturate(4576%) hue-rotate(181deg) brightness(98%) contrast(101%)"
                 : "none",
           },
-          "@media (max-width: 600px)": {
+          "@media (max-width: 1200px)": {
             padding: "2rem",
           },
           "@media (max-width: 1380px)": {
@@ -143,8 +144,12 @@ export default function Services() {
                 marginBottom: "2rem",
               },
               "@media (max-width: 1280px)": {
-                padding: "0 3rem",
-                gap: "auto",
+                padding: "0 1rem",
+                gap: "1rem",
+              },
+              "@media (max-width: 1050px)": {
+                padding: "0 1rem",
+                gap: "1rem",
               },
             }}
           >
@@ -172,7 +177,6 @@ export default function Services() {
                     width={40}
                     height={40}
                     sx={{
-                      marginBottom: "1.5rem",
                       "@media (max-width: 600px)": {
                         transform: "scale(0.6)",
                       },
@@ -181,6 +185,8 @@ export default function Services() {
                   <Typography
                     sx={{
                       fontSize: "2.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.9rem",
                       fontWeight: 400,
                       "@media (max-width: 600px)": {
                         fontSize: "1.2rem",
@@ -204,14 +210,18 @@ export default function Services() {
 
                 {index < row.length - 1 && (
                   <ServicesDivider
-                    orientation="vertical"
-                    variant="middle"
                     flexItem
                     sx={{
                       "@media (max-width: 600px)": {
                         display: "none",
                       },
                     }}
+                  />
+                )}
+
+                {isXsDown &&  row !== rows[rows.length - 1] && (
+                  <HorizontalServicesDivider
+                    flexItem
                   />
                 )}
               </React.Fragment>

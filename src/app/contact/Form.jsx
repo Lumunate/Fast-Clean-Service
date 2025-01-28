@@ -65,13 +65,17 @@ export default function Form() {
   };
 
   return (
-    <FormContainer component="form" onSubmit={handleSubmit} sx={{
-      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
-      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
-      backdropFilter: "blur(2.4px)",
+    <FormContainer
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
+        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
+        backdropFilter: "blur(2.4px)",
         borderRadius: "32px",
-      padding: "2rem",
-    }}>
+        padding: "2rem",
+      }}
+    >
       <CustomFormTextField label="Name" name="name" value={formData.name} onChange={handleChange} fullWidth required />
       <CustomFormTextField
         label="Email"
@@ -100,34 +104,35 @@ export default function Form() {
           borderRadius: "8px",
         }}
       />
-        <Box
-            sx={{
-                display: "flex",
-                gap: "2rem",
-                flexDirection: { xs: "column", sm: "row" },
-                margin: "0 auto",
-                width: "100%",
-            }}
+      <Box
+        sx={{
+          display: "flex",
+          gap: "2rem",
+          flexDirection: { xs: "column", sm: "row" },
+          margin: "0 auto",
+          width: "100%",
+        }}
+      >
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{
+            padding: "1.5rem 3rem",
+            fontSize: "1.6rem",
+            fontWeight: "bold",
+            backgroundColor: "#4AD1FF",
+            color: "white",
+            borderRadius: "50px",
+            width: "100%",
+            fontFamily: "DMSans",
+            "&:hover": {
+              backgroundColor: theme.palette.primary.accent,
+            },
+          }}
         >
-            <Button
-                variant="contained"
-                type="submit"
-                sx={{
-                    padding: "1.5rem 3rem",
-                    fontSize: "1.6rem",
-                    fontWeight: "bold",
-                    backgroundColor: "#4AD1FF",
-                    color: "white",
-                    width: "100%",
-                    fontFamily: "DMSans",
-                    "&:hover": {
-                        backgroundColor: theme.palette.primary.accent,
-                    },
-                }}
-            >
-                Submit
-            </Button>
-        </Box>
+          Submit
+        </Button>
+      </Box>
     </FormContainer>
   );
 }
