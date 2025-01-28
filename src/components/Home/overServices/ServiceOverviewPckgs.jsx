@@ -78,7 +78,7 @@ export const ServiceItemDescription = styled(Typography)(({ theme }) => ({
   fontSize: "14px",
   fontWeight: "300",
   color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
-  marginBottom:"12px"
+  marginBottom:"12px",
   "@media (max-width: 600px)": {
     fontSize: "1.2rem",
   },

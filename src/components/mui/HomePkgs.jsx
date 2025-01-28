@@ -451,11 +451,13 @@ export const HomeServicesBox = styled(Box)(({ theme }) => ({
   padding: "5rem 0",
   display: "flex",
   flexWrap: "wrap",
+  flexDirection: "row",
   justifyContent: "center",
   gap: "3rem",
   "@media (max-width: 600px)": {
     padding: "2rem 0",
     marginTop: "-10rem",
+    flexDirection: "column",
   },
 }));
 
