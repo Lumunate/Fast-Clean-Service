@@ -91,7 +91,7 @@ const StyledCarouselItemInner = styled(CarouselItemInner)(({ theme }) => ({
     justifyContent: "space-between",
     padding: "3rem",
     borderRadius: "10px",
-    backgroundColor: theme.palette.mode === "light" ? "#fff" : "#141414",
+    backgroundColor: theme.palette.mode === "light" ? "rgba(255,255,255,0.8)" : "#141414CC",
     boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
 
     margin: "1rem 0",
