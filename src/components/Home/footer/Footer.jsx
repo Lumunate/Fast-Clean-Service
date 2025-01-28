@@ -223,19 +223,59 @@ export default function Footer() {
 
           <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
             <IconButton href="https://facebook.com">
-              <Facebook sx={{ fontSize: "1.5rem",color: "#FFF" }} />
+              <Facebook
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#FFF",
+                  "&:hover": {
+                    color: "primary.accentDark",
+                  },
+                }}
+              />
             </IconButton>
             <IconButton href="https://instagram.com">
-              <Instagram sx={{ fontSize: "1.5rem",color: "#FFF" }} />
+              <Instagram
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#FFF",
+                  "&:hover": {
+                    color: "primary.accentDark",
+                  },
+                }}
+              />
             </IconButton>
             <IconButton href="https://twitter.com">
-              <Twitter sx={{ fontSize: "1.5rem",color: "#FFF" }} />
+              <Twitter
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#FFF",
+                  "&:hover": {
+                    color: "primary.accentDark",
+                  },
+                }}
+              />
             </IconButton>
             <IconButton href="https://youtube.com">
-              <YouTube sx={{ fontSize: "1.5rem",color: "#FFF" }} />
+              <YouTube
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#FFF",
+                  "&:hover": {
+                    color: "primary.accentDark",
+                  },
+                }}
+              />
             </IconButton>
             <IconButton href="mailto:info@fastcleanservice.nl">
-              <Email sx={{ fontSize: "1.5rem",color: "#FFF" }} />
+              <Email
+                sx={{
+                  fontSize: "1.5rem",
+                  color: "#FFF",
+                  "&:hover": {
+                    color: "primary.accentDark",
+                  },
+                }}
+              />
             </IconButton>
           </Box>
 
@@ -251,19 +291,73 @@ export default function Footer() {
               textDecoration: "none",
             }}
           >
-            <MuiLink href="/" sx={{ color: "#D2D2D2", textDecoration: "none" }}>
+            <MuiLink
+              href="/"
+              sx={{
+                color: "#D2D2D2",
+                textDecoration: "none !important",
+                "&:hover": {
+                  color: "primary.accentDark",
+                },
+              }}
+            >
               Home
             </MuiLink>
-            <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF", textDecoration: "none" }} />
-            <MuiLink href="/aboutus" sx={{ color: "#D2D2D2" }}>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{
+                bgcolor: "#FFF",
+              }}
+            />
+            <MuiLink
+              href="/aboutus"
+              sx={{
+                color: "#D2D2D2",
+                textDecoration: "none !important",
+                "&:hover": {
+                  color: "primary.accentDark",
+                },
+              }}
+            >
               About
             </MuiLink>
-            <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF", textDecoration: "none" }} />
-            <MuiLink href="/contact" sx={{ color: "#D2D2D2" }}>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{
+                bgcolor: "#FFF",
+              }}
+            />
+            <MuiLink
+              href="/contact"
+              sx={{
+                color: "#D2D2D2",
+                textDecoration: "none !important",
+                "&:hover": {
+                  color: "primary.accentDark",
+                },
+              }}
+            >
               Contact Us
             </MuiLink>
-            <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF", textDecoration: "none" }} />
-            <MuiLink href="/" sx={{ color: "#D2D2D2" }}>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{
+                bgcolor: "#FFF",
+              }}
+            />
+            <MuiLink
+              href="/"
+              sx={{
+                color: "#D2D2D2",
+                textDecoration: "none !important",
+                "&:hover": {
+                  color: "primary.accentDark",
+                },
+              }}
+            >
               Services
             </MuiLink>
           </Box>

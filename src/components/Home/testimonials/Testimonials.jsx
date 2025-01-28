@@ -359,7 +359,7 @@ export default function Testimonials() {
                       padding: "2rem",
                       borderRadius: "20px",
 
-                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "white",
+                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.5)",
                       border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
                       backdropFilter: "blur(10.4px)",
                     }}

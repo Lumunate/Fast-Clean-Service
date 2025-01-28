@@ -45,26 +45,29 @@ export default function Home() {
           <About />
           <Stats />
 
-          <DecorativeSpacer
-              textBox1="100% Satisfaction"
-              textBox2="On-Demand Cleaning, Anywhere"
-          />
+          <DecorativeSpacer textBox1="100% Satisfaction" textBox2="On-Demand Cleaning, Anywhere" />
 
-          <HowDoesItWork/>
-          <OverServiceOverview/>
-          <Testimonials />
+          <HowDoesItWork />
+          <OverServiceOverview />
+          <Box sx={{ position: "relative" }}>
+            <Testimonials />
+
+            <DecorativeBackgroundImage top="0rem" left="-40rem" width="92rem" height="68.2rem" flip={true} />
+          </Box>
 
           <ServicesOverview />
 
-            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed textBox1="100% Satisfaction"
-                                                                                             textBox2="Anywhere, Anytime" /></Box>
+          <Box sx={{ "@media (max-width: 700px)": { display: "none" } }}>
+            <DecorativeSpacer reversed textBox1="100% Satisfaction" textBox2="Anywhere, Anytime" />
+          </Box>
 
-          <HomePkgsInBox sx={{ margin: "0 auto", "@media (max-width: 1150px)": { width: "100%",}, }}>
+          <HomePkgsInBox sx={{ margin: "0 auto", "@media (max-width: 1150px)": { width: "100%" } }}>
             <Services />
           </HomePkgsInBox>
 
-            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results"
-                                                                                             textBox2="Fast, Flawless, Eco-Friendly"/></Box>
+          <Box sx={{ "@media (max-width: 700px)": { display: "none" } }}>
+            <DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results" textBox2="Fast, Flawless, Eco-Friendly" />
+          </Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
             {/* <Box
