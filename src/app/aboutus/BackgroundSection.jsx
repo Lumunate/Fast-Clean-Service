@@ -13,6 +13,9 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   maxWidth: "100rem",
   gap: "10rem",
   position: "relative",
+    "@media (max-width: 1100px)": {
+        gap: "5rem",
+    },
   "@media (max-width: 900px)": {
     flexDirection: "column",
     gap: "3rem",
@@ -25,7 +28,7 @@ const TextContainer = styled(Box)(({ theme }) => ({
   textAlign: "left",
   color: "black",
   "@media (max-width: 900px)": {
-    maxWidth: "80%",
+    maxWidth: "100%",
   }
 }));
 
