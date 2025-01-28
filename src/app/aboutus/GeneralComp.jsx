@@ -40,7 +40,9 @@ const ValueProposition = () => {
                     paddingLeft: "5rem",
                     paddingRight: "5rem",
                     borderRadius: "10px",
-                    background: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
+                    border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
+                    backdropFilter: "blur(2.4px)",
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 }}
             >

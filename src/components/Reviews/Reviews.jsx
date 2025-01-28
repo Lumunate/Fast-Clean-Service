@@ -91,8 +91,11 @@ const StyledCarouselItemInner = styled(CarouselItemInner)(({ theme }) => ({
     justifyContent: "space-between",
     padding: "3rem",
     borderRadius: "10px",
-    backgroundColor: theme.palette.mode === "light" ? "rgba(255,255,255,0.8)" : "#141414CC",
     boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+
+    backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
+    border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
+    backdropFilter: "blur(2.4px)",
 
     margin: "1rem 0",
 }));

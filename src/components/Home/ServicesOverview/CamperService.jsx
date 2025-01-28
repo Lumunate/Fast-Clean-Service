@@ -75,7 +75,7 @@ export default function CamperService() {
           }}
       >
         <RadialCircle top={"-2rem"} left={"50%"} />
-        <CamperServiceBox>
+        <CamperServiceBox id="fleet-care-pro">
           <FadeIn direction="left" distance={100} duration={1}>
             <Box>
               <ServiceHeading>FleetCare Pro</ServiceHeading>
@@ -92,7 +92,7 @@ export default function CamperService() {
           </FadeIn>
         </CamperServiceBox>
 
-        <CamperServiceBox>
+        <CamperServiceBox id="subscriptions">
           <FadeIn direction="right" distance={100} duration={1}>
             <Box>
               <ServiceHeading>Subscriptions</ServiceHeading>
