@@ -67,7 +67,7 @@ export default function CookieConsentPrompt() {
                     variant="body1"
                     sx={{ textAlign: "center", fontSize: "1.1rem" }}
                 >
-                    We use cookies to enhance user experience, analyse website performance, and deliver tailored content. By clicking 'Accept,' you consent to the use of all cookies.
+                    We use cookies to enhance user experience, analyse website performance, and deliver tailored content. By clicking &lsquo;Accept&lsquo;, you consent to the use of all cookies.
                 </Typography>
 
                 <Typography
