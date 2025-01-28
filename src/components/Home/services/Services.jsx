@@ -80,6 +80,7 @@ export default function Services() {
         margin: "5rem auto 16.8rem",
         paddingBottom: "7.5rem",
         width: "100%",
+
         "@media (max-width: 600px)": {
           margin: "2rem auto 2rem",
         },
@@ -164,6 +165,9 @@ export default function Services() {
                     justifyContent: "flex-start",
                     textAlign: "left",
                     padding: "1rem",
+                      "@media (max-width: 900px)": {
+                            width: "280px"
+                      },
                     "@media (max-width: 600px)": {
                       padding: "1.5rem 2rem",
                       textAlign: "center",
