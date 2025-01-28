@@ -21,6 +21,7 @@
     "@lordicon/element": "^1.9.0",
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.7",
+    "@mui/system": "^6.4.1",
     "@mui/toolpad-core": "^0.1.51",
     "@mui/x-date-pickers": "^7.19.0",
     "@react-email/components": "^0.0.25",
