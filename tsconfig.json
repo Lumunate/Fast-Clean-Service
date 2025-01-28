@@ -27,7 +27,9 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/ServiceDrawer/LiscensePlateStep/actions.js", "src/models/Bookings.js", "src/templates/booking.jsx", "src/components/Admin/RescheduleModal.jsx", "src/app/admin/coupons/page.jsx"  ],
+, "src/components/ServiceDrawer/LiscensePlateStep/actions.js", "src/models/Bookings.js", "src/templates/booking.jsx", "src/components/Admin/RescheduleModal.jsx",
+    "src/app/[locale]/admin/coupons/page.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

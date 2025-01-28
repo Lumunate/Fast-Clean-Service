@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styleHome from "../../../app/Home.module.css";
+import styleHome from "../../../app/[locale]/Home.module.css";
 import { Box, Button, Typography } from "@mui/material";
 import { HomePkgsBox, HomeBlueBtn } from "../../mui/HomePkgs";
 import Link from "next/link";
