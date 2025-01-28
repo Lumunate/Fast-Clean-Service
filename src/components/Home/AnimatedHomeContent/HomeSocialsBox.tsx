@@ -2,11 +2,12 @@ import { Box, IconButton } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { useTheme } from "../../../contexts/themeContext";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useTheme } from "../../../contexts/themeContext";
 
-const HomeSocialsBox = () => {
+const HomeSocialsBox: React.FC = () => {
   const { theme } = useTheme();
+
   return (
     <Box
       sx={{
@@ -18,10 +19,10 @@ const HomeSocialsBox = () => {
         alignItems: "center",
         gap: "0.5rem",
         zIndex: 1000,
-          "@media (max-width: 600px)": {
-              left: "2rem",
-              gap: "0.2rem",
-          },
+        "@media (max-width: 600px)": {
+          left: "2rem",
+          gap: "0.2rem",
+        },
       }}
     >
       <IconButton
@@ -29,13 +30,12 @@ const HomeSocialsBox = () => {
           color: "white",
           "& svg": {
             fontSize: "3rem",
-              "@media (max-width: 1380px)": {
-                  fontSize: "2rem",
-              },
-              "@media (max-width: 600px)": {
-                  fontSize: "1.2rem",
-              },
-
+            "@media (max-width: 1380px)": {
+              fontSize: "2rem",
+            },
+            "@media (max-width: 600px)": {
+              fontSize: "1.2rem",
+            },
           },
           "&:hover": {
             color: theme.palette.primary.accentDark,
@@ -44,17 +44,18 @@ const HomeSocialsBox = () => {
       >
         <FacebookIcon />
       </IconButton>
+
       <IconButton
         sx={{
           color: "white",
           "& svg": {
-              fontSize: "3rem",
-              "@media (max-width: 600px)": {
-                  fontSize: "1.2rem",
-              },
-              "@media (max-width: 1380px)": {
-                  fontSize: "2rem",
-              },
+            fontSize: "3rem",
+            "@media (max-width: 1380px)": {
+              fontSize: "2rem",
+            },
+            "@media (max-width: 600px)": {
+              fontSize: "1.2rem",
+            },
           },
           "&:hover": {
             color: theme.palette.primary.accentDark,
@@ -63,17 +64,18 @@ const HomeSocialsBox = () => {
       >
         <InstagramIcon />
       </IconButton>
+
       <IconButton
         sx={{
           color: "white",
           "& svg": {
-              fontSize: "3rem",
-              "@media (max-width: 600px)": {
-                  fontSize: "1.2rem",
-              },
-              "@media (max-width: 1380px)": {
-                  fontSize: "2rem",
-              },
+            fontSize: "3rem",
+            "@media (max-width: 1380px)": {
+              fontSize: "2rem",
+            },
+            "@media (max-width: 600px)": {
+              fontSize: "1.2rem",
+            },
           },
           "&:hover": {
             color: theme.palette.primary.accentDark,
@@ -82,17 +84,18 @@ const HomeSocialsBox = () => {
       >
         <TwitterIcon />
       </IconButton>
+
       <IconButton
         sx={{
           color: "white",
           "& svg": {
-              fontSize: "3rem",
-              "@media (max-width: 600px)": {
-                  fontSize: "1.2rem",
-              },
-              "@media (max-width: 1380px)": {
-                  fontSize: "2rem",
-              },
+            fontSize: "3rem",
+            "@media (max-width: 1380px)": {
+              fontSize: "2rem",
+            },
+            "@media (max-width: 600px)": {
+              fontSize: "1.2rem",
+            },
           },
           "&:hover": {
             color: theme.palette.primary.accentDark,
@@ -107,9 +110,9 @@ const HomeSocialsBox = () => {
           width: "2px",
           height: "70px",
           backgroundColor: "white",
-            "@media (max-width: 600px)": {
-                height: "40px",
-            },
+          "@media (max-width: 600px)": {
+            height: "40px",
+          },
         }}
       />
     </Box>

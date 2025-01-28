@@ -29,7 +29,7 @@
     "**/*.tsx"
 , "src/components/ServiceDrawer/LiscensePlateStep/actions.js", "src/models/Bookings.js", "src/templates/booking.jsx", "src/components/Admin/RescheduleModal.jsx",
     "src/app/[locale]/admin/coupons/page.jsx"
-  ],
+, "src/components/Home/about/About.tsx", "src/contexts/themeContext.js", "src/components/Home/packagesOld/PackagesOld.tsx"  ],
   "exclude": [
     "node_modules"
   ]

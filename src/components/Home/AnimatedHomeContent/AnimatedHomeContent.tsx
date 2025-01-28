@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Typography, Button, Box, IconButton, Link } from "@mui/material";
 import { gsap } from "gsap";
@@ -7,18 +8,21 @@ import { HomeHeroContainer } from "../../mui/HomePkgs";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import HomeSocialsBox from "./HomeSocialsBox";
 
-const AnimatedHomeContent = () => {
+const AnimatedHomeContent: React.FC = () => {
   const { theme } = useTheme();
 
-  const typographyRef = useRef(null);
-  const tlRef = useRef(null);
-  const [currentText, setCurrentText] = useState("");
+  const typographyRef = useRef<HTMLDivElement | null>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const [currentText, setCurrentText] = useState<string>("");
 
-  const lines = useMemo(() => [
-    "Your clean card is our calling card!",
-    "The number 1 in the field of specialist car cleaning!",
-    "We come on location.",
-  ], []);
+  const lines = useMemo(
+    () => [
+      "Your clean car is our calling card!",
+      "The number 1 in the field of specialist car cleaning!",
+      "We come on location.",
+    ],
+    []
+  );
 
   const handleScroll = () => {
     window.scrollBy({
@@ -30,11 +34,13 @@ const AnimatedHomeContent = () => {
   useEffect(() => {
     const container = typographyRef.current;
 
+    if (!container) return;
+
     tlRef.current = gsap.timeline({ repeat: -1 });
 
-    lines.forEach((line, index) => {
+    lines.forEach((line) => {
       tlRef.current
-        .to(container, {
+        ?.to(container, {
           opacity: 0,
           duration: 0.5,
           ease: "power2.inOut",
@@ -45,7 +51,7 @@ const AnimatedHomeContent = () => {
           duration: 0.5,
           ease: "power2.inOut",
         })
-        .to({}, { duration: 3 }); // Pause for 2 seconds
+        .to({}, { duration: 3 }); // Pause for 3 seconds
     });
 
     // Start with the first line visible
@@ -58,33 +64,33 @@ const AnimatedHomeContent = () => {
   }, [lines]);
 
   return (
-      <HomeHeroContainer
-          sx={{
-              position: "relative",
-              width: "100%",
-              height: "100vh",
-              backgroundColor: "#000",
-              overflow: "hidden",
-              zIndex: "8",
-          }}
-      >
-          <Box
-              component="video"
-              src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
-              autoPlay
-              muted
-              loop
-              playsInline
-              sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  zIndex: -1,
-              }}
-          />
+    <HomeHeroContainer
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: "100vh",
+        backgroundColor: "#000",
+        overflow: "hidden",
+        zIndex: "8",
+      }}
+    >
+      <Box
+        component="video"
+        src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
+        autoPlay
+        muted
+        loop
+        playsInline
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+      />
 
       <HomeSocialsBox />
       <Box
@@ -96,30 +102,28 @@ const AnimatedHomeContent = () => {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-            "@media (max-width: 1380px)": {
-                marginTop: "-5%",
-            },
-            "@media (max-width: 900px)": {
-                marginTop: "8%",
-            },
+          "@media (max-width: 1380px)": {
+            marginTop: "-5%",
+          },
+          "@media (max-width: 900px)": {
+            marginTop: "8%",
+          },
         }}
       >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            // justifyContent: "space-between",
             alignItems: "center",
-              "@media (max-width: 600px)": {
-                padding: "2rem",
-              },
+            "@media (max-width: 600px)": {
+              padding: "2rem",
+            },
           }}
         >
           <Typography
             variant="h1"
             sx={{
               animation: "fadeIn 1s ease-in-out forwards",
-              // marginTop: "-30rem",
               letterSpacing: "8px",
               fontWeight: 700,
               marginBottom: "6rem",
@@ -168,25 +172,25 @@ const AnimatedHomeContent = () => {
             marginBottom: "8rem",
           }}
         >
-            <Link href="/booking" passHref>
-                <Button
-                    variant="contained"
-                    sx={{
-                        padding: "1.5rem 3rem",
-                        fontSize: "1.6rem",
-                        fontWeight: "bold",
-                        backgroundColor: "primary.accentDark",
-                        borderRadius: "50px",
-                        color: "white",
-                        fontFamily: "DMSans",
-                        "&:hover": {
-                            backgroundColor: theme.palette.primary.accent,
-                        },
-                    }}
-                >
-                    Book Now
-                </Button>
-            </Link>
+          <Link href="/booking" passHref>
+            <Button
+              variant="contained"
+              sx={{
+                padding: "1.5rem 3rem",
+                fontSize: "1.6rem",
+                fontWeight: "bold",
+                backgroundColor: "primary.accentDark",
+                borderRadius: "50px",
+                color: "white",
+                fontFamily: "DMSans",
+                "&:hover": {
+                  backgroundColor: theme.palette.primary.accent,
+                },
+              }}
+            >
+              Book Now
+            </Button>
+          </Link>
         </Box>
 
         <IconButton

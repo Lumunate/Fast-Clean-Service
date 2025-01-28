@@ -1,7 +1,7 @@
-import {Typography} from "@mui/material";
-import {HomeBlueBanner, HomePkgBox, HomePkgsBox, HomePkgsInBox,} from "../../mui/HomePkgs";
+import { Typography } from "@mui/material";
+import { HomeBlueBanner, HomePkgBox, HomePkgsBox, HomePkgsInBox } from "../../mui/HomePkgs";
 
-export default function Info() {
+const Info: React.FC = () => {
   return (
     <>
       <HomePkgsBox>
@@ -64,4 +64,6 @@ export default function Info() {
       </HomeBlueBanner>
     </>
   );
-}
+};
+
+export default Info;

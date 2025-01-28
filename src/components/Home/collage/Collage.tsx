@@ -2,7 +2,7 @@ import Image from "next/image";
 import {List, Typography} from "@mui/material";
 import {HomeBlueBtn, HomeCollageCtr, HomeListItem, HomePkgBox, HomePkgsBox, HomePkgsInBox,} from "../../mui/HomePkgs";
 
-export default function Collage() {
+const Collage: React.FC = () => {
   return (
     <>
       <HomePkgsBox>
@@ -115,3 +115,4 @@ export default function Collage() {
     </>
   );
 }
+export default Collage;

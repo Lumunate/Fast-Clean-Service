@@ -1,10 +1,9 @@
 // components/PackageSlider.js
 import React from "react";
-
 import PackageCard from "./PackageCard";
-import {PackageSliderWrapper} from "../../mui/HomePkgs";
+import { PackageSliderWrapper } from "../../mui/HomePkgs";
 
-const PackageSlider = () => {
+const PackageSlider: React.FC = () => {
   return (
     <PackageSliderWrapper>
       <PackageCard />
@@ -13,3 +12,4 @@ const PackageSlider = () => {
 };
 
 export default PackageSlider;
+

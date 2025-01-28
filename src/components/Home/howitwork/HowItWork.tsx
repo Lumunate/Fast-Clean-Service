@@ -1,35 +1,42 @@
 "use client";
 import React from "react";
 import { Box, Grid, Typography, styled } from "@mui/material";
-import SingleWorkHowDoes from "./SingleWorkHowDoes";
+import SingleWork from "./SingleWork";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 
-const works = [
+interface Work {
+  id: number;
+  icon: string;
+  title: string;
+  description: string;
+  sx?: object;
+}
+
+const works: Work[] = [
   {
     id: 1,
-    icon: "/howdoesitworkicons/Map-Pin.png",
-    title: "Choose your location:",
-    description: "We come to you or you bring your car to us.",
+    icon: "/howitworkicons/laptop.gif",
+    title: "Choose your package",
+    description: "Choose from one of our packs. This way we know exactly what we can do for you.",
   },
   {
     id: 2,
-    icon: "/howdoesitworkicons/Settings-Search.png",
-    title: "Choose your service:",
-    description:
-      "Select from our extensive range of cleaning and cleaning services detailing services.",
+    icon: "/howitworkicons/appointment.gif",
+    title: "Make an appointment",
+    description: "Fill in your details so that our retailers know exactly where they can make the car shine.",
   },
   {
     id: 3,
-    icon: "/howdoesitworkicons/Report--Streamline-Tabler.png",
-    title: "Make an appointment:",
-    description: "Choose a date and time that suits you",
+    icon: "/howitworkicons/mail.gif",
+    title: "Confirmation",
+    description: "After your reservation has been completed, you will receive a confirmation email.",
   },
   {
     id: 4,
-    icon: "/howdoesitworkicons/Checks--Streamline.png",
-    title: "We will do the rest",
-    description: "Enjoy your perfectly cleaned car!",
+    icon: "/howitworkicons/location.gif",
+    title: "Cleaning",
+    description: "The detailer is on the way with our great workbus to make your car shine!",
   },
 ];
 
@@ -68,32 +75,21 @@ const ResponsiveGrid = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export default function HowDoesItWork() {
+const HowItWork: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <SectionContainer
-      sx={{
-        maxWidth: "1330px",
-        marginTop: "5.25rem",
-        marginBottom: "14rem",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-    >
-      <Box
-        sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}
-      >
-        <HeadingLinesAnimation sx={{fontWeight:"bold !important"}} text="How Does It Work?" />
+    <SectionContainer>
+      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+        <HeadingLinesAnimation>WORKING</HeadingLinesAnimation>
       </Box>
 
       <Grid
         container
         sx={{
-          width: "100%",
+          width: "90%",
           margin: "0 auto",
-          paddingTop: "5.8rem",
-          display: "flex",
+          paddingLeft: "15rem",
           "@media (max-width: 1366px)": {
             paddingLeft: "0",
             alignItems: "center",
@@ -118,17 +114,16 @@ export default function HowDoesItWork() {
             sm={6}
             lg={3}
             sx={{
-              width: "100%",
               display: "flex",
               flexDirection: "column",
               gap: "2rem",
             }}
           >
-            <SingleWorkHowDoes
+            <SingleWork
               sx={{
                 width: "100%",
-                // borderRadius: "24px",
-                // maxWidth: "29.5rem",
+                borderRadius: "24px",
+                maxWidth: "29.5rem",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -163,12 +158,12 @@ export default function HowDoesItWork() {
           <Box
             sx={{
               position: "absolute",
-              top: "4rem",
-              left: "calc(20% - 13px)",
+              top: "10rem",
+              left: "calc(27% - 13px)",
               transform: "translateY(-50%)",
               backgroundImage: 'url("/Arrow_04.svg")',
-              width: "76px",
-              height: "76px",
+              width: "100px",
+              height: "100px",
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
               filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
@@ -181,12 +176,12 @@ export default function HowDoesItWork() {
           <Box
             sx={{
               position: "absolute",
-              top: "4rem",
-              left: "calc(48% - 22px)",
+              top: "10rem",
+              left: "calc(50% - 22px)",
               transform: "translateY(-50%)",
               backgroundImage: 'url("/Arrow_04.svg")',
-              width: "75px",
-              height: "75px",
+              width: "100px",
+              height: "100px",
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
               filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
@@ -199,12 +194,12 @@ export default function HowDoesItWork() {
           <Box
             sx={{
               position: "absolute",
-              top: "4rem",
-              left: "calc(76% - 22px)",
+              top: "10rem",
+              left: "calc(73% - 22px)",
               transform: "translateY(-50%)",
               backgroundImage: 'url("/Arrow_04.svg")',
-              width: "75px",
-              height: "75px",
+              width: "100px",
+              height: "100px",
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
               filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
@@ -218,4 +213,6 @@ export default function HowDoesItWork() {
       </Box>
     </SectionContainer>
   );
-}
+};
+
+export default HowItWork;

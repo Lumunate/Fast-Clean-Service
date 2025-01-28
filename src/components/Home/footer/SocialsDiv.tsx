@@ -1,10 +1,14 @@
-import {Facebook, Instagram, X, YouTube} from "@mui/icons-material";
-import {Box, IconButton} from "@mui/material";
+import { Facebook, Instagram, X, YouTube } from "@mui/icons-material";
+import { Box, IconButton } from "@mui/material";
 import React from "react";
 import styles from "./Footer.module.css";
-import {useTheme} from "../../../contexts/themeContext";
+import { useTheme } from "../../../contexts/themeContext";
 
-const SocialsDiv = ({ nav }) => {
+interface SocialsDivProps {
+  nav: boolean;
+}
+
+const SocialsDiv: React.FC<SocialsDivProps> = ({ nav }) => {
   const { theme } = useTheme();
   return (
     <Box className={styles.socialLinks}>
@@ -19,7 +23,7 @@ const SocialsDiv = ({ nav }) => {
       </IconButton>
       <IconButton
         href="#"
-        className={`${styles.socialIcon}`}
+        className={styles.socialIcon}
         sx={{ color: nav ? "white" : theme.palette.mode === "dark" ? "white !important" : "black !important" }}
       >
         <X />

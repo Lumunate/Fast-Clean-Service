@@ -1,21 +1,21 @@
 "use client";
 import React from "react";
 // Import Swiper React components
-import {Swiper, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
 
 // Import required Swiper modules
-import {Autoplay, Navigation} from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 
 // Import CSS module
 import styles from "./PastClientSlider.module.css";
-import {Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 import Image from "next/image";
 
-const logos = [
+const logos: string[] = [
   "/logo1.png",
   "/logo2.jpg",
   "/logo4.png",
@@ -25,7 +25,7 @@ const logos = [
   // Add more logos as needed
 ];
 
-export default function PastClientSlider() {
+const PastClientSlider: React.FC = () => {
   return (
     <>
       <div className={styles.services}>
@@ -52,10 +52,18 @@ export default function PastClientSlider() {
       >
         {logos.map((logo, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>
-            <Image width={500} height={500} src={logo} alt={`Company Logo ${index + 1}`} className={styles.logo} />
+            <Image
+              width={500}
+              height={500}
+              src={logo}
+              alt={`Company Logo ${index + 1}`}
+              className={styles.logo}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
     </>
   );
-}
+};
+
+export default PastClientSlider;

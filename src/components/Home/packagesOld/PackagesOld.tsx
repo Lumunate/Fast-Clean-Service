@@ -1,12 +1,34 @@
-// components/Slider3D.js
-"use client";
-import React, {useState} from "react";
 import Image from "next/image";
-import {Slider, SliderContainer, SliderItem} from "../../mui/HomePkgs";
-import PackageModal from "./PackageModal";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
+import {
+    HomePkgBox,
+    HomePkgsBox,
+    HomePkgsInBox,
+    PkgDetailsSection,
+    PkgExtrasSection,
+    PkgImgCtr,
+} from "../../mui/HomePkgs";
 
-const cleanPkgs = [
+interface Package {
+  img: string;
+  type: {
+    one: string;
+    two: string;
+  };
+  price: {
+    one: string;
+    duur: string;
+  };
+  pros: string[];
+  cons: string[];
+  extras: {
+    interior: string[];
+    exterior: string[];
+    detailing: string[];
+  };
+}
+
+const cleanPkgs: Package[] = [
   {
     img: "/1.png",
     type: {
@@ -249,79 +271,63 @@ const cleanPkgs = [
   },
 ];
 
-export default function Slider3D() {
-  const [open, setOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
-
-  const handleOpen = (pkg) => {
-    setModalData(pkg);
-    setOpen(true);
-  };
-
-  const handleClose = () => setOpen(false);
-
+const Packages: React.FC = () => {
   return (
-    <div>
-      <SliderContainer>
-        <Slider>
+    <>
+      <HomePkgsBox>
+        <HomePkgsInBox>
           {cleanPkgs.map((pkg, index) => (
-            <SliderItem
-              key={index}
-              onClick={() => handleOpen(pkg)}
-              sx={{
-                "--position": index + 1,
-                "--quantity": cleanPkgs.length,
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "50%",
-                  border: "2px sloid black",
-                }}
-              >
-                <Image
-                  src={pkg.img}
-                  alt={`Package ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <div
-                style={{
-                  padding: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6">
-                  {pkg.type.one} {pkg.type.two}
-                </Typography>
-                <Typography variant="subtitle1">€{pkg.price.one}</Typography>
-                <Typography variant="body2">
-                  Duur: {pkg.price.duur} min
-                </Typography>
-              </div>
-            </SliderItem>
+            <HomePkgBox key={index}>
+              <PkgImgCtr>
+                <Image src={pkg?.img} alt="hmm" height={400} width={400} />
+              </PkgImgCtr>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Box
+                  sx={{
+                    backgroundColor: "rgb(50,116,199)",
+                    padding: "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    "& .MuiTypography-root": {
+                      color: "white",
+                    },
+                  }}
+                >
+                  <Typography>{pkg?.type?.one}</Typography>
+                  <Typography sx={{ fontSize: "1.2rem !important" }}>
+                    {pkg?.type?.two}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    padding: "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography sx={{ fontSize: "4rem !important" }}>
+                    $ {pkg?.price?.one}
+                  </Typography>
+                  <Typography sx={{ fontSize: "1.2rem !important" }}>
+                    Duur +/- {pkg?.price?.duur} min
+                  </Typography>
+                </Box>
+                <PkgDetailsSection pros={pkg?.pros} cons={pkg?.cons} />
+              </Box>
+              <PkgExtrasSection
+                interior={pkg?.extras?.interior}
+                exterior={pkg?.extras?.exterior}
+                detailing={pkg?.extras?.detailing}
+              />
+            </HomePkgBox>
           ))}
-        </Slider>
-      </SliderContainer>
-
-      {modalData && (
-        <PackageModal
-          open={open}
-          handleClose={handleClose}
-          imageSrc={modalData.img}
-          title={`${modalData.type.one} ${modalData.type.two}`}
-          pros={modalData.pros}
-          cons={modalData.cons}
-          extras={modalData.extras}
-        />
-      )}
-    </div>
+        </HomePkgsInBox>
+      </HomePkgsBox>
+    </>
   );
 }
+export default Packages;

@@ -2,7 +2,11 @@
 import styles from "./CTA.module.css";
 import {useTheme} from "../../../contexts/themeContext";
 
-const CTA = ({ scrolled }) => {
+interface CTAProps {
+  scrolled: boolean;
+}
+
+const CTA: React.FC<CTAProps> = ({ scrolled }) => {
   const { theme } = useTheme();
 
   return (

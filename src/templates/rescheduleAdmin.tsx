@@ -2,7 +2,18 @@ import React from "react";
 import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
-const RescheduledBookingAdminEmail = ({ userName, userEmail, packageName, oldDate, oldTime, newDate, newTime, location }) => {
+interface RescheduledBookingAdminEmailProps {
+  userName: string;
+  userEmail: string;
+  packageName: string;
+  oldDate: string;
+  oldTime: string;
+  newDate: string;
+  newTime: string;
+  location: string;
+}
+
+const RescheduledBookingAdminEmail: React.FC<RescheduledBookingAdminEmailProps> = ({ userName, userEmail, packageName, oldDate, oldTime, newDate, newTime, location }) => {
   const accentColor = "#0070f3";
 
   return (
@@ -76,20 +87,20 @@ const RescheduledBookingAdminEmail = ({ userName, userEmail, packageName, oldDat
 export default RescheduledBookingAdminEmail;
 
 // Styles
-const main = {
+const main: React.CSSProperties = {
   backgroundColor: "#f6f9fc",
   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif',
 };
 
-const imgSection = {
+const imgSection: React.CSSProperties = {
   marginTop: 32,
 };
 
-const img = {
+const img: React.CSSProperties = {
   margin: "0 auto",
 };
 
-const container = {
+const container: React.CSSProperties = {
   backgroundColor: "#ffffff",
   margin: "0 auto",
   padding: "20px 20px 48px",
@@ -98,7 +109,7 @@ const container = {
   boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
 };
 
-const heading = {
+const heading: React.CSSProperties = {
   fontSize: "28px",
   lineHeight: "1.3",
   fontWeight: "700",
@@ -106,27 +117,27 @@ const heading = {
   marginBottom: "20px",
 };
 
-const subheading = {
+const subheading: React.CSSProperties = {
   fontSize: "20px",
   fontWeight: "600",
   margin: "10px 0",
 };
 
-const paragraph = {
+const paragraph: React.CSSProperties = {
   fontSize: "16px",
   lineHeight: "26px",
   color: "#555",
   marginBottom: "20px",
 };
 
-const bookingDetailsContainer = {
+const bookingDetailsContainer: React.CSSProperties = {
   backgroundColor: "#f9f9f9",
   borderRadius: "8px",
   padding: "24px",
   marginBottom: "24px",
 };
 
-const bookingDetails = {
+const bookingDetails: React.CSSProperties = {
   backgroundColor: "#ffffff",
   borderRadius: "8px",
   padding: "16px",
@@ -134,13 +145,13 @@ const bookingDetails = {
   boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
 };
 
-const detailText = {
+const detailText: React.CSSProperties = {
   fontSize: "16px",
   color: "#333",
   margin: "0 0 10px 0",
 };
 
-const footer = {
+const footer: React.CSSProperties = {
   color: "#8898aa",
   fontSize: "12px",
   marginTop: "32px",

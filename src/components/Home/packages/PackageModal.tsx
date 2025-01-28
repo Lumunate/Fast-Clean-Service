@@ -3,6 +3,20 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Divider, Modal, Box, Typography, Button } from "@mui/material";
 
+interface PackageModalProps {
+  open: boolean;
+  handleClose: () => void;
+  imageSrc: string;
+  title: string;
+  pros: string[];
+  cons: string[];
+  extras: {
+    interior: string[];
+    exterior: string[];
+    detailing: string[];
+  };
+}
+
 export default function PackageModal({
   open,
   handleClose,
@@ -11,7 +25,7 @@ export default function PackageModal({
   pros,
   cons,
   extras,
-}) {
+}: PackageModalProps) {
   const [showExtras, setShowExtras] = useState(false);
 
   return (
@@ -62,9 +76,7 @@ export default function PackageModal({
           }}
         />
         <Divider sx={{ width: "100%", marginY: 2 }} />
-        <Box
-          sx={{ display: "flex", flexDirection: "row", width: "100%", gap: 2 }}
-        >
+        <Box sx={{ display: "flex", flexDirection: "row", width: "100%", gap: 2 }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="body1" sx={{ fontWeight: "bold" }}>
               Pros:

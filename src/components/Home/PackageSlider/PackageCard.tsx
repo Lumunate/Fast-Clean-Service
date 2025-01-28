@@ -1,7 +1,6 @@
-// components/PackageCard.js
 import React from "react";
 
-const PackageCard = () => {
+const PackageCard: React.FC = () => {
   return <div>PackageCard</div>;
 };
 

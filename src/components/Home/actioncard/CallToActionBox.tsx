@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import FadeIn from "../../Animations/FadeIn";
 import {
     CTAContainer,
@@ -9,16 +10,16 @@ import {
     CTAButton,
     CTAImage,
 } from "./CallToActionPckgs";
-import {useTheme} from "../../../contexts/themeContext"
-import {Button} from "@mui/material";
+import { useTheme } from "../../../contexts/themeContext";
+import { Button } from "@mui/material";
 
-const CallToActionBox = ({ hideImage = false }) => {
-    const {theme} = useTheme();
+const CallToActionBox = ({ hideImage = false }: { hideImage?: boolean }) => {
+    const { theme } = useTheme();
     return (
       <CTAContainer>
         {!hideImage && (
           <CTAImage
-            component="img"
+            as="img"
             src="/decorative/Cuts.svg"
             alt="Decorative Image"
             width={388}

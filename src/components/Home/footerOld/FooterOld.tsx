@@ -12,23 +12,19 @@ import {
 } from "../../mui/HomePkgs";
 import Link from "next/link";
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <>
       <HomePkgsBox sx={{ flexDirection: "column", padding: 0 }}>
         <HomeBlueBanner
           sx={{
             width: "100%",
-            backgroundImage: `url(
-    "/fast-cleaning-service-achtergrond.jpg"
-  )`,
+            backgroundImage: `url("/fast-cleaning-service-achtergrond.jpg")`,
           }}
         >
           <Box
             sx={{
-              backgroundImage: `linear-gradient(
-                  #0066bf81,
-                  #0066bf81)`,
+              backgroundImage: `linear-gradient(#0066bf81, #0066bf81)`,
               padding: "3rem",
               margin: 0,
               display: "flex",
@@ -36,9 +32,7 @@ export default function Footer() {
               alignItems: "center",
             }}
           >
-            <Typography
-              sx={{ fontSize: "4rem !important", fontWeight: "bold" }}
-            >
+            <Typography sx={{ fontSize: "4rem !important", fontWeight: "bold" }}>
               NEEM CONTACT MET ONS OP{" "}
             </Typography>
             <Typography sx={{ fontSize: "2rem" }}>
@@ -54,6 +48,7 @@ export default function Footer() {
             </Link>
           </Box>
         </HomeBlueBanner>
+
         <HomePkgsBox
           sx={{
             padding: "1rem",
@@ -71,8 +66,8 @@ export default function Footer() {
           >
             <Image src="/logo.png" alt="img" width={200} height={200} />
           </HomeCollageCtr>
+
           <Typography>
-            {" "}
             Copyright © 2024 Fast Clean Service. Deze website is gebouwd door{" "}
             <Link href="/">
               <HomeBlueLink sx={{ display: "inline" }}>
@@ -86,6 +81,7 @@ export default function Footer() {
               </HomeBlueLink>
             </Link>{" "}
           </Typography>
+
           <HomeCollageCtr
             sx={{
               height: "150px",
@@ -108,4 +104,6 @@ export default function Footer() {
       </HomePkgsBox>
     </>
   );
-}
+};
+
+export default Footer;

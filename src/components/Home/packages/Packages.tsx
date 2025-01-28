@@ -7,7 +7,7 @@ import {HomePkgsInBox, PackagesSection} from "../../mui/HomePkgs";
 // import VANTA from "vanta/dist/vanta.net.min";
 import Slider3D from "./Slider3D";
 
-export default function Packages() {
+const Packages: React.FC = () => {
   // const [effect, setEffect] = useState(VANTA.NET);
 
   return (
@@ -42,3 +42,5 @@ export default function Packages() {
     </div>
   );
 }
+
+export default Packages;
