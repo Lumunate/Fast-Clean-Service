@@ -215,10 +215,10 @@ export default function About() {
                     <Box
                         sx={{
                             flex: 1,
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
                             borderRadius: "10px",
                             padding: "2rem",
-                            border: "0.3px solid #00000030",
+                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
                             backdropFilter: "blur(14.4px)",
                             textAlign: "center",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
@@ -227,14 +227,13 @@ export default function About() {
                             "@media (max-width: 1150px)": {
                                 width: "100%",
                             },
-
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: "#232E4A" }}>
+                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
                                 Convenience
                             </Typography>
-                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: "#535353", fontWeight: "300",  }}>
+                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
                                 Cleaning on location or at our branch.
                             </Typography>
                         </Box>
@@ -243,10 +242,10 @@ export default function About() {
                     <Box
                         sx={{
                             flex: 1,
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
                             borderRadius: "10px",
                             padding: "2rem",
-                            border: "0.3px solid #00000030",
+                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
                             backdropFilter: "blur(14.4px)",
                             textAlign: "center",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
@@ -258,16 +257,10 @@ export default function About() {
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography
-                                variant="h6"
-                                sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: "#232E4A" }}
-                            >
+                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
                                 Eco Friendly
                             </Typography>
-                            <Typography
-                                variant="body1"
-                                sx={{ fontSize: "1.4em", color: "#535353", fontWeight: "300" }}
-                            >
+                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
                                 Safe, durable steam cleaning techniques.
                             </Typography>
                         </Box>
@@ -276,24 +269,25 @@ export default function About() {
                     <Box
                         sx={{
                             flex: 1,
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
                             borderRadius: "10px",
                             padding: "2rem",
-                            border: "0.3px solid #00000030",
+                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
                             backdropFilter: "blur(14.4px)",
                             textAlign: "center",
-                            maxWidth: "450px",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
+                            position: "relative",
+                            maxWidth: "450px",
                             "@media (max-width: 1150px)": {
                                 width: "100%",
                             },
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: "#232E4A" }}>
+                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
                                 Excellence
                             </Typography>
-                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: "#535353", fontWeight: "300",  }}>
+                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
                                 Exceptional results every time.
                             </Typography>
                         </Box>
