@@ -248,6 +248,7 @@ export default function LongTermVehicleCare() {
           marginBottom: "2rem",
         },
       }}
+      id="long-term-vehicle-care"
     >
       <HomePkgsInBox
         sx={{

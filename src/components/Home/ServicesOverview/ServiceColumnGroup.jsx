@@ -100,6 +100,7 @@ export default function ServiceColumnGroup() {
 
   return (
     <HomePkgsInBox
+      id="anywhere-auto-care"
       sx={{
         flexDirection: "column",
         alignItems: "center",
