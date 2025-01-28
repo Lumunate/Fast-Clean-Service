@@ -45,7 +45,10 @@ export default function Home() {
           <About />
           <Stats />
 
-          <DecorativeSpacer />
+          <DecorativeSpacer
+              textBox1="100% Satisfaction"
+              textBox2="On-Demand Cleaning, Anywhere"
+          />
 
           <HowDoesItWork/>
           <OverServiceOverview/>
@@ -53,13 +56,15 @@ export default function Home() {
 
           <ServicesOverview />
 
-            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed /></Box>
+            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed textBox1="100% Satisfaction"
+                                                                                             textBox2="Anywhere, Anytime" /></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
             <Services />
           </HomePkgsInBox>
 
-            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer /></Box>
+            <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results"
+                                                                                             textBox2="Fast, Flawless, Eco-Friendly"/></Box>
 
           <HomePkgsInBox sx={{ margin: "0 auto" }}>
             {/* <Box
