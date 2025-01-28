@@ -92,7 +92,7 @@ export const NavbarRightContainer = styled(Box)(({ theme }) => ({
 
 export const DropDownLink = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
-  color: "#D5D5D5",
+  color: "#F5F5F5",
   cursor: "pointer",
   fontFamily: "DMSans",
   fontWeight: "300",

@@ -188,13 +188,15 @@ const MobileNavbar = () => {
                             onClose={toggleDrawer(false)}
                             PaperProps={{
                                 sx: {
-                                    backgroundColor: "rgba(35, 35, 35, 0.6)",
-                                    backdropFilter: "blur(10px)",
-                                    WebkitBackdropFilter: "blur(10px)",
                                     display: "flex",
                                     flexDirection: "column",
                                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                                     padding: "1rem",
+
+                                    border: "none",
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
                                 },
                             }}
                         >
@@ -222,6 +224,12 @@ const MobileNavbar = () => {
                                     flexDirection: "column",
                                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                                     paddingTop: "8rem !important",
+
+
+                                    border: "none",
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
                                 }}
                             >
                                 <DropDownLink
@@ -240,7 +248,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_StreamLine} alt="User Icon" width={20} height={20} />
-                                    Customer
+                                    Dashboard
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
