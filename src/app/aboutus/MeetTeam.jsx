@@ -101,7 +101,7 @@ export default function MeetTeam() {
                         textAlign: "left",
                         position: "relative",
                         "@media (max-width: 600px)": {
-                            textAlign: "left",
+                            textAlign: "center",
                             padding: "2rem"
                         },
                     }}
@@ -137,6 +137,7 @@ export default function MeetTeam() {
                             lineHeight: "1.2",
                             fontSize: "1.6rem",
                             fontWeight: "400",
+                            margin: "2rem 0",
                             "@media (max-width: 600px)": {
                                 fontSize: "1.4rem",
                             },
@@ -151,13 +152,29 @@ export default function MeetTeam() {
                             justifyContent: "flex-start",
                             gap: "0.5rem",
                             marginTop: "1rem",
+                            "@media (max-width: 600px)": {
+                                justifyContent: "center",
+                                alignItems: "center",
+                            },
                         }}
                     >
                         <IconButton
                             href={teamMember.socialLinks.email}
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{ color: isDarkMode ? "#fff" : "#000" }}
+                            sx={{
+                                color: isDarkMode ? "#fff" : "#000",
+                                "&:hover": { color: "#00BEFF",},
+                                "& svg": {
+                                    fontSize: "3rem",
+                                    "@media (max-width: 600px)": {
+                                        fontSize: "1.2rem",
+                                    },
+                                    "@media (max-width: 1380px)": {
+                                        fontSize: "2rem",
+                                    },
+                                },
+                            }}
                         >
                             <EmailIcon />
                         </IconButton>
@@ -165,7 +182,19 @@ export default function MeetTeam() {
                             href={teamMember.socialLinks.whatsapp}
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{ color: isDarkMode ? "#fff" : "#000" }}
+                            sx={{
+                                color: isDarkMode ? "#fff" : "#000",
+                                "&:hover": { color: "#00BEFF",},
+                                "& svg": {
+                                    fontSize: "3rem",
+                                    "@media (max-width: 600px)": {
+                                        fontSize: "1.2rem",
+                                    },
+                                    "@media (max-width: 1380px)": {
+                                        fontSize: "2rem",
+                                    },
+                                },
+                            }}
                         >
                             <WhatsAppIcon />
                         </IconButton>
@@ -173,7 +202,19 @@ export default function MeetTeam() {
                             href={teamMember.socialLinks.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{ color: isDarkMode ? "#fff" : "#000" }}
+                            sx={{
+                                color: isDarkMode ? "#fff" : "#000",
+                                "&:hover": { color: "#00BEFF",},
+                                "& svg": {
+                                    fontSize: "3rem",
+                                    "@media (max-width: 600px)": {
+                                        fontSize: "1.2rem",
+                                    },
+                                    "@media (max-width: 1380px)": {
+                                        fontSize: "2rem",
+                                    },
+                                },
+                            }}
                         >
                             <Instagram />
                         </IconButton>
@@ -181,7 +222,19 @@ export default function MeetTeam() {
                             href={teamMember.socialLinks.facebook}
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{ color: isDarkMode ? "#fff" : "#000" }}
+                            sx={{
+                                color: isDarkMode ? "#fff" : "#000",
+                                "&:hover": { color: "#00BEFF",},
+                                "& svg": {
+                                    fontSize: "3rem",
+                                    "@media (max-width: 600px)": {
+                                        fontSize: "1.2rem",
+                                    },
+                                    "@media (max-width: 1380px)": {
+                                        fontSize: "2rem",
+                                    },
+                                },
+                            }}
                         >
                             <Facebook />
                         </IconButton>

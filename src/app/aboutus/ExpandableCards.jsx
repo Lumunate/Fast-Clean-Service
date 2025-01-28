@@ -118,6 +118,7 @@ const Number = styled(Typography)(({ isSmallScreen, expanded }) => ({
         ? "3.6rem"
         : "4rem",
     fontWeight: 500,
+    color: "#00BEFF",
     "@media (max-width: 900px)": {
         fontSize: "2.8rem",
     },
