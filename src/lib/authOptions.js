@@ -15,15 +15,15 @@ export const authOptions = {
       async authorize(credentials) {
         await connectToDb();
         try {
-          console.log(credentials.password);
-          const user = await User.findOne({ email: credentials.email });
-          console.log(user);
+
+          const user = await User.findOne({ email: credentials.email?.toLowerCase() });
+
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
               user.password
             );
-            console.log(isPasswordCorrect);
+
             if (isPasswordCorrect) {
               if (!user.emailVerified) {
                 throw new Error("Please verify your email before logging in");

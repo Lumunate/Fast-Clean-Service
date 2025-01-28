@@ -59,15 +59,16 @@ export const StyledCard = styled(Card)(() => ({
 }));
 
 export const ButtonLearnMore = styled(Button)(() => ({
-    backgroundColor: "#fff !important",
-    color: "#fb703c",
-    boxShadow: "0 2px 6px #d0efef",
-    borderRadius: 12,
-    minWidth: 120,
-    textTransform: "initial",
-    fontSize: "1.4rem",
-    fontWeight: 700,
-    letterSpacing: 0,
+  backgroundColor: "#fff !important",
+  color: "#fb703c",
+  boxShadow: "0 2px 6px #d0efef",
+  borderRadius: 12,
+  borderRadius: "50px",
+  minWidth: 120,
+  textTransform: "initial",
+  fontSize: "1.4rem",
+  fontWeight: 700,
+  letterSpacing: 0,
 }));
 
 export const headingStyles = {
@@ -294,16 +295,17 @@ export const StyledPattern = () => {
 };
 
 export const ModalButton = styled(Button)(() => ({
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    marginTop: '20px',
-    padding: '10px 20px',
-    textTransform: 'none',
-    fontWeight: 'bold',
-    fontSize: "1.2rem",
-    '&:hover': {
-        backgroundColor: '#45A049',
-    },
+  backgroundColor: "#4CAF50",
+  color: "#fff",
+  marginTop: "20px",
+  padding: "10px 20px",
+  textTransform: "none",
+  borderRadius: "50px",
+  fontWeight: "bold",
+  fontSize: "1.2rem",
+  "&:hover": {
+    backgroundColor: "#45A049",
+  },
 }));
 
 export const ModalContentBox = styled(Typography)(() => ({

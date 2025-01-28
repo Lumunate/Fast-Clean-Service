@@ -76,6 +76,10 @@ const MobileNavbar = () => {
                     label: "Subscription Plans",
                     href: "/subscribe",
                 },
+                {
+                    label: "Other Vehicles",
+                    href: "/other-vehicles",
+                },
             ],
         },
         {
@@ -85,46 +89,60 @@ const MobileNavbar = () => {
     ];
 
     const NavbarDrawerList = (
-        <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
-            <List>
-                {navLinks.map((item, index) => (
-                    <>
-                        <ListItem key={item.label} disablePadding>
-                            <ListItemButton
-                                onClick={() => {
-                                    if (item.more) {
-                                        setIsServicesOpen(!isServicesOpen);
-                                    } else {
-                                        window.location.href = item.href;
-                                    }
-                                }}
-                            >
-                                <ListItemText sx={{ color: "#fff" }} primary={item.label}  />
-                                {item.more && item.more.length > 0 && <>{isServicesOpen ? <ExpandLess sx={{ color: "#fff" }} /> : <ExpandMore sx={{ color: "#fff" }} />}</>}
-                            </ListItemButton>
-                        </ListItem>
-
-                        {item.more && (
-                            <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    {item.more.map((subItem, index) => (
-                                        <ListItemButton sx={{ pl: 4, "& .MuiTypography-root": { color: "#fff" }, }} key={subItem.label} onClick={() => (window.location.href = subItem.href)}>
-                                            <ListItemText primary={subItem.label} />
-                                        </ListItemButton>
-                                    ))}
-                                </List>
-                            </Collapse>
-                        )}
-                    </>
-                ))}
-            </List>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => (window.location.href = "/booking")}>
-                    <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+      <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
+        <List>
+          {navLinks.map((item, index) => (
+            <>
+              <ListItem key={item.label} disablePadding>
+                <ListItemButton
+                  onClick={(e) => {
+                    if (item.more) {
+                      setIsServicesOpen(!isServicesOpen);
+                    } else {
+                      window.location.href = item.href;
+                    }
+                    e.stopPropagation();
+                  }}
+                >
+                  <ListItemText
+                    sx={{
+                      color: "#fff",
+                      fontSize: "1.6rem !important",
+                      fontWeight: item.label === "Services" && isServicesOpen ? "bold !important" : "normal",
+                    }}
+                    primary={item.label}
+                  />
+                  {item.more && item.more.length > 0 && (
+                    <>{isServicesOpen ? <ExpandLess sx={{ color: "#fff" }} /> : <ExpandMore sx={{ color: "#fff" }} />}</>
+                  )}
                 </ListItemButton>
-            </ListItem>
-        </Box>
+              </ListItem>
+
+              {item.more && (
+                <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.more.map((subItem, index) => (
+                      <ListItemButton
+                        sx={{ pl: 4, "& .MuiTypography-root": { color: "#fff" } }}
+                        key={subItem.label}
+                        onClick={() => (window.location.href = subItem.href)}
+                      >
+                        <ListItemText primary={subItem.label} />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </>
+          ))}
+        </List>
+        <Divider />
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => (window.location.href = "/booking")}>
+            <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+          </ListItemButton>
+        </ListItem>
+      </Box>
     );
 
     return (

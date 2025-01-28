@@ -6,10 +6,9 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { Box } from "@mui/material";
 
-function Model({ url }) {
+function Model({ url, scale }) {
   const { scene } = useGLTF(url);
   const meshRef = useRef();
-  const lightsRef = useRef({});
 
   useFrame(({ clock }) => {
     if (meshRef.current) {
@@ -49,21 +48,40 @@ function Model({ url }) {
   }, [scene]);
 
   return (
-    <group
-      ref={meshRef}
-      draggable={false}
-      onPointerDown={(e) => e.stopPropagation()}
-    >
-      <primitive object={scene} position={[0, -6, -5]} draggable={false} />
+    <group ref={meshRef} scale={scale} draggable={false} onPointerDown={(e) => e.stopPropagation()}>
+      <primitive object={scene} position={[0, -6, 0]} draggable={false} />
     </group>
   );
 }
 
 export default function ThreeDComponent({ modelUrl }) {
+  const [windowSize, setWindowSize] = React.useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getScale = () => {
+    if (windowSize.width < 600) return [0.5, 0.5, 0.5];
+    if (windowSize.width < 900) return [0.75, 0.75, 0.75];
+    return [1, 1, 1];
+  };
+
   return (
-    <Box style={{ maxWidth: "1400px", width: "100%", minWidth: "1200px", height: "600px"}}>
+    <Box style={{ width: "100%", height: "600px", margin: "0 auto", position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Canvas
-        camera={{ position: [0,20,80], fov: 25 }}
+        camera={{ position: [0, 15, 80], fov: 25 }}
         draggable={false}
         onPointerDown={(e) => e.stopPropagation()} // Prevents interaction with canvas
       >
@@ -81,7 +99,7 @@ export default function ThreeDComponent({ modelUrl }) {
         <spotLight position={[15, 10, 20]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
         <spotLight position={[5, 5, 5]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
         <Suspense fallback={"Loading..."}>
-          <Model url={modelUrl} />
+          <Model url={modelUrl} scale={getScale()} />
         </Suspense>
         <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
