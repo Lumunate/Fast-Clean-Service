@@ -7,7 +7,7 @@ import { Box, styled, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
 import Arrow from "../../../../public/decorative/Arrow_01.svg";
-import l6 from "../../../../public/l6.png";
+import { ServicesDivider } from "../services/ServicesPckgs";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import Star from "../../AnimatedSvgs/Star";
 import Bars from "../../AnimatedSvgs/Bars";
@@ -139,15 +139,7 @@ export default function Stats() {
                   />
                   {/* Divider */}
                   {index !== stats.length - 1 && (
-                      <Image
-                          src={l6}
-                          alt="Divider"
-                          style={{
-                            height: "60px",
-                            width: "1px",
-                            margin: "0 3rem",
-                          }}
-                      />
+                      <ServiceDivider sx={{  background: "linear-gradient(to top, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)"}}/>
                   )}
                 </React.Fragment>
             ))}

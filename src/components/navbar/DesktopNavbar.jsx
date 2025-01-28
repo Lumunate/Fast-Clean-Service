@@ -161,12 +161,9 @@ const DesktopNavbar = () => {
                     top: { xs: "-4rem", sm: "-8rem", md: "-3.5rem", xl: "-4rem" },
                     left: { xs: "-2rem", sm: "-4rem", md: "-6rem" },
                     zIndex: 2,
-                    backgroundColor: "rgba(35, 35, 35, 0.6)",
-                    backdropFilter: "blur(10px)",
                     WebkitBackdropFilter: "blur(10px)",
                     padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
                     borderRadius: "4px",
-                    border: "0.01px solid #FFFFFF4F",
                     width: {
                       xs: "15rem",
                       sm: "17rem",
@@ -177,9 +174,7 @@ const DesktopNavbar = () => {
                     flexDirection: "column",
                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                     paddingTop: "8rem !important",
-
-                    border: "none",
-                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                      backgroundColor: "rgba(35, 35, 35, 0.5)",
                     backdropFilter: "blur(10px)",
                     boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
                   }}
@@ -246,7 +241,6 @@ const DesktopNavbar = () => {
                         zIndex: 2,
                         padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
                         borderRadius: "4px",
-                        border: "0.01px solid #fff",
                         width: {
                           xs: "28rem",
                           sm: "30rem",
