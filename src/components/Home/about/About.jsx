@@ -12,6 +12,23 @@ export default function About() {
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
 
+    const [imageSrc, setImageSrc] = useState("/g1.jpg"); // Default image
+
+    useEffect(() => {
+        // Switch the top image source below 768px
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setImageSrc("/owner.png");
+            } else {
+                setImageSrc("/g1.jpg");
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Initial check
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
   const ListItemsText = styled(ListItemText)(({theme})=>({
     "& .css-1a7tj5u-MuiTypography-root":{
       fontSize:"16px !important",
@@ -80,7 +97,7 @@ export default function About() {
             }}
           >
             <Image
-              src="/g1.jpg"
+                src={imageSrc}
               alt="Small car image"
               width={489}
               height={350}
@@ -149,7 +166,7 @@ export default function About() {
                   color: theme.palette.text.secondary,
                   fontSize: "1.55rem",
                   lineHeight: 1.7,
-                  "@media (max-width: 900px)": {
+                  "@media (max-width: 768px)": {
                     textAlign: "center",
                   },
                   "@media (max-width: 600px)": {
@@ -171,8 +188,9 @@ export default function About() {
                   marginTop: 2,
                   textAlign: "left",
                   fontSize: "1.55rem",
-                  "@media (max-width: 600px)": {
+                  "@media (max-width: 768px)": {
                     fontSize: "1.4rem",
+                      textAlign: "center",
                   },
                 }}
               >
@@ -183,13 +201,15 @@ export default function About() {
                     sx={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "space-between",
+                        justifyContent: { xs: "center", md: "space-between" },
                         gap: "1rem",
                         marginTop: "1.5rem",
                         width: "100%",
                         "@media (max-width: 1150px)": {
                             flexDirection: "column",
+                            alignItems: "center",
                         },
+                        alignItems: { xs: "center", md: "flex-start" },
 
                     }}
                 >
@@ -204,7 +224,11 @@ export default function About() {
                             textAlign: "center",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
                             position: "relative",
-                            maxWidth: "450px"
+                            maxWidth: "450px",
+                            "@media (max-width: 1150px)": {
+                                width: "100%",
+                            },
+
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
@@ -228,7 +252,10 @@ export default function About() {
                             textAlign: "center",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
                             position: "relative",
-                            maxWidth: "450px"
+                            maxWidth: "450px",
+                            "@media (max-width: 1150px)": {
+                                width: "100%",
+                            },
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
@@ -258,6 +285,9 @@ export default function About() {
                             textAlign: "center",
                             maxWidth: "450px",
                             boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
+                            "@media (max-width: 1150px)": {
+                                width: "100%",
+                            },
                         }}
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
@@ -369,7 +399,10 @@ export default function About() {
             left: "54%",
             height: "auto",
             marginTop: "15rem",
-            "@media (max-width: 900px)": {
+              "@media (max-width: 1150px)": {
+                  marginTop: "38rem",
+              },
+            "@media (max-width: 768px)": {
               display: "none",
             },
           }}
