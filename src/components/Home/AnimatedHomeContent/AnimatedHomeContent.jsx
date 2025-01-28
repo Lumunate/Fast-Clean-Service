@@ -68,20 +68,32 @@ const AnimatedHomeContent = () => {
               zIndex: "8",
           }}
       >
+          {/*<Box*/}
+          {/*    component="video"*/}
+          {/*    src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"*/}
+          {/*    autoPlay*/}
+          {/*    muted*/}
+          {/*    loop*/}
+          {/*    playsInline*/}
+          {/*    sx={{*/}
+          {/*        position: "absolute",*/}
+          {/*        top: 0,*/}
+          {/*        left: 0,*/}
+          {/*        width: "100%",*/}
+          {/*        height: "100%",*/}
+          {/*        objectFit: "cover",*/}
+          {/*        zIndex: -1,*/}
+          {/*    }}*/}
+          {/*/>*/}
+
           <Box
-              component="video"
-              src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
-              autoPlay
-              muted
-              loop
-              playsInline
               sx={{
                   position: "absolute",
                   top: 0,
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  backgroundColor: "rgba(0, 0, 0, 0.3)",
                   zIndex: -1,
               }}
           />

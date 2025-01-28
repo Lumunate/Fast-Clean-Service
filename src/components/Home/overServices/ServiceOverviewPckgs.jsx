@@ -24,7 +24,7 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   borderRadius: "1rem",
   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-
+  marginTop: "8rem",
   backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.0001)" : "white",
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
   backdropFilter: "blur(10.4px)",
@@ -32,6 +32,7 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
     // width: "80%",
     minHeight: 0,
     // backdropFilter: 0,
+    marginTop: "4rem",
   },
 }));
 
@@ -58,11 +59,9 @@ export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemIcon = styled(Image)(({ theme }) => ({
-  // filter:
-  //     theme.palette.mode === "dark"
-  //         ? "invert(1)"
-  //         : "",
+  filter: theme.palette.mode === "dark" ? "brightness(0) invert(1)" : "none",
 }));
+
 
 
 export const ServiceItemHeading = styled(Typography)(({ theme }) => ({
@@ -70,7 +69,7 @@ export const ServiceItemHeading = styled(Typography)(({ theme }) => ({
   marginBottom: "1rem",
   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
   "@media (max-width: 600px)": {
-    fontSize: "1.2rem",
+    fontSize: "1.4rem",
     marginBottom: "0.5rem",
   },
 }));
@@ -79,7 +78,10 @@ export const ServiceItemDescription = styled(Typography)(({ theme }) => ({
   fontSize: "14px",
   fontWeight: "300",
   color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
-  marginBottom:"12px"
+  marginBottom:"12px",
+  "@media (max-width: 600px)": {
+    fontSize: "1.2rem",
+  },
 }));
 
 export const ContactCardContainer = styled(Box)(({theme}) => ({

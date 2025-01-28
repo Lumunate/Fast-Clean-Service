@@ -265,9 +265,9 @@ const MobileNavbar = () => {
                     </NavLinkDropDownContainer>
                     <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
                         {theme.palette.mode === "dark" ? (
-                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
+                            <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
                         ) : (
-                            <Image src={MoonIcon} alt="Moon Icon" width={21} height={21} style={{ objectFit: "contain" }} />
+                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
                         )}
                     </IconButton>
                 </NavbarRightContainer>

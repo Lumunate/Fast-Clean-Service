@@ -34,14 +34,14 @@ const ValueProposition = () => {
             <Card
                 elevation={3}
                 sx={{
-                    maxWidth: "1200px",
+                    maxWidth: "1600px",
                     p: 4,
+                    zIndex: "2",
                     paddingLeft: "5rem",
                     paddingRight: "5rem",
                     borderRadius: "10px",
                     background: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.1)",
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                    border: theme.palette.mode === "dark" ? "0.3px solid rgba(255, 255, 255, 0.12)" : "0.3px solid rgba(0, 0, 0, 0.12)",
                 }}
             >
                 <Box sx={{ flexGrow: 1 }}>
@@ -58,9 +58,10 @@ const ValueProposition = () => {
                             <Grid item xs={12} md={4}>
                                 <Typography
                                     sx={{
-                                        fontWeight: 600,
+                                        fontWeight: 400,
                                         color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
                                         fontSize: "2.2rem",
+                                        "@media (max-width: 900px)": { textAlign: "center" },
                                             "@media (max-width: 600px)": { fontSize: "1.6rem" },
                                     }}
                                 >
@@ -71,8 +72,9 @@ const ValueProposition = () => {
                                 <Typography
                                     sx={{
                                         lineHeight: 1.6,
-                                        color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#5A5E69",
                                         fontSize: "1.6rem",
+                                        fontWeight: "400",
                                         marginBottom: "1.4rem",
                                         "@media (max-width: 600px)": { fontSize: "1.2rem" },
                                 }}

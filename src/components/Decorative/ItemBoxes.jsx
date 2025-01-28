@@ -16,7 +16,7 @@ const DecorativeItemBoxes = ({ text, sx, reversed }) => {
         borderRadius: "1.2rem",
         boxShadow: "0 7px 16.8px -4px rgba(0, 0, 0, 0.25)",
         padding: "1.2rem 3.6rem",
-        maxWidth: "25.3rem",
+        maxWidth: "41.3rem",
         marginBottom: "1rem",
         gap: "1rem",
         border: theme.palette.mode === "dark" ? "0.5px solid #858585" : "none",

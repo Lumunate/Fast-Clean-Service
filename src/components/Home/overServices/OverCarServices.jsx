@@ -8,13 +8,15 @@ import {
     ServiceItemIconContainer,
   } from "./ServiceOverviewPckgs";
   
-  import PaintRoll from "../../../../public/servicesicons/paint-roll.svg";
-  import PaintRollWhite from "../../../../public/servicesicons/paint-roll-white.svg";
-  import TickBox from "../../../../public/servicesicons/tick-box.svg";
-  import TickBoxWhite from "../../../../public/servicesicons/tick-box-white.svg";
-  import Shield from "../../../../public/servicesicons/shield.svg";
-  import ShieldWhite from "../../../../public/servicesicons/shield-white.svg";
+  import PaintRoll from "../../../../public/ser3.svg";
+  import PaintRollWhite from "../../../../public/ser3.svg";
+  import TickBox from "../../../../public/ser1.svg";
+  import TickBoxWhite from "../../../../public/ser1.svg";
+  import Shield from "../../../../public/ser2.svg";
+  import ShieldWhite from "../../../../public/ser2.svg";
   import { useTheme } from "../../../contexts/themeContext";
+import {Box, Button, Link, Typography} from "@mui/material";
+import React, { useRef } from "react";
   
   const servicesData = [
     {
@@ -42,6 +44,12 @@ import {
   
   export default function OverCarServices() {
     const { theme } = useTheme();
+      const servicesOverviewRef = useRef(null);
+
+      const scrollToServices = () => {
+          servicesOverviewRef.current?.scrollIntoView({ behavior: "smooth" });
+      };
+
     return (
       <CarServicesContainer>
         {servicesData.map(({ img, imgDark, title, description, description2 }, index) => (
@@ -53,6 +61,73 @@ import {
             description2={description2}
           />
         ))}
+        <Box
+            sx={{
+              width: "100%",
+              marginTop: "2rem",
+              "@media (max-width: 600px)": {
+                marginTop: "3rem",
+              },
+              "@media (max-width: 1400px)": {
+                marginTop: "2rem",
+              },
+            }}
+        >
+          <Box
+              sx={{
+                width: "100%",
+                margin: "0 auto",
+                textAlign: "center",
+              }}
+          >
+            <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "2rem", // Gap between buttons
+                  flexWrap: "wrap", // Wrap buttons on smaller screens
+                }}
+            >
+              <Link href="/booking" passHref>
+                <Button
+                    variant="contained"
+                    sx={{
+                      padding: "1.5rem 3rem",
+                      fontSize: "1.5rem",
+                      fontWeight: 500,
+                      borderRadius: "50px",
+                      backgroundColor: "primary.accentDark",
+                      color: "white",
+                      fontFamily: "DMSans",
+                      "&:hover": {
+                        backgroundColor: theme.palette.primary.accent,
+                      },
+                    }}
+                >
+                  Book Now!
+                </Button>
+              </Link>
+                <Button
+                    variant="contained"
+                    onClick={scrollToServices}
+                    sx={{
+                        padding: "1.5rem 3rem",
+                        fontSize: "1.5rem",
+                        fontWeight: 500,
+                        borderRadius: "50px",
+                        backgroundColor: "#B8B8B8",
+                        color: "white",
+                        fontFamily: "DMSans",
+                        "&:hover": {
+                            backgroundColor: theme.palette.primary.accent,
+                        },
+                    }}
+                >
+                    Learn More
+                </Button>
+            </Box>
+          </Box>
+        </Box>
       </CarServicesContainer>
     );
   }
@@ -73,4 +148,3 @@ import {
       </ServiceItemContainer>
     );
   };
-  

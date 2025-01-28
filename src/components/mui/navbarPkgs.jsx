@@ -99,10 +99,10 @@ export const DropDownLink = styled(Typography)(({ theme }) => ({
   alignItems: 'center',
 
   "&:hover": {
-    color: theme.palette.primary.accentDark,
+    color: "#00BEFF",
 
     "& svg": {
-      color: `${theme.palette.primary.accentDark} !important`,
+      color: `#00BEFF !important`,
     },
 
     "& img": {
