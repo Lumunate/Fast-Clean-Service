@@ -437,7 +437,7 @@ const Page = () => {
                   >
                     <ServiceCard>
                       <ServiceIcon>
-                        <img src="/s1.png" alt="Expert Care" />
+                        <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
                       </ServiceIcon>
                       <Typography
                         sx={{
@@ -476,7 +476,7 @@ const Page = () => {
                   >
                     <ServiceCard>
                       <ServiceIcon>
-                        <img src="/s2.png" alt="Flexibility" />
+                        <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
                       </ServiceIcon>
                       <Typography
                         sx={{
@@ -617,7 +617,7 @@ const Page = () => {
                 >
                   <ServiceCard>
                     <ServiceIcon>
-                      <img src="/s1.png" alt="Expert Care" />
+                      <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
                     </ServiceIcon>
                     <Typography
                       sx={{
@@ -656,7 +656,7 @@ const Page = () => {
                 >
                   <ServiceCard>
                     <ServiceIcon>
-                      <img src="/s2.png" alt="Flexibility" />
+                      <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
                     </ServiceIcon>
                     <Typography
                       sx={{

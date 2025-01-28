@@ -18,6 +18,7 @@ import Autocare from "../../components/AutoCare/Autocare";
 import { HomePkgsInBox } from "../../components/mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
 import RadialCircle from "../../components/Decorative/RadialCircle";
+import Image from "next/image";
 import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 
 export const FleetSubheading = styled(Typography)(({ theme }) => ({
@@ -331,7 +332,7 @@ export default function FleetMain() {
             <Grid item xs={12} md={4}>
               <ServiceCard>
                 <ServiceIcon>
-                  <img src="/f1.png" alt="Exterior Maintenance" />
+                    <Image src="/f1.png" alt="Exterior Maintenance Icon" width={100} height={100} />
                 </ServiceIcon>
                 <Typography
                   sx={{
@@ -360,7 +361,7 @@ export default function FleetMain() {
             <Grid item xs={12} md={4}>
               <ServiceCard>
                 <ServiceIcon>
-                  <img src="/f2.png" alt="Interior Maintenance" />
+                  <Image src="/f2.png" alt="Interior Maintenance" width={100} height={100} />
                 </ServiceIcon>
                 <Typography
                   sx={{
@@ -386,11 +387,10 @@ export default function FleetMain() {
                 </Typography>
               </ServiceCard>
             </Grid>
-
             <Grid item xs={12} md={4}>
               <ServiceCard>
                 <ServiceIcon>
-                  <img src="/f3.png" alt="Protective Coatings" />
+                  <Image src="/f3.png" alt="Protective Coatings" width={100} height={100} />
                 </ServiceIcon>
                 <Typography
                   sx={{

@@ -31,7 +31,7 @@ const CouponsCard = () => {
     };
 
     loadCoupons();
-  }, []);
+  }, [getCoupons]);
 
   console.log(coupons);
 

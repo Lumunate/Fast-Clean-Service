@@ -1,51 +1,49 @@
 import React from "react";
 import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
 // const baseUrl = process.env.VERCEL_URL;
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : "";
 
 const BookingConfirmationEmail = ({ name, packageName, date, time, location, price }) => {
   const accentColor = "#00c3ff";
   const textColor = "#333";
 
   return (
-      <Html>
-        <Head />
-        <Preview>Your booking for Fast Clean Service - {packageName} has been confirmed!</Preview>
-        <Body style={main}>
-          <Container style={container}>
-            <Section style={imgSection}>
-              <Img src={`${baseUrl}/logo.png`} width="50" height="47" alt="Fast Clean Service" style={img} />
-            </Section>
-            <Heading style={{ ...heading, color: accentColor }}>Booking Confirmation</Heading>
-            <Text style={paragraph}>Dear {name},</Text>
-            <Text style={paragraph}>Thank you for booking with Fast Clean Service. Your booking details are as follows:</Text>
-            <Section style={bookingDetails}>
-              <Heading as="h2" style={{ ...subheading, color: accentColor }}>
-                {packageName}
-              </Heading>
-              <Text style={{ ...detailText, color: textColor }}>
-                <strong>Date:</strong> {date}
-              </Text>
-              <Text style={{ ...detailText, color: textColor }}>
-                <strong>Time:</strong> {time}
-              </Text>
-              <Text style={{ ...detailText, color: textColor }}>
-                <strong>Location:</strong> {location}
-              </Text>
-              <Text style={{ ...detailText, color: textColor }}>
-                <strong>Price:</strong> {price}
-              </Text>
-            </Section>
-            <Text style={paragraph}>
-              If you have any questions or need to make changes, please contact us.
+    <Html>
+      <Head />
+      <Preview>Your booking for Fast Clean Service - {packageName} has been confirmed!</Preview>
+      <Body style={main}>
+        <Container style={container}>
+          <Section style={imgSection}>
+            <Img src={`${baseUrl}/logo.png`} width="50" height="47" alt="Fast Clean Service" style={img} />
+          </Section>
+          <Heading style={{ ...heading, color: accentColor }}>Booking Confirmation</Heading>
+          <Text style={paragraph}>Dear {name},</Text>
+          <Text style={paragraph}>Thank you for booking with Fast Clean Service. Your booking details are as follows:</Text>
+          <Section style={bookingDetails}>
+            <Heading as="h2" style={{ ...subheading, color: accentColor }}>
+              {packageName}
+            </Heading>
+            <Text style={{ ...detailText, color: textColor }}>
+              <strong>Date:</strong> {date}
             </Text>
-            <Button px={20} py={12} style={btn} href="https://fast-clean-service.onrender.com/">
-              View Booking Details
-            </Button>
-            <Text style={footer}>This is an automated email. Please do not reply directly to this message.</Text>
-          </Container>
-        </Body>
-      </Html>
+            <Text style={{ ...detailText, color: textColor }}>
+              <strong>Time:</strong> {time}
+            </Text>
+            <Text style={{ ...detailText, color: textColor }}>
+              <strong>Location:</strong> {location}
+            </Text>
+            <Text style={{ ...detailText, color: textColor }}>
+              <strong>Price:</strong> {price}
+            </Text>
+          </Section>
+          <Text style={paragraph}>If you have any questions or need to make changes, please contact us.</Text>
+          <Button px={20} py={12} style={btn} href={process.env.NEXT_PUBLIC_BASE_URL}>
+            View Booking Details
+          </Button>
+          <Text style={footer}>This is an automated email. Please do not reply directly to this message.</Text>
+        </Container>
+      </Body>
+    </Html>
   );
 };
 

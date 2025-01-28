@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Box, CssBaseline, Toolbar } from "@mui/material";
+import { useState } from "react";
+import { Box, Toolbar } from "@mui/material";
 import Sidebar from "../../components/Admin/Sidebar";
-import { useRouter } from "next/navigation";
 import Navbar from "../../components/Admin/Navbar";
-import { signOut, useSession } from "next-auth/react";
-import useSnackbar from "../../hooks/useSnackbar";
+import { signOut } from "next-auth/react";
 import BookingsProvider from "../../contexts/BookingsContext";
 
 const AdminDashboardLayout = ({ children }) => {

@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SubSectionTitle } from "./StyledComponents";
+import Image from "next/image";
 
 const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, renderVehiclePricing, renderAddOns }) => {
     const displayCategory = isSubscription ? "Subscription" : category.charAt(0).toUpperCase() + category.slice(1);
@@ -54,7 +55,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                                 handleOpenModal(pkg, isSubscription);
                             }}
                         >
-                            <img src="/edit-icon.svg" alt="Edit Icon" style={{ width: "50px", height: "50px" }} />
+                            <Image src="/edit-icon.svg" alt="Edit Icon" width={50} height={50} />
                         </IconButton>
                     </Box>
                 </Box>
