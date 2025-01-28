@@ -139,7 +139,7 @@ export default function Stats() {
                   />
                   {/* Divider */}
                   {index !== stats.length - 1 && (
-                      <ServiceDivider sx={{  background: "linear-gradient(to top, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)"}}/>
+                      <ServicesDivider sx={{  background: "linear-gradient(to top, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)"}}/>
                   )}
                 </React.Fragment>
             ))}

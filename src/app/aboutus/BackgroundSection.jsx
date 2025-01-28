@@ -10,6 +10,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   padding: "5rem 2rem",
+  zIndex: "2",
   maxWidth: "100rem",
   gap: "10rem",
   position: "relative",
