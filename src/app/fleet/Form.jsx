@@ -21,6 +21,7 @@ import { deepmerge } from "@mui/utils";
 import { ThemeProvider } from "@emotion/react";
 import useSnackbar from "../../hooks/useSnackbar";
 import axios from "axios";
+import { ServiceHeading } from "../../components/Home/ServicesOverview/ServiceColumnGroup";
 
 const submitFleetCareProForm = async (formData) => {
   try {
@@ -94,18 +95,28 @@ export default function FleetCareProForm() {
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         padding: "2rem",
         marginBottom: "5rem",
+
+        "@media (max-width: 600px)": {
+          padding: "0",
+        },
       }}
     >
       <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
+        <ServiceHeading sx={{
+          fontSize: '3.2rem',
+          marginTop: "2rem",
+          marginBottom: "0.5rem",
+        }}> Request a Quote</ServiceHeading>
         <Box
           component="form"
           onSubmit={handleSubmit}
           sx={{
             padding: "5.8rem",
+            paddingTop: '2rem',
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            "@media (max-width: 600px)": { padding: "2rem" },
+            "@media (max-width: 600px)": { padding: "2rem", paddingTop: "1rem" },
           }}
         >
           <Grid container spacing={4}>
