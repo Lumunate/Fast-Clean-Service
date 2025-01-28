@@ -19,7 +19,7 @@ export const ServiceHeading = styled(Typography)(({ theme }) => ({
 
 export const ServiceDescription = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  fontSize: "1.8rem",
+  fontSize: "1.4rem",
   color: theme.palette.mode === "dark" ? "#fff" : "#000000",
   maxWidth: "780px",
   "@media (max-width: 600px)": {
@@ -29,12 +29,12 @@ export const ServiceDescription = styled(Typography)(({ theme }) => ({
 
 export const ServicesContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "row",
+  justifyContent: "space-around",
+  flexWrap: "wrap",
+  maxWidth: "80%",
   marginBottom: "3rem",
   gap: "9.7rem",
   "@media (max-width: 600px)": {
-    maxWidth: "450px",
-    flexDirection: "column",
     gap: "2rem",
   },
 }));
@@ -100,11 +100,10 @@ export default function ServiceColumnGroup() {
 
   return (
     <HomePkgsInBox
-      id="anywhere-auto-care"
       sx={{
         flexDirection: "column",
         alignItems: "center",
-        marginBottom: "6.15rem",
+        marginBottom: "12.3rem",
         "@media (max-width: 600px)": {
           marginBottom: "0",
         },

@@ -248,14 +248,13 @@ export default function LongTermVehicleCare() {
           marginBottom: "2rem",
         },
       }}
-      id="long-term-vehicle-care"
     >
       <HomePkgsInBox
         sx={{
           alignItems: "center",
           zIndex: 10,
           flexDirection: "column",
-          marginBottom: "6rem",
+          marginBottom: "12rem",
           "@media (max-width:1150px)": { width: "100%" },
           "@media (max-width:1258px)": { padding: "2rem", marginBottom: "0" },
         }}
@@ -266,12 +265,13 @@ export default function LongTermVehicleCare() {
               marginBottom: "0",
             }}
           >
-            Other Vehicles Care
+            Long-term Vehicle Care
           </ServiceHeading>
         </FadeIn>
         <ServiceDescription sx={{ maxWidth: "620px" }}>
-          Ensure your vehicles&apos; longevity with our comprehensive maintenance plans designed to keep your car in optimal
-          condition for years to come.
+          Ensure your vehicles&apos; longevity with our comprehensive
+          maintenance plans designed to keep your car in optimal condition for
+          years to come.
         </ServiceDescription>
       </HomePkgsInBox>
 
@@ -313,13 +313,13 @@ export default function LongTermVehicleCare() {
               >
                 <div>
                   <CardName
-                    sx={{
-                      "@media (max-width: 600px)": {
-                        marginTop: currentIndex === 2 ? "4rem" : "4rem",
-                      },
-                    }}
+                      sx={{
+                          "@media (max-width: 600px)": {
+                              marginTop: currentIndex === 2 ? "4rem" : "4rem",
+                          },
+                      }}
                   >
-                    {card.name}
+                      {card.name}
                   </CardName>
 
                   {card.pkgs.map((pkg) => (
@@ -329,7 +329,7 @@ export default function LongTermVehicleCare() {
                         style={{
                           color: "#90EE90",
                           marginRight: "1rem",
-                          marginTop: "0.5rem",
+                            marginTop: "0.5rem",
                         }}
                       />
                       <Typography
@@ -356,11 +356,6 @@ export default function LongTermVehicleCare() {
                   </CardDesc>
 
                   <ServiceBtn1
-                    sx={{
-                      opacity: 0,
-                      animation: "fadeIn 0.5s ease-in-out forwards",
-                      animationDelay: "1s",
-                    }}
                     onClick={() => (window.location.href = "/other-vehicles")}
                   >
                     Learn More

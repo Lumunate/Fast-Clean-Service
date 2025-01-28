@@ -26,8 +26,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import { useFeedback } from "../../../hooks/useFeedback";
-import { useTheme } from "../../../contexts/themeContext";
-import Image from "next/image";
 
 const TESTIMONIALS = [
   {
@@ -169,7 +167,6 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
-  const { theme } = useTheme();
   const sliderRef = useRef(null);
 
   const [testimonials, setTestimonials] = useState(TESTIMONIALS);
@@ -184,15 +181,15 @@ export default function Testimonials() {
     feedbacks.slice(0, 5).forEach((feedback, index) => {
       const feedbackObj = {
         stars: feedback.stars,
-        name: `${feedback.name} ${feedback.lastName}`,
-        details: feedback.feedback ?? "",
-        image: "https://swiperjs.com/demos/images/nature-2.jpg",
-        date: new Date(feedback.createdAt).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "2-digit",
+        name: `${feedback.name} ${feedback.lastname}`,
+        details: feedback.feedback ?? '',
+        image: '/logo.png',
+        date: new Date(feedback.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
         }),
-        socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
+        socialIcons: feedback.socialIcons,
       };
       updatedTestimonials.splice((index + 1) * 3, 0, feedbackObj);
     });
@@ -295,7 +292,6 @@ export default function Testimonials() {
               fontWeight: 500,
               backgroundColor: "primary.accentDark",
               color: "white",
-              borderRadius: "50px",
               fontFamily: "DMSans",
               "&:hover": {
                 backgroundColor: "#00BEFF",
@@ -345,10 +341,10 @@ export default function Testimonials() {
                     flexDirection: "column",
                     transition: "opacity 600ms ease-in-out",
                     width: isLargeScreen ? "50%" : "100%",
-                    backdropFilter: isActive || isActiveNext ? "blur(0px)" : "blur(10px)",
+                    opacity: isActive || isActiveNext ? 1 : 0,
                     visibility: isActive || isActiveNext ? "visible" : "hidden",
                     position: isActive || isActiveNext ? "relative" : "absolute",
-                    background: "transparent",
+                    background: "none",
                     border: "none",
                     alignSelf: "flex-start",
                     justifyContent: "stretch",
@@ -358,10 +354,8 @@ export default function Testimonials() {
                     sx={{
                       padding: "2rem",
                       borderRadius: "20px",
-
-                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "white",
-                      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-                      backdropFilter: "blur(10.4px)",
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)",
                     }}
                   >
                     <CarouselStarsBox
@@ -434,7 +428,7 @@ export default function Testimonials() {
                             alt={iconObj.alt}
                             sx={{
                               width: "50px",
-                              // height: "50px",
+                              height: "50px",
                             }}
                           />
                         ))}
@@ -457,7 +451,7 @@ export default function Testimonials() {
               "@media (max-width: 600px)": { left: "-2rem" },
             }}
           >
-            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} style={{transform: "rotate(180deg)"}} />
+            <FontAwesomeIcon icon={faChevronLeft} />
           </CarouselBtn>
 
           <CarouselBtn
@@ -469,8 +463,8 @@ export default function Testimonials() {
               "@media (max-width: 600px)": { right: "-2rem" },
             }}
           >
-            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} />
-            </CarouselBtn>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </CarouselBtn>
         </CarouselControls>
       </HomePkgsInBox>
     </HomePkgsInBox>

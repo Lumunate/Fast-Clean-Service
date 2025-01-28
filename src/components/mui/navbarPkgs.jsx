@@ -45,12 +45,12 @@ export const NavBarLinksContainer = styled(NavLinksContainer)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  maxWidth: "450px",
+  maxWidth: "480px",
   width: "100%",
   zIndex: 10,
 
   "@media (max-width: 1380px)": {
-    maxWidth: "380px",
+    maxWidth: "400px",
   },
 
   "@media (max-width: 1000px)": {
@@ -91,24 +91,12 @@ export const NavbarRightContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const DropDownLink = styled(Typography)(({ theme }) => ({
-  fontSize: "1.6rem",
+  fontSize: "1.5rem" ,
   color: "#D5D5D5",
   cursor: "pointer",
+  // marginTop: "4.5rem",
   fontFamily: "DMSans",
   fontWeight: "300",
-  alignItems: 'center',
-
-  "&:hover": {
-    color: theme.palette.primary.accentDark,
-
-    "& svg": {
-      color: `${theme.palette.primary.accentDark} !important`,
-    },
-
-    "& img": {
-      filter: "brightness(60%) saturate(100%) invert(32%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(90%) contrast(90%)",
-    }
-  }
 }));
 
 export const NavLinkT = styled(Link)(({ theme }) => ({
@@ -135,11 +123,7 @@ export const NavLinkButton = styled(ButtonBase)(({ theme }) => ({
   color: "#FFF",
   textTransform: "none",
   fontFamily: "DMSans",
-  fontSize: "1.6rem",
-  letterSpacing: "1px",
-    "&:hover": {
-        color: "#00BEFF",
-    },
+  fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.5rem" },
 }));
 
 export const NavLinkD = styled(Link)(({ theme }) => ({
@@ -172,7 +156,6 @@ export const NavbarCTA = styled(ButtonBase)(({ theme }) => ({
   fontWeight: "500",
   lineHeight: "15px",
   transition: "all 0.3s ease",
-  borderRadius: "50px",
   // marginLeft: "21rem",
 
   "@media (max-width: 1368px)": {

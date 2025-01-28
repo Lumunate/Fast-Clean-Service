@@ -68,14 +68,14 @@ export default function About() {
               left: "0",
               width: "49.5rem",
               height: "35.14rem",
-              marginTop: "26px",
+              marginTop:"26px",
               "@media (max-width: 900px)": {
                 width: "100%",
                 height: "auto",
                 paddingLeft: "4rem",
                 paddingRight: "4rem",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "center",          
               },
             }}
           >
@@ -92,9 +92,9 @@ export default function About() {
                 height: "100%",
                 maxHeight: "350px",
                 maxWidth: "600px",
-                "@media (max-width: 1400px)": {
-                  maxHeight: "330px",
-                },
+                  "@media (max-width: 1400px)": {
+                      maxHeight: "330px",
+                  },
               }}
             />
           </Box>
@@ -107,12 +107,9 @@ export default function About() {
               "@media (max-width: 600px)": {
                 marginTop: "3rem",
               },
-              "@media (max-width: 1400px)": {
-                marginTop: "0",
-              },
-              "@media (max-width: 1150px)": {
-                width: "100%",
-              },
+                "@media (max-width: 1400px)": {
+                    marginTop: "0",
+                },
             }}
           >
             <Box
@@ -121,13 +118,14 @@ export default function About() {
                 margin: "0 auto",
                 marginRight: "48%",
                 marginLeft: "1rem",
-                "@media (max-width: 1400px)": {
-                  marginLeft: "5rem",
-                },
+                  "@media (max-width: 1400px)": {
+                      marginLeft: "5rem",
+                  },
                 "@media (max-width: 900px)": {
                   marginRight: "2rem",
                   marginLeft: "2rem",
                 },
+
               }}
             >
               <Box
@@ -138,14 +136,11 @@ export default function About() {
                   },
                 }}
               >
-                <BestCareHeading>
-                  {" "}
-                  The Best Care for Your Car{" "}
-                  <span className="line-break">
-                    <br />
-                  </span>
-                  Wherever You Want!{" "}
-                </BestCareHeading>
+                <BestCareHeading> The Best Care for Your Car{" "}
+                    <span className="line-break">
+                      <br />
+                    </span>
+                    Wherever You Want! </BestCareHeading>
               </Box>
 
               <Typography
@@ -162,8 +157,10 @@ export default function About() {
                   },
                 }}
               >
-                At Fast Clean Service, we provide professional steam cleaning and car detailing—on location or at our branch.
-                Using eco-friendly techniques, we ensure your car is cleaned and protected with exceptional attention to detail.
+                At Fast Clean Service, we provide professional steam cleaning
+                and car detailing—on location or at our branch. Using
+                eco-friendly techniques, we ensure your car is cleaned and
+                protected with exceptional attention to detail.
               </Typography>
               <Typography
                 variant="h6"
@@ -188,14 +185,14 @@ export default function About() {
                   listStyleType: "disc",
                 }}
               >
-                <ListItem sx={{ display: "list-item", py: "0px" }}>
-                  <ListItemsText primary="Convenience: Cleaning on location or at our branch." />
+                <ListItem sx={{ display: "list-item", py: '0px', }}>
+                  <ListItemsText  primary="Convenience: Cleaning on location or at our branch." />
                 </ListItem>
-                <ListItem sx={{ display: "list-item", py: "0px" }}>
-                  <ListItemsText primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
+                <ListItem sx={{ display: "list-item", py: '0px' }}>
+                  <ListItemsText  primary="Eco-Friendly: Safe, durable steam cleaning techniques." />
                 </ListItem>
-                <ListItem sx={{ display: "list-item", py: "0px" }}>
-                  <ListItemsText primary="Quality Guaranteed: Exceptional results every time." />
+                <ListItem sx={{ display: "list-item", py: '0px' }}>
+                  <ListItemsText  primary="Quality Guaranteed: Exceptional results every time." />
                 </ListItem>
               </List>
               <Typography
@@ -215,24 +212,23 @@ export default function About() {
               </Typography>
               <Link href="/booking" passHref>
                 <Button
-                  variant="contained"
-                  sx={{
-                    marginTop: "1rem",
-                    padding: "1.5rem 3rem",
-                    fontSize: "1.5rem",
-                    fontWeight: 500,
-                    backgroundColor: "primary.accentDark",
-                    color: "white",
-                    borderRadius: "50px",
-                    fontFamily: "DMSans",
-                    "&:hover": {
-                      backgroundColor: theme.palette.primary.accent,
-                    },
-                  }}
+                    variant="contained"
+                    sx={{
+                        marginTop:"1rem",
+                        padding: "1.5rem 3rem",
+                        fontSize: "1.5rem",
+                        fontWeight: 500,
+                        backgroundColor: "primary.accentDark",
+                        color: "white",
+                        fontFamily: "DMSans",
+                        "&:hover": {
+                            backgroundColor: theme.palette.primary.accent,
+                        },
+                    }}
                 >
-                  Learn More
+                    Learn More 
                 </Button>
-              </Link>
+            </Link>
             </Box>
           </HomePkgsInBox>
         </Box>
@@ -263,7 +259,11 @@ export default function About() {
           />
         </Box>
       </Box>
-      <DecorativeBackgroundImage right={"-32rem"} width="90rem" height="66rem" />
+      <DecorativeBackgroundImage
+        right={"-32rem"}
+        width="90rem"
+        height="66rem"
+      />
     </Box>
   );
 }

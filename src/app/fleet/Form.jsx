@@ -86,14 +86,17 @@ export default function FleetCareProForm() {
   return (
     <CustomCard
       sx={{
-        zIndex: "10",
-        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
+        zIndex:"10",
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? "rgba(255,255,255,0.05)"
+            : "rgba(255, 255, 255, 0.05)",
         border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
         backdropFilter: "blur(2.4px)",
         borderRadius: "32px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         padding: "2rem",
-        marginBottom: "5rem",
+          marginBottom: "5rem",
       }}
     >
       <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
@@ -105,7 +108,7 @@ export default function FleetCareProForm() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            "@media (max-width: 600px)": { padding: "2rem" },
+              "@media (max-width: 600px)": { padding: "2rem" }
           }}
         >
           <Grid container spacing={4}>
@@ -124,7 +127,10 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
                   "& .MuiOutlinedInput-root": {
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.1)",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
                     boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                   },
                 }}
@@ -146,7 +152,10 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
                   "& .MuiOutlinedInput-root": {
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.1)",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
                     boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                   },
                 }}
@@ -168,7 +177,10 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
                   "& .MuiOutlinedInput-root": {
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.1)",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
                     boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                   },
                 }}
@@ -190,7 +202,10 @@ export default function FleetCareProForm() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
                   "& .MuiOutlinedInput-root": {
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.1)",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
                     boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                   },
                 }}
@@ -198,7 +213,11 @@ export default function FleetCareProForm() {
             </Grid>
 
             <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined" sx={{ marginTop: "1rem" }}>
+              <FormControl
+                fullWidth
+                variant="outlined"
+                sx={{ marginTop: "1rem" }}
+              >
                 <InputLabel
                   id="vehicleType-label"
                   sx={{
@@ -225,7 +244,10 @@ export default function FleetCareProForm() {
                     handleChange(e);
                   }}
                   sx={{
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "transparent",
                     "& .MuiOutlinedInput-input": {
                       padding: "1rem 1.5rem",
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505",
@@ -235,7 +257,10 @@ export default function FleetCareProForm() {
                     "& .MuiOutlinedInput-notchedOutline": {
                       borderRadius: "6px",
                       borderColor: "transparent",
-                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                      backgroundColor:
+                        theme.palette.mode === "dark"
+                          ? "rgba(255, 255, 255, 0.1)"
+                          : "transparent",
                       boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                     },
                     "& .MuiSelect-icon": {
@@ -257,7 +282,9 @@ export default function FleetCareProForm() {
                   </MenuItem>
                   <MenuItem value="Cars (all types)">Cars (all types)</MenuItem>
                   <MenuItem value="SUVs">SUVs</MenuItem>
-                  <MenuItem value="Bikes (all types)">Bikes (all types)</MenuItem>
+                  <MenuItem value="Bikes (all types)">
+                    Bikes (all types)
+                  </MenuItem>
                   <MenuItem value="Trucks">Trucks</MenuItem>
                   <MenuItem value="Campers">Campers</MenuItem>
                   <MenuItem value="Boats">Boats</MenuItem>
@@ -266,7 +293,11 @@ export default function FleetCareProForm() {
             </Grid>
 
             <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined" sx={{ marginTop: "1rem" }}>
+              <FormControl
+                fullWidth
+                variant="outlined"
+                sx={{ marginTop: "1rem" }}
+              >
                 <InputLabel
                   id="fleetSize-label"
                   sx={{
@@ -293,7 +324,10 @@ export default function FleetCareProForm() {
                     handleChange(e);
                   }}
                   sx={{
-                    backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                    backgroundColor:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "transparent",
                     "& .MuiOutlinedInput-input": {
                       padding: "1rem 1.5rem",
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505",
@@ -303,7 +337,10 @@ export default function FleetCareProForm() {
                     "& .MuiOutlinedInput-notchedOutline": {
                       borderRadius: "6px",
                       borderColor: "transparent",
-                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                      backgroundColor:
+                        theme.palette.mode === "dark"
+                          ? "rgba(255, 255, 255, 0.1)"
+                          : "transparent",
                       boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
                     },
                     "& .MuiSelect-icon": {
@@ -342,7 +379,6 @@ export default function FleetCareProForm() {
               fontWeight: "bold",
               backgroundColor: "primary.accentDark",
               color: "white",
-              borderRadius: "50px",
               fontFamily: "DMSans",
               marginTop: "4rem",
               "&:hover": {

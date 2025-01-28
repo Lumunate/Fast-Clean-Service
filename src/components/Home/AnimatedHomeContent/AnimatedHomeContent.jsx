@@ -176,7 +176,6 @@ const AnimatedHomeContent = () => {
                         fontSize: "1.6rem",
                         fontWeight: "bold",
                         backgroundColor: "primary.accentDark",
-                        borderRadius: "50px",
                         color: "white",
                         fontFamily: "DMSans",
                         "&:hover": {

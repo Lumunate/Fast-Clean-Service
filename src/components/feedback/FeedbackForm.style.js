@@ -121,6 +121,7 @@ export const StyledTextField = styled(TextField)(({ theme, inputfontsize = '14px
     [theme.breakpoints.down('sm')]: {
       marginTop: '6px',
     },
+    paddingRight:"32px",
     input: {
       fontWeight: 600,
       fontSize: inputfontsize,
