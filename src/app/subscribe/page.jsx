@@ -1,18 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography, Container } from "@mui/material";
+import { Box, Grid, Typography, Container, Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { ServiceHeading } from "../../components/Home/ServicesOverview/ServiceColumnGroup";
 import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
 import RadialCircle from "../../components/Decorative/RadialCircle";
 import Image from "next/image";
-import {
-  ServiceTitle,
-  ServiceSubtitle,
-  ServiceCard,
-  ServiceIcon,
-} from "../fleet/FleetMain";
+import { ServiceTitle, ServiceSubtitle, ServiceCard, ServiceIcon } from "../fleet/FleetMain";
 import {
   SubsciptionsContainer,
   StyledCard,
@@ -25,6 +20,7 @@ import {
 import { useSubscriptionPackages } from "../../hooks/useSubscriptionPackages";
 import { useTheme } from "../../contexts/themeContext";
 import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import Link from "next/link";
 
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 const gradients = [
@@ -34,10 +30,35 @@ const gradients = [
 ];
 
 const PackageCard = ({ pkg, index, highlightColor }) => {
+  const parsePrice = (priceString) => {
+    const price = parseFloat(priceString.replace(/[^\d.-]/g, ""));
+    return isNaN(price) ? 0 : price;
+  };
+
+  const [price, setPrice] = useState(parsePrice(pkg.price));
   const [duration, setDuration] = useState(false);
+  const [selectedDuration, setSelectedDuration] = useState(pkg.durationOptions?.[0]);
   const [frequency, setFrequency] = useState(false);
+  const [selectedFrequency, setSelectedFrequency] = useState(pkg.cleaningFrequencyOptions?.[0]);
+  const [selectedAdditonalOptions, setSelectedAdditionalOptions] = useState([]);
   const [additional, setAdditional] = useState(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    let newPrice = price;
+    if (selectedDuration) {
+      newPrice += selectedDuration.additionalCost;
+    }
+    if (selectedFrequency) {
+      newPrice += selectedFrequency.additionalCost;
+    }
+
+    selectedAdditonalOptions.forEach((option) => {
+      newPrice += pkg.additionalOptions.find((item) => item.name === option).price;
+    });
+
+    setPrice(newPrice);
+  }, [selectedDuration, selectedFrequency, selectedAdditonalOptions]);
 
   return (
     <StyledCard>
@@ -66,11 +87,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
         >
           FROM
         </Typography>
-        <Typography
-          sx={{ fontSize: "3.8rem", fontWeight: "600", color: highlightColor }}
-        >
-          {pkg.price}
-        </Typography>
+        <Typography sx={{ fontSize: "3.8rem", fontWeight: "600", color: highlightColor }}>€ {price}</Typography>
         <Typography
           sx={{
             color: theme.palette.mode === "dark" ? "#FFFFFF" : "#525252",
@@ -85,12 +102,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
       <StyledOptionsList>
         {pkg.packages.map((item) => (
           <Box key={item}>
-            <Image
-              src="/bookingFormIcons/Checkmark.png"
-              alt="Checkmark"
-              width={20}
-              height={20}
-            />
+            <Image src="/bookingFormIcons/Checkmark.png" alt="Checkmark" width={20} height={20} />
             <Typography
               sx={{
                 color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
@@ -121,30 +133,29 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               }}
             >
               Duration options
-              <FontAwesomeIcon
-                icon={duration ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
+              <FontAwesomeIcon icon={duration ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
             </Typography>
             {duration && (
-              <Box sx={{ transition: "height 1s ease",
-                height: duration ? "auto" : "0",}}>
+              <Box sx={{ transition: "height 1s ease", height: duration ? "auto" : "0" }}>
                 {pkg.durationOptions.map((option) => (
                   <Box
+                    onClick={() => setSelectedDuration(option)}
                     key={option.duration}
                     sx={{
                       display: "flex",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "0.05px solid #C1C1C1"
-                          : "none",
                       justifyContent: "space-between",
                       padding: "1rem",
                       mx: { xs: "24px", md: "61px" },
+                      cursor: "pointer",
+
                       backgroundColor:
-                        theme.palette.mode === "dark"
-                          ? "transparent"
-                          : " #78D53F",
+                        option.duration === selectedDuration?.duration
+                          ? highlightColor
+                          : theme.palette.mode === "dark"
+                            ? "rgba(255,255,255,0.0001)"
+                            : "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(2.4px)",
+
                       borderRadius: "12px",
                       my: "8px",
                     }}
@@ -152,7 +163,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                     <Typography
                       sx={{
                         color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
+                          option.duration === selectedDuration?.duration
+                            ? highlightColor === '#005BAC' ? '#C1C1C1' :"#585858"
+                            : theme.palette.mode === "dark"
+                              ? "#C1C1C1"
+                              : "#585858",
                       }}
                     >
                       {option.duration}
@@ -160,12 +175,14 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                     <Typography
                       sx={{
                         color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
+                          option.duration === selectedDuration?.duration
+                          ? highlightColor === '#005BAC' ? '#C1C1C1' : "#585858"
+                            : theme.palette.mode === "dark"
+                              ? "#C1C1C1"
+                              : "#585858",
                       }}
                     >
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
+                      + €{option.additionalCost}
                     </Typography>
                   </Box>
                 ))}
@@ -192,38 +209,45 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               }}
             >
               Cleaning Frequency
-              <FontAwesomeIcon
-                icon={frequency ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
+              <FontAwesomeIcon icon={frequency ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
             </Typography>
             {frequency && (
-              <Box sx={{ transition: "height 1s ease", // Smooth animation
-                height: duration ? "auto" : "0",}}>
+              <Box
+                sx={{
+                  transition: "height 1s ease", // Smooth animation
+                  height: duration ? "auto" : "0",
+                }}
+              >
                 {pkg.cleaningFrequencyOptions.map((option) => (
                   <Box
                     key={option.frequency}
+                    onClick={() => setSelectedFrequency(option)}
                     sx={{
                       display: "flex",
                       justifyContent: "space-between",
                       padding: "1rem",
                       mx: { xs: "24px", md: "61px" },
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "0.05px solid #C1C1C1"
-                          : "none",
-                      backgroundColor:
-                        theme.palette.mode === "dark"
-                          ? "transparent"
-                          : " #78D53F",
                       borderRadius: "12px",
                       my: "8px",
+                      cursor: "pointer",
+
+                      backgroundColor:
+                        option.frequency === selectedFrequency?.frequency
+                          ? highlightColor
+                          : theme.palette.mode === "dark"
+                            ? "rgba(255,255,255,0.0001)"
+                            : "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(2.4px)",
                     }}
                   >
                     <Typography
                       sx={{
                         color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
+                          option.frequency === selectedFrequency?.frequency
+                            ? highlightColor === '#005BAC' ? '#C1C1C1' :"#585858"
+                            : theme.palette.mode === "dark"
+                              ? "#C1C1C1"
+                              : "#585858",
                       }}
                     >
                       {option.frequency}
@@ -231,12 +255,14 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                     <Typography
                       sx={{
                         color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
+                          option.frequency === selectedFrequency?.frequency
+                          ? highlightColor === '#005BAC' ? '#C1C1C1' : "#585858"
+                            : theme.palette.mode === "dark"
+                              ? "#C1C1C1"
+                              : "#585858",
                       }}
                     >
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
+                      + €{option.additionalCost}
                     </Typography>
                   </Box>
                 ))}
@@ -264,30 +290,58 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
               }}
             >
               Additional Options
-              <FontAwesomeIcon
-                icon={additional ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
+              <FontAwesomeIcon icon={additional ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
             </Typography>
             {additional && (
-              <Box sx={{ transition: "height 1s ease",
-                height: duration ? "auto" : "0",}}>
+              <Box sx={{ transition: "height 1s ease", height: duration ? "auto" : "0" }}>
                 {pkg.additionalOptions.map((option) => (
                   <Box
-                    key={option.option}
+                    key={option.name}
+                    onClick={() =>
+                      setSelectedAdditionalOptions(
+                        selectedAdditonalOptions.includes(option.name)
+                          ? selectedAdditonalOptions.filter((item) => item !== option.name)
+                          : [...selectedAdditonalOptions, option.name]
+                      )
+                    }
                     sx={{
                       display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "1rem",
+                      justifyContent: "space-between",
+                      padding: "1rem",
+                      mx: { xs: "24px", md: "61px" },
+                      borderRadius: "12px",
+                      my: "8px",
+                      cursor: "pointer",
+
+                      backgroundColor: selectedAdditonalOptions.includes(option.name)
+                        ? highlightColor
+                        : theme.palette.mode === "dark"
+                          ? "rgba(255,255,255,0.0001)"
+                          : "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(2.4px)",
                     }}
                   >
-                    <Typography sx={{ fontWeight: "600" }}>
-                      {option.option}
+                    <Typography
+                      sx={{
+                        color: selectedAdditonalOptions.includes(option.name)
+                          ? highlightColor === '#005BAC' ? '#C1C1C1' :"#585858"
+                          : theme.palette.mode === "dark"
+                            ? "#C1C1C1"
+                            : "#585858",
+                      }}
+                    >
+                      {option.name}
                     </Typography>
-                    <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
+                    <Typography
+                      sx={{
+                        color: selectedAdditonalOptions.includes(option.name)
+                          ? highlightColor === '#005BAC' ? '#C1C1C1' :"#585858"
+                          : theme.palette.mode === "dark"
+                            ? "#C1C1C1"
+                            : "#585858",
+                      }}
+                    >
+                      + €{option.price}
                     </Typography>
                   </Box>
                 ))}
@@ -309,13 +363,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                 fontWeight: "600",
                 cursor: "pointer",
                 textAlign: "center",
+                color: "gray",
               }}
             >
               Additional Options
-              <FontAwesomeIcon
-                icon={additional ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
+              <FontAwesomeIcon icon={additional ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
             </Typography>
           </Box>
         )}
@@ -335,15 +387,15 @@ const Page = () => {
   if (error) {
     return (
       <Box sx={{ marginTop: "15rem" }}>
-       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "2rem",
-        }}
-      >
-        <HeadingLinesAnimation text="SUBSCRIPTIONS" />
-      </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2rem",
+          }}
+        >
+          <HeadingLinesAnimation text="SUBSCRIPTIONS" />
+        </Box>
         <Container
           sx={{
             display: "flex",
@@ -352,13 +404,7 @@ const Page = () => {
             justifyContent: "center",
           }}
         >
-          <DecorativeBackgroundImage
-            top={"30%"}
-            right={"0"}
-            width="90rem"
-            height="85rem"
-            sx={{ zIndex: "1" }}
-          />
+          <DecorativeBackgroundImage top={"30%"} right={"0"} width="90rem" height="85rem" sx={{ zIndex: "1" }} />
           <RadialCircle
             top={"20rem"}
             right={"20rem"}
@@ -370,9 +416,7 @@ const Page = () => {
           />
           <Box sx={{ maxWidth: "1110px", mb: 10 }}>
             <Box sx={{ mb: 8 }}>
-              <ServiceSubtitle>
-                Subscription Plans – Worry-Free Maintenance for your Vehicle
-              </ServiceSubtitle>
+              <ServiceSubtitle>Subscription Plans – Worry-Free Maintenance for your Vehicle</ServiceSubtitle>
               <Typography
                 sx={{
                   textAlign: "center",
@@ -382,14 +426,12 @@ const Page = () => {
                   color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                   fontSize: "1.8rem",
                   lineHeight: 1.6,
-                    "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
                 }}
               >
-                With our Fast Clean Service Subscription Plans we offer a
-                flexible and economical way to always keep your vehicle in top
-                condition. Choose from several options tailored to your needs
-                and driving style, with regular maintenance and exclusive
-                benefits.
+                With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle
+                in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance
+                and exclusive benefits.
               </Typography>
             </Box>
 
@@ -408,7 +450,7 @@ const Page = () => {
                   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                   fontSize: "3.2rem",
                   mb: 2,
-                    "@media (max-width: 600px)": { fontSize: "2rem" },
+                  "@media (max-width: 600px)": { fontSize: "2rem" },
                 }}
               >
                 What do we offer:
@@ -421,86 +463,61 @@ const Page = () => {
                   width: "100%",
                 }}
               >
-                <Grid
-                  container
-                  spacing={4}
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    display="flex"
-                    justifyContent="center"
-                  >
+                <Grid container spacing={4} justifyContent="center" alignItems="center">
+                  <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                     <ServiceCard>
                       <ServiceIcon>
-                        <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
+                        <img src="/s1.png" alt="Expert Care" />
                       </ServiceIcon>
                       <Typography
                         sx={{
-                          color:
-                            theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                          color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                           mb: 0.6,
                           fontWeight: "400",
                           fontSize: "1.8rem",
-                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
+                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
                         }}
                       >
                         Expert Care
                       </Typography>
                       <Typography
                         sx={{
-                          color:
-                            theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                          color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                           fontSize: "1.4rem",
                           fontWeight: "300",
-                            "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
                         }}
                       >
-                        Periodic cleaning and maintenance of both interior and
-                        exterior. Better rates for returning customers.
+                        Periodic cleaning and maintenance of both interior and exterior. Better rates for returning customers.
                       </Typography>
                     </ServiceCard>
                   </Grid>
 
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    display="flex"
-                    justifyContent="center"
-                  >
+                  <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                     <ServiceCard>
                       <ServiceIcon>
-                        <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
+                        <img src="/s2.png" alt="Flexibility" />
                       </ServiceIcon>
                       <Typography
                         sx={{
-                          color:
-                            theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                          color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                           mb: 0.6,
                           fontWeight: "400",
                           fontSize: "1.8rem",
-                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
+                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
                         }}
                       >
                         Flexibility
                       </Typography>
                       <Typography
                         sx={{
-                          color:
-                            theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                          color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                           fontSize: "1.4rem",
                           fontWeight: "300",
-                            "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
                         }}
                       >
-                        Flexibility in choosing the desired frequency (monthly,
-                        quarterly, etc.).
+                        Flexibility in choosing the desired frequency (monthly, quarterly, etc.).
                       </Typography>
                     </ServiceCard>
                   </Grid>
@@ -517,13 +534,32 @@ const Page = () => {
                 margin: "0 auto",
                 lineHeight: 1.6,
                 fontWeight: "300",
-                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
-              Choose one of our subscription options and enjoy convenience and
-              quality, without a hassle!
+              Choose one of our subscription options and enjoy convenience and quality, without a hassle!
             </Typography>
           </Box>
+
+          <Link href="/booking" passHref>
+            <Button
+              variant="contained"
+              sx={{
+                padding: "1.5rem 3rem",
+                fontSize: "1.6rem",
+                fontWeight: "bold",
+                backgroundColor: "primary.accentDark",
+                borderRadius: "50px",
+                color: "white",
+                fontFamily: "DMSans",
+                "&:hover": {
+                  backgroundColor: theme.palette.primary.accent,
+                },
+              }}
+            >
+              Book Now
+            </Button>
+          </Link>
         </Container>
       </Box>
     );
@@ -553,9 +589,9 @@ const Page = () => {
           justifyContent: "center",
         }}
       >
-        <Box sx={{ maxWidth: "1110px"}}>
+        <Box sx={{ maxWidth: "1110px" }}>
           <Box sx={{ mb: 8 }}>
-            <ServiceSubtitle sx={{ margin: "0 auto 26px"}}>
+            <ServiceSubtitle sx={{ margin: "0 auto 26px" }}>
               Subscription Plans – Worry-Free Maintenance for your Vehicle
             </ServiceSubtitle>
             <Typography
@@ -567,13 +603,12 @@ const Page = () => {
                 color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                 fontSize: "1.8rem",
                 lineHeight: 1.6,
-                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
-              With our Fast Clean Service Subscription Plans we offer a flexible
-              and economical way to always keep your vehicle in top condition.
-              Choose from several options tailored to your needs and driving
-              style, with regular maintenance and exclusive benefits
+              With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in
+              top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and
+              exclusive benefits
             </Typography>
           </Box>
 
@@ -592,95 +627,68 @@ const Page = () => {
                 color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                 fontSize: "3.2rem",
                 mb: 2,
-                  "@media (max-width: 600px)": { fontSize: "2rem" },
+                "@media (max-width: 600px)": { fontSize: "2rem" },
               }}
             >
               What do we offer:
             </Typography>
 
-            <Box
-              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
-            >
-              <Grid
-                container
-                spacing={4}
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  display="flex"
-                  justifyContent="center"
-                >
+            <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+              <Grid container spacing={4} justifyContent="center" alignItems="center">
+                <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                   <ServiceCard>
                     <ServiceIcon>
-                      <Image src="/s1.png" alt="Expert Care" width={100} height={100} />
+                      <img src="/s1.png" alt="Expert Care" />
                     </ServiceIcon>
                     <Typography
                       sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                        color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                         mb: 0.6,
                         fontWeight: "400",
                         fontSize: "1.8rem",
-                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
+                        "@media (max-width: 600px)": { fontSize: "1.6rem" },
                       }}
                     >
                       Expert Care
                     </Typography>
                     <Typography
                       sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                        color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                         fontSize: "1.4rem",
                         fontWeight: "300",
-                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                        "@media (max-width: 600px)": { fontSize: "1.2rem" },
                       }}
                     >
-                      Periodic cleaning and maintenance of both interior and
-                      exterior. Better rates for returning customers.
+                      Periodic cleaning and maintenance of both interior and exterior. Better rates for returning customers.
                     </Typography>
                   </ServiceCard>
                 </Grid>
 
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  display="flex"
-                  justifyContent="center"
-                >
+                <Grid item xs={12} sm={6} md={4} display="flex" justifyContent="center">
                   <ServiceCard>
                     <ServiceIcon>
-                      <Image src="/s2.png" alt="Flexibility" width={100} height={100} />
+                      <img src="/s2.png" alt="Flexibility" />
                     </ServiceIcon>
                     <Typography
                       sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                        color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                         mb: 0.6,
                         fontWeight: "400",
                         fontSize: "1.8rem",
-                          "@media (max-width: 600px)": { fontSize: "1.6rem" },
+                        "@media (max-width: 600px)": { fontSize: "1.6rem" },
                       }}
                     >
                       Flexibility
                     </Typography>
                     <Typography
                       sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                        color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
                         fontSize: "1.4rem",
                         fontWeight: "300",
-                          "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                        "@media (max-width: 600px)": { fontSize: "1.2rem" },
                       }}
                     >
-                      Flexibility in choosing the desired frequency (monthly,
-                      quarterly, etc.).
+                      Flexibility in choosing the desired frequency (monthly, quarterly, etc.).
                     </Typography>
                   </ServiceCard>
                 </Grid>
@@ -696,41 +704,43 @@ const Page = () => {
                 margin: "0 auto",
                 lineHeight: 1.6,
                 fontWeight: "300",
-                  "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                "@media (max-width: 600px)": { fontSize: "1.2rem" },
               }}
             >
-              Choose one of our subscription options and enjoy convenience and
-              quality, without a hassle!
+              Choose one of our subscription options and enjoy convenience and quality, without a hassle!
             </Typography>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+            <Link href="/booking" passHref>
+              <Button
+                variant="contained"
+                sx={{
+                  padding: "1.5rem 3rem",
+                  fontSize: "1.6rem",
+                  fontWeight: "bold",
+                  backgroundColor: "primary.accentDark",
+                  borderRadius: "50px",
+                  color: "white",
+                  fontFamily: "DMSans",
+                  "&:hover": {
+                    backgroundColor: theme.palette.primary.accent,
+                  },
+                }}
+              >
+                Book Now
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Container>
       <SubsciptionsContainer>
         {packages.map((pkg, index) => (
-          <PackageCard
-            key={index}
-            pkg={pkg}
-            index={index}
-            highlightColor={colors[index % 3]}
-          />
+          <PackageCard key={index} pkg={pkg} index={index} highlightColor={colors[index % 3]} />
         ))}
 
-        <DecorativeBackgroundImage
-          top={"60%"}
-          right={"0"}
-          width="90rem"
-          height="65rem"
-        />
-        <RadialCircle
-          top={"20rem"}
-          right={"20rem"}
-          sx={{ width: "10rem !important", height: "10rem !important" }}
-        />
-        <RadialCircle
-          top={"90%"}
-          left={"20rem"}
-          sx={{ width: "10rem !important", height: "10rem !important" }}
-        />
+        <DecorativeBackgroundImage top={"60%"} right={"0"} width="90rem" height="65rem" />
+        <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />
+        <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />
       </SubsciptionsContainer>
     </Box>
   );

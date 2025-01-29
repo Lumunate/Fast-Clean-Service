@@ -25,7 +25,6 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   // height: "1005px",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-between",
   borderRadius: "15px",
   boxShadow: "0px 4px 30.1px rgba(0, 0, 0, 0.25)",
   backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "#fff",
@@ -109,8 +108,10 @@ export const StyledPriceContainer = styled(Box)(({ highlightColor }) => ({
 
 export const StyledOptionsList = styled(Box)(({ theme }) => ({
   marginTop: "2.5rem",
-  paddingRight: "6.1rem",
-  paddingLeft: "5.1rem",
+
+  paddingRight: "1rem",
+  paddingLeft: "3rem",
+
   "& > div": {
     display: "flex",
     alignItems: "center",
