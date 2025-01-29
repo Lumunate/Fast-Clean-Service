@@ -104,7 +104,7 @@ export default function CamperService() {
 
               <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>
             </Box>
-            <ServiceItemCTA special onClick={() => (window.location.href = "/subscribe")}>
+            <ServiceItemCTA special onClick={() => (window.location.href = "/de/subscribe")}>
               Book Now
             </ServiceItemCTA>
           </FadeIn>
