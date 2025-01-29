@@ -20,7 +20,7 @@ export default function Page() {
                 <RadialCircle bottom={"-90rem"} right={"0"} />
                 <RadialCircle top={"0"} right={"0"} sx={{ width: "10rem !important", height: "10rem !important" }} />
                 <DecorativeBackgroundImage top={"25rem"} right={"0"} width="90rem" height="50rem" />
-                <HomePkgsInBox sx={{ margin: "0 auto", padding: "2rem 3rem" }}>
+                <HomePkgsInBox sx={{ margin: "0 auto", padding: "2rem 0 2rem 2rem" }}>
                     <RadialCircle top={"-20rem"} left={"15rem"}/>
                     <Questions />
                 </HomePkgsInBox>
