@@ -1,6 +1,6 @@
 "use client";
-import React, {useState} from 'react';
-import {Box, CssBaseline, Toolbar} from '@mui/material';
+import React, { useState } from 'react';
+import { Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 import Navbar from '../../components/Customer/Navbar';
 import Sidebar from '../../components/Customer/Sidebar';
 import Dashboard from '../../components/Customer/Dashboard';
@@ -11,6 +11,7 @@ const CustomerDashboard = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [selectedTab, setSelectedTab] = useState('Dashboard');
     const backgroundImage = "/img_1.png";
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const toggleDrawer = () => {
         setDrawerOpen((prev) => !prev);
@@ -53,8 +54,10 @@ const CustomerDashboard = () => {
                 zIndex: -1,
                 opacity: 0.5,
             }} />
-            <Navbar toggleDrawer={toggleDrawer} drawerOpen={drawerOpen} />
-            <Sidebar drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} handleTabChange={handleTabChange} />
+            <Navbar toggleDrawer={toggleDrawer} drawerOpen={drawerOpen} handleTabChange={handleTabChange}/>
+            {!isMobile && (
+                <Sidebar drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} handleTabChange={handleTabChange} />
+            )}
             <Box
                 component="main"
                 sx={{
@@ -63,6 +66,7 @@ const CustomerDashboard = () => {
                     overflowY: 'auto',
                     zIndex: 1,
                     position: 'relative',
+                    "@media (max-width: 600px)": { padding: "0" }
                 }}
             >
                 <Toolbar />

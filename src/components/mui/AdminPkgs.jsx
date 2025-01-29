@@ -56,6 +56,7 @@ export const StyledCard = styled(Card)(() => ({
     "&:hover": {
         boxShadow: "0 4px 20px 0 rgba(0,0,0,0.12)",
     },
+    "@media (max-width: 600px)": { minWidth: "0" },
 }));
 
 export const ButtonLearnMore = styled(Button)(() => ({
