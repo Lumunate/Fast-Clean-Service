@@ -40,6 +40,9 @@ const StyledImageBox = styled(Box)`
     height: 100%;
     border-radius: 40px;
     object-fit: cover;
+    @media (max-width: 900px) {
+        border-radius: 20px;
+    }
 `;
 
 const SwiperContainer = styled(Box)`
