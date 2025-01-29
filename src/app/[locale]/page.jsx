@@ -21,8 +21,6 @@ export default function Home() {
   return (
       <>
           <Navbar/>
-          <h1>{t('title')}</h1>
-
           <HomeContainer
               sx={{
                   position: "relative",
