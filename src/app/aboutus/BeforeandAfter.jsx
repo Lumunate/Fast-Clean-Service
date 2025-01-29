@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Box, styled } from "@mui/material";
+import { Box, Stack, styled } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -64,107 +64,77 @@ const SwiperContainer = styled(Box)`
 `;
 
 const BeforeAfterSwiper = () => {
-    const [boxSize, setBoxSize] = useState(300); // Default size
-    const [spaceBetween, setSpaceBetween] = useState(30);
-    const [gapBetweenSwipers, setGapBetweenSwipers] = useState(30);
-    const swiperRef = useRef(null);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+  const [boxSize, setBoxSize] = useState(600); // Default size
+  const swiperRef = useRef(null);
 
-    useEffect(() => {
-        const updateBoxSize = () => {
-            if (!swiperRef.current) return;
+  useEffect(() => {
+    const updateBoxSize = () => {
+      if (!swiperRef.current) return;
 
-            const swiperWidth = swiperRef.current.clientWidth;
-            let slidesPerView = 2; // Default for mobile
-            let newSpaceBetween = 30;
-            let newGapBetweenSwipers = 30;
+      const swiperWidth = swiperRef.current.clientWidth;
+      let newSlidesPerView;
 
-            if (swiperWidth < 600) {
-                slidesPerView = 2;
-                newSpaceBetween = 15;
-                newGapBetweenSwipers = 15;
-            } else if (swiperWidth >= 1400) {
-                slidesPerView = 3.5;
-            } else if (swiperWidth >= 1200) {
-                slidesPerView = 3;
-            } else if (swiperWidth >= 900) {
-                slidesPerView = 2.5;
-            } else if (swiperWidth >= 600) {
-                slidesPerView = 2;
-            }
+      if(swiperWidth < 900) {
+        setBoxSize(300);
+        newSlidesPerView = swiperWidth / 316;
+      } else {
+        setBoxSize(600);
+        newSlidesPerView = swiperWidth / 616;
+      }
 
-            // Calculate the box size dynamically based on available width in the Swiper
-            const newBoxSize = swiperWidth / slidesPerView - newSpaceBetween;
-            setBoxSize(newBoxSize);
-            setSpaceBetween(newSpaceBetween);
-            setGapBetweenSwipers(newGapBetweenSwipers);
-        };
+      setSlidesPerView(newSlidesPerView);
+    };
 
-        updateBoxSize(); // Set initial size
-        window.addEventListener("resize", updateBoxSize);
-        return () => window.removeEventListener("resize", updateBoxSize);
-    }, []);
+    updateBoxSize(); // Set initial size
+    window.addEventListener("resize", updateBoxSize);
+    return () => window.removeEventListener("resize", updateBoxSize);
+  }, []);
 
-    return (
-        <SwiperContainer ref={swiperRef}>
-            {/* Before Images */}
-            <Swiper
-                spaceBetween={spaceBetween}
-                slidesPerView={2} // Default for mobile
-                breakpoints={{
-                    600: { slidesPerView: 2 }, // Small screens
-                    900: { slidesPerView: 2.5 }, // Tablets
-                    1200: { slidesPerView: 3 }, // Desktops
-                    1400: { slidesPerView: 3.5 }, // Large screens
+  return (
+    <SwiperContainer ref={swiperRef}>
+      {/* Before Images */}
+      <Swiper
+        spaceBetween={32}
+        slidesPerView={slidesPerView} // Default for mobile
+        loop={false}
+        allowTouchMove={true}
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((_, index) => (
+          <SwiperSlide width={`${boxSize}px`} height={`${boxSize}px`} key={index}>
+            <Stack sx={{
+            }}>
+              <Box
+                sx={{
+                  width: `${boxSize}px`,
+                  height: `${boxSize}px`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                loop={false}
-                allowTouchMove={true}
-            >
-                {beforeAfterImages[0].map((src, index) => (
-                    <SwiperSlide key={index}>
-                        <Box sx={{
-                            width: `${boxSize}px`,
-                            height: `${boxSize}px`,
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
-                            <StyledImageBox component="img" src={src.src} alt={`Before ${index + 1}`} />
-                        </Box>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+              >
+                <StyledImageBox component="img" src={beforeAfterImages[0][index].src} alt={`Before ${index + 1}`} />
+              </Box>
 
-            <Box sx={{ height: `${gapBetweenSwipers}px` }} />
+              <Box sx={{ height: `32px` }} />
 
-            {/* After Images */}
-            <Swiper
-                spaceBetween={spaceBetween}
-                slidesPerView={2} // Default for mobile
-                breakpoints={{
-                    600: { slidesPerView: 2 }, // Small screens
-                    900: { slidesPerView: 2.5 }, // Tablets
-                    1200: { slidesPerView: 3 }, // Desktops
-                    1400: { slidesPerView: 3.5 }, // Large screens
+              <Box
+                sx={{
+                  width: `${boxSize}px`,
+                  height: `${boxSize}px`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                loop={false}
-                allowTouchMove={true}
-            >
-                {beforeAfterImages[1].map((src, index) => (
-                    <SwiperSlide key={index}>
-                        <Box sx={{
-                            width: `${boxSize}px`,
-                            height: `${boxSize}px`,
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
-                            <StyledImageBox component="img" src={src.src} alt={`After ${index + 1}`} />
-                        </Box>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </SwiperContainer>
-    );
+              >
+                <StyledImageBox component="img" src={beforeAfterImages[1][index].src} alt={`After ${index + 1}`} />
+              </Box>
+            </Stack>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </SwiperContainer>
+  );
 };
 
 export default BeforeAfterSwiper;
