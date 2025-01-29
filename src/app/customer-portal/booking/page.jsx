@@ -144,6 +144,7 @@ const BookingsPage = () => {
                                                 fontSize: "1.2rem",
                                                 color: "white",
                                                 fontWeight: "bold",
+                                                "@media (max-width: 600px)": { fontSize: "1rem" },
                                             }}
                                         >
                                             {header}
