@@ -1,18 +1,18 @@
 "use client";
-import {HomeWrapper} from "../../components/mui/HomePkgs";
+import {HomeWrapper} from "../../../components/mui/HomePkgs";
 import MeetTeam from "./MeetTeam";
 import BackgroundSection from "./BackgroundSection";
 import ValueProposition from "./GeneralComp";
-import HowItWork from "../../components/Home/howitwork/HowItWork";
+import HowItWork from "../../../components/Home/howitwork/HowItWork";
 import CollabSection from "./CollabSection";
 import CompServices from "./CompServices";
 import ExpandableCards from "./ExpandableCards";
 import { Box, Typography } from "@mui/material";
-import Reviews from "../../components/Reviews/Reviews";
-import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
-import CallToActionBox from "../../components/Home/actioncard/CallToActionBox";
-import DecorativeSpacer from "../../components/Decorative/Spacer";
-import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../components/Decorative/Decorative.style";
+import Reviews from "../../../components/Reviews/Reviews";
+import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import CallToActionBox from "../../../components/Home/actioncard/CallToActionBox";
+import DecorativeSpacer from "../../../components/Decorative/Spacer";
+import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../../components/Decorative/Decorative.style";
 
 export default function AboutUs() {
   return (

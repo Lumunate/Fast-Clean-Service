@@ -10,7 +10,7 @@ import {
     CarouselDot,
     CarouselName,
     CarouselSignatures,
-} from "../../components/mui/AboutPkgs";
+} from "../../../components/mui/AboutPkgs";
 import {Box} from "@mui/material";
 
 const testimonials = [

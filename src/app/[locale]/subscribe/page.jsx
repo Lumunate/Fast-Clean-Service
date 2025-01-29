@@ -12,7 +12,7 @@ import {
   ServiceSubtitle,
   ServiceCard,
   ServiceIcon,
-} from "@/app/[locale]/fleet/FleetMain";
+} from "../../[locale]/fleet/FleetMain";
 import {
   SubsciptionsContainer,
   StyledCard,

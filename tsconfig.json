@@ -29,7 +29,7 @@
     "**/*.tsx"
 , "src/components/ServiceDrawer/LiscensePlateStep/actions.js", "src/models/Bookings.js", "src/templates/booking.jsx", "src/components/Admin/RescheduleModal.jsx",
     "src/app/[locale]/admin/coupons/page.jsx"
-, "src/components/Home/about/About.tsx", "src/contexts/themeContext.js", "src/components/Home/packagesOld/PackagesOld.tsx"  ],
+, "src/components/Home/about/About.jsx", "src/contexts/themeContext.js", "src/components/Home/packagesOld/PackagesOld.jsx", "src/components/Home/AnimatedHomeContent/AnimatedHomeContent.jsx", "src/components/Home/AnimatedHomeContent/HomeSocialsBox.jsx", "src/components/Home/CTA/CTA.jsx", "src/components/Home/howDoesItWork/SingleWorkHowDoes.jsx", "src/components/Home/actioncard/CallToActionPckgs.jsx", "src/components/Home/HeadingLinesAnimation/HeadingLinesAnimation.jsx", "src/components/Home/howDoesItWork/HowDoesItWork.jsx", "src/components/Home/howitwork/HowItWork.jsx", "src/components/Home/howitwork/SingleWork.jsx", "src/components/Home/overServices/OverCarServices.jsx", "src/components/Home/overServices/ServiceOverviewPckgs.jsx", "src/components/Home/packages/Slider3D.jsx", "src/components/Home/services/CardComponent.jsx", "src/components/Home/overServices/OverServiceOverview.jsx"  ],
   "exclude": [
     "node_modules"
   ]

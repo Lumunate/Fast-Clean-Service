@@ -1,35 +1,24 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Link,
-  List,
-  ListItem,
-  ListItemText,
-  styled,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Link, List, ListItem, ListItemText, styled, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
 
-export default function About(): JSX.Element {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+export default function About() {
+  const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  const ListItemsText = styled(ListItemText)(({ theme }) => ({
-    "& .css-1a7tj5u-MuiTypography-root": {
-      fontSize: "16px !important",
-      fontWeight: 300,
-      "@media (max-width: 600px)": {
-        fontSize: "10px !important",
-      },
-    },
-  }));
+  const ListItemsText = styled(ListItemText)(({theme})=>({
+    "& .css-1a7tj5u-MuiTypography-root":{
+      fontSize:"16px !important",
+      fontWeight:300,
+      "@media (max-width: 600px)": { fontSize: "10px !important", },
+    }
+  }))
 
   useEffect(() => {
     const currentSection = sectionRef.current;
@@ -38,7 +27,7 @@ export default function About(): JSX.Element {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          observer.unobserve(currentSection!);
+          observer.unobserve(currentSection);
         }
       },
       {
@@ -103,6 +92,9 @@ export default function About(): JSX.Element {
                 height: "100%",
                 maxHeight: "350px",
                 maxWidth: "600px",
+                "@media (max-width: 1400px)": {
+                  maxHeight: "330px",
+                },
               }}
             />
           </Box>
@@ -147,11 +139,12 @@ export default function About(): JSX.Element {
                 }}
               >
                 <BestCareHeading>
+                  {" "}
                   The Best Care for Your Car{" "}
                   <span className="line-break">
                     <br />
                   </span>
-                  Wherever You Want!
+                  Wherever You Want!{" "}
                 </BestCareHeading>
               </Box>
 
@@ -169,10 +162,8 @@ export default function About(): JSX.Element {
                   },
                 }}
               >
-                At Fast Clean Service, we provide professional steam cleaning
-                and car detailing—on location or at our branch. Using
-                eco-friendly techniques, we ensure your car is cleaned and
-                protected with exceptional attention to detail.
+                At Fast Clean Service, we provide professional steam cleaning and car detailing—on location or at our branch.
+                Using eco-friendly techniques, we ensure your car is cleaned and protected with exceptional attention to detail.
               </Typography>
               <Typography
                 variant="h6"
@@ -275,4 +266,4 @@ export default function About(): JSX.Element {
       <DecorativeBackgroundImage right={"-32rem"} width="90rem" height="66rem" />
     </Box>
   );
-}
+} 

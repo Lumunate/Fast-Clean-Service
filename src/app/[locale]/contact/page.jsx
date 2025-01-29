@@ -1,9 +1,9 @@
 import React from "react";
 import ContactMain from "./ContactMain";
-import {HomePkgBox, HomePkgsInBox} from "../../components/mui/HomePkgs";
-import Questions from "../../components/FAQ/Questions";
-import RadialCircle from "../../components/Decorative/RadialCircle";
-import { DecorativeBackgroundImage } from "../../components/Decorative/Decorative.style";
+import {HomePkgBox, HomePkgsInBox} from "../../../components/mui/HomePkgs";
+import Questions from "../../../components/FAQ/Questions";
+import RadialCircle from "../../../components/Decorative/RadialCircle";
+import { DecorativeBackgroundImage } from "../../../components/Decorative/Decorative.style";
 
 export default function Page() {
     return (

@@ -6,12 +6,12 @@ import {
     GrayBox,
     ImageWrapper,
     Container,
-} from "../../components/mui/ContactPkgs";
-import MapComponent from "../../components/Contact/MapComponent";
-import ContactCard from "../../components/Contact/ContactCard";
-import ContactCard2 from "../../components/Contact/ContactCard2";
-import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
-import { useTheme } from "../../contexts/themeContext";
+} from "../../../components/mui/ContactPkgs";
+import MapComponent from "../../../components/Contact/MapComponent";
+import ContactCard from "../../../components/Contact/ContactCard";
+import ContactCard2 from "../../../components/Contact/ContactCard2";
+import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import { useTheme } from "../../../contexts/themeContext";
 
 export default function ContactMain() {
     const { theme } = useTheme();

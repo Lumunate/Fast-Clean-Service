@@ -1,6 +1,6 @@
 import {getServerSession} from "next-auth";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/Home/footer/Footer";
+import Navbar from "../../../components/navbar/Navbar";
+import Footer from "../../../components/Home/footer/Footer";
 
 export const metadata = {
     title: "Contact Us - Fast Clean Service",

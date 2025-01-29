@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Box, Paper, styled, Typography } from "@mui/material";
 
-// Container for all the services
 export const CarServicesContainer = styled(Box)(({ theme }) => ({
   margin: "7.8rem auto 14rem",
   display: "flex",
@@ -18,7 +17,6 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-// Style for each individual service item
 export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   width: "456px",
   minHeight: "325px",
@@ -31,11 +29,12 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
   backdropFilter: "blur(10.4px)",
   "@media (max-width: 600px)": {
+    // width: "80%",
     minHeight: 0,
+    // backdropFilter: 0,
   },
 }));
 
-// Box containing each service item
 export const ServiceItemBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -43,7 +42,6 @@ export const ServiceItemBox = styled(Box)(({ theme }) => ({
   margin: "3.5rem 1.8rem",
 }));
 
-// Container for service icons (round and centered)
 export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
   width: "10.64rem",
   height: "10.64rem",
@@ -59,13 +57,14 @@ export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-// Styling for the icons (Image component from Next.js)
 export const ServiceItemIcon = styled(Image)(({ theme }) => ({
-  // Additional filters can be added here for different themes
-  // filter: theme.palette.mode === "dark" ? "invert(1)" : "",
+  // filter:
+  //     theme.palette.mode === "dark"
+  //         ? "invert(1)"
+  //         : "",
 }));
 
-// Heading for each service item
+
 export const ServiceItemHeading = styled(Typography)(({ theme }) => ({
   fontSize: "18px",
   marginBottom: "1rem",
@@ -76,16 +75,14 @@ export const ServiceItemHeading = styled(Typography)(({ theme }) => ({
   },
 }));
 
-// Description text for each service item
 export const ServiceItemDescription = styled(Typography)(({ theme }) => ({
   fontSize: "14px",
   fontWeight: "300",
   color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
-  marginBottom: "12px"
+  marginBottom:"12px"
 }));
 
-// Container for contact card
-export const ContactCardContainer = styled(Box)(({ theme }) => ({
+export const ContactCardContainer = styled(Box)(({theme}) => ({
   textAlign: "left !important",
   padding: "1.5rem !important",
   marginTop: "0 !important",

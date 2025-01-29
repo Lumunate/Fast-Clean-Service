@@ -2,11 +2,7 @@
 import styles from "./CTA.module.css";
 import {useTheme} from "../../../contexts/themeContext";
 
-interface CTAProps {
-  scrolled: boolean;
-}
-
-const CTA: React.FC<CTAProps> = ({ scrolled }) => {
+const CTA = ({ scrolled }) => {
   const { theme } = useTheme();
 
   return (
@@ -36,4 +32,4 @@ const CTA: React.FC<CTAProps> = ({ scrolled }) => {
   );
 };
 
-export default CTA;
+export default CTA; 

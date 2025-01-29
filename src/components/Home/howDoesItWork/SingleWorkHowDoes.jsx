@@ -6,16 +6,9 @@ import Image from "next/image";
 import { ServicesDesc } from "../../mui/HomePkgs";
 import { useTheme } from "../../../contexts/themeContext";
 
-interface SingleWorkHowDoesProps {
-  icon: string;
-  title: string;
-  description: string;
-  sx?: object;
-}
-
-const SingleWorkHowDoes: React.FC<SingleWorkHowDoesProps> = ({ icon, title, description, sx = {} }) => {
+const SingleWorkHowDoes = ({ icon, title, description, sx = {} }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,13 +21,14 @@ const SingleWorkHowDoes: React.FC<SingleWorkHowDoesProps> = ({ icon, title, desc
       { threshold: 0.1 }
     );
 
+    const __cardRef = cardRef;
     if (cardRef.current) {
       observer.observe(cardRef.current);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (__cardRef.current) {
+        observer.unobserve(__cardRef.current);
       }
     };
   }, []);
@@ -58,23 +52,25 @@ const SingleWorkHowDoes: React.FC<SingleWorkHowDoesProps> = ({ icon, title, desc
       ref={cardRef}
       className={`${styles.card} ${isVisible ? styles.visible : ""}`}
     >
-      <CardContent sx={{ width: "330px" }}>
+      <CardContent sx={{ width:"330px"}}>
         <Image
-          className="iconPic"
+        className="iconPic"
           width={80}
           height={80}
           src={icon}
           alt={title}
           style={{
-            backgroundColor: "#00C3FF",
-            padding: "20px",
-            borderRadius: "50%",
+            backgroundColor:"#00C3FF",
+            padding:"20px",
+            borderRadius:"50%",
           }}
         />
 
         <ServicesDesc
           sx={{
             fontSize: "22px !important",
+            // marginBottom: "0.5rem",
+            // marginTop: "0.2rem !important",
             color: theme.palette.primary.contrastText,
             fontWeight: "400",
           }}
@@ -85,9 +81,8 @@ const SingleWorkHowDoes: React.FC<SingleWorkHowDoesProps> = ({ icon, title, desc
           {title}
         </ServicesDesc>
         <Typography
-          sx={{
-            fontSize: "14px", paddingLeft: "11px", paddingRight: "11px"
-          }}
+        sx={{
+          fontSize: "14px", paddingLeft:"11px", paddingRight:"11px"}}
           variant="h5"
           color="text.secondary"
         >

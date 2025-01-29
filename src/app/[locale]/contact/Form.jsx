@@ -1,12 +1,12 @@
 "use client";
 import React, {useState} from "react";
 import {Box, Button, Typography} from "@mui/material";
-import {FormContainer} from "../../components/mui/FleetPkgs";
-import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
-import { CustomFormTextField } from "../../components/mui/NewFormPkgs";
-import useSnackbar from "../../hooks/useSnackbar";
+import {FormContainer} from "../../../components/mui/FleetPkgs";
+import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import { CustomFormTextField } from "../../../components/mui/NewFormPkgs";
+import useSnackbar from "../../../hooks/useSnackbar";
 import axios from "axios";
-import { useTheme } from "../../contexts/themeContext";
+import { useTheme } from "../../../contexts/themeContext";
 
 const submitFleetCareProForm = async (formData) => {
   try {
