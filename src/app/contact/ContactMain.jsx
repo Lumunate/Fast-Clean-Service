@@ -17,7 +17,7 @@ export default function ContactMain() {
     const { theme } = useTheme();
 
     const isScreenSmall = useMediaQuery('(max-width:1368px)');
-    const isVerySmallScreen = useMediaQuery('(max-width:600px)');
+    const isVerySmallScreen = useMediaQuery('(max-width:992px)');
 
     const largeScreenLayout = (
         <Container sx={{ paddingLeft: "9rem", paddingRight: "9rem", "@media (max-width: 600px)": { padding: "2rem" }, }}>
@@ -104,157 +104,224 @@ export default function ContactMain() {
     );
 
     const smallScreenLayout = (
-        <Container
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "2rem",
-                padding: "2rem",
-                position: "relative",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2rem",
+          padding: "2rem",
+          position: "relative",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: "2rem",
+            width: "100%",
+          }}
         >
-            <Box
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    gap: "2rem",
-                    width: "100%",
-                }}
-            >
-                <GrayBox flex={1}>
-                    <ImageWrapper>
-                        <MapComponent />
-                    </ImageWrapper>
-                </GrayBox>
+          <GrayBox flex={1}>
+            <ImageWrapper>
+              <MapComponent />
+            </ImageWrapper>
+          </GrayBox>
 
-                <GrayBox
-                    flex={1}
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        padding: "1rem",
-                        position: "relative",
-                        width: "100%",
-                        "@media (min-width: 900px)": {
-                            alignItems: "center",
-                        },
-                    }}
+          <GrayBox
+            flex={1}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              padding: "1rem",
+              position: "relative",
+              width: "100%",
+              "@media (min-width: 900px)": {
+                alignItems: "center",
+              },
+            }}
+          >
+            <Box sx={{ marginBottom: "2rem", textAlign: "center" }}>
+              <HeadingLinesAnimation text="CONTACT US" />
+            </Box>
+
+            <Box
+              sx={{ marginBottom: "2rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "2.2rem",
+                  fontWeight: 400,
+                  color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                  "@media (max-width: 600px)": {
+                    fontSize: "1.6rem",
+                  },
+                }}
+              >
+                {" "}
+                Always Available for You
+              </Typography>
+              <Box sx={{ textAlign: "left" }}>
+                <Typography
+                  sx={{
+                    marginTop: "1.6rem",
+                    fontSize: "1.6rem",
+                    fontWeight: 300,
+                    color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                    "@media (max-width: 600px)": {
+                      fontSize: "1.2rem",
+                    },
+                  }}
                 >
-                    <Box sx={{ marginBottom: "2rem", textAlign: "center" }}>
-                        <HeadingLinesAnimation text="CONTACT US" />
-                    </Box>
-
-                    <Form />
-                </GrayBox>
+                  {" "}
+                  Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready
+                  to help you with professional steam cleaning and car detailing, both on location and at our branch.
+                </Typography>
+              </Box>
             </Box>
 
-            <Box
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "2rem",
-                    justifyContent: "center",
-                    marginTop: "0",
-                    width: "100%",
-                    padding: "1rem",
-                    alignItems: "center",
-                    height: "100%",
-                }}
-            >
-                <ContactCard
-                    sx={{
-                        boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
-                        transition: "box-shadow 0.3s ease",
-                    }}
-                />
-                <ContactCard2
-                    sx={{
-                        boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
-                        transition: "box-shadow 0.3s ease",
-                    }}
-                />
-            </Box>
-        </Container>
+            <Form />
+          </GrayBox>
+        </Box>
+
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "row",
+            gap: "2rem",
+            justifyContent: "center",
+            marginTop: "0",
+            width: "100%",
+            padding: "1rem",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <ContactCard
+            sx={{
+              boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
+              transition: "box-shadow 0.3s ease",
+            }}
+          />
+          <ContactCard2
+            sx={{
+              boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
+              transition: "box-shadow 0.3s ease",
+            }}
+          />
+        </Box>
+      </Container>
     );
 
     const verySmallScreenLayout = (
-        <Container
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.5rem",
+          padding: "1rem",
+          alignItems: "center",
+          justifyContent: "center",
+          "@media (max-width: 600px)": {
+            paddingRight: "1rem",
+            paddingLeft: "1rem",
+          },
+        }}
+      >
+        <Box sx={{ marginBottom: "1.5rem", textAlign: "center" }}>
+          <HeadingLinesAnimation text="CONTACT US" />
+        </Box>
+
+        <Box sx={{ marginBottom: "2rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Typography
             sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-                padding: "1rem",
-                alignItems: "center",
-                justifyContent: "center",
-                "@media (max-width: 600px)": {
-                    paddingRight: "1rem",
-                    paddingLeft: "1rem",
-                },
+              fontSize: "2.2rem",
+              fontWeight: 400,
+              color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+              "@media (max-width: 600px)": {
+                fontSize: "1.6rem",
+              },
             }}
+          >
+            {" "}
+            Always Available for You
+          </Typography>
+          <Box sx={{ textAlign: "left" }}>
+            <Typography
+              sx={{
+                marginTop: "1.6rem",
+                fontSize: "1.6rem",
+                fontWeight: 300,
+                color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                "@media (max-width: 600px)": {
+                  fontSize: "1.2rem",
+                },
+              }}
+            >
+              {" "}
+              Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to
+              help you with professional steam cleaning and car detailing, both on location and at our branch.
+            </Typography>
+          </Box>
+        </Box>
+
+        <GrayBox
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "1rem",
+            width: "100%",
+            alignItems: "center",
+          }}
         >
+          <Form />
+        </GrayBox>
 
-            <Box sx={{ marginBottom: "1.5rem", textAlign: "center" }}>
-                <HeadingLinesAnimation text="CONTACT US" />
-            </Box>
+        <GrayBox
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "1rem",
+            width: "100%",
+          }}
+        >
+          <ImageWrapper>
+            <MapComponent />
+          </ImageWrapper>
+        </GrayBox>
 
-            <GrayBox
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    padding: "1rem",
-                    width: "100%",
-                    alignItems: "center",
-                }}
-            >
-                <Form />
-            </GrayBox>
-
-            <GrayBox
-                sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "1rem",
-                    width: "100%",
-                }}
-            >
-                <ImageWrapper>
-                    <MapComponent />
-                </ImageWrapper>
-            </GrayBox>
-
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1.5rem",
-                    justifyContent: "center",
-                    width: "100%",
-                    alignItems: "center",
-                    padding: "1rem"
-                }}
-            >
-                <ContactCard
-                    sx={{
-                        boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
-                        transition: "box-shadow 0.3s ease",
-                    }}
-                />
-                <ContactCard2
-                    sx={{
-                        boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
-                        transition: "box-shadow 0.3s ease",
-                        height: "44.2rem",
-                    }}
-                />
-            </Box>
-        </Container>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
+            justifyContent: "center",
+            width: "100%",
+            alignItems: "center",
+            padding: "1rem",
+          }}
+        >
+          <ContactCard
+            sx={{
+              boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
+              transition: "box-shadow 0.3s ease",
+            }}
+          />
+          <ContactCard2
+            sx={{
+              boxShadow: theme.palette.mode === "light" ? "0px 4px 7px rgba(0, 0, 0, 0.25)" : "0px 4px 7px rgba(0, 0, 0, 0.5)",
+              transition: "box-shadow 0.3s ease",
+              height: "44.2rem",
+            }}
+          />
+        </Box>
+      </Container>
     );
 
     if (isVerySmallScreen) {

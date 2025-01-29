@@ -15,12 +15,12 @@ export const VehicleSubheading = styled(Typography)(({ theme }) => ({
   fontSize: "3.6rem",
   fontWeight: "500",
     marginBottom: "5.3rem",
-  "@media (max-width: 900px)": {
+  "@media (max-width: 992px)": {
     fontSize: "2.8rem",
   },
   "@media (max-width: 600px)": {
     fontSize: "2.4rem",
-      marginBottom: "2rem",
+    marginBottom: "2rem",
   },
 }));
 
@@ -106,7 +106,7 @@ export default function OtherVehiclesMain() {
                     },
                 }}
             >
-              <HeadingLinesAnimation text="DIVERSE VEHICLES" />
+              <HeadingLinesAnimation text="OTHER VEHICLES" />
             </VehicleSubheading>
           </Box>
 
@@ -118,7 +118,7 @@ export default function OtherVehiclesMain() {
                 alignItems: "flex-start",
                 zIndex: 10,
                 gap: "2rem",
-                  "@media (max-width: 600px)": {
+                  "@media (max-width: 992px)": {
                       flexDirection: "column",
                       gap: "5rem",
                       justifyContent: "center",
@@ -130,13 +130,19 @@ export default function OtherVehiclesMain() {
                 sx={{
                   flex: "1",
                   color: theme => (theme.palette.mode === "light" ? "#1C79CC" : "#C5C5C5"),
-                  marginTop: "3rem",
+                    marginTop: "3rem",
                     marginLeft: "2rem",
                     width: "100%",
-                    "@media (max-width: 600px)": {
-                        marginLeft: "3rem",
-                        marginRight: "3rem",
+                    "@media (max-width: 992px)": {
+                        marginLeft: "0",
+                        marginRight: "0",
+
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
                     },
+                    
                 }}
             >
               <VehicleSubheading sx={{}}>

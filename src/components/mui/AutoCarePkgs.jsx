@@ -132,6 +132,7 @@ export const AutoTab = styled(Box)(({ theme }) => ({
         backgroundImage:
           "linear-gradient(to right bottom, rgba(255,185,0,0.85), rgba(255,119,48,0.85))",
       },
+
     },
   },
 
@@ -148,6 +149,10 @@ export const AutoTab = styled(Box)(({ theme }) => ({
     "& .tab__value": {
       fontSize: "4.5rem",
       fontWeight: "100",
+
+      "@media (max-width: 900px)": {
+        fontSize: "2.8rem",
+      },
       //   color: "#ffffffdd",
       "@media (max-width: 700px)": { fontSize: "2.4rem" }
     },
@@ -252,7 +257,7 @@ export const CardHeader = styled(Box)(({ theme, color }) => ({
     "&.heading": {
       fontSize: "4rem",
       color: color,
-      "@media (max-width: 600px)": {
+      "@media (max-width: 900px)": {
         fontSize: "2.4rem",
       },
     },
