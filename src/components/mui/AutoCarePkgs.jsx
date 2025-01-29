@@ -19,7 +19,8 @@ export const AutoTabContainer = styled(Box)(({ theme }) => ({
   gap: "5rem",
   padding: "5rem",
   // width: "100%",
-  // minWidth: "700px",
+  // minWidth: "700px"
+  zIndex  : 1,
 }));
 
 export const AutoTab = styled(Box)(({ theme }) => ({
