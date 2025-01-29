@@ -34,294 +34,248 @@ const gradients = [
 ];
 
 const PackageCard = ({ pkg, index, highlightColor }) => {
-  const [duration, setDuration] = useState(false);
-  const [frequency, setFrequency] = useState(false);
-  const [additional, setAdditional] = useState(false);
-  const { theme } = useTheme();
+    const [duration, setDuration] = useState(false);
+    const [frequency, setFrequency] = useState(false);
+    const [additional, setAdditional] = useState(false);
+    const { theme } = useTheme();
 
-  return (
-    <StyledCard>
-      <Box sx={{ position: "relative", width: "100%", height: "260px" }}>
-        <ImageWrapper>
-          <Image
-            src={`/bookingFormIcons/sub${index + 1}.png`}
-            alt={`${pkg.name} image`}
-            width={480}
-            height={325}
-            objectFit="cover"
-          />
-        </ImageWrapper>
-        <StyledImageContainer highlightColor={highlightColor} />
-      </Box>
-
-      <GradientBox gradient={gradients[index]}>{pkg.name}</GradientBox>
-
-      <StyledPriceContainer highlightColor={highlightColor}>
-        <Typography
-          sx={{
-            color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
-            fontSize: "1.2rem",
-            fontWeight: "400",
-          }}
+    return (
+        <StyledCard
+            sx={{
+                transition: "height 0.3s ease-out", // Smooth height adjustment
+                height: "auto", // Allow the card to grow
+            }}
         >
-          FROM
-        </Typography>
-        <Typography
-          sx={{ fontSize: "3.8rem", fontWeight: "600", color: highlightColor }}
-        >
-          {pkg.price}
-        </Typography>
-        <Typography
-          sx={{
-            color: theme.palette.mode === "dark" ? "#FFFFFF" : "#525252",
-            fontSize: "1.6rem",
-            fontWeight: "600",
-          }}
-        >
-          {pkg.duration}
-        </Typography>
-      </StyledPriceContainer>
+            <Box sx={{ position: "relative", width: "100%", height: "260px" }}>
+                <ImageWrapper>
+                    <Image
+                        src={`/bookingFormIcons/sub${index + 1}.png`}
+                        alt={`${pkg.name} image`}
+                        width={480}
+                        height={325}
+                        objectFit="cover"
+                    />
+                </ImageWrapper>
+                <StyledImageContainer highlightColor={highlightColor} />
+            </Box>
 
-      <StyledOptionsList>
-        {pkg.packages.map((item) => (
-          <Box key={item}>
-            <Image
-              src="/bookingFormIcons/Checkmark.png"
-              alt="Checkmark"
-              width={20}
-              height={20}
-            />
-            <Typography
-              sx={{
-                color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
-              }}
-            >
-              {item}
-            </Typography>
-          </Box>
-        ))}
-      </StyledOptionsList>
+            <GradientBox gradient={gradients[index]}>{pkg.name}</GradientBox>
 
-      <Box>
-        {pkg.durationOptions && (
-          <Box
-            sx={{
-              borderTop: "1px solid #e0e0e0",
-              marginTop: "2.1rem",
-              paddingTop: "1rem",
-            }}
-          >
-            <Typography
-              onClick={() => setDuration(!duration)}
-              sx={{
-                fontSize: "1.6rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
-              Duration options
-              <FontAwesomeIcon
-                icon={duration ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
-            </Typography>
-            {duration && (
-              <Box sx={{ transition: "height 1s ease",
-                height: duration ? "auto" : "0",}}>
-                {pkg.durationOptions.map((option) => (
-                  <Box
-                    key={option.duration}
+            <StyledPriceContainer highlightColor={highlightColor}>
+                <Typography
                     sx={{
-                      display: "flex",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "0.05px solid #C1C1C1"
-                          : "none",
-                      justifyContent: "space-between",
-                      padding: "1rem",
-                      mx: { xs: "24px", md: "61px" },
-                      backgroundColor:
-                        theme.palette.mode === "dark"
-                          ? "transparent"
-                          : " #78D53F",
-                      borderRadius: "12px",
-                      my: "8px",
+                        color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
+                        fontSize: "1.2rem",
+                        fontWeight: "400",
                     }}
-                  >
-                    <Typography
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
-                      }}
-                    >
-                      {option.duration}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
-                      }}
-                    >
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            )}
-          </Box>
-        )}
-
-        {pkg.cleaningFrequencyOptions && (
-          <Box
-            sx={{
-              borderTop: "1px solid #e0e0e0",
-              marginTop: "2.1rem",
-              paddingTop: "1rem",
-            }}
-          >
-            <Typography
-              onClick={() => setFrequency(!frequency)}
-              sx={{
-                fontSize: "1.6rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
-              Cleaning Frequency
-              <FontAwesomeIcon
-                icon={frequency ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
-            </Typography>
-            {frequency && (
-              <Box sx={{ transition: "height 1s ease", // Smooth animation
-                height: duration ? "auto" : "0",}}>
-                {pkg.cleaningFrequencyOptions.map((option) => (
-                  <Box
-                    key={option.frequency}
+                >
+                    FROM
+                </Typography>
+                <Typography
                     sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      padding: "1rem",
-                      mx: { xs: "24px", md: "61px" },
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "0.05px solid #C1C1C1"
-                          : "none",
-                      backgroundColor:
-                        theme.palette.mode === "dark"
-                          ? "transparent"
-                          : " #78D53F",
-                      borderRadius: "12px",
-                      my: "8px",
+                        fontSize: "3.8rem",
+                        fontWeight: "600",
+                        color: index === 0 ? "#00BEFF" : highlightColor, // Apply #00BEFF if index is 0
                     }}
-                  >
-                    <Typography
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
-                      }}
-                    >
-                      {option.frequency}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#C1C1C1" : "#585858",
-                      }}
-                    >
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            )}
-          </Box>
-        )}
-
-        {pkg.additionalOptions.length > 0 ? (
-          <Box
-            sx={{
-              borderTop: "1px solid #e0e0e0",
-              marginTop: "2.1rem",
-              paddingTop: "1rem",
-              paddingBottom: "3.9rem",
-            }}
-          >
-            <Typography
-              onClick={() => setAdditional(!additional)}
-              sx={{
-                fontSize: "1.6rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
-              Additional Options
-              <FontAwesomeIcon
-                icon={additional ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
-            </Typography>
-            {additional && (
-              <Box sx={{ transition: "height 1s ease",
-                height: duration ? "auto" : "0",}}>
-                {pkg.additionalOptions.map((option) => (
-                  <Box
-                    key={option.option}
+                >
+                    {pkg.price}
+                </Typography>
+                <Typography
                     sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "1rem",
+                        color: theme.palette.mode === "dark" ? "#FFFFFF" : "#525252",
+                        fontSize: "1.6rem",
+                        fontWeight: "600",
                     }}
-                  >
-                    <Typography sx={{ fontWeight: "600" }}>
-                      {option.option}
-                    </Typography>
-                    <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
-                      {option.additionalCost === 0
-                        ? ""
-                        : `+ €${option.additionalCost}`}
-                    </Typography>
-                  </Box>
+                >
+                    {pkg.duration}
+                </Typography>
+            </StyledPriceContainer>
+
+            <StyledOptionsList>
+                {pkg.packages.map((item) => (
+                    <Box key={item}>
+                        <Image
+                            src="/bookingFormIcons/Checkmark.png"
+                            alt="Checkmark"
+                            width={20}
+                            height={20}
+                        />
+                        <Typography
+                            sx={{
+                                color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
+                            }}
+                        >
+                            {item}
+                        </Typography>
+                    </Box>
                 ))}
-              </Box>
+            </StyledOptionsList>
+
+            {/* Dropdown Triggers */}
+            {pkg.durationOptions && (
+                <Box
+                    sx={{
+                        borderTop: "1px solid #e0e0e0",
+                        marginTop: "2.1rem",
+                        paddingTop: "1rem",
+                    }}
+                >
+                    <Typography
+                        onClick={() => setDuration(!duration)}
+                        sx={{
+                            fontSize: "1.6rem",
+                            fontWeight: "600",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}
+                    >
+                        Duration Options
+                        <FontAwesomeIcon
+                            icon={duration ? faChevronUp : faChevronDown}
+                            style={{ marginLeft: "0.5rem" }}
+                        />
+                    </Typography>
+                    <Box
+                        sx={{
+                            overflow: "hidden",
+                            maxHeight: duration ? "300px" : "0px",
+                            transition: "max-height 0.3s ease-out", // Smooth dropdown
+                        }}
+                    >
+                        {pkg.durationOptions.map((option) => (
+                            <Box
+                                key={option.duration}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    padding: "1rem",
+                                    mx: { xs: "24px", md: "61px" },
+                                    backgroundColor:
+                                        theme.palette.mode === "dark" ? "transparent" : "#78D53F",
+                                    borderRadius: "12px",
+                                    my: "8px",
+                                }}
+                            >
+                                <Typography>{option.duration}</Typography>
+                                <Typography>
+                                    {option.additionalCost === 0
+                                        ? ""
+                                        : `+ €${option.additionalCost}`}
+                                </Typography>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
             )}
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              borderTop: "1px solid #e0e0e0",
-              marginTop: "2.1rem",
-              paddingTop: "1rem",
-              paddingBottom: "3.9rem",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "1.6rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
-              Additional Options
-              <FontAwesomeIcon
-                icon={additional ? faChevronUp : faChevronDown}
-                style={{ marginLeft: "0.5rem" }}
-              />
-            </Typography>
-          </Box>
-        )}
-      </Box>
-    </StyledCard>
-  );
+
+            {pkg.cleaningFrequencyOptions && (
+                <Box
+                    sx={{
+                        borderTop: "1px solid #e0e0e0",
+                        marginTop: "2.1rem",
+                        paddingTop: "1rem",
+                    }}
+                >
+                    <Typography
+                        onClick={() => setFrequency(!frequency)}
+                        sx={{
+                            fontSize: "1.6rem",
+                            fontWeight: "600",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}
+                    >
+                        Cleaning Frequency
+                        <FontAwesomeIcon
+                            icon={frequency ? faChevronUp : faChevronDown}
+                            style={{ marginLeft: "0.5rem" }}
+                        />
+                    </Typography>
+                    <Box
+                        sx={{
+                            overflow: "hidden",
+                            maxHeight: frequency ? "300px" : "0px",
+                            transition: "max-height 0.3s ease-out", // Smooth dropdown
+                        }}
+                    >
+                        {pkg.cleaningFrequencyOptions.map((option) => (
+                            <Box
+                                key={option.frequency}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    padding: "1rem",
+                                    mx: { xs: "24px", md: "61px" },
+                                    backgroundColor:
+                                        theme.palette.mode === "dark" ? "transparent" : "#78D53F",
+                                    borderRadius: "12px",
+                                    my: "8px",
+                                }}
+                            >
+                                <Typography>{option.frequency}</Typography>
+                                <Typography>
+                                    {option.additionalCost === 0
+                                        ? ""
+                                        : `+ €${option.additionalCost}`}
+                                </Typography>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+            )}
+
+            {pkg.additionalOptions.length > 0 && (
+                <Box
+                    sx={{
+                        borderTop: "1px solid #e0e0e0",
+                        marginTop: "2.1rem",
+                        paddingTop: "1rem",
+                    }}
+                >
+                    <Typography
+                        onClick={() => setAdditional(!additional)}
+                        sx={{
+                            fontSize: "1.6rem",
+                            fontWeight: "600",
+                            cursor: "pointer",
+                            textAlign: "center",
+                        }}
+                    >
+                        Additional Options
+                        <FontAwesomeIcon
+                            icon={additional ? faChevronUp : faChevronDown}
+                            style={{ marginLeft: "0.5rem" }}
+                        />
+                    </Typography>
+                    <Box
+                        sx={{
+                            overflow: "hidden",
+                            maxHeight: additional ? "300px" : "0px",
+                            transition: "max-height 0.3s ease-out", // Smooth dropdown
+                        }}
+                    >
+                        {pkg.additionalOptions.map((option) => (
+                            <Box
+                                key={option.option}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    paddingTop: "1rem",
+                                }}
+                            >
+                                <Typography sx={{ fontWeight: "600" }}>{option.option}</Typography>
+                                <Typography sx={{ color: "#78D53F", fontWeight: "bold" }}>
+                                    {option.additionalCost === 0
+                                        ? ""
+                                        : `+ €${option.additionalCost}`}
+                                </Typography>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+            )}
+        </StyledCard>
+    );
 };
 
 const Page = () => {
