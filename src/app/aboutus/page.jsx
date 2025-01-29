@@ -7,6 +7,7 @@ import HowItWork from "../../components/Home/howitwork/HowItWork";
 import CollabSection from "./CollabSection";
 import CompServices from "./CompServices";
 import ExpandableCards from "./ExpandableCards";
+import BeforeAfterSwiper from "./BeforeandAfter";
 import { Box, Typography } from "@mui/material";
 import Reviews from "../../components/Reviews/Reviews";
 import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
@@ -52,6 +53,13 @@ export default function AboutUs() {
           </Box>
         <MeetTeam />
       </HomeWrapper>
+
+        <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
+            <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+                <HeadingLinesAnimation>See the Difference for Yourself</HeadingLinesAnimation>
+            </Box>
+            <BeforeAfterSwiper />
+        </Box>
 
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
