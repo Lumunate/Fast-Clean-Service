@@ -71,12 +71,12 @@ const BeforeAfterSwiper = () => {
             if (!swiperRef.current) return;
 
             const swiperWidth = swiperRef.current.clientWidth;
-            let slidesPerView = 1.7; // Default for mobile
+            let slidesPerView = 2; // Default for mobile
             let newSpaceBetween = 30;
             let newGapBetweenSwipers = 30;
 
             if (swiperWidth < 600) {
-                slidesPerView = 1.7;
+                slidesPerView = 2;
                 newSpaceBetween = 15;
                 newGapBetweenSwipers = 15;
             } else if (swiperWidth >= 1400) {
@@ -106,7 +106,7 @@ const BeforeAfterSwiper = () => {
             {/* Before Images */}
             <Swiper
                 spaceBetween={spaceBetween}
-                slidesPerView={1.7} // Default for mobile
+                slidesPerView={2} // Default for mobile
                 breakpoints={{
                     600: { slidesPerView: 2 }, // Small screens
                     900: { slidesPerView: 2.5 }, // Tablets
@@ -136,7 +136,7 @@ const BeforeAfterSwiper = () => {
             {/* After Images */}
             <Swiper
                 spaceBetween={spaceBetween}
-                slidesPerView={1.7} // Default for mobile
+                slidesPerView={2} // Default for mobile
                 breakpoints={{
                     600: { slidesPerView: 2 }, // Small screens
                     900: { slidesPerView: 2.5 }, // Tablets
