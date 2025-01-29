@@ -60,22 +60,27 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
     setPrice(newPrice);
   }, [selectedDuration, selectedFrequency, selectedAdditonalOptions]);
 
-  return (
-    <StyledCard>
-      <Box sx={{ position: "relative", width: "100%", height: "260px" }}>
-        <ImageWrapper>
-          <Image
-            src={`/bookingFormIcons/sub${index + 1}.png`}
-            alt={`${pkg.name} image`}
-            width={480}
-            height={325}
-            objectFit="cover"
-          />
-        </ImageWrapper>
-        <StyledImageContainer highlightColor={highlightColor} />
-      </Box>
+    return (
+        <StyledCard
+            sx={{
+                transition: "height 0.3s ease-out", // Smooth height adjustment
+                height: "auto", // Allow the card to grow
+            }}
+        >
+            <Box sx={{ position: "relative", width: "100%", height: "260px" }}>
+                <ImageWrapper>
+                    <Image
+                        src={`/bookingFormIcons/sub${index + 1}.png`}
+                        alt={`${pkg.name} image`}
+                        width={480}
+                        height={325}
+                        objectFit="cover"
+                    />
+                </ImageWrapper>
+                <StyledImageContainer highlightColor={highlightColor} />
+            </Box>
 
-      <GradientBox gradient={gradients[index]}>{pkg.name}</GradientBox>
+            <GradientBox gradient={gradients[index]}>{pkg.name}</GradientBox>
 
       <StyledPriceContainer highlightColor={highlightColor}>
         <Typography

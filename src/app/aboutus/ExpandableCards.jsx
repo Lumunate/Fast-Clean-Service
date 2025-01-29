@@ -134,7 +134,9 @@ const Heading = styled(Typography)(({ showHeading, isSmallScreen }) => ({
         : "4rem",
     fontWeight: 500,
     lineHeight: "1.2",
-    opacity: isSmallScreen ? 1 : showHeading ? 1 : 0,
+    opacity: 0,
+    animation: `fadeIn 0.2s ease-in-out forwards`,
+    animationDelay: "0.3s",
     transition: "opacity 0.3s ease, font-size 0.3s ease",
     transitionDelay:"0.3s",
     "@media (max-width: 900px)": {
@@ -150,7 +152,9 @@ const ExpandedContent = styled(Box)(({ theme }) => ({
     fontWeight: 300,
     lineHeight: 1.5,
     transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-    opacity: 1,
+    opacity: 0,
+    animation: `fadeIn 0.2s ease-in-out forwards`,
+    animationDelay: "0.3s",
     transform: "translateY(0)",
     willChange: "opacity, transform",
     "@media (max-width: 900px)": {

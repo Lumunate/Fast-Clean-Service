@@ -154,6 +154,7 @@ export const AutoTab = styled(Box)(({ theme }) => ({
         fontSize: "2.8rem",
       },
       //   color: "#ffffffdd",
+      "@media (max-width: 700px)": { fontSize: "2.4rem" }
     },
   },
 }));
