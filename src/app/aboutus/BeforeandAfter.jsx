@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, styled } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -50,7 +50,7 @@ const SwiperContainer = styled(Box)`
     margin-top: 9rem;
 
     @media (max-width: 900px) {
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 
     .swiper-slide {
@@ -64,30 +64,33 @@ const BeforeAfterSwiper = () => {
     const [boxSize, setBoxSize] = useState(300); // Default size
     const [spaceBetween, setSpaceBetween] = useState(30);
     const [gapBetweenSwipers, setGapBetweenSwipers] = useState(30);
+    const swiperRef = useRef(null);
 
     useEffect(() => {
         const updateBoxSize = () => {
-            const screenWidth = window.innerWidth;
+            if (!swiperRef.current) return;
+
+            const swiperWidth = swiperRef.current.clientWidth;
             let slidesPerView = 1.7; // Default for mobile
             let newSpaceBetween = 30;
             let newGapBetweenSwipers = 30;
 
-            if (screenWidth < 600) {
+            if (swiperWidth < 600) {
                 slidesPerView = 1.7;
-                newSpaceBetween = 20;
-                newGapBetweenSwipers = 20;
-            } else if (screenWidth >= 1400) {
+                newSpaceBetween = 15;
+                newGapBetweenSwipers = 15;
+            } else if (swiperWidth >= 1400) {
                 slidesPerView = 3.5;
-            } else if (screenWidth >= 1200) {
+            } else if (swiperWidth >= 1200) {
                 slidesPerView = 3;
-            } else if (screenWidth >= 900) {
+            } else if (swiperWidth >= 900) {
                 slidesPerView = 2.5;
-            } else if (screenWidth >= 600) {
+            } else if (swiperWidth >= 600) {
                 slidesPerView = 2;
             }
 
-            // Calculate the box size dynamically
-            const newBoxSize = screenWidth / slidesPerView - newSpaceBetween;
+            // Calculate the box size dynamically based on available width in the Swiper
+            const newBoxSize = swiperWidth / slidesPerView - newSpaceBetween;
             setBoxSize(newBoxSize);
             setSpaceBetween(newSpaceBetween);
             setGapBetweenSwipers(newGapBetweenSwipers);
@@ -99,7 +102,7 @@ const BeforeAfterSwiper = () => {
     }, []);
 
     return (
-        <SwiperContainer>
+        <SwiperContainer ref={swiperRef}>
             {/* Before Images */}
             <Swiper
                 spaceBetween={spaceBetween}
