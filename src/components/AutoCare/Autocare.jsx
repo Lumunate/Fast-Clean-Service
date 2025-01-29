@@ -13,7 +13,7 @@ import {
     CardHeader,
     CardInfo,
 } from "../../components/mui/AutoCarePkgs";
-import { Box, ListItem, Typography } from "@mui/material";
+import {Box, Button, Link, ListItem, Typography} from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faClose } from "@fortawesome/free-solid-svg-icons";
 import { cleanPkgs } from "../../lib/data/Autocare";
@@ -23,7 +23,7 @@ import {DecorativeBackgroundImage} from "../Decorative/Decorative.style";
 import FleetCare from "./FleetCare"
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
 
-const ModdedCard = ({ card, color }) => {
+const ModdedCard = ({ card, color, selectedTab }) => {
     const { theme } = useTheme();
 
     return (
@@ -44,6 +44,7 @@ const ModdedCard = ({ card, color }) => {
                     flex: "1 1 90%",
                     maxWidth: "calc(100% - 1rem)",
                     padding: "2rem",
+                    minHeight: selectedTab === "Premium" ? "350px" : "500px",
                 },
             }}
         >
@@ -333,7 +334,7 @@ const AutoCare = () => {
                         </div>
                         <div className="tab__side tab__side--back tab__side--back-1">
                             <div className="tab__cta">
-                                <Typography className="tab__value">Standard</Typography>
+                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Standard</Typography>
                             </div>
                         </div>
                     </AutoTab>
@@ -430,7 +431,7 @@ const AutoCare = () => {
                         </div>
                         <div className="tab__side tab__side--back tab__side--back-2">
                             <div className="tab__cta">
-                                <Typography className="tab__value">Deluxe</Typography>
+                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Deluxe</Typography>
                             </div>
                         </div>
                     </AutoTab>
@@ -528,7 +529,7 @@ const AutoCare = () => {
 
                         <div className="tab__side tab__side--back tab__side--back-3">
                             <div className="tab__cta">
-                                <Typography className="tab__value">Premium</Typography>
+                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Premium</Typography>
                             </div>
                         </div>
                     </AutoTab>
@@ -595,20 +596,24 @@ const AutoCare = () => {
                                         })}
                                     </CardDetails>
                                     <Box sx={{marginTop: "auto",display:"flex",gap:"8px"}}>
-                                    <CardButton
-                                        onClick={() => handleSubCatChange(pkg?.type)}
-                                        sx={{
-                                            backgroundColor: "#1C79CC",
-                                            color: "white",
-                                            justifyContent: "center",
-                                            "&:hover": {
-                                                color: "black",
-                                                backgroundColor:"#2998ff",
-                                            },
-                                        }}
-                                    >
-                                       Book Now
-                                    </CardButton>
+                                            <CardButton
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleSubCatChange(pkg?.type);
+                                                    window.location.href = "/booking";
+                                                }}
+                                                sx={{
+                                                    backgroundColor: "#1C79CC",
+                                                    color: "white",
+                                                    justifyContent: "center",
+                                                    "&:hover": {
+                                                        color: "black",
+                                                        backgroundColor:"#2998ff",
+                                                    },
+                                                }}
+                                            >
+                                                Book Now
+                                            </CardButton>
                                     <CardButton
                                         onClick={() => handleSubCatChange(pkg?.type)}
                                         sx={{
@@ -657,39 +662,26 @@ const AutoCare = () => {
                             },
                         }}
                     >
-                        <ModdedCard
-                            card={{
-                                name: selectedTab,
-                                type: "Exterior",
-                                options:
-                                    cleanPkgs[selectedTab]?.types.find(
-                                        (item) => item.type === subCat
-                                    )?.extras?.exterior || null,
-                            }}
-                            color={color}
-                        />
-                        <ModdedCard
-                            card={{
-                                name: selectedTab,
-                                type: "Interior",
-                                options:
-                                    cleanPkgs[selectedTab]?.types.find(
-                                        (item) => item.type === subCat
-                                    )?.extras?.interior || null,
-                            }}
-                            color={color}
-                        />
-                        <ModdedCard
-                            card={{
-                                name: selectedTab,
-                                type: "Detailing",
-                                options:
-                                    cleanPkgs[selectedTab]?.types.find(
-                                        (item) => item.type === subCat
-                                    )?.extras?.detailing || null,
-                            }}
-                            color={color}
-                        />
+                        {cleanPkgs[selectedTab]?.types.find((item) => item.type === subCat)
+                            ?.extras && (
+                            <>
+                                {["exterior", "interior", "detailing"].map((category, index) => (
+                                    <ModdedCard
+                                        key={category}
+                                        card={{
+                                            name: selectedTab,
+                                            type: category.charAt(0).toUpperCase() + category.slice(1),
+                                            options:
+                                                cleanPkgs[selectedTab]?.types.find(
+                                                    (item) => item.type === subCat
+                                                )?.extras?.[category] || null,
+                                        }}
+                                        color={color}
+                                        selectedTab={selectedTab}
+                                    />
+                                ))}
+                            </>
+                        )}
                     </CardContainer>
                 </HomePkgsInBox>
             </HomePkgsBox>
