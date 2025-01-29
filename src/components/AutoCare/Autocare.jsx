@@ -69,35 +69,51 @@ const ModdedCard = ({ card, color }) => {
             <CardDetails sx={{ height: "100%" }}>
                 {card?.options?.map((option, index) => {
                     return (
-                        <ListItem
-                            key={index}
-                            sx={{
-                                "&:not(:last-of-type)": {
-                                    borderBottom: `1px solid ${theme.palette.primary.lightContrast}`,
-                                },
-                            }}
+                      <ListItem
+                        key={index}
+                        sx={{
+                          "&:not(:last-of-type)": {
+                            borderBottom: `1px solid ${theme.palette.primary.lightContrast}`,
+                          },
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={faCheckCircle}
+                          style={{
+                            color: color,
+                            transform: "translateY(2px)",
+                            marginRight: "1rem",
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            width: "100%",
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
                         >
-                            <FontAwesomeIcon
-                                icon={faCheckCircle}
-                                style={{
-                                    color: color,
-                                    transform: "translateY(2px)",
-                                    marginRight: "1rem",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                }}
-                            />
-                            <Box
-                                sx={{
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                }}
-                            >
-                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.name}</Typography>
-                                <Typography sx={{ fontSize: "1.6rem", "@media (max-width: 600px)": { fontSize: "1.2rem !important", }, }}>{option.price}</Typography>
-                            </Box>
-                        </ListItem>
+                          <Typography
+                            sx={{
+                              fontSize: "1.6rem",
+                              fontWeight: 300,
+                              "@media (max-width: 600px)": { fontSize: "1.2rem !important" },
+                            }}
+                          >
+                            {option.name}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: "1.6rem",
+                              "@media (max-width: 600px)": { fontSize: "1.2rem !important" },
+                              minWidth: "65px",
+                            }}
+                          >
+                            {option.price}
+                          </Typography>
+                        </Box>
+                      </ListItem>
                     );
                 })}
             </CardDetails>
@@ -579,18 +595,21 @@ const AutoCare = () => {
                                     <CardDetails>
                                         {pkg?.pros.map((pro, index) => {
                                             return (
-                                                <ListItem key={index} sx={{ alignItems: "flex-start", display: "flex" }}>
-                                                    <FontAwesomeIcon
-                                                        icon={faCheckCircle}
-                                                        style={{
-                                                            color: color,
-                                                            transform: "translateY(2px)",
-                                                            marginRight: "1rem",
-                                                            marginTop: "0.25rem",
-                                                        }}
-                                                    />
-                                                    {pro}
-                                                </ListItem>
+                                              <ListItem
+                                                key={index}
+                                                sx={{ alignItems: "flex-start", display: "flex", fontWeight: 300 }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faCheckCircle}
+                                                  style={{
+                                                    color: color,
+                                                    transform: "translateY(2px)",
+                                                    marginRight: "1rem",
+                                                    marginTop: "0.25rem",
+                                                  }}
+                                                />
+                                                {pro}
+                                              </ListItem>
                                             );
                                         })}
                                     </CardDetails>
