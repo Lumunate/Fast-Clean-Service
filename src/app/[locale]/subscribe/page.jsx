@@ -20,9 +20,9 @@ import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages"
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import Link from "next/link";
-import PaymentButton from "../../components/payment-button/PaymentButton";
+import PaymentButton from "../../../components/payment-button/PaymentButton";
 import {useSession} from "next-auth/react";
-import StripeCheckoutButton from "../../components/payment-button/StripeCheckoutButton";
+import StripeCheckoutButton from "../../../components/payment-button/StripeCheckoutButton";
 
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 const gradients = [
