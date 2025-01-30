@@ -2,710 +2,523 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../../contexts/themeContext";
 import { HomePkgsBox, HomePkgsInBox } from "../../components/mui/HomePkgs";
-import {
-    AutoTab,
-    AutoTabContainer,
-    AutoTabList,
-    Card,
-    CardButton,
-    CardContainer,
-    CardDetails,
-    CardHeader,
-    CardInfo,
-} from "../../components/mui/AutoCarePkgs";
-import {Box, Button, Link, ListItem, Typography} from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faClose } from "@fortawesome/free-solid-svg-icons";
-import { cleanPkgs } from "../../lib/data/Autocare";
-import {ServiceHeading} from "../Home/ServicesOverview/ServiceColumnGroup";
+import { AutoTabContainer } from "../../components/mui/AutoCarePkgs";
+import { Box, Button, Container, Link, ListItem, Stack, Typography } from "@mui/material";
 import RadialCircle from "../Decorative/RadialCircle";
-import {DecorativeBackgroundImage} from "../Decorative/Decorative.style";
-import FleetCare from "./FleetCare"
+import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import { useAutocarePackages } from "../../hooks/useAutocarePackages";
+import CheckMark from "../../../public/bookingFormIcons/CheckMark.svg";
 
-const ModdedCard = ({ card, color, selectedTab }) => {
-    const { theme } = useTheme();
+import { options as autocarePackageTypes } from "../../app/autocare/data";
+import Image from "next/image";
 
-    return (
-        <Card
-            color={color}
-            sx={{
-                width: "100%",
-                minWidth: "250px",
-                flex: "1 1 30%",
-                maxWidth: "calc(33% - 1rem)",
-                minHeight: "500px",
-                backgroundColor: card?.options ? "" : "#cbcbcb80",
-                "@media (max-width: 900px)": {
-                    flex: "1 1 45%",
-                    maxWidth: "calc(50% - 1rem)",
-                },
-                "@media (max-width: 600px)": {
-                    flex: "1 1 90%",
-                    maxWidth: "calc(100% - 1rem)",
-                    padding: "2rem",
-                    minHeight: selectedTab === "Premium" ? "350px" : "500px",
-                },
-            }}
-        >
-            <div className="style style--2" />
-            <CardHeader color={color}>
-                <Typography
-                    className="sub-heading"
-                    sx={{ color: color, fontSize: "2rem !important" }}
-                >
-                    {card?.name}
-                </Typography>
-                <Typography
-                    className="heading"
-                    sx={{
-                        color: card?.options
-                            ? `${theme.palette.primary.contrastText} !important`
-                            : "#858585 !important",
-                    }}
-                >
-                    {card?.type}
-                </Typography>
-            </CardHeader>
-            <CardDetails sx={{ height: "100%" }}>
-                {card?.options?.map((option, index) => {
-                    return (
-                      <ListItem
-                        key={index}
-                        sx={{
-                          "&:not(:last-of-type)": {
-                            borderBottom: `1px solid ${theme.palette.primary.lightContrast}`,
-                          },
-                        }}
-                      >
-                        <FontAwesomeIcon
-                          icon={faCheckCircle}
-                          style={{
-                            color: color,
-                            transform: "translateY(2px)",
-                            marginRight: "1rem",
-                            display: "flex",
-                            justifyContent: "center",
-                          }}
-                        />
-                        <Box
-                          sx={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <Typography
-                            sx={{
-                              fontSize: "1.6rem",
-                              fontWeight: 300,
-                              "@media (max-width: 600px)": { fontSize: "1.2rem !important" },
-                            }}
-                          >
-                            {option.name}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              fontSize: "1.6rem",
-                              "@media (max-width: 600px)": { fontSize: "1.2rem !important" },
-                              minWidth: "65px",
-                            }}
-                          >
-                            {option.price}
-                          </Typography>
-                        </Box>
-                      </ListItem>
-                    );
-                })}
-            </CardDetails>
-        </Card>
-    );
-};
+import bg1 from "../../../public/voor5.jpg";
+import bg2 from "../../../public/voor9.jpg";
+import bg3 from "../../../public/voor7.jpg";
+import {
+  SubscriptionCardBanner,
+  SubscriptionCardContainer,
+  SubscriptionCardContent,
+  SubscriptionCardHeading,
+  SubscriptionContentLabel,
+  SubscriptionContentValue,
+  UpdatedSubscriptionCardHeader,
+} from "../mui/BookingFormPackages";
+
+const BG_IMAGES = [bg1, bg2, bg3];
+const COLORS = ["#5dfa48", "#0088ff", "#ffd02b"];
 
 const AutoCare = () => {
-    const { theme } = useTheme();
-    const [selectedTab, setSelectedTab] = useState("Standard");
-    const [subCat, setSubCat] = useState("");
-    const [mainCardsVisible, setMainCardsVisible] = useState(false);
-    const [addonsVisible, setAddonsVisible] = useState(false);
-    const headerRef = useRef(null);
-    const sectionRef = useRef(null);
-    const subSectionRef = useRef(null);
-    const containerRef = useRef(null);
-    const addonsContainerRef = useRef(null);
-    const color =
-        selectedTab === "Standard"
-            ? "#7ed56f"
-            : selectedTab === "Deluxe"
-                ? "#2998ff"
-                : "#ff7730";
+  const { theme } = useTheme();
+  const headerRef = useRef(null);
+  const row2Ref = useRef(null);
+  const row3Ref = useRef(null);
 
-    useEffect(() => {
-        const observerCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.target === containerRef.current) {
-                    if (entry.isIntersecting) {
-                        setMainCardsVisible(true);
-                    } else {
-                        setMainCardsVisible(false);
-                    }
-                } else if (entry.target === addonsContainerRef.current) {
-                    if (entry.isIntersecting) {
-                        setAddonsVisible(true);
-                    } else {
-                        setAddonsVisible(false);
-                    }
-                }
-            });
-        };
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedPackageType, setSelectedPackageType] = useState(null);
+  const [displayedPackages, setDisplayedPackages] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [additionalOptions, setAdditionalOptions] = useState(null);
 
-        const observer = new IntersectionObserver(observerCallback, {
-            threshold: 0.5,
-        });
+  const { packages, loading, error, fetchPackages } = useAutocarePackages();
+  useEffect(() => {
+    fetchPackages();
+  }, [fetchPackages]);
 
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
-        }
+  useEffect(() => {
+    if (selectedPackageType && packages) {
+      const allPackages = packages.packages[selectedPackageType?.name?.toString()?.toLowerCase()];
+      let displayedPackages = allPackages ?? [];
+      setDisplayedPackages(displayedPackages);
 
-        if (addonsContainerRef.current) {
-            observer.observe(addonsContainerRef.current);
-        }
+      console.log(displayedPackages, selectedPackageType, allPackages, packages);
 
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
+      if (row2Ref.current) {
+        row2Ref.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [selectedPackageType, packages]);
 
-    const handleTabChange = (tab) => {
-        setSelectedTab(tab);
-        setSubCat("");
-        const height = headerRef.current.clientHeight - 80;
-        setTimeout(() => {
-            window.scrollBy({
-                top: height,
-                behavior: "smooth",
-            });
-        }, 800);
-    };
+  useEffect(() => {
+    if (selectedPackage && packages) {
+      setAdditionalOptions([
+        {
+          name: "Interior",
+          packages: selectedPackage.additionalOptions.interior,
+        },
+        {
+          name: "Exterior",
+          packages: selectedPackage.additionalOptions.exterior,
+        },
+        {
+          name: "Detailing",
+          packages: selectedPackage.additionalOptions.detailing,
+        },
+      ]);
+      if (row3Ref.current) {
+        row3Ref.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [selectedPackage, packages]);
 
-    const handleSubCatChange = (subCat) => {
-        setSubCat(subCat);
-        if (subSectionRef.current) {
-            subSectionRef.current.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
-        }
-    };
-
-    return (
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {theme.palette.mode === "dark" && (
         <Box
-            sx={{
-                position: "relative",
-                //backgroundImage:
-                //    theme.palette.mode === "light"
-                //        ? "url(/bg3.jpg)"
-                //        : "url(/bg-dark2.jpg)",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-            }}
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 0,
+          }}
+        />
+      )}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "2rem",
+          marginTop: "15rem",
+          "@media (max-width: 600px)": { marginTop: "5rem" },
+        }}
+      >
+        <HeadingLinesAnimation text=" Anywhere Auto Care" />
+      </Box>
+
+      <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
+      <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
+      <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
+      <HomePkgsBox
+        ref={headerRef}
+        sx={{
+          position: "relative",
+          padding: "5rem 5rem 5rem",
+          "@media (max-width: 600px)": { padding: "0 5rem" },
+        }}
+      >
+        <AutoTabContainer
+          sx={{
+            display: "flex",
+            gap: "16px",
+            justifyContent: "center",
+            "@media (max-width: 1220px)": {
+              flexDirection: "column",
+              alignItems: "center",
+            },
+          }}
         >
-            {theme.palette.mode === "dark" && (
-                <Box
-                    sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        //background: "linear-gradient(to bottom, #141414 1%,rgba(0,0,0,0.7), #141414 99%)",
-                        zIndex: 0,
-                    }}
-                />
-            )}
-            {/* <ServiceHeading sx={{ fontSize: "3.5rem",fontWeight:600, marginTop: "15rem" }}>
-            FleetCare
-            </ServiceHeading> */}
-            {/*<FleetCare/>*/}
-             <Box
-                    sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem",marginTop: "15rem", "@media (max-width: 600px)": {marginTop:"5rem"} }}
-                  >
-
-            <HeadingLinesAnimation text=" Anywhere Auto Care"/>
-                  </Box>
-           
-            <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
-            <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
-            <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
-            <HomePkgsBox
-                ref={headerRef}
-                sx={{
-                    position: "relative",
-                    padding: "5rem 5rem 5rem",
-                    "@media (max-width: 600px)": {padding: '0 5rem'}
-                }}
-            >
-                <AutoTabContainer
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "16px",
-                        justifyContent: "center",
-                        "@media (max-width: 800px)": {
-                            flexDirection: "column",
-                            alignItems: "center",
-                        },
-                    }}
-                >
-                    <AutoTab
-                        className={selectedTab === "Standard" ? "selected" : ""}
-                        onClick={() => handleTabChange("Standard")}
-                        sx={{
-                            flex: "1 1 30%",
-                            maxWidth: "calc(33% - 16px)",
-                            "@media (max-width: 800px)": {
-                                maxWidth: "calc(90% - 16px)",
-                            },
-                        }}
-                    >
-                        <div className="tab__side tab__side--front" style={{ position: "relative", height: "40rem" }}>
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "8%",
-                                    left: "-32%",
-                                    width: "120%",
-                                    height: "60px",
-                                    backgroundColor: "#4EE744",
-                                    transform: "rotate(-40deg)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 1,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        position: "absolute",
-                                        color: "white",
-                                        fontWeight: 300,
-                                        transform: "rotate(-1deg)",
-                                        fontSize: "18px",
-                                    }}
-                                >
-                                    Economy
-                                </Typography>
-                            </Box>
-
-                            {/* Image or Background */}
-                            <div className="tab__picture tab__picture--1" style={{ marginTop: "-60px", marginBottom: "60px" }}></div>
-
-                            {/* Package Type Heading */}
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "bold",
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-1">Standard</span>
-                            </Typography>
-
-                            {/* Price and Duration */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#7ed56f" }}>
-                                         €74.95
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>45 min.</Typography>
-                                </Box>
-                            </Box>
-                        </div>
-                        <div className="tab__side tab__side--back tab__side--back-1">
-                            <div className="tab__cta">
-                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Standard</Typography>
-                            </div>
-                        </div>
-                    </AutoTab>
-                    <AutoTab
-                        className={selectedTab === "Deluxe" ? "selected" : ""}
-                        onClick={() => handleTabChange("Deluxe")}
-                        sx={{
-                            flex: "1 1 30%",
-                            maxWidth: "calc(33% - 16px)",
-                            "@media (max-width: 800px)": {
-                                maxWidth: "calc(90% - 16px)",
-                            },
-                        }}
-                    >
-                        {/* Front Side */}
-                        <div className="tab__side tab__side--front" style={{ position: "relative" }}>
-                            {/* Slanted Banner with Tagline */}
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "8%",
-                                    left: "-30%",
-                                    width: "120%",
-                                    height: "60px",
-                                    backgroundColor: "#2998ff",
-                                    transform: "rotate(-40deg)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 1,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        color: "white",
-                                        fontWeight: 300,
-                                        transform: "rotate(-1deg)",
-                                        fontSize: "1.6rem !important",
-                                    }}
-                                >
-                                    Peoples Choice
-                                </Typography>
-                            </Box>
-
-                            {/* Image or Background */}
-                            <div className="tab__picture tab__picture--2" style={{ marginTop: "-60px", marginBottom: "60px" }}></div>
-
-                            {/* Package Type Heading */}
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "20px",
-                                    fontWeight: 600,
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-2">Deluxe</span>
-                            </Typography>
-
-                            {/* Price and Duration */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#2998ff" }}>
-                                         €89.98
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>60 min.</Typography>
-                                </Box>
-                            </Box>
-                        </div>
-                        <div className="tab__side tab__side--back tab__side--back-2">
-                            <div className="tab__cta">
-                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Deluxe</Typography>
-                            </div>
-                        </div>
-                    </AutoTab>
-
-                    <AutoTab
-                        className={selectedTab === "Premium" ? "selected" : ""}
-                        onClick={() => handleTabChange("Premium")}
-                        sx={{
-                            flex: "1 1 30%",
-                            maxWidth: "calc(33% - 16px)",
-                            "@media (max-width: 800px)": {
-                                maxWidth: "calc(90% - 16px)",
-                            },
-                        }}
-                    >
-                        {/* Front Side */}
-                        <div className="tab__side tab__side--front" style={{ position: "relative" }}>
-                            {/* Slanted Banner with Tagline */}
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "8%",
-                                    left: "-32%",
-                                    width: "120%",
-                                    height: "60px",
-                                    backgroundColor: "#EED502",
-                                    transform: "rotate(-40deg)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 1,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        color: "white",
-                                        fontWeight: 300,
-                                        transform: "rotate(-1deg)",
-                                        fontSize: "18px",
-                                    }}
-                                >
-                                    Bespoke
-                                </Typography>
-                            </Box>
-
-                            {/* Image or Background */}
-                            <div className="tab__picture tab__picture--3" style={{ marginTop: "-60px", marginBottom: "60px" }}></div>
-
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "bold",
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-3">Premium</span>
-                            </Typography>
-
-                            {/* Price and Duration */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#ff7730" }}>
-                                         €180
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>180 min.</Typography>
-                                </Box>
-                            </Box>
-                        </div>
-
-                        <div className="tab__side tab__side--back tab__side--back-3">
-                            <div className="tab__cta">
-                                <Typography className="tab__value" sx={{ "@media (max-width: 700px)": { fontSize: "2rem" } }}>Premium</Typography>
-                            </div>
-                        </div>
-                    </AutoTab>
-
-                </AutoTabContainer>
-            </HomePkgsBox>
-            <HomePkgsBox sx={{ "@media (max-width: 1200px)": {flexDirection: "column", alignItems: "center",}}}>
-                <HomePkgsInBox
-                    sx={{ justifyContent: "center", position: "relative", "@media (max-width: 1200px)": {flexDirection: "column", alignItems: "center",}, zIndex:10 }}
-                    ref={sectionRef}
-                >
-                    <CardContainer
-                        ref={containerRef}
-                        sx={{
-                            gap: "2rem",
-                            flexWrap: "wrap",
-                            opacity: mainCardsVisible ? 1 : 0,
-                            transform: mainCardsVisible ? "translateY(0)" : "translateY(100px)",
-                            transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
-                        }}
-                    >
-                        {cleanPkgs[selectedTab]?.types.map((pkg) => {
-                            return (
-                                <Card key={pkg?.type} color={color}>
-                                    <div className="style style--1" />
-                                    <CardHeader color={color}>
-                                        <Typography className="heading">{pkg?.type}</Typography>
-                                    </CardHeader>
-                                    <CardInfo color={color} sx={{ flexDirection: "column" }}>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "14px !important",
-                                                color:theme.palette.mode === "dark" ?"white":"",
-                                                marginBottom: "0.1rem",
-                                                fontWeight:300
-                                            }}
-                                        >
-                                            {pkg.description}
-                                        </Typography>
-                                        <Typography
-                                            className="price"
-                                            sx={{ color: color, fontSize: "2rem", display: "inline-flex", alignItems: "center" }}
-                                        >
-                                            <span style={{ fontSize: "inherit", verticalAlign: "baseline", paddingRight: "1rem" }}>€</span>
-                                            {pkg.price.one}
-                                        </Typography>
-                                    </CardInfo>
-                                    <CardDetails>
-                                        {pkg?.pros.map((pro, index) => {
-                                            return (
-                                              <ListItem
-                                                key={index}
-                                                sx={{ alignItems: "flex-start", display: "flex", fontWeight: 300 }}
-                                              >
-                                                <FontAwesomeIcon
-                                                  icon={faCheckCircle}
-                                                  style={{
-                                                    color: color,
-                                                    transform: "translateY(2px)",
-                                                    marginRight: "1rem",
-                                                    marginTop: "0.25rem",
-                                                  }}
-                                                />
-                                                {pro}
-                                              </ListItem>
-                                            );
-                                        })}
-                                    </CardDetails>
-                                    <Box sx={{marginTop: "auto",display:"flex",gap:"8px"}}>
-                                            <CardButton
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    handleSubCatChange(pkg?.type);
-                                                    window.location.href = "/booking";
-                                                }}
-                                                sx={{
-                                                    backgroundColor: "#1C79CC",
-                                                    color: "white",
-                                                    justifyContent: "center",
-                                                    "&:hover": {
-                                                        color: "black",
-                                                        backgroundColor:"#2998ff",
-                                                    },
-                                                }}
-                                            >
-                                                Book Now
-                                            </CardButton>
-                                    <CardButton
-                                        onClick={() => handleSubCatChange(pkg?.type)}
-                                        sx={{
-                                            backgroundColor: subCat === pkg.type ? color : "",
-                                            color: "black !important",
-                                            justifyContent: "center",
-                                            "&:hover": {
-                                                backgroundColor: `${color} !important`,
-                                                color: "primary.main !important",
-                                            },
-                                        }}
-                                    >
-                                        Add Ons
-                                    </CardButton>
-                                    </Box>
-
-                                </Card>
-                            );
-                        })}
-                    </CardContainer>
-                </HomePkgsInBox>
-            </HomePkgsBox>
-            <HomePkgsBox
-                sx={{
-                    padding: "15rem 5rem 5rem",
-                    flexDirection: "column",
-                    "@media (max-width: 600px)": {padding: "2rem",}
-                }}
-                ref={subSectionRef}
-            >
-                <HomePkgsInBox
-                    sx={{ justifyContent: "center", alignSelf: "center", "@media (max-width: 600px)": {flexDirection: "column",} }}
-                >
-                    <CardContainer
-                        ref={addonsContainerRef}
-                        sx={{
-                            gap: "2rem",
-                            opacity: subCat && addonsVisible ? 1 : 0,
-                            transform: addonsVisible ? "translateY(0)" : "translateY(100px)",
-                            transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
-                            flexWrap: "wrap",
-                            marginBottom: "10rem",
-                            "@media (max-width: 900px)": {
-                                flexDirection: "column",
-                                alignItems: "center",
-                            },
-                        }}
-                    >
-                        {cleanPkgs[selectedTab]?.types.find((item) => item.type === subCat)
-                            ?.extras && (
-                            <>
-                                {["exterior", "interior", "detailing"].map((category, index) => (
-                                    <ModdedCard
-                                        key={category}
-                                        card={{
-                                            name: selectedTab,
-                                            type: category.charAt(0).toUpperCase() + category.slice(1),
-                                            options:
-                                                cleanPkgs[selectedTab]?.types.find(
-                                                    (item) => item.type === subCat
-                                                )?.extras?.[category] || null,
-                                        }}
-                                        color={color}
-                                        selectedTab={selectedTab}
-                                    />
-                                ))}
-                            </>
-                        )}
-                    </CardContainer>
-                </HomePkgsInBox>
-            </HomePkgsBox>
-        </Box>
-    );
+          {autocarePackageTypes.map((pkg, index) => (
+            <PackageTypeCards
+              key={index}
+              image={BG_IMAGES[index]}
+              color={COLORS[index]}
+              packageType={pkg.name}
+              id={pkg.id}
+              tagline={"aaa"}
+              descriptionItems={[
+                { label: "Price", value: pkg.price, highlighted: true },
+                { label: "Duration", value: pkg.duration, highlighted: false },
+              ]}
+              onClick={() => {
+                setSelectedPackageType(pkg);
+                setSelectedColor(COLORS[index]);
+              }}
+            />
+          ))}
+        </AutoTabContainer>
+      </HomePkgsBox>
+      {selectedPackageType && displayedPackages?.length > 0 && (
+        <HomePkgsBox
+          ref={row2Ref}
+          sx={{
+            opacity: 0,
+            animation: "fadeIn 1s ease-in-out forwards",
+            position: "relative",
+            padding: "5rem 5rem 5rem",
+            "@media (max-width: 600px)": { padding: "0 5rem" },
+          }}
+        >
+          <AutoTabContainer
+            sx={{
+              display: "flex",
+              gap: "16px",
+              height: "100%",
+              alignItems: "flex-start",
+              "@media (max-width: 1220px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
+            {displayedPackages.map((pkg, index) => (
+              <PackageOptionsCards
+                key={index}
+                color={selectedColor}
+                name={pkg.name}
+                tagline={pkg.description}
+                price={pkg.price}
+                descriptionItems={pkg.packages}
+                onClick={() => setSelectedPackage(pkg)}
+              />
+            ))}
+          </AutoTabContainer>
+        </HomePkgsBox>
+      )}
+      {additionalOptions && (
+        <HomePkgsBox
+          ref={row3Ref}
+          sx={{
+            opacity: 0,
+            animation: "fadeIn 1s ease-in-out forwards",
+            position: "relative",
+            padding: "5rem 5rem 5rem",
+            "@media (max-width: 600px)": { padding: "0 5rem" },
+          }}
+        >
+          <AutoTabContainer
+            sx={{
+              display: "flex",
+              gap: "16px",
+              height: "100%",
+              alignItems: "flex-start",
+              "@media (max-width: 1220px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
+            {additionalOptions.map((pkg, index) => (
+              <PackageAddOnsCards
+                key={index}
+                color={selectedColor}
+                name={pkg.name}
+                packageName={selectedPackageType.name}
+                descriptionItems={pkg.packages}
+              />
+            ))}
+          </AutoTabContainer>
+        </HomePkgsBox>
+      )}
+    </Box>
+  );
 };
 
 export default AutoCare;
+
+const PackageTypeCards = ({ image, color, packageType, descriptionItems, onClick, selected }) => {
+  const { theme } = useTheme();
+  const parseNumbersFromString = (str) => {
+    return str.replace("From ", "");
+  };
+
+  return (
+    <SubscriptionCardContainer
+      onClick={onClick}
+      selected={selected}
+      sx={{
+        position: "relative",
+        width: 392,
+        height: 522,
+        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "rgba(255,255,255,0.5)",
+        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
+        backdropFilter: "blur(10.4px)",
+      }}
+    >
+      <SubscriptionCardBanner
+        sx={{
+          top: "3rem",
+          left: "-8rem",
+          padding: "0.5rem 9rem",
+        }}
+        color={color}
+      >
+        <SubscriptionCardHeading sx={{ fontSize: "1.8rem" }}>{packageType}</SubscriptionCardHeading>
+      </SubscriptionCardBanner>
+
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            backgroundColor: color,
+            clipPath: "path('M -2 260 Q 500 50 400 500 L 520 -2 L -2 -2 Z')",
+            // clipPath: "path('M -2 165 Q 200 80 250 200 L 220 -2 L -2 -2 Z')",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            opacity: "35%",
+            zIndex: 10,
+          }}
+          className="highlight"
+        />
+        <Image
+          src={image}
+          alt="Subscription Package"
+          layout="fill"
+          style={{
+            clipPath: "path('M -2 260 Q 500 50 400 500 L 520 -2 L -2 -2 Z')",
+            boxShadow: "0px 4px 30.1px rgba(0, 0, 0, 0.25)",
+          }}
+        />
+        <Typography
+          sx={{
+            position: "absolute",
+            bottom: "10px",
+            right: "10px",
+            backgroundColor: color,
+            borderRadius: "2px",
+            padding: "1.5rem",
+            zIndex: 20,
+            fontFamily: "Unbounded",
+            color: "#ffffff",
+            fontSize: "2rem",
+            fontWeight: "600",
+            textAlign: "center",
+            width: "40%",
+          }}
+          className="heading"
+        >
+          {packageType}
+        </Typography>
+      </Box>
+
+      <SubscriptionCardContent
+        sx={{
+          margin: "7.8rem 5rem auto",
+        }}
+      >
+        {descriptionItems &&
+          descriptionItems.map((option, index) => (
+            <Box key={index} className="content__row">
+              <SubscriptionContentLabel sx={{ fontSize: "2.1rem !important" }}>{option.label}</SubscriptionContentLabel>
+              <SubscriptionContentValue highlight={option.highlighted} sx={{ fontSize: "2.1rem !important" }} color={color}>
+                {parseNumbersFromString(option.value)}
+              </SubscriptionContentValue>
+            </Box>
+          ))}
+      </SubscriptionCardContent>
+    </SubscriptionCardContainer>
+  );
+};
+
+const PackageOptionsCards = ({ color, name, tagline, descriptionItems, onClick, selected, price }) => {
+  const { theme } = useTheme();
+  return (
+    <SubscriptionCardContainer
+      onClick={onClick}
+      selected={selected}
+      sx={{
+        width: 392,
+        height: "100%",
+        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "white",
+        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
+        backdropFilter: "blur(10.4px)",
+      }}
+    >
+      <Stack
+        gap={3}
+        justifyContent={"space-between"}
+        sx={{
+          margin: "7.8rem 3rem 2.8rem",
+        }}
+      >
+        <Stack gap={2}>
+          <Typography
+            sx={{
+              fontSize: "36px !important",
+              fontWeight: 400,
+              lineHeight: "24px",
+              textAlign: "left",
+            }}
+          >
+            {name}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "1.7rem !important",
+              fontWeight: 300,
+              lineHeight: "17.36px",
+              textAlign: "left",
+              marginBottom: "1rem",
+            }}
+          >
+            {tagline}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "3.8rem !important",
+              fontWeight: 600,
+              lineHeight: "24px",
+              textAlign: "left",
+              color: color,
+            }}
+          >
+            {price}
+          </Typography>
+
+          <Stack>
+            {descriptionItems &&
+              descriptionItems.map((option, index) => (
+                <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                  <Image src={CheckMark} alt="CheckMark" width="20px" height="20px" />
+                  <SubscriptionContentLabel sx={{ fontSize: "1.4rem", lineHeight: "30px", fontWeight: "300" }}>
+                    {option}
+                  </SubscriptionContentLabel>
+                </Box>
+              ))}
+          </Stack>
+        </Stack>
+
+        <Container sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <Link href="/booking" passHref>
+            <Button
+              variant="contained"
+              sx={{
+                padding: "1.5rem 3rem",
+                fontSize: "1.4rem",
+                fontWeight: "300",
+                backgroundColor: "primary.accentDark",
+                borderRadius: "50px",
+                color: "white",
+                fontFamily: "Unbounded",
+                "&:hover": {
+                  backgroundColor: "primary.accent",
+                },
+              }}
+            >
+              Book Now
+            </Button>
+          </Link>
+          <Button
+            variant="contained"
+            sx={{
+              padding: "1.5rem 3rem",
+              fontSize: "1.4rem",
+              minWidth: "116px",
+              fontWeight: "300",
+              backgroundColor: "#ECECEC",
+              borderRadius: "50px",
+              color: "#515151",
+              fontFamily: "Unbounded",
+              "&:hover": {
+                backgroundColor: "primary.secondary",
+              },
+            }}
+          >
+            Addons
+          </Button>
+        </Container>
+      </Stack>
+    </SubscriptionCardContainer>
+  );
+};
+
+const PackageAddOnsCards = ({ color, name, packageName, descriptionItems, selected }) => {
+  const { theme } = useTheme();
+  return (
+    <SubscriptionCardContainer
+      selected={selected}
+      sx={{
+        width: 392,
+        height: "100%",
+        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "white",
+        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
+        backdropFilter: "blur(10.4px)",
+      }}
+    >
+      <Stack
+        gap={3}
+        justifyContent={"space-between"}
+        sx={{
+          margin: "7.8rem 3rem 2.8rem",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "14px !important",
+            fontWeight: 400,
+            lineHeight: "17px",
+            textAlign: "left",
+            color: color,
+          }}
+        >
+          {packageName}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "3.6rem !important",
+            fontWeight: 300,
+            lineHeight: "24px",
+            textAlign: "left",
+            marginBottom: "1rem",
+          }}
+        >
+          {name}
+        </Typography>
+
+        <Stack>
+          {descriptionItems &&
+            descriptionItems.map((option, index) => (
+              <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center", justifyContent: "space-between" }}>
+                <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                  <Image src={CheckMark} alt="CheckMark" width="20px" height="20px" />
+                  <SubscriptionContentLabel sx={{ fontSize: "1.4rem", lineHeight: "30px", fontWeight: "300" }}>
+                    {option.name}
+                  </SubscriptionContentLabel>
+                </Box>
+                <SubscriptionContentLabel
+                  sx={{
+                    fontSize: "1.4rem",
+                    lineHeight: "30px",
+                    fontWeight: "300",
+                    color: color,
+                    minWidth: "55px",
+                    textAlign: "right",
+                  }}
+                >
+                  € {option.additionalCost}
+                </SubscriptionContentLabel>
+              </Box>
+            ))}
+        </Stack>
+      </Stack>
+    </SubscriptionCardContainer>
+  );
+};
