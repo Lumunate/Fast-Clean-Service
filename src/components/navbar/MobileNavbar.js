@@ -76,6 +76,10 @@ const MobileNavbar = () => {
                     label: "Subscription Plans",
                     href: "/subscribe",
                 },
+                {
+                    label: "Other Vehicles",
+                    href: "/other-vehicles",
+                },
             ],
         },
         {
@@ -85,46 +89,60 @@ const MobileNavbar = () => {
     ];
 
     const NavbarDrawerList = (
-        <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
-            <List>
-                {navLinks.map((item, index) => (
-                    <>
-                        <ListItem key={item.label} disablePadding>
-                            <ListItemButton
-                                onClick={() => {
-                                    if (item.more) {
-                                        setIsServicesOpen(!isServicesOpen);
-                                    } else {
-                                        window.location.href = item.href;
-                                    }
-                                }}
-                            >
-                                <ListItemText primary={item.label} />
-                                {item.more && item.more.length > 0 && <>{isServicesOpen ? <ExpandLess /> : <ExpandMore />}</>}
-                            </ListItemButton>
-                        </ListItem>
-
-                        {item.more && (
-                            <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    {item.more.map((subItem, index) => (
-                                        <ListItemButton sx={{ pl: 4 }} key={subItem.label} onClick={() => (window.location.href = subItem.href)}>
-                                            <ListItemText primary={subItem.label} />
-                                        </ListItemButton>
-                                    ))}
-                                </List>
-                            </Collapse>
-                        )}
-                    </>
-                ))}
-            </List>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => (window.location.href = "/booking")}>
-                    <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+      <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
+        <List>
+          {navLinks.map((item, index) => (
+            <>
+              <ListItem key={item.label} disablePadding>
+                <ListItemButton
+                  onClick={(e) => {
+                    if (item.more) {
+                      setIsServicesOpen(!isServicesOpen);
+                    } else {
+                      window.location.href = item.href;
+                    }
+                    e.stopPropagation();
+                  }}
+                >
+                  <ListItemText
+                    sx={{
+                      color: "#fff",
+                      fontSize: "1.6rem !important",
+                      fontWeight: item.label === "Services" && isServicesOpen ? "bold !important" : "normal",
+                    }}
+                    primary={item.label}
+                  />
+                  {item.more && item.more.length > 0 && (
+                    <>{isServicesOpen ? <ExpandLess sx={{ color: "#fff" }} /> : <ExpandMore sx={{ color: "#fff" }} />}</>
+                  )}
                 </ListItemButton>
-            </ListItem>
-        </Box>
+              </ListItem>
+
+              {item.more && (
+                <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.more.map((subItem, index) => (
+                      <ListItemButton
+                        sx={{ pl: 4, "& .MuiTypography-root": { color: "#fff" } }}
+                        key={subItem.label}
+                        onClick={() => (window.location.href = subItem.href)}
+                      >
+                        <ListItemText primary={subItem.label} />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </>
+          ))}
+        </List>
+        <Divider />
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => (window.location.href = "/booking")}>
+            <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+          </ListItemButton>
+        </ListItem>
+      </Box>
     );
 
     return (
@@ -164,9 +182,27 @@ const MobileNavbar = () => {
                             <LogoImage src={UserIcon} alt="User Icon" width={15} height={15} style={{ objectFit: "contain" }} />
                         </IconButton>
 
-                        <SwipeableDrawer open={drawerOpen} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+                        <SwipeableDrawer
+                            open={drawerOpen}
+                            onOpen={toggleDrawer(true)}
+                            onClose={toggleDrawer(false)}
+                            PaperProps={{
+                                sx: {
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
+                                    padding: "1rem",
+
+                                    border: "none",
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
+                                },
+                            }}
+                        >
                             {NavbarDrawerList}
                         </SwipeableDrawer>
+
 
                         {userMenuOpen && (
                             <Box
@@ -188,6 +224,12 @@ const MobileNavbar = () => {
                                     flexDirection: "column",
                                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                                     paddingTop: "8rem !important",
+
+
+                                    border: "none",
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
                                 }}
                             >
                                 <DropDownLink
@@ -206,7 +248,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_StreamLine} alt="User Icon" width={20} height={20} />
-                                    Customer
+                                    Dashboard
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
@@ -231,9 +273,9 @@ const MobileNavbar = () => {
                     </NavLinkDropDownContainer>
                     <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
                         {theme.palette.mode === "dark" ? (
-                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
+                            <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
                         ) : (
-                            <Image src={MoonIcon} alt="Moon Icon" width={21} height={21} style={{ objectFit: "contain" }} />
+                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
                         )}
                     </IconButton>
                 </NavbarRightContainer>

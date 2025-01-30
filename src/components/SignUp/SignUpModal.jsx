@@ -9,6 +9,7 @@ import {
     Grid,
     Typography,
     Button,
+    useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "../../contexts/themeContext";
 import { CustomFormTextField } from "../../components/mui/NewFormPkgs";
@@ -20,6 +21,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
     const router = useRouter();
     const [error, setError] = useState("");
     const { data: session, status: sessionStatus } = useSession();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect(() => {
         if (sessionStatus === "authenticated") {
@@ -82,214 +84,188 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
     };
 
     return (
-        sessionStatus !== "authenticated" && (
-            <Box
-                component="main"
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "5rem auto",
-                    width: "100%",
-                    height: "calc(100vh - 5rem)",
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: 100000,
-                    backdropFilter: "blur(8px)",
-                }}
-                onClick={() => setOpenSignup(false)}
+      sessionStatus !== "authenticated" && (
+        <Box
+          component="main"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            // paddingTop: "5rem",
+            width: "100%",
+            height: "100vh",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 100000,
+            backdropFilter: "blur(10px)",
+          }}
+          onClick={() => setOpenSignup(false)}
+        >
+          <CustomCard
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "normal",
+              padding: "4rem",
+              borderRadius: "10px",
+              boxShadow: "2px 2px 20px #00000060 !important",
+              maxHeight: "calc(100vh - 5rem)",
+              overflowY: "auto",
+              maxWidth: "700px",
+              width: "100%",
+              backgroundColor: theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.4)",
+              "@media (max-width: 600px)": {
+                margin: "2rem",
+                padding: "2rem",
+              },
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Typography
+              component="h1"
+              sx={{
+                fontWeight: 700,
+                marginTop: "1rem",
+                marginBottom: "1rem",
+                paddingTop: "1.5rem",
+                paddingBottom: "1.5rem",
+                color: "primary.accent",
+                fontSize: "2.8rem",
+              }}
             >
-                <CustomCard
+              Sign Up
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3, width: "100%", maxWidth: "80%" }}>
+              <Grid container spacing={isSmallScreen ? 1 : 4}>
+                <Grid item xs={12} sm={6}>
+                  <CustomFormTextField
+                    autoComplete="given-name"
+                    name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <CustomFormTextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="family-name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomFormTextField
+                    required
+                    fullWidth
+                    id="companyName"
+                    label="Company"
+                    name="companyName"
+                    autoComplete="company-name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomFormTextField
+                    autoComplete="street-address"
+                    name="street"
+                    required
+                    fullWidth
+                    id="street"
+                    label="Street"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomFormTextField autoComplete="phone" name="phoneNumber" required fullWidth id="phone" label="Phone" />
+                </Grid>
+                <Grid item xs={12} sm={8}>
+                  <CustomFormTextField required fullWidth id="City" label="City" name="city" autoComplete="city" />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <CustomFormTextField required fullWidth id="zipCode" label="Zip Code" name="zipCode" autoComplete="zip-code" />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomFormTextField required fullWidth id="email" label="Email Address" name="email" autoComplete="email" />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomFormTextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
                     sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "4rem",
-                        borderRadius: "10px",
-                        boxShadow: "2px 2px 20px #00000060 !important",
-                        maxHeight: "calc(100vh - 5rem)",
-                        overflowY: "auto",
-                        maxWidth: "700px",
-                        width: "100%",
+                      margin: "1rem auto 2.5rem",
+                      "& span": {
+                        fontSize: "1.5rem",
+                      },
+                      "& .MuiCheckbox-root.Mui-checked": {
+                        color: "#00BEFF",
+                      },
                     }}
-                    onClick={(e) => e.stopPropagation()}
+                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                    label="I want to receive inspiration, marketing promotions and updates via email."
+                  />
+                </Grid>
+              </Grid>
+              <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    padding: "1.5rem 3rem",
+                    fontSize: "1.6rem",
+                    fontWeight: "bold",
+                    backgroundColor: "primary.accentDark",
+                    borderRadius: "50px",
+                    color: "white",
+                    fontFamily: "DMSans",
+                    "&:hover": {
+                      backgroundColor: theme.palette.primary.accent,
+                    },
+                  }}
                 >
-                    <Typography
-                        component="h1"
-                        sx={{
-                            fontWeight: 700,
-                            marginTop: "1rem",
-                            marginBottom: "1rem",
-                            paddingTop: "1.5rem",
-                            paddingBottom: "1.5rem",
-                            color: "primary.accent",
-                            fontSize: "2.8rem",
-                        }}
+                  Sign Up
+                </Button>
+              </Box>
+              <Grid container justifyContent="center" sx={{ margin: "2rem 0 0" }}>
+                <Grid item>
+                  <Typography
+                    sx={{
+                      color: "primary.contrastText",
+                      fontSize: "1.8rem",
+                    }}
+                  >
+                    Already have an account?{" "}
+                    <span
+                      onClick={() => {
+                        setOpenSignup(false);
+                        setOpenLogin(true);
+                      }}
+                      style={{ cursor: "pointer", color: "#00BEFF" }}
                     >
-                        Sign Up
-                    </Typography>
-                    <Box
-                        component="form"
-                        onSubmit={handleSubmit}
-                        sx={{ mt: 3, width: "100%", maxWidth: "80%" }}
-                    >
-                        <Grid container spacing={4}>
-                            <Grid item xs={12} sm={6}>
-                                <CustomFormTextField
-                                    autoComplete="given-name"
-                                    name="firstName"
-                                    required
-                                    fullWidth
-                                    id="firstName"
-                                    label="First Name"
-                                    autoFocus
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    autoComplete="family-name"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    id="companyName"
-                                    label="Company"
-                                    name="companyName"
-                                    autoComplete="company-name"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomFormTextField
-                                    autoComplete="street-address"
-                                    name="street"
-                                    required
-                                    fullWidth
-                                    id="street"
-                                    label="Street"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomFormTextField
-                                    autoComplete="phone"
-                                    name="phoneNumber"
-                                    required
-                                    fullWidth
-                                    id="phone"
-                                    label="Phone"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={8}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    id="City"
-                                    label="City"
-                                    name="city"
-                                    autoComplete="city"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={4}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    id="zipCode"
-                                    label="Zip Code"
-                                    name="zipCode"
-                                    autoComplete="zip-code"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomFormTextField
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="new-password"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    sx={{
-                                        margin: "-1rem auto 2.5rem",
-                                        "& span": {
-                                            fontSize: "1.5rem",
-                                        },
-                                        "& .MuiCheckbox-root.Mui-checked": {
-                                            color: "#00BEFF",
-                                        },
-                                    }}
-                                    control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
-                            </Grid>
-                        </Grid>
-                        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                sx={{
-                                    padding: "1.5rem 3rem",
-                                    fontSize: "1.6rem",
-                                    fontWeight: "bold",
-                                    backgroundColor: "primary.accentDark",
-                                    color: "white",
-                                    fontFamily: "DMSans",
-                                    "&:hover": {
-                                        backgroundColor: theme.palette.primary.accent,
-                                    },
-                                }}
-                            >
-                                Sign Up
-                            </Button>
-                        </Box>
-                        <Grid container justifyContent="center" sx={{ margin: "2rem 0 0" }}>
-                            <Grid item>
-                                <Typography
-                                    sx={{
-                                        color: "primary.contrastText",
-                                        fontSize: "1.8rem",
-                                    }}
-                                >
-                                    Already have an account?{" "}
-                                    <span
-                                        onClick={() => {
-                                            setOpenSignup(false);
-                                            setOpenLogin(true);
-                                        }}
-                                        style={{ cursor: "pointer", color: "#00BEFF" }}
-                                    >
-                                        Sign In
-                                    </span>
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                </CustomCard>
+                      Sign In
+                    </span>
+                  </Typography>
+                </Grid>
+              </Grid>
             </Box>
-        )
+          </CustomCard>
+        </Box>
+      )
     );
 };
 

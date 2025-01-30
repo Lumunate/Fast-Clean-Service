@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, useMediaQuery, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -85,24 +85,32 @@ const testimonials = [
 
 // Styled components (you can keep your existing styles or adjust as needed)
 const StyledCarouselItemInner = styled(CarouselItemInner)(({ theme }) => ({
-    height: "24.3rem",
+    height: "27rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     padding: "3rem",
     borderRadius: "10px",
-    backgroundColor: theme.palette.mode === "light" ? "#fff" : "#141414",
     boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-    "@media (max-width: 1200px)": {
-        height: "27rem",
-    },
-    "@media (max-width: 900px)": {
-        height: "auto",
-    },
+
+    backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
+    border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
+    backdropFilter: "blur(2.4px)",
+
+    margin: "1rem 0",
 }));
 
 export default function Reviews() {
     const isBelow900px = useMediaQuery("(max-width: 900px)");
+
+    const [testimonailsPerView, setTestimonailsPerView] = useState(Math.floor(window.innerWidth / 300));
+    useEffect(() => {
+      if (window.innerWidth < 600) {
+        setTestimonailsPerView(1.2);
+      } else {
+        setTestimonailsPerView(Math.floor(window.innerWidth / 600));
+      }
+    }, [window.innerWidth]); 
 
     const renderTestimonial = (testimonial, index) => {
         return (
@@ -137,7 +145,7 @@ export default function Reviews() {
                 </CarouselStarsBox>
 
                 <CarouselDetails>
-                    <p>{testimonial.details}</p>
+                    <p>{testimonial.details?.slice(0, 300)}{testimonial.details.length > 300 ? "..." : ""}</p>  
                 </CarouselDetails>
                 <CarouselSignatures
                     sx={{
@@ -181,56 +189,52 @@ export default function Reviews() {
     };
 
     return (
-        <Box sx={{ width: "100%", padding: "3rem 0" }}>
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={20}
-                slidesPerView={isBelow900px ? 1 : 3}
-                loop={true}
-                autoplay={{ delay: 0, disableOnInteraction: false, reverseDirection: true }}
-                speed={5000}
-                allowTouchMove={false}
-                breakpoints={{
-                    900: {
-                        slidesPerView: 2,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                    },
-                }}
-            >
-                {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index}>
-                        {renderTestimonial(testimonial, index)}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-
-            <Box sx={{ height: { xs: "1rem", sm: "2rem"} }} />
-
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={20}
-                slidesPerView={isBelow900px ? 1 : 3}
-                loop={true}
-                autoplay={{ delay: 0, disableOnInteraction: false }}
-                speed={5000}
-                allowTouchMove={false}
-                breakpoints={{
-                    900: {
-                        slidesPerView: 2,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                    },
-                }}
-            >
-                {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index}>
-                        {renderTestimonial(testimonial, index)}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+      <Box sx={{ width: "100%", padding: "2rem 0" }}>
+        <Box sx={{ minHeight: "250px" }}>
+          <Swiper
+            sx={{
+              "& .swiper": {
+                minHeight: "250px",
+                overflow: "unset",
+              },
+            }}
+            modules={[Autoplay]}
+            spaceBetween={20}
+            slidesPerView={testimonailsPerView}
+            loop={true}
+            autoplay={{ delay: 0, disableOnInteraction: false, reverseDirection: true }}
+            speed={5000}
+            
+            allowTouchMove={false}
+         
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>{renderTestimonial(testimonial, index)}</SwiperSlide>
+            ))}
+          </Swiper>
         </Box>
+        <Box sx={{ minHeight: "250px" }}>
+          <Swiper
+          sx={{
+            "& .swiper": {
+              minHeight: "250px",
+              overflow: "unset",
+            },
+          }}
+            modules={[Autoplay]}
+            spaceBetween={20}
+            slidesPerView={testimonailsPerView}
+            loop={true}
+            autoplay={{ delay: 0, disableOnInteraction: false }}
+            speed={5000}
+            allowTouchMove={false}
+            
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>{renderTestimonial(testimonial, index)}</SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
+      </Box>
     );
 }

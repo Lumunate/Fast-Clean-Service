@@ -68,7 +68,7 @@ const FadeIn = ({
     };
   }, [direction, distance, duration, delay, ease, triggerStart, triggerEnd]);
 
-  return <Box ref={elementRef}>{children}</Box>;
+  return <Box sx={{height:"inherit"}} ref={elementRef}>{children}</Box>;
 };
 
 export default FadeIn;

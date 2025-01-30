@@ -9,7 +9,7 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
-  gap: "1rem",
+  gap: "2rem",
   width: "100%",
 
   "@media (max-width: 600px)": {
@@ -18,20 +18,20 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
-  width: "350px",
-  minHeight: "325px",
+  width: "345px",
+  minHeight: "320px",
   maxHeight: "330px",
   textAlign: "center",
   borderRadius: "1rem",
   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
 
-  backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.0001)" : "white",
+  backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.0001)" : "rgba(255,255,255,0.1)",
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
   backdropFilter: "blur(2.4px)",
   "@media (max-width: 600px)": {
-    width: "80%",
+    // width: "80%",
     minHeight: 0,
-    backdropFilter: 0,
+    // backdropFilter: 0,
   },
 }));
 
@@ -39,7 +39,7 @@ export const ServiceItemBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  margin: "3.5rem 1.8rem",
+  margin: "2.7rem 2.2rem",
 }));
 
 export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({
