@@ -10,7 +10,7 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 import CheckMark from "../../../public/bookingFormIcons/CheckMark.svg";
 
-import { options as autocarePackageTypes } from "../../app/autocare/data";
+import { options as autocarePackageTypes } from "../../app/[locale]/autocare/data";
 import Image from "next/image";
 
 import bg1 from "../../../public/voor5.jpg";
