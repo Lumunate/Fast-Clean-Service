@@ -5,6 +5,7 @@ import useMultiStepForm from '../../../hooks/useMultiStepForm';
 import { useValidation } from '../../../contexts/ValidationContext';
 import Image from 'next/image';
 import bg from '../../../../public/voor1.jpg';
+import { options } from '../../../app/[locale]/autocare/data';
 import {
   SubscriptionPkgsContainer,
   SubscriptionCardContainer,
@@ -15,14 +16,14 @@ import {
   SubscriptionContentLabel,
   SubscriptionContentValue,
 } from '../../mui/BookingFormPackages';
-import { options } from '../../../app/autocare/data';
-import { useTheme } from '../../../contexts/themeContext';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useSubscriptionPackages } from '../../../hooks/useSubscriptionPackages';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
+import {useTheme} from "../../../contexts/themeContext";
 
 const colors = ['#5DFA48', '#005BAC', '#BA8B1D'];
 
