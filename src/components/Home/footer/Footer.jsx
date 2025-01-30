@@ -36,9 +36,13 @@ export default function Footer() {
             },
           }}
         >
-          <Box>
-            <Image src={Logo} alt="logo" width={99} height={61} style={{ objectFit: "contain" }} />
-          </Box>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Image src={Logo} alt="logo" width={99} height={61} style={{ objectFit: "contain" }} />
+                <Box sx={{ marginTop: "0.5rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <MuiLink href="/terms-and-conditions" sx={{ color: "#FFF", textDecoration: "none", fontSize: "1rem", fontFamily: "DMSans", "&:hover": { color: "primary.accentDark" } }}>Terms & Conditions</MuiLink>
+                    <MuiLink href="/privacy-policy" sx={{ color: "#FFF", textDecoration: "none", fontSize: "1rem", fontFamily: "DMSans", "&:hover": { color: "primary.accentDark" } }}>Privacy Policy</MuiLink>
+                </Box>
+            </Box>
 
           <Box
             sx={{
