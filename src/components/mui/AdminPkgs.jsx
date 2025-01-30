@@ -56,6 +56,7 @@ export const StyledCard = styled(Card)(() => ({
     "&:hover": {
         boxShadow: "0 4px 20px 0 rgba(0,0,0,0.12)",
     },
+    "@media (max-width: 600px)": { minWidth: "0", padding: 12 },
 }));
 
 export const ButtonLearnMore = styled(Button)(() => ({
@@ -105,6 +106,7 @@ export const TableCellCustom = styled(TableCell)(({ theme }) => ({
     padding: '10px',
     fontSize: '1.2rem',
     color: theme.palette.text.primary,
+    "@media (max-width: 600px)": { fontSize: "1rem" },
 }));
 
 export const TableHeaderCell = styled(TableCell)(({ theme }) => ({

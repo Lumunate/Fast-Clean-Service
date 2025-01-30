@@ -137,12 +137,12 @@ export const FormProvider = ({ children }) => {
 
   const calculateFormColors = useCallback(() => {
     const colors = {
-      Standard: '#5dfa48',
       Interior: '#5dfa48',
+      Standard: '#5dfa48',
       Deluxe: '#0088ff',
-      Exterior: '#0088ff',
       Premium: '#ffd02b',
       Combi: '#ffd02b',
+      Exterior: '#0088ff',
     };
 
     const pkg = formData?.packageType?.name;

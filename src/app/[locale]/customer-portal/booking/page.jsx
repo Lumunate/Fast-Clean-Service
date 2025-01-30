@@ -81,16 +81,19 @@ const BookingsPage = () => {
     });
 
     return (
-        <Box sx={{ padding: "16px" }}>
+        <Box sx={{ padding: "16px", marginTop: {xs: "1rem", sm: "0"} }}>
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "space-between",
-                    alignItems: "center",
                     marginBottom: "20px",
+                    flexDirection: { xs: "column", sm: "row" },
+                    alignItems: { xs: "flex-start", sm: "center" },
                 }}
             >
-                <SectionHeading>My Bookings</SectionHeading>
+                <SectionHeading sx={{ textAlign: { xs: "left", sm: "inherit" } }}>
+                    My Bookings
+                </SectionHeading>
 
                 <TextField
                     variant="outlined"
@@ -105,10 +108,11 @@ const BookingsPage = () => {
                         ),
                     }}
                     sx={{
-                        width: "250px",
+                        width: { xs: "100%", sm: "250px" }, // Full width on small screens
                         backgroundColor: "#fff",
                         borderRadius: "8px",
                         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                        marginTop: { xs: "12px", sm: "0" }, // Add spacing on small screens
                         "& .MuiOutlinedInput-root": {
                             "& fieldset": {
                                 borderColor: "#888",
@@ -140,6 +144,7 @@ const BookingsPage = () => {
                                                 fontSize: "1.2rem",
                                                 color: "white",
                                                 fontWeight: "bold",
+                                                "@media (max-width: 600px)": { fontSize: "1rem" },
                                             }}
                                         >
                                             {header}

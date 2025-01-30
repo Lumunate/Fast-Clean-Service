@@ -40,12 +40,13 @@ const SectionContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "24rem",
+    marginTop: "10rem",
     "@media (max-width: 768px)": { marginTop: "8rem", },
 }));
 
 const ResponsiveGrid = styled(Grid)(({ theme }) => ({
     width: "90%",
+    maxWidth: "1500px",
     margin: "0 auto",
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
@@ -70,9 +71,9 @@ export default function HowDoesItWork() {
     }
 
     return (
-        <SectionContainer>
+        <SectionContainer sx={{ marginBottom: "10rem"}}>
             <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-                <HeadingLinesAnimation text="How Does It Work?" />
+                <HeadingLinesAnimation text="HOW DOES IT WORK?" />
             </Box>
 
             <ResponsiveGrid>
@@ -153,7 +154,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(75% - 22px)",
+                        left: "calc(71% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",
