@@ -17,19 +17,19 @@ const stats = [
   {
     icon: Star,
     type: "rating",
-    head: "4.7/5",         // We'll parse '4.7' from this for the count
+    head: "4.7/5",
     desc: "Stars on Trustpilot",
   },
   {
     icon: Bars,
     type: "ranking",
-    head: "4+",            // We'll parse '4' from this for the count
+    head: "6+",
     desc: "Years of Experience",
   },
   {
     icon: Customer,
     type: "customer",
-    head: "1250+",         // We'll parse '1250' from this for the count
+    head: "5750+",
     desc: "Happy Customers",
   },
 ];
@@ -210,22 +210,14 @@ function StatsCard({ icon, head, desc, type }) {
   const [hasAnimated, setHasAnimated] = useState(false);
   const cardRef = useRef(null);
 
-  // Example: parse numeric portion from `head`
-  // For "4.7/5", we parse "4.7"
-  // For "4+", we parse "4"
-  // For "1250+", we parse "1250"
   const parseNumberFromHead = () => {
-    // Example 1: rating => "4.7/5"
     if (type === "rating") {
-      // Extract '4.7' from "4.7/5"
       const [numberPart] = head.split("/");
       return parseFloat(numberPart);
     }
-    // Example 2: ranking => "4+"
     else if (type === "ranking") {
       return parseFloat(head.replace("+", ""));
     }
-    // Example 3: customer => "1250+"
     else if (type === "customer") {
       return parseFloat(head.replace("+", ""));
     }
@@ -235,19 +227,15 @@ function StatsCard({ icon, head, desc, type }) {
   useEffect(() => {
     const finalValue = parseNumberFromHead();
 
-    // Decide initialValue if needed
-    // (From your old code: ranking started from 1, customer started from 1300, etc.)
     let initialValue = 0;
     let animate = true;
 
     if (type === "ranking") {
-      initialValue = 1; // start from 1
+      initialValue = 1;
     } else if (type === "customer") {
-      initialValue = 1000; // old code started at 1300
+      initialValue = 5250;
     } else if (type === "rating") {
       initialValue = 2;
-      // rating was basically not incrementing from 0;
-      // if you prefer it to animate, set it to 0 or something else
     }
 
     // Intersection Observer
