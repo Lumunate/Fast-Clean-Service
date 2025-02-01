@@ -83,6 +83,12 @@ export const CardBody = styled(CardContent)(({ theme }) => ({
     '&:last-child': {
         paddingBottom: '16px',
     },
+    "@media (max-width: 600px)": {
+        padding: "0",
+        '&:last-child': {
+            paddingBottom: '0',
+        },
+    },
 }));
 
 export const CardActions = styled(Box)(({ theme }) => ({
