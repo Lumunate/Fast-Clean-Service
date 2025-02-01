@@ -34,7 +34,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                 sx={{
                     position: "fixed",
                     bottom: 20,
-                    left: 20,
+                    right: 20,
                     zIndex: 1000,
                     width: 50,
                     height: 50,
@@ -50,7 +50,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                 {currentLocale === "en" ? (
                     <GB style={{ width: "30px", height: "30px" }} />
                 ) : (
-                    <DE style={{ width: "30px", height: "30px" }} />
+                    <NL style={{ width: "30px", height: "30px" }} />
                 )}
             </IconButton>
 
@@ -73,7 +73,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                     English
                 </MenuItem>
                 <MenuItem onClick={() => switchLanguage("de")}>
-                    <DE style={{ width: "24px", height: "24px", marginRight: "8px" }} />
+                    <NL style={{ width: "24px", height: "24px", marginRight: "8px" }} />
                     Deutsch
                 </MenuItem>
             </Menu>
