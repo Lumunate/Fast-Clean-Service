@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Box, Toolbar, useMediaQuery } from '@mui/material';
+import { Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 import Navbar from '../../../components/Customer/Navbar';
 import Sidebar from '../../../components/Customer/Sidebar';
 import Dashboard from '../../../components/Customer/Dashboard';

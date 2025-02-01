@@ -10,376 +10,146 @@ export default function Footer() {
     const { theme } = useTheme();
 
     return (
-      <footer
-        style={{
-          backgroundColor: "#000000",
-          color: theme.palette.mode === "light" ? "#212121" : "#fff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "2rem 0",
-          position: "relative",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 12rem",
-            marginBottom: "2rem",
-            "@media (max-width: 1368px)": {
-              padding: "0 6rem",
-            },
-            "@media (max-width: 900px)": {
-              display: "none",
-            },
-          }}
+        <footer
+            style={{
+                backgroundColor: "#000000",
+                color: theme.palette.mode === "light" ? "#212121" : "#fff",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                padding: "2rem 0",
+                position: "relative",
+            }}
         >
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Image src={Logo} alt="logo" width={99} height={61} style={{ objectFit: "contain" }} />
-                <Box sx={{ marginTop: "0.5rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <MuiLink href="/terms-and-conditions" sx={{ color: "#FFF", textDecoration: "none", fontSize: "1rem", fontFamily: "DMSans", "&:hover": { color: "primary.accentDark" } }}>Terms & Conditions</MuiLink>
-                    <MuiLink href="/privacy-policy" sx={{ color: "#FFF", textDecoration: "none", fontSize: "1rem", fontFamily: "DMSans", "&:hover": { color: "primary.accentDark" } }}>Privacy Policy</MuiLink>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "0 12rem",
+                    marginBottom: "2rem",
+                    "@media (max-width: 1368px)": {
+                        padding: "0 6rem",
+                    },
+                    "@media (max-width: 900px)": {
+                        display: "none",
+                    },
+                }}
+            >
+                <Box>
+                    <Image src={Logo} alt="logo" width={99} height={61} style={{ objectFit: "contain" }} />
+                </Box>
+
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "absolute",
+                        top: "30%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        gap: "9.3rem",
+                        "@media (max-width: 1368px)": {
+                            gap: "4rem",
+                        },
+                        "@media (max-width: 900px)": {
+                            flexDirection: "column",
+                            gap: "2rem",
+                        },
+                    }}
+                >
+                    <MuiLink href="/" sx={linkStyles}>Home</MuiLink>
+                    <MuiLink href="/aboutus" sx={linkStyles}>About</MuiLink>
+                    <MuiLink href="/contact" sx={linkStyles}>Contact</MuiLink>
+                    <MuiLink href="/" sx={linkStyles}>Services</MuiLink>
+                </Box>
+
+                <Box sx={{ display: "flex", gap: "1rem" }}>
+                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
+                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
+                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
+                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                    <SocialIcon href="mailto:support@fastclean.com" Icon={Email} />
                 </Box>
             </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "absolute",
-              top: "30%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              gap: "9.3rem",
-              "@media (max-width: 1368px)": {
-                gap: "4rem",
-              },
-              "@media (max-width: 900px)": {
-                flexDirection: "column",
-                gap: "2rem",
-              },
-            }}
-          >
-            <MuiLink
-              href="/"
-              sx={{
-                color: "#FFF",
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                fontFamily: "DMSans",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Home
-            </MuiLink>
-            <MuiLink
-              href="/aboutus"
-              sx={{
-                color: "#FFF",
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                fontFamily: "DMSans",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              About
-            </MuiLink>
-            <MuiLink
-              href="/contact"
-              sx={{
-                color: "#FFF",
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                fontFamily: "DMSans",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Contact
-            </MuiLink>
-            <MuiLink
-              href="/"
-              sx={{
-                color: "#FFF",
-                textDecoration: "none",
-                fontSize: "1.5rem",
-                fontFamily: "DMSans",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Services
-            </MuiLink>
-          </Box>
+            {/* Copyright Centered */}
+            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem", "@media (max-width: 900px)": { display: "none" } }}>
+                <Typography variant="body2" sx={copyrightStyle}>
+                    © 2025 Fast Clean Service. All rights reserved.
+                </Typography>
+            </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              gap: "3rem",
-              "@media (max-width: 768px)": { gap: "2rem" },
-              "@media (max-width: 1366px)": { gap: "1rem" },
-            }}
-          >
-            <IconButton
-              href="https://facebook.com"
-              sx={{
-                color: "#FFF",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              <Facebook sx={{ fontSize: "1.8rem" }} />
-            </IconButton>
-            <IconButton
-              href="https://instagram.com"
-              sx={{
-                color: "#FFF",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              <Instagram sx={{ fontSize: "1.8rem" }} />
-            </IconButton>
-            <IconButton
-              href="https://twitter.com"
-              sx={{
-                color: "#FFF",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              <Twitter sx={{ fontSize: "1.8rem" }} />
-            </IconButton>
-            <IconButton
-              href="https://youtube.com"
-              sx={{
-                color: "#FFF",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              <YouTube sx={{ fontSize: "1.8rem" }} />
-            </IconButton>
-            <IconButton
-              href="mailto:support@fastclean.com"
-              sx={{
-                color: "#FFF",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              <Email sx={{ fontSize: "1.8rem" }} />
-            </IconButton>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            textAlign: "center",
-            paddingTop: "1rem",
-            paddingBottom: "2rem",
-            "@media (max-width: 900px)": {
-              display: "none",
-            },
-          }}
-        >
-          <Typography
-            variant="body2"
-            sx={{
-              color: theme.palette.mode === "light" ? "#fff" : "#fff",
-              fontSize: "1.5rem",
-              fontWeight: "500",
-              fontFamily: "DMSans",
-            }}
-          >
-            © 2025 Fast Clean Service. All rights reserved.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "none",
-            "@media (max-width: 900px)": {
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              padding: "1rem",
-            },
-          }}
-        >
-          <Box>
-            <Image src={Logo} alt="logo" width={70} height={45} style={{ objectFit: "contain" }} />
-          </Box>
-
-          <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
-            <IconButton href="https://facebook.com">
-              <Facebook
+            <Box
                 sx={{
-                  fontSize: "1.5rem",
-                  color: "#FFF",
-                  "&:hover": {
-                    color: "primary.accentDark",
-                  },
+                    position: "absolute",
+                    bottom: "4rem",
+                    left: "11rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    "@media (max-width: 900px)": { display: "none" },
                 }}
-              />
-            </IconButton>
-            <IconButton href="https://instagram.com">
-              <Instagram
-                sx={{
-                  fontSize: "1.5rem",
-                  color: "#FFF",
-                  "&:hover": {
-                    color: "primary.accentDark",
-                  },
-                }}
-              />
-            </IconButton>
-            <IconButton href="https://twitter.com">
-              <Twitter
-                sx={{
-                  fontSize: "1.5rem",
-                  color: "#FFF",
-                  "&:hover": {
-                    color: "primary.accentDark",
-                  },
-                }}
-              />
-            </IconButton>
-            <IconButton href="https://youtube.com">
-              <YouTube
-                sx={{
-                  fontSize: "1.5rem",
-                  color: "#FFF",
-                  "&:hover": {
-                    color: "primary.accentDark",
-                  },
-                }}
-              />
-            </IconButton>
-            <IconButton href="mailto:info@fastcleanservice.nl">
-              <Email
-                sx={{
-                  fontSize: "1.5rem",
-                  color: "#FFF",
-                  "&:hover": {
-                    color: "primary.accentDark",
-                  },
-                }}
-              />
-            </IconButton>
-          </Box>
+            >
+                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>Terms & Conditions</MuiLink>
+                <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
+                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>Privacy Policy</MuiLink>
+            </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              gap: "1rem",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: "1.2rem",
-              fontFamily: "DMSans",
-              color: "#D2D2D2",
-              textDecoration: "none",
-            }}
-          >
-            <MuiLink
-              href="/"
-              sx={{
-                color: "#D2D2D2",
-                textDecoration: "none !important",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Home
-            </MuiLink>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{
-                bgcolor: "#FFF",
-              }}
-            />
-            <MuiLink
-              href="/aboutus"
-              sx={{
-                color: "#D2D2D2",
-                textDecoration: "none !important",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              About
-            </MuiLink>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{
-                bgcolor: "#FFF",
-              }}
-            />
-            <MuiLink
-              href="/contact"
-              sx={{
-                color: "#D2D2D2",
-                textDecoration: "none !important",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Contact Us
-            </MuiLink>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{
-                bgcolor: "#FFF",
-              }}
-            />
-            <MuiLink
-              href="/"
-              sx={{
-                color: "#D2D2D2",
-                textDecoration: "none !important",
-                "&:hover": {
-                  color: "primary.accentDark",
-                },
-              }}
-            >
-              Services
-            </MuiLink>
-          </Box>
+            <Box sx={{ display: "none", "@media (max-width: 900px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
+                <Box>
+                    <Image src={Logo} alt="logo" width={70} height={45} style={{ objectFit: "contain" }} />
+                </Box>
 
-          <Typography
-            variant="body2"
-            sx={{
-              color: theme.palette.mode === "light" ? "#D2D2D2" : "#D2D2D2",
-              fontSize: "1.2rem",
-              fontWeight: "400",
-              fontFamily: "DMSans",
-              textAlign: "center",
-              marginTop: "1rem",
-            }}
-          >
-            © 2024 Fast Clean Service. All rights reserved.
-          </Typography>
-        </Box>
-      </footer>
+                <Box sx={{ display: "flex", gap: "1rem", justifyContent: "center", alignItems: "center", margin: "0 1rem"  }}>
+                    <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>Terms & Conditions</MuiLink>
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
+                    <MuiLink href="/privacy-policy" sx={smallLinkStyles}>Privacy Policy</MuiLink>
+                </Box>
+
+                <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
+                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
+                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
+                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
+                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                    <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                </Box>
+
+                <Typography variant="body2" sx={{ ...copyrightStyle }}>
+                    © 2025 Fast Clean Service. All rights reserved.
+                </Typography>
+            </Box>
+        </footer>
     );
 }
+
+// Helper Components & Styles
+const linkStyles = {
+    color: "#FFF",
+    textDecoration: "none",
+    fontSize: "1.5rem",
+    fontFamily: "DMSans",
+    "&:hover": { color: "primary.accentDark" },
+};
+
+const smallLinkStyles = {
+    color: "#D2D2D2",
+    textDecoration: "none",
+    fontSize: "1.2rem",
+    "&:hover": { color: "primary.accentDark" },
+};
+
+const copyrightStyle = {
+    color: "#D2D2D2",
+    fontSize: "1.5rem",
+    fontWeight: "500",
+    fontFamily: "DMSans",
+    textAlign: "center",
+};
+
+const SocialIcon = ({ href, Icon }) => (
+    <IconButton href={href} sx={{ color: "#FFF", "&:hover": { color: "primary.accentDark" } }}>
+        <Icon sx={{ fontSize: "1.8rem" }} />
+    </IconButton>
+);
