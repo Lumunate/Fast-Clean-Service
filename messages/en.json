@@ -1,7 +1,292 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "home": {
+    "title": "Home",
+    "hero_section": {
+      "title": "FAST CLEAN SERVICE",
+      "subtitle": [
+        "Your clean card is our calling card!",
+        "The number 1 in the field of specialist car cleaning!",
+        "We come on location."
+      ],
+      "buttons": {
+        "book_now": "Book Now",
+        "scroll_down": "Scroll Down"
+      }
+    },
+    "about_section": {
+      "title": "The Best Care for Your Car Wherever You Want!",
+      "description": "At Fast Clean Service, we provide professional steam cleaning and car detailing—on location or at our branch. Using eco-friendly techniques, we ensure your car is cleaned and protected with exceptional attention to detail.",
+      "why_choose_us": {
+        "title": "Why Choose Fast Clean Service?",
+        "features": [
+          {
+            "title": "Convenience",
+            "description": "Cleaning on location or at our branch."
+          },
+          {
+            "title": "Eco Friendly",
+            "description": "Safe, durable steam cleaning techniques."
+          },
+          {
+            "title": "Excellence",
+            "description": "Exceptional results every time."
+          }
+        ]
+      },
+      "cta": {
+        "text": "Book online or request a free quote today!",
+        "buttons": {
+          "book_now": "Book Now!",
+          "learn_more": "Learn More"
+        }
+      }
+    },
+    "stats_section": {
+      "title": "Our Numbers",
+      "stats": [
+        {
+          "type": "rating",
+          "value": "4.7/5",
+          "description": "Stars on Trustpilot"
+        },
+        {
+          "type": "ranking",
+          "value": "6+",
+          "description": "Years of Experience"
+        },
+        {
+          "type": "customer",
+          "value": "5750+",
+          "description": "Happy Customers"
+        }
+      ]
+    },
+    "how_it_works": {
+      "title": "HOW DOES IT WORK?",
+      "steps": [
+        {
+          "title": "Choose your location",
+          "description": "We come to you or you bring your car to us."
+        },
+        {
+          "title": "Choose your service",
+          "description": "Select from our extensive range of cleaning and detailing services."
+        },
+        {
+          "title": "We will do the rest",
+          "description": "Enjoy your perfectly cleaned car!"
+        },
+        {
+          "title": "Make an appointment",
+          "description": "Choose a date and time that suits you."
+        }
+      ]
+    },
+    "services_section": {
+      "title": "OUR SERVICES",
+      "description": "At Fast Clean Service we offer a wide range of services to keep your car in top condition. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.",
+      "services": [
+        {
+          "title": "Steam Cleaning Interior & Exterior",
+          "description": "Provide a deeply cleaned car with our environmentally friendly steam cleaning techniques. Book Now and give your car the fresh start it deserves."
+        },
+        {
+          "title": "Steam Cleaning Interior & Exterior",
+          "description": "Protect your car’s paint and make it shine again with our professional wax and coating treatments. Plan Your Detailing and keep your car looking new for longer."
+        },
+        {
+          "title": "Polishing and Headlight Restoration",
+          "description": "Remove scratches and regain the brightness of your headlights for a brighter shine result. Request a Quote for your polishing job."
+        }
+      ],
+      "buttons": {
+        "book_now": "Book Now!",
+        "learn_more": "Learn More"
+      }
+    },
+    "customer_reviews_section": {
+      "title": "What Our Customers Say",
+      "description": "At Fast Clean Service we have already helped many satisfied customers. Leave Your Review and tell us how we helped you!",
+      "button": "Submit a Review"
+    },
+    "packages_section": {
+      "title": "OUR PACKAGES",
+      "packages": [
+        {
+          "title": "Anywhere Auto-Care",
+          "description": "We bring the latest steam cleaning technology to your location, ensuring your vehicles are professionally cleaned and ready to go!"
+        },
+        {
+          "title": "FleetCare Pro",
+          "description": "Tailored cleaning solutions for businesses with multiple vehicles. We ensure your fleet stays spotless and road-ready."
+        },
+        {
+          "title": "Subscriptions",
+          "description": "Hassle-free car care with regular service packages. Enjoy consistent maintenance at discounted rates."
+        },
+        {
+          "title": "Long term Vehicle Care",
+          "description": "Long-term vehicle maintenance plans to ensure your car remains in peak condition with additional care options."
+        }
+      ]
+    },
+    "anywhere_autocare_section": {
+      "title": "Anywhere AutoCare",
+      "description": "We have different packages to choose from depending on your needs. Each package has been carefully put together to provide your car with the best care, whether it is a standard cleaning or a complete detail treatment.",
+      "services": [
+        {
+          "title": "On-Site Service",
+          "description": "Enjoy our services at our dedicated location, where you can relax while we take care of your vehicle."
+        },
+        {
+          "title": "Mobile Service",
+          "description": "Enjoy our services at your location, where you can relax while we take care of your vehicle."
+        }
+      ],
+      "packages": [
+        {
+          "name": "Standard",
+          "category": "Basic",
+          "price": "From €74.95",
+          "features": [
+            "Exterior steam cleaning",
+            "Tire blackening",
+            "Window cleaning"
+          ],
+          "description": "Book Now for a quick and thorough cleaning.",
+          "buttons": {
+            "learn_more": "Learn More",
+            "book_now": "Book Now"
+          }
+        },
+        {
+          "name": "Deluxe",
+          "category": "Popular",
+          "price": "From €149.95",
+          "features": [
+            "Thorough steam cleaning",
+            "Interior and exterior polishing",
+            "Applying wax"
+          ],
+          "description": "Choose Deluxe for a complete treatment of your car.",
+          "buttons": {
+            "learn_more": "Learn More",
+            "book_now": "Book Now"
+          }
+        },
+        {
+          "name": "Premium",
+          "category": "Bespoke",
+          "price": "From €189.95",
+          "features": [
+            "Complete detail treatment",
+            "Including ceramic coating",
+            "Headlight polishing"
+          ],
+          "description": "Book Now for the ultimate showroom finish.",
+          "buttons": {
+            "learn_more": "Learn More",
+            "book_now": "Book Now"
+          }
+        }
+      ]
+    },
+    "fleetcare_subscriptions_section": {
+      "services": [
+        {
+          "id": "fleet-care-pro",
+          "title": "FleetCare Pro",
+          "description": "Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and ready for the road - anywhere, anytime.",
+          "highlight": "With FleetCare Pro, pristine vehicles are just a booking away.",
+          "button": {
+            "text": "Book Now",
+            "link": "/fleet"
+          }
+        },
+        {
+          "id": "subscriptions",
+          "title": "Subscriptions",
+          "description": "Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences.",
+          "highlight": "Choose your plan and never worry about a dirty car again!",
+          "special_highlight": "24 months | Yearly | Monthly plans",
+          "button": {
+            "text": "Book Now",
+            "link": "/de/subscribe"
+          }
+        }
+      ]
+    },
+    "other_vehicles_care_section": {
+      "title": "Other Vehicles Care",
+      "description": "Ensure your vehicles' longevity with our comprehensive maintenance plans designed to keep your car in optimal condition for years to come.",
+      "categories": [
+        {
+          "name": "Cars",
+          "services": [
+            "Steam washing",
+            "Window washing",
+            "Polishing chrome parts",
+            "Waxing",
+            "Cleaning rims",
+            "Blackening tires"
+          ],
+          "description": "We provide specialized steam cleaning that avoids scratches and restores your car’s shine."
+        },
+        {
+          "name": "Campers, Caravans, Boats, and Trucks",
+          "services": [
+            "Interior and Exterior Cleaning",
+            "Advanced Steam Cleaning",
+            "Flexible Services",
+            "Engine & Mechanical Cleaning"
+          ],
+          "description": "We offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization and engine cleaning for ultimate freshness and performance."
+        },
+        {
+          "name": "Bikes",
+          "services": [
+            "Motorbikes (Street, Cruiser, Touring, and Sport)",
+            "Dirt Bikes",
+            "Electric Bikes",
+            "Scooters"
+          ],
+          "description": "Whether it's a casual ride or a high-performance machine, we’ve got your two-wheelers covered with professional cleaning and care services."
+        }
+      ],
+      "button": {
+        "text": "Learn More",
+        "link": "/other-vehicles"
+      }
+    },
+    "why_choose_us_section": {
+      "title": "WHY CHOOSE US",
+      "services": [
+        {
+          "title": "On-Site Service",
+          "description": "Our experienced professionals come to you with our own material."
+        },
+        {
+          "title": "Time Efficiency",
+          "description": "Top-quality mobile steam cleaning that saves you time."
+        },
+        {
+          "title": "Open 7 Days a Week",
+          "description": "Get in touch with us through various channels."
+        },
+        {
+          "title": "Easy Booking",
+          "description": "Just book the appointment online and leave the rest to us."
+        },
+        {
+          "title": "Eco-Friendly",
+          "description": "We use 3 liters per car for great results."
+        },
+        {
+          "title": "Interior Care",
+          "description": "Find answers to frequently asked questions."
+        }
+      ]
+    }
   },
   "aboutus":{
     "BackgroundSectionHeading": "We offer mobile car cleaning at your convenience anytime and anywhere. Our steam cleaning technique ensures a deep, thorough clean, reaching even the toughest spots. Equipped with modern supplies in our vans, we provide efficient, professional service for all types of vehicles."

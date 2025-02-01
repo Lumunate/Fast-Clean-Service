@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { IconButton, Menu, MenuItem } from "@mui/material";
-import { GB, DE } from "country-flag-icons/react/3x2";
+import { GB, NL } from "country-flag-icons/react/3x2";
 
 export default function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
     const router = useRouter();

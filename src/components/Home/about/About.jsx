@@ -6,11 +6,13 @@ import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
+import {useTranslations} from "next-intl";
 
 export default function About() {
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
+    const t = useTranslations('home.about_section');
 
     const [imageSrc, setImageSrc] = useState("/g1.jpg"); // Default image
 
@@ -153,11 +155,7 @@ export default function About() {
                   },
                 }}
               >
-                <BestCareHeading> The Best Care for Your Car{" "}
-                    <span className="line-break">
-                      <br />
-                    </span>
-                    Wherever You Want! </BestCareHeading>
+                <BestCareHeading> {t("title")} </BestCareHeading>
               </Box>
 
               <Typography
