@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../../contexts/themeContext";
 import { HomePkgsBox, HomePkgsInBox } from "../../components/mui/HomePkgs";
 import { AutoTabContainer } from "../../components/mui/AutoCarePkgs";
-import { Box, Button, Container, Link, ListItem, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Link, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import RadialCircle from "../Decorative/RadialCircle";
 import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
@@ -172,7 +172,7 @@ const AutoCare = () => {
             sx={{
               display: "flex",
               gap: "16px",
-              height: "100%",
+              height: "auto",
               alignItems: "flex-start",
               "@media (max-width: 1220px)": {
                 flexDirection: "column",
@@ -208,7 +208,7 @@ const AutoCare = () => {
             sx={{
               display: "flex",
               gap: "16px",
-              height: "100%",
+              height: "max-content",
               alignItems: "flex-start",
               "@media (max-width: 1220px)": {
                 flexDirection: "column",
@@ -340,6 +340,7 @@ const PackageTypeCards = ({ image, color, packageType, descriptionItems, onClick
 
 const PackageOptionsCards = ({ color, name, tagline, descriptionItems, onClick, selected, price }) => {
   const { theme } = useTheme();
+  const isSmallScreen = useMediaQuery('max-width:1220px');
   return (
     <SubscriptionCardContainer
       onClick={onClick}
@@ -354,7 +355,7 @@ const PackageOptionsCards = ({ color, name, tagline, descriptionItems, onClick, 
     >
       <Stack
         gap={3}
-        justifyContent={"space-between"}
+        justifyContent={!isSmallScreen ? "space-between" : "center"}
         sx={{
           margin: "7.8rem 3rem 2.8rem",
         }}
@@ -393,7 +394,7 @@ const PackageOptionsCards = ({ color, name, tagline, descriptionItems, onClick, 
             {price}
           </Typography>
 
-          <Stack>
+          <Stack height="100%">
             {descriptionItems &&
               descriptionItems.map((option, index) => (
                 <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center" }}>
