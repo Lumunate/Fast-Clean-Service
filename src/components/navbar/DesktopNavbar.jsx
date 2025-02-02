@@ -32,6 +32,7 @@ import SunIcon from "@mui/icons-material/WbSunny";
 import MoonIcon from "../../../public/navbar/Moon.svg";
 import LoginModal from "../../components/Login/LoginModal";
 import SignUpModal from "../../components/SignUp/SignUpModal";
+import {useTranslations} from "next-intl";
 
 const DesktopNavbar = () => {
     const { theme, toggleTheme } = useTheme();
@@ -42,6 +43,7 @@ const DesktopNavbar = () => {
     const [loading, setLoading] = useState(false);
     const [unreadCount, setUnreadCount] = useState(0);
     const dropdownRef = useRef(null);
+    const t = useTranslations('header');
 
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
@@ -121,11 +123,11 @@ const DesktopNavbar = () => {
 
           <NavBarLinksContainer>
             <CustomLink href="/">
-              <NavLinkButton>Home</NavLinkButton>
+              <NavLinkButton>{t("navigation.home")}</NavLinkButton>
             </CustomLink>
 
             <CustomLink href="/aboutus">
-              <NavLinkButton>About</NavLinkButton>
+              <NavLinkButton>{t("navigation.about")}</NavLinkButton>
             </CustomLink>
 
             <NavLinkDropDownContainer ref={dropdownRef}>
@@ -143,7 +145,7 @@ const DesktopNavbar = () => {
                 }
                 sx={{ zIndex: "10", fontWeight: isServicesOpen ? "bold" : "normal" }}
               >
-                Services
+                  {t("navigation.services.title")}
                 <ChevronRightIcon
                   sx={{
                     marginLeft: "0.5rem",
@@ -180,16 +182,16 @@ const DesktopNavbar = () => {
                   }}
                 >
                   <CustomLink href="/fleet">
-                    <DropDownLink onClick={() => setIsServicesOpen(false)}>FleetCare Pro</DropDownLink>
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>{t("navigation.services.options.0")}</DropDownLink>
                   </CustomLink>
                   <CustomLink href="/autocare">
-                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Anywhere AutoCare</DropDownLink>
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>{t("navigation.services.options.1")}</DropDownLink>
                   </CustomLink>
                   <CustomLink href="/subscribe">
-                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Subscription Plans</DropDownLink>
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>{t("navigation.services.options.2")}</DropDownLink>
                   </CustomLink>
                   <CustomLink href="/other-vehicles">
-                    <DropDownLink onClick={() => setIsServicesOpen(false)}>Other Vehicles</DropDownLink>
+                    <DropDownLink onClick={() => setIsServicesOpen(false)}>{t("navigation.services.options.3")}</DropDownLink>
                   </CustomLink>
                   <DropDownLink
                     sx={{
@@ -198,21 +200,21 @@ const DesktopNavbar = () => {
                       cursor: "not-allowed",
                     }}
                   >
-                    Store <Badge sx={{ whiteSpace: "nowrap" }}>Coming Soon</Badge>
+                      {t("navigation.services.options.4")} <Badge sx={{ whiteSpace: "nowrap" }}>Coming Soon</Badge>
                   </DropDownLink>
                 </Box>
               )}
             </NavLinkDropDownContainer>
 
             <CustomLink href="/contact">
-              <NavLinkButton>Contact</NavLinkButton>
+              <NavLinkButton>{t("navigation.contact")}</NavLinkButton>
             </CustomLink>
           </NavBarLinksContainer>
 
           <NavLinksContainer>
             {sessionStatus === "authenticated" && (
               <CustomLink href="/booking">
-                <NavbarCTA>Book Now</NavbarCTA>
+                <NavbarCTA>{t("navigation.buttons.book_now")}</NavbarCTA>
               </CustomLink>
             )}
 
@@ -317,7 +319,7 @@ const DesktopNavbar = () => {
                   }}
                   onClick={() => handleOpenModal("login")}
                 >
-                  Log In
+                    {t("navigation.buttons.login")}
                 </Button>
                 <Button
                   variant="contained"
@@ -336,7 +338,7 @@ const DesktopNavbar = () => {
                   }}
                   onClick={() => handleOpenModal("signup")}
                 >
-                  Sign Up
+                    {t("navigation.buttons.signup")}
                 </Button>
               </Box>
             )}

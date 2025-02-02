@@ -1190,14 +1190,15 @@
           "Anywhere Autocare",
           "Subscriptions",
           "Other Vehicles",
-          "Store - Coming Soon"
+          "Store"
         ]
       },
       "contact": "Contact"
     },
     "buttons": {
       "login": "Log In",
-      "signup": "Sign Up"
+      "signup": "Sign Up",
+      "book_now": "Book Now"
     }
   },
   "footer": {

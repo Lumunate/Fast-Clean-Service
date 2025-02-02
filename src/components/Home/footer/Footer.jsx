@@ -5,9 +5,11 @@ import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-materia
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
+import {useTranslations} from "next-intl";
 
 export default function Footer() {
     const { theme } = useTheme();
+    const t = useTranslations('footer');
 
     return (
         <footer
