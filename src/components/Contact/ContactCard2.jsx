@@ -11,8 +11,10 @@ import {
 import { Box } from "@mui/material";
 import { ContactCardContainer } from "./Contact.style";
 import { useTheme } from "../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 export default function ContactCard2() {
+    const t = useTranslations('contact.working_hours');
     const { theme } = useTheme();
   return (
     <ContactCardContainer>
@@ -38,14 +40,14 @@ export default function ContactCard2() {
               color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
             }}
           >
-            WORKING HOURS
+              {t("title")}
           </ServiceItemHeading>
         </Box>
 
         <ServiceItemDescription
           sx={{ fontWeight: "400", fontSize: "1.4rem", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#606060" }}
         >
-          We provide the cleaning service for your vehicle at your home, your business or other desired location!
+            {t("description")}
         </ServiceItemDescription>
 
         <ServiceItemDescription
@@ -56,7 +58,7 @@ export default function ContactCard2() {
             color: "#606060",
           }}
         >
-          Monday to Sunday
+            {t("days")}
         </ServiceItemDescription>
 
         <ServiceItemDescription sx={{ paddingTop: "0.5rem", color: "#58CDFA", fontWeight: "400", fontSize: "1.4rem" }}>

@@ -35,9 +35,15 @@ const CallToActionBox = ({ hideImage = false }) => {
         <CTAContentBox>
           <CTAHeading>{t("title")}</CTAHeading>
 
-          <CTADescription sx={{ maxWidth: "50%"}}>
-              {t("description")}
-          </CTADescription>
+            <CTADescription
+                sx={{
+                    maxWidth: { xs: "0", md: "70%" },
+                    textAlign: "center",
+                    margin: "0 auto",
+                }}
+            >
+                {t("description")}
+            </CTADescription>
 
           <CTAInnerBox>
             <Button
