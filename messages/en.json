@@ -110,6 +110,7 @@
     "customer_reviews_section": {
       "title": "What Our Customers Say",
       "description": "At Fast Clean Service we have already helped many satisfied customers. Leave Your Review and tell us how we helped you!",
+      "description2": "Leave Your Review and tell us how we helped you!",
       "button": "Submit a Review"
     },
     "packages_section": {
