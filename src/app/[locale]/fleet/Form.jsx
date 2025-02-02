@@ -22,6 +22,7 @@ import { ThemeProvider } from "@emotion/react";
 import useSnackbar from "../../../hooks/useSnackbar";
 import axios from "axios";
 import { ServiceHeading } from "../../../components/Home/ServicesOverview/ServiceColumnGroup";
+import {useTranslations} from "next-intl";
 
 const submitFleetCareProForm = async (formData) => {
   try {
@@ -44,6 +45,7 @@ const submitFleetCareProForm = async (formData) => {
 };
 
 export default function FleetCareProForm() {
+    const t = useTranslations('fleetcare.quote_form');
   const { openSnackbar } = useSnackbar();
   const { theme } = useTheme();
 
@@ -106,7 +108,7 @@ export default function FleetCareProForm() {
           fontSize: '3.2rem',
           marginTop: "2rem",
           marginBottom: "0.5rem",
-        }}> Request a Quote</ServiceHeading>
+        }}>{t("title")}</ServiceHeading>
         <Box
           component="form"
           onSubmit={handleSubmit}
@@ -122,7 +124,7 @@ export default function FleetCareProForm() {
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Business"
+                label={t("fields.business")}
                 name="businessName"
                 value={formData.businessName}
                 onChange={handleChange}
@@ -144,7 +146,7 @@ export default function FleetCareProForm() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Address"
+                label={t("fields.address")}
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
@@ -166,7 +168,7 @@ export default function FleetCareProForm() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Name"
+                label={t("fields.name")}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -188,7 +190,7 @@ export default function FleetCareProForm() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Email"
+                label={t("fields.email")}
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -224,13 +226,13 @@ export default function FleetCareProForm() {
                     },
                   }}
                 >
-                  Vehicle Type
+                    {t("fields.vehicle_type")}
                 </InputLabel>
                 <Select
                   labelId="vehicleType-label"
                   id="vehicleType"
                   value={formData.vehicleType}
-                  label="Vehicle Type"
+                  label={t("fields.vehicle_type")}
                   onChange={(e) => {
                     e.target.name = "vehicleType";
                     handleChange(e);
@@ -264,14 +266,14 @@ export default function FleetCareProForm() {
                   }}
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>{t("fields.vehicle_types.none")}</em>
                   </MenuItem>
-                  <MenuItem value="Cars (all types)">Cars (all types)</MenuItem>
-                  <MenuItem value="SUVs">SUVs</MenuItem>
-                  <MenuItem value="Bikes (all types)">Bikes (all types)</MenuItem>
-                  <MenuItem value="Trucks">Trucks</MenuItem>
-                  <MenuItem value="Campers">Campers</MenuItem>
-                  <MenuItem value="Boats">Boats</MenuItem>
+                  <MenuItem value="Cars (all types)">{t("fields.vehicle_types.cars")}</MenuItem>
+                  <MenuItem value="SUVs">{t("fields.vehicle_types.suvs")}</MenuItem>
+                  <MenuItem value="Bikes (all types)">{t("fields.vehicle_types.bikes")}</MenuItem>
+                  <MenuItem value="Trucks">{t("fields.vehicle_types.trucks")}</MenuItem>
+                  <MenuItem value="Campers">{t("fields.vehicle_types.campers")}</MenuItem>
+                  <MenuItem value="Boats">{t("fields.vehicle_types.boats")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -292,13 +294,13 @@ export default function FleetCareProForm() {
                     },
                   }}
                 >
-                  Fleet Size
+                    {t("fields.fleet_size")}
                 </InputLabel>
                 <Select
                   labelId="fleetSize-label"
                   id="fleetSize"
                   value={formData.fleetSize}
-                  label="Fleet Size"
+                  label={t("fields.fleet_size")}
                   onChange={(e) => {
                     e.target.name = "fleetSize";
                     handleChange(e);
@@ -361,7 +363,7 @@ export default function FleetCareProForm() {
               },
             }}
           >
-            Submit
+              {t("button")}
           </Button>
         </Box>
       </ThemeProvider>
