@@ -9,8 +9,11 @@ import LongTermVehicleCare from "./LongTermVehicleCare";
 import RadialCircle from "../../Decorative/RadialCircle";
 import { Box } from "@mui/material";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
+import {useTranslations} from "next-intl";
 
 export default function ServicesOverview() {
+  const t = useTranslations('home.packages_section');
+
   return (
     <HomePkgsInBox
       sx={{ 
@@ -21,7 +24,7 @@ export default function ServicesOverview() {
       }}
     >
       <ServicesOverviewWrapper>
-        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>OUR PACKAGES</HeadingLinesAnimation>
+        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>{t("title")}</HeadingLinesAnimation>
 
         <Box sx={{ position: "relative" }}>
           <CarService />

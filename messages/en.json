@@ -129,7 +129,7 @@
           "description": "Hassle-free car care with regular service packages. Enjoy consistent maintenance at discounted rates."
         },
         {
-          "title": "Long term Vehicle Care",
+          "title": "Other Vehicle Care",
           "description": "Long-term vehicle maintenance plans to ensure your car remains in peak condition with additional care options."
         }
       ]
@@ -151,7 +151,8 @@
         {
           "name": "Standard",
           "category": "Basic",
-          "price": "From €74.95",
+          "price": "From",
+          "title": "Included",
           "features": [
             "Exterior steam cleaning",
             "Tire blackening",
@@ -166,7 +167,7 @@
         {
           "name": "Deluxe",
           "category": "Popular",
-          "price": "From €149.95",
+          "price": "From",
           "features": [
             "Thorough steam cleaning",
             "Interior and exterior polishing",

@@ -35,7 +35,6 @@ export default function Testimonials() {
   const { theme } = useTheme();
   const sliderRef = useRef(null);
   const t = useTranslations('home.customer_reviews_section');
-  const [testimonials, setTestimonials] = useState(TESTIMONIALS);
   const [activeStep, setActiveStep] = useState(0);
   const [activeHeight, setActiveHeight] = useState("auto");
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -180,6 +179,8 @@ export default function Testimonials() {
       socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
     },
   ];
+
+  const [testimonials, setTestimonials] = useState(TESTIMONIALS);
 
   useEffect(() => {
     const updatedTestimonials = [...TESTIMONIALS];
