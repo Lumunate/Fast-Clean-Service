@@ -297,10 +297,22 @@
     "title": "ABOUT",
     "description": "We differentiate our cleaning at your convenience anytime and anywhere. Our steam cleaning technology ensures a deep clean, even through the toughest spots equipped with superior hot water. We provide efficient professional service for all types of vehicles.",
     "qualities": {
-      "quality_as_priority": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail.",
-      "our_values": "Every car deserves the best, and we deliver excellence for both business and private customers.",
-      "experts_in_detail": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results.",
-      "our_successes": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+      "quality_as_priority": {
+        "title": "Quality as Priority",
+        "description": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail."
+      },
+      "our_values": {
+        "title": "Our Values",
+        "description": "Every car deserves the best, and we deliver excellence for both business and private customers."
+      },
+      "experts_in_detail": {
+        "title": "Experts in Detail",
+        "description": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+      },
+      "our_successes": {
+        "title": "Our Successes",
+        "description": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+      }
     },
     "detailing_shop": {
       "title": "DETAILING SHOP",

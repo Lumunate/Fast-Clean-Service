@@ -14,12 +14,14 @@ import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimatio
 import CallToActionBox from "../../../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../../../components/Decorative/Spacer";
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../../components/Decorative/Decorative.style";
+import {useTranslations} from "next-intl";
 
 export default function AboutUs() {
+    const t = useTranslations('about');
   return (
     <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", }, }}>
         <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-            <HeadingLinesAnimation sx={{fontSize:"56px"}}>ABOUT</HeadingLinesAnimation>
+            <HeadingLinesAnimation sx={{fontSize:"56px"}}>{t("title")}</HeadingLinesAnimation>
         </Box>
 
         <BackgroundSection />

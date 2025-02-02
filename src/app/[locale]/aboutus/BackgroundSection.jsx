@@ -116,13 +116,13 @@ const Description = styled(Typography)(({ theme }) => ({
 }));
 
 export default function BackgroundSection() {
-  const t = useTranslations('aboutus');
+  const t = useTranslations('about');
   return (
       <Box sx={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
         <SectionContainer>
           <TextContainer>
             <Description>
-              {t('BackgroundSectionHeading')}
+              {t('description')}
             </Description>
           </TextContainer>
 

@@ -7,27 +7,30 @@ import {
     Container
 } from '@mui/material';
 import { useTheme } from "@mui/material/styles";
+import {useTranslations} from "next-intl";
 
 const ValueProposition = () => {
+    const t = useTranslations('about');
     const theme = useTheme();
     const features = [
         {
-            title: "Quality as a Priority",
-            description: "We prioritize top-notch quality with fully equipped service buses and cutting edge cleaning techniques to perfect every detail."
+            title: t("qualities.quality_as_priority.title"),
+            description: t("qualities.quality_as_priority.description")
         },
         {
-            title: "Our Values",
-            description: "Every car deserves the best, and we deliver excellence for both private and business customers."
+            title: t("qualities.our_values.title"),
+            description: t("qualities.our_values.description")
         },
         {
-            title: "Experts in Detail",
-            description: "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+            title: t("qualities.experts_in_detail.title"),
+            description: t("qualities.experts_in_detail.description")
         },
         {
-            title: "Our Successes",
-            description: "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore a like-new appearance."
+            title: t("qualities.our_successes.title"),
+            description: t("qualities.our_successes.description")
         }
     ];
+
 
     return (
         <Container>
