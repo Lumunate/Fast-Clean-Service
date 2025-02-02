@@ -5,7 +5,13 @@ import CheckoutSelection from "./CheckoutStep";
 
 const Index = () => {
   return (
-    <Box>
+    <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+    }}>
       <BookingFormHeading>Checkout</BookingFormHeading>
 
       <BookingFormSubHeading
@@ -36,8 +42,14 @@ const Index = () => {
           display: { sm: "block", fontSize: "0.8rem", maxWidth: "550px", color: "#3e3e3e", margin: '2rem auto 0' },
         }}
       >
-        *Please note that the liability of Cryptoverse Solutions GbR and its shareholders is limited in accordance with our
-        General Terms and Conditions. Further information can be found in our General Terms and Conditions.
+          *{" "}
+          <a href="https://commerce.coinbase.com" target="_blank" rel="noopener noreferrer">
+              Coinbase Commerce
+          </a>{" "}
+          only supports one-time payments. Therefore, our subscription plans can only be purchased via{" "}
+          <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">
+              Stripe
+          </a>.
       </BookingFormSubHeading>
     </Box>
   );
