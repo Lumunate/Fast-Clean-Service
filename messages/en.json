@@ -84,19 +84,22 @@
     },
     "services_section": {
       "title": "OUR SERVICES",
-      "description": "At Fast Clean Service we offer a wide range of services to keep your car in top condition. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.",
+      "description": "At Fast Clean Service we offer a wide range of services to keep your car in top condition.<br />From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.",
       "services": [
         {
           "title": "Steam Cleaning Interior & Exterior",
-          "description": "Provide a deeply cleaned car with our environmentally friendly steam cleaning techniques. Book Now and give your car the fresh start it deserves."
+          "description": "Provide a deeply cleaned car with our  environmentally friendly steam cleaning techniques.",
+          "description2": "Book Now and give your car the fresh start it deserves"
         },
         {
           "title": "Steam Cleaning Interior & Exterior",
-          "description": "Protect your car’s paint and make it shine again with our professional wax and coating treatments. Plan Your Detailing and keep your car looking new for longer."
+          "description": "Protect your car's paint and make it shine again with our professional wax and coating treatments.",
+          "description2": "Plan Your Detailing and keep your car looking new for longer"
         },
         {
           "title": "Polishing and Headlight Restoration",
-          "description": "Remove scratches and regain the brightness of your headlights for a brighter shine result. Request a Quote for your polishing job."
+          "description": "Remove scratches and regain the brightness of your headlights for a brighter shine result.",
+          "description2": "Request a Quote for your polishing job."
         }
       ],
       "buttons": {
@@ -976,6 +979,52 @@
           "vehicle_model": "Make and Model of Vehicle",
           "terms_agreement": "I certify that I have read and agree to the Terms and Conditions"
         }
+      },
+      {
+        "step": 9,
+        "title": "Review & Apply Coupon",
+        "description": "Final review before payment. Apply a coupon code if you have one!",
+        "summary": {
+          "vehicle_information": {
+            "license_plate": "License Plate",
+            "vehicle_type": "Vehicle Type"
+          },
+          "service_details": {
+            "service_type": "Selected Service",
+            "package_type": "Chosen Package",
+            "addons": "Additional Options",
+            "detailing": "Detailing Add-ons"
+          },
+          "appointment_details": {
+            "date": "Selected Date",
+            "time": "Selected Time"
+          }
+        },
+        "coupon_section": {
+          "input_placeholder": "Enter Coupon Code",
+          "apply_button": "Apply Coupon",
+          "discount_info": {
+            "original_price": "Original Price",
+            "discount_amount": "Discount Amount",
+            "final_price": "Final Price"
+          }
+        }
+      },
+      {
+        "step": 10,
+        "title": "Final Booking Confirmation",
+        "description": "Confirm your details before finalizing your booking.",
+        "form_fields": {
+          "first_name": "First Name",
+          "surname": "Surname",
+          "phone_number": "Phone Number",
+          "company_name": "Company Name",
+          "email": "Email",
+          "vehicle_model": "Make and Model",
+          "location": "Cleaning Location",
+          "terms_agreement": "I certify that I have read and agree to the Terms and Conditions"
+        },
+        "confirmation_message": "Your booking is almost complete! Please verify all details before proceeding."
       }
     ]
   },

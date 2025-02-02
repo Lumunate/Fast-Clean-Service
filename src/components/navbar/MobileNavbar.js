@@ -140,7 +140,7 @@ const MobileNavbar = () => {
         <Divider />
         <ListItem disablePadding>
           <ListItemButton onClick={() => (window.location.href = "/booking")}>
-            <NavbarCTA sx={{ marginLeft: "0 !important" }}>{t("navigation.buttons.book_now")}</NavbarCTA>
+            <NavbarCTA sx={{ marginLeft: "0 !important" }}>{t("buttons.book_now")}</NavbarCTA>
           </ListItemButton>
         </ListItem>
       </Box>
@@ -253,7 +253,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={Arrow_Right} alt="User Icon" width={20} height={20} />
-                                    {t("navigation.buttons.login")}
+                                    {t("buttons.login")}
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
@@ -262,7 +262,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_Cog} alt="User Icon" width={20} height={20} />
-                                    {t("navigation.buttons.signup")}
+                                    {t("buttons.signup")}
                                 </DropDownLink>
                             </Box>
                         )}

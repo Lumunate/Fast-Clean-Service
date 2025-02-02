@@ -214,7 +214,7 @@ const DesktopNavbar = () => {
           <NavLinksContainer>
             {sessionStatus === "authenticated" && (
               <CustomLink href="/booking">
-                <NavbarCTA>{t("navigation.buttons.book_now")}</NavbarCTA>
+                <NavbarCTA>{t("buttons.book_now")}</NavbarCTA>
               </CustomLink>
             )}
 
@@ -319,7 +319,7 @@ const DesktopNavbar = () => {
                   }}
                   onClick={() => handleOpenModal("login")}
                 >
-                    {t("navigation.buttons.login")}
+                    {t("buttons.login")}
                 </Button>
                 <Button
                   variant="contained"
@@ -338,7 +338,7 @@ const DesktopNavbar = () => {
                   }}
                   onClick={() => handleOpenModal("signup")}
                 >
-                    {t("navigation.buttons.signup")}
+                    {t("buttons.signup")}
                 </Button>
               </Box>
             )}
