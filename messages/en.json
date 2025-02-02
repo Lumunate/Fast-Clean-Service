@@ -510,9 +510,33 @@
         "name": "Name",
         "email": "Email",
         "phone_number": "Phone Number",
-        "vehicle_type": "Vehicle Type",
-        "service_type": "Service Type",
-        "location": "Location",
+        "vehicle_type": {
+          "label": "Vehicle Type",
+          "options": {
+            "none": "None",
+            "bikes": "Bikes (all types)",
+            "trucks": "Trucks",
+            "campers": "Campers",
+            "boats": "Boats"
+          }
+        },
+        "service_type": {
+          "label": "Service Type",
+          "options": {
+            "none": "None",
+            "anywhere_autocare": "Anywhere AutoCare",
+            "fleetcare_pro": "FleetCare Pro"
+          }
+        },
+        "location": {
+          "label": "Location",
+          "options": {
+            "none": "None",
+            "onsite": "Onsite",
+            "your_place": "Your Place"
+          }
+        },
+        "address": "Address",
         "number_of_vehicles": "Number of Vehicles"
       },
       "button": "Submit"
