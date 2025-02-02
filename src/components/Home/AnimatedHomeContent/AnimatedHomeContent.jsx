@@ -6,18 +6,20 @@ import { useTheme } from "../../../contexts/themeContext";
 import { HomeHeroContainer } from "../../mui/HomePkgs";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import HomeSocialsBox from "./HomeSocialsBox";
+import {useTranslations} from "next-intl";
 
 const AnimatedHomeContent = () => {
   const { theme } = useTheme();
+    const t = useTranslations('home.hero_section');
 
   const typographyRef = useRef(null);
   const tlRef = useRef(null);
   const [currentText, setCurrentText] = useState("");
 
   const lines = useMemo(() => [
-    "Your clean card is our calling card!",
-    "The number 1 in the field of specialist car cleaning!",
-    "We come on location.",
+      t("subtitle.0"),
+      t("subtitle.1"),
+      t("subtitle.2"),
   ], []);
 
   const handleScroll = () => {
@@ -68,23 +70,23 @@ const AnimatedHomeContent = () => {
               zIndex: "8",
           }}
       >
-          {/*<Box*/}
-          {/*    component="video"*/}
-          {/*    src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"*/}
-          {/*    autoPlay*/}
-          {/*    muted*/}
-          {/*    loop*/}
-          {/*    playsInline*/}
-          {/*    sx={{*/}
-          {/*        position: "absolute",*/}
-          {/*        top: 0,*/}
-          {/*        left: 0,*/}
-          {/*        width: "100%",*/}
-          {/*        height: "100%",*/}
-          {/*        objectFit: "cover",*/}
-          {/*        zIndex: -1,*/}
-          {/*    }}*/}
-          {/*/>*/}
+          <Box
+              component="video"
+              src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
+              autoPlay
+              muted
+              loop
+              playsInline
+              sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  zIndex: -1,
+              }}
+          />
 
           <Box
               sx={{
@@ -147,7 +149,7 @@ const AnimatedHomeContent = () => {
               color: "white",
             }}
           >
-            FAST CLEAN SERVICE
+              {t("title")}
           </Typography>
           <Box ref={typographyRef}>
             <Typography
