@@ -33,6 +33,7 @@ const BookingProfileCard = ({ handleOpenModal, booking }) => {
                     backgroundColor: "#fff",
                     boxShadow: "0 6px 15px rgba(0,0,0,0.2)",
                 },
+                "@media (max-width: 600px)": { width: "100%",},
             }}
         >
             <Box
