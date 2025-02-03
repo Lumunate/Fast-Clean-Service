@@ -14,6 +14,7 @@ export interface IBooking extends Document {
   street?: string;
   zipCode?: string;
   city?: string;
+  calendarEventId?: string;
   email: string;
   phoneNumber: string;
   vehicleMakeAndModel: string;
@@ -26,6 +27,7 @@ export interface IBooking extends Document {
   appointmentEndTimestamp: Date;
   price: number;
   duration: number;
+  travelDistance?: number;
   travelDuration?: number;
   type: "Onsite" | "Remote";
   vehicleDetails?: LicensePlateData | undefined | null;
@@ -40,6 +42,7 @@ const bookingSchema: Schema = new Schema({
   street: String,
   zipCode: String,
   city: String,
+  calendarEventId: { type: String, required: false },
   email: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   vehicleMakeAndModel: { type: String, required: true },

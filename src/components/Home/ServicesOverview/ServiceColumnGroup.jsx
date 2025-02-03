@@ -6,10 +6,10 @@ import { HomePkgsBox, HomePkgsInBox } from "../../mui/HomePkgs";
 import FadeIn from "../../Animations/FadeIn";
 
 export const ServiceHeading = styled(Typography)(({ theme }) => ({
+  fontSize:"40px", 
+  fontWeight:500,
   textAlign: "center",
-  fontSize: "4rem ",
   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
-  fontWeight: "bold",
   marginBottom: "0.9rem",
   "@media (max-width: 600px)": {
     fontSize: "2.2rem ",
@@ -19,7 +19,7 @@ export const ServiceHeading = styled(Typography)(({ theme }) => ({
 
 export const ServiceDescription = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  fontSize: "1.4rem",
+  fontSize: "1.8rem",
   color: theme.palette.mode === "dark" ? "#fff" : "#000000",
   maxWidth: "780px",
   "@media (max-width: 600px)": {
@@ -29,12 +29,12 @@ export const ServiceDescription = styled(Typography)(({ theme }) => ({
 
 export const ServicesContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "space-around",
-  flexWrap: "wrap",
-  maxWidth: "80%",
+  flexDirection: "row",
   marginBottom: "3rem",
   gap: "9.7rem",
   "@media (max-width: 600px)": {
+    maxWidth: "450px",
+    flexDirection: "column",
     gap: "2rem",
   },
 }));
@@ -100,10 +100,11 @@ export default function ServiceColumnGroup() {
 
   return (
     <HomePkgsInBox
+      id="anywhere-auto-care"
       sx={{
         flexDirection: "column",
         alignItems: "center",
-        marginBottom: "12.3rem",
+        marginBottom: "6.15rem",
         "@media (max-width: 600px)": {
           marginBottom: "0",
         },

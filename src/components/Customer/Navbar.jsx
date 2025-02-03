@@ -1,22 +1,45 @@
-import { AppBar, IconButton, Toolbar, Typography, Box } from "@mui/material";
+import { AppBar, IconButton, Toolbar, Typography, Box, Menu, MenuItem, ListItemIcon, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import EventIcon from "@mui/icons-material/Event";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-const Navbar = ({ toggleDrawer }) => {
+const Navbar = ({ toggleDrawer, handleTabChange }) => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedTab, setSelectedTab] = useState("Dashboard");
+    const router = useRouter();
 
     const handleScroll = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        setIsScrolled(scrollTop > 0);
+        setIsScrolled(window.pageYOffset > 0);
     };
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleMenuClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleTabClick = (tab) => {
+        setSelectedTab(tab);
+        handleTabChange(tab);
+    };
+
+    const handleLogout = async () => {
+        await signOut({ redirect: false });
+        router.push("/");
+    };
 
     return (
         <AppBar
@@ -30,30 +53,41 @@ const Navbar = ({ toggleDrawer }) => {
             }}
         >
             <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={toggleDrawer}
-                    edge="start"
-                >
+                <IconButton color="inherit" aria-label="open drawer" onClick={handleMenuClick} edge="start">
                     <MenuIcon />
                 </IconButton>
-                <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-                    <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                        <IconButton aria-label="go home">
-                            <ArrowBackIcon />
-                            <HomeIcon />
-                        </IconButton>
-                    </Link>
-                    <Typography
-                        variant="h4"
-                        noWrap
-                        component="div"
-                        sx={{ fontSize: "1.8rem", fontWeight: "bold", marginLeft: "8px" }}
-                    >
-                        Customer Dashboard
-                    </Typography>
-                </Box>
+                <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}
+                    anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                    transformOrigin={{ vertical: "top", horizontal: "left" }}
+                    sx={{
+                        top: "41px !important",
+                        left: "-16px !important",
+                        position: "absolute !important",
+                    }}
+                >
+                    <MenuItem onClick={() => { router.push("/"); handleMenuClose(); }}>
+                        <ListItemIcon><HomeIcon /></ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </MenuItem>
+                    {[{ text: "Dashboard", icon: <DashboardIcon /> }, { text: "My Bookings", icon: <EventIcon /> }].map(
+                        (item) => (
+                            <MenuItem key={item.text} onClick={() => { handleTabClick(item.text); handleMenuClose(); }}>
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText primary={item.text} />
+                            </MenuItem>
+                        )
+                    )}
+                    <MenuItem onClick={() => { handleLogout(); handleMenuClose(); }}>
+                        <ListItemIcon><LogoutIcon /></ListItemIcon>
+                        <ListItemText primary="Logout" />
+                    </MenuItem>
+                </Menu>
+                <Typography variant="h4" noWrap component="div" sx={{ fontSize: "1.8rem", fontWeight: "bold", marginLeft: "8px" }}>
+                    Customer Dashboard
+                </Typography>
             </Toolbar>
         </AppBar>
     );

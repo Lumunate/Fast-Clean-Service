@@ -114,7 +114,7 @@ export const PricingContainer = styled(Box)(({ theme }) => ({
   marginTop: "3rem",
   "@media (max-width: 600px)": {
     width: "100%",
-    padding: "0 1rem",
+    padding: "0",
   },
 }));
 
@@ -146,6 +146,9 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   padding: "1rem 2rem",
+  "@media (max-width: 600px)": {
+    padding: "1rem 1rem",
+  },
 }));
 
 export const NextPrevButton = styled(ButtonBase)(({ theme, dull = false }) => ({
@@ -591,7 +594,7 @@ export const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   },
   transition: "all 0.3s ease",
 
-  fontSize: "1rem",
+  fontSize: "1.4rem",
   fontFamily: "Unbounded",
   fontWeight: "300",
   color: theme.palette.mode === "dark" ? "#FFF" : "#040404",

@@ -149,8 +149,8 @@ const EditPackageModal = ({
                 <TextField
                   variant="outlined"
                   type="number"
-                  value={selectedPackage.vehicleOptions[vehicle].additionalPrice}
-                  onChange={(e) => handleInputChange("additionalPrice", parseFloat(e.target.value), index, "vehicle")}
+                  value={selectedPackage.vehicleOptions[vehicle].additionalCost}
+                  onChange={(e) => handleInputChange("additionalCost", parseFloat(e.target.value), index, "vehicle")}
                   fullWidth
                   sx={{
                     fontSize: "1.6rem",
