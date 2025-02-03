@@ -4,23 +4,27 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
+import {useSession} from "next-auth/react";
 
 export default function StripeCheckoutButton() {
     const [amount, setAmount] = useState(1000);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { data: session } = useSession();
 
     const handleCheckout = async () => {
         setLoading(true);
         setError(null);
+        const userEmail = session.user.email;
+        const userId = session.user.id;
 
         try {
-            const response = await fetch('/api/stripe/checkout_sessions', {
+            const response = await fetch('/api/stripe/checkout-sessions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ amount }),
+                body: JSON.stringify({ amount, userEmail, userId }),
             });
 
             const { url } = await response.json();

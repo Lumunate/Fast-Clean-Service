@@ -1,10 +1,10 @@
-// app/api/checkout_sessions/route.js
+// app/api/checkout-sessions/route.js
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
-    const { amount } = await request.json();
+    const { amount, userEmail, userId, paymentMode } = await request.json();
 
     const price = await stripe.prices.create({
         currency: 'eur',
@@ -25,6 +25,13 @@ export async function POST(request) {
             },
         ],
         mode: 'payment',
+        client_reference_id: userId,
+        customer_email: userEmail,
+        metadata: {
+            userEmail: userEmail,
+            userId: userId,
+            paymentMode: paymentMode
+        },
     });
 
     return new Response(JSON.stringify({ url: session.url }), {
