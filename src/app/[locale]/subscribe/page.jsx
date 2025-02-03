@@ -23,6 +23,7 @@ import Link from "next/link";
 import PaymentButton from "../../../components/payment-button/PaymentButton";
 import {useSession} from "next-auth/react";
 import StripeCheckoutButton from "../../../components/payment-button/StripeCheckoutButton";
+import {useTranslations} from "next-intl";
 
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 const gradients = [
@@ -32,6 +33,7 @@ const gradients = [
 ];
 
 const PackageCard = ({pkg, index, highlightColor}) => {
+    const t = useTranslations('subscriptions');
     const parsePrice = (priceString) => {
         const price = parseFloat(priceString.replace(/[^\d.-]/g, ""));
         return isNaN(price) ? 0 : price;
@@ -400,6 +402,7 @@ const PackageCard = ({pkg, index, highlightColor}) => {
 };
 
 const Page = () => {
+    const t = useTranslations('subscriptions');
     const {packages, loading, error, fetchPackages} = useSubscriptionPackages();
     const {theme} = useTheme();
 
@@ -417,7 +420,7 @@ const Page = () => {
                         marginBottom: "2rem",
                     }}
                 >
-                    <HeadingLinesAnimation text="SUBSCRIPTIONS"/>
+                    <HeadingLinesAnimation text={t("title")}/>
                 </Box>
                 <Container
                     sx={{
@@ -439,8 +442,7 @@ const Page = () => {
                     />
                     <Box sx={{maxWidth: "1110px", mb: 10}}>
                         <Box sx={{mb: 8}}>
-                            <ServiceSubtitle>Subscription Plans – Worry-Free Maintenance for your
-                                Vehicle</ServiceSubtitle>
+                            <ServiceSubtitle>{t("subtitle")}</ServiceSubtitle>
                             <Typography
                                 sx={{
                                     textAlign: "center",
@@ -453,11 +455,7 @@ const Page = () => {
                                     "@media (max-width: 600px)": {fontSize: "1.2rem"},
                                 }}
                             >
-                                With our Fast Clean Service Subscription Plans we offer a flexible and economical way to
-                                always keep your vehicle
-                                in top condition. Choose from several options tailored to your needs and driving style,
-                                with regular maintenance
-                                and exclusive benefits.
+                                {t("description")}
                             </Typography>
                         </Box>
 
@@ -479,7 +477,7 @@ const Page = () => {
                                     "@media (max-width: 600px)": {fontSize: "2rem"},
                                 }}
                             >
-                                What do we offer:
+                                {t("stitle")}
                             </Typography>
 
                             <Box
@@ -504,7 +502,7 @@ const Page = () => {
                                                     "@media (max-width: 600px)": {fontSize: "1.6rem"},
                                                 }}
                                             >
-                                                Expert Care
+                                                {t("features.0.title")}
                                             </Typography>
                                             <Typography
                                                 sx={{
@@ -514,8 +512,7 @@ const Page = () => {
                                                     "@media (max-width: 600px)": {fontSize: "1.2rem"},
                                                 }}
                                             >
-                                                Periodic cleaning and maintenance of both interior and exterior. Better
-                                                rates for returning customers.
+                                                {t("features.0.description")}
                                             </Typography>
                                         </ServiceCard>
                                     </Grid>
@@ -534,7 +531,7 @@ const Page = () => {
                                                     "@media (max-width: 600px)": {fontSize: "1.6rem"},
                                                 }}
                                             >
-                                                Flexibility
+                                                {t("features.1.title")}
                                             </Typography>
                                             <Typography
                                                 sx={{
@@ -544,8 +541,7 @@ const Page = () => {
                                                     "@media (max-width: 600px)": {fontSize: "1.2rem"},
                                                 }}
                                             >
-                                                Flexibility in choosing the desired frequency (monthly, quarterly,
-                                                etc.).
+                                                {t("features.1.description")}
                                             </Typography>
                                         </ServiceCard>
                                     </Grid>
@@ -565,7 +561,7 @@ const Page = () => {
                                 "@media (max-width: 600px)": {fontSize: "1.2rem"},
                             }}
                         >
-                            Choose one of our subscription options and enjoy convenience and quality, without a hassle!
+                            {t("cta.text")}
                         </Typography>
                     </Box>
 
@@ -585,7 +581,7 @@ const Page = () => {
                                 },
                             }}
                         >
-                            Book Now
+                            {t("cta.button")}
                         </Button>
                     </Link>
                 </Container>
@@ -606,7 +602,7 @@ const Page = () => {
                     marginBottom: "2rem",
                 }}
             >
-                <HeadingLinesAnimation text="SUBSCRIPTIONS"/>
+                <HeadingLinesAnimation text={t("title")}/>
             </Box>
             <Container
                 sx={{
@@ -620,7 +616,7 @@ const Page = () => {
                 <Box sx={{maxWidth: "1110px"}}>
                     <Box sx={{mb: 8}}>
                         <ServiceSubtitle sx={{margin: "0 auto 26px"}}>
-                            Subscription Plans – Worry-Free Maintenance for your Vehicle
+                            {t("subtitle")}
                         </ServiceSubtitle>
                         <Typography
                             sx={{
@@ -634,11 +630,7 @@ const Page = () => {
                                 "@media (max-width: 600px)": {fontSize: "1.2rem"},
                             }}
                         >
-                            With our Fast Clean Service Subscription Plans we offer a flexible and economical way to
-                            always keep your vehicle in
-                            top condition. Choose from several options tailored to your needs and driving style, with
-                            regular maintenance and
-                            exclusive benefits
+                            {t("description")}
                         </Typography>
                     </Box>
 
@@ -660,7 +652,7 @@ const Page = () => {
                                 "@media (max-width: 600px)": {fontSize: "2rem"},
                             }}
                         >
-                            What do we offer:
+                            {t("stitle")}
                         </Typography>
 
                         <Box sx={{display: "flex", justifyContent: "center", width: "100%"}}>
@@ -679,7 +671,7 @@ const Page = () => {
                                                 "@media (max-width: 600px)": {fontSize: "1.6rem"},
                                             }}
                                         >
-                                            Expert Care
+                                            {t("features.0.title")}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -689,8 +681,7 @@ const Page = () => {
                                                 "@media (max-width: 600px)": {fontSize: "1.2rem"},
                                             }}
                                         >
-                                            Periodic cleaning and maintenance of both interior and exterior. Better
-                                            rates for returning customers.
+                                            {t("features.0.description")}
                                         </Typography>
                                     </ServiceCard>
                                 </Grid>
@@ -709,7 +700,7 @@ const Page = () => {
                                                 "@media (max-width: 600px)": {fontSize: "1.6rem"},
                                             }}
                                         >
-                                            Flexibility
+                                            {t("features.1.title")}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -719,7 +710,7 @@ const Page = () => {
                                                 "@media (max-width: 600px)": {fontSize: "1.2rem"},
                                             }}
                                         >
-                                            Flexibility in choosing the desired frequency (monthly, quarterly, etc.).
+                                            {t("features.1.description")}
                                         </Typography>
                                     </ServiceCard>
                                 </Grid>
@@ -738,7 +729,7 @@ const Page = () => {
                                 "@media (max-width: 600px)": {fontSize: "1.2rem"},
                             }}
                         >
-                            Choose one of our subscription options and enjoy convenience and quality, without a hassle!
+                            {t("cta.text")}
                         </Typography>
                     </Box>
                     <Box sx={{display: "flex", justifyContent: "center", marginTop: "2rem"}}>
@@ -758,7 +749,7 @@ const Page = () => {
                                     },
                                 }}
                             >
-                                Book Now
+                                {t("cta.button")}
                             </Button>
                         </Link>
                     </Box>
