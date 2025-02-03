@@ -12,7 +12,7 @@ import DetailingStep from './DetailingStep';
 import ScheduleAppointmentStep from './ScheduleAppointmentStep';
 import SummaryStep from './SummaryStep';
 import PersonParticularsStep from './PersonParticularsStep';
-import SelectCityStep from './SelectCityStep/SelectLocationInput';
+import CheckoutStep from './CheckoutStep';
 import StepBox from './StepBox';
 import { Container } from '@mui/material';
 import { useState, useRef, useEffect } from 'react';
@@ -92,6 +92,7 @@ const BookingForm = () => {
     { stepIndex: 8, component: <ScheduleAppointmentStep /> },
     { stepIndex: 9, component: <SummaryStep /> },
     { stepIndex: 10, component: <PersonParticularsStep /> },
+    { stepIndex: 11, component: <CheckoutStep /> },
   ];
 
   return (

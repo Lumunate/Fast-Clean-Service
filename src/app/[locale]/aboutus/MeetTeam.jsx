@@ -9,24 +9,26 @@ import {
 import { Instagram, Facebook } from "@mui/icons-material";
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
-const teamMember = {
-    name: "Felicio Perk",
-    title: "Founder & CEO",
-    imgSrc: "/peoplemain.png",
-    description:
-        "Wij zijn een gespecialiseerd mobiel poetsbedrijf voor elk type voertuig",
-    socialLinks: {
-        email: "mailto:felicio.perk@example.com",
-        whatsapp: "https://wa.me/1234567890",
-        instagram: "https://www.instagram.com/fastcleanservice/",
-        facebook: "https://www.facebook.com/FastCleanServiceNL/",
-    },
-};
+import {useTranslations} from "next-intl";
 
 export default function MeetTeam() {
     const theme = useTheme();
     const isDarkMode = theme.palette.mode === "dark";
+    const t = useTranslations('about.founder_section');
+
+    const teamMember = {
+        name: "Felicio Perk",
+        title: t("role"),
+        imgSrc: "/peoplemain.png",
+        description:
+            t("bio"),
+        socialLinks: {
+            email: "mailto:felicio.perk@example.com",
+            whatsapp: "https://wa.me/1234567890",
+            instagram: "https://www.instagram.com/fastcleanservice/",
+            facebook: "https://www.facebook.com/FastCleanServiceNL/",
+        },
+    };
 
     return (
         <Container

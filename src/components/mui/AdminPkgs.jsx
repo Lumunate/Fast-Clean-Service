@@ -43,7 +43,7 @@ export const SectionHeading = styled(Typography)(({ theme }) => ({
     fontSize: '1.8rem',
     fontWeight: 'bold',
     color: theme.palette.text.primary,
-    marginBottom: '20px',
+    marginBottom: {xs:'0', sm:'20px'},
 }));
 
 export const StyledCard = styled(Card)(() => ({
@@ -82,6 +82,12 @@ export const CardBody = styled(CardContent)(({ theme }) => ({
     padding: '16px',
     '&:last-child': {
         paddingBottom: '16px',
+    },
+    "@media (max-width: 600px)": {
+        padding: "0",
+        '&:last-child': {
+            paddingBottom: '0',
+        },
     },
 }));
 
@@ -329,4 +335,5 @@ export const ModalLabel = styled(Typography)(() => ({
 export const ModalValue = styled(Typography)(() => ({
   fontWeight: "medium",
   fontSize: "1.4rem",
+
 }));

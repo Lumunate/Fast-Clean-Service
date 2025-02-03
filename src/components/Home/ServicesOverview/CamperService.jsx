@@ -8,6 +8,7 @@ import styles from "./CamperService.module.css";
 import { ServiceDescription, ServiceHeading, ServiceItemContainer, ServiceItemSubheading } from "./ServiceColumnGroup";
 import RadialCircle from "../../Decorative/RadialCircle";
 import FadeIn from "../../Animations/FadeIn";
+import {useTranslations} from "next-intl";
 
 export const CamperServiceBox = styled(Box)(({ theme }) => ({
   minWidth: "500px",
@@ -58,6 +59,7 @@ export const ServiceItemHighlight = styled(Typography)(({ theme, special = false
 }));
 
 export default function CamperService() {
+  const t = useTranslations("home.fleetcare_subscriptions_section");
   const { theme } = useTheme();
 
   return (
@@ -78,16 +80,14 @@ export default function CamperService() {
         <CamperServiceBox id="fleet-care-pro">
           <FadeIn direction="left" distance={100} duration={1}>
             <Box>
-              <ServiceHeading>FleetCare Pro</ServiceHeading>
+              <ServiceHeading>{t("services.0.title")}</ServiceHeading>
               <ServiceItemDesciptionB>
-                Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings
-                professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and
-                ready for the road - anywhere, anytime.
+                {t("services.0.description")}
               </ServiceItemDesciptionB>
-              <ServiceItemHighlight>With FleetCare Pro, pristine vehicles are just a booking away.</ServiceItemHighlight>
+              <ServiceItemHighlight>{t("services.0.highlight")}</ServiceItemHighlight>
             </Box>
             <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
-              Book Now
+              {t("services.0.button.text")}
             </ServiceItemCTA>
           </FadeIn>
         </CamperServiceBox>
@@ -95,17 +95,16 @@ export default function CamperService() {
         <CamperServiceBox id="subscriptions">
           <FadeIn direction="right" distance={100} duration={1}>
             <Box>
-              <ServiceHeading>Subscriptions</ServiceHeading>
+              <ServiceHeading>{t("services.1.title")}</ServiceHeading>
               <ServiceItemDesciptionB>
-                Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to
-                your schedule and preferences.
+                {t("services.1.description")}
               </ServiceItemDesciptionB>
-              <ServiceItemHighlight>Choose your plan and never worry about a dirty car again!</ServiceItemHighlight>
+              <ServiceItemHighlight>{t("services.1.highlight")}</ServiceItemHighlight>
 
-              <ServiceItemHighlight special>24 months | Yearly | Monthly plans</ServiceItemHighlight>
+              <ServiceItemHighlight special>{t("services.1.special_highlight")}</ServiceItemHighlight>
             </Box>
             <ServiceItemCTA special onClick={() => (window.location.href = "/de/subscribe")}>
-              Book Now
+              {t("services.0.button.text")}
             </ServiceItemCTA>
           </FadeIn>
         </CamperServiceBox>

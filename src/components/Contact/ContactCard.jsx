@@ -12,8 +12,10 @@ import { LocationCityOutlined, Mail, Phone, WhatsApp } from "@mui/icons-material
 import { Box } from "@mui/material";
 import { ContactCardContainer } from "./Contact.style";
 import { useTheme } from "../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 export default function ContactCard() {
+    const t = useTranslations('contact.contact_details');
     const { theme } = useTheme();
 
     return (

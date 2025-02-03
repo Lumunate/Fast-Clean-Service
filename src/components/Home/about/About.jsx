@@ -6,11 +6,13 @@ import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
+import {useTranslations} from "next-intl";
 
 export default function About() {
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
+    const t = useTranslations('home.about_section');
 
     const [imageSrc, setImageSrc] = useState("/g1.jpg"); // Default image
 
@@ -153,11 +155,7 @@ export default function About() {
                   },
                 }}
               >
-                <BestCareHeading> The Best Care for Your Car{" "}
-                    <span className="line-break">
-                      <br />
-                    </span>
-                    Wherever You Want! </BestCareHeading>
+                <BestCareHeading> {t("title")} </BestCareHeading>
               </Box>
 
               <Typography
@@ -174,10 +172,7 @@ export default function About() {
                   },
                 }}
               >
-                At Fast Clean Service, we provide professional steam cleaning
-                and car detailing—on location or at our branch. Using
-                eco-friendly techniques, we ensure your car is cleaned and
-                protected with exceptional attention to detail.
+                  {t("description")}
               </Typography>
               <Typography
                 variant="h6"
@@ -193,7 +188,7 @@ export default function About() {
                   },
                 }}
               >
-                Why Choose Fast Clean Service?
+                  {t("why_choose_us.title")}
               </Typography>
 
                 <Box
@@ -231,10 +226,10 @@ export default function About() {
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
                             <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                Convenience
+                                {t("why_choose_us.features.0.title")}
                             </Typography>
                             <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                Cleaning on location or at our branch.
+                                {t("why_choose_us.features.0.description")}
                             </Typography>
                         </Box>
                     </Box>
@@ -258,10 +253,10 @@ export default function About() {
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
                             <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                Eco Friendly
+                                {t("why_choose_us.features.1.title")}
                             </Typography>
                             <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                Safe, durable steam cleaning techniques.
+                                {t("why_choose_us.features.1.description")}
                             </Typography>
                         </Box>
                     </Box>
@@ -285,10 +280,10 @@ export default function About() {
                     >
                         <Box sx={{ position: "relative", zIndex: 1 }}>
                             <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                Excellence
+                                {t("why_choose_us.features.2.title")}
                             </Typography>
                             <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                Exceptional results every time.
+                                {t("why_choose_us.features.2.description")}
                             </Typography>
                         </Box>
                     </Box>
@@ -329,7 +324,7 @@ export default function About() {
                                     },
                                 }}
                             >
-                                Book online or request a free quote today!
+                                {t("cta.text")}
                             </Typography>
                         </Box>
 
@@ -358,7 +353,7 @@ export default function About() {
                                         },
                                     }}
                                 >
-                                    Book Now!
+                                    {t("cta.buttons.book_now")}
                                 </Button>
                             </Link>
                             <Link href="/aboutus" passHref>
@@ -377,7 +372,7 @@ export default function About() {
                                         },
                                     }}
                                 >
-                                    Learn More
+                                    {t("cta.buttons.learn_more")}
                                 </Button>
                             </Link>
                         </Box>

@@ -17,8 +17,10 @@ import {
     ServiceDetailHeading,
 } from "../../mui/HomePkgs";
 import {useTheme} from "../../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 export default function Autocare() {
+    const t = useTranslations('home.anywhere_autocare_section');
   const { theme } = useTheme();
 
     return (
@@ -48,14 +50,14 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#7ed56f" }}>Standard</ServiceName>
-                  <ServiceCat>Basic</ServiceCat>
+                  <ServiceName sx={{ color: "#7ed56f" }}>{t("packages.0.name")}</ServiceName>
+                  <ServiceCat>{t("packages.0.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€74.95</span>
+                          {t("packages.0.price")}: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€74.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -63,7 +65,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
-                      Included
+                          {t("packages.0.title")}
                       </div>
                       <List
                 sx={{
@@ -74,13 +76,13 @@ export default function Autocare() {
                 }}
               >
                 <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px", }}>
-                  <ListItemText primary="Exterior steam cleaning" />
+                  <ListItemText primary={t("packages.0.features.0")} />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Tire blackening" />
+                  <ListItemText primary={t("packages.0.features.1")} />
                 </ListItem>
                 <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Window cleaning" />
+                  <ListItemText primary={t("packages.0.features.2")} />
                 </ListItem>
               </List>
                     </Box>
@@ -89,7 +91,7 @@ export default function Autocare() {
                   <ServiceDetail>
                    <Box>
                       <div className="innerdeet">
-                      Book Now for a quick and thorough cleaning.
+                          {t("packages.0.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -106,13 +108,13 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.0.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.0.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>
-            
+
             <ServicesItem sx={{ marginTop: "-2.5rem",   "@media (max-width: 1400px)": { marginTop: 0 }, }}>
               <PkgImgCtr
                 //  img="/bike2.jpg"
@@ -120,14 +122,14 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#2998ff" }}>Deluxe</ServiceName>
-                  <ServiceCat>Popular</ServiceCat>
+                    <ServiceName sx={{ color: "#2998ff" }}>{t("packages.1.name")}</ServiceName>
+                    <ServiceCat>{t("packages.1.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      From: <span style={{color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
+                          {t("packages.0.price")}: <span style={{color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -135,7 +137,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
-                      Included
+                          {t("packages.0.title")}
                       </div>
                       <List
                 sx={{
@@ -145,15 +147,15 @@ export default function Autocare() {
                   fontSize:"16px"
                 }}
               >
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px", }}>
-                  <ListItemText primary="Thorough steam cleaning" />
-                </ListItem>
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Interior and exterior polishing" />
-                </ListItem>
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Applying wax" />
-                </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.0")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.1")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.2")} />
+                          </ListItem>
               </List>
                     </Box>
                   </ServiceDetail>
@@ -161,7 +163,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      Choose Deluxe for a complete treatment of your car.
+                          {t("packages.1.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -175,9 +177,9 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.1.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.1.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>
@@ -188,14 +190,14 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#F4B81C" }}>Premium</ServiceName>
-                  <ServiceCat>Bespoke</ServiceCat>
+                    <ServiceName sx={{ color: "#F4B81C" }}>{t("packages.2.name")}</ServiceName>
+                    <ServiceCat>{t("packages.2.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      From: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€189.95</span>
+                          {t("packages.0.price")}: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€189.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -203,7 +205,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
-                      Included
+                          {t("packages.0.title")}
                       </div>
                       <List
                 sx={{
@@ -213,15 +215,15 @@ export default function Autocare() {
                   fontSize:"16px"
                 }}
               >
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px", }}>
-                  <ListItemText primary="Complete detail treatment" />
-                </ListItem>
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Including ceramic coating" />
-                </ListItem>
-                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
-                  <ListItemText primary="Headlight polishing" />
-                </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.0")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.1")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.2")} />
+                          </ListItem>
               </List>
                     </Box>
                   </ServiceDetail>
@@ -229,7 +231,7 @@ export default function Autocare() {
                   <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                      Book Now for the ultimate showroom finish.
+                          {t("packages.2.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -243,9 +245,9 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.2.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.2.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>

@@ -9,6 +9,7 @@ import { HomePkgsInBox } from "../../../components/mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../../components/Decorative/Decorative.style";
 import RadialCircle from "../../../components/Decorative/RadialCircle";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import {useTranslations} from "next-intl";
 
 export const VehicleSubheading = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
@@ -66,6 +67,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
 }));
 
 export default function OtherVehiclesMain() {
+    const t = useTranslations('other_vehicles');
   return (
       <VehicleContainer
       >
@@ -106,7 +108,7 @@ export default function OtherVehiclesMain() {
                     },
                 }}
             >
-              <HeadingLinesAnimation text="OTHER VEHICLES" />
+              <HeadingLinesAnimation text={t("title")} />
             </VehicleSubheading>
           </Box>
 
@@ -146,7 +148,7 @@ export default function OtherVehiclesMain() {
                 }}
             >
               <VehicleSubheading sx={{}}>
-                Specialized AutoCare for Bikes, Boats, Planes, and More!
+                  {t("subtitle")}
               </VehicleSubheading>
               <List
                   sx={{
@@ -157,19 +159,19 @@ export default function OtherVehiclesMain() {
               >
                 <CustomListItem>
                   <FontAwesomeIcon icon={faMotorcycle} />
-                  Expert Bike Maintenance and Detailing
+                    {t("description.0.text")}
                 </CustomListItem>
                 <CustomListItem>
                   <FontAwesomeIcon icon={faShip} />
-                  Comprehensive Care for Boats
+                    {t("description.1.text")}
                 </CustomListItem>
                 <CustomListItem>
                   <FontAwesomeIcon icon={faPlane} />
-                  Precision Cleaning and Maintenance for Aircraft
+                    {t("description.2.text")}
                 </CustomListItem>
                 <CustomListItem>
                   <FontAwesomeIcon icon={faBicycle} />
-                  Tailored Services for Specialty Vehicles
+                    {t("description.3.text")}
                 </CustomListItem>
               </List>
             </Box>

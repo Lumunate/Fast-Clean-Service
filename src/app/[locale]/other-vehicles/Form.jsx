@@ -9,6 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 import useSnackbar from "../../../hooks/useSnackbar";
 import axios from "axios";
 import { ServiceHeading } from "../../../components/Home/ServicesOverview/ServiceColumnGroup";
+import {useTranslations} from "next-intl";
 
 const submitForm = async (formData) => {
   try {
@@ -31,6 +32,7 @@ const submitForm = async (formData) => {
 };
 
 export default function Form() {
+    const t = useTranslations('other_vehicles.quote_form');
   const { openSnackbar } = useSnackbar();
   const { theme } = useTheme();
 
@@ -95,7 +97,7 @@ export default function Form() {
           }}
         >
           {" "}
-          Request a Quote
+            {t("title")}
         </ServiceHeading>
         <Box
           component="form"
@@ -112,7 +114,7 @@ export default function Form() {
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Name"
+                label={t("fields.name")}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -134,7 +136,7 @@ export default function Form() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Email"
+                label={t("fields.email")}
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -156,7 +158,7 @@ export default function Form() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Phone Number"
+                label={t("fields.phone_number")}
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
@@ -192,13 +194,13 @@ export default function Form() {
                     },
                   }}
                 >
-                  Vehicle Type
+                    {t("fields.vehicle_type.label")}
                 </InputLabel>
                 <Select
                   labelId="vehicleType-label"
                   id="vehicleType"
                   value={formData.vehicleType}
-                  label="Vehicle Type"
+                  label={t("fields.vehicle_type.label")}
                   onChange={(e) => {
                     e.target.name = "vehicleType";
                     handleChange(e);
@@ -231,13 +233,13 @@ export default function Form() {
                     },
                   }}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Bikes">Bikes (all types)</MenuItem>
-                  <MenuItem value="Trucks">Trucks</MenuItem>
-                  <MenuItem value="Campers">Campers</MenuItem>
-                  <MenuItem value="Boats">Boats</MenuItem>
+                    <MenuItem value="">
+                        <em>{t("fields.vehicle_type.options.none")}</em>
+                    </MenuItem>
+                    <MenuItem value="Bikes">{t("fields.vehicle_type.options.bikes")}</MenuItem>
+                    <MenuItem value="Trucks">{t("fields.vehicle_type.options.trucks")}</MenuItem>
+                    <MenuItem value="Campers">{t("fields.vehicle_type.options.campers")}</MenuItem>
+                    <MenuItem value="Boats">{t("fields.vehicle_type.options.boats")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -258,13 +260,13 @@ export default function Form() {
                     },
                   }}
                 >
-                  Service Type
+                    {t("fields.service_type.label")}
                 </InputLabel>
                 <Select
                   labelId="serviceType-label"
                   id="serviceType"
                   value={formData.serviceType}
-                  label="Service Type"
+                  label={t("fields.service_type.label")}
                   onChange={(e) => {
                     e.target.name = "serviceType";
                     handleChange(e);
@@ -297,11 +299,11 @@ export default function Form() {
                     },
                   }}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Anywhere AutoCare">Anywhere AutoCare</MenuItem>
-                  <MenuItem value="FleetCare Pro">FleetCare Pro</MenuItem>
+                    <MenuItem value="">
+                        <em>{t("fields.service_type.options.none")}</em>
+                    </MenuItem>
+                    <MenuItem value="Anywhere AutoCare">{t("fields.service_type.options.anywhere_autocare")}</MenuItem>
+                    <MenuItem value="FleetCare Pro">{t("fields.service_type.options.fleetcare_pro")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -322,7 +324,7 @@ export default function Form() {
                     },
                   }}
                 >
-                  Location
+                    {t("fields.location.label")}
                 </InputLabel>
                 <Select
                   labelId="location-label"
@@ -361,11 +363,11 @@ export default function Form() {
                     },
                   }}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Onsite">Onsite</MenuItem>
-                  <MenuItem value="Your Place">Your Place</MenuItem>
+                    <MenuItem value="">
+                        <em>{t("fields.location.options.none")}</em>
+                    </MenuItem>
+                    <MenuItem value="Onsite">{t("fields.location.options.onsite")}</MenuItem>
+                    <MenuItem value="Your Place">{t("fields.location.options.your_place")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -373,7 +375,7 @@ export default function Form() {
             {formData.location === "Your Place" && (
               <Grid item xs={12}>
                 <CustomFormTextField
-                  label="Address"
+                  label={t("fields.address")}
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
@@ -396,7 +398,7 @@ export default function Form() {
 
             <Grid item xs={12}>
               <CustomFormTextField
-                label="Number of Vehicles"
+                label={t("fields.number_of_vehicles")}
                 name="numVehicles"
                 value={formData.numVehicles}
                 onChange={handleChange}
@@ -434,7 +436,7 @@ export default function Form() {
               },
             }}
           >
-            Submit
+              {t("button")}
           </Button>
         </Box>
       </ThemeProvider>

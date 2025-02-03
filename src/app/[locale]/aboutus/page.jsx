@@ -14,12 +14,14 @@ import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimatio
 import CallToActionBox from "../../../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../../../components/Decorative/Spacer";
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../../components/Decorative/Decorative.style";
+import {useTranslations} from "next-intl";
 
 export default function AboutUs() {
+    const t = useTranslations('about');
   return (
     <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", }, }}>
         <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-            <HeadingLinesAnimation sx={{fontSize:"56px"}}>ABOUT</HeadingLinesAnimation>
+            <HeadingLinesAnimation sx={{fontSize:"56px"}}>{t("title")}</HeadingLinesAnimation>
         </Box>
 
         <BackgroundSection />
@@ -30,7 +32,7 @@ export default function AboutUs() {
 
         <Box sx={{marginTop: "11.3rem"}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", marginBottom: "5rem", flexDirection: "column", "@media (max-width: 900px)": { marginBottom: "2rem" },}}>
-                <HeadingLinesAnimation>DETAILING SHOP</HeadingLinesAnimation>
+                <HeadingLinesAnimation>{t("detailing_shop.title")}</HeadingLinesAnimation>
                 <Box sx={{ padding: "0 5rem", }}>
                     <Typography
                         sx={{
@@ -40,7 +42,7 @@ export default function AboutUs() {
                             margin: "2rem 0",
                         }}
                     >
-                        Experience the ultimate in car care, available at our professional detailing shop
+                        {t("detailing_shop.description")}
                     </Typography>
                 </Box>
             </Box>
@@ -49,14 +51,14 @@ export default function AboutUs() {
 
       <HomeWrapper sx={{ marginTop: { xs: "4rem", lg: "10rem"} }}>
           <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-              <HeadingLinesAnimation>MEET THE FOUNDER</HeadingLinesAnimation>
+              <HeadingLinesAnimation>{t("founder_section.title")}</HeadingLinesAnimation>
           </Box>
         <MeetTeam />
       </HomeWrapper>
 
         <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>See the Difference for Yourself</HeadingLinesAnimation>
+                <HeadingLinesAnimation>{t("gallery_section.title")}</HeadingLinesAnimation>
             </Box>
             <BeforeAfterSwiper />
         </Box>
@@ -64,7 +66,7 @@ export default function AboutUs() {
         <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1="100% Satisfaction" textBox2="On-Demand Cleaning, Anywhere" reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <HeadingLinesAnimation>TESTIMONIALS</HeadingLinesAnimation>
+                <HeadingLinesAnimation>{t("testimonials.title")}</HeadingLinesAnimation>
             </Box>
             <Reviews />
         </Box>

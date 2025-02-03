@@ -1,48 +1,58 @@
 "use client";
 import { useState } from "react";
-import { Box, Toolbar } from "@mui/material";
+import { Box, Toolbar, useMediaQuery } from "@mui/material";
 import Sidebar from "../../../components/Admin/Sidebar";
 import Navbar from "../../../components/Admin/Navbar";
 import { signOut } from "next-auth/react";
 import BookingsProvider from "../../../contexts/BookingsContext";
 
 const AdminDashboardLayout = ({ children }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    // Check if screen is below 600px
+    const isMobile = useMediaQuery("(max-width:600px)");
 
-  const toggleDrawer = () => {
-    setDrawerOpen((prev) => !prev);
-  };
+    const toggleDrawer = () => {
+        setDrawerOpen((prev) => !prev);
+    };
 
-  const handleTabChange = (tab) => {
-    setSelectedTab(tab);
-  };
+    const handleSignOut = () => {
+        signOut();
+    };
 
-  const handleSignOut = () => {
-    signOut();
-  };
+    return (
+        <BookingsProvider>
+            <Navbar
+                toggleDrawer={toggleDrawer}
+                drawerOpen={drawerOpen}
+                handleSignOut={handleSignOut}
+            />
 
-  return (
-    <BookingsProvider>
-      <Navbar toggleDrawer={toggleDrawer} drawerOpen={drawerOpen} handleSignOut={handleSignOut} />
-      <Box sx={{ display: "flex" }}>
-        <Sidebar drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} handleTabChange={handleTabChange} />
-        handleSignOut={handleSignOut}
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            p: 3,
-            overflowY: "auto",
-            zIndex: 1,
-            position: "relative",
-          }}
-        >
-          <Toolbar />
-          {children}
-        </Box>
-      </Box>
-    </BookingsProvider>
-  );
+            <Box sx={{ display: "flex", height: "100vh", overflow: "hidden" }}>
+                {!isMobile && (
+                    <Sidebar
+                        drawerOpen={drawerOpen}
+                        toggleDrawer={toggleDrawer}
+                        handleSignOut={handleSignOut}
+                    />
+                )}
+
+                <Box
+                    component="main"
+                    sx={{
+                        flexGrow: 1,
+                        p: 3,
+                        overflowY: "auto",
+                        zIndex: 1,
+                        position: "relative",
+                        "@media (max-width: 600px)": {p: 0},
+                    }}
+                >
+                    <Toolbar />
+                    {children}
+                </Box>
+            </Box>
+        </BookingsProvider>
+    );
 };
 
 export default AdminDashboardLayout;

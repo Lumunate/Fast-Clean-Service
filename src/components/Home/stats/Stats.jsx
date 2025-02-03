@@ -12,27 +12,9 @@ import { HomePkgsInBox } from "../../mui/HomePkgs";
 import Star from "../../AnimatedSvgs/Star";
 import Bars from "../../AnimatedSvgs/Bars";
 import Customer from "../../AnimatedSvgs/Customer";
+import {useTranslations} from "next-intl";
 
-const stats = [
-  {
-    icon: Star,
-    type: "rating",
-    head: "4.7/5",
-    desc: "Stars on Trustpilot",
-  },
-  {
-    icon: Bars,
-    type: "ranking",
-    head: "6+",
-    desc: "Years of Experience",
-  },
-  {
-    icon: Customer,
-    type: "customer",
-    head: "5750+",
-    desc: "Happy Customers",
-  },
-];
+
 
 const StatsSectionContainer = styled(Box)(({ theme }) => ({
   margin: "4rem auto",
@@ -88,6 +70,7 @@ const StatsCardDivider = styled(Box)(({ theme }) => ({
 
 const StatsDecorativeNumbers = () => {
   const theme = useTheme();
+  const t = useTranslations('home.stats_section');
   return (
     <Box
       sx={{
@@ -105,7 +88,7 @@ const StatsDecorativeNumbers = () => {
             color: theme.palette.mode === "light" ? "#939393" : "white",
           }}
         >
-          Our Numbers
+          {t("title")}
         </Typography>
 
         <Image src={Arrow} alt="Decorative Arrow" height={60} width={-1} style={{ position: "absolute", right: "-5%" }} />
@@ -115,6 +98,29 @@ const StatsDecorativeNumbers = () => {
 };
 
 export default function Stats() {
+  const t = useTranslations('home.stats_section');
+
+  const stats = [
+    {
+      icon: Star,
+      type: "rating",
+      head: "4.7/5",
+      desc: t("stats.0.description"),
+    },
+    {
+      icon: Bars,
+      type: "ranking",
+      head: "6+",
+      desc: t("stats.1.description"),
+    },
+    {
+      icon: Customer,
+      type: "customer",
+      head: "5750+",
+      desc: t("stats.2.description"),
+    },
+  ];
+
   return (
     <HomePkgsInBox
       sx={{
@@ -137,7 +143,6 @@ export default function Stats() {
                       head={stat.head}
                       desc={stat.desc}
                   />
-                  {/* Divider */}
                   {index !== stats.length - 1 && (
                       <ServicesDivider sx={{  background: "linear-gradient(to top, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)"}}/>
                   )}

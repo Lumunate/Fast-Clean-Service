@@ -7,6 +7,7 @@ import { CustomFormTextField } from "../../../components/mui/NewFormPkgs";
 import useSnackbar from "../../../hooks/useSnackbar";
 import axios from "axios";
 import { useTheme } from "../../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 const submitFleetCareProForm = async (formData) => {
   try {
@@ -30,6 +31,7 @@ const submitFleetCareProForm = async (formData) => {
 };
 
 export default function Form() {
+    const t = useTranslations('contact.form');
   const { openSnackbar } = useSnackbar();
   const { theme } = useTheme();
 
@@ -76,9 +78,9 @@ export default function Form() {
         padding: "2rem",
       }}
     >
-      <CustomFormTextField label="Name" name="name" value={formData.name} onChange={handleChange} fullWidth required />
+      <CustomFormTextField label={t("name")} name="name" value={formData.name} onChange={handleChange} fullWidth required />
       <CustomFormTextField
-        label="Email"
+        label={t("email")}
         name="email"
         type="email"
         value={formData.email}
@@ -91,7 +93,7 @@ export default function Form() {
         }}
       />
       <CustomFormTextField
-        label="Message"
+        label={t("message")}
         name="message"
         value={formData.message}
         onChange={handleChange}
@@ -130,7 +132,7 @@ export default function Form() {
             },
           }}
         >
-          Submit
+            {t("button")}
         </Button>
       </Box>
     </FormContainer>
