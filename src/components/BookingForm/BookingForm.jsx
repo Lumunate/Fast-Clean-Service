@@ -106,6 +106,7 @@ const BookingForm = () => {
         width: '1100%',
         height: activeHeight,
         transition: 'all 300ms ease-in-out',
+        marginLeft: {xs: "0", md:"5rem"},
       }}
     >
       {steps.map((step) => (
