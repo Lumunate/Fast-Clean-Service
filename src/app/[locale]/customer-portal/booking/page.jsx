@@ -20,36 +20,38 @@ import {
     TableRowCustom,
 } from "../../../../components/mui/AdminPkgs";
 import {useSession} from "next-auth/react";
-
-const tableHeaders = [
-    "Customer Name",
-    "Company Name",
-    "Street",
-    "Zip Code",
-    "City",
-    "Email",
-    "Phone Number",
-    "Vehicle",
-    "Vehicle Type",
-    "Service Name",
-    "Package",
-    "Appointment Start",
-    "Appointment End",
-    "Price",
-    "Duration",
-    "Travel Duration",
-    "Type",
-    "Addons",
-    "Detailing",
-    "Lock Time Start",
-    "Lock Time End",
-];
+import {useTranslations} from "next-intl";
 
 const BookingsPage = () => {
     const { data: session } = useSession();
     const [userBookings, setUserBookings] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const userEmail = session?.user?.email;
+    const t = useTranslations('customer_dashboard.sections.1');
+
+    const tableHeaders = [
+        t("table_headers.0"),
+        t("table_headers.1"),
+        t("table_headers.2"),
+        t("table_headers.3"),
+        t("table_headers.4"),
+        t("table_headers.5"),
+        t("table_headers.6"),
+        t("table_headers.7"),
+        t("table_headers.8"),
+        t("table_headers.9"),
+        t("table_headers.10"),
+        t("table_headers.11"),
+        t("table_headers.12"),
+        t("table_headers.13"),
+        t("table_headers.14"),
+        t("table_headers.15"),
+        t("table_headers.16"),
+        t("table_headers.17"),
+        t("table_headers.18"),
+        t("table_headers.19"),
+        t("table_headers.20"),
+    ];
 
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
@@ -92,12 +94,12 @@ const BookingsPage = () => {
                 }}
             >
                 <SectionHeading sx={{ textAlign: { xs: "left", sm: "inherit" } }}>
-                    My Bookings
+                    {t("title")}
                 </SectionHeading>
 
                 <TextField
                     variant="outlined"
-                    placeholder="Search by Vehicle, Service, or City"
+                    placeholder={t("search_placeholder")}
                     value={searchQuery}
                     onChange={handleSearchChange}
                     InputProps={{

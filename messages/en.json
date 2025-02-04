@@ -1094,7 +1094,7 @@
           "Please select your preferred checkout method",
           "only supports one-time payments. Therefore, our subscription plans can only be purchased via"
         ]
-      },
+      }
     ]
   },
   "feedback": {
@@ -1380,6 +1380,10 @@
   },
   "customer_dashboard": {
     "title": "Customer Dashboard",
+    "options": [
+      "Dashboard",
+      "My Bookings"
+    ],
     "sections": [
       {
         "title": "Dashboard Overview",
@@ -1396,19 +1400,16 @@
               "Appointment",
               "Price",
               "Payment Status"
-            ],
-            "bookings": []
+            ]
           },
           {
             "title": "Notifications",
-            "description": "Stay updated with the latest notifications.",
-            "notifications": []
+            "none": "No Notifications available."
           }
         ]
       },
       {
         "title": "My Bookings",
-        "description": "View and manage your car care appointments.",
         "search_placeholder": "Search by Vehicle, Service, or City",
         "table_headers": [
           "Customer Name",
@@ -1432,13 +1433,7 @@
           "Detailing",
           "Lock Time Start",
           "Lock Time End"
-        ],
-        "bookings": []
-      },
-      {
-        "title": "Notifications",
-        "description": "Manage your notifications.",
-        "notifications": []
+        ]
       }
     ]
   },
