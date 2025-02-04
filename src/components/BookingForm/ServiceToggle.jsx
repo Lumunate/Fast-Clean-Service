@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { StyledToggleButton, StyledToggleButtonGroup } from "../mui/BookingFormPackages";
 import useMultiStepForm from "../../hooks/useMultiStepForm";
+import {useTranslations} from "next-intl";
 
 const ServiceToggle = () => {
+    const t = useTranslations('booking');
     const { updateFormData, formData } = useMultiStepForm();
     const [service, setService] = useState(formData.service || "Remote");
 
@@ -28,10 +30,10 @@ const ServiceToggle = () => {
             aria-label="service type"
         >
             <StyledToggleButton value="Remote" aria-label="on-location service">
-                On-location
+                {t("toggle.0")}
             </StyledToggleButton>
             <StyledToggleButton value="Onsite" aria-label="onsite service">
-                Detailing Shop
+                {t("toggle.1")}
             </StyledToggleButton>
         </StyledToggleButtonGroup>
     );

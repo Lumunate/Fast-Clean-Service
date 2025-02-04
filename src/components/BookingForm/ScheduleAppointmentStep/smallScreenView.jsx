@@ -24,6 +24,7 @@ import useSnackbar from '../../../hooks/useSnackbar';
 import { useValidation } from '../../../contexts/ValidationContext';
 import { Loader } from '../../mui/Loader';
 import { LoaderContainer } from './ScheduleAppointment.style';
+import {useTranslations} from "next-intl";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -36,6 +37,7 @@ const theme = createTheme({
 });
 
 const SmallScreenView = () => {
+    const t = useTranslations('booking');
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
   const { openSnackbar } = useSnackbar();
@@ -58,12 +60,12 @@ const SmallScreenView = () => {
           return data.availableTimeSlots;
         } else {
           console.error('Invalid response structure: ', data);
-          openSnackbar('Invalid data received from server');
+          openSnackbar(t("steps.7.error.0"));
           return [];
         }
       } catch (err) {
         console.error('Error fetching time slots', err);
-        openSnackbar('Error fetching time slots');
+        openSnackbar(t("steps.7.error.1"));
         return [];
       }
     };
@@ -268,7 +270,7 @@ const SmallScreenView = () => {
                 ))
               ) : (
                 <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
-                  No slots available
+                    {t("steps.7.unavailable")}
                 </Typography>
               )}
             </Box>

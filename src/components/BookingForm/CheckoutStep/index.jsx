@@ -2,8 +2,10 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
 import CheckoutSelection from "./CheckoutStep";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box sx={{
         display: "flex",
@@ -12,15 +14,17 @@ const Index = () => {
         textAlign: "center",
         justifyContent: "center",
     }}>
-      <BookingFormHeading>Checkout</BookingFormHeading>
+        <BookingFormHeading>
+            {t("steps.10.title")}
+        </BookingFormHeading>
 
-      <BookingFormSubHeading
-        sx={{
-          display: { xs: "none", sm: "block" },
-        }}
-      >
-        Please select your preferred checkout method
-      </BookingFormSubHeading>
+        <BookingFormSubHeading
+            sx={{
+                display: { xs: "none", sm: "block" },
+            }}
+        >
+            {t("steps.10.description.0")}
+        </BookingFormSubHeading>
 
       <Box
         sx={{
@@ -46,7 +50,7 @@ const Index = () => {
           <a href="https://commerce.coinbase.com" target="_blank" rel="noopener noreferrer">
               Coinbase Commerce
           </a>{" "}
-          only supports one-time payments. Therefore, our subscription plans can only be purchased via{" "}
+          {t("steps.10.description.1")}{" "}
           <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">
               Stripe
           </a>.

@@ -942,145 +942,159 @@
       }
     ]
   },
-  "booking_on_location": {
+  "booking": {
     "title": "Booking - On Location",
+    "toggle": [
+      "On-location",
+      "Detailing Shop"
+    ],
+    "stepbar": [
+      "Location",
+      "License Plate",
+      "Vehicle Type",
+      "Service Type",
+      "Packages",
+      "Add Ons",
+      "Detailings",
+      "Appointment",
+      "Summary",
+      "Confirmation"
+    ],
+    "footer": [
+      "Price",
+      "Duration",
+      "Back",
+      "Next",
+      "Submit"
+    ],
     "steps": [
       {
         "step": 1,
         "title": "Location Selection",
-        "description": "Please select your cleaning location. Whether it’s on-site or at our branch, we’re ready to clean!",
-        "options": ["On Location", "On Branch"],
-        "price": "$0.00",
-        "duration": "0 mins"
+        "description": [
+          "Please select your cleaning location.",
+          "Whether it’s on-site or at our branch, we’re ready to clean!"
+        ],
+        "options": ["On Location", "On Branch", "We'll come to you, wherever you are.", "Come and visit our branch, Samsonweg 1A, Wormerveer."]
       },
       {
         "step": 2,
         "title": "License Plate",
-        "description": "Please enter your license plate. We’ll make sure your vehicle is on our care list!",
-        "input_placeholder": "Enter your license plate",
-        "option": "Proceed without license plate",
-        "price": "$0.00",
-        "duration": "0 mins"
+        "description": [
+          "Please enter your license plate.",
+          "We’ll make sure your vehicle is on our care list!"
+        ],
+        "option": "Proceed without license plate"
       },
       {
         "step": 3,
         "title": "Vehicle Type",
-        "description": "Please choose your vehicle type. Our service adapts to your vehicle’s needs!",
-        "vehicle_types": [
-          "Van",
-          "Convertible",
-          "SUV",
-          "Coupe",
-          "Hatchback",
-          "Pick-up Truck",
-          "Sedan",
-          "Station Wagon",
-          "MPV",
-          "Motorbike"
+        "description": [
+          "Please choose your vehicle type.",
+          "Our service adapts to your vehicle’s needs!"
         ],
-        "price": "$0.00",
-        "duration": "0 mins"
+        "vehicle_types": ["Van", "Convertible", "SUV", "Coupe", "Hatchback", "Pick-up Truck", "Sedan", "Station Wagon", "MPV", "Motorbike"]
       },
       {
         "step": 4,
         "title": "Service Type",
-        "description": "Please select a cleaning package. Tailored solutions for spotless spaces!",
-        "options": ["Anywhere Autocare", "Subscription Plans"],
-        "price": "$0.00",
-        "duration": "0 mins"
+        "description": [
+          "Please select a cleaning package.",
+          "Tailored solutions for spotless spaces!"
+        ],
+        "options": ["Anywhere Autocare", "Subscription Plans"]
       },
       {
         "step": 5,
         "title": "Package Selection",
-        "description": "Please choose a plan. Enjoy regular, worry-free cleaning!",
-        "package_options": ["Standard", "Deluxe", "Premium"],
-        "price_range": "From €74 - €149",
-        "duration_range": "± 36 min - 101 min",
-        "price": "$0.00",
-        "duration": "0 mins"
+        "description": [
+          "Please choose a plan.",
+          "Enjoy regular, worry-free cleaning!"
+        ],
+        "package_options": ["Ideal for regular maintenance of your vehicle.", "Thorough cleaning for a completely refreshed vehicle.", "Ultimate detailing for showroom shine."]
       },
       {
         "step": 6,
-        "title": "Schedule Appointment",
-        "description": "Please select an appointment time. We’re ready to clean when it’s most convenient for you!",
-        "price": "$89.95",
-        "duration": "60 mins"
+        "title": "Add Ons",
+        "description": [
+          "Please choose your add-ons",
+          "Enhance your service for extra sparkle!"
+        ]
       },
       {
         "step": 7,
-        "title": "Summary",
-        "description": "Please review your selections. Get ready for a pristine clean at your convenience!",
-        "sections": {
-          "Vehicle Information": ["License Plate", "Vehicle Type"],
-          "Service": ["Service Type", "Package Type"],
-          "Appointment": "Selected date & time"
-        },
-        "apply_coupon": "Apply Code",
-        "button_text": "Apply Coupon",
-        "price": "$89.95",
-        "duration": "60 mins"
+        "title": "Detailing",
+        "description": [
+          "Please pick your detailing extras",
+          "The finer the detail, the better the clean!"
+        ]
       },
       {
         "step": 8,
-        "title": "Booking Confirmation",
-        "description": "Please verify your details. Let’s make sure everything is perfect for your cleaning!",
-        "form_fields": {
-          "first_name": "First Name",
-          "surname": "Surname",
-          "phone_number": "Phone Number",
-          "company_name": "Company Name",
-          "search_location": "Search Locations",
-          "email": "Email",
-          "vehicle_model": "Make and Model of Vehicle",
-          "terms_agreement": "I certify that I have read and agree to the Terms and Conditions"
-        }
+        "title": "Schedule Appointment",
+        "description": [
+          "Please select an appointment time.",
+          "We’re ready to clean when it’s most convenient for you!"
+        ],
+        "error": [
+          "Invalid data received from server",
+          "Error fetching time slots"
+        ],
+        "unavailable": "No slots available"
       },
       {
         "step": 9,
-        "title": "Review & Apply Coupon",
-        "description": "Final review before payment. Apply a coupon code if you have one!",
-        "summary": {
-          "vehicle_information": {
-            "license_plate": "License Plate",
-            "vehicle_type": "Vehicle Type"
-          },
-          "service_details": {
-            "service_type": "Selected Service",
-            "package_type": "Chosen Package",
-            "addons": "Additional Options",
-            "detailing": "Detailing Add-ons"
-          },
-          "appointment_details": {
-            "date": "Selected Date",
-            "time": "Selected Time"
-          }
-        },
-        "coupon_section": {
-          "input_placeholder": "Enter Coupon Code",
-          "apply_button": "Apply Coupon",
-          "discount_info": {
-            "original_price": "Original Price",
-            "discount_amount": "Discount Amount",
-            "final_price": "Final Price"
-          }
-        }
+        "title": "Summary",
+        "description": [
+          "Please review your selections.",
+          "Get ready for a pristine clean at your convenience!"
+        ],
+        "sections": [
+          "Vehicle Information",
+          "Add Ons",
+          "Vehicle Type",
+          "Service",
+          "Service Type",
+          "Package Type",
+          "Sub-Package Type",
+          "Detailings",
+          "No Detailings",
+          "Appointment",
+          "No Add Ons"
+        ],
+        "apply_coupon": "Apply Code",
+        "button": "Apply Coupon",
+        "other": [
+          "Original Price:",
+          "Discount Amount:",
+          "Final Price:"
+        ]
       },
       {
         "step": 10,
-        "title": "Final Booking Confirmation",
-        "description": "Confirm your details before finalizing your booking.",
-        "form_fields": {
-          "first_name": "First Name",
-          "surname": "Surname",
-          "phone_number": "Phone Number",
-          "company_name": "Company Name",
-          "email": "Email",
-          "vehicle_model": "Make and Model",
-          "location": "Cleaning Location",
-          "terms_agreement": "I certify that I have read and agree to the Terms and Conditions"
-        },
-        "confirmation_message": "Your booking is almost complete! Please verify all details before proceeding."
-      }
+        "title": "Booking Confirmation",
+        "description": [
+          "Please verify your details.",
+          "Let’s make sure everything is perfect for your cleaning!"
+        ],
+        "form_fields": [
+          "First Name",
+          "Surname",
+          "Phone Number",
+          "Company Name",
+          "Email",
+          "Make and Model of Vehicle",
+          "I certify that I have read and agree to the"
+        ]
+      },
+      {
+        "step": 11,
+        "title": "Checkout",
+        "description": [
+          "Please select your preferred checkout method",
+          "only supports one-time payments. Therefore, our subscription plans can only be purchased via"
+        ]
+      },
     ]
   },
   "feedback": {

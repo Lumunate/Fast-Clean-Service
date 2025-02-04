@@ -4,15 +4,24 @@ import {BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormP
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import SmallScreenView from "./smallScreenView";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box>
-      <BookingFormHeading>Schedule Appointment</BookingFormHeading>
-      <BookingFormSubHeading>
-        Please select an appointment time <br />
-        We’re ready to clean when it’s most convenient for you!
-      </BookingFormSubHeading>
+        <BookingFormHeading>{t("steps.7.title")}</BookingFormHeading>
+
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.7.description.0")}
+        </BookingFormSubHeading>
+        <BookingFormSubHeading>
+            {t("steps.7.description.1")}
+        </BookingFormSubHeading>
       <Box>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <SmallScreenView />

@@ -8,6 +8,7 @@ import { styled } from '@mui/material';
 import Image from 'next/image';
 
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
+import {useTranslations} from "next-intl";
 
 const StyledImage = styled(Image)(({}) => ({
   width: '194.4px',
@@ -25,16 +26,16 @@ const StyledImage = styled(Image)(({}) => ({
   },
 }));
 
-const packages = [
-  { name: 'Anywhere Autocare', image: '/g1.jpg' },
-  { name: 'Subscription Plans', image: '/g4.jpg' },
-];
-
 const PackageSelection = () => {
+  const t = useTranslations('booking');
   const [selectedOption, setSelectedOption] = useState(null);
   const form = useMultiStepForm();
   const { theme } = useTheme();
   const { updateValidation } = useValidation();
+  const packages = [
+    { name: t("steps.3.options.0"), image: '/g1.jpg' },
+    { name: t("steps.3.options.1"), image: '/g4.jpg' },
+  ];
 
   useEffect(() => {
     updateValidation(!!selectedOption);
