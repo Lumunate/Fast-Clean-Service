@@ -124,8 +124,8 @@ export default function HowDoesItWork() {
                             left: "48%",
                         },
                         "@media (max-width: 768px)": {
-                            top: "-25rem",
-                            left: "45%",
+                            top: "-26rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -147,8 +147,8 @@ export default function HowDoesItWork() {
                             transform: "rotate(90deg)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "4rem",
-                            left: "45%",
+                            top: "3rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -170,8 +170,8 @@ export default function HowDoesItWork() {
                             transform: "scale(-1, -1)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "30rem",
-                            left: "45%",
+                            top: "28rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },

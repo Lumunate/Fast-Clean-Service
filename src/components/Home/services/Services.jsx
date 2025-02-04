@@ -94,15 +94,15 @@ export default function Services() {
           margin: "0 auto",
           paddingLeft: "9rem",
           "@media (max-width: 1280px)": { paddingLeft: 0 },
-          "@media (max-width: 600px)": { width: "100%" },
+          "@media (max-width: 600px)": { width: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
         }}
       >
         <HeadingLinesAnimation text={t("title")} sx={{ width: "100%" }} />
       </Box>
 
-      <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
-        <ThreeDComponent modelUrl="/models/bmw_m5_cs/bmw_m5_cs.glb" />
-      </Box>
+      {/*<Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>*/}
+      {/*  <ThreeDComponent modelUrl="/models/bmw_m5_cs/bmw_m5_cs.glb" />*/}
+      {/*</Box>*/}
 
       <Box
         sx={{

@@ -37,9 +37,10 @@ const CallToActionBox = ({ hideImage = false }) => {
 
             <CTADescription
                 sx={{
-                    maxWidth: { xs: "0", md: "70%" },
+                    maxWidth: "70%" ,
                     textAlign: "center",
                     margin: "0 auto",
+                    "@media (max-width: 1100px)": {maxWidth: "100%" ,}
                 }}
             >
                 {t("description")}

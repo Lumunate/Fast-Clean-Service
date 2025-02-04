@@ -136,10 +136,11 @@ export default function About() {
               sx={{
                 width: "100%",
                 margin: "0 auto",
-                marginRight: "48%",
-                marginLeft: "1rem",
+                marginRight: "52%",
+                marginLeft: "-5rem",
                   "@media (max-width: 1400px)": {
                       marginLeft: "5rem",
+                      marginRight: "48%",
                   },
                 "@media (max-width: 768px)": {
                   marginRight: "2rem",
