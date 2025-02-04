@@ -137,7 +137,7 @@ export default function Services() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-start",
-              marginBottom: "6rem",
+                marginBottom: rowIndex === 0 ? "6rem" : "0",
               padding: "0 10rem",
               gap: "3rem",
               "@media (max-width: 600px)": {

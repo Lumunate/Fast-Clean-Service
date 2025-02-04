@@ -103,7 +103,7 @@ export default function CamperService() {
 
               <ServiceItemHighlight special>{t("services.1.special_highlight")}</ServiceItemHighlight>
             </Box>
-            <ServiceItemCTA special onClick={() => (window.location.href = "/de/subscribe")}>
+            <ServiceItemCTA sx={{marginTop: "2rem"}} special onClick={() => (window.location.href = "/de/subscribe")}>
               {t("services.0.button.text")}
             </ServiceItemCTA>
           </FadeIn>

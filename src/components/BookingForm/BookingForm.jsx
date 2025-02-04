@@ -103,7 +103,7 @@ const BookingForm = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '1100%',
+        width: '1200%',
         height: activeHeight,
         transition: 'all 300ms ease-in-out',
         marginLeft: "5rem",

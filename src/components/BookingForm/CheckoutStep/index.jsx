@@ -3,9 +3,14 @@ import { Box, Typography } from "@mui/material";
 import { BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
 import CheckoutSelection from "./CheckoutStep";
 import {useTranslations} from "next-intl";
+import Link from "next/link";
+import { useTheme } from "../../../contexts/themeContext";
 
 const Index = () => {
     const t = useTranslations('booking');
+
+  const { theme } = useTheme();
+
   return (
     <Box sx={{
         display: "flex",
@@ -43,7 +48,7 @@ const Index = () => {
 
       <BookingFormSubHeading
         sx={{
-          display: { sm: "block", fontSize: "0.8rem", maxWidth: "550px", color: "#3e3e3e", margin: '2rem auto 0' },
+          display: { sm: "block", fontSize: "0.8rem", maxWidth: "530px", color: "#3e3e3e", margin: "2rem auto 0" },
         }}
       >
           *{" "}
