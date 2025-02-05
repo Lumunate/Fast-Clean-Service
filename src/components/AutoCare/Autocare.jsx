@@ -2,524 +2,950 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../../contexts/themeContext";
 import { HomePkgsBox, HomePkgsInBox } from "../../components/mui/HomePkgs";
-import { AutoTabContainer } from "../../components/mui/AutoCarePkgs";
-import { Box, Button, Container, Link, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
+import {
+    AutoTab,
+    AutoTabContainer,
+    Card,
+    CardButton,
+    CardContainer,
+    CardDetails,
+    CardHeader,
+    CardInfo,
+} from "../../components/mui/AutoCarePkgs";
+import { Box, ListItem, Typography } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import RadialCircle from "../Decorative/RadialCircle";
 import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
+
+// ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
-import CheckMark from "../../../public/bookingFormIcons/CheckMark.svg";
 
-import { options as autocarePackageTypes } from "../../app/[locale]/autocare/data";
-import Image from "next/image";
+// Renders the Exterior/Interior/Detailing "addon" cards
+const ModdedCard = ({ card, color }) => {
+    const { theme } = useTheme();
 
-import bg1 from "../../../public/voor5.jpg";
-import bg2 from "../../../public/voor9.jpg";
-import bg3 from "../../../public/voor7.jpg";
-import {
-  SubscriptionCardBanner,
-  SubscriptionCardContainer,
-  SubscriptionCardContent,
-  SubscriptionCardHeading,
-  SubscriptionContentLabel,
-  SubscriptionContentValue,
-  UpdatedSubscriptionCardHeader,
-} from "../mui/BookingFormPackages";
-
-const BG_IMAGES = [bg1, bg2, bg3];
-const COLORS = ["#5dfa48", "#0088ff", "#ffd02b"];
+    return (
+        <Card
+            color={color}
+            sx={{
+                width: "100%",
+                minWidth: "250px",
+                flex: "1 1 30%",
+                maxWidth: "calc(33% - 1rem)",
+                minHeight: "500px",
+                backgroundColor: card?.options ? "" : "#cbcbcb80",
+                "@media (max-width: 900px)": {
+                    flex: "1 1 45%",
+                    maxWidth: "calc(50% - 1rem)",
+                },
+                "@media (max-width: 600px)": {
+                    flex: "1 1 90%",
+                    maxWidth: "calc(100% - 1rem)",
+                    padding: "2rem",
+                },
+            }}
+        >
+            <div className="style style--2" />
+            <CardHeader color={color}>
+                <Typography
+                    className="sub-heading"
+                    sx={{ color: color, fontSize: "2rem !important" }}
+                >
+                    {card?.name}
+                </Typography>
+                <Typography
+                    className="heading"
+                    sx={{
+                        color: card?.options
+                            ? `${theme.palette.primary.contrastText} !important`
+                            : "#858585 !important",
+                    }}
+                >
+                    {card?.type}
+                </Typography>
+            </CardHeader>
+            <CardDetails sx={{ height: "100%" }}>
+                {card?.options?.map((option, index) => (
+                    <ListItem
+                        key={index}
+                        sx={{
+                            "&:not(:last-of-type)": {
+                                borderBottom: `1px solid ${theme.palette.primary.lightContrast}`,
+                            },
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={faCheckCircle}
+                            style={{
+                                color: color,
+                                transform: "translateY(2px)",
+                                marginRight: "1rem",
+                            }}
+                        />
+                        <Box
+                            sx={{
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    fontSize: "1.6rem",
+                                    "@media (max-width: 600px)": {
+                                        fontSize: "1.2rem !important",
+                                    },
+                                }}
+                            >
+                                {option.name}
+                            </Typography>
+                            {option.additionalCost && (
+                                <Typography
+                                    sx={{
+                                        fontSize: "1.6rem",
+                                        "@media (max-width: 600px)": {
+                                            fontSize: "1.2rem !important",
+                                        },
+                                    }}
+                                >
+                                    €{option.additionalCost}
+                                </Typography>
+                            )}
+                        </Box>
+                    </ListItem>
+                ))}
+            </CardDetails>
+        </Card>
+    );
+};
 
 const AutoCare = () => {
-  const { theme } = useTheme();
-  const headerRef = useRef(null);
-  const row2Ref = useRef(null);
-  const row3Ref = useRef(null);
+    const { theme } = useTheme();
 
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [selectedPackageType, setSelectedPackageType] = useState(null);
-  const [displayedPackages, setDisplayedPackages] = useState(null);
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const [additionalOptions, setAdditionalOptions] = useState(null);
+    // API fetch hook
+    const { packages, loading, error, fetchPackages } = useAutocarePackages();
 
-  const { packages, loading, error, fetchPackages } = useAutocarePackages();
-  useEffect(() => {
-    fetchPackages();
-  }, [fetchPackages]);
+    // Same tab logic: Standard, Deluxe, Premium
+    const [selectedTab, setSelectedTab] = useState("Standard");
+    const [subCat, setSubCat] = useState(""); // e.g., "Exterior", "Interior", or "Complete" etc.
+    const [mainCardsVisible, setMainCardsVisible] = useState(false);
+    const [addonsVisible, setAddonsVisible] = useState(false);
 
-  useEffect(() => {
-    if (selectedPackageType && packages) {
-      const allPackages = packages.packages[selectedPackageType?.name?.toString()?.toLowerCase()];
-      let displayedPackages = allPackages ?? [];
-      setDisplayedPackages(displayedPackages);
+    const headerRef = useRef(null);
+    const sectionRef = useRef(null);
+    const subSectionRef = useRef(null);
+    const containerRef = useRef(null);
+    const addonsContainerRef = useRef(null);
 
-      console.log(displayedPackages, selectedPackageType, allPackages, packages);
+    const color =
+        selectedTab === "Standard"
+            ? "#7ed56f"
+            : selectedTab === "Deluxe"
+                ? "#2998ff"
+                : "#ff7730";
 
-      if (row2Ref.current) {
-        row2Ref.current.scrollIntoView({ behavior: "smooth" });
-      }
+    useEffect(() => {
+        fetchPackages();
+    }, [fetchPackages]);
+
+    // Intersection observer to fade/slide in
+    useEffect(() => {
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.target === containerRef.current) {
+                    if (entry.isIntersecting) {
+                        setMainCardsVisible(true);
+                    }
+                } else if (entry.target === addonsContainerRef.current) {
+                    if (entry.isIntersecting) {
+                        setAddonsVisible(true);
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: 0.5,
+        });
+
+        if (containerRef.current) observer.observe(containerRef.current);
+        if (addonsContainerRef.current) observer.observe(addonsContainerRef.current);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
+    const handleTabChange = (tab) => {
+        setSelectedTab(tab);
+        setSubCat("");
+        // Force show main cards immediately
+        setMainCardsVisible(true);
+
+        if (headerRef.current) {
+            const height = headerRef.current.clientHeight - 80;
+            setTimeout(() => {
+                window.scrollBy({
+                    top: height,
+                    behavior: "smooth",
+                });
+            }, 800);
+        }
+    };
+
+    const handleSubCatChange = (subCat) => {
+        setSubCat(subCat);
+        // Force the add-ons row to show
+        setAddonsVisible(true);
+
+        if (subSectionRef.current) {
+            subSectionRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
+    };
+
+    // If still loading or error
+    if (loading) {
+        return (
+            <Box
+                sx={{
+                    marginTop: "15rem",
+                    color: theme.palette.mode === "dark" ? "white" : "black",
+                    textAlign: "center",
+                }}
+            >
+                Loading...
+            </Box>
+        );
     }
-  }, [selectedPackageType, packages]);
-
-  useEffect(() => {
-    if (selectedPackage && packages) {
-      setAdditionalOptions([
-        {
-          name: "Interior",
-          packages: selectedPackage.additionalOptions.interior,
-        },
-        {
-          name: "Exterior",
-          packages: selectedPackage.additionalOptions.exterior,
-        },
-        {
-          name: "Detailing",
-          packages: selectedPackage.additionalOptions.detailing,
-        },
-      ]);
-      if (row3Ref.current) {
-        row3Ref.current.scrollIntoView({ behavior: "smooth" });
-      }
+    if (error) {
+        return (
+            <Box
+                sx={{
+                    marginTop: "15rem",
+                    color: theme.palette.mode === "dark" ? "white" : "black",
+                    textAlign: "center",
+                }}
+            >
+                Error: {error}
+            </Box>
+        );
     }
-  }, [selectedPackage, packages]);
 
-  return (
-    <Box
-      sx={{
-        position: "relative",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      {theme.palette.mode === "dark" && (
+    // Grab the array for selected tab: standard, deluxe, or premium
+    const allPackages = packages?.packages?.[selectedTab.toLowerCase()] || [];
+
+    // For "From: ___" and "Duration: ___" on the front side
+    const firstPkg = allPackages[0];
+    const fromPrice = firstPkg?.price || "€--";
+    const fromDuration = firstPkg?.duration || "-- min";
+
+    // -----------
+    // UI RENDER
+    // -----------
+    return (
         <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-          }}
-        />
-      )}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "2rem",
-          marginTop: "15rem",
-          "@media (max-width: 600px)": { marginTop: "5rem" },
-        }}
-      >
-        <HeadingLinesAnimation text=" Anywhere Auto Care" />
-      </Box>
+            sx={{
+                position: "relative",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+            }}
+        >
+            {theme.palette.mode === "dark" && (
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        zIndex: 0,
+                    }}
+                />
+            )}
 
-      <DecorativeBackgroundImage top={"50%"} right={"0"} width="90rem" height="65rem" sx={{ zIndex: "1" }} />
-      <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
-      <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important", zIndex: "1" }} />
-      <HomePkgsBox
-        ref={headerRef}
-        sx={{
-          position: "relative",
-          padding: "5rem 5rem 5rem",
-          "@media (max-width: 600px)": { padding: "0 5rem" },
-        }}
-      >
-        <AutoTabContainer
-          sx={{
-            display: "flex",
-            gap: "16px",
-            justifyContent: "center",
-            "@media (max-width: 1220px)": {
-              flexDirection: "column",
-              alignItems: "center",
-            },
-          }}
-        >
-          {autocarePackageTypes.map((pkg, index) => (
-            <PackageTypeCards
-              key={index}
-              image={BG_IMAGES[index]}
-              color={COLORS[index]}
-              packageType={pkg.name}
-              id={pkg.id}
-              tagline={"aaa"}
-              descriptionItems={[
-                { label: "Price", value: pkg.price, highlighted: true },
-                { label: "Duration", value: pkg.duration, highlighted: false },
-              ]}
-              onClick={() => {
-                setSelectedPackageType(pkg);
-                setSelectedColor(COLORS[index]);
-              }}
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "2rem",
+                    marginTop: "15rem",
+                    "@media (max-width: 600px)": { marginTop: "5rem" },
+                }}
+            >
+                <HeadingLinesAnimation text=" Anywhere Auto Care" />
+            </Box>
+
+            <DecorativeBackgroundImage
+                top={"50%"}
+                right={"0"}
+                width="90rem"
+                height="65rem"
+                sx={{ zIndex: "1" }}
             />
-          ))}
-        </AutoTabContainer>
-      </HomePkgsBox>
-      {selectedPackageType && displayedPackages?.length > 0 && (
-        <HomePkgsBox
-          ref={row2Ref}
-          sx={{
-            opacity: 0,
-            animation: "fadeIn 1s ease-in-out forwards",
-            position: "relative",
-            padding: "5rem 5rem 5rem",
-            "@media (max-width: 600px)": { padding: "0 5rem" },
-          }}
-        >
-          <AutoTabContainer
-            sx={{
-              display: "flex",
-              gap: "16px",
-              height: "auto",
-              alignItems: "flex-start",
-              "@media (max-width: 1220px)": {
-                flexDirection: "column",
-              },
-            }}
-          >
-            {displayedPackages.map((pkg, index) => (
-              <PackageOptionsCards
-                key={index}
-                color={selectedColor}
-                name={pkg.name}
-                tagline={pkg.description}
-                price={pkg.price}
-                descriptionItems={pkg.packages}
-                onClick={() => setSelectedPackage(pkg)}
-              />
-            ))}
-          </AutoTabContainer>
-        </HomePkgsBox>
-      )}
-      {additionalOptions && (
-        <HomePkgsBox
-          ref={row3Ref}
-          sx={{
-            opacity: 0,
-            animation: "fadeIn 1s ease-in-out forwards",
-            position: "relative",
-            padding: "5rem 5rem 5rem",
-            "@media (max-width: 600px)": { padding: "0 5rem" },
-          }}
-        >
-          <AutoTabContainer
-            sx={{
-              display: "flex",
-              gap: "16px",
-              height: "max-content",
-              alignItems: "flex-start",
-              "@media (max-width: 1220px)": {
-                flexDirection: "column",
-              },
-            }}
-          >
-            {additionalOptions.map((pkg, index) => (
-              <PackageAddOnsCards
-                key={index}
-                color={selectedColor}
-                name={pkg.name}
-                packageName={selectedPackageType.name}
-                descriptionItems={pkg.packages}
-              />
-            ))}
-          </AutoTabContainer>
-        </HomePkgsBox>
-      )}
-    </Box>
-  );
+            <RadialCircle
+                top={"20rem"}
+                right={"20rem"}
+                sx={{
+                    width: "10rem !important",
+                    height: "10rem !important",
+                    zIndex: "1",
+                }}
+            />
+            <RadialCircle
+                top={"90%"}
+                left={"20rem"}
+                sx={{
+                    width: "10rem !important",
+                    height: "10rem !important",
+                    zIndex: "1",
+                }}
+            />
+
+            {/* ------------------ TABS (STANDARD, DELUXE, PREMIUM) ------------------ */}
+            <HomePkgsBox
+                ref={headerRef}
+                sx={{
+                    position: "relative",
+                    padding: "5rem 5rem 5rem",
+                    "@media (max-width: 600px)": { padding: "0 5rem" },
+                }}
+            >
+                <AutoTabContainer
+                    sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "16px",
+                        justifyContent: "center",
+                        "@media (max-width: 800px)": {
+                            flexDirection: "column",
+                            alignItems: "center",
+                        },
+                    }}
+                >
+                    {/* ---------- STANDARD ---------- */}
+                    <AutoTab
+                        className={selectedTab === "Standard" ? "selected" : ""}
+                        onClick={() => handleTabChange("Standard")}
+                        sx={{
+                            flex: "1 1 30%",
+                            maxWidth: "calc(33% - 16px)",
+                            "@media (max-width: 800px)": {
+                                maxWidth: "calc(90% - 16px)",
+                            },
+                        }}
+                    >
+                        <div
+                            className="tab__side tab__side--front"
+                            style={{
+                                position: "relative",
+                                height: "40rem",
+                            }}
+                        >
+                            {/* Slanted Banner */}
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: "8%",
+                                    left: "-32%",
+                                    width: "120%",
+                                    height: "60px",
+                                    backgroundColor: "#4EE744",
+                                    transform: "rotate(-40deg)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    zIndex: 1,
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        position: "absolute",
+                                        color: "white",
+                                        fontWeight: 300,
+                                        transform: "rotate(-1deg)",
+                                        fontSize: "18px",
+                                    }}
+                                >
+                                    Economy
+                                </Typography>
+                            </Box>
+                            {/* FRONT-SIDE IMAGE */}
+                            <div
+                                className="tab__picture tab__picture--1"
+                                style={{
+                                    marginTop: "-60px",
+                                    marginBottom: "60px",
+                                    // Use your new code image instead of the old one
+                                    backgroundImage: `url("/voor5.jpg")`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                }}>
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    backgroundColor: "#4EE744",
+                                    opacity: 0.4,
+                                    pointerEvents: "none",
+                                }}
+                            />
+                            </div>
+
+                            <Typography
+                                className="heading"
+                                sx={{
+                                    marginTop: "1rem",
+                                    fontSize: "1.5rem",
+                                    fontWeight: "bold",
+                                    textAlign: "center",
+                                }}
+                            >
+                                <span className="heading--span heading--span-1">
+                                    Standard
+                                </span>
+                            </Typography>
+
+                            {/* FROM PRICE + DURATION, directly from the new data */}
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    marginTop: "1rem",
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                        marginBottom: "0.5rem",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                                    <Typography
+                                        sx={{ fontWeight: "500", color: "#7ed56f" }}
+                                    >
+                                        {fromPrice}
+                                    </Typography>
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        Duration:
+                                    </Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        {fromDuration}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </div>
+
+                        <div className="tab__side tab__side--back tab__side--back-1">
+                            <div className="tab__cta">
+                                <Typography className="tab__value">Standard</Typography>
+                            </div>
+                        </div>
+                    </AutoTab>
+
+                    {/* ---------- DELUXE ---------- */}
+                    <AutoTab
+                        className={selectedTab === "Deluxe" ? "selected" : ""}
+                        onClick={() => handleTabChange("Deluxe")}
+                        sx={{
+                            flex: "1 1 30%",
+                            maxWidth: "calc(33% - 16px)",
+                            "@media (max-width: 800px)": {
+                                maxWidth: "calc(90% - 16px)",
+                            },
+                        }}
+                    >
+                        <div
+                            className="tab__side tab__side--front"
+                            style={{
+                                position: "relative",
+                                height: "40rem",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: "8%",
+                                    left: "-30%",
+                                    width: "120%",
+                                    height: "60px",
+                                    backgroundColor: "#2998ff",
+                                    transform: "rotate(-40deg)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    zIndex: 1,
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        color: "white",
+                                        fontWeight: 300,
+                                        transform: "rotate(-1deg)",
+                                        fontSize: "1.6rem !important",
+                                    }}
+                                >
+                                    Peoples Choice
+                                </Typography>
+                            </Box>
+                            <div
+                                className="tab__picture tab__picture--2"
+                                style={{
+                                    marginTop: "-60px",
+                                    marginBottom: "60px",
+                                    backgroundImage: `url("/voor9.jpg")`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: "#2998ff",
+                                        opacity: 0.4,
+                                        pointerEvents: "none",
+                                    }}
+                                />
+                            </div>
+                            <Typography
+                                className="heading"
+                                sx={{
+                                    marginTop: "1rem",
+                                    fontSize: "20px",
+                                    fontWeight: 600,
+                                    textAlign: "center",
+                                }}
+                            >
+                                <span className="heading--span heading--span-2">
+                                    Deluxe
+                                </span>
+                            </Typography>
+
+                            {/* fromPrice, fromDuration for Deluxe */}
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    marginTop: "1rem",
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                        marginBottom: "0.5rem",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                                    <Typography
+                                        sx={{ fontWeight: "500", color: "#2998ff" }}
+                                    >
+                                        {fromPrice}
+                                    </Typography>
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        Duration:
+                                    </Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        {fromDuration}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </div>
+                        <div className="tab__side tab__side--back tab__side--back-2">
+                            <div className="tab__cta">
+                                <Typography className="tab__value">Deluxe</Typography>
+                            </div>
+                        </div>
+                    </AutoTab>
+
+                    {/* ---------- PREMIUM ---------- */}
+                    <AutoTab
+                        className={selectedTab === "Premium" ? "selected" : ""}
+                        onClick={() => handleTabChange("Premium")}
+                        sx={{
+                            flex: "1 1 30%",
+                            maxWidth: "calc(33% - 16px)",
+                            "@media (max-width: 800px)": {
+                                maxWidth: "calc(90% - 16px)",
+                            },
+                        }}
+                    >
+                        <div
+                            className="tab__side tab__side--front"
+                            style={{
+                                position: "relative",
+                                height: "40rem",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: "8%",
+                                    left: "-32%",
+                                    width: "120%",
+                                    height: "60px",
+                                    backgroundColor: "#EED502",
+                                    transform: "rotate(-40deg)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    zIndex: 1,
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        color: "white",
+                                        fontWeight: 300,
+                                        transform: "rotate(-1deg)",
+                                        fontSize: "18px",
+                                    }}
+                                >
+                                    Bespoke
+                                </Typography>
+                            </Box>
+                            <div
+                                className="tab__picture tab__picture--3"
+                                style={{
+                                    marginTop: "-60px",
+                                    marginBottom: "60px",
+                                    backgroundImage: `url("/voor7.jpg")`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: "#EED502",
+                                        opacity: 0.4,
+                                        pointerEvents: "none",
+                                    }}
+                                />
+                            </div>
+                            <Typography
+                                className="heading"
+                                sx={{
+                                    marginTop: "1rem",
+                                    fontSize: "1.5rem",
+                                    fontWeight: "bold",
+                                    textAlign: "center",
+                                }}
+                            >
+                                <span className="heading--span heading--span-3">
+                                    Premium
+                                </span>
+                            </Typography>
+
+                            {/* fromPrice, fromDuration for Premium */}
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    marginTop: "1rem",
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                        marginBottom: "0.5rem",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                                    <Typography
+                                        sx={{ fontWeight: "500", color: "#ff7730" }}
+                                    >
+                                        {fromPrice}
+                                    </Typography>
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: "80%",
+                                    }}
+                                >
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        Duration:
+                                    </Typography>
+                                    <Typography sx={{ fontWeight: "300" }}>
+                                        {fromDuration}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </div>
+                        <div className="tab__side tab__side--back tab__side--back-3">
+                            <div className="tab__cta">
+                                <Typography className="tab__value">Premium</Typography>
+                            </div>
+                        </div>
+                    </AutoTab>
+                </AutoTabContainer>
+            </HomePkgsBox>
+
+            {/* ------------------ SECOND ROW: MAIN PACKAGES ------------------ */}
+            <HomePkgsBox
+                sx={{
+                    "@media (max-width: 1200px)": {
+                        flexDirection: "column",
+                        alignItems: "center",
+                    },
+                }}
+            >
+                <HomePkgsInBox
+                    sx={{
+                        justifyContent: "center",
+                        position: "relative",
+                        "@media (max-width: 1200px)": {
+                            flexDirection: "column",
+                            alignItems: "center",
+                        },
+                        zIndex: 10,
+                    }}
+                    ref={sectionRef}
+                >
+                    <CardContainer
+                        ref={containerRef}
+                        sx={{
+                            gap: "2rem",
+                            flexWrap: "wrap",
+                            opacity: mainCardsVisible ? 1 : 0,
+                            transform: mainCardsVisible
+                                ? "translateY(0)"
+                                : "translateY(100px)",
+                            transition:
+                                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+                        }}
+                    >
+                        {allPackages.map((pkg, index) => (
+                            <Card key={pkg?.id || index} color={color}>
+                                <div className="style style--1" />
+                                <CardHeader color={color}>
+                                    <Typography className="heading">
+                                        {pkg?.name}
+                                    </Typography>
+                                </CardHeader>
+                                <CardInfo color={color} sx={{ flexDirection: "column" }}>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "14px !important",
+                                            color:
+                                                theme.palette.mode === "dark" ? "white" : "",
+                                            marginBottom: "0.1rem",
+                                            fontWeight: 300,
+                                        }}
+                                    >
+                                        {pkg?.description}
+                                    </Typography>
+
+                                    <Typography
+                                        className="price"
+                                        sx={{
+                                            color: color,
+                                            fontSize: "2rem",
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: "inherit",
+                                                verticalAlign: "baseline",
+                                                paddingRight: "1rem",
+                                            }}
+                                        >
+                                            €
+                                        </span>
+                                        {pkg?.price?.replace("€", "")}
+                                    </Typography>
+                                </CardInfo>
+
+                                {/* The bullet points for the package */}
+                                <CardDetails>
+                                    {(pkg?.packages || []).map((point, idx) => (
+                                        <ListItem
+                                            key={idx}
+                                            sx={{
+                                                alignItems: "flex-start",
+                                                display: "flex",
+                                            }}
+                                        >
+                                            <FontAwesomeIcon
+                                                icon={faCheckCircle}
+                                                style={{
+                                                    color: color,
+                                                    transform: "translateY(2px)",
+                                                    marginRight: "1rem",
+                                                    marginTop: "0.25rem",
+                                                }}
+                                            />
+                                            {point}
+                                        </ListItem>
+                                    ))}
+                                </CardDetails>
+
+                                <Box
+                                    sx={{
+                                        marginTop: "auto",
+                                        display: "flex",
+                                        gap: "8px",
+                                    }}
+                                >
+                                    <CardButton
+                                        onClick={() => handleSubCatChange(pkg?.name)}
+                                        sx={{
+                                            backgroundColor: "#1C79CC",
+                                            color: "white",
+                                            justifyContent: "center",
+                                            "&:hover": {
+                                                color: "black",
+                                                backgroundColor: "#2998ff",
+                                            },
+                                        }}
+                                    >
+                                        Book Now
+                                    </CardButton>
+                                    <CardButton
+                                        onClick={() => handleSubCatChange(pkg?.name)}
+                                        sx={{
+                                            backgroundColor:
+                                                subCat === pkg?.name ? color : "",
+                                            color: "black !important",
+                                            justifyContent: "center",
+                                            "&:hover": {
+                                                backgroundColor: `${color} !important`,
+                                                color: "primary.main !important",
+                                            },
+                                        }}
+                                    >
+                                        Add Ons
+                                    </CardButton>
+                                </Box>
+                            </Card>
+                        ))}
+                    </CardContainer>
+                </HomePkgsInBox>
+            </HomePkgsBox>
+
+            {/* ------------------ THIRD ROW: ADD-ONS (EXTERIOR, INTERIOR, DETAILING) ------------------ */}
+            <HomePkgsBox
+                sx={{
+                    padding: "15rem 5rem 5rem",
+                    flexDirection: "column",
+                    "@media (max-width: 600px)": {
+                        padding: "2rem",
+                    },
+                }}
+                ref={subSectionRef}
+            >
+                <HomePkgsInBox
+                    sx={{
+                        justifyContent: "center",
+                        alignSelf: "center",
+                        "@media (max-width: 600px)": { flexDirection: "column" },
+                    }}
+                >
+                    <CardContainer
+                        ref={addonsContainerRef}
+                        sx={{
+                            gap: "2rem",
+                            opacity: subCat && addonsVisible ? 1 : 0,
+                            transform: addonsVisible
+                                ? "translateY(0)"
+                                : "translateY(100px)",
+                            transition:
+                                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+                            flexWrap: "wrap",
+                            marginBottom: "10rem",
+                            "@media (max-width: 900px)": {
+                                flexDirection: "column",
+                                alignItems: "center",
+                            },
+                        }}
+                    >
+                        {(() => {
+                            // find the chosen package by name
+                            const chosenPackage = allPackages.find(
+                                (p) => p.name === subCat
+                            );
+                            if (!chosenPackage) return null;
+
+                            const { additionalOptions } = chosenPackage;
+                            if (!additionalOptions) return null;
+
+                            return (
+                                <>
+                                    <ModdedCard
+                                        card={{
+                                            name: selectedTab,
+                                            type: "Exterior",
+                                            options: additionalOptions.exterior || [],
+                                        }}
+                                        color={color}
+                                    />
+                                    <ModdedCard
+                                        card={{
+                                            name: selectedTab,
+                                            type: "Interior",
+                                            options: additionalOptions.interior || [],
+                                        }}
+                                        color={color}
+                                    />
+                                    <ModdedCard
+                                        card={{
+                                            name: selectedTab,
+                                            type: "Detailing",
+                                            options: additionalOptions.detailing || [],
+                                        }}
+                                        color={color}
+                                    />
+                                </>
+                            );
+                        })()}
+                    </CardContainer>
+                </HomePkgsInBox>
+            </HomePkgsBox>
+        </Box>
+    );
 };
 
 export default AutoCare;
-
-const PackageTypeCards = ({ image, color, packageType, descriptionItems, onClick, selected }) => {
-  const { theme } = useTheme();
-  const parseNumbersFromString = (str) => {
-    return str.replace("From ", "");
-  };
-
-  return (
-    <SubscriptionCardContainer
-      onClick={onClick}
-      selected={selected}
-      sx={{
-        position: "relative",
-        width: 392,
-        height: 522,
-        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "rgba(255,255,255,0.5)",
-        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-        backdropFilter: "blur(10.4px)",
-      }}
-    >
-      <SubscriptionCardBanner
-        sx={{
-          top: "3rem",
-          left: "-8rem",
-          padding: "0.5rem 9rem",
-        }}
-        color={color}
-      >
-        <SubscriptionCardHeading sx={{ fontSize: "1.8rem" }}>{packageType}</SubscriptionCardHeading>
-      </SubscriptionCardBanner>
-
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          height: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            backgroundColor: color,
-            clipPath: "path('M -2 260 Q 500 50 400 500 L 520 -2 L -2 -2 Z')",
-            // clipPath: "path('M -2 165 Q 200 80 250 200 L 220 -2 L -2 -2 Z')",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            opacity: "35%",
-            zIndex: 10,
-          }}
-          className="highlight"
-        />
-        <Image
-          src={image}
-          alt="Subscription Package"
-          layout="fill"
-          style={{
-            clipPath: "path('M -2 260 Q 500 50 400 500 L 520 -2 L -2 -2 Z')",
-            boxShadow: "0px 4px 30.1px rgba(0, 0, 0, 0.25)",
-          }}
-        />
-        <Typography
-          sx={{
-            position: "absolute",
-            bottom: "10px",
-            right: "10px",
-            backgroundColor: color,
-            borderRadius: "2px",
-            padding: "1.5rem",
-            zIndex: 20,
-            fontFamily: "Unbounded",
-            color: "#ffffff",
-            fontSize: "2rem",
-            fontWeight: "600",
-            textAlign: "center",
-            width: "40%",
-          }}
-          className="heading"
-        >
-          {packageType}
-        </Typography>
-      </Box>
-
-      <SubscriptionCardContent
-        sx={{
-          margin: "7.8rem 5rem auto",
-        }}
-      >
-        {descriptionItems &&
-          descriptionItems.map((option, index) => (
-            <Box key={index} className="content__row">
-              <SubscriptionContentLabel sx={{ fontSize: "2.1rem !important" }}>{option.label}</SubscriptionContentLabel>
-              <SubscriptionContentValue highlight={option.highlighted} sx={{ fontSize: "2.1rem !important" }} color={color}>
-                {parseNumbersFromString(option.value)}
-              </SubscriptionContentValue>
-            </Box>
-          ))}
-      </SubscriptionCardContent>
-    </SubscriptionCardContainer>
-  );
-};
-
-const PackageOptionsCards = ({ color, name, tagline, descriptionItems, onClick, selected, price }) => {
-  const { theme } = useTheme();
-  const isSmallScreen = useMediaQuery('max-width:1220px');
-  return (
-    <SubscriptionCardContainer
-      onClick={onClick}
-      selected={selected}
-      sx={{
-        width: 392,
-        height: "100%",
-        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "white",
-        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-        backdropFilter: "blur(10.4px)",
-      }}
-    >
-      <Stack
-        gap={3}
-        justifyContent={!isSmallScreen ? "space-between" : "center"}
-        sx={{
-          margin: "7.8rem 3rem 2.8rem",
-        }}
-      >
-        <Stack gap={2}>
-          <Typography
-            sx={{
-              fontSize: "36px !important",
-              fontWeight: 400,
-              lineHeight: "24px",
-              textAlign: "left",
-            }}
-          >
-            {name}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "1.7rem !important",
-              fontWeight: 300,
-              lineHeight: "17.36px",
-              textAlign: "left",
-              marginBottom: "1rem",
-            }}
-          >
-            {tagline}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "3.8rem !important",
-              fontWeight: 600,
-              lineHeight: "24px",
-              textAlign: "left",
-              color: color,
-            }}
-          >
-            {price}
-          </Typography>
-
-          <Stack height="100%">
-            {descriptionItems &&
-              descriptionItems.map((option, index) => (
-                <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <Image src={CheckMark} alt="CheckMark" width="20px" height="20px" />
-                  <SubscriptionContentLabel sx={{ fontSize: "1.4rem", lineHeight: "30px", fontWeight: "300" }}>
-                    {option}
-                  </SubscriptionContentLabel>
-                </Box>
-              ))}
-          </Stack>
-        </Stack>
-
-        <Container sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-          <Link href="/booking" passHref>
-            <Button
-              variant="contained"
-              sx={{
-                padding: "1.5rem 3rem",
-                fontSize: "1.4rem",
-                fontWeight: "300",
-                backgroundColor: "primary.accentDark",
-                borderRadius: "50px",
-                color: "white",
-                fontFamily: "Unbounded",
-                "&:hover": {
-                  backgroundColor: "primary.accent",
-                },
-              }}
-            >
-              Book Now
-            </Button>
-          </Link>
-          <Button
-            variant="contained"
-            sx={{
-              padding: "1.5rem 3rem",
-              fontSize: "1.4rem",
-              minWidth: "116px",
-              fontWeight: "300",
-              backgroundColor: "#ECECEC",
-              borderRadius: "50px",
-              color: "#515151",
-              fontFamily: "Unbounded",
-              "&:hover": {
-                backgroundColor: "primary.secondary",
-              },
-            }}
-          >
-            Addons
-          </Button>
-        </Container>
-      </Stack>
-    </SubscriptionCardContainer>
-  );
-};
-
-const PackageAddOnsCards = ({ color, name, packageName, descriptionItems, selected }) => {
-  const { theme } = useTheme();
-  return (
-    <SubscriptionCardContainer
-      selected={selected}
-      sx={{
-        width: 392,
-        height: "100%",
-        backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.01)" : "white",
-        border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-        backdropFilter: "blur(10.4px)",
-      }}
-    >
-      <Stack
-        gap={3}
-        justifyContent={"space-between"}
-        sx={{
-          margin: "7.8rem 3rem 2.8rem",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "14px !important",
-            fontWeight: 400,
-            lineHeight: "17px",
-            textAlign: "left",
-            color: color,
-          }}
-        >
-          {packageName}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "3.6rem !important",
-            fontWeight: 300,
-            lineHeight: "24px",
-            textAlign: "left",
-            marginBottom: "1rem",
-          }}
-        >
-          {name}
-        </Typography>
-
-        <Stack>
-          {descriptionItems &&
-            descriptionItems.map((option, index) => (
-              <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center", justifyContent: "space-between" }}>
-                <Box key={index} sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <Image src={CheckMark} alt="CheckMark" width="20px" height="20px" />
-                  <SubscriptionContentLabel sx={{ fontSize: "1.4rem", lineHeight: "30px", fontWeight: "300" }}>
-                    {option.name}
-                  </SubscriptionContentLabel>
-                </Box>
-                <SubscriptionContentLabel
-                  sx={{
-                    fontSize: "1.4rem",
-                    lineHeight: "30px",
-                    fontWeight: "300",
-                    color: color,
-                    minWidth: "55px",
-                    textAlign: "right",
-                  }}
-                >
-                  € {option.additionalCost}
-                </SubscriptionContentLabel>
-              </Box>
-            ))}
-        </Stack>
-      </Stack>
-    </SubscriptionCardContainer>
-  );
-};
