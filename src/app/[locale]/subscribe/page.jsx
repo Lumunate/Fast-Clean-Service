@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography, Container, Button } from "@mui/material";
-import { styled, alpha } from "@mui/material/styles";
+import { alpha } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
@@ -23,6 +23,7 @@ import {
     StyledPriceContainer,
     StyledOptionsList,
     ImageWrapper,
+    SubscriptionsContainer,
 } from "./Subscribe.style";
 
 // Define some colors and gradients for styling
@@ -32,16 +33,6 @@ const gradients = [
     { top: "#40A7FF", bottom: "#1C79CC" },
     { top: "#F2DB01", bottom: "#D6AB01" },
 ];
-
-export const SubsciptionsContainer = styled(Box)(({ theme }) => ({
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: theme.spacing(4),
-    alignItems: "stretch",
-    position: "relative",
-    maxWidth: "1440px",
-    margin: "8rem"
-}));
 
 const PackageCard = ({ pkg, index, highlightColor }) => {
     const t = useTranslations("subscriptions");
@@ -713,11 +704,11 @@ const Page = () => {
                 </Box>
             </Container>
             <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>
-            <SubsciptionsContainer>
+            <SubscriptionsContainer>
                 {packages.map((pkg, index) => (
                     <PackageCard key={index} pkg={pkg} index={index} highlightColor={colors[index % 3]} />
                 ))}
-            </SubsciptionsContainer>
+            </SubscriptionsContainer>
             </Box>
             <DecorativeBackgroundImage top={"60%"} right={"0"} width="90rem" height="65rem" />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />

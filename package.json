@@ -61,6 +61,7 @@
     "react-slick": "^0.30.2",
     "redux": "^5.0.1",
     "routes": "^2.1.0",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "stripe": "^17.6.0",
     "stylis-plugin-rtl": "^2.1.1",
