@@ -7,9 +7,11 @@
             "services": {
                 "title": "Services",
                 "options": [
-                    "Option 1",
-                    "Option 2",
-                    "Option 3"
+                    "FleetCare Pro",
+                    "Anywhere Autocare",
+                    "Subscriptions",
+                    "Other Vehicles",
+                    "Store - Coming Soon"
                 ]
             },
             "contact": "Contact"
@@ -40,6 +42,295 @@
         "copyright": "\u00a9 2025 Fast Clean Service. All rights reserved."
     },
     "pages": {
+        "home": {
+            "title": "Home",
+            "hero_section": {
+                "title": "FAST CLEAN SERVICE",
+                "subtitle": [
+                    "Your clean card is our calling card!",
+                    "The number 1 in the field of specialist car cleaning!",
+                    "We come on location."
+                ],
+                "buttons": {
+                    "book_now": "Book Now",
+                    "scroll_down": "Scroll Down"
+                }
+            },
+            "about_section": {
+                "title": "The Best Care for Your Car Wherever You Want!",
+                "description": "At Fast Clean Service, we provide professional steam cleaning and car detailing—on location or at our branch. Using eco-friendly techniques, we ensure your car is cleaned and protected with exceptional attention to detail.",
+                "why_choose_us": {
+                    "title": "Why Choose Fast Clean Service?",
+                    "features": [
+                        {
+                            "title": "Convenience",
+                            "description": "Cleaning on location or at our branch."
+                        },
+                        {
+                            "title": "Eco Friendly",
+                            "description": "Safe, durable steam cleaning techniques."
+                        },
+                        {
+                            "title": "Excellence",
+                            "description": "Exceptional results every time."
+                        }
+                    ]
+                },
+                "cta": {
+                    "text": "Book online or request a free quote today!",
+                    "buttons": {
+                        "book_now": "Book Now!",
+                        "learn_more": "Learn More"
+                    }
+                }
+            },
+            "stats_section": {
+                "title": "Our Numbers",
+                "stats": [
+                    {
+                        "type": "rating",
+                        "value": "4.7/5",
+                        "description": "Stars on Trustpilot"
+                    },
+                    {
+                        "type": "ranking",
+                        "value": "6+",
+                        "description": "Years of Experience"
+                    },
+                    {
+                        "type": "customer",
+                        "value": "5750+",
+                        "description": "Happy Customers"
+                    }
+                ]
+            },
+            "how_it_works": {
+                "title": "HOW DOES IT WORK?",
+                "steps": [
+                    {
+                        "title": "Choose your location",
+                        "description": "We come to you or you bring your car to us."
+                    },
+                    {
+                        "title": "Choose your service",
+                        "description": "Select from our extensive range of cleaning and detailing services."
+                    },
+                    {
+                        "title": "We will do the rest",
+                        "description": "Enjoy your perfectly cleaned car!"
+                    },
+                    {
+                        "title": "Make an appointment",
+                        "description": "Choose a date and time that suits you."
+                    }
+                ]
+            },
+            "services_section": {
+                "title": "OUR SERVICES",
+                "description": "At Fast Clean Service we offer a wide range of services to keep your car in top condition. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.",
+                "services": [
+                    {
+                        "title": "Steam Cleaning Interior & Exterior",
+                        "description": "Provide a deeply cleaned car with our environmentally friendly steam cleaning techniques. Book Now and give your car the fresh start it deserves."
+                    },
+                    {
+                        "title": "Steam Cleaning Interior & Exterior",
+                        "description": "Protect your car’s paint and make it shine again with our professional wax and coating treatments. Plan Your Detailing and keep your car looking new for longer."
+                    },
+                    {
+                        "title": "Polishing and Headlight Restoration",
+                        "description": "Remove scratches and regain the brightness of your headlights for a brighter shine result. Request a Quote for your polishing job."
+                    }
+                ],
+                "buttons": {
+                    "book_now": "Book Now!",
+                    "learn_more": "Learn More"
+                }
+            },
+            "customer_reviews_section": {
+                "title": "What Our Customers Say",
+                "description": "At Fast Clean Service we have already helped many satisfied customers. Leave Your Review and tell us how we helped you!",
+                "button": "Submit a Review"
+            },
+            "packages_section": {
+                "title": "OUR PACKAGES",
+                "packages": [
+                    {
+                        "title": "Anywhere Auto-Care",
+                        "description": "We bring the latest steam cleaning technology to your location, ensuring your vehicles are professionally cleaned and ready to go!"
+                    },
+                    {
+                        "title": "FleetCare Pro",
+                        "description": "Tailored cleaning solutions for businesses with multiple vehicles. We ensure your fleet stays spotless and road-ready."
+                    },
+                    {
+                        "title": "Subscriptions",
+                        "description": "Hassle-free car care with regular service packages. Enjoy consistent maintenance at discounted rates."
+                    },
+                    {
+                        "title": "Long term Vehicle Care",
+                        "description": "Long-term vehicle maintenance plans to ensure your car remains in peak condition with additional care options."
+                    }
+                ]
+            },
+            "anywhere_autocare_section": {
+                "title": "Anywhere AutoCare",
+                "description": "We have different packages to choose from depending on your needs. Each package has been carefully put together to provide your car with the best care, whether it is a standard cleaning or a complete detail treatment.",
+                "services": [
+                    {
+                        "title": "On-Site Service",
+                        "description": "Enjoy our services at our dedicated location, where you can relax while we take care of your vehicle."
+                    },
+                    {
+                        "title": "Mobile Service",
+                        "description": "Enjoy our services at your location, where you can relax while we take care of your vehicle."
+                    }
+                ],
+                "packages": [
+                    {
+                        "name": "Standard",
+                        "category": "Basic",
+                        "price": "From €74.95",
+                        "features": [
+                            "Exterior steam cleaning",
+                            "Tire blackening",
+                            "Window cleaning"
+                        ],
+                        "description": "Book Now for a quick and thorough cleaning.",
+                        "buttons": {
+                            "learn_more": "Learn More",
+                            "book_now": "Book Now"
+                        }
+                    },
+                    {
+                        "name": "Deluxe",
+                        "category": "Popular",
+                        "price": "From €149.95",
+                        "features": [
+                            "Thorough steam cleaning",
+                            "Interior and exterior polishing",
+                            "Applying wax"
+                        ],
+                        "description": "Choose Deluxe for a complete treatment of your car.",
+                        "buttons": {
+                            "learn_more": "Learn More",
+                            "book_now": "Book Now"
+                        }
+                    },
+                    {
+                        "name": "Premium",
+                        "category": "Bespoke",
+                        "price": "From €189.95",
+                        "features": [
+                            "Complete detail treatment",
+                            "Including ceramic coating",
+                            "Headlight polishing"
+                        ],
+                        "description": "Book Now for the ultimate showroom finish.",
+                        "buttons": {
+                            "learn_more": "Learn More",
+                            "book_now": "Book Now"
+                        }
+                    }
+                ]
+            },
+            "fleetcare_subscriptions_section": {
+                "services": [
+                    {
+                        "id": "fleet-care-pro",
+                        "title": "FleetCare Pro",
+                        "description": "Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and ready for the road - anywhere, anytime.",
+                        "highlight": "With FleetCare Pro, pristine vehicles are just a booking away.",
+                        "button": {
+                            "text": "Book Now",
+                            "link": "/fleet"
+                        }
+                    },
+                    {
+                        "id": "subscriptions",
+                        "title": "Subscriptions",
+                        "description": "Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences.",
+                        "highlight": "Choose your plan and never worry about a dirty car again!",
+                        "special_highlight": "24 months | Yearly | Monthly plans",
+                        "button": {
+                            "text": "Book Now",
+                            "link": "/de/subscribe"
+                        }
+                    }
+                ]
+            },
+            "other_vehicles_care_section": {
+                "title": "Other Vehicles Care",
+                "description": "Ensure your vehicles' longevity with our comprehensive maintenance plans designed to keep your car in optimal condition for years to come.",
+                "categories": [
+                    {
+                        "name": "Cars",
+                        "services": [
+                            "Steam washing",
+                            "Window washing",
+                            "Polishing chrome parts",
+                            "Waxing",
+                            "Cleaning rims",
+                            "Blackening tires"
+                        ],
+                        "description": "We provide specialized steam cleaning that avoids scratches and restores your car’s shine."
+                    },
+                    {
+                        "name": "Campers, Caravans, Boats, and Trucks",
+                        "services": [
+                            "Interior and Exterior Cleaning",
+                            "Advanced Steam Cleaning",
+                            "Flexible Services",
+                            "Engine & Mechanical Cleaning"
+                        ],
+                        "description": "We offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization and engine cleaning for ultimate freshness and performance."
+                    },
+                    {
+                        "name": "Bikes",
+                        "services": [
+                            "Motorbikes (Street, Cruiser, Touring, and Sport)",
+                            "Dirt Bikes",
+                            "Electric Bikes",
+                            "Scooters"
+                        ],
+                        "description": "Whether it's a casual ride or a high-performance machine, we’ve got your two-wheelers covered with professional cleaning and care services."
+                    }
+                ],
+                "button": {
+                    "text": "Learn More",
+                    "link": "/other-vehicles"
+                }
+            },
+            "why_choose_us_section": {
+                "title": "WHY CHOOSE US",
+                "services": [
+                    {
+                        "title": "On-Site Service",
+                        "description": "Our experienced professionals come to you with our own material."
+                    },
+                    {
+                        "title": "Time Efficiency",
+                        "description": "Top-quality mobile steam cleaning that saves you time."
+                    },
+                    {
+                        "title": "Open 7 Days a Week",
+                        "description": "Get in touch with us through various channels."
+                    },
+                    {
+                        "title": "Easy Booking",
+                        "description": "Just book the appointment online and leave the rest to us."
+                    },
+                    {
+                        "title": "Eco-Friendly",
+                        "description": "We use 3 liters per car for great results."
+                    },
+                    {
+                        "title": "Interior Care",
+                        "description": "Find answers to frequently asked questions."
+                    }
+                ]
+            }
+        },
         "about": {
             "title": "ABOUT",
             "description": "We differentiate our cleaning at your convenience anytime and anywhere. Our steam cleaning technology ensures a deep clean, even through the toughest spots equipped with superior hot water. We provide efficient professional service for all types of vehicles.",
@@ -117,60 +408,60 @@
                 "description": "We provide the cleaning service for your vehicle at your home, your business or other desired location!",
                 "days": "Monday to Sunday",
                 "hours": "08:00 - 17:30"
-            }
-        },
-        "faq": {
-            "title": "FAQ'S",
-            "questions": [
-                {
-                    "question": "What is the process for booking a cleaning service with FAST Clean?",
-                    "answer": "Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we'll handle the rest. Your vehicle will be cleaned and detailed to perfection."
-                },
-                {
-                    "question": "What are the key benefits of the Deluxe package?",
-                    "answer": "The Deluxe package is one of our most popular choices, offering a complete cleaning experience. It includes thorough steam cleaning, interior and exterior polishing, and the application of protective wax. Perfect for those who want their vehicle to look brand new."
-                },
-                {
-                    "question": "What makes FAST Clean's mobile cleaning service unique?",
-                    "answer": "Our mobile cleaning service, part of Anywhere Auto-Care, brings professional cleaning directly to your doorstep. We use advanced steam cleaning technology to ensure your vehicle is spotless and ready to go, without you needing to visit our facility."
-                },
-                {
-                    "question": "Do you provide cleaning services for larger vehicles like campers and boats?",
-                    "answer": "Yes, we specialize in cleaning larger vehicles such as campers, caravans, boats, and trucks. Services include engine cleaning, interior and exterior detailing, tire cleaning, and advanced steam cleaning for ultimate freshness and performance."
-                },
-                {
-                    "question": "What are the features of the Long-Term Vehicle Care plan?",
-                    "answer": "The Long-Term Vehicle Care plan is designed to maintain your vehicle's peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs."
-                },
-                {
-                    "question": "What is the FleetCare Pro package and who is it for?",
-                    "answer": "FleetCare Pro is a tailored solution for businesses with multiple vehicles. It ensures your fleet stays clean, spotless, and road-ready with flexible service plans and professional detailing for every vehicle in your fleet."
-                },
-                {
-                    "question": "What types of cleaning services are included in the Standard package?",
-                    "answer": "The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It's perfect for regular upkeep of your vehicle."
-                },
-                {
-                    "question": "What additional options can I add to my cleaning package?",
-                    "answer": "FAST Clean allows you to customize your package with additional options like paint protection, intensive steam cleaning, tire polishing, and headlight restoration. Tailor your cleaning experience to match your needs."
-                },
-                {
-                    "question": "How does the polishing and headlight restoration service work?",
-                    "answer": "Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It's an excellent add-on to any package."
-                },
-                {
-                    "question": "What cleaning options are available for vehicles with leather interiors?",
-                    "answer": "For vehicles with leather interiors, we provide specialized cleaning and treatment services, including leather conditioning and polishing to ensure durability and a luxurious finish."
-                },
-                {
-                    "question": "How does the subscription plan work for regular maintenance?",
-                    "answer": "Our subscription plan offers worry-free maintenance for your vehicle. Choose from flexible options like monthly or bi-weekly cleaning, enjoy discounted rates, and ensure your car stays in top condition all year round."
-                },
-                {
-                    "question": "Can I book a package specifically for engine cleaning and mechanical parts?",
-                    "answer": "Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle’s mechanical components are fresh and functioning efficiently."
-                }
-            ]
+            },
+            "faq": {
+                "title": "FAQ'S",
+                "questions": [
+                    {
+                        "question": "What is the process for booking a cleaning service with FAST Clean?",
+                        "answer": "Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we'll handle the rest. Your vehicle will be cleaned and detailed to perfection."
+                    },
+                    {
+                        "question": "What are the key benefits of the Deluxe package?",
+                        "answer": "The Deluxe package is one of our most popular choices, offering a complete cleaning experience. It includes thorough steam cleaning, interior and exterior polishing, and the application of protective wax. Perfect for those who want their vehicle to look brand new."
+                    },
+                    {
+                        "question": "What makes FAST Clean's mobile cleaning service unique?",
+                        "answer": "Our mobile cleaning service, part of Anywhere Auto-Care, brings professional cleaning directly to your doorstep. We use advanced steam cleaning technology to ensure your vehicle is spotless and ready to go, without you needing to visit our facility."
+                    },
+                    {
+                        "question": "Do you provide cleaning services for larger vehicles like campers and boats?",
+                        "answer": "Yes, we specialize in cleaning larger vehicles such as campers, caravans, boats, and trucks. Services include engine cleaning, interior and exterior detailing, tire cleaning, and advanced steam cleaning for ultimate freshness and performance."
+                    },
+                    {
+                        "question": "What are the features of the Long-Term Vehicle Care plan?",
+                        "answer": "The Long-Term Vehicle Care plan is designed to maintain your vehicle's peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs."
+                    },
+                    {
+                        "question": "What is the FleetCare Pro package and who is it for?",
+                        "answer": "FleetCare Pro is a tailored solution for businesses with multiple vehicles. It ensures your fleet stays clean, spotless, and road-ready with flexible service plans and professional detailing for every vehicle in your fleet."
+                    },
+                    {
+                        "question": "What types of cleaning services are included in the Standard package?",
+                        "answer": "The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It's perfect for regular upkeep of your vehicle."
+                    },
+                    {
+                        "question": "What additional options can I add to my cleaning package?",
+                        "answer": "FAST Clean allows you to customize your package with additional options like paint protection, intensive steam cleaning, tire polishing, and headlight restoration. Tailor your cleaning experience to match your needs."
+                    },
+                    {
+                        "question": "How does the polishing and headlight restoration service work?",
+                        "answer": "Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It's an excellent add-on to any package."
+                    },
+                    {
+                        "question": "What cleaning options are available for vehicles with leather interiors?",
+                        "answer": "For vehicles with leather interiors, we provide specialized cleaning and treatment services, including leather conditioning and polishing to ensure durability and a luxurious finish."
+                    },
+                    {
+                        "question": "How does the subscription plan work for regular maintenance?",
+                        "answer": "Our subscription plan offers worry-free maintenance for your vehicle. Choose from flexible options like monthly or bi-weekly cleaning, enjoy discounted rates, and ensure your car stays in top condition all year round."
+                    },
+                    {
+                        "question": "Can I book a package specifically for engine cleaning and mechanical parts?",
+                        "answer": "Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle’s mechanical components are fresh and functioning efficiently."
+                    }
+                ]
+            },
         },
         "fleetcare": {
             "title": "FleetCare",
@@ -238,6 +529,300 @@
                 },
                 "button": "Submit"
             }
+        },
+        "anywhere_autocare": {
+            "standard": [
+                {
+                    "id": "autocare-standard-exterior",
+                    "name": "Exterior",
+                    "description": "Complete exterior care for your vehicle",
+                    "packages": [
+                        "Exterior steam cleaning",
+                        "Tire blackening",
+                        "Cleaning of windows and mirrors",
+                        "Application of spray wax",
+                        "Wheel cleaning"
+                    ],
+                    "totalDuration": "60 min",
+                    "duration": "60 min",
+                    "price": "€74.95",
+                    "vehicleOptions": {
+                        "Hatchback": {
+                            "basePrice": 74.95
+                        },
+                        "Sedan": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "SUV": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "Station Wagon": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "MPV": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "Coupé": {
+                            "basePrice": 74.95
+                        },
+                        "Convertible": {
+                            "basePrice": 74.95
+                        },
+                        "Van": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "Pick-up Truck": {
+                            "basePrice": 74.95,
+                            "additionalCost": 10,
+                            "additionalTime": 10
+                        },
+                        "Motorbike": {
+                            "basePrice": 64.95,
+                            "notes": "exterior only"
+                        }
+                    },
+                    "additionalOptions": {
+                        "interior": [
+                            {
+                                "name": "Deep cleaning child seat (per seat)",
+                                "additionalCost": 15
+                            },
+                            {
+                                "name": "Ozone treatment",
+                                "additionalCost": 95
+                            }
+                        ],
+                        "exterior": [
+                            {
+                                "name": "Convertible top cleaning",
+                                "additionalCost": 85
+                            },
+                            {
+                                "name": "Door sills and edges",
+                                "additionalCost": 10
+                            },
+                            {
+                                "name": "Resin spots removal",
+                                "additionalCost": 25
+                            },
+                            {
+                                "name": "Polishing plastic parts",
+                                "additionalCost": 7.5
+                            },
+                            {
+                                "name": "Removing moss from seams",
+                                "additionalCost": 15
+                            },
+                            {
+                                "name": "Hood cleaning",
+                                "additionalCost": 50
+                            },
+                            {
+                                "name": "Sunroof cleaning",
+                                "additionalCost": 15
+                            },
+                            {
+                                "name": "Polishing chrome parts",
+                                "additionalCost": 55
+                            },
+                            {
+                                "name": "Polishing headlights",
+                                "additionalCost": 50
+                            }
+                        ]
+                    },
+                    "durationOptions": [],
+                    "cleaningFrequencyOptions": [],
+                    "_id": {
+                        "$oid": "6795836f9c12bd3b6555e9a4"
+                    }
+                }
+            ],
+            "deluxe": [
+                {
+                    "id": "autocare-deluxe-exterior",
+                    "name": "Exterior",
+                    "description": "Premium exterior care for your vehicle",
+                    "packages": [
+                        "Tire blackening",
+                        "Exterior shampoo wash",
+                        "Exterior rinsing",
+                        "Exterior steam cleaning",
+                        "Hand wash",
+                        "Polishing plastic parts",
+                        "Removing moss from seams",
+                        "Removing resin spots",
+                        "Cleaning windows and mirrors",
+                        "Application of spray wax",
+                        "Cleaning the fuel cap",
+                        "Wheel cleaning"
+                    ],
+                    "totalDuration": "90 min",
+                    "duration": "90 min",
+                    "price": "€89.95",
+                    "vehicleOptions": {
+                        "Hatchback": {
+                            "basePrice": 89.95
+                        },
+                        "Sedan": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        },
+                        "SUV": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        },
+                        "Station Wagon": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        },
+                        "MPV": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        },
+                        "Coupé": {
+                            "basePrice": 89.95
+                        },
+                        "Convertible": {
+                            "basePrice": 89.95
+                        },
+                        "Van": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        },
+                        "Pick-up Truck": {
+                            "basePrice": 89.95,
+                            "additionalCost": 10
+                        }
+                    },
+                    "additionalOptions": {
+                        "interior": [
+                            {
+                                "name": "Deep cleaning child seat (per seat)",
+                                "additionalCost": 15
+                            },
+                            {
+                                "name": "Ozone treatment",
+                                "additionalCost": 95
+                            }
+                        ],
+                        "exterior": [
+                            {
+                                "name": "Convertible top cleaning",
+                                "additionalCost": 85
+                            },
+                            {
+                                "name": "Polishing chrome parts",
+                                "additionalCost": 55
+                            },
+                            {
+                                "name": "Polishing headlights",
+                                "additionalCost": 50
+                            }
+                        ]
+                    },
+                    "durationOptions": [],
+                    "cleaningFrequencyOptions": [],
+                    "_id": {
+                        "$oid": "678fbf240c8e6e569012682b"
+                    }
+                }
+            ],
+            "premium": [
+                {
+                    "id": "autocare-premium-showroom",
+                    "name": "Showroom Package",
+                    "description": "Ultimate showroom quality care for your vehicle",
+                    "packages": [
+                        "All services from previous packages",
+                        "Additional polishing and detailing of chrome parts",
+                        "Intensive vehicle polishing (1-step process)"
+                    ],
+                    "totalDuration": "240 min",
+                    "duration": "240 min",
+                    "price": "€429.95",
+                    "vehicleOptions": {
+                        "Hatchback": {
+                            "basePrice": 429.95
+                        },
+                        "Sedan": {
+                            "basePrice": 429.95,
+                            "additionalCost": 45
+                        },
+                        "SUV": {
+                            "basePrice": 429.95,
+                            "additionalCost": 45
+                        },
+                        "Station Wagon": {
+                            "basePrice": 429.95,
+                            "additionalCost": 45
+                        },
+                        "MPV": {
+                            "basePrice": 429.95,
+                            "additionalCost": 45
+                        },
+                        "Coupé": {
+                            "basePrice": 429.95
+                        },
+                        "Convertible": {
+                            "basePrice": 429.95
+                        },
+                        "Van": {
+                            "basePrice": 429.95,
+                            "additionalCost": 45
+                        }
+                    },
+                    "additionalOptions": {
+                        "interior": [
+                            {
+                                "name": "Vomit treatment",
+                                "additionalCost": 125
+                            },
+                            {
+                                "name": "Pet hair removal",
+                                "additionalCost": 50
+                            },
+                            {
+                                "name": "Odor treatment",
+                                "additionalCost": 85
+                            },
+                            {
+                                "name": "Leather treatment",
+                                "additionalCost": 50
+                            }
+                        ],
+                        "exterior": [
+                            {
+                                "name": "Convertible top cleaning",
+                                "additionalCost": 85
+                            },
+                            {
+                                "name": "Polishing chrome parts",
+                                "additionalCost": 55
+                            },
+                            {
+                                "name": "Polishing headlights",
+                                "additionalCost": 50
+                            }
+                        ]
+                    },
+                    "durationOptions": [],
+                    "cleaningFrequencyOptions": [],
+                    "_id": {
+                        "$oid": "678fbf250c8e6e5690126859"
+                    }
+                }
+            ]
         },
         "subscriptions": {
             "title": "SUBSCRIPTIONS",
@@ -571,6 +1156,70 @@
                     ]
                 }
             }
+        },
+        "customer_dashboard": {
+            "title": "Customer Dashboard",
+            "sections": [
+                {
+                    "title": "Dashboard Overview",
+                    "widgets": [
+                        {
+                            "title": "My Bookings",
+                            "description": "View and manage your car care bookings.",
+                            "table_headers": [
+                                "Customer Name",
+                                "Vehicle",
+                                "Location",
+                                "Service",
+                                "Package",
+                                "Appointment",
+                                "Price",
+                                "Payment Status"
+                            ],
+                            "bookings": []
+                        },
+                        {
+                            "title": "Notifications",
+                            "description": "Stay updated with the latest notifications.",
+                            "notifications": []
+                        }
+                    ]
+                },
+                {
+                    "title": "My Bookings",
+                    "description": "View and manage your car care appointments.",
+                    "search_placeholder": "Search by Vehicle, Service, or City",
+                    "table_headers": [
+                        "Customer Name",
+                        "Company Name",
+                        "Street",
+                        "Zip Code",
+                        "City",
+                        "Email",
+                        "Phone Number",
+                        "Vehicle",
+                        "Vehicle Type",
+                        "Service Name",
+                        "Package",
+                        "Appointment Start",
+                        "Appointment End",
+                        "Price",
+                        "Duration",
+                        "Travel Duration",
+                        "Type",
+                        "Addons",
+                        "Detailing",
+                        "Lock Time Start",
+                        "Lock Time End"
+                    ],
+                    "bookings": []
+                },
+                {
+                    "title": "Notifications",
+                    "description": "Manage your notifications.",
+                    "notifications": []
+                }
+            ]
         }
     }
 }

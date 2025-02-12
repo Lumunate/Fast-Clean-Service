@@ -10,6 +10,7 @@ import StoreOutlinedIcon from '@mui/icons-material/StoreOutlined';
 import CheckIcon from '../../../../public/bookingFormIcons/Check.svg';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
 import Image from 'next/image';
+import {useTranslations} from "next-intl";
 
 const shakeAnimation = `
   @keyframes shake {
@@ -28,37 +29,6 @@ const shakeAnimation = `
   }
 `;
 
-const packages = [
-  {
-    name: 'On Location',
-    icon: (
-      <LocationOnOutlinedIcon
-        sx={{
-          fontSize: 30,
-          animation: 'shake 2s infinite',
-          '@media (max-width: 600px)': { fontSize: 20 },
-        }}
-      />
-    ),
-    tagline: "We'll come to you, wherever you are.",
-    service: 'Remote',
-  },
-  {
-    name: 'On Branch',
-    icon: (
-      <StoreOutlinedIcon
-        sx={{
-          fontSize: 30,
-          animation: 'shake 2s infinite',
-          '@media (max-width: 600px)': { fontSize: 20 },
-        }}
-      />
-    ),
-    tagline: 'Come and visit our branch, Samsonweg 1A, Wormerveer.',
-    service: 'Onsite',
-  },
-];
-
 const LocationSelection = () => {
   const { updateFormData, formData, nextStep } = useMultiStepForm(); // Use hook for form data
   const [selectedOption, setSelectedOption] = useState(
@@ -68,8 +38,41 @@ const LocationSelection = () => {
   const [modalInfo, setModalInfo] = useState('');
   const { theme } = useTheme();
   const { updateValidation } = useValidation();
+    const t = useTranslations('booking');
 
-  // Update selected option when formData changes
+    const packages = [
+        {
+            name: t("steps.0.options.0"),
+            icon: (
+                <LocationOnOutlinedIcon
+                    sx={{
+                        fontSize: 30,
+                        animation: 'shake 2s infinite',
+                        '@media (max-width: 600px)': { fontSize: 20 },
+                    }}
+                />
+            ),
+            tagline: t("steps.0.options.2"),
+            service: 'Remote',
+        },
+        {
+            name: t("steps.0.options.1"),
+            icon: (
+                <StoreOutlinedIcon
+                    sx={{
+                        fontSize: 30,
+                        animation: 'shake 2s infinite',
+                        '@media (max-width: 600px)': { fontSize: 20 },
+                    }}
+                />
+            ),
+            tagline: t("steps.0.options.3"),
+            service: 'Onsite',
+        },
+    ];
+
+
+    // Update selected option when formData changes
   useEffect(() => {
     setSelectedOption(formData.service);
   }, [formData.service]);

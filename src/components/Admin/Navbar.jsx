@@ -1,14 +1,47 @@
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+    AppBar,
+    IconButton,
+    Toolbar,
+    Typography,
+    Box,
+    Menu,
+    MenuItem,
+    ListItemIcon,
+    ListItemText,
+    useMediaQuery
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
+import EventIcon from "@mui/icons-material/Event";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import DirectionsBoatIcon from "@mui/icons-material/DirectionsBoat";
+import StoreIcon from "@mui/icons-material/Store";
+import CategoryIcon from "@mui/icons-material/Category";
+import LocalActivityIcon from "@mui/icons-material/LocalActivity";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
-const Navbar = ({ toggleDrawer, handleSignOut }) => {
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const menuItems = [
+    { text: "Dashboard", icon: <DashboardIcon />, route: "/admin/dashboard" },
+    { text: "Bookings", icon: <EventIcon />, route: "/admin/booking" },
+    { text: "FleetCare Pro", icon: <DirectionsCarIcon />, route: "/admin/fleetpro" },
+    { text: "Other Vehicles Management", icon: <DirectionsBoatIcon />, route: "/admin/othervehicles" },
+    { text: "Shop Management", icon: <StoreIcon />, route: "/admin/shop" },
+    { text: "Package Management", icon: <CategoryIcon />, route: "/admin/package-management" },
+    { text: "Coupon Management", icon: <LocalActivityIcon />, route: "/admin/coupons" },
+];
+
+const Navbar = ({ toggleDrawer, drawerOpen, handleSignOut }) => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const { data: session } = useSession();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const router = useRouter();
+
+    // Check if screen is below 600px
+    const isMobile = useMediaQuery("(max-width:600px)");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +52,25 @@ const Navbar = ({ toggleDrawer, handleSignOut }) => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleMenuClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleMenuItem = (route) => {
+        router.push(route);
+        handleMenuClose();
+    };
+
+    const handleLogout = () => {
+        handleSignOut();
+        handleMenuClose();
+        router.push("/");
+    };
 
     return (
         <AppBar
@@ -32,21 +84,55 @@ const Navbar = ({ toggleDrawer, handleSignOut }) => {
             }}
         >
             <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={toggleDrawer}
-                    edge="start"
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-                    <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                        <IconButton aria-label="go back">
-                            <ArrowBackIcon />
-                            <HomeIcon />
+                {isMobile ? (
+                    // On mobile: the hamburger opens a Menu
+                    <>
+                        <IconButton color="inherit" aria-label="open drawer" onClick={handleMenuClick} edge="start">
+                            <MenuIcon />
                         </IconButton>
-                    </Link>
+                        <Menu
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleMenuClose}
+                            anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                            transformOrigin={{ vertical: "top", horizontal: "left" }}
+                            sx={{
+                                mt: "45px",
+                                top: "-4px !important",
+                                left: "-16px !important",
+                                position: "absolute !important",
+                            }}
+                        >
+                            <MenuItem onClick={() => { router.push("/"); handleMenuClose(); }}>
+                                <ListItemIcon><ArrowBackIcon /></ListItemIcon>
+                                <ListItemText primary="Home" />
+                            </MenuItem>
+
+                            {menuItems.map((item) => (
+                                <MenuItem key={item.text} onClick={() => handleMenuItem(item.route)}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </MenuItem>
+                            ))}
+
+                            <MenuItem onClick={handleLogout}>
+                                <ListItemIcon><LogoutIcon /></ListItemIcon>
+                                <ListItemText primary="Logout" />
+                            </MenuItem>
+                        </Menu>
+                    </>
+                ) : (
+                    // On larger screens: show the sidebar toggle + arrow back/home icons if desired
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={toggleDrawer}
+                        edge="start"
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                )}
+                <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1, ml: 2 }}>
                     <Typography
                         variant="h4"
                         noWrap
@@ -55,9 +141,10 @@ const Navbar = ({ toggleDrawer, handleSignOut }) => {
                             fontSize: "1.8rem",
                             fontWeight: "bold",
                             marginLeft: "8px",
+                            "@media (max-width: 600px)": { marginLeft: "0", },
                         }}
                     >
-                        Dashboard
+                        Admin Dashboard
                     </Typography>
                 </Box>
             </Toolbar>

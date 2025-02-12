@@ -4,34 +4,8 @@ import { Box, Grid, Typography, styled } from "@mui/material";
 import SingleWorkHowDoes from "./SingleWorkHowDoes";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
+import {useTranslations} from "next-intl";
 
-const works = [
-    {
-        id: 1,
-        icon: "/howdoesitworkicons/Map-Pin.png",
-        title: "Choose your location:",
-        description: "We come to you or you bring your car to us.",
-    },
-    {
-        id: 2,
-        icon: "/howdoesitworkicons/Settings-Search.png",
-        title: "Choose your service:",
-        description:
-            "Select from our extensive range of cleaning and cleaning services detailing services.",
-    },
-    {
-        id: 3,
-        icon: "/howdoesitworkicons/Report--Streamline-Tabler.png",
-        title: "Make an appointment:",
-        description: "Choose a date and time that suits you",
-    },
-    {
-        id: 4,
-        icon: "/howdoesitworkicons/Checks--Streamline.png",
-        title: "We will do the rest",
-        description: "Enjoy your perfectly cleaned car!",
-    },
-];
 
 const SectionContainer = styled(Box)(({ theme }) => ({
     position: "relative",
@@ -62,9 +36,38 @@ const ResponsiveGrid = styled(Grid)(({ theme }) => ({
 }));
 
 export default function HowDoesItWork() {
+    const t = useTranslations('home.how_it_works');
     const { theme } = useTheme();
 
-    // Swap the 3rd and 4th cards for responsive layouts
+
+    const works = [
+        {
+            id: 1,
+            icon: "/howdoesitworkicons/Map-Pin.png",
+            title: t("steps.0.title"),
+            description: t("steps.0.description"),
+        },
+        {
+            id: 2,
+            icon: "/howdoesitworkicons/Settings-Search.png",
+            title: t("steps.1.title"),
+            description:
+                t("steps.1.description"),
+        },
+        {
+            id: 3,
+            icon: "/howdoesitworkicons/Report--Streamline-Tabler.png",
+            title: t("steps.2.title"),
+            description: t("steps.2.description"),
+        },
+        {
+            id: 4,
+            icon: "/howdoesitworkicons/Checks--Streamline.png",
+            title: t("steps.3.title"),
+            description: t("steps.3.description"),
+        },
+    ];
+
     const reorderedWorks = [...works];
     if (typeof window !== "undefined" && window.innerWidth <= 1400 && window.innerWidth >= 768) {
         [reorderedWorks[2], reorderedWorks[3]] = [reorderedWorks[3], reorderedWorks[2]];
@@ -73,7 +76,7 @@ export default function HowDoesItWork() {
     return (
         <SectionContainer sx={{ marginBottom: "10rem"}}>
             <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-                <HeadingLinesAnimation text="HOW DOES IT WORK?" />
+                <HeadingLinesAnimation text={t("title")} />
             </Box>
 
             <ResponsiveGrid>
@@ -121,8 +124,8 @@ export default function HowDoesItWork() {
                             left: "48%",
                         },
                         "@media (max-width: 768px)": {
-                            top: "-25rem",
-                            left: "45%",
+                            top: "-26rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -144,8 +147,8 @@ export default function HowDoesItWork() {
                             transform: "rotate(90deg)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "4rem",
-                            left: "45%",
+                            top: "3rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -167,8 +170,8 @@ export default function HowDoesItWork() {
                             transform: "scale(-1, -1)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "30rem",
-                            left: "45%",
+                            top: "28rem",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },

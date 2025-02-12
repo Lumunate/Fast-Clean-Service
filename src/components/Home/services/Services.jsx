@@ -15,49 +15,51 @@ import UserIcon from "../../../../public/decorative/User-Edit--Streamline-Tabler
 import MapIcon from "../../../../public/decorative/Map-Pin--Streamline-Tabler.svg";
 import LeafIcon from "../../../../public/decorative/Leaf--Streamline-Tabler.svg";
 import Image from "next/image";
+import {useTranslations} from "next-intl";
 
 export default function Services() {
   const { theme } = useTheme();
   const isSmDown = useMediaQuery("(max-width:1050px)");
   const isXsDown = useMediaQuery("(max-width:600px)");
+    const t = useTranslations('home.why_choose_us_section');
   {
     /* <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
           <ThreeDComponent modelUrl="/models/car_project/CAR_glb.glb" />
         </Box> */
   }
+    const services = [
+        {
+            icon: MapIcon,
+            title: t("services.0.title"),
+            description: t("services.0.description"),
+        },
+        {
+            icon: ClockIcon,
+            title: t("services.1.title"),
+            description: t("services.1.description"),
+        },
+        {
+            icon: CalendarIcon,
+            title: t("services.2.title"),
+            description: t("services.2.description"),
+        },
+        {
+            icon: UserIcon,
+            title: t("services.3.title"),
+            description: t("services.3.description"),
+        },
+        {
+            icon: LeafIcon,
+            title: t("services.4.title"),
+            description: t("services.4.description"),
+        },
+        {
+            icon: GroupIcon,
+            title: t("services.5.title"),
+            description: t("services.5.description"),
+        },
+    ];
 
-  const services = [
-    {
-      icon: MapIcon,
-      title: "On-Site Service",
-      description: "Our experienced professionals come to you with our own material.",
-    },
-    {
-      icon: ClockIcon,
-      title: "Time Efficiency",
-      description: "Top-quality mobile steam cleaning that saves you time.",
-    },
-    {
-      icon: CalendarIcon,
-      title: "Open 7 Days a Week",
-      description: "Get in touch with us through various channels.",
-    },
-    {
-      icon: UserIcon,
-      title: "Easy Booking",
-      description: "Just book the appointment online and leave the rest to us.",
-    },
-    {
-      icon: LeafIcon,
-      title: "Eco-Friendly",
-      description: "We use 3 liters per car for great results.",
-    },
-    {
-      icon: GroupIcon,
-      title: "Interior Care",
-      description: "Find answers to frequently asked questions.",
-    },
-  ];
 
   // Determine cards per row based on screen size
   let cardsPerRow = 3;
@@ -92,15 +94,15 @@ export default function Services() {
           margin: "0 auto",
           paddingLeft: "9rem",
           "@media (max-width: 1280px)": { paddingLeft: 0 },
-          "@media (max-width: 600px)": { width: "100%" },
+          "@media (max-width: 600px)": { width: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
         }}
       >
-        <HeadingLinesAnimation text="WHY CHOOSE US" sx={{ width: "100%" }} />
+        <HeadingLinesAnimation text={t("title")} sx={{ width: "100%" }} />
       </Box>
 
-      <Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>
-        <ThreeDComponent modelUrl="/models/bmw_m5_cs/bmw_m5_cs.glb" />
-      </Box>
+      {/*<Box sx={{ margin: "0 auto", zIndex: 10, width: "100%", maxWidth: "1440px", minWidth: "1200px" }}>*/}
+      {/*  <ThreeDComponent modelUrl="/models/bmw_m5_cs/bmw_m5_cs.glb" />*/}
+      {/*</Box>*/}
 
       <Box
         sx={{
@@ -135,7 +137,7 @@ export default function Services() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-start",
-              marginBottom: "6rem",
+                marginBottom: rowIndex === 0 ? "6rem" : "0",
               padding: "0 10rem",
               gap: "3rem",
               "@media (max-width: 600px)": {

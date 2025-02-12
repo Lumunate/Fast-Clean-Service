@@ -7,8 +7,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import {useTranslations} from "next-intl";
 
 const Navbar = ({ toggleDrawer, handleTabChange }) => {
+    const t = useTranslations('customer_dashboard');
     const [isScrolled, setIsScrolled] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedTab, setSelectedTab] = useState("Dashboard");
@@ -72,7 +74,7 @@ const Navbar = ({ toggleDrawer, handleTabChange }) => {
                         <ListItemIcon><HomeIcon /></ListItemIcon>
                         <ListItemText primary="Home" />
                     </MenuItem>
-                    {[{ text: "Dashboard", icon: <DashboardIcon /> }, { text: "My Bookings", icon: <EventIcon /> }].map(
+                    {[{ text: t("options.0"), icon: <DashboardIcon /> }, { text: t("options.1"), icon: <EventIcon /> }].map(
                         (item) => (
                             <MenuItem key={item.text} onClick={() => { handleTabClick(item.text); handleMenuClose(); }}>
                                 <ListItemIcon>{item.icon}</ListItemIcon>
@@ -86,7 +88,7 @@ const Navbar = ({ toggleDrawer, handleTabChange }) => {
                     </MenuItem>
                 </Menu>
                 <Typography variant="h4" noWrap component="div" sx={{ fontSize: "1.8rem", fontWeight: "bold", marginLeft: "8px" }}>
-                    Customer Dashboard
+                    {t("title")}
                 </Typography>
             </Toolbar>
         </AppBar>

@@ -31,13 +31,14 @@ import SunIcon from "@mui/icons-material/WbSunny";
 import MoonIcon from "../../../public/navbar/Moon.svg";
 import LoginModal from "../../components/Login/LoginModal";
 import SignUpModal from "../../components/SignUp/SignUpModal";
+import {useTranslations} from "next-intl";
 
 const MobileNavbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const anchorEl = useRef(null);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
-
+    const t = useTranslations('header');
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const [openLogin, setOpenLogin] = useState(false);
@@ -53,37 +54,37 @@ const MobileNavbar = () => {
 
     const navLinks = [
         {
-            label: "Home",
+            label: t("navigation.home"),
             href: "/",
         },
         {
-            label: "About",
+            label: t("navigation.about"),
             href: "/aboutus",
         },
         {
-            label: "Services",
+            label: t("navigation.services.title"),
             href: "/services",
             more: [
                 {
-                    label: "FleetCare Pro",
+                    label: t("navigation.services.options.0"),
                     href: "/fleet",
                 },
                 {
-                    label: "Anywhere AutoCare",
+                    label: t("navigation.services.options.1"),
                     href: "/autocare",
                 },
                 {
-                    label: "Subscription Plans",
+                    label: t("navigation.services.options.2"),
                     href: "/subscribe",
                 },
                 {
-                    label: "Other Vehicles",
+                    label: t("navigation.services.options.3"),
                     href: "/other-vehicles",
                 },
             ],
         },
         {
-            label: "Contact",
+            label: t("navigation.contact"),
             href: "/contact",
         },
     ];
@@ -139,7 +140,7 @@ const MobileNavbar = () => {
         <Divider />
         <ListItem disablePadding>
           <ListItemButton onClick={() => (window.location.href = "/booking")}>
-            <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+            <NavbarCTA sx={{ marginLeft: "0 !important" }}>{t("buttons.book_now")}</NavbarCTA>
           </ListItemButton>
         </ListItem>
       </Box>
@@ -211,11 +212,8 @@ const MobileNavbar = () => {
                                     top: "-4rem",
                                     right: "-9rem",
                                     zIndex: 2,
-                                    backgroundColor: "rgba(35, 35, 35, 0.4)",
                                     padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
                                     borderRadius: "4px",
-                                    backdropFilter: "blur(4px)",
-                                    border: "0.01px solid #fff",
                                     width: {
                                         xs: "20rem",
                                         sm: "24rem",
@@ -225,8 +223,6 @@ const MobileNavbar = () => {
                                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                                     paddingTop: "8rem !important",
 
-
-                                    border: "none",
                                     backgroundColor: "rgba(35, 35, 35, 0.5)",
                                     backdropFilter: "blur(10px)",
                                     boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
@@ -257,7 +253,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={Arrow_Right} alt="User Icon" width={20} height={20} />
-                                    Login
+                                    {t("buttons.login")}
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
@@ -266,7 +262,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_Cog} alt="User Icon" width={20} height={20} />
-                                    Signup
+                                    {t("buttons.signup")}
                                 </DropDownLink>
                             </Box>
                         )}

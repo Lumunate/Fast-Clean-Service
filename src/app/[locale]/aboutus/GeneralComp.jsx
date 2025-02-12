@@ -4,28 +4,31 @@ import {
     Typography,
     Grid,
     Card,
-    Container
+    Container,
+    Divider
 } from '@mui/material';
 import { useTheme } from "@mui/material/styles";
+import { useTranslations } from "next-intl";
 
 const ValueProposition = () => {
+    const t = useTranslations('about');
     const theme = useTheme();
     const features = [
         {
-            title: "Quality as a Priority",
-            description: "We prioritize top-notch quality with fully equipped service buses and cutting edge cleaning techniques to perfect every detail."
+            title: t("qualities.quality_as_priority.title"),
+            description: t("qualities.quality_as_priority.description")
         },
         {
-            title: "Our Values",
-            description: "Every car deserves the best, and we deliver excellence for both private and business customers."
+            title: t("qualities.our_values.title"),
+            description: t("qualities.our_values.description")
         },
         {
-            title: "Experts in Detail",
-            description: "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+            title: t("qualities.experts_in_detail.title"),
+            description: t("qualities.experts_in_detail.description")
         },
         {
-            title: "Our Successes",
-            description: "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore a like-new appearance."
+            title: t("qualities.our_successes.title"),
+            description: t("qualities.our_successes.description")
         }
     ];
 
@@ -46,45 +49,51 @@ const ValueProposition = () => {
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 }}
             >
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
                     {features.map((feature, index) => (
-                        <Grid
-                            container
-                            key={index}
-                            spacing={3}
-                            sx={{
-                                borderTop: index !== 0 ? '1px solid #e0e0e0' : 'none',
-                                padding: "2rem",
-                            }}
-                        >
-                            <Grid item xs={12} md={4}>
-                                <Typography
-                                    sx={{
-                                        fontWeight: 400,
-                                        color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
-                                        fontSize: "2.2rem",
-                                        "@media (max-width: 900px)": { textAlign: "center" },
-                                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
-                                    }}
-                                >
-                                    {feature.title}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} md={8}>
-                                <Typography
-                                    sx={{
-                                        lineHeight: 1.6,
-                                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#5A5E69",
-                                        fontSize: "1.6rem",
-                                        fontWeight: "400",
-                                        marginBottom: "1.4rem",
-                                        "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                        <React.Fragment key={index}>
+                            <Grid
+                                container
+                                spacing={3}
+                                alignItems="center" // ✅ Centers content vertically
+                                sx={{
+                                    padding: "2.5rem 2rem", // Increased padding for better spacing
                                 }}
-                                >
-                                    {feature.description}
-                                </Typography>
+                            >
+                                <Grid item xs={12} md={4}>
+                                    <Typography
+                                        sx={{
+                                            fontWeight: 400,
+                                            color: theme.palette.mode === "dark" ? "#fff" : '#232E4A',
+                                            fontSize: "2.2rem",
+                                            textAlign: { xs: "center", md: "left" },
+                                            "@media (max-width: 600px)": { fontSize: "1.6rem" },
+                                        }}
+                                    >
+                                        {feature.title}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={8}>
+                                    <Typography
+                                        sx={{
+                                            lineHeight: 1.6,
+                                            color: theme.palette.mode === "dark" ? "#C2C2C2" : "#5A5E69",
+                                            fontSize: "1.6rem",
+                                            fontWeight: "400",
+                                            textAlign: { xs: "center", md: "left" },
+                                            "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                                        }}
+                                    >
+                                        {feature.description}
+                                    </Typography>
+                                </Grid>
                             </Grid>
-                        </Grid>
+
+                            {/* ✅ Adds a uniform Divider between sections, except after the last one */}
+                            {index < features.length - 1 && (
+                                <Divider sx={{ backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.2)" : "#e0e0e0", margin: "0 2rem" }} />
+                            )}
+                        </React.Fragment>
                     ))}
                 </Box>
             </Card>

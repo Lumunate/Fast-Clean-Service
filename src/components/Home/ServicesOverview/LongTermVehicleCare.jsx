@@ -18,47 +18,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import styles from "../about/About.module.css";
 import { ServiceDescription, ServiceHeading } from "./ServiceColumnGroup";
 import FadeIn from "../../Animations/FadeIn";
-
-const cardData = [
-  {
-    imgSrc: "/car1.jpg",
-    name: "Cars",
-    pkgs: [
-      "Steam washing",
-      "Window washing",
-      "Polishing chrome parts",
-      "Waxing",
-      "Cleaning rims",
-      "Blackening tires",
-    ],
-    description:
-      "We provide specialized steam cleaning that avoids scratches and restores your car’s shine.",
-  },
-  {
-    imgSrc: "/boat.png",
-    name: "Campers, Caravans, Boats, and Trucks",
-    pkgs: [
-      "Interior and Exterior Cleaning",
-      "Advanced Steam Cleaning",
-      "Flexible Services",
-      "Engine & Mechanical Cleaning",
-    ],
-    description:
-      " we offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization, and engine cleaning for ultimate freshness and performance.",
-  },
-  {
-    imgSrc: "/bike2.jpg",
-    name: "Bikes",
-    pkgs: [
-      "Motorbikes (Street, Cruiser, Touring, and Sport)",
-      "Dirt Bikes",
-      "Electric Bikes",
-      "Scooters",
-    ],
-    description:
-      "Whether it's a casual ride or a high-performance machine, we’ve got your two-wheelers covered with professional cleaning and care services.",
-  },
-];
+import {useTranslations} from "next-intl";
 
 function getTransitionStyles(index, curIndex, len) {
   return index === curIndex
@@ -222,6 +182,44 @@ function getTransitionStyles(index, curIndex, len) {
 
 export default function LongTermVehicleCare() {
   const [currentIndex, setCurrentIndex] = useState(0);
+    const t = useTranslations('home.other_vehicles_care_section');
+    const cardData = [
+        {
+            imgSrc: "/car1.jpg",
+            name: t("categories.0.name"),
+            pkgs: [
+                t("categories.0.services.0"),
+                t("categories.0.services.1"),
+                t("categories.0.services.2"),
+                t("categories.0.services.3"),
+                t("categories.0.services.4"),
+                t("categories.0.services.5"),
+            ],
+            description: t("categories.0.description"),
+        },
+        {
+            imgSrc: "/boat.png",
+            name: t("categories.1.name"),
+            pkgs: [
+                t("categories.1.services.0"),
+                t("categories.1.services.1"),
+                t("categories.1.services.2"),
+                t("categories.1.services.3"),
+            ],
+            description: t("categories.1.description"),
+        },
+        {
+            imgSrc: "/bike2.jpg",
+            name: t("categories.2.name"),
+            pkgs: [
+                t("categories.2.services.0"),
+                t("categories.2.services.1"),
+                t("categories.2.services.2"),
+                t("categories.2.services.3"),
+            ],
+            description: t("categories.2.description"),
+        },
+    ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -266,12 +264,11 @@ export default function LongTermVehicleCare() {
               marginBottom: "0",
             }}
           >
-            Other Vehicles Care
+              {t("title")}
           </ServiceHeading>
         </FadeIn>
         <ServiceDescription sx={{ maxWidth: "620px" }}>
-          Ensure your vehicles&apos; longevity with our comprehensive maintenance plans designed to keep your car in optimal
-          condition for years to come.
+            {t("description")}
         </ServiceDescription>
       </HomePkgsInBox>
 
@@ -363,7 +360,7 @@ export default function LongTermVehicleCare() {
                     }}
                     onClick={() => (window.location.href = "/other-vehicles")}
                   >
-                    Learn More
+                      {t("button.text")}
                   </ServiceBtn1>
                 </div>
               </Card>

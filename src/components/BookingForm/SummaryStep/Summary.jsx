@@ -6,8 +6,10 @@ import { useValidation } from '../../../contexts/ValidationContext';
 import { useTheme } from '../../../contexts/themeContext';
 import { SummaryHeading } from '../../mui/BookingFormPackages';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
+import {useTranslations} from "next-intl";
 
 const Summary = () => {
+    const t = useTranslations('booking');
   const { formData } = useMultiStepForm();
   const { updateValidation } = useValidation();
   updateValidation(true);
@@ -72,19 +74,19 @@ const Summary = () => {
       >
         <Grid item xs={12} md={6}>
           <Box sx={{ marginBottom: '2rem' }}>
-            <SummaryHeading>Vehicle Information</SummaryHeading>
+            <SummaryHeading>{t("steps.8.sections.0")}</SummaryHeading>
             <SummaryItem
-              label="License Plate"
+              label={t("steps.8.sections.2")}
               value={
                 formData?.vehicleDetails?.kenteken
                   ? formData.vehicleDetails.kenteken
                   : '---'
               }
             />
-            <SummaryItem label="Vehicle Type" value={formData?.carType} />
+            <SummaryItem label={t("steps.8.sections.2")} value={formData?.carType} />
           </Box>
           <Box>
-            <SummaryHeading>Add Ons</SummaryHeading>
+            <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
             {formData?.selectedAdditionalOptions?.length ? (
               formData.selectedAdditionalOptions.map((option, index) => (
                 <SummaryItem
@@ -105,29 +107,29 @@ const Summary = () => {
                   lineHeight: '2.4rem',
                 }}
               >
-                No Addons
+                  {t("steps.8.sections.10")}
               </Typography>
             )}
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
           <Box sx={{ marginBottom: '2rem' }}>
-            <SummaryHeading>Service</SummaryHeading>
+            <SummaryHeading>{t("steps.8.sections.3")}</SummaryHeading>
             <SummaryItem
-              label="Service Type"
+              label={t("steps.8.sections.4")}
               value={formData.selectedPackageType}
             />
             <SummaryItem
-              label="Package Type"
+              label={t("steps.8.sections.5")}
               value={formData.packageType?.name}
             />
             <SummaryItem
-              label="Sub-Package Type"
+              label={t("steps.8.sections.6")}
               value={formData.selectedPackage?.name}
             />
           </Box>
           <Box>
-            <SummaryHeading>Detailings</SummaryHeading>
+            <SummaryHeading>{t("steps.8.sections.7")}</SummaryHeading>
             {formData?.selectedDetailingOptions?.length ? (
               formData.selectedDetailingOptions.map((option, index) => (
                 <SummaryItem
@@ -145,12 +147,12 @@ const Summary = () => {
                   lineHeight: '2.4rem',
                 }}
               >
-                No Detailing Add ons
+                  {t("steps.8.sections.8")}
               </Typography>
             )}
           </Box>
           <Box>
-            <SummaryHeading>Appointment</SummaryHeading>
+            <SummaryHeading>{t("steps.8.sections.9")}</SummaryHeading>
             <SummaryItem
               label={formData?.selectedTime?.toLocaleDateString('en-US', {
                 weekday: 'long',

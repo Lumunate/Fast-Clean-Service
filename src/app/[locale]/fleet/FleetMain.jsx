@@ -8,6 +8,7 @@ import { DecorativeBackgroundImage } from "../../../components/Decorative/Decora
 import RadialCircle from "../../../components/Decorative/RadialCircle";
 import Image from "next/image";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import {useTranslations} from "next-intl";
 
 export const FleetSubheading = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
@@ -120,6 +121,7 @@ export const ServiceIcon = styled(Box)(({ theme }) => ({
 
 export default function FleetMain() {
   const theme = useTheme();
+    const t = useTranslations('fleetcare');
 
   /*
     return (
@@ -275,10 +277,10 @@ export default function FleetMain() {
               marginBottom: "2rem",
             }}
           >
-            <HeadingLinesAnimation text="FleetCare" />
+            <HeadingLinesAnimation text={t("title")} />
           </Box>
           <ServiceSubtitle>
-            WagenPark Maintenance - Professional Maintenance for your Fleet
+              {t("subtitle")}
           </ServiceSubtitle>
           <Typography
             sx={{
@@ -292,13 +294,7 @@ export default function FleetMain() {
                 "@media (max-width: 600px)": { fontSize: "1.2rem" },
             }}
           >
-            At Fast Clean Service we offer a complete and worry-free service
-            with WagenPark Maintenance maintenance solution for business fleets.
-            We understand that your vehicles have a are the calling card of your
-            company, and that is why we ensure that every vehicle is always
-            there looks representative. With our mobile service we perform
-            maintenance on location, which takes some time and save costs,
-            without having to interrupt your business operations.
+              {t("description")}
           </Typography>
         </Box>
 
@@ -313,7 +309,7 @@ export default function FleetMain() {
                 "@media (max-width: 600px)": { fontSize: "2rem" },
             }}
           >
-            Our Services
+              {t("stitle")}
           </Typography>
 
           <Grid container spacing={4}>
@@ -331,7 +327,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
-                  Exterior maintenance
+                    {t("services.0.title")}
                 </Typography>
                 <Typography
                   sx={{
@@ -341,7 +337,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
-                  Thorough stream cleaning, washing and protection of the paint
+                    {t("services.0.description")}
                 </Typography>
               </ServiceCard>
             </Grid>
@@ -360,7 +356,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
-                  Interior maintenance
+                    {t("services.1.title")}
                 </Typography>
                 <Typography
                   sx={{
@@ -370,8 +366,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
-                  Deep cleaning with steam, vacuuming, dashboard cleaning and
-                  cleaning upholstery
+                    {t("services.1.description")}
                 </Typography>
               </ServiceCard>
             </Grid>
@@ -389,7 +384,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.6rem" },
                   }}
                 >
-                  Protective Coatings
+                    {t("services.2.title")}
                 </Typography>
                 <Typography
                   sx={{
@@ -399,8 +394,7 @@ export default function FleetMain() {
                       "@media (max-width: 600px)": { fontSize: "1.2rem" },
                   }}
                 >
-                  Long-lasting protection with high-quality waxes coating
-                  treatments
+                    {t("services.2.description")}
                 </Typography>
               </ServiceCard>
             </Grid>
@@ -419,9 +413,7 @@ export default function FleetMain() {
               "@media (max-width: 600px)": { fontSize: "1.2rem" },
           }}
         >
-          We focus on high quality using the latest techniques and
-          environmentally friendly products. Your vehicles stay in top condition
-          for longer, which ensures a sustainable and professional fleet.
+            {t("quality_focus")}
         </Typography>
       </Box>
       <Form />

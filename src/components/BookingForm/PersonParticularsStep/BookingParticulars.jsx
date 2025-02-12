@@ -25,8 +25,10 @@ import React, { useEffect, useState } from 'react';
 import { useValidation } from '../../../contexts/ValidationContext';
 import { useSession } from 'next-auth/react';
 import SelectLocationInput from '../SelectCityStep/SelectLocationInput';
+import {useTranslations} from "next-intl";
 
 const BookingParticulars = () => {
+  const t = useTranslations('booking');
   const form = useMultiStepForm();
   const { data: session, status } = useSession();
   const { theme } = useTheme();
@@ -142,7 +144,7 @@ const BookingParticulars = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="First Name"
+                label={t("steps.9.form_fields.0")}
                 name="firstName"
                 value={bookingForm.firstName}
                 onChange={handleChange}
@@ -154,7 +156,7 @@ const BookingParticulars = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="Surname"
+                label={t("steps.9.form_fields.1")}
                 name="surname"
                 value={bookingForm.surname}
                 onChange={handleChange}
@@ -168,7 +170,7 @@ const BookingParticulars = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="Phone Number"
+                label={t("steps.9.form_fields.2")}
                 name="phoneNumber"
                 value={bookingForm.phoneNumber}
                 onChange={handleChange}
@@ -181,7 +183,7 @@ const BookingParticulars = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="Company Name"
+                label={t("steps.9.form_fields.3")}
                 name="companyName"
                 value={bookingForm.companyName}
                 onChange={handleChange}
@@ -209,7 +211,7 @@ const BookingParticulars = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="Email"
+                label={t("steps.9.form_fields.4")}
                 name="email"
                 value={bookingForm.email}
                 onChange={handleChange}
@@ -225,7 +227,7 @@ const BookingParticulars = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <CustomFormTextField
-                label="Make and Model of Vehicle"
+                label={t("steps.9.form_fields.5")}
                 name="makeModel"
                 value={bookingForm.makeModel}
                 onChange={handleChange}
@@ -248,9 +250,9 @@ const BookingParticulars = () => {
               onChange={handleCheckboxChange}
             />
             <TermsLabel variant="body2">
-              I certify that I have read and agree to the{' '}
+              {t("steps.9.form_fields.6")}{' '}
               <span>
-                <a href="#">Terms and Conditions</a>
+                <a href="/terms_and_conditions">Terms and Conditions</a>
               </span>
             </TermsLabel>
           </TermsContainer>

@@ -2,14 +2,23 @@ import {Box} from "@mui/material";
 import React from "react";
 import DetailingOptions from "./Detailing";
 import {BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box>
-      <BookingFormHeading>Detailing</BookingFormHeading>
+        <BookingFormHeading>{t("steps.6.title")}</BookingFormHeading>
+
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.6.description.0")}
+        </BookingFormSubHeading>
         <BookingFormSubHeading>
-            Please pick your detailing extras <br/>
-            The finer the detail, the better the clean!
+            {t("steps.6.description.1")}
         </BookingFormSubHeading>
       <Box>
         <DetailingOptions />

@@ -5,9 +5,11 @@ import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-materia
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
+import {useTranslations} from "next-intl";
 
 export default function Footer() {
     const { theme } = useTheme();
+    const t = useTranslations('footer');
 
     return (
         <footer
@@ -59,10 +61,10 @@ export default function Footer() {
                         },
                     }}
                 >
-                    <MuiLink href="/" sx={linkStyles}>Home</MuiLink>
-                    <MuiLink href="/aboutus" sx={linkStyles}>About</MuiLink>
-                    <MuiLink href="/contact" sx={linkStyles}>Contact</MuiLink>
-                    <MuiLink href="/" sx={linkStyles}>Services</MuiLink>
+                    <MuiLink href="/" sx={linkStyles}>{t("links.home")}</MuiLink>
+                    <MuiLink href="/aboutus" sx={linkStyles}>{t("links.about")}</MuiLink>
+                    <MuiLink href="/contact" sx={linkStyles}>{t("links.contact")}</MuiLink>
+                    <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink>
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
@@ -77,7 +79,7 @@ export default function Footer() {
             {/* Copyright Centered */}
             <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem", "@media (max-width: 900px)": { display: "none" } }}>
                 <Typography variant="body2" sx={copyrightStyle}>
-                    © 2025 Fast Clean Service. All rights reserved.
+                    {t("copyright")}
                 </Typography>
             </Box>
 
@@ -92,9 +94,9 @@ export default function Footer() {
                     "@media (max-width: 900px)": { display: "none" },
                 }}
             >
-                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>Terms & Conditions</MuiLink>
+                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>{t("terms_privacy.terms")}</MuiLink>
                 <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>Privacy Policy</MuiLink>
+                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
             </Box>
 
             <Box sx={{ display: "none", "@media (max-width: 900px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
@@ -103,9 +105,9 @@ export default function Footer() {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", justifyContent: "center", alignItems: "center", margin: "0 1rem"  }}>
-                    <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>Terms & Conditions</MuiLink>
+                    <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>{t("terms_privacy.terms")}</MuiLink>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                    <MuiLink href="/privacy-policy" sx={smallLinkStyles}>Privacy Policy</MuiLink>
+                    <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
@@ -117,7 +119,7 @@ export default function Footer() {
                 </Box>
 
                 <Typography variant="body2" sx={{ ...copyrightStyle }}>
-                    © 2025 Fast Clean Service. All rights reserved.
+                    {t("copyright")}
                 </Typography>
             </Box>
         </footer>

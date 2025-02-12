@@ -6,9 +6,11 @@ import { Box } from '@mui/material';
 import { CustomFormTextField } from '../../mui/NewFormPkgs';
 import { NextPrevButton } from '../../mui/BookingFormPackages';
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
+import {useTranslations} from "next-intl";
 
 export default function CouponApplier({ basePrice }) {
   const { applyCoupon, loading, error } = useCoupons();
+    const t = useTranslations('booking');
   const [code, setCode] = useState("");
   const [discountInfo, setDiscountInfo] = useState(null);
 
@@ -50,7 +52,7 @@ export default function CouponApplier({ basePrice }) {
         }}
       >
         <CustomFormTextField
-          label="Apply Code"
+          label={t("steps.8.apply_coupon")}
           name="couponCode"
           value={code}
           onChange={(e) => setCode(e.target.value)}
@@ -75,14 +77,14 @@ export default function CouponApplier({ basePrice }) {
           onClick={handleApplyCoupon}
           disabled={loading || !code}
         >
-          {loading ? "Applying..." : "Apply Coupon"}
+          {loading ? "Applying..." : t("steps.8.button")}
         </NextPrevButton>
       </Box>
       {discountInfo && (
         <div>
-          <p>Original Price: ${discountInfo.originalPrice?.toFixed(2)}</p>
-          <p>Discount Amount: {discountInfo.discountAmount?.toFixed(2)}%</p>
-          <p>Final Price: ${discountInfo.finalPrice?.toFixed(2)}</p>
+          <p>{t("steps.8.other.0")} ${discountInfo.originalPrice?.toFixed(2)}</p>
+          <p>{t("steps.8.other.1")} {discountInfo.discountAmount?.toFixed(2)}%</p>
+          <p>{t("steps.8.other.2")} ${discountInfo.finalPrice?.toFixed(2)}</p>
         </div>
       )}
       {error && <p>Error: {error}</p>}

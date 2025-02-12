@@ -11,9 +11,11 @@ import {
 } from "./CallToActionPckgs";
 import {useTheme} from "../../../contexts/themeContext"
 import {Button} from "@mui/material";
+import {useTranslations} from "next-intl";
 
 const CallToActionBox = ({ hideImage = false }) => {
     const {theme} = useTheme();
+    const t = useTranslations('about.cta_section');
     return (
       <CTAContainer>
         {!hideImage && (
@@ -31,13 +33,18 @@ const CallToActionBox = ({ hideImage = false }) => {
         )}
 
         <CTAContentBox>
-          <CTAHeading>Ready for a Sparkling Clean Ride?</CTAHeading>
+          <CTAHeading>{t("title")}</CTAHeading>
 
-          <CTADescription>
-            Now Ready to make your car shine? Book online now and experience for yourself why so
-            <br />
-            many customers choose Fast Clean Service!
-          </CTADescription>
+            <CTADescription
+                sx={{
+                    maxWidth: "70%" ,
+                    textAlign: "center",
+                    margin: "0 auto",
+                    "@media (max-width: 1100px)": {maxWidth: "100%" ,}
+                }}
+            >
+                {t("description")}
+            </CTADescription>
 
           <CTAInnerBox>
             <Button
@@ -57,7 +64,7 @@ const CallToActionBox = ({ hideImage = false }) => {
                 },
               }}
             >
-              Book Now
+                {t("button")}
             </Button>
           </CTAInnerBox>
         </CTAContentBox>

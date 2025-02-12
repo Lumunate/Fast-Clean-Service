@@ -22,6 +22,7 @@ import UnionIcon from '../../../../public/carsIcons/Union.svg';
 import BikeIcon from '../../../../public/bookingFormIcons/BikeIcon.png';
 import SuvIcon from '../../../../public/carsIcons/suv.webp';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
+import {useTranslations} from "next-intl";
 
 const CarTypeBox = ({ name, icon, selected }) => {
   const { theme } = useTheme();
@@ -98,6 +99,7 @@ const CarTypeBox = ({ name, icon, selected }) => {
 };
 
 const Index = () => {
+    const t = useTranslations('booking');
   const [selectedCarType, setSelectedCarType] = useState(null);
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
@@ -106,7 +108,7 @@ const Index = () => {
 
   const carTypes = [
     {
-      name: 'Van',
+      name: t("steps.2.vehicle_types.0"),
       icon: (
         <Image
           src={Subtract}
@@ -118,7 +120,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Convertible',
+      name: t("steps.2.vehicle_types.1"),
       icon: (
         <Image
           src={UnionIcon}
@@ -130,7 +132,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'SUV',
+      name: t("steps.2.vehicle_types.2"),
       icon: (
         <Image
           src={SuvIcon}
@@ -142,7 +144,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Coupé',
+      name: t("steps.2.vehicle_types.3"),
       icon: (
         <Image
           src={Subtract2}
@@ -154,7 +156,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Hatchback',
+      name: t("steps.2.vehicle_types.4"),
       icon: (
         <Image
           src={UnionIcon}
@@ -166,7 +168,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Pick-up Truck',
+      name: t("steps.2.vehicle_types.5"),
       icon: (
         <Image
           src={Union2}
@@ -178,7 +180,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Sedan',
+      name: t("steps.2.vehicle_types.6"),
       icon: (
         <Image
           src={Subtract1}
@@ -190,7 +192,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Station Wagon',
+      name: t("steps.2.vehicle_types.7"),
       icon: (
         <Image
           src={Subtract3}
@@ -202,7 +204,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'MPV',
+      name: t("steps.2.vehicle_types.8"),
       icon: (
         <Image
           src={Union3}
@@ -214,7 +216,7 @@ const Index = () => {
       ),
     },
     {
-      name: 'Motorbike',
+      name: t("steps.2.vehicle_types.9"),
       icon: (
         <Image
           src={BikeIcon}
@@ -261,14 +263,19 @@ const Index = () => {
           },
         }}
       >
-        Vehicle Type
+          {t("steps.2.title")}
       </BookingFormHeading>
 
-      <BookingFormSubHeading>
-        Please choose your vehicle type
-        <br />
-        Our service adapts to your vehicle’s needs!
-      </BookingFormSubHeading>
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.2.description.0")}
+        </BookingFormSubHeading>
+        <BookingFormSubHeading>
+            {t("steps.2.description.1")}
+        </BookingFormSubHeading>
 
       <CarTypeContainer
         sx={{

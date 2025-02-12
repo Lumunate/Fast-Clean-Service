@@ -17,6 +17,7 @@ import {
   import { useTheme } from "../../../contexts/themeContext";
 import {Box, Button, Link, Typography} from "@mui/material";
 import React, { useRef } from "react";
+import {useTranslations} from "next-intl";
   
   const servicesData = [
     {
@@ -43,8 +44,34 @@ import React, { useRef } from "react";
   ];
   
   export default function OverCarServices() {
+      const t = useTranslations('home.services_section');
     const { theme } = useTheme();
       const servicesOverviewRef = useRef(null);
+
+      const servicesData = [
+          {
+              img: TickBox,
+              imgDark: TickBoxWhite,
+              title: t("services.0.title"),
+              description: t("services.0.description"),
+              description2: t("services.0.description2"),
+          },
+          {
+              img: Shield,
+              imgDark: ShieldWhite,
+              title: t("services.1.title"),
+              description: t("services.1.description"),
+              description2: t("services.1.description2"),
+          },
+          {
+              img: PaintRoll,
+              imgDark: PaintRollWhite,
+              title: t("services.2.title"),
+              description: t("services.2.description"),
+              description2: t("services.2.description2"),
+          },
+      ];
+
 
       const scrollToServices = () => {
           servicesOverviewRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -104,7 +131,7 @@ import React, { useRef } from "react";
                       },
                     }}
                 >
-                  Book Now!
+                    {t("buttons.book_now")}
                 </Button>
               </Link>
                 <Button
@@ -123,7 +150,7 @@ import React, { useRef } from "react";
                         },
                     }}
                 >
-                    Learn More
+                    {t("buttons.learn_more")}
                 </Button>
             </Box>
           </Box>

@@ -7,6 +7,7 @@ import {
     useTheme,
     useMediaQuery,
 } from "@mui/material";
+import {useTranslations} from "next-intl";
 
 
 const Container = styled(Box)(({ theme }) => ({
@@ -194,36 +195,38 @@ const CheckmarkIcon = styled("img")({
 });
 
 // Card Data
-const cardData = [
-    {
-        id: 1,
-        title: "Professional Equipment",
-        subpara: "Our detailing shop is equipped with cutting-edge tools:",
-        details: [
-            "Latest detailing technology",
-            "Motorcycle-specific resources",
-            "Showroom-quality results",
-            "Meticulous attention to detail",
-        ],
-    },
-    {
-        id: 2,
-        title: "Expert Technicians",
-        subpara: "Our certified detailing experts bring unparalleled skill to every job:",
-        details: [
-            "Certified detailing experts",
-            "Unparalleled skill for every job",
-            "Modern equipment and technology",
-            "Exceptional customer service",
-        ],
-    },
-];
 
 // Main Component
 export default function ExpandableCards() {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Typically <600px
-    const [activeCard, setActiveCard] = useState(null); // Tracks the currently active card
+    const [activeCard, setActiveCard] = useState(null);
+    const t = useTranslations('about.detailing_shop');
+
+    const cardData = [
+        {
+            id: 1,
+            title: t("features.0.title"),
+            subpara: t("features.0.subpara"),
+            details: [
+                t("features.0.details.0"),
+                t("features.0.details.1"),
+                t("features.0.details.2"),
+                t("features.0.details.3"),
+            ],
+        },
+        {
+            id: 2,
+            title: t("features.1.title"),
+            subpara: t("features.1.subpara"),
+            details: [
+                t("features.1.details.0"),
+                t("features.1.details.1"),
+                t("features.1.details.2"),
+                t("features.1.details.3"),
+            ],
+        },
+    ];
 
     // Handlers for large screens (hover)
     const handleCardMouseEnter = (id) => {

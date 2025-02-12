@@ -1,7 +1,7 @@
 "use client";
 import { Box, styled } from "@mui/material";
 
-export const SubsciptionsContainer = styled(Box)(({ theme }) => ({
+export const SubscriptionsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   gap: "2.6rem",

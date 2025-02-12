@@ -49,7 +49,7 @@ const PaymentButton = ({ amount, currency, description, customerEmail }) => {
                 disabled={loading}
                 startIcon={loading && <CircularProgress size={20} />}
             >
-                {loading ? 'Processing...' : 'Subscribe'}
+                {loading ? 'Processing...' : 'Pay Now'}
             </Button>
             {error && (
                 <Alert severity="error" sx={{ mt: 2, width: '100%' }}>

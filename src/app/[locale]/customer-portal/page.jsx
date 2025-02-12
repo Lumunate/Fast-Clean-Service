@@ -6,8 +6,10 @@ import Sidebar from '../../../components/Customer/Sidebar';
 import Dashboard from '../../../components/Customer/Dashboard';
 import BookingsPage from './booking/page';
 import NotificationsPage from './notifications/page';
+import {useTranslations} from "next-intl";
 
 const CustomerDashboard = () => {
+    const t = useTranslations('customer_dashboard');
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [selectedTab, setSelectedTab] = useState('Dashboard');
     const backgroundImage = "/img_1.png";
@@ -23,9 +25,9 @@ const CustomerDashboard = () => {
 
     const renderTabContent = () => {
         switch (selectedTab) {
-            case 'Dashboard':
+            case t("options.0"):
                 return <Dashboard />;
-            case 'My Bookings':
+            case t("options.1"):
                 return <BookingsPage />;
             case 'Notifications':
                 return <NotificationsPage />;

@@ -25,54 +25,55 @@ import {
 } from '../mui/BookingFormPackages';
 import { Check } from '@mui/icons-material';
 import { useMediaQuery, useTheme } from '@mui/material';
-
-const items = [
-  {
-    label: 'Location',
-    icon: <Image src={LocationIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'License Plate',
-    icon: <Image src={CarIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Vehicle Type',
-    icon: <Image src={UnionIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Service Type',
-    icon: <Image src={WrenchIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Packages',
-    icon: <Image src={GroupIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Add Ons',
-    icon: <Image src={PlusIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Detailings',
-    icon: <Image src={ListIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Appointment',
-    icon: (
-      <Image src={AppointmentIcon} alt="Brief Icon" width={20} height={20} />
-    ),
-  },
-  {
-    label: 'Summary',
-    icon: <Image src={ClipBoardIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-  {
-    label: 'Confirmation',
-    icon: <Image src={CheckIcon} alt="Brief Icon" width={20} height={20} />,
-  },
-];
+import {useTranslations} from "next-intl";
 
 const StepBar = () => {
+  const t = useTranslations('booking');
   const { currentStep } = useMultiStepForm();
+  const items = [
+    {
+      label: t("stepbar.0"),
+      icon: <Image src={LocationIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.1"),
+      icon: <Image src={CarIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.2"),
+      icon: <Image src={UnionIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.3"),
+      icon: <Image src={WrenchIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.4"),
+      icon: <Image src={GroupIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.5"),
+      icon: <Image src={PlusIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.6"),
+      icon: <Image src={ListIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.7"),
+      icon: (
+          <Image src={AppointmentIcon} alt="Brief Icon" width={20} height={20} />
+      ),
+    },
+    {
+      label: t("stepbar.8"),
+      icon: <Image src={ClipBoardIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+    {
+      label: t("stepbar.9"),
+      icon: <Image src={CheckIcon} alt="Brief Icon" width={20} height={20} />,
+    },
+  ];
 
   return (
     <StepBarContainer>

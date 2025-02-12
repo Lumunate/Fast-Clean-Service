@@ -24,10 +24,12 @@ import 'swiper/css/pagination';
 import { useSubscriptionPackages } from '../../../hooks/useSubscriptionPackages';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
 import {useTheme} from "../../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 const colors = ['#5DFA48', '#005BAC', '#BA8B1D'];
 
 const SubscriptionPackages = () => {
+    const t = useTranslations('booking');
   const [selectedPackage, setSelectedPackage] = useState(null);
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
@@ -35,9 +37,9 @@ const SubscriptionPackages = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const subscriptionTaglines = {
-    'autocare-standard': 'Ideal for regular maintenance of your vehicle.',
-    'autocare-deluxe': 'Thorough cleaning for a completely refreshed vehicle.',
-    'autocare-premium': 'Ultimate detailing for showroom shine.',
+    'autocare-standard': t("steps.4.package_options.0"),
+    'autocare-deluxe': t("steps.4.package_options.1"),
+    'autocare-premium': t("steps.4.package_options.2"),
   };
 
   useEffect(() => {

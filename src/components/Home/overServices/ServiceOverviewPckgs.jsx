@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Box, Paper, styled, Typography } from "@mui/material";
 
 export const CarServicesContainer = styled(Box)(({ theme }) => ({
-  margin: "7.8rem auto 14rem",
+  margin: "0 auto 14rem",
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
@@ -29,7 +29,7 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
   backdropFilter: "blur(10.4px)",
   "@media (max-width: 600px)": {
-    // width: "80%",
+    width: "100%",
     minHeight: 0,
     // backdropFilter: 0,
     marginTop: "4rem",

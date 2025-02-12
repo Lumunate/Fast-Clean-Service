@@ -13,8 +13,10 @@ import {
 } from '../mui/BookingFormPackages';
 import { Loader } from '../mui/Loader';
 import { duration } from '@mui/material';
+import {useTranslations} from "next-intl";
 
 const BookingFormFooter = () => {
+  const t = useTranslations('booking');
   const {
     currentStep,
     formData,
@@ -176,19 +178,19 @@ const BookingFormFooter = () => {
     <PricingContainer>
       <PricingSpacer />
       <PricingTextContainer>
-        <PricingText>Price</PricingText>
+        <PricingText>{t("footer.0")}</PricingText>
         <PricingText>$ {isNaN(price) ? 0.0 : price.toFixed(2)}</PricingText>
       </PricingTextContainer>
       <PricingTextContainer sx={{ marginBottom: '3rem' }}>
-        <PricingText>Duration</PricingText>
+        <PricingText>{t("footer.1")}</PricingText>
         <PricingText>{isNaN(duration) ? 0 : duration} mins</PricingText>
       </PricingTextContainer>
       <ButtonContainer>
         <NextPrevButton dull onClick={handleBack}>
-          Back
+          {t("footer.2")}
         </NextPrevButton>
         <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid}>
-          {currentStep === 11 ? 'Submit' : 'Next'}
+          {currentStep === 11 ? t("footer.4") : t("footer.3")}
         </NextPrevButton>
       </ButtonContainer>
       {error && <div style={{ color: 'red' }}>{error}</div>}
