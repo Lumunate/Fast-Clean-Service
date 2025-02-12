@@ -5,6 +5,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import DoneIcon from '@mui/icons-material/Done';
 import { CardBody, CardHeading, StyledCard } from '../mui/AdminPkgs';
 import { useSession } from "next-auth/react";
+import {useTranslations} from "next-intl";
 
 const NotificationCard = ({ id, message, status, date, onStatusChange }) => {
     const handleClick = () => {
@@ -68,6 +69,7 @@ const NotificationCard = ({ id, message, status, date, onStatusChange }) => {
 };
 
 const NotifCard = () => {
+    const t = useTranslations('customer_dashboard.sections.0');
     const { data: session } = useSession();
     const [notifications, setNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -124,7 +126,7 @@ const NotifCard = () => {
         }}>
             <CardBody>
                 <CardHeading sx={{ marginBottom: '20px', color: '#333' }}>
-                    Notifications
+                    {t("widgets.1.title")}
                 </CardHeading>
 
                 {loading ? (
@@ -148,7 +150,7 @@ const NotifCard = () => {
                     ))
                 ) : (
                     <Typography sx={{ color: '#888', fontSize: '1rem', textAlign: 'center' }}>
-                        No notifications available.
+                        {t("widgets.1.none")}
                     </Typography>
                 )}
             </CardBody>

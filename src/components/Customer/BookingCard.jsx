@@ -12,24 +12,26 @@ import {
 } from "../mui/AdminPkgs";
 import { Paper, Table, TableBody, TableHead, TablePagination } from "@mui/material";
 import { useSession } from "next-auth/react";
-
-const tableHeaders = [
-    "Customer Name",
-    "Vehicle",
-    "Location",
-    "Service",
-    "Package",
-    "Appointment",
-    "Price",
-    "Payment Status",
-];
+import {useTranslations} from "next-intl";
 
 const BookingsCard = () => {
+    const t = useTranslations('customer_dashboard.sections.0');
     const { data: session } = useSession();
     const [page, setPage] = useState(0);
     const [userBookings, setUserBookings] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const userEmail = session?.user?.email;
+
+    const tableHeaders = [
+        t("widgets.0.table_headers.0"),
+        t("widgets.0.table_headers.1"),
+        t("widgets.0.table_headers.2"),
+        t("widgets.0.table_headers.3"),
+        t("widgets.0.table_headers.4"),
+        t("widgets.0.table_headers.5"),
+        t("widgets.0.table_headers.6"),
+        t("widgets.0.table_headers.7"),
+    ];
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -61,8 +63,8 @@ const BookingsCard = () => {
     return (
         <StyledCard>
             <CardBody>
-                <CardHeading>My Bookings</CardHeading>
-                <CardSubheading>View and manage your car care bookings.</CardSubheading>
+                <CardHeading>{t("widgets.0.title")}</CardHeading>
+                <CardSubheading>{t("widgets.0.description")}</CardSubheading>
 
                 <StyledTable component={Paper}>
                     <Table aria-label="customer bookings table">

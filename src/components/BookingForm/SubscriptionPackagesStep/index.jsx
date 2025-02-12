@@ -2,17 +2,25 @@ import { Box } from "@mui/material";
 import SubscriptionPackages from "./SubscriptionPackages";
 import {BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
 import React from "react";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box>
       <BookingFormHeading>
-        Package
+          {t("steps.4.title")}
       </BookingFormHeading>
 
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.4.description.0")}
+        </BookingFormSubHeading>
         <BookingFormSubHeading>
-            Please choose a plan<br />
-            Enjoy regular, worry-free cleaning!
+            {t("steps.4.description.1")}
         </BookingFormSubHeading>
 
       <Box sx={{ marginBottom: "3rem"}}>

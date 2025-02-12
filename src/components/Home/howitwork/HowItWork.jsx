@@ -73,7 +73,7 @@ export default function HowItWork() {
     return (
         <SectionContainer>
             <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-                <HeadingLinesAnimation>W0RKING</HeadingLinesAnimation>
+                <HeadingLinesAnimation>WORKING</HeadingLinesAnimation>
             </Box>
 
             <Grid

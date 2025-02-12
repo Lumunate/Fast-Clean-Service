@@ -7,24 +7,28 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
 
   "& .MuiInputBase-input": {
     padding: "1rem 1.5rem",
-    color: theme.palette.mode === "light" ? "#000" : "#fff",
-    fontSize: "1.2rem",
+    color: theme.palette.mode === "light" ? "#818181" : "#fff",
+    fontSize: "1.8rem",
     fontWeight: "300",
   },
 
   "& label": {
     border: "none",
-    color: theme.palette.mode === "light" ? "#000" : "#fff",
-    fontSize: "1rem",
+    color: theme.palette.mode === "light" ? "#818181 " : "#fff",
+    fontSize: "1.4rem",
     fontWeight: 400,
     lineHeight: 1.21,
     position: "relative",
-    transform: "translate(0%, -30%) scale(1)",
+    transform: "translate(3%, 180%) scale(1)",
+  },
+  "& label.MuiInputLabel-shrink": {
+    transform: "translate(3%, -10%) scale(1)",
   },
 
   "& label.Mui-focused": {
     border: "none",
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.mode === "light" ? "#818181 " : "#fff",
+    transform: "translate(3%, -40%) scale(1)",
   },
 
   "& .MuiInput-underline:after": {
@@ -58,10 +62,10 @@ export const CustomFormTextField = styled(TextField)(({ theme }) => ({
     },
 
     "& label": {
-      fontSize: "1rem",
+      fontSize: "1.4rem",
       fontWeight: 400,
       lineHeight: 1.2,
-      transform: "translate(0%, -20%) scale(1)",
+      transform: "translate(5%, 200%) scale(1)",
     },
 
     "& .MuiOutlinedInput-root": {

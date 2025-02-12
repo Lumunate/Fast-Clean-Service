@@ -8,8 +8,10 @@ import {
     LisencePlateInput,
     StyledCheckbox,
 } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const LiscencePlate = () => {
+    const t = useTranslations('booking');
     const form = useMultiStepForm();
 
     return (
@@ -45,7 +47,7 @@ const LiscencePlate = () => {
                         }}
                     />
                 }
-                label="Proceed without license plate"
+                label={t("steps.1.option")}
                 sx={{ marginTop: 2 }}
             />
         </Box>

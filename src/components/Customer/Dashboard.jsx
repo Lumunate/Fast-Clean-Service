@@ -6,7 +6,7 @@ import NotifCard from './NotifCard';
 
 const Dashboard = () => {
     return (
-        <Box sx={{ flexGrow: 1, p: 3, padding: "16px" }}>
+        <Box sx={{ flexGrow: 1, p: 3, padding: "16px", marginTop: {xs: "1rem", sm: "0"} }}>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={8}>
                     <BookingsCard />

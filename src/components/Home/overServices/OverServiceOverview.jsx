@@ -5,9 +5,11 @@ import OverCarServices from "./OverCarServices";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import RadialCircle from "../../Decorative/RadialCircle";
 import { Box, Typography } from "@mui/material";
+import {useTranslations} from "next-intl";
 
 
 export default function OverServiceOverview() {
+    const t = useTranslations('home.services_section');
   return (
     <HomePkgsInBox
       sx={{
@@ -16,27 +18,32 @@ export default function OverServiceOverview() {
       }}
     >
       <ServicesOverviewWrapper>
-        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>OUR SERVICES</HeadingLinesAnimation>
+        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>{t("title")}</HeadingLinesAnimation>
         <Typography
                 sx={{
                   textAlign:"center",
                   fontSize: "1.55rem",
                   lineHeight: 1.7,
+                  paddingTop:"24px",
+                    maxWidth: "1200px",
+                  px:'20px',
                   "@media (max-width: 900px)": {
                     textAlign: "center",
                   },
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
+                    fontSize: "12px",
                     textAlign: "center",
                   },
                   "& .line-break": {
-            display: { lg: "inline", md: "none" },
-          },
+                    display: "inline", 
+                    "@media (max-width: 960px)": { 
+                      display: "none",
+          },}
                 }}
               >
-                At Fast Clean Service we offer a wide range of services to keep your car in top condition to<span className="line-break">
-          <br />
-        </span>keep. From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.
+            {t.rich("description", {
+                br: () => <br />,
+            })}
               </Typography>
 
         <Box sx={{ position: "relative" }}>

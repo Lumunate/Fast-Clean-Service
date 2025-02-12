@@ -5,17 +5,25 @@ import {
     BookingFormHeading,
     BookingFormSubHeading, BookingFormTagline,
 } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
     return (
         <Box>
             <BookingFormHeading>
-                Service Type
+                {t("steps.3.title")}
             </BookingFormHeading>
 
+            <BookingFormSubHeading
+                sx={{
+                    marginBottom: "0",
+                }}
+            >
+                {t("steps.3.description.0")}
+            </BookingFormSubHeading>
             <BookingFormSubHeading>
-                Please select a cleaning package<br/>
-                Tailored solutions for spotless spaces!
+                {t("steps.3.description.1")}
             </BookingFormSubHeading>
 
 

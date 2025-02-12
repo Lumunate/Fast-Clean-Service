@@ -5,74 +5,111 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { SectionHeading } from "../mui/HomePkgs";
 import { useTheme } from "../../contexts/themeContext";
-
-const questionsData = [
-    {
-        question: "What services do you offer at FAST Clean?",
-        answer: (
-            <>
-                <p>
-                    At FAST Clean, we provide a variety of car care services, including exterior and interior cleaning, waxing, paint protection, and specialized FleetCare Pro services for businesses. We also offer mobile cleaning services to fit your convenience.
-                </p>
-            </>
-        ),
-    },
-    {
-        question: "How do I book a service with FAST Clean?",
-        answer: (
-            <>
-                <p>
-                    You can book a service through our online booking page. Choose your service type, select a package, and provide your vehicle details. If you’re unsure about which package is right for you, feel free to reach out for assistance.
-                </p>
-            </>
-        ),
-    },
-    {
-        question: "Can I modify or cancel my booking?",
-        answer: (
-            <>
-                <p>
-                    Yes, you can modify or cancel your booking by logging into your customer portal or contacting us directly. Please try to notify us at least 24 hours in advance if you need to reschedule.
-                </p>
-            </>
-        ),
-    },
-    {
-        question: "Do you offer any subscription plans for regular services?",
-        answer: (
-            <>
-                <p>
-                    Yes, we offer subscription packages such as the FleetCare Pro plan, which is perfect for businesses with multiple vehicles. Regular car owners can also choose subscription plans for monthly or bi-weekly cleaning services.
-                </p>
-            </>
-        ),
-    },
-    {
-        question: "Can you clean my vehicle at my home or office?",
-        answer: (
-            <>
-                <p>
-                    Absolutely! Our mobile cleaning service allows us to come to your location, whether it’s your home, office, or any other place. Just make sure the location is within our service area when booking.
-                </p>
-            </>
-        ),
-    },
-    {
-        question: "What types of vehicles do you service?",
-        answer: (
-            <>
-                <p>
-                    We service a wide range of vehicles including cars, trucks, bikes, SUVs, campers, and boats. Our specialized packages cater to all types of vehicles to ensure they receive the best care possible.
-                </p>
-            </>
-        ),
-    },
-];
-
+import {useTranslations} from "next-intl";
 
 const Questions = () => {
     const [openIndex, setOpenIndex] = useState([]);
-    const { theme } = useTheme(); // Assuming you're using a custom theme provider
+    const { theme } = useTheme();
+    const t = useTranslations('contact.faq');
+
+    const questionsData = [
+        {
+            question: t("questions.0.question"),
+            answer: (
+                <>
+                    <p>{t("questions.0.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.1.question"),
+            answer: (
+                <>
+                    <p>{t("questions.1.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.2.question"),
+            answer: (
+                <>
+                    <p>{t("questions.2.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.3.question"),
+            answer: (
+                <>
+                    <p>{t("questions.3.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.4.question"),
+            answer: (
+                <>
+                    <p>{t("questions.4.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.5.question"),
+            answer: (
+                <>
+                    <p>{t("questions.5.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.6.question"),
+            answer: (
+                <>
+                    <p>{t("questions.6.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.7.question"),
+            answer: (
+                <>
+                    <p>{t("questions.7.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.8.question"),
+            answer: (
+                <>
+                    <p>{t("questions.8.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.9.question"),
+            answer: (
+                <>
+                    <p>{t("questions.9.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.10.question"),
+            answer: (
+                <>
+                    <p>{t("questions.10.answer")}</p>
+                </>
+            ),
+        },
+        {
+            question: t("questions.11.question"),
+            answer: (
+                <>
+                    <p>{t("questions.11.answer")}</p>
+                </>
+            ),
+        },
+    ];
 
     const handleToggle = (index) => {
         setOpenIndex((prevOpenIndex) => {
@@ -94,7 +131,7 @@ const Questions = () => {
                     color: theme.palette.mode === "light" ? "#232E4A" : "#FFFFFF",
                 }}
             >
-                FAQ&apos;S
+                {t("title")}
             </SectionHeading>
             <List sx={{ width: "100%" }}>
                 {questionsData.map((item, index) => (

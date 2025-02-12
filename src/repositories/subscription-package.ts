@@ -2,11 +2,11 @@ import { SubscriptionPackage } from '../models/SubscriptionPackage';
 
 export class SubscriptionPackageRepository {
   async findAll() {
-    return await SubscriptionPackage.find();
+    return SubscriptionPackage.find();
   }
 
   async findById(id: string) {
-    return await SubscriptionPackage.findOne({ id });
+    return SubscriptionPackage.findOne({id});
   }
 
   async create(data: any) {
@@ -19,18 +19,18 @@ export class SubscriptionPackageRepository {
   }
 
   async update(id: string, data: any) {
-    return await SubscriptionPackage.findOneAndUpdate({ _id: id }, data, { new: true });
+    return SubscriptionPackage.findOneAndUpdate({_id: id}, data, {new: true});
   }
 
   async updatePartial(id: string, data: any) {
-    return await SubscriptionPackage.findOneAndUpdate(
-      { id },
-      { $set: data },
-      { new: true }
+    return SubscriptionPackage.findOneAndUpdate(
+        {id},
+        {$set: data},
+        {new: true}
     );
   }
 
   async delete(id: string) {
-    return await SubscriptionPackage.findOneAndDelete({ id });
+    return SubscriptionPackage.findOneAndDelete({id});
   }
 }

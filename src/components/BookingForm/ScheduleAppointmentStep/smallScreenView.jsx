@@ -1,209 +1,177 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Box, Modal, Badge } from "@mui/material";
-import { DateCalendar, PickersDay } from "@mui/x-date-pickers";
-import { useTheme } from "@mui/material/styles";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import "dayjs/locale/en";
-import useMultiStepForm from "../../../hooks/useMultiStepForm";
-import useSnackbar from "../../../hooks/useSnackbar";
-import { useValidation } from "../../../contexts/ValidationContext";
-import { Loader } from "../../mui/Loader";
-import { LoaderContainer, ModalContainer, ModalHeading, TimeSlotBox, TimeSlotLabel } from "./ScheduleAppointment.style";
-import MailIcon from "@mui/icons-material/Mail";
+'use client';
+import React, { useEffect, useState } from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  Grid,
+  createTheme,
+  ThemeProvider,
+  useMediaQuery,
+} from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import {
+  LocalizationProvider,
+  StaticDatePicker,
+  PickersDay,
+} from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import 'dayjs/locale/en';
+import useMultiStepForm from '../../../hooks/useMultiStepForm';
+import useSnackbar from '../../../hooks/useSnackbar';
+import { useValidation } from '../../../contexts/ValidationContext';
+import { Loader } from '../../mui/Loader';
+import { LoaderContainer } from './ScheduleAppointment.style';
+import {useTranslations} from "next-intl";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.tz.setDefault("UTC");
+dayjs.tz.setDefault('UTC');
 
-const TimeSlotModal = ({ isOpen, handleClose, selectedDate, timeSlots, handleTimeSlotClick }) => {
-  const selectedDateTimeslots =
-    timeSlots.find((d) => {
-      const dDate = dayjs(d.time).format("YYYY-MM-DD");
-      const TselectedDate = dayjs(selectedDate).format("YYYY-MM-DD");
-      return dDate === TselectedDate;
-    }) || null;
-
-
-  return (
-    <Modal open={isOpen} onClose={handleClose}>
-      <ModalContainer>
-        <ModalHeading>
-          {selectedDate?.format("MMMM, DD")}
-          <span style={{ marginLeft: "1.2rem" }}>{selectedDate?.format("ddd").toUpperCase()}</span>
-        </ModalHeading>
-
-        <Box
-          sx={{
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            padding: "0.5rem",
-          }}
-        >
-          {selectedDateTimeslots ? (
-            selectedDateTimeslots.slots &&
-            selectedDateTimeslots.slots.map((slot, i) => (
-              <TimeSlotBox key={i} selected={slot.selected} onClick={() => handleTimeSlotClick(dayjs(selectedDate), slot.start)}>
-                <TimeSlotLabel selected={slot.selected}>{slot.start}</TimeSlotLabel>
-              </TimeSlotBox>
-            ))
-          ) : (
-            <ModalHeading>No time slots available</ModalHeading>
-          )}
-        </Box>
-      </ModalContainer>
-    </Modal>
-  );
-};
-
-function AvailableDay(props) {
-  const { availableDates = [], day, outsideCurrentMonth, selected, ...other } = props;
-
-  const isAvailable = !outsideCurrentMonth && availableDates.some((date) => date.isSame(day, "day"));
-
-  return (
-    <PickersDay
-      {...other}
-      day={day}
-      outsideCurrentMonth={outsideCurrentMonth}
-      sx={{
-        position: "relative",
-        "&.MuiPickersDay-today": {
-          border: "none",
-        },
-        ...(isAvailable && {
-          "&::after": {
-            content: '""',
-            display: "block",
-            alignItems: "center",
-            width: "10%",
-            height: "2px",
-            backgroundColor: "#1C79CC",
-            position: "absolute",
-            bottom: 12,
-            left: "45%",
-            borderRadius: "2px",
-          },
-        }),
-      }}
-    />
-  );
-}
+const theme = createTheme({
+  palette: {
+    mode: 'light', // Use 'light' or 'dark' based on your preference
+  },
+});
 
 const SmallScreenView = () => {
-  const theme = useTheme();
+    const t = useTranslations('booking');
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
   const { openSnackbar } = useSnackbar();
 
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [loadCount, setLoadCount] = useState(0);
-  const [events, setEvents] = useState([]);
-  const [availableDates, setAvailableDates] = useState([]);
   const [timeSlots, setTimeSlots] = useState([]);
-
-  function parseTime(hourString) {
-    const [time, modifier] = hourString.split(" ");
-    let [hours, minutes] = time.split(":").map(Number);
-
-    if (modifier === "PM" && hours !== 12) {
-      hours += 12;
-    } else if (modifier === "AM" && hours === 12) {
-      hours = 0;
-    }
-
-    return { hours, minutes };
-  }
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null); // Track selected time slot
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    const fetchTimeSlots = async () => {
+    const fetchTimeSlots = async (offset) => {
       try {
-        setIsLoading(true);
-        setEvents([]);
-        setAvailableDates([]);
-        setTimeSlots([]);
-        setLoadCount(0);
-
-        let allEvents = [];
-        for (let i = 0; i < 4; i++) {
-          const res = await fetch(
-            `/api/booking/timeslots/weekly?date=${new Date().toISOString()}&type=${form.formData.service}&offset=${i}&duration=${form.duration}`
-          );
-          const data = await res.json();
-          if (data.success && Array.isArray(data.availableTimeSlots)) {
-            allEvents = [...allEvents, ...data.availableTimeSlots];
-          } else {
-            console.error("Invalid response structure: ", data);
-            openSnackbar("Invalid data received from server");
-            break;
-          }
+        const res = await fetch(
+          `/api/booking/timeslots/weekly?date=${new Date().toISOString()}&type=${form.formData.service}&offset=${offset}&duration=${form.duration}`
+        );
+        const data = await res.json();
+        if (data.success && Array.isArray(data.availableTimeSlots)) {
+          return data.availableTimeSlots;
+        } else {
+          console.error('Invalid response structure: ', data);
+          openSnackbar(t("steps.7.error.0"));
+          return [];
         }
-
-        setEvents(allEvents);
-
-        // Group time slots by date
-        // const groupedSlots = allEvents.reduce((acc, slot) => {
-        //     const date = dayjs(slot.id.split("-")[1]).format("YYYY-MM-DD");
-        //     if (!acc[date]) acc[date] = [];
-        //     acc[date].push(slot);
-        //     return acc;
-        // }, {});
-
-        // Create an array of available dates
-        const dates = allEvents.map((slots) => dayjs(slots.time));
-        setAvailableDates(dates);
-        setTimeSlots(allEvents);
       } catch (err) {
-        console.error("Error fetching time slots", err);
-        openSnackbar("Error fetching time slots");
-      } finally {
-        setIsLoading(false);
+        console.error('Error fetching time slots', err);
+        openSnackbar(t("steps.7.error.1"));
+        return [];
       }
     };
 
-    fetchTimeSlots();
-  }, [form.formData.service, form.formData.duration, openSnackbar]);
+    const fetchInitialData = async () => {
+      setIsLoading(true);
 
-  const handleDateSelect = (date) => {
-    setSelectedDate(date);
-    setIsModalOpen(true);
+      const initialData = await fetchTimeSlots(0);
+      setTimeSlots(initialData);
+      setAvailableDates(initialData.map((slot) => dayjs(slot.time)));
+
+      setIsLoading(false);
+
+      for (let i = 1; i < 9; i++) {
+        const additionalData = await fetchTimeSlots(i);
+        setTimeSlots((prev) => [...prev, ...additionalData]);
+        setAvailableDates((prev) => [
+          ...prev,
+          ...additionalData.map((slot) => dayjs(slot.time)),
+        ]);
+      }
+    };
+
+    if (form.currentStep === 8) fetchInitialData();
+  }, [form.formData.service, form.duration, form.currentStep, openSnackbar]);
+
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+    setSelectedTimeSlot(null); // Reset selected time slot when date changes
   };
 
-  const handleTimeSlotClick = (date, time) => {
-    const selectedDate = dayjs(date).format("YYYY-MM-DD");
-    const timeString = `${selectedDate} ${time}`;
-    const selectedTime = dayjs(timeString, "YYYY-MM-DD HH:mm");
-
+  const handleTimeSlotClick = (time) => {
+    const selectedTime = dayjs(
+      `${selectedDate.format('YYYY-MM-DD')} ${time}`,
+      'YYYY-MM-DD HH:mm'
+    );
     form.updateFormData({ selectedTime: selectedTime.toDate() });
 
-    setTimeSlots((prev) => {
-      let updatedSlots = [...prev];
-      const dateKey = date;
-      updatedSlots = updatedSlots.map((slot) => {
-        if (dayjs(slot.time).format("YYYY-MM-DD") === dateKey.format("YYYY-MM-DD")) {
-          const Tslot = {...slot}; 
-          Tslot.slots = slot.slots.map((slot) => {
-            if (slot.start === time) {
-              return { ...slot, selected: true };
-            }
-            return { ...slot, selected: false };
-          });
+    setSelectedTimeSlot(time); // Set the selected time slot
 
-          return Tslot;
-        } else return slot;
-      });
-
-
-      return updatedSlots;
-    });
+    setTimeSlots((prev) =>
+      prev.map((slot) => ({
+        ...slot,
+        slots: slot.slots.map((s) => ({
+          ...s,
+          selected:
+            s.start === time && dayjs(slot.time).isSame(selectedDate, 'day'),
+        })),
+      }))
+    );
 
     updateValidation(true);
+  };
+
+  const shouldDisableDate = (date) => {
+    return !availableDates.some((availableDate) =>
+      availableDate.isSame(date, 'day')
+    );
+  };
+
+  const CustomDay = (props) => {
+    const { day, outsideCurrentMonth, ...other } = props;
+    const isDisabled = shouldDisableDate(day);
+    const isAvailable = availableDates.some((availableDate) =>
+      availableDate.isSame(day, 'day')
+    );
+
+    return (
+      <PickersDay
+        {...other}
+        day={day}
+        outsideCurrentMonth={outsideCurrentMonth}
+        disableRipple={isDisabled}
+        sx={{
+          borderRadius: '50%',
+          position: 'relative',
+          '&.Mui-selected': {
+            backgroundColor: 'transparent', // Remove background color for selected date
+            border: 'none', // Remove border for selected date
+          },
+          ...(isDisabled && {
+            '&:before': {
+              content: '""',
+              position: 'absolute',
+              width: '50%',
+              height: '1px',
+              backgroundColor: 'white',
+              top: '50%',
+              left: '25%',
+            },
+          }),
+          ...(isAvailable && {
+            '&:after': {
+              content: '""',
+              position: 'absolute',
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: '#348feb',
+              bottom: 4,
+              left: 'calc(50% - 3px)',
+            },
+          }),
+        }}
+      />
+    );
   };
 
   if (isLoading) {
@@ -214,31 +182,102 @@ const SmallScreenView = () => {
     );
   }
 
-  return (
-    <Box sx={{ mt: 2 }}>
-      <DateCalendar
-        disablePast
-        value={selectedDate}
-        onChange={handleDateSelect}
-        style={{ width: "100%", maxWidth: "32rem" }}
-        slots={{
-          day: AvailableDay, // Use the custom day component
-        }}
-        slotProps={{
-          day: {
-            availableDates, // Pass the available dates to the day component
-          },
-        }}
-      />
+  // Find time slots for the selected date
+  const selectedDateTimeslots = timeSlots.find((d) =>
+    dayjs(d.time).isSame(selectedDate, 'day')
+  );
 
-      <TimeSlotModal
-        isOpen={isModalOpen}
-        handleClose={() => setIsModalOpen(false)}
-        selectedDate={selectedDate}
-        timeSlots={timeSlots}
-        handleTimeSlotClick={handleTimeSlotClick}
-      />
-    </Box>
+  return (
+    <ThemeProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Box p={4}>
+          <Typography variant="h6" gutterBottom textAlign="center">
+            Select an appointment time
+          </Typography>
+
+          <Box
+            sx={{
+              mt: 2,
+              display: 'flex',
+              gap: 4,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '3rem',
+                position: 'relative',
+              }}
+            >
+              <StaticDatePicker
+                orientation={isSmallScreen ? 'landscape' : 'portrait'}
+                value={selectedDate}
+                onChange={handleDateChange}
+                disablePast
+                shouldDisableDate={shouldDisableDate}
+                sx={{ width: '100%' }}
+                slots={{ day: CustomDay }}
+              />
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                flex: 1,
+                maxWidth: '32rem',
+                zIndex: selectedDate ? 1 : -1,
+                opacity: selectedDate ? 1 : 0,
+                transform: selectedDate ? 'translateX(0)' : 'translateX(-130%)',
+                pointerEvents: selectedDate ? 1 : 0,
+                visibility: selectedDate ? 'visible' : 'hidden',
+                transition:
+                  'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
+              }}
+            >
+              <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
+                {selectedDate?.format('ddd, MMMM D')}
+              </Typography>
+              {selectedDateTimeslots ? (
+                selectedDateTimeslots.slots.map((slot, slotIndex) => (
+                  <Button
+                    key={slotIndex}
+                    variant="outlined"
+                    sx={{
+                      margin: '0.5rem 0',
+                      fontSize: isSmallScreen ? '0.75rem' : '1rem',
+                      backgroundColor:
+                        selectedTimeSlot === slot.start ? '#348feb' : 'inherit', // Highlight selected time slot
+                      color:
+                        selectedTimeSlot === slot.start ? 'white' : 'inherit', // Change text color for selected time slot
+                      '&:hover': {
+                        backgroundColor:
+                          selectedTimeSlot === slot.start
+                            ? '#348feb'
+                            : 'inherit', // Maintain highlight on hover
+                      },
+                    }}
+                    onClick={() => handleTimeSlotClick(slot.start)}
+                  >
+                    {slot.start}
+                  </Button>
+                ))
+              ) : (
+                <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
+                    {t("steps.7.unavailable")}
+                </Typography>
+              )}
+            </Box>
+          </Box>
+        </Box>
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 };
 

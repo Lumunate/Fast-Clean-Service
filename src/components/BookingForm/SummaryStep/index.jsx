@@ -3,16 +3,23 @@ import {BookingFormHeading, BookingFormSubHeading, BookingFormTagline} from "../
 import Summary from "./Summary";
 import React from "react";
 import CouponApplier from "./ApplyCouponCode";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box>
-      <BookingFormHeading>
-        Summary
-      </BookingFormHeading>
+        <BookingFormHeading>{t("steps.8.title")}</BookingFormHeading>
+
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.8.description.0")}
+        </BookingFormSubHeading>
         <BookingFormSubHeading>
-            Please review your selections<br/>
-            Get ready for a pristine clean at your convenience!
+            {t("steps.8.description.1")}
         </BookingFormSubHeading>
       <Box>
         <Summary />

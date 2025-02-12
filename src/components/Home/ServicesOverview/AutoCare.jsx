@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import {
     HomePkgsBox,
     HomePkgsInBox,
@@ -16,18 +16,18 @@ import {
     ServiceBtn1,
     ServiceDetailHeading,
 } from "../../mui/HomePkgs";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {useTheme} from "../../../contexts/themeContext";
+import {useTranslations} from "next-intl";
 
 export default function Autocare() {
+    const t = useTranslations('home.anywhere_autocare_section');
   const { theme } = useTheme();
 
     return (
       <HomePkgsBox
         sx={{
           width: "100%",
-          marginBottom: "18rem",
+          marginBottom: "8rem",
           "@media (max-width: 600px)": {
             marginBottom: "8rem",
           },
@@ -50,46 +50,48 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#7ed56f" }}>Standard</ServiceName>
-                  <ServiceCat>Basic</ServiceCat>
+                  <ServiceName sx={{ color: "#7ed56f" }}>{t("packages.0.name")}</ServiceName>
+                  <ServiceCat>{t("packages.0.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    <ServiceDetailHeading sx={{color: "#7ed56f" }}>Interior</ServiceDetailHeading>
                     <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 45mins</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price: <span>€74.95</span>
+                          {t("packages.0.price")}: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€74.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#ffd500" } }}
-                  >
-                    <ServiceDetailHeading sx={{color: "#7ed56f" }}>Exterior</ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
-                      <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 45mins</span>
+                      <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
+                          {t("packages.0.title")}
                       </div>
-                      <div className="innerdeet">
-                        Price: <span>€89.95</span>
-                      </div>
+                      <List
+                sx={{
+                  paddingLeft: { sm: 2, xs: 0 },
+                  color: "#7ed56f",
+                  listStyleType: "disc",
+                  fontSize:"16px"
+                }}
+              >
+                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px", }}>
+                  <ListItemText primary={t("packages.0.features.0")} />
+                </ListItem>
+                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
+                  <ListItemText primary={t("packages.0.features.1")} />
+                </ListItem>
+                <ListItem sx={{ display: "list-item", marginBottom:"-6px", py:"0px" }}>
+                  <ListItemText primary={t("packages.0.features.2")} />
+                </ListItem>
+              </List>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    <ServiceDetailHeading sx={{color: "#7ed56f" }}>Combi</ServiceDetailHeading>
-                    <Box>
+                  <ServiceDetail>
+                   <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 90mins</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price: <span>€139.95</span>
+                          {t("packages.0.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -106,13 +108,13 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.0.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.0.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>
-            
+
             <ServicesItem sx={{ marginTop: "-2.5rem",   "@media (max-width: 1400px)": { marginTop: 0 }, }}>
               <PkgImgCtr
                 //  img="/bike2.jpg"
@@ -120,46 +122,48 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#2998ff" }}>Deluxe</ServiceName>
-                  <ServiceCat>Popular</ServiceCat>
+                    <ServiceName sx={{ color: "#2998ff" }}>{t("packages.1.name")}</ServiceName>
+                    <ServiceCat>{t("packages.1.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    <ServiceDetailHeading sx={{color: "#2998ff" }}>Interior</ServiceDetailHeading>
                     <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 60mins</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price: <span>€89.95</span>
+                          {t("packages.0.price")}: <span style={{color: "white", fontSize:"16px", fontWeight:500 }}>€149.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#ffd500" } }}
-                  >
-                    <ServiceDetailHeading sx={{color: "#2998ff" }}>Exterior</ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
-                      <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 90mins</span>
+                      <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
+                          {t("packages.0.title")}
                       </div>
-                      <div className="innerdeet">
-                        Price: <span>€149.95</span>
-                      </div>
+                      <List
+                sx={{
+                  paddingLeft: { sm: 2, xs: 0 },
+                  color: "#2899FF",
+                  listStyleType: "disc",
+                  fontSize:"16px"
+                }}
+              >
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.0")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.1")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.1.features.2")} />
+                          </ListItem>
+              </List>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    <ServiceDetailHeading sx={{color: "#2998ff" }}>Combi</ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 1120/150mins</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price: <span>€189.95</span>
+                          {t("packages.1.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -173,9 +177,9 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.1.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.1.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>
@@ -186,47 +190,48 @@ export default function Autocare() {
               />
               <ServiceContent className="service__content">
                 <Box>
-                  <ServiceName sx={{ color: "#ffb900" }}>Premium</ServiceName>
-                  <ServiceCat>Bespoke</ServiceCat>
+                    <ServiceName sx={{ color: "#F4B81C" }}>{t("packages.2.name")}</ServiceName>
+                    <ServiceCat>{t("packages.2.category")}</ServiceCat>
                 </Box>
                 <ServiceDetails>
                   <ServiceDetail>
-                    <ServiceDetailHeading sx={{color: "#ffb900"  }}>Showroom</ServiceDetailHeading>
                     <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 180mins</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price: <span>€394.95</span>
+                          {t("packages.0.price")}: <span style={{ color: "white", fontSize:"16px", fontWeight:500 }}>€189.95</span>
                       </div>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  >
-                    <ServiceDetailHeading sx={{color: "#ffb900" }}>Paint Selant </ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
-                      <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 1-2 days</span>
+                      <div style={{ fontSize:"16px", fontWeight:300,marginBottom:"-6px"}}  className="innerdeet">
+                          {t("packages.0.title")}
                       </div>
-                      <div className="innerdeet">
-                        Price:
-                        <span>On Request</span>
-                      </div>
+                      <List
+                sx={{
+                  paddingLeft: { sm: 2, xs: 0 },
+                  color: "#F4B81C",
+                  listStyleType: "disc",
+                  fontSize:"16px"
+                }}
+              >
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.0")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.1")} />
+                          </ListItem>
+                          <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>
+                              <ListItemText primary={t("packages.2.features.2")} />
+                          </ListItem>
+              </List>
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail
-                  // sx={{ "& .MuiTypography-root": { color: "#c3ff00" } }}
-                  >
-                    <ServiceDetailHeading sx={{color: "#ffb900" }}>Pro Coating</ServiceDetailHeading>
+                  <ServiceDetail>
                     <Box>
                       <div className="innerdeet">
-                        Duration: <span style={{ color: "white" }}>± 1-2 days</span>
-                      </div>
-                      <div className="innerdeet">
-                        Price:
-                        <span>On Request</span>
+                          {t("packages.2.description")}
                       </div>
                     </Box>
                   </ServiceDetail>
@@ -240,9 +245,9 @@ export default function Autocare() {
                   }}
                 >
                   <ServiceBtn1>
-                    Learn More
+                      {t("packages.2.buttons.learn_more")}
                   </ServiceBtn1>
-                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>Book Now</ServiceBtn1>
+                  <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.2.buttons.book_now")}</ServiceBtn1>
                 </Box>
               </ServiceContent>
             </ServicesItem>

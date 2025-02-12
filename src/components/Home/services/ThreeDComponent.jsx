@@ -6,10 +6,9 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { Box } from "@mui/material";
 
-function Model({ url }) {
+function Model({ url, scale }) {
   const { scene } = useGLTF(url);
   const meshRef = useRef();
-  const lightsRef = useRef({});
 
   useFrame(({ clock }) => {
     if (meshRef.current) {
@@ -49,37 +48,58 @@ function Model({ url }) {
   }, [scene]);
 
   return (
-    <group
-      ref={meshRef}
-      draggable={false}
-      style={{ translateY: 10 }}
-      translateY={"100px"}
-      onPointerDown={(e) => e.stopPropagation()}
-    >
-      <primitive object={scene} position={[0, -0.5, -1]} draggable={false} />
+    <group ref={meshRef} scale={scale} draggable={false} onPointerDown={(e) => e.stopPropagation()}>
+      <primitive object={scene} position={[0, -6, 0]} draggable={false} />
     </group>
   );
 }
 
 export default function ThreeDComponent({ modelUrl }) {
+  const [windowSize, setWindowSize] = React.useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getScale = () => {
+    if (windowSize.width < 600) return [0.5, 0.5, 0.5];
+    if (windowSize.width < 900) return [0.75, 0.75, 0.75];
+    return [1, 1, 1];
+  };
+
   return (
-    <Box style={{ maxWidth: "1400px", width: "100%", minWidth: "1200px", height: "600px" }}>
+    <Box style={{ width: "100%", height: "600px", margin: "0 auto", position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Canvas
-        camera={{ position: [15, 2, 15], fov: 7 }}
+        camera={{ position: [0, 15, 80], fov: 25 }}
         draggable={false}
         onPointerDown={(e) => e.stopPropagation()} // Prevents interaction with canvas
       >
         <ambientLight intensity={1} />
-        <directionalLight position={[0, 10, 0]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[10, 10, 10]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[-10, 10, -10]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[-10, 10, 100]} intensity={0.8} color={"0xffffff"} />
-        <directionalLight position={[20, 15, 25]} intensity={0.8} color={"0xffffff"} />
-        <spotLight position={[15, 5, 10]} color={"0x80ff80"} angle={1} penumbra={1} intensity={1} />
-        <spotLight position={[5, 5, 5]} color={"0x80ff80"} angle={1} penumbra={1} intensity={1} />
-        <pointLight position={[10, 20, 10]} />
+        <directionalLight position={[0, 10, 0]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[5, 0, -10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, 0, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, 2, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[0, -2, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[10, 10, 10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[-10, 10, -10]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[-10, 10, 100]} intensity={1} color={"0xffffff"} />
+        <directionalLight position={[20, 15, 25]} intensity={1} color={"0xffffff"} />
+        <spotLight position={[15, 5, 10]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
+        <spotLight position={[15, 10, 20]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
+        <spotLight position={[5, 5, 5]} color={"0x80ff80"} angle={1} penumbra={1} intensity={0.6} />
         <Suspense fallback={"Loading..."}>
-          <Model url={modelUrl} />
+          <Model url={modelUrl} scale={getScale()} />
         </Suspense>
         <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
