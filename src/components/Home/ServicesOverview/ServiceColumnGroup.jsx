@@ -4,12 +4,13 @@ import { Box, Paper, styled, Typography } from "@mui/material";
 import { useTheme } from "../../../contexts/themeContext";
 import { HomePkgsBox, HomePkgsInBox } from "../../mui/HomePkgs";
 import FadeIn from "../../Animations/FadeIn";
+import {useTranslations} from "next-intl";
 
 export const ServiceHeading = styled(Typography)(({ theme }) => ({
+  fontSize:"40px", 
+  fontWeight:500,
   textAlign: "center",
-  fontSize: "4rem ",
   color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
-  fontWeight: "bold",
   marginBottom: "0.9rem",
   "@media (max-width: 600px)": {
     fontSize: "2.2rem ",
@@ -19,7 +20,7 @@ export const ServiceHeading = styled(Typography)(({ theme }) => ({
 
 export const ServiceDescription = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  fontSize: "1.4rem",
+  fontSize: "1.8rem",
   color: theme.palette.mode === "dark" ? "#fff" : "#000000",
   maxWidth: "780px",
   "@media (max-width: 600px)": {
@@ -29,12 +30,12 @@ export const ServiceDescription = styled(Typography)(({ theme }) => ({
 
 export const ServicesContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "space-around",
-  flexWrap: "wrap",
-  maxWidth: "80%",
+  flexDirection: "row",
   marginBottom: "3rem",
   gap: "9.7rem",
   "@media (max-width: 600px)": {
+    maxWidth: "450px",
+    flexDirection: "column",
     gap: "2rem",
   },
 }));
@@ -96,27 +97,26 @@ export const ServiceItemSubheading = styled(Typography)(({ theme }) => ({
 }));
 
 export default function ServiceColumnGroup() {
+  const t = useTranslations('home.anywhere_autocare_section');
   const { theme } = useTheme();
 
   return (
     <HomePkgsInBox
+      id="anywhere-auto-care"
       sx={{
         flexDirection: "column",
         alignItems: "center",
-        marginBottom: "12.3rem",
+        marginBottom: "6.15rem",
         "@media (max-width: 600px)": {
           marginBottom: "0",
         },
       }}
     >
       <FadeIn direction="up" distance={100} duration={0.5}>
-        <ServiceHeading>Anywhere Auto-Care</ServiceHeading>
+        <ServiceHeading>{t("title")}</ServiceHeading>
       </FadeIn>
       <ServiceDescription>
-        We have different packages to choose from depending on your needs. Each
-        package has been carefully put together to provide your car with the
-        best care, whether it is, a standard cleaning or a complete detail
-        treatment.
+        {t("description")}
       </ServiceDescription>
 
       <ServicesContainer>
@@ -130,10 +130,9 @@ export default function ServiceColumnGroup() {
               sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
             />
           </ServiceItemImageContainer>
-          <ServiceItemHeading variant="h5">On-Site Service</ServiceItemHeading>
+          <ServiceItemHeading variant="h5">{t("services.0.title")}</ServiceItemHeading>
           <ServiceItemSubheading variant="p">
-            Enjoy our services at our dedicated location, where you can relax
-            while we take care of your vehicle.
+            {t("services.0.description")}
           </ServiceItemSubheading>
         </ServiceItemContainer>
 
@@ -147,9 +146,9 @@ export default function ServiceColumnGroup() {
               sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
             />
           </ServiceItemImageContainer>
-          <ServiceItemHeading variant="h5">Mobile Service</ServiceItemHeading>
+          <ServiceItemHeading variant="h5">{t("services.1.title")}</ServiceItemHeading>
           <ServiceItemSubheading variant="p">
-          Enjoy our services at our dedicated location, where you can relax while we take care of your vehicle.
+            {t("services.1.description")}
           </ServiceItemSubheading>
         </ServiceItemContainer>
       </ServicesContainer>

@@ -2,14 +2,23 @@ import {Box} from "@mui/material";
 import React from "react";
 import BookingParticulars from "./BookingParticulars";
 import {BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
   return (
     <Box>
-      <BookingFormHeading>Booking Confirmation</BookingFormHeading>
+        <BookingFormHeading>{t("steps.9.title")}</BookingFormHeading>
+
+        <BookingFormSubHeading
+            sx={{
+                marginBottom: "0",
+            }}
+        >
+            {t("steps.9.description.0")}
+        </BookingFormSubHeading>
         <BookingFormSubHeading>
-            Please verify your details<br/>
-            Let’s make sure everything is perfect for your cleaning!
+            {t("steps.9.description.1")}
         </BookingFormSubHeading>
       <Box>
         <BookingParticulars />

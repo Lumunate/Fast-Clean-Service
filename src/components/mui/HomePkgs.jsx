@@ -27,6 +27,7 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   flexWrap: "wrap",
   gap: "4rem",
   position: "relative",
+  zIndex: "2",
 
   "@media (max-width: 1150px)": {
     width: "80%",
@@ -255,7 +256,7 @@ export const CardContainer = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   // boxShadow: "0 0 2px 2px #dbdbdb",
   borderRadius: "20px",
-  "@media (max-width:900px)": { maxHeight: "510px", },
+  "@media (max-width:900px)": { height: "510px", },
 }));
 
 export const Cards = styled(Box)(({ theme }) => ({
@@ -355,19 +356,21 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+
 }));
 
 export const CardDesc = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
   fontWeight: "300",
   lineHeight: "210%",
-  width: "70%",
+  width: "50%",
   opacity: 0,
   animation: "showContent 1s ease-in-out 0.3s 1 forwards",
   display: "flex",
   alignItems: "center",
   color: "#FFFFFF",
   "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
+  "@media (max-width:600px)": { alignItems: "flex-start" },
 
 }));
 
@@ -428,7 +431,7 @@ export const ServicesImgContainer = styled(Typography)(({ theme }) => ({
     backgroundColor: "transparent",
     overflow: "hidden",
     clipPath: "polygon(100% 0, 100% 100%, 5% 100%, 5% 70%, 0 50%, 5% 30%, 5% 0)",
-    maxHeight: "580px",
+    height: "580px",
 
     "& svg": {
       "& path": {
@@ -448,11 +451,13 @@ export const HomeServicesBox = styled(Box)(({ theme }) => ({
   padding: "5rem 0",
   display: "flex",
   flexWrap: "wrap",
+  flexDirection: "row",
   justifyContent: "center",
   gap: "3rem",
   "@media (max-width: 600px)": {
     padding: "2rem 0",
     marginTop: "-10rem",
+    flexDirection: "column",
   },
 }));
 
@@ -591,7 +596,7 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
   },
   "@media (max-width: 600px)": {
     width: "530px",
-    height: "400px",
+    height: "524px",
   },
   "@media (max-width: 550px)": {
     width: "480px",
@@ -643,7 +648,6 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   right: "0",
   transition: "all 0.3s ease-in",
   "@media (max-width: 600px)": {
-    backdropFilter: "none",
     bottom: "-80%",
     minHeight: "400px",
   },
@@ -652,12 +656,12 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
 export const ServiceName = styled(Typography)(({ theme }) => ({
   fontFamily: "Unbounded",
   textTransform: "uppercase",
-  fontSize: "2.8rem !important",
+  fontSize: "26px !important",
   fontWeight: "600",
   color: theme.palette.primary.accent,
   textAlign: "left",
   "@media (max-width: 600px)": {
-    fontSize: "1.6rem !important",
+    fontSize: "26px !important",
   },
 }));
 
@@ -696,6 +700,7 @@ export const ServiceDetail = styled(Box)(({ theme }) => ({
   textAlign: "left",
   color: "white",
   marginBottom: "1rem",
+  marginTop: "26px",
   display: "flex",
   flexDirection: "column",
   width: "100%",
@@ -710,7 +715,7 @@ export const ServiceDetail = styled(Box)(({ theme }) => ({
     "& .innerdeet": {
       display: "flex",
       justifyContent: "space-between",
-      fontSize: "1.6rem !important",
+      fontSize: "16px",
       fontWeight: "300",
       marginBottom: "0.2rem",
 
@@ -731,6 +736,7 @@ export const ServiceBtn1 = styled(ButtonBase)(({ theme, special = false }) => ({
   border: `1px solid ${special ? theme.palette.primary.accentDark : "rgba(218, 218, 218, 0.45)"}`,
   borderRadius: "1.2rem",
   padding: "1rem 2rem",
+  borderRadius: "50px",
   fontSize: "1.4rem !important",
   color: "white",
   fontWeight: "regular",
@@ -811,12 +817,10 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   transition: "all 300ms ease-in-out",
   padding: "1rem",
-  height: "26rem",
+  height: "32rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
-  "@media (max-width: 1200px)": {
-    height: "auto",
-  },
+  "@media (max-width: 600px)": {height:"36rem"}
 }));
 
 export const CarouselItemInner = styled(Box)(({ theme }) => ({
@@ -826,7 +830,7 @@ export const CarouselItemInner = styled(Box)(({ theme }) => ({
   padding: "4rem",
   borderRadius: "21px",
   backdropFilter: "blur(14px)",
-  boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
+  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
   height: "100%",
 
@@ -881,6 +885,7 @@ export const CarouselStarsBox = styled(Box)(({ theme, stars }) => ({
 export const CarouselDetails = styled(Box)(({ theme }) => ({
   marginBottom: "2.6rem",
   textAlign: "left",
+  height: '100%',
   fontSize: "1.8rem !important",
 
   // "& h5": {

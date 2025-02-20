@@ -9,38 +9,66 @@ import {
     CTAButton,
     CTAImage,
 } from "./CallToActionPckgs";
+import {useTheme} from "../../../contexts/themeContext"
+import {Button} from "@mui/material";
+import {useTranslations} from "next-intl";
 
 const CallToActionBox = ({ hideImage = false }) => {
+    const {theme} = useTheme();
+    const t = useTranslations('about.cta_section');
     return (
-        <CTAContainer>
-            {!hideImage && (
-                <CTAImage
-                    component="img"
-                    src="/decorative/Cuts.svg"
-                    alt="Decorative Image"
-                    width={388}
-                    height={-1}
-                    style={{
-                        transform: "scaleX(-1)",
-                    }}
-                    sx={{ "@media (max-width: 700px)": { display: "none"}}}
-                />
-            )}
+      <CTAContainer>
+        {!hideImage && (
+          <CTAImage
+            component="img"
+            src="/decorative/Cuts.svg"
+            alt="Decorative Image"
+            width={388}
+            height={-1}
+            style={{
+              transform: "scaleX(-1)",
+            }}
+            sx={{ "@media (max-width: 700px)": { display: "none" } }}
+          />
+        )}
 
-            <CTAContentBox>
-                <CTAHeading>Ready for a Sparkling Clean Ride?</CTAHeading>
+        <CTAContentBox>
+          <CTAHeading>{t("title")}</CTAHeading>
 
-                <CTADescription>
-                Now Ready to make your car shine? Book online now and experience for yourself why so<br/>many customers choose Fast Clean Service!
-                </CTADescription>
+            <CTADescription
+                sx={{
+                    maxWidth: "70%" ,
+                    textAlign: "center",
+                    margin: "0 auto",
+                    "@media (max-width: 1100px)": {maxWidth: "100%" ,}
+                }}
+            >
+                {t("description")}
+            </CTADescription>
 
-                <CTAInnerBox>
-                    <CTAButton variant="contained" onClick={() => (window.location.href = "/booking")}>
-                        Book Now
-                    </CTAButton>
-                </CTAInnerBox>
-            </CTAContentBox>
-        </CTAContainer>
+          <CTAInnerBox>
+            <Button
+              variant="contained"
+              onClick={() => (window.location.href = "/booking")}
+              sx={{
+                marginTop: "1rem",
+                padding: "1.5rem 3rem",
+                fontSize: "16px",
+                fontWeight: 500,
+                backgroundColor: "primary.accentDark",
+                color: "white",
+                borderRadius: "50px",
+                fontFamily: "DMSans",
+                "&:hover": {
+                  backgroundColor: "#00BEFF",
+                },
+              }}
+            >
+                {t("button")}
+            </Button>
+          </CTAInnerBox>
+        </CTAContentBox>
+      </CTAContainer>
     );
 };
 

@@ -15,15 +15,15 @@ export const authOptions = {
       async authorize(credentials) {
         await connectToDb();
         try {
-          console.log(credentials.password);
-          const user = await User.findOne({ email: credentials.email });
-          console.log(user);
+
+          const user = await User.findOne({ email: credentials.email?.toLowerCase() });
+
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
               user.password
             );
-            console.log(isPasswordCorrect);
+
             if (isPasswordCorrect) {
               if (!user.emailVerified) {
                 throw new Error("Please verify your email before logging in");
@@ -38,12 +38,20 @@ export const authOptions = {
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+    maxAge: 2 * 60 * 60,
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+    maxAge: 2 * 60 * 60,
+  },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider == "credentials") {
+      if (account?.provider === "credentials") {
         return true;
       }
-      if (account?.provider == "github") {
+      if (account?.provider === "github") {
         await connectToDb();
         try {
           const existingUser = await User.findOne({ email: user.email });

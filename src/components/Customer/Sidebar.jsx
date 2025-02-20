@@ -5,8 +5,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import {useTranslations} from "next-intl";
 
 const Sidebar = ({ drawerOpen, toggleDrawer, handleTabChange }) => {
+    const t = useTranslations('customer_dashboard');
     const [selectedTab, setSelectedTab] = useState("Dashboard");
     const router = useRouter();
 
@@ -41,8 +43,8 @@ const Sidebar = ({ drawerOpen, toggleDrawer, handleTabChange }) => {
                 <Box sx={{ flexGrow: 1, overflowY: "auto" }}>
                     <List>
                         {[
-                            { text: "Dashboard", icon: <HomeIcon /> },
-                            { text: "My Bookings", icon: <EventIcon /> },
+                            { text: t("options.0"), icon: <HomeIcon /> },
+                            { text: t("options.1"), icon: <EventIcon /> },
                         ].map((item) => (
                             <ListItem
                                 key={item.text}

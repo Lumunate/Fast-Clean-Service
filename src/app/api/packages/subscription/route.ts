@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ZodError } from "zod";
 import SubscriptionPackageService from "../../../../services/subscription-package";
+import dbConnect from "../../../../lib/dbConnect";
 
 export async function GET(req: NextRequest) {
   try {
+    await dbConnect();
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
+    await dbConnect();
 
     if (id) {
       const pkg = await SubscriptionPackageService.getPackageById(id as string);
@@ -24,6 +27,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    await dbConnect();
     // Check if the request body is an array for bulk creation
     const body = await req.json()
     if (Array.isArray(body)) {
@@ -44,6 +48,7 @@ export async function POST(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   try {
+    await dbConnect();
     const query = req.nextUrl.searchParams;
     const id = query.get("id");
 

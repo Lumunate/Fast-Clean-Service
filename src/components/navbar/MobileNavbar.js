@@ -31,13 +31,14 @@ import SunIcon from "@mui/icons-material/WbSunny";
 import MoonIcon from "../../../public/navbar/Moon.svg";
 import LoginModal from "../../components/Login/LoginModal";
 import SignUpModal from "../../components/SignUp/SignUpModal";
+import {useTranslations} from "next-intl";
 
 const MobileNavbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const anchorEl = useRef(null);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
-
+    const t = useTranslations('header');
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const [openLogin, setOpenLogin] = useState(false);
@@ -53,78 +54,96 @@ const MobileNavbar = () => {
 
     const navLinks = [
         {
-            label: "Home",
+            label: t("navigation.home"),
             href: "/",
         },
         {
-            label: "About",
+            label: t("navigation.about"),
             href: "/aboutus",
         },
         {
-            label: "Services",
+            label: t("navigation.services.title"),
             href: "/services",
             more: [
                 {
-                    label: "FleetCare Pro",
+                    label: t("navigation.services.options.0"),
                     href: "/fleet",
                 },
                 {
-                    label: "Anywhere AutoCare",
+                    label: t("navigation.services.options.1"),
                     href: "/autocare",
                 },
                 {
-                    label: "Subscription Plans",
+                    label: t("navigation.services.options.2"),
                     href: "/subscribe",
+                },
+                {
+                    label: t("navigation.services.options.3"),
+                    href: "/other-vehicles",
                 },
             ],
         },
         {
-            label: "Contact",
+            label: t("navigation.contact"),
             href: "/contact",
         },
     ];
 
     const NavbarDrawerList = (
-        <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
-            <List>
-                {navLinks.map((item, index) => (
-                    <>
-                        <ListItem key={item.label} disablePadding>
-                            <ListItemButton
-                                onClick={() => {
-                                    if (item.more) {
-                                        setIsServicesOpen(!isServicesOpen);
-                                    } else {
-                                        window.location.href = item.href;
-                                    }
-                                }}
-                            >
-                                <ListItemText primary={item.label} />
-                                {item.more && item.more.length > 0 && <>{isServicesOpen ? <ExpandLess /> : <ExpandMore />}</>}
-                            </ListItemButton>
-                        </ListItem>
-
-                        {item.more && (
-                            <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
-                                    {item.more.map((subItem, index) => (
-                                        <ListItemButton sx={{ pl: 4 }} key={subItem.label} onClick={() => (window.location.href = subItem.href)}>
-                                            <ListItemText primary={subItem.label} />
-                                        </ListItemButton>
-                                    ))}
-                                </List>
-                            </Collapse>
-                        )}
-                    </>
-                ))}
-            </List>
-            <Divider />
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => (window.location.href = "/booking")}>
-                    <NavbarCTA sx={{ marginLeft: "0 !important" }}>Book Now</NavbarCTA>
+      <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
+        <List>
+          {navLinks.map((item, index) => (
+            <>
+              <ListItem key={item.label} disablePadding>
+                <ListItemButton
+                  onClick={(e) => {
+                    if (item.more) {
+                      setIsServicesOpen(!isServicesOpen);
+                    } else {
+                      window.location.href = item.href;
+                    }
+                    e.stopPropagation();
+                  }}
+                >
+                  <ListItemText
+                    sx={{
+                      color: "#fff",
+                      fontSize: "1.6rem !important",
+                      fontWeight: item.label === "Services" && isServicesOpen ? "bold !important" : "normal",
+                    }}
+                    primary={item.label}
+                  />
+                  {item.more && item.more.length > 0 && (
+                    <>{isServicesOpen ? <ExpandLess sx={{ color: "#fff" }} /> : <ExpandMore sx={{ color: "#fff" }} />}</>
+                  )}
                 </ListItemButton>
-            </ListItem>
-        </Box>
+              </ListItem>
+
+              {item.more && (
+                <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.more.map((subItem, index) => (
+                      <ListItemButton
+                        sx={{ pl: 4, "& .MuiTypography-root": { color: "#fff" } }}
+                        key={subItem.label}
+                        onClick={() => (window.location.href = subItem.href)}
+                      >
+                        <ListItemText primary={subItem.label} />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </>
+          ))}
+        </List>
+        <Divider />
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => (window.location.href = "/booking")}>
+            <NavbarCTA sx={{ marginLeft: "0 !important" }}>{t("buttons.book_now")}</NavbarCTA>
+          </ListItemButton>
+        </ListItem>
+      </Box>
     );
 
     return (
@@ -164,9 +183,27 @@ const MobileNavbar = () => {
                             <LogoImage src={UserIcon} alt="User Icon" width={15} height={15} style={{ objectFit: "contain" }} />
                         </IconButton>
 
-                        <SwipeableDrawer open={drawerOpen} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)}>
+                        <SwipeableDrawer
+                            open={drawerOpen}
+                            onOpen={toggleDrawer(true)}
+                            onClose={toggleDrawer(false)}
+                            PaperProps={{
+                                sx: {
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
+                                    padding: "1rem",
+
+                                    border: "none",
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
+                                },
+                            }}
+                        >
                             {NavbarDrawerList}
                         </SwipeableDrawer>
+
 
                         {userMenuOpen && (
                             <Box
@@ -175,11 +212,8 @@ const MobileNavbar = () => {
                                     top: "-4rem",
                                     right: "-9rem",
                                     zIndex: 2,
-                                    backgroundColor: "rgba(35, 35, 35, 0.4)",
                                     padding: { xs: "2rem", sm: "3rem", md: "3rem", xl: "4rem" },
                                     borderRadius: "4px",
-                                    backdropFilter: "blur(4px)",
-                                    border: "0.01px solid #fff",
                                     width: {
                                         xs: "20rem",
                                         sm: "24rem",
@@ -188,11 +222,15 @@ const MobileNavbar = () => {
                                     flexDirection: "column",
                                     gap: { xs: "1.5rem", sm: "1.7rem", md: "2rem", xl: "2.7rem" },
                                     paddingTop: "8rem !important",
+
+                                    backgroundColor: "rgba(35, 35, 35, 0.5)",
+                                    backdropFilter: "blur(10px)",
+                                    boxShadow: "rgba(0, 0, 0, 0.25) 0px 4px 7px 0px",
                                 }}
                             >
                                 <DropDownLink
                                     onClick={() => {
-                                        window.location.href = "/admin";
+                                        window.location.href = "/en/admin";
                                         setIsServicesOpen(false);
                                     }}
                                 >
@@ -201,12 +239,12 @@ const MobileNavbar = () => {
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
-                                        window.location.href = "/customer-portal";
+                                        window.location.href = "/de/customer-portal";
                                         setIsServicesOpen(false);
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_StreamLine} alt="User Icon" width={20} height={20} />
-                                    Customer
+                                    Dashboard
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
@@ -215,7 +253,7 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={Arrow_Right} alt="User Icon" width={20} height={20} />
-                                    Login
+                                    {t("buttons.login")}
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
@@ -224,16 +262,16 @@ const MobileNavbar = () => {
                                     }}
                                 >
                                     <Image style={{ marginRight: "1rem" }} src={User_Cog} alt="User Icon" width={20} height={20} />
-                                    Signup
+                                    {t("buttons.signup")}
                                 </DropDownLink>
                             </Box>
                         )}
                     </NavLinkDropDownContainer>
                     <IconButton onClick={toggleTheme} sx={{ zIndex: 10, marginLeft: "2rem" }}>
                         {theme.palette.mode === "dark" ? (
-                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
+                            <Image src={MoonIcon} alt="Moon Icon" width={30} height={30} style={{ objectFit: "contain" }} />
                         ) : (
-                            <Image src={MoonIcon} alt="Moon Icon" width={21} height={21} style={{ objectFit: "contain" }} />
+                            <SunIcon sx={{ fontSize: "2rem", color: "white", cursor: "pointer" }} />
                         )}
                     </IconButton>
                 </NavbarRightContainer>

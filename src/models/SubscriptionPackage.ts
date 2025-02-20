@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 export const vehicleOptionSchema = new Schema(
   {
     basePrice: { type: Number, required: true },
-    additionalPrice: { type: Number, required: true },
+    additionalCost: { type: Number, required: true },
     additionalTime: { type: Number, required: true },
     notes: { type: String },
   },

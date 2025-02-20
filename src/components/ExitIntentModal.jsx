@@ -1,6 +1,6 @@
 // components/ExitIntentModal.js
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, useTheme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Image from 'next/image';
 import { gsap } from 'gsap';
@@ -13,6 +13,7 @@ const Backdrop = styled(Box)(({ theme }) => ({
     width: '100vw',
     height: '100vh',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backdropFilter: 'blur(4px)',
     zIndex: 1200,
     opacity: 0,
     transition: 'opacity 0.5s',
@@ -26,7 +27,8 @@ const ModalContainer = styled(Box)(({ theme, isMultiple }) => ({
     transform: isMultiple ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
     width: isMultiple ? '80%' : '90%',
     maxWidth: isMultiple ? '600px' : '400px',
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
+    color: theme.palette.mode === 'dark' ? '#fff' : '#232E4A',
     borderRadius: '10px',
     boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.2)',
     padding: '20px',
@@ -72,6 +74,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
     const modalRef = useRef(null);
     const backdropRef = useRef(null);
     const tl = useRef(null);
+    const theme = useTheme();
 
     // Determine if content is an array
     const isMultiple = Array.isArray(content);
@@ -168,7 +171,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                                         fontFamily: "Unbounded",
                                         fontSize: "1.8rem",
                                         fontWeight: "bold",
-                                        color: "#232E4A",
+                                        color: theme.palette.mode === 'dark' ? '#fff' : '#232E4A',
                                         padding: "1rem 0",
                                         textAlign: "center",
                                     }}
@@ -180,7 +183,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                                     variant="body1"
                                     sx={{
                                         fontSize: "1.4rem",
-                                        color: "#555",
+                                        color: theme.palette.mode === 'dark' ? '#fff' : "#555",
                                         textAlign: "center",
                                         marginBottom: "1rem",
                                     }}
@@ -219,7 +222,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                                     fontFamily: "Unbounded",
                                     fontSize: "1.8rem",
                                     fontWeight: "bold",
-                                    color: "#232E4A",
+                                    color: theme.palette.mode === 'dark' ? '#fff' : '#232E4A',
                                     padding: "1rem 0",
                                     textAlign: "center",
                                 }}
@@ -231,7 +234,7 @@ const ExitIntentModal = ({ open, content, handleDismiss }) => {
                                 variant="body1"
                                 sx={{
                                     fontSize: "1.4rem",
-                                    color: "#555",
+                                    color: theme.palette.mode === 'dark' ? '#fff' : "#555",
                                     textAlign: "center",
                                     marginBottom: "1rem",
                                 }}

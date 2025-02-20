@@ -4,35 +4,9 @@ import { Box, Grid, Typography, styled } from "@mui/material";
 import SingleWorkHowDoes from "./SingleWorkHowDoes";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
+import {useTranslations} from "next-intl";
 
-const works = [
-    {
-        id: 1,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
-        title: "Choose your location:",
-        description: "We come to you or you bring your car to us.",
-    },
-    {
-        id: 2,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
-        title: "Choose your service:",
-        description: "Select from our extensive range of cleaning and cleaning services detailing services.",
-    },
-    {
-        id: 3,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
-        title: "Make an appointment:",
-        description: "Choose a date and time that suits you",
-    },
-    {
-        id: 4,
-        icon: "/howdoesitworkicons/Baby Calendar.png",
-        title: "We will do the rest",
-        description: "Enjoy your perfectly cleaned car!",
-    },
-];
 
-// Styled components for responsive layout
 const SectionContainer = styled(Box)(({ theme }) => ({
     position: "relative",
     padding: "2rem 0",
@@ -40,105 +14,90 @@ const SectionContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-}));
-
-const StepContainer = styled(Grid)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    textAlign: "center",
+    marginTop: "10rem",
+    "@media (max-width: 768px)": { marginTop: "8rem", },
 }));
 
 const ResponsiveGrid = styled(Grid)(({ theme }) => ({
     width: "90%",
+    maxWidth: "1500px",
     margin: "0 auto",
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)", // Four columns for large screens
-    gap: "2rem", // Proper gap between grid items
-    "@media (max-width: 1200px)": {
-        gridTemplateColumns: "repeat(3, 1fr)",
-    },
-    "@media (max-width: 900px)": {
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "2rem",
+    "@media (max-width: 1400px)": {
         gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateRows: "repeat(2, auto)",
     },
-    "@media (max-width: 600px)": {
-        gridTemplateColumns: "1fr", // One column for mobile
+    "@media (max-width: 768px)": {
+        gridTemplateColumns: "1fr",
+        gridTemplateRows: "auto",
     },
 }));
 
 export default function HowDoesItWork() {
+    const t = useTranslations('home.how_it_works');
     const { theme } = useTheme();
 
+
+    const works = [
+        {
+            id: 1,
+            icon: "/howdoesitworkicons/Map-Pin.png",
+            title: t("steps.0.title"),
+            description: t("steps.0.description"),
+        },
+        {
+            id: 2,
+            icon: "/howdoesitworkicons/Settings-Search.png",
+            title: t("steps.1.title"),
+            description:
+                t("steps.1.description"),
+        },
+        {
+            id: 3,
+            icon: "/howdoesitworkicons/Report--Streamline-Tabler.png",
+            title: t("steps.2.title"),
+            description: t("steps.2.description"),
+        },
+        {
+            id: 4,
+            icon: "/howdoesitworkicons/Checks--Streamline.png",
+            title: t("steps.3.title"),
+            description: t("steps.3.description"),
+        },
+    ];
+
+    const reorderedWorks = [...works];
+    if (typeof window !== "undefined" && window.innerWidth <= 1400 && window.innerWidth >= 768) {
+        [reorderedWorks[2], reorderedWorks[3]] = [reorderedWorks[3], reorderedWorks[2]];
+    }
+
     return (
-        <SectionContainer sx={{ maxWidth:"1330px", marginTop:"5.25rem",marginBottom:"14rem", marginLeft:"auto", marginRight:"auto"}}>
+        <SectionContainer sx={{ marginBottom: "10rem"}}>
             <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-            <HeadingLinesAnimation
-      text="How Does It Work?"
-    />
+                <HeadingLinesAnimation text={t("title")} />
             </Box>
 
-            <Grid
-                container
-                sx={{
-                    width: "100%",
-                    margin: "0 auto",
-                    paddingTop: "5.8rem",
-                    display: "flex",
-                    "@media (max-width: 1366px)": {
-                        paddingLeft: "0",
-                        alignItems: "center",
-                    },
-                    "@media (max-width: 1200px)": {
-                        padding: "2rem",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "2rem",
-                    },
-                    "@media (max-width: 900px)": {
-                        padding: "2rem",
-                        width: "100%",
-                    },
-                }}
-            >
-                {works.map((work, index) => (
+            <ResponsiveGrid>
+                {reorderedWorks.map((work, index) => (
                     <Grid
                         item
                         key={work.id}
-                        xs={12}
-                        sm={6}
-                        lg={3}
                         sx={{
-                            width: "100%",
-                            display: 'flex',
-                            flexDirection: 'column',
+                            display: "flex",
+                            flexDirection: "column",
                             gap: "2rem",
                         }}
                     >
                         <SingleWorkHowDoes
-                            sx={{
-                                width: "100%",
-                                // borderRadius: "24px",
-                                // maxWidth: "29.5rem",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between",
-                                backgroundColor: "transparent",
-                                color: theme.palette.mode === "light" ? `#212121` : "#fff",
-                                flexGrow: 1,
-                                opacity: 0,
-                                animation: `slideInLTR 1s ease-in-out ${1.5 - 0.3 * index}s 1 forwards`,
-                                "@media (max-width: 1200px)": {
-                                    maxWidth: "100%",
-                                },
-                            }}
                             icon={work.icon}
                             title={work.title}
                             description={work.description}
                         />
                     </Grid>
                 ))}
-            </Grid>
+            </ResponsiveGrid>
 
             <Box
                 sx={{
@@ -147,65 +106,77 @@ export default function HowDoesItWork() {
                     left: "5%",
                     right: "5%",
                     zIndex: -1,
-                    display: { xs: "none", lg: "block" },
+                    display: { xs: "block", lg: "block" },
                 }}
             >
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                    <Box
-                        sx={{
-                            position: "absolute",
+                <Box
+                    sx={{
+                        position: "absolute",
+                        left: "calc(24% - 22px)",
+                        backgroundImage: 'url("/Arrow_04.svg")',
+                        width: "75px",
+                        height: "75px",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                        "@media (max-width: 1400px)": {
+                            top: "-12rem",
+                            left: "48%",
+                        },
+                        "@media (max-width: 768px)": {
+                            top: "-26rem",
+                            left: "40%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                        },
+                    }}
+                />
+                <Box
+                    sx={{
+                        position: "absolute",
+                        left: "calc(49% - 22px)",
+                        backgroundImage: 'url("/Arrow_04.svg")',
+                        width: "75px",
+                        height: "75px",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                        "@media (max-width: 1400px)": {
                             top: "4rem",
-                            left: "calc(20% - 13px)",
-                            transform: "translateY(-50%)",
-                            backgroundImage: 'url("/Arrow_04.svg")',
-                            width: "76px",
-                            height: "76px",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "contain",
-                            filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
-                            "@media (max-width: 1380px)": {
-                                left: "calc(23% - 13px)",
-                                width: "70px",
-                            },
-                        }}
-                    />
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            top: "4rem",
-                            left: "calc(48% - 22px)",
-                            transform: "translateY(-50%)",
-                            backgroundImage: 'url("/Arrow_04.svg")',
-                            width: "75px",
-                            height: "75px",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "contain",
-                            filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
-                            "@media (max-width: 1380px)": {
-                                left: "calc(47% - 13px)",
-                                width: "70px",
-                            },
-                        }}
-                    />
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            top: "4rem",
-                            left: "calc(74% - 22px)",
-                            transform: "translateY(-50%)",
-                            backgroundImage: 'url("/Arrow_04.svg")',
-                            width: "75px",
-                            height: "75px",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "contain",
-                            filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
-                            "@media (max-width: 1380px)": {
-                                left: "calc(72% - 13px)",
-                                width: "70px",
-                            },
-                        }}
-                    />
-                </Box>
+                            left: "72%",
+                            transform: "rotate(90deg)",
+                        },
+                        "@media (max-width: 768px)": {
+                            top: "3rem",
+                            left: "40%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                        },
+                    }}
+                />
+                <Box
+                    sx={{
+                        position: "absolute",
+                        left: "calc(71% - 22px)",
+                        backgroundImage: 'url("/Arrow_04.svg")',
+                        width: "75px",
+                        height: "75px",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
+                        "@media (max-width: 1400px)": {
+                            top: "12rem",
+                            left: "48%",
+                            transform: "scale(-1, -1)",
+                        },
+                        "@media (max-width: 768px)": {
+                            top: "28rem",
+                            left: "40%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                        },
+                    }}
+                />
             </Box>
         </SectionContainer>
     );

@@ -5,21 +5,30 @@ import {
     BookingFormHeading,
     BookingFormSubHeading,
 } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const Index = () => {
+    const t = useTranslations('booking');
     return (
         <Box>
             <BookingFormHeading>
-                Location Selection
+                {t("steps.0.title")}
             </BookingFormHeading>
 
             <BookingFormSubHeading
                 sx={{
                     display: { xs: "none", sm: "block" },
+                    marginBottom: "0",
                 }}
             >
-                Please select your cleaning location<br />
-                Whether it’s on-site or at our branch, we’re ready to clean!
+                {t("steps.1.description.0")}
+            </BookingFormSubHeading>
+            <BookingFormSubHeading
+                sx={{
+                    display: { xs: "none", sm: "block" },
+                }}
+            >
+                {t("steps.1.description.1")}
             </BookingFormSubHeading>
 
             <Box

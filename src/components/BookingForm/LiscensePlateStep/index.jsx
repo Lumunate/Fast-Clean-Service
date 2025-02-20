@@ -8,18 +8,26 @@ import {
     BookingFormSubHeading,
     BookingFormTagline,
 } from "../../mui/BookingFormPackages";
+import {useTranslations} from "next-intl";
 
 const Index = ({ plate, setPlate, error, loading }) => {
     const { theme } = useTheme();
+    const t = useTranslations('booking');
     const isSmallScreen = useMediaQuery("(max-width:600px)");
 
     return (
         <Box>
-            <BookingFormHeading>Liscense Plate</BookingFormHeading>
+            <BookingFormHeading>{t("steps.1.title")}</BookingFormHeading>
 
+            <BookingFormSubHeading
+                sx={{
+                    marginBottom: "0",
+                }}
+            >
+                {t("steps.1.description.0")}
+            </BookingFormSubHeading>
             <BookingFormSubHeading>
-                Please enter your license plate<br />
-                We’ll make sure your vehicle is on our care list!
+                {t("steps.1.description.1")}
             </BookingFormSubHeading>
 
             <Box

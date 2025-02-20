@@ -43,7 +43,7 @@ export const SectionHeading = styled(Typography)(({ theme }) => ({
     fontSize: '1.8rem',
     fontWeight: 'bold',
     color: theme.palette.text.primary,
-    marginBottom: '20px',
+    marginBottom: {xs:'0', sm:'20px'},
 }));
 
 export const StyledCard = styled(Card)(() => ({
@@ -56,18 +56,20 @@ export const StyledCard = styled(Card)(() => ({
     "&:hover": {
         boxShadow: "0 4px 20px 0 rgba(0,0,0,0.12)",
     },
+    "@media (max-width: 600px)": { minWidth: "0", padding: 12 },
 }));
 
 export const ButtonLearnMore = styled(Button)(() => ({
-    backgroundColor: "#fff !important",
-    color: "#fb703c",
-    boxShadow: "0 2px 6px #d0efef",
-    borderRadius: 12,
-    minWidth: 120,
-    textTransform: "initial",
-    fontSize: "1.4rem",
-    fontWeight: 700,
-    letterSpacing: 0,
+  backgroundColor: "#fff !important",
+  color: "#fb703c",
+  boxShadow: "0 2px 6px #d0efef",
+  borderRadius: 12,
+  borderRadius: "50px",
+  minWidth: 120,
+  textTransform: "initial",
+  fontSize: "1.4rem",
+  fontWeight: 700,
+  letterSpacing: 0,
 }));
 
 export const headingStyles = {
@@ -80,6 +82,12 @@ export const CardBody = styled(CardContent)(({ theme }) => ({
     padding: '16px',
     '&:last-child': {
         paddingBottom: '16px',
+    },
+    "@media (max-width: 600px)": {
+        padding: "0",
+        '&:last-child': {
+            paddingBottom: '0',
+        },
     },
 }));
 
@@ -104,6 +112,7 @@ export const TableCellCustom = styled(TableCell)(({ theme }) => ({
     padding: '10px',
     fontSize: '1.2rem',
     color: theme.palette.text.primary,
+    "@media (max-width: 600px)": { fontSize: "1rem" },
 }));
 
 export const TableHeaderCell = styled(TableCell)(({ theme }) => ({
@@ -294,16 +303,17 @@ export const StyledPattern = () => {
 };
 
 export const ModalButton = styled(Button)(() => ({
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    marginTop: '20px',
-    padding: '10px 20px',
-    textTransform: 'none',
-    fontWeight: 'bold',
-    fontSize: "1.2rem",
-    '&:hover': {
-        backgroundColor: '#45A049',
-    },
+  backgroundColor: "#4CAF50",
+  color: "#fff",
+  marginTop: "20px",
+  padding: "10px 20px",
+  textTransform: "none",
+  borderRadius: "50px",
+  fontWeight: "bold",
+  fontSize: "1.2rem",
+  "&:hover": {
+    backgroundColor: "#45A049",
+  },
 }));
 
 export const ModalContentBox = styled(Typography)(() => ({
@@ -325,4 +335,5 @@ export const ModalLabel = styled(Typography)(() => ({
 export const ModalValue = styled(Typography)(() => ({
   fontWeight: "medium",
   fontSize: "1.4rem",
+
 }));

@@ -5,7 +5,7 @@ import Footer from "../components/Home/footer/Footer";
 
 const LayoutWrapper = ({ children }) => {
     const pathname = usePathname();
-    const isExcludedRoute = pathname.startsWith("/admin") || pathname.startsWith("/customer-portal");
+    const isExcludedRoute = pathname.startsWith("/en/admin") || pathname.startsWith("/de/customer-portal");
 
     return (
         <>

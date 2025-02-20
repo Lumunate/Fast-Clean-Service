@@ -1,5 +1,5 @@
 "use client";
-import {Box, Button, List, styled} from "@mui/material";
+import { Box, Button, List, styled } from "@mui/material";
 
 export const AutoCareSection = styled(Box)(({ theme }) => ({
   height: "100vh",
@@ -19,7 +19,8 @@ export const AutoTabContainer = styled(Box)(({ theme }) => ({
   gap: "5rem",
   padding: "5rem",
   // width: "100%",
-  // minWidth: "700px",
+  // minWidth: "700px"
+  zIndex  : 1,
 }));
 
 export const AutoTab = styled(Box)(({ theme }) => ({
@@ -41,7 +42,7 @@ export const AutoTab = styled(Box)(({ theme }) => ({
   },
 
   "& .tab__side": {
-    backgroundColor: "rgba(255,255,255,0.05)",
+    // backgroundColor: "rgba(255,255,255,0.05)",
     textAlign: "left",
     height: "100%",
     width: "100%",
@@ -105,24 +106,24 @@ export const AutoTab = styled(Box)(({ theme }) => ({
   },
 
   "& .MuiTypography-root.heading": {
-    fontSize: "2.4rem",
-    fontWeight: 300,
-    textTransform: "uppercase",
+    fontSize: "20px",
+    borderRadius: "2px",
+    fontWeight: 600,
     textAlign: "right",
     color: "#fff",
     position: "absolute",
     top: "17rem",
     right: "2rem",
     width: "75%",
-    '@media (max-width: 950px)': {
-      fontSize: '2rem',
+    "@media (max-width: 950px)": {
+      fontSize: "2rem",
     },
 
     "& .heading--span": {
       padding: "1rem 1.5rem",
       "&-1": {
         backgroundImage:
-          "linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85))",
+          "linear-gradient(to right bottom, rgba(93, 250, 72, 1), rgba(56, 226, 116, 1))",
       },
       "&-2": {
         backgroundImage:
@@ -132,6 +133,7 @@ export const AutoTab = styled(Box)(({ theme }) => ({
         backgroundImage:
           "linear-gradient(to right bottom, rgba(255,185,0,0.85), rgba(255,119,48,0.85))",
       },
+
     },
   },
 
@@ -148,7 +150,12 @@ export const AutoTab = styled(Box)(({ theme }) => ({
     "& .tab__value": {
       fontSize: "4.5rem",
       fontWeight: "100",
+
+      "@media (max-width: 900px)": {
+        fontSize: "2.8rem",
+      },
       //   color: "#ffffffdd",
+      "@media (max-width: 700px)": { fontSize: "2.4rem" }
     },
   },
 }));
@@ -203,7 +210,7 @@ export const Card = styled(Box)(({ theme, color }) => ({
   color: theme.palette.primary.contrastText,
   minWidth: "320px",
   // width: "33%",
-  maxWidth: "350px",
+  maxWidth: "394px",
   backdropFilter: "blur(20px)",
   display: "flex",
   flexDirection: "column",
@@ -251,7 +258,7 @@ export const CardHeader = styled(Box)(({ theme, color }) => ({
     "&.heading": {
       fontSize: "4rem",
       color: color,
-      "@media (max-width: 600px)": {
+      "@media (max-width: 900px)": {
         fontSize: "2.4rem",
       },
     },
@@ -309,20 +316,22 @@ export const CardDetails = styled(List)(({ theme }) => ({
     paddingRight: 0,
 
     "@media (max-width: 600px)": {
-      fontSize: "1rem",
+      fontSize: "1.2rem",
     },
   },
 }));
-
 
 export const CardButton = styled(Button)(({ theme }) => ({
   width: "100%",
   backgroundColor: "#dedede",
   borderRadius: "50px",
   color: theme.palette.primary.contrastText,
-  padding: "1rem",
-  fontSize: "2.5rem",
-  marginTop: "auto",
+  paddingTop: "12px",
+  paddingBottom: "12px",
+  paddingRight: "22px",
+  paddingLeft: "22px",
+  fontSize: "13px",
+  borderRadius: "50px",
 
   "@media (max-width: 600px)": {
     alignSelf: "center",
