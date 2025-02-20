@@ -253,8 +253,8 @@
                         "highlight": "Choose your plan and never worry about a dirty car again!",
                         "special_highlight": "24 months | Yearly | Monthly plans",
                         "button": {
-                            "text": "Book Now",
-                            "link": "/de/subscribe"
+                          "text": "Book Now",
+                          "link": "/subscribe"
                         }
                     }
                 ]

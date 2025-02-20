@@ -12,7 +12,7 @@ export const config = {
         '/autocare',
         '/booking',
         '/contact',
-        '/customer-portal',
+        '/customer-portal/:path*',
         '/feedback',
         '/fleet',
         '/other-vehicles',
