@@ -23,6 +23,7 @@ const ResponsiveGrid = styled(Grid)(({ theme }) => ({
     maxWidth: "1500px",
     margin: "0 auto",
     display: "grid",
+    height: "auto",
     gridTemplateColumns: "repeat(4, 1fr)",
     gap: "2rem",
     "@media (max-width: 1400px)": {
