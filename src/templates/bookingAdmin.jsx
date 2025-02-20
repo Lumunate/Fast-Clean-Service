@@ -55,7 +55,7 @@ const AdminBookingNotificationEmail = ({ userName, userEmail, packageName, date,
             </Text>
           </Section>
           <Section style={actionSection}>
-            <Button style={actionButton} href={`${process.env.NEXT_PUBLIC_BASE_URL}/admin/bookings`}>
+            <Button style={actionButton} href={`${process.env.NEXT_PUBLIC_BASE_URL}/en/admin/bookings`}>
               View Booking
             </Button>
             <Button style={actionButton} href={`mailto:${userEmail}?subject=Regarding your booking`}>

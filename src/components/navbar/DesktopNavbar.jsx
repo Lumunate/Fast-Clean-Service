@@ -261,7 +261,7 @@ const DesktopNavbar = () => {
                       }}
                     >
                       {session.user.isAdmin && (
-                        <CustomLink href="/admin">
+                        <CustomLink href="/en/admin">
                           <DropDownLink onClick={() => setIsServicesOpen(false)}>
                             <Image
                               style={{ marginRight: "1rem", transform: "translateY(4px)" }}
@@ -274,7 +274,7 @@ const DesktopNavbar = () => {
                           </DropDownLink>
                         </CustomLink>
                       )}
-                      <CustomLink href="/customer-portal">
+                      <CustomLink href="/de/customer-portal">
                         <DropDownLink onClick={() => setIsServicesOpen(false)}>
                           <Badge badgeContent={unreadCount} color="error" sx={{ marginRight: "1rem" }}>
                             <MailIcon

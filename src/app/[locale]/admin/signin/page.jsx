@@ -13,7 +13,7 @@ export default function AdminSignIn() {
         const checkAdminSession = async () => {
             const session = await getSession();
             if (session && session.user.isAdmin) {
-                router.push('/admin');
+                router.push('/en/admin');
             }
         };
 
@@ -29,10 +29,10 @@ export default function AdminSignIn() {
             redirect: false,
             email,
             password,
-            callbackUrl: '/admin',
+            callbackUrl: '/en/admin',
         }).then(({ ok }) => {
             if (ok) {
-                router.push('/admin');
+                router.push('/en/admin');
             } else {
                 alert('Invalid credentials or not an admin');
             }

@@ -7,9 +7,9 @@ export default function robots() {
       userAgent: '*',
       allow: '/',
       disallow: [
-        '/admin/',
+        '/(de|en)/admin/',
         '/api/',
-        '/customer-portal/',
+        '/(de|en)/customer-portal/',
         '/_not-found'
       ],
     },
