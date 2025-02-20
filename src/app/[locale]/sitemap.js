@@ -2,18 +2,18 @@ export default function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com'
   
   const routes = [
-    '',
-    '/de/aboutus',
-    '/de/autocare',
-    '/de/booking',
-    '/de/contact',
-    '/de/customer-portal',
-    '/de/feedback',
-    '/de/fleet',
-    '/de/other-vehicles',
-    '/de/services',
-    '/de/subscribe'
-  ]
+    "",
+    "/aboutus",
+    "/autocare",
+    "/booking",
+    "/contact",
+    "/customer-portal",
+    "/feedback",
+    "/fleet",
+    "/other-vehicles",
+    "/services",
+    "/subscribe",
+  ];
 
   return routes.map(route => ({
     url: `${baseUrl}${route}`,

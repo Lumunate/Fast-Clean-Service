@@ -19,28 +19,28 @@ const Sidebar = ({ drawerOpen, handleSignOut }) => {
     let route;
     switch (tab) {
       case "Dashboard":
-        route = "/en/admin/dashboard";
+        route = "/admin/dashboard";
         break;
       case "Bookings":
-        route = "/en/admin/booking";
+        route = "/admin/booking";
         break;
       case "FleetCare Pro":
-        route = "/en/admin/fleetpro";
+        route = "/admin/fleetpro";
         break;
       case "Other Vehicles Management":
-        route = "/en/admin/othervehicles";
+        route = "/admin/othervehicles";
         break;
       case "Shop Management":
-        route = "/en/admin/shop";
+        route = "/admin/shop";
         break;
       case "Package Management":
-        route = "/en/admin/package-management";
+        route = "/admin/package-management";
         break;
       case "Coupon Management":
-        route = "/en/admin/coupons";
+        route = "/admin/coupons";
         break;
       default:
-        route = "/en/admin";
+        route = "/admin";
         break;
     }
 

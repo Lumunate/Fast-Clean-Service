@@ -230,7 +230,7 @@ const MobileNavbar = () => {
                             >
                                 <DropDownLink
                                     onClick={() => {
-                                        window.location.href = "/en/admin";
+                                        window.location.href = "/admin";
                                         setIsServicesOpen(false);
                                     }}
                                 >
@@ -239,7 +239,7 @@ const MobileNavbar = () => {
                                 </DropDownLink>
                                 <DropDownLink
                                     onClick={() => {
-                                        window.location.href = "/de/customer-portal";
+                                        window.location.href = "/customer-portal";
                                         setIsServicesOpen(false);
                                     }}
                                 >

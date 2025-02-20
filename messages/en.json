@@ -216,7 +216,7 @@
           "special_highlight": "24 months | Yearly | Monthly plans",
           "button": {
             "text": "Book Now",
-            "link": "/de/subscribe"
+            "link": "/subscribe"
           }
         }
       ]

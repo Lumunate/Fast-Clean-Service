@@ -47,6 +47,7 @@ const SingleWorkHowDoes = ({ icon, title, description, sx = {} }) => {
         alignItems: "center",
         textAlign: "center",
         padding: "8px",
+        height: "100%",
         animation: `slideInLTR 1s ease-in-out`,
       }}
       ref={cardRef}
