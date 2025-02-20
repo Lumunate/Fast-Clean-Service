@@ -26,13 +26,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, route: "/en/admin/dashboard" },
-    { text: "Bookings", icon: <EventIcon />, route: "/en/admin/booking" },
-    { text: "FleetCare Pro", icon: <DirectionsCarIcon />, route: "/en/admin/fleetpro" },
-    { text: "Other Vehicles Management", icon: <DirectionsBoatIcon />, route: "/en/admin/othervehicles" },
-    { text: "Shop Management", icon: <StoreIcon />, route: "/en/admin/shop" },
-    { text: "Package Management", icon: <CategoryIcon />, route: "/en/admin/package-management" },
-    { text: "Coupon Management", icon: <LocalActivityIcon />, route: "/en/admin/coupons" },
+  { text: "Dashboard", icon: <DashboardIcon />, route: "/admin/dashboard" },
+  { text: "Bookings", icon: <EventIcon />, route: "/admin/booking" },
+  { text: "FleetCare Pro", icon: <DirectionsCarIcon />, route: "/admin/fleetpro" },
+  { text: "Other Vehicles Management", icon: <DirectionsBoatIcon />, route: "/admin/othervehicles" },
+  { text: "Shop Management", icon: <StoreIcon />, route: "/admin/shop" },
+  { text: "Package Management", icon: <CategoryIcon />, route: "/admin/package-management" },
+  { text: "Coupon Management", icon: <LocalActivityIcon />, route: "/admin/coupons" },
 ];
 
 const Navbar = ({ toggleDrawer, drawerOpen, handleSignOut }) => {

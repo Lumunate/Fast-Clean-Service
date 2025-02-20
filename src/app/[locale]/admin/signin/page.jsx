@@ -13,7 +13,7 @@ export default function AdminSignIn() {
         const checkAdminSession = async () => {
             const session = await getSession();
             if (session && session.user.isAdmin) {
-                router.push('/en/admin');
+                router.push("/admin");
             }
         };
 
@@ -25,17 +25,17 @@ export default function AdminSignIn() {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        signIn('credentials', {
-            redirect: false,
-            email,
-            password,
-            callbackUrl: '/en/admin',
+        signIn("credentials", {
+          redirect: false,
+          email,
+          password,
+          callbackUrl: "/admin",
         }).then(({ ok }) => {
-            if (ok) {
-                router.push('/en/admin');
-            } else {
-                alert('Invalid credentials or not an admin');
-            }
+          if (ok) {
+            router.push("/admin");
+          } else {
+            alert("Invalid credentials or not an admin");
+          }
         });
     };
 
