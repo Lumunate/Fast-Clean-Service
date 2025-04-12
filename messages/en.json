@@ -150,15 +150,15 @@
       "packages": [
         {
           "name": "Standard",
-          "category": "Basic",
+          "category": "Basic Cleaning",
           "price": "From",
           "title": "Included",
           "features": [
-            "Exterior steam cleaning",
-            "Tire blackening",
-            "Window cleaning"
+            "Interior or exterior steam cleaning",
+            "Rim and window cleaning",
+            "Basic protection"
           ],
-          "description": "Book Now for a quick and thorough cleaning.",
+          "description": "For whom? Ideal for a quick, global cleaning.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -166,14 +166,14 @@
         },
         {
           "name": "Deluxe",
-          "category": "Popular",
+          "category": "Deep Cleaning & Protection",
           "price": "From",
           "features": [
-            "Thorough steam cleaning",
-            "Interior and exterior polishing",
-            "Applying wax"
+            "Thorough deep cleaning",
+            "Paint sealant & protective wax",
+            "Steam cleaning of upholstery"
           ],
-          "description": "Choose Deluxe for a complete treatment of your car.",
+          "description": "For whom? Perfect for those who really want to maintain their car well and thoroughly.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -181,14 +181,14 @@
         },
         {
           "name": "Premium",
-          "category": "Bespoke",
-          "price": "From €189.95",
+          "category": "Showroom Finish",
+          "price": "From",
           "features": [
-            "Complete detail treatment",
-            "Including ceramic coating",
+            "Interior & Exterior Premium",
+            "Polishing and scratch removal",
             "Headlight polishing"
           ],
-          "description": "Book Now for the ultimate showroom finish.",
+          "description": "For whom? The ultimate treatment for a luxurious look and perfect condition.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
