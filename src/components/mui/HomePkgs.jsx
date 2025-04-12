@@ -807,7 +807,7 @@ export const Carousel = styled(Box)(({ theme }) => ({
 export const CarouselContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   transition: "all 300ms ease-in-out",
-  marginBottom: "8rem",
+  marginBottom: "3rem",
   // gap: "2rem",
 }));
 
