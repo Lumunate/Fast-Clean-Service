@@ -200,22 +200,23 @@
       "services": [
         {
           "id": "fleet-care-pro",
-          "title": "FleetCare Pro",
-          "description": "Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and ready for the road - anywhere, anytime.",
-          "highlight": "With FleetCare Pro, pristine vehicles are just a booking away.",
+          "titlemain": "FLEET PRO",
+          "titlesub": "ALWAYS A REPRESENTATIVE FLEET",
+          "description": "Keep your company vehicles in top condition with our mobile cleaning service. We come to your location and offer tailor-made solutions for every fleet, from basic cleaning to full detailing.",
+          "highlight": "✔️ Tailor-made packages – Tailored to your fleet<br/>✔️ Mobile service – Cleaning on location, when it suits you<br/>✔️ Consistent appearance – Your fleet always presentable<br/>✔️ Efficient & professional – Minimal downtime, maximum results",
           "button": {
-            "text": "Book Now",
+            "text": "Plan your fleet cleaning now",
             "link": "/fleet"
           }
         },
         {
           "id": "subscriptions",
-          "title": "Subscriptions",
-          "description": "Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences.",
-          "highlight": "Choose your plan and never worry about a dirty car again!",
-          "special_highlight": "24 months | Yearly | Monthly plans",
+          "titlemain": "SUBSCRIPTIONS",
+          "titlesub": "ALWAYS A CLEAN CAR",
+          "description": "With a Fast Clean Service subscription, your car will always be in top condition. Regular professional cleaning, tailored to your rhythm – no maintenance worries.",
+          "highlight": "✔️ Flexible plans – Monthly, annually or 24 months<br/>✔️ Affordable rates – Save on periodic cleaning<br/>✔️ Save time – We ensure a clean car, without any hassle<br/>✔️ Always presentable – Your car exudes professionalism",
           "button": {
-            "text": "Book Now",
+            "text": "Choose your subscription",
             "link": "/subscribe"
           }
         }
