@@ -104,19 +104,19 @@ export default function Stats() {
     {
       icon: Star,
       type: "rating",
-      head: "4.7/5",
+      head: "4.8/5",
       desc: t("stats.0.description"),
     },
     {
       icon: Bars,
       type: "ranking",
-      head: "6+",
+      head: "7+",
       desc: t("stats.1.description"),
     },
     {
       icon: Customer,
       type: "customer",
-      head: "5750+",
+      head: "9510+",
       desc: t("stats.2.description"),
     },
   ];
@@ -238,9 +238,9 @@ function StatsCard({ icon, head, desc, type }) {
     if (type === "ranking") {
       initialValue = 1;
     } else if (type === "customer") {
-      initialValue = 5250;
+      initialValue = 8800;
     } else if (type === "rating") {
-      initialValue = 2;
+      initialValue = 3;
     }
 
     // Intersection Observer
