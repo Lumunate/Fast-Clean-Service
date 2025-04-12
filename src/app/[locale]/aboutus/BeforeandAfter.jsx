@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Stack, styled } from "@mui/material";
+import {Box, Button, Link, Stack, styled, Typography} from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -31,8 +31,8 @@ import arb10 from "../../../../public/about/swipperImg/arb10.png";
 import arb11 from "../../../../public/about/swipperImg/arb11.png";
 
 const beforeAfterImages = [
-    [ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11],
-    [arb1, arb2, arb3, arb4, arb5, arb6, arb7, arb8, arb9, arb10, arb11],
+    [ar1, ar7, ar2, ar3, ar10, ar4, ar5, ar6, ar8, ar9, ar11],
+    [arb1, arb7, arb2, arb3, arb10, arb4, arb5, arb6, arb8, arb9, arb11],
 ];
 
 const StyledImageBox = styled(Box)`
@@ -133,6 +133,96 @@ const BeforeAfterSwiper = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+        <Box
+            sx={{
+                width: "100%",
+                marginTop: "2rem",
+                "@media (max-width: 600px)": {
+                    marginTop: "3rem",
+                },
+                "@media (max-width: 1400px)": {
+                    marginTop: "2rem",
+                },
+            }}
+        >
+            <Box
+                sx={{
+                    width: "100%",
+                    margin: "0 auto",
+                    textAlign: "center", // Ensure center alignment within the parent box
+                }}
+            >
+                {/* Typography */}
+                <Box
+                    sx={{
+                        marginBottom: "2rem", // Add spacing between the text and buttons
+                    }}
+                >
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: theme.palette.text.primary,
+                            fontWeight: 500,
+                            fontSize: "1.55rem",
+                            "@media (max-width: 600px)": {
+                                fontSize: "1.4rem",
+                            },
+                        }}
+                    >
+                        {t("cta.text")}
+                    </Typography>
+                </Box>
+
+                {/* Buttons */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        gap: "2rem", // Gap between buttons
+                        flexWrap: "wrap", // Wrap buttons on smaller screens
+                    }}
+                >
+                    <Link href="/booking" passHref>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                padding: "1.5rem 3rem",
+                                fontSize: "1.5rem",
+                                fontWeight: 500,
+                                borderRadius: "50px",
+                                backgroundColor: "primary.accentDark",
+                                color: "white",
+                                fontFamily: "DMSans",
+                                "&:hover": {
+                                    backgroundColor: theme.palette.primary.accent,
+                                },
+                            }}
+                        >
+                            {t("cta.buttons.book_now")}
+                        </Button>
+                    </Link>
+                    <Link href="/aboutus" passHref>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                padding: "1.5rem 3rem",
+                                fontSize: "1.5rem",
+                                fontWeight: 500,
+                                borderRadius: "50px",
+                                backgroundColor: "#B8B8B8",
+                                color: "white",
+                                fontFamily: "DMSans",
+                                "&:hover": {
+                                    backgroundColor: theme.palette.primary.accent,
+                                },
+                            }}
+                        >
+                            {t("cta.buttons.learn_more")}
+                        </Button>
+                    </Link>
+                </Box>
+            </Box>
+        </Box>
     </SwiperContainer>
   );
 };
