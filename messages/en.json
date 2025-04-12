@@ -66,19 +66,19 @@
       "steps": [
         {
           "title": "Choose your location",
-          "description": "We come to you or you bring your car to us."
+          "description": "We come to you or you bring your car to our location."
         },
         {
           "title": "Choose your service",
-          "description": "Select from our extensive range of cleaning and detailing services."
-        },
-        {
-          "title": "We will do the rest",
-          "description": "Enjoy your perfectly cleaned car!"
+          "description": "Select from our detailing and cleaning services."
         },
         {
           "title": "Make an appointment",
-          "description": "Choose a date and time that suits you."
+          "description": "Simply choose a date and time."
+        },
+        {
+          "title": "We will do the rest",
+          "description": "Your car will be perfectly cleaned and cared for."
         }
       ]
     },

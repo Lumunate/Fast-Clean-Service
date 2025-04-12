@@ -45,7 +45,7 @@ export default function Home() {
                   <About/>
                   <Stats/>
 
-                  <DecorativeSpacer textBox1="100% Satisfaction" textBox2="On-Demand Cleaning, Anywhere"/>
+                  <DecorativeSpacer textBox1="100% Satisfaction Gauranteed" textBox2="On Location or At Our Branch"/>
 
                   <HowDoesItWork/>
                   <OverServiceOverview/>
