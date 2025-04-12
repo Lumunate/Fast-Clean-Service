@@ -84,7 +84,7 @@
     },
     "services_section": {
       "title": "OUR SERVICES",
-      "description": "At Fast Clean Service we offer a wide range of services to keep your car in top condition.<br />From exterior to interior, we have the expertise and techniques to do each aspect of your vehicle.",
+      "description": "At Fast Clean Service, we offer a wide range of professional cleaning and detailing services to keep your car in top condition. From interior to exterior, we have the expertise and techniques to take care of every detail of your vehicle",
       "services": [
         {
           "title": "Steam Cleaning Interior & Exterior",
@@ -136,15 +136,15 @@
     },
     "anywhere_autocare_section": {
       "title": "Anywhere AutoCare",
-      "description": "We have different packages to choose from depending on your needs. Each package has been carefully put together to provide your car with the best care, whether it is a standard cleaning or a complete detail treatment.",
+      "description": "Every car and situation requires a different approach. Have your car treated on location or at our location, exactly where and when it is needed.",
       "services": [
         {
-          "title": "On-Site Service",
-          "description": "Enjoy our services at our dedicated location, where you can relax while we take care of your vehicle."
+          "title": "Detail Shop",
+          "description": "Bring your car to our location and have it treated in detail with the right products and techniques."
         },
         {
           "title": "Mobile Service",
-          "description": "Enjoy our services at your location, where you can relax while we take care of your vehicle."
+          "description": "No time to come by? We come to you - at home, at the office or wherever it suits you."
         }
       ],
       "packages": [
