@@ -403,60 +403,52 @@
     },
     "working_hours": {
       "title": "WORKING HOURS",
-      "description": "We provide the cleaning service for your vehicle at your home, your business or other desired location!",
+      "description": "We work by appointment only! Do you want to come by for a treatment on location? Make an appointment in advance to ensure availability.",
       "days": "Monday to Sunday",
       "hours": "08:00 - 17:30"
     },
     "faq": {
-      "title": "FAQ'S",
+      "title": "Frequently Asked Questions (FAQs)",
       "questions": [
         {
-          "question": "What is the process for booking a cleaning service with FAST Clean?",
-          "answer": "Our process is simple and hassle-free. First, choose your location and service type. Then, select from our range of packages like Deluxe, Premium, or Standard. Pick a date and time, and we'll handle the rest. Your vehicle will be cleaned and detailed to perfection."
+          "question": "Do I need to make an appointment to visit your location?",
+          "answer": "Yes, we work by appointment only. This prevents long waiting times and ensures that we have enough time for your vehicle. Easily make an appointment via our website."
         },
         {
-          "question": "What are the key benefits of the Deluxe package?",
-          "answer": "The Deluxe package is one of our most popular choices, offering a complete cleaning experience. It includes thorough steam cleaning, interior and exterior polishing, and the application of protective wax. Perfect for those who want their vehicle to look brand new."
+          "question": "How can I make an appointment?",
+          "answer": "You can make an appointment via our online booking page, by telephone or via WhatsApp. We advise you to book in advance due to the crowds."
         },
         {
-          "question": "What makes FAST Clean's mobile cleaning service unique?",
-          "answer": "Our mobile cleaning service, part of Anywhere Auto-Care, brings professional cleaning directly to your doorstep. We use advanced steam cleaning technology to ensure your vehicle is spotless and ready to go, without you needing to visit our facility."
+          "question": "Can you be reached via WhatsApp?",
+          "answer": "Yes, we can be reached via WhatsApp for questions, quotes and bookings. Click on the WhatsApp button on our website to contact us directly."
         },
         {
-          "question": "Do you provide cleaning services for larger vehicles like campers and boats?",
-          "answer": "Yes, we specialize in cleaning larger vehicles such as campers, caravans, boats, and trucks. Services include engine cleaning, interior and exterior detailing, tire cleaning, and advanced steam cleaning for ultimate freshness and performance."
+          "question": "What are your opening hours?",
+          "answer": "We are open 7 days a week from 08:00 – 17:30, but by appointment only. Contact us for availability."
         },
         {
-          "question": "What are the features of the Long-Term Vehicle Care plan?",
-          "answer": "The Long-Term Vehicle Care plan is designed to maintain your vehicle's peak condition over time. It includes advanced steam cleaning, flexible scheduling, and options for regular maintenance tailored to your specific needs."
+          "question": "Can I bring my car to you without an appointment?",
+          "answer": "No, we work by appointment only. This prevents waiting times and ensures that we can offer the best service."
         },
         {
-          "question": "What is the FleetCare Pro package and who is it for?",
-          "answer": "FleetCare Pro is a tailored solution for businesses with multiple vehicles. It ensures your fleet stays clean, spotless, and road-ready with flexible service plans and professional detailing for every vehicle in your fleet."
+          "question": "Do you offer home service?",
+          "answer": "Yes. We are a mobile detailing service and come to your home, work or other desired location. The first 30 km from our location are free; after that we charge a small mileage fee."
         },
         {
-          "question": "What types of cleaning services are included in the Standard package?",
-          "answer": "The Standard package offers essential cleaning services, including exterior washing, window cleaning, rim cleaning, and basic interior vacuuming. It's perfect for regular upkeep of your vehicle."
+          "question": "What is your drop-off location for mobile service?",
+          "answer": "Our drop-off location is Omweg 38, 1566 AZ Assendelft. From here we charge any additional mileage costs."
         },
         {
-          "question": "What additional options can I add to my cleaning package?",
-          "answer": "FAST Clean allows you to customize your package with additional options like paint protection, intensive steam cleaning, tire polishing, and headlight restoration. Tailor your cleaning experience to match your needs."
+          "question": "Can I contact you for a business collaboration?",
+          "answer": "Certainly! We work with companies, fleets, leasing companies and garages. Send us an email or call us for a customized quote."
         },
         {
-          "question": "How does the polishing and headlight restoration service work?",
-          "answer": "Our polishing and headlight restoration service removes scratches and restores the brightness of your headlights, giving your vehicle a fresher, more polished appearance. It's an excellent add-on to any package."
+          "question": "How quickly can I expect a response to my request?",
+          "answer": "We usually respond to emails and WhatsApp messages within 24 hours. For urgent questions, it is best to call us."
         },
         {
-          "question": "What cleaning options are available for vehicles with leather interiors?",
-          "answer": "For vehicles with leather interiors, we provide specialized cleaning and treatment services, including leather conditioning and polishing to ensure durability and a luxurious finish."
-        },
-        {
-          "question": "How does the subscription plan work for regular maintenance?",
-          "answer": "Our subscription plan offers worry-free maintenance for your vehicle. Choose from flexible options like monthly or bi-weekly cleaning, enjoy discounted rates, and ensure your car stays in top condition all year round."
-        },
-        {
-          "question": "Can I book a package specifically for engine cleaning and mechanical parts?",
-          "answer": "Yes, we provide engine cleaning services as part of our specialized packages for campers, boats, and trucks. This includes advanced steam cleaning to ensure your vehicle’s mechanical components are fresh and functioning efficiently."
+          "question": "What if I want to change or cancel my appointment?",
+          "answer": "No problem! Let us know at least 24 hours in advance, then we will schedule a new time together."
         }
       ]
     }
