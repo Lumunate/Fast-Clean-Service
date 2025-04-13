@@ -4,15 +4,25 @@
     "hero_section": {
       "title": "FAST CLEAN SERVICE",
       "subtitle": [
-        "Your clean card is our calling card!",
-        "The number 1 in the field of specialist car cleaning!",
-        "We come on location."
+        "Professional steam cleaning – where you want!",
+        "Showroom quality, at your location!",
+        "Protect your paint against dirt & UV.",
+        "Deep Interior & Exterior Cleaning ",
+        "We Come to You or You Come to Us"
+      ],
+      "subsubtitle": [
+        "Book Now – On Location or With Us!",
+        "Steam & Detailing at the highest level!",
+        "Protect Your Car Now, Choose Ceramic Coating!",
+        "No Stain, No Smell, No Hassle!",
+        "Choose Your Perfect Cleaning!"
       ],
       "buttons": {
         "book_now": "Book Now",
         "scroll_down": "Scroll Down"
       }
     },
+
     "about_section": {
       "title": "The Best Care for Your Car Wherever You Are!",
       "description": "At Fast Clean Service your car will receive the highest quality steam cleaning and detailing, on location or at our location. Thanks to advanced techniques and high-quality products, we clean and protect your car with care and precision.",
