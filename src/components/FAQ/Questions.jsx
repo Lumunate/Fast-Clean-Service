@@ -93,22 +93,6 @@ const Questions = () => {
                 </>
             ),
         },
-        {
-            question: t("questions.10.question"),
-            answer: (
-                <>
-                    <p>{t("questions.10.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.11.question"),
-            answer: (
-                <>
-                    <p>{t("questions.11.answer")}</p>
-                </>
-            ),
-        },
     ];
 
     const handleToggle = (index) => {

@@ -1491,5 +1491,20 @@
       "email": "mailto:support@fastclean.com"
     },
     "copyright": "\u00a9 2025 Fast Clean Service. All rights reserved."
+  },
+  "cookie_banner": {
+    "title": "We respect your privacy",
+    "description": "We use cookies to improve your experience, analyze our website performance, and show you relevant content. By clicking 'Accept', you agree to the use of all cookies.",
+    "more_info": {
+      "prefix": "Please read our",
+      "terms": "Terms of Service",
+      "conjunction": "and",
+      "privacy": "Privacy Policy",
+      "suffix": "for more information."
+    },
+    "buttons": {
+      "accept": "Accept",
+      "deny": "Skip for now"
+    }
   }
 }

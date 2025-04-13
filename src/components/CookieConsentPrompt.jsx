@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, Link as MuiLink } from "@mui/material";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
+/* ───────────────────────── styles ───────────────────────── */
 const bannerStyles = {
     position: "fixed",
     bottom: 0,
@@ -16,7 +18,7 @@ const bannerStyles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: "1300",
+    zIndex: 1300,
 };
 
 const backdropStyles = {
@@ -30,17 +32,15 @@ const backdropStyles = {
     zIndex: 1200,
 };
 
+/* ───────────────────────── component ─────────────────────── */
 export default function CookieConsentPrompt() {
+    const t = useTranslations("cookie_banner");               // ⬅️ i18n root
     const [showBanner, setShowBanner] = useState(true);
 
+    /* show only if not accepted/denied before */
     useEffect(() => {
         const hasConsented = localStorage.getItem("cookieConsentGiven");
-        if (hasConsented === "true") {
-            setShowBanner(false);
-        } else {
-            // Always show at least once on first page
-            setShowBanner(true);
-        }
+        setShowBanner(hasConsented !== "true" && hasConsented !== "false");
     }, []);
 
     const handleAccept = () => {
@@ -58,71 +58,77 @@ export default function CookieConsentPrompt() {
     return (
         <>
             <Box sx={backdropStyles} />
+
             <Box sx={bannerStyles}>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, textAlign: "center", fontSize: "1.5rem" }}>
-                    We value your privacy
+                <Typography
+                    variant="h5"
+                    sx={{ fontWeight: 700, mb: 2, textAlign: "center", fontSize: "1.5rem" }}
+                >
+                    {t("title")}
                 </Typography>
 
                 <Typography
                     variant="body1"
                     sx={{ textAlign: "center", fontSize: "1.1rem" }}
                 >
-                    We use cookies to enhance user experience, analyse website performance, and deliver tailored content. By clicking &lsquo;Accept&lsquo;, you consent to the use of all cookies.
+                    {t("description")}
                 </Typography>
 
                 <Typography
                     variant="body1"
                     sx={{ mt: 1, textAlign: "center", fontSize: "1.1rem" }}
                 >
-                    Please read our {" "}
+                    {t("more_info.prefix")}{" "}
                     <Link href="/terms-and-conditions" passHref legacyBehavior>
                         <MuiLink sx={{ color: "#1976d2", textDecoration: "underline" }}>
-                            Terms of Service
+                            {t("more_info.terms")}
                         </MuiLink>
                     </Link>{" "}
-                    and {" "}
+                    {t("more_info.conjunction")}{" "}
                     <Link href="/privacy-policy" passHref legacyBehavior>
                         <MuiLink sx={{ color: "#1976d2", textDecoration: "underline" }}>
-                            Privacy Policy
+                            {t("more_info.privacy")}
                         </MuiLink>
-                    </Link>{" "}for further details.
+                    </Link>{" "}
+                    {t("more_info.suffix")}
                 </Typography>
 
-                <Box sx={{ display: "flex", gap: 3, mt: 2}}>
+                <Box sx={{ display: "flex", gap: 3, mt: 2 }}>
                     <Button
                         variant="outlined"
                         onClick={handleDeny}
                         sx={{
-                            color: '#4F4F4F',
-                            textTransform: 'none',
-                            borderRadius: '20px',
-                            padding: '1rem 2rem',
-                            transition: 'background-color 0.3s, color 0.3s',
-                            '&:hover': {
-                                backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                borderColor: 'rgba(255, 255, 255, 0.7)'
+                            color: "#4F4F4F",
+                            textTransform: "none",
+                            borderRadius: "20px",
+                            padding: "1rem 2rem",
+                            transition: "background-color 0.3s, color 0.3s",
+                            "&:hover": {
+                                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                                borderColor: "rgba(255, 255, 255, 0.7)",
                             },
                         }}
                     >
-                        Skip for now
+                        {t("buttons.deny")}
                     </Button>
+
                     <Button
                         variant="contained"
                         onClick={handleAccept}
                         sx={{
-                            backgroundColor: '#1976d2',
-                            color: 'white',
-                            borderRadius: '20px',
-                            padding: '1rem 2rem',
-                            textTransform: 'none',
-                            transition: 'background-color 0.3s, transform 0.3s',
-                            '&:hover': {
-                                backgroundColor: '#125a9a',
-                                transform: 'scale(1.05)',
+                            backgroundColor: "#1976d2",
+                            color: "white",
+                            borderRadius: "20px",
+                            padding: "1rem 2rem",
+                            textTransform: "none",
+                            transition: "background-color 0.3s, transform 0.3s",
+                            "&:hover": {
+                                backgroundColor: "#125a9a",
+                                transform: "scale(1.05)",
                             },
                         }}
                     >
-                        Accept
+                        {t("buttons.accept")}
                     </Button>
                 </Box>
             </Box>
