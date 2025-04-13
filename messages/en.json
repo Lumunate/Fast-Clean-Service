@@ -88,18 +88,30 @@
       "services": [
         {
           "title": "Steam Cleaning Interior & Exterior",
-          "description": "Provide a deeply cleaned car with our  environmentally friendly steam cleaning techniques.",
-          "description2": "Book Now and give your car the fresh start it deserves"
+          "description": "A deep cleaning that removes dirt, stains and unpleasant odours, without harsh chemicals. Our environmentally friendly steam technology leaves your car fresh and hygienic.",
+          "bullets": [
+            "✔ Thorough cleaning without residue",
+            "✔ Safe for fabric, leather and plastic"
+          ],
+          "description2": "📅 Book now and give your car the fresh start it deserves."
         },
         {
-          "title": "Steam Cleaning Interior & Exterior",
-          "description": "Protect your car's paint and make it shine again with our professional wax and coating treatments.",
-          "description2": "Plan Your Detailing and keep your car looking new for longer"
+          "title": "Paint Protection & Coatings",
+          "description": "Protect your car's paint and make it shine like new again. Our professional wax and coating treatments provide long‑lasting protection against dirt, UV radiation and weather influences.",
+          "bullets": [
+            "✔ Deep shine and water‑repellent effect",
+            "✔ Prevents fading and wear"
+          ],
+          "description2": "📅 Schedule a detailing treatment."
         },
         {
-          "title": "Polishing and Headlight Restoration",
-          "description": "Remove scratches and regain the brightness of your headlights for a brighter shine result.",
-          "description2": "Request a Quote for your polishing job."
+          "title": "Polishing & Headlight Restoration",
+          "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
+          "bullets": [
+            "✔ Removes dullness and yellowing for brighter light",
+            "✔ Better visibility and a fresher look"
+          ],
+          "description2": "📅 Professional polishing for optimal results"
         }
       ],
       "buttons": {
