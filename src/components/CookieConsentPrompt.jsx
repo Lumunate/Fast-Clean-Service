@@ -1,10 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Box, Button, Typography, Link as MuiLink } from "@mui/material";
+import React, {useState, useEffect} from "react";
+import {Box, Button, Typography, Link as MuiLink} from "@mui/material";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
-/* ───────────────────────── styles ───────────────────────── */
+/* ───────── styles ───────── */
 const bannerStyles = {
     position: "fixed",
     bottom: 0,
@@ -27,20 +26,19 @@ const backdropStyles = {
     left: 0,
     width: "100vw",
     height: "100vh",
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: "rgba(0,0,0,0.4)",
     backdropFilter: "blur(4px)",
     zIndex: 1200,
 };
 
-/* ───────────────────────── component ─────────────────────── */
+/* ───────── component ───────── */
 export default function CookieConsentPrompt() {
-    const t = useTranslations("cookie_banner");               // ⬅️ i18n root
     const [showBanner, setShowBanner] = useState(true);
 
-    /* show only if not accepted/denied before */
+    /* show only if not decided before */
     useEffect(() => {
-        const hasConsented = localStorage.getItem("cookieConsentGiven");
-        setShowBanner(hasConsented !== "true" && hasConsented !== "false");
+        const stored = localStorage.getItem("cookieConsentGiven");
+        setShowBanner(stored !== "true" && stored !== "false");
     }, []);
 
     const handleAccept = () => {
@@ -57,43 +55,47 @@ export default function CookieConsentPrompt() {
 
     return (
         <>
+            {/* blurred backdrop */}
             <Box sx={backdropStyles} />
 
+            {/* banner */}
             <Box sx={bannerStyles}>
                 <Typography
                     variant="h5"
-                    sx={{ fontWeight: 700, mb: 2, textAlign: "center", fontSize: "1.5rem" }}
+                    sx={{fontWeight: 700, mb: 2, textAlign: "center", fontSize: "1.5rem"}}
                 >
-                    {t("title")}
+                    We value your privacy
                 </Typography>
 
                 <Typography
                     variant="body1"
-                    sx={{ textAlign: "center", fontSize: "1.1rem" }}
+                    sx={{textAlign: "center", fontSize: "1.1rem"}}
                 >
-                    {t("description")}
+                    We use cookies to enhance user experience, analyse website
+                    performance, and deliver tailored content. By clicking ‘Accept’, you
+                    consent to the use of all cookies.
                 </Typography>
 
                 <Typography
                     variant="body1"
-                    sx={{ mt: 1, textAlign: "center", fontSize: "1.1rem" }}
+                    sx={{mt: 1, textAlign: "center", fontSize: "1.1rem"}}
                 >
-                    {t("more_info.prefix")}{" "}
+                    Please read our{" "}
                     <Link href="/terms-and-conditions" passHref legacyBehavior>
-                        <MuiLink sx={{ color: "#1976d2", textDecoration: "underline" }}>
-                            {t("more_info.terms")}
+                        <MuiLink sx={{color: "#1976d2", textDecoration: "underline"}}>
+                            Terms of Service
                         </MuiLink>
                     </Link>{" "}
-                    {t("more_info.conjunction")}{" "}
+                    and{" "}
                     <Link href="/privacy-policy" passHref legacyBehavior>
-                        <MuiLink sx={{ color: "#1976d2", textDecoration: "underline" }}>
-                            {t("more_info.privacy")}
+                        <MuiLink sx={{color: "#1976d2", textDecoration: "underline"}}>
+                            Privacy Policy
                         </MuiLink>
                     </Link>{" "}
-                    {t("more_info.suffix")}
+                    for further details.
                 </Typography>
 
-                <Box sx={{ display: "flex", gap: 3, mt: 2 }}>
+                <Box sx={{display: "flex", gap: 3, mt: 2}}>
                     <Button
                         variant="outlined"
                         onClick={handleDeny}
@@ -104,12 +106,12 @@ export default function CookieConsentPrompt() {
                             padding: "1rem 2rem",
                             transition: "background-color 0.3s, color 0.3s",
                             "&:hover": {
-                                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                                borderColor: "rgba(255, 255, 255, 0.7)",
+                                backgroundColor: "rgba(255,255,255,0.2)",
+                                borderColor: "rgba(255,255,255,0.7)",
                             },
                         }}
                     >
-                        {t("buttons.deny")}
+                        Skip for now
                     </Button>
 
                     <Button
@@ -128,7 +130,7 @@ export default function CookieConsentPrompt() {
                             },
                         }}
                     >
-                        {t("buttons.accept")}
+                        Accept
                     </Button>
                 </Box>
             </Box>
