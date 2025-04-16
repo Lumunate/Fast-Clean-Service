@@ -139,20 +139,20 @@
       "title": "OUR PACKAGES",
       "packages": [
         {
-          "title": "Anywhere Auto-Care",
-          "description": "We bring the latest steam cleaning technology to your location, ensuring your vehicles are professionally cleaned and ready to go!"
+          "title": "Steam Cleaning & Detailing",
+          "description": "On-site or in our workshop. Interior and exterior thoroughly cleaned and protected."
         },
         {
-          "title": "FleetCare Pro",
-          "description": "Tailored cleaning solutions for businesses with multiple vehicles. We ensure your fleet stays spotless and road-ready."
+          "title": "Commercial Fleet Service",
+          "description": " Professional maintenance for commercial vehicles and fleets."
         },
         {
-          "title": "Subscriptions",
-          "description": "Hassle-free car care with regular service packages. Enjoy consistent maintenance at discounted rates."
+          "title": "Detailing & Paint Correction",
+          "description": "Removes swirls and micro-scratches. Restores deep gloss and paint seal.\n"
         },
         {
-          "title": "Other Vehicle Care",
-          "description": "Long-term vehicle maintenance plans to ensure your car remains in peak condition with additional care options."
+          "title": "Paint Protection & Coating",
+          "description": "Long-lasting protection against dirt, UV and weather influences. Keeps your car in top condition for longer."
         }
       ]
     },

@@ -4,8 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {Box, Button, Link, Stack, styled, Typography} from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-// Importing images manually
+import { useTheme } from "../../../contexts/themeContext";
 import ar1 from "../../../../public/about/swipperImg/ar1.png";
 import ar2 from "../../../../public/about/swipperImg/ar2.png";
 import ar3 from "../../../../public/about/swipperImg/ar3.png";
@@ -29,6 +28,7 @@ import arb8 from "../../../../public/about/swipperImg/arb8.png";
 import arb9 from "../../../../public/about/swipperImg/arb9.png";
 import arb10 from "../../../../public/about/swipperImg/arb10.png";
 import arb11 from "../../../../public/about/swipperImg/arb11.png";
+import {useTranslations} from "next-intl";
 
 const beforeAfterImages = [
     [ar1, ar7, ar2, ar3, ar10, ar4, ar5, ar6, ar8, ar9, ar11],
@@ -49,7 +49,6 @@ const SwiperContainer = styled(Box)`
     width: 100%;
     padding: 2rem 0;
 
-    /* Adjust margin-top based on screen size */
     margin-top: 9rem;
 
     @media (max-width: 900px) {
@@ -64,6 +63,8 @@ const SwiperContainer = styled(Box)`
 `;
 
 const BeforeAfterSwiper = () => {
+    const { theme } = useTheme();
+    const t = useTranslations('about.gallery_section');
   const [slidesPerView, setSlidesPerView] = useState(3);
   const [boxSize, setBoxSize] = useState(600); // Default size
   const swiperRef = useRef(null);

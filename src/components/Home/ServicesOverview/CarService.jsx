@@ -8,12 +8,14 @@ import {
   ServiceItemIcon,
   ServiceItemIconContainer,
 } from "../../mui/ServiceOverviewPckgs";
-
+import { useTheme } from "../../../contexts/themeContext";
 import CarCheckIcon from "../../../../public/servicesicons/CarCheck.svg";
 import ClipBoardPlusIcon from "../../../../public/servicesicons/ClipBoardPlus.svg";
 import MapIcon from "../../../../public/servicesicons/Map.svg";
 import UnionIcon from "../../../../public/servicesicons/Union.svg";
 import {useTranslations} from "next-intl";
+import {Button, Link} from "@mui/material";
+import React from "react";
 
 export default function CarService() {
   const t = useTranslations('home.packages_section');
@@ -57,6 +59,7 @@ export default function CarService() {
 }
 
 const CarServiceItem = ({ icon, title, description, anchor }) => {
+  const { theme } = useTheme();
   const handleClick = () => {
     const element = document.getElementById(anchor);
     if (element) {
@@ -80,6 +83,25 @@ const CarServiceItem = ({ icon, title, description, anchor }) => {
         <ServiceItemHeading variant={"h4"}>{title}</ServiceItemHeading>
 
         <ServiceItemDescription variant={"p"}>{description}</ServiceItemDescription>
+        <Link href="/aboutus" passHref>
+          <Button
+              variant="contained"
+              sx={{
+                padding: "1rem 3rem",
+                fontSize: "1.5rem",
+                fontWeight: 500,
+                borderRadius: "50px",
+                backgroundColor: "#fff",
+                color: "black",
+                fontFamily: "DMSans",
+                "&:hover": {
+                  backgroundColor: theme.palette.primary.accent,
+                },
+              }}
+          >
+            More Information
+          </Button>
+        </Link>
       </ServiceItemBox>
     </ServiceItemContainer>
   );
