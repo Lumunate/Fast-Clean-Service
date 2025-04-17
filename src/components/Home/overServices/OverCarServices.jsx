@@ -25,7 +25,6 @@ export default function OverCarServices() {
     const { theme } = useTheme();
     const servicesOverviewRef = useRef(null);
 
-    /* --- pulled from i18n JSON above --- */
     const servicesData = [
         {
             img: TickBox,
@@ -68,36 +67,93 @@ export default function OverCarServices() {
                         description={description}
                         bullets={bullets}
                         description2={description2}
+                        scrollToServices={scrollToServices}
                     />
-                )
+                ),
             )}
+        </CarServicesContainer>
+    );
+}
+function CarServiceItem({
+                            icon,
+                            title,
+                            description,
+                            bullets = [],
+                            description2,
+                            scrollToServices,
+                        }) {
+    const { theme } = useTheme(); // ← theme available here
+    const t = useTranslations("home.services_section");
 
-            {/* CTA buttons */}
-            <Box
-                sx={{
-                    width: "100%",
-                    mt: { xs: "3rem", sm: "2rem" },
-                    textAlign: "center",
-                }}
-            >
+    return (
+        <ServiceItemContainer>
+            <ServiceItemBox>
+                <ServiceItemIconContainer>
+                    <ServiceItemIcon
+                        src={icon}
+                        alt={title}
+                        width={88}
+                        height={88}
+                        sx={{ "@media (max-width:600px)": { transform: "scale(0.6)" } }}
+                    />
+                </ServiceItemIconContainer>
+
+                <ServiceItemHeading variant="h4">{title}</ServiceItemHeading>
+
+                <ServiceItemDescription variant="p">{description}</ServiceItemDescription>
+
+                {/* Optional bullets / second paragraph – uncomment if needed */}
+                {/* {bullets.length > 0 && … } */}
+                {/* {description2 && … } */}
+
                 <Box
                     sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "2rem",
-                        flexWrap: "wrap",
+                        width: "100%",
+                        mt: { xs: "3rem", sm: "2rem" },
+                        textAlign: "center",
                     }}
                 >
-                    <Link href="/booking" passHref>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            gap: "2rem",
+                            flexWrap: "wrap",
+                        }}
+                    >
+                        {/* BOOK NOW */}
+                        <Link href="/booking" passHref>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    px: "3rem",
+                                    py: "1.5rem",
+                                    fontSize: "1.5rem",
+                                    fontWeight: 500,
+                                    borderRadius: "50px",
+                                    backgroundColor: theme.palette.primary.accentDark,
+                                    color: "white",
+                                    fontFamily: "DMSans",
+                                    "&:hover": {
+                                        backgroundColor: theme.palette.primary.accent,
+                                    },
+                                }}
+                            >
+                                {t("buttons.book_now")}
+                            </Button>
+                        </Link>
+
+                        {/* LEARN MORE */}
                         <Button
                             variant="contained"
+                            onClick={scrollToServices}
                             sx={{
                                 px: "3rem",
                                 py: "1.5rem",
                                 fontSize: "1.5rem",
                                 fontWeight: 500,
                                 borderRadius: "50px",
-                                backgroundColor: "primary.accentDark",
+                                backgroundColor: "#B8B8B8",
                                 color: "white",
                                 fontFamily: "DMSans",
                                 "&:hover": {
@@ -105,95 +161,11 @@ export default function OverCarServices() {
                                 },
                             }}
                         >
-                            {t("buttons.book_now")}
+                            {t("buttons.learn_more")}
                         </Button>
-                    </Link>
-
-                    <Button
-                        variant="contained"
-                        onClick={scrollToServices}
-                        sx={{
-                            px: "3rem",
-                            py: "1.5rem",
-                            fontSize: "1.5rem",
-                            fontWeight: 500,
-                            borderRadius: "50px",
-                            backgroundColor: "#B8B8B8",
-                            color: "white",
-                            fontFamily: "DMSans",
-                            "&:hover": {
-                                backgroundColor: theme.palette.primary.accent,
-                            },
-                        }}
-                    >
-                        {t("buttons.learn_more")}
-                    </Button>
+                    </Box>
                 </Box>
-            </Box>
-        </CarServicesContainer>
+            </ServiceItemBox>
+        </ServiceItemContainer>
     );
 }
-
-/* ────────────────────────────
-   ⬇︎ single‑card renderer
-   ──────────────────────────── */
-const CarServiceItem = ({
-                            icon,
-                            title,
-                            description,
-                            bullets = [],
-                            description2,
-                        }) => (
-    <ServiceItemContainer>
-        <ServiceItemBox>
-            <ServiceItemIconContainer>
-                <ServiceItemIcon
-                    src={icon}
-                    alt={title}
-                    width={88}
-                    height={88}
-                    sx={{ "@media (max-width:600px)": { transform: "scale(0.6)" } }}
-                />
-            </ServiceItemIconContainer>
-
-            <ServiceItemHeading variant="h4">{title}</ServiceItemHeading>
-
-            <ServiceItemDescription variant="p">{description}</ServiceItemDescription>
-
-            {bullets.length > 0 && (
-                <Box
-                    component="ul"
-                    sx={{
-                        width: "100%",
-                        pl: "1.5rem",
-                        m: "0.5rem 0",
-                        listStyle: "none",
-                        marginLeft: "2rem",
-                        "@media (max-width: 600px)": {
-                            marginLeft: "0",
-                        },
-                    }}
-                >
-                    {bullets.map((b, i) => (
-                        <Box
-                            component="li"
-                            key={i}
-                            sx={{
-                                textAlign: "justify",
-                                fontFamily: "DMSans",
-                                fontSize: "1.25rem",
-                                mb: "0.25rem",
-                            }}
-                        >
-                            {b}
-                        </Box>
-                    ))}
-                </Box>
-            )}
-
-            <ServiceItemDescription variant="p">
-                {description2}
-            </ServiceItemDescription>
-        </ServiceItemBox>
-    </ServiceItemContainer>
-);

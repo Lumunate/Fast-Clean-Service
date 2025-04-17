@@ -1,10 +1,965 @@
 {
-  "HomePage": {
-    "title": "Hallo!",
-    "about": "Go to the about page"
+  "home": {
+    "title": "Home",
+    "hero_section": {
+      "title": "FAST CLEAN SERVICE",
+      "subtitle": [
+        "Professionele stoomreiniging – waar jij wilt!",
+        "Showroomkwaliteit, bij jou op locatie!",
+        "Bescherm je lak tegen vuil & UV.",
+        "Grondige Interieur & Exterieur Reiniging",
+        "Wij Komen Naar Jou of Jij Komt Naar Ons"
+      ],
+      "subsubtitle": [
+        "Boek Nu – Op Locatie of Bij Ons!",
+        "Stoom & Detailing op topniveau!",
+        "Kies voor Keramische Coating!",
+        "Geen Vlek, Geen Geur, Geen Gedoe!",
+        "Kies Jouw Perfecte Reiniging!"
+      ],
+      "buttons": {
+        "book_now": "Boek nu",
+        "scroll_down": "Scroll Down"
+      }
+    },
+
+    "about_section": {
+      "title": "The Best Care for Your Car Wherever You Are!",
+      "description": "Bij Fast Clean Service krijgt uw auto de hoogste kwaliteit stoomreiniging en detailing, ‘op locatie’ of in ‘onze vestiging’. Dankzij geavanceerde technieken en hoogwaardige producten reinigen én beschermen we uw auto met zorg en precisie.",
+      "why_choose_us": {
+        "title": "Waarom kiezen voor Fast Clean Service?",
+        "features": [
+          {
+            "title": "Gemak",
+            "description": "Op locatie of in onze vestiging."
+          },
+          {
+            "title": "Grondige reiniging",
+            "description": "Stoom dringt diep door en verwijdert hardnekkig vuil."
+          },
+          {
+            "title": "Perfect resultaat",
+            "description": "Elke keer showroomkwaliteit."
+          }
+        ]
+      },
+      "cta": {
+        "text": "Boek vandaag nog online of vraag een gratis offerte aan!",
+        "buttons": {
+          "book_now": "Boek Nu!",
+          "learn_more": "Meer informatie"
+        }
+      }
+    },
+    "stats_section": {
+      "title": "Onze cijfers",
+      "stats": [
+        {
+          "type": "rating",
+          "value": "4.7/5",
+          "description": "Sterren op trustpilot"
+        },
+        {
+          "type": "ranking",
+          "value": "6+",
+          "description": "Jarenlang ervaring"
+        },
+        {
+          "type": "customer",
+          "value": "5750+",
+          "description": "Tevreden klanten"
+        }
+      ]
+    },
+    "how_it_works": {
+      "title": "HOE WERKT HET?",
+      "steps": [
+        {
+          "title": "Kies je locatie",
+          "description": "Wij komen naar jou toe of je brengt je auto naar onze vestiging."
+        },
+        {
+          "title": "Kies je service",
+          "description": "Selecteer uit onze detailing- en reinigingsdiensten."
+        },
+        {
+          "title": "Maak een afspraak",
+          "description": "Kies eenvoudig een datum en tijd."
+        },
+        {
+          "title": "Wij doen de rest",
+          "description": "Je auto wordt perfect gereinigd en verzorgd."
+        }
+      ]
+    },
+    "services_section": {
+      "title": "ONZE EXTRA OPTIES",
+      "description": "Wil je nét dat beetje extra? Breid je behandeling uit met aanvullende services voor een nóg beter resultaat. Kies uit interieur-, exterieur- of detailing-opties en stel je eigen ideale behandeling samen.",
+      "services": [
+        {
+          "title": "Interieur Add-ons",
+          "description": "Laat je interieur weer fris aanvoelen. Kies bijvoorbeeld voor een dieptereiniging van de bekleding, een leerbehandeling, of een intensieve geurneutralisatie via ozon. Ook verwijdering van huisdierharen, schimmel, braaksel of het stoomreinigen van het plafond behoren tot de mogelijkheden. Zelfs kinderstoelen kunnen apart diep gereinigd worden.",
+          "bullets": [
+            "✔ Thorough cleaning without residue",
+            "✔ Safe for fabric, leather and plastic"
+          ],
+          "description2": "📅 Book now and give your car the fresh start it deserves."
+        },
+        {
+          "title": "Exterieur Add-ons",
+          "description": "Geef je auto extra aandacht aan de buitenkant. Van cabriodak- en schuifdakreiniging tot het reinigen van de tankklep en motorkap. Ook het verwijderen van vliegroest, hars of mos uit naden behoort tot de opties. Kunststofdelen kunnen extra worden gepoetst, en dorpels en deurranden worden grondig meegenomen.",
+          "bullets": [
+            "✔ Deep shine and water‑repellent effect",
+            "✔ Prevents fading and wear"
+          ],
+          "description2": "📅 Schedule a detailing treatment."
+        },
+        {
+          "title": "Detailing Add-ons",
+          "description": "Maak je behandeling compleet met professionele detailing. Denk aan het polijsten van koplampen of chromen delen, een claybar behandeling voor gladde lak, of een beschermende lakverzegeling. Kies uit 1-, 2- of 3-staps polijsten voor het beste resultaat, of ga voor een duurzame glascoating die je auto langdurig beschermt.",
+          "bullets": [
+            "✔ Removes dullness and yellowing for brighter light",
+            "✔ Better visibility and a fresher look"
+          ],
+          "description2": "📅 Professional polishing for optimal results"
+        }
+      ],
+      "buttons": {
+        "book_now": "Boek Nu",
+        "learn_more": "Meer informatie"
+      }
+    },
+    "customer_reviews_section": {
+      "title": "Wat onze klanten zeggen",
+      "description": "Bij Fast Clean Service hebben we al vele tevreden klanten geholpen. Laat een review achter en vertel ons hoe we u geholpen hebben!",
+      "description2": "Laat een beoordeling achter en vertel ons hoe wij u geholpen hebben!",
+      "button": "Stuur een recensie"
+    },
+    "packages_section": {
+      "title": "ONZE PAKKETTEN",
+      "packages": [
+        {
+          "title": "Machineverhuur",
+          "description": "Professionele detailing-apparatuur huren voor tijdelijk gebruik – ideaal voor doe-het-zelver, hobbyisten  of zzp’ers."
+        },
+        {
+          "title": "Abonnementen",
+          "description": "Vaste schoonmaakmomenten tegen een voordelig tarief. Nooit meer omkijken naar je autoverzorging."
+        },
+        {
+          "title": "Zakelijke Diensten",
+          "description": "Wagenparkonderhoud voor bedrijven, leasebedrijven en mobiliteitsdiensten. Efficiënt, schaalbaar en professioneel."
+        },
+        {
+          "title": "Training & Coaching",
+          "description": "Leer zelf detailen als een pro of start je eigen poetsbedrijf met onze e-books, praktijktrainingen en begeleiding."
+        }
+      ]
+    },
+    "anywhere_autocare_section": {
+      "title": "Detailing Service",
+      "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
+      "services": [
+        {
+          "title": "Detail Shop",
+          "description": "Breng je auto naar onze vestiging in Assendelft. Hier behandelen we elk detail met de juiste technieken en hoogwaardige producten voor een langdurig resultaat."
+        },
+        {
+          "title": "Mobiele Service",
+          "description": "Geen tijd om langs te komen? Geen probleem. Wij komen naar je toe – aan huis, op kantoor of op elke gewenste locatie."
+        }
+      ],
+      "packages": [
+        {
+          "name": "Standard",
+          "category": "Basic Cleaning",
+          "price": "Vanaf",
+          "title": "Included",
+          "features": [
+            "Stoomreiniging interieur en of exterieur",
+            "Velgen dorpels en ramen reinigen",
+            "Basisbescherming"
+          ],
+          "description": "Voor wie? Ideaal voor een efficiënte, globale reiniging.",
+          "buttons": {
+            "learn_more": "Meer info",
+            "book_now": "Boek nu"
+          }
+        },
+        {
+          "name": "Deluxe",
+          "category": "Meest Gekozen",
+          "price": "Vanaf",
+          "features": [
+            "Inclusief alle diensten van het Standard Pakket",
+            "Dieptereiniging / Leerbehandeling ",
+            "Verwijdert mos, hars & vliegroest"
+          ],
+          "description": "Voor wie? Kies Deluxe voor een complete behandeling van uw auto.",
+          "buttons": {
+            "learn_more": "Meer info",
+            "book_now": "Boek nu"
+          }
+        },
+        {
+          "name": "Premium",
+          "category": "Showroom Afwerking",
+          "price": "Vanaf",
+          "features": [
+            "Inclusief alle diensten van het Standard & Deluxe Pakket",
+            "Motorkap reiniging ",
+            "1-staps polijsten + koplampen"
+          ],
+          "description": "Voor wie? Boek nu voor de ultieme showroomafwerking.",
+          "buttons": {
+            "learn_more": "Meer info",
+            "book_now": "Boek nu"
+          }
+        }
+      ]
+    },
+    "fleetcare_subscriptions_section": {
+      "services": [
+        {
+          "id": "fleet-care-pro",
+          "title": "FleetCare Pro",
+          "description": "Verbeter de uitstraling van uw wagenpark met onze geavanceerde mobiele reinigingsservice. FleetCare Pro brengt professionele stoomreinigingstechnologie rechtstreeks naar uw locatie, zodat uw voertuigen altijd en overal brandschoon en klaar voor de weg zijn.",
+          "highlight": "Met FleetCare Pro zijn uw voertuigen slechts een reservering verwijderd.",
+          "button": {
+            "text": "Boek Nu",
+            "link": "/fleet"
+          }
+        },
+        {
+          "id": "subscriptions",
+          "title": "Abonnementen",
+          "description": "Transformeer uw auto-onderhoudsroutine met onze flexibele abonnementen. Ervaar premium service afgestemd op uw planning en voorkeuren.",
+          "highlight": "Kies uw abonnement en maak u nooit meer zorgen over een vuile auto!",
+          "special_highlight": "24 maanden | Jaarlijks | Maandelijks abonnement",
+          "button": {
+            "text": "Boek Nu",
+            "link": "/subscribe"
+          }
+        }
+      ]
+    },
+    "other_vehicles_care_section": {
+      "title": "Voertuigverzorging",
+      "description": "Elke voertuig verdient een aanpak op maat. Of het nu gaat om een auto, motor, camper of boot: wij zorgen voor professionele reiniging en langdurige bescherming – precies afgestemd op gebruik en omstandigheden.",
+      "categories": [
+        {
+          "name": "Autos",
+          "services": [
+            "Stoomreiniging interieur & exterieur",
+            "Velgen, ramen & dorpels reinigen",
+            "Waxen & banden zwart maken",
+            "Polijsten & aanbrengen coating"
+          ],
+          "description": "Wij zorgen voor een diepe reiniging en zichtbare glans. Bescherm je lak, verwijder krassen en laat je auto er weer als nieuw uitzien."
+        },
+        {
+          "name": "Campers & Caravans",
+          "services": [
+            "Stoomreiniging interieur & exterieur",
+            "Dakreiniging & dieptereiniging cabine\n",
+            "Insecten-, hars- en vuilverwijdering",
+            "Coating tegen UV & vuil\n"
+          ],
+          "description": "Ideaal voor vakantieklaar maken of langdurige bescherming tijdens stalling."
+        },
+        {
+          "name": "Motoren, Scooters & Fietsen",
+          "services": [
+            "Grondige stoomreiniging",
+            "Reiniging van ketting, wielen & velgen",
+            "Voeden van de kunststofonderdelen",
+            "Polijsten & aanbrengen coating"
+          ],
+          "description": "Of je nu sportief rijdt of recreatief toert: wij geven jouw tweewieler de zorg die hij verdient."
+        }
+      ],
+      "button": {
+        "text": "Meer informatie",
+        "link": "/other-vehicles"
+      }
+    },
+    "why_choose_us_section": {
+      "title": "WAAROM KIEZEN VOOR ONS?",
+      "services": [
+        {
+          "title": "Service Waar Jij Bent",
+          "description": "Wij komen naar je toe, volledig voorbereid en professioneel."
+        },
+        {
+          "title": "Tijd Besparen, Topresultaat",
+          "description": "Efficiënte en grondige reiniging zonder in te leveren op kwaliteit."
+        },
+        {
+          "title": "Elke Dag Bereikbaar",
+          "description": "Zeven dagen per week online bereikbaar voor het beste advies."
+        },
+        {
+          "title": "Boek Snel en Simpel",
+          "description": "Binnen een paar klikken staat je afspraak vast."
+        },
+        {
+          "title": "Duurzaam Gereinigd",
+          "description": "Maximale zorg voor je auto, minimaal waterverbruik."
+        },
+        {
+          "title": "Interieur Tot in Detail",
+          "description": "Diepe reiniging voor een frisse, verzorgde uitstraling."
+        }
+      ]
+    }
   },
-  "aboutus":{
-    "BackgroundSectionHeading": "Wij zijn een gespecialiseerd mobiel poetsbedrijf voor elk type voertuig"
+  "about": {
+    "title": "ABOUT",
+    "description": "We differentiate our cleaning at your convenience anytime and anywhere. Our steam cleaning technology ensures a deep clean, even through the toughest spots equipped with superior hot water. We provide efficient professional service for all types of vehicles.",
+    "qualities": {
+      "quality_as_priority": {
+        "title": "Quality as Priority",
+        "description": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail."
+      },
+      "our_values": {
+        "title": "Our Values",
+        "description": "Every car deserves the best, and we deliver excellence for both business and private customers."
+      },
+      "experts_in_detail": {
+        "title": "Experts in Detail",
+        "description": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+      },
+      "our_successes": {
+        "title": "Our Successes",
+        "description": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+      }
+    },
+    "detailing_shop": {
+      "title": "DETAILING SHOP",
+      "description": "Experience the ultimate in car care, available at our professional detailing shop.",
+      "features": [
+        {
+          "id": 1,
+          "title": "Professional Equipment",
+          "subpara": "Our detailing shop is equipped with cutting-edge tools:",
+          "details": [
+            "Latest detailing technology",
+            "Motorcycle-specific resources",
+            "Showroom-quality results",
+            "Meticulous attention to detail"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Expert Technicians",
+          "subpara": "Our certified detailing experts bring unparalleled skill to every job:",
+          "details": [
+            "Certified detailing experts",
+            "Unparalleled skill for every job",
+            "Modern equipment and technology",
+            "Exceptional customer service"
+          ]
+        }
+      ]
+    },
+    "founder_section": {
+      "title": "MEET THE FOUNDER",
+      "name": "Felicio Perk",
+      "role": "Founder & CEO",
+      "bio": "Visit us, gain professional service of lower risk, top-tier work quality.",
+      "social_media": [
+        "facebook",
+        "instagram",
+        "twitter",
+        "linkedin"
+      ]
+    },
+    "gallery_section": {
+      "title": "See the Difference for Yourself",
+      "cta": {
+        "text": "Bekijk het verschil zelf! Boek vandaag nog.",
+        "buttons": {
+          "book_now": "Boek Nu!",
+          "learn_more": "Learn More"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "TESTIMONIALS"
+    },
+    "cta_section": {
+      "title": "Ready for a Sparkling Clean Ride?",
+      "description": "Now Ready to make your car shine? Book online now and experience for yourself why so many customers choose Fast Clean Service!",
+      "button": "Book Now"
+    }
+  },
+  "contact": {
+    "title": "CONTACT US",
+    "subtitle": "Always Available for You",
+    "description": "Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.",
+    "form": {
+      "name": "Name*",
+      "email": "Email*",
+      "message": "Message*",
+      "button": "Submit"
+    },
+    "contact_details": {
+      "phone": "020 2404004",
+      "email": "info@fastcleanservice.nl",
+      "address": "Oranjweg 38 1566 HP Assendelft"
+    },
+    "working_hours": {
+      "title": "WORKING HOURS",
+      "description": "We work by appointment only! Do you want to come by for a treatment on location? Make an appointment in advance to ensure availability.",
+      "days": "Monday to Sunday",
+      "hours": "08:00 - 17:30"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions (FAQs)",
+      "questions": [
+        {
+          "question": "Do I need to make an appointment to visit your location?",
+          "answer": "Yes, we work by appointment only. This prevents long waiting times and ensures that we have enough time for your vehicle. Easily make an appointment via our website."
+        },
+        {
+          "question": "How can I make an appointment?",
+          "answer": "You can make an appointment via our online booking page, by telephone or via WhatsApp. We advise you to book in advance due to the crowds."
+        },
+        {
+          "question": "Can you be reached via WhatsApp?",
+          "answer": "Yes, we can be reached via WhatsApp for questions, quotes and bookings. Click on the WhatsApp button on our website to contact us directly."
+        },
+        {
+          "question": "What are your opening hours?",
+          "answer": "We are open 7 days a week from 08:00 – 17:30, but by appointment only. Contact us for availability."
+        },
+        {
+          "question": "Can I bring my car to you without an appointment?",
+          "answer": "No, we work by appointment only. This prevents waiting times and ensures that we can offer the best service."
+        },
+        {
+          "question": "Do you offer home service?",
+          "answer": "Yes. We are a mobile detailing service and come to your home, work or other desired location. The first 30 km from our location are free; after that we charge a small mileage fee."
+        },
+        {
+          "question": "What is your drop-off location for mobile service?",
+          "answer": "Our drop-off location is Omweg 38, 1566 AZ Assendelft. From here we charge any additional mileage costs."
+        },
+        {
+          "question": "Can I contact you for a business collaboration?",
+          "answer": "Certainly! We work with companies, fleets, leasing companies and garages. Send us an email or call us for a customized quote."
+        },
+        {
+          "question": "How quickly can I expect a response to my request?",
+          "answer": "We usually respond to emails and WhatsApp messages within 24 hours. For urgent questions, it is best to call us."
+        },
+        {
+          "question": "What if I want to change or cancel my appointment?",
+          "answer": "No problem! Let us know at least 24 hours in advance, then we will schedule a new time together."
+        }
+      ]
+    }
+  },
+  "fleetcare": {
+    "title": "FleetCare",
+    "subtitle": "WagenPark Maintenance - Professional Maintenance for your Fleet",
+    "description": "At Fast Clean Service we offer a complete and worry-free service with WagenPark Maintenance maintenance solutions for business fleets. We understand that your vehicles have a role as the calling card of your company, and that is why we ensure that every vehicle is always there looking representative. With our mobile service, we perform maintenance on location, which takes some time and saves costs, without having to interrupt your business operations.",
+    "stitle": "Our Services",
+    "services": [
+      {
+        "title": "Exterior maintenance",
+        "description": "Thorough steam cleaning, washing, and protection of the paint."
+      },
+      {
+        "title": "Interior maintenance",
+        "description": "Deep cleaning with steam, vacuuming, dashboard cleaning, and cleaning upholstery."
+      },
+      {
+        "title": "Protective Coatings",
+        "description": "Long-lasting protection with high-quality waxes & coating treatments."
+      }
+    ],
+    "quality_focus": "We focus on high quality using the latest techniques and environmentally friendly products. Your vehicles stay in top condition for longer, which ensures a sustainable and professional fleet.",
+    "quote_form": {
+      "title": "Request a Quote",
+      "fields": {
+        "business": "Business",
+        "address": "Address",
+        "name": "Name",
+        "email": "Email",
+        "vehicle_type": "Vehicle Type",
+        "fleet_size": "Fleet Size",
+        "vehicle_types": {
+          "none": "None",
+          "cars": "Cars (all types)",
+          "suvs": "SUVs",
+          "bikes": "Bikes (all types)",
+          "trucks": "Trucks",
+          "campers": "Campers",
+          "boats": "Boats"
+        }
+      },
+      "button": "Submit"
+    }
+  },
+  "other_vehicles": {
+    "title": "OTHER VEHICLES",
+    "subtitle": "Specialized AutoCare for Bikes, Boats, Planes, and More!",
+    "description": [
+      {
+        "icon": "🚴",
+        "text": "Expert Bike Maintenance and Detailing"
+      },
+      {
+        "icon": "⛵",
+        "text": "Comprehensive Care for Boats"
+      },
+      {
+        "icon": "✈️",
+        "text": "Precision Cleaning and Maintenance for Aircraft"
+      },
+      {
+        "icon": "🚗",
+        "text": "Tailored Services for Specialty Vehicles"
+      }
+    ],
+    "quote_form": {
+      "title": "Request a Quote",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "phone_number": "Phone Number",
+        "vehicle_type": {
+          "label": "Vehicle Type",
+          "options": {
+            "none": "None",
+            "bikes": "Bikes (all types)",
+            "trucks": "Trucks",
+            "campers": "Campers",
+            "boats": "Boats"
+          }
+        },
+        "service_type": {
+          "label": "Service Type",
+          "options": {
+            "none": "None",
+            "anywhere_autocare": "Anywhere AutoCare",
+            "fleetcare_pro": "FleetCare Pro"
+          }
+        },
+        "location": {
+          "label": "Location",
+          "options": {
+            "none": "None",
+            "onsite": "Onsite",
+            "your_place": "Your Place"
+          }
+        },
+        "address": "Address",
+        "number_of_vehicles": "Number of Vehicles"
+      },
+      "button": "Submit"
+    }
+  },
+  "anywhere_autocare": {
+    "standard": [
+      {
+        "id": "autocare-standard-exterior",
+        "name": "Exterior",
+        "description": "Complete exterior care for your vehicle",
+        "packages": [
+          "Exterior steam cleaning",
+          "Tire blackening",
+          "Cleaning of windows and mirrors",
+          "Application of spray wax",
+          "Wheel cleaning"
+        ],
+        "totalDuration": "60 min",
+        "duration": "60 min",
+        "price": "€74.95",
+        "vehicleOptions": {
+          "Hatchback": {
+            "basePrice": 74.95
+          },
+          "Sedan": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "SUV": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "Station Wagon": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "MPV": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "Coupé": {
+            "basePrice": 74.95
+          },
+          "Convertible": {
+            "basePrice": 74.95
+          },
+          "Van": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "Pick-up Truck": {
+            "basePrice": 74.95,
+            "additionalCost": 10,
+            "additionalTime": 10
+          },
+          "Motorbike": {
+            "basePrice": 64.95,
+            "notes": "exterior only"
+          }
+        },
+        "additionalOptions": {
+          "interior": [
+            {
+              "name": "Deep cleaning child seat (per seat)",
+              "additionalCost": 15
+            },
+            {
+              "name": "Ozone treatment",
+              "additionalCost": 95
+            }
+          ],
+          "exterior": [
+            {
+              "name": "Convertible top cleaning",
+              "additionalCost": 85
+            },
+            {
+              "name": "Door sills and edges",
+              "additionalCost": 10
+            },
+            {
+              "name": "Resin spots removal",
+              "additionalCost": 25
+            },
+            {
+              "name": "Polishing plastic parts",
+              "additionalCost": 7.5
+            },
+            {
+              "name": "Removing moss from seams",
+              "additionalCost": 15
+            },
+            {
+              "name": "Hood cleaning",
+              "additionalCost": 50
+            },
+            {
+              "name": "Sunroof cleaning",
+              "additionalCost": 15
+            },
+            {
+              "name": "Polishing chrome parts",
+              "additionalCost": 55
+            },
+            {
+              "name": "Polishing headlights",
+              "additionalCost": 50
+            }
+          ]
+        },
+        "durationOptions": [],
+        "cleaningFrequencyOptions": [],
+        "_id": {
+          "$oid": "6795836f9c12bd3b6555e9a4"
+        }
+      }
+    ],
+    "deluxe": [
+      {
+        "id": "autocare-deluxe-exterior",
+        "name": "Exterior",
+        "description": "Premium exterior care for your vehicle",
+        "packages": [
+          "Tire blackening",
+          "Exterior shampoo wash",
+          "Exterior rinsing",
+          "Exterior steam cleaning",
+          "Hand wash",
+          "Polishing plastic parts",
+          "Removing moss from seams",
+          "Removing resin spots",
+          "Cleaning windows and mirrors",
+          "Application of spray wax",
+          "Cleaning the fuel cap",
+          "Wheel cleaning"
+        ],
+        "totalDuration": "90 min",
+        "duration": "90 min",
+        "price": "€89.95",
+        "vehicleOptions": {
+          "Hatchback": {
+            "basePrice": 89.95
+          },
+          "Sedan": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          },
+          "SUV": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          },
+          "Station Wagon": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          },
+          "MPV": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          },
+          "Coupé": {
+            "basePrice": 89.95
+          },
+          "Convertible": {
+            "basePrice": 89.95
+          },
+          "Van": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          },
+          "Pick-up Truck": {
+            "basePrice": 89.95,
+            "additionalCost": 10
+          }
+        },
+        "additionalOptions": {
+          "interior": [
+            {
+              "name": "Deep cleaning child seat (per seat)",
+              "additionalCost": 15
+            },
+            {
+              "name": "Ozone treatment",
+              "additionalCost": 95
+            }
+          ],
+          "exterior": [
+            {
+              "name": "Convertible top cleaning",
+              "additionalCost": 85
+            },
+            {
+              "name": "Polishing chrome parts",
+              "additionalCost": 55
+            },
+            {
+              "name": "Polishing headlights",
+              "additionalCost": 50
+            }
+          ]
+        },
+        "durationOptions": [],
+        "cleaningFrequencyOptions": [],
+        "_id": {
+          "$oid": "678fbf240c8e6e569012682b"
+        }
+      }
+    ],
+    "premium": [
+      {
+        "id": "autocare-premium-showroom",
+        "name": "Showroom Package",
+        "description": "Ultimate showroom quality care for your vehicle",
+        "packages": [
+          "All services from previous packages",
+          "Additional polishing and detailing of chrome parts",
+          "Intensive vehicle polishing (1-step process)"
+        ],
+        "totalDuration": "240 min",
+        "duration": "240 min",
+        "price": "€429.95",
+        "vehicleOptions": {
+          "Hatchback": {
+            "basePrice": 429.95
+          },
+          "Sedan": {
+            "basePrice": 429.95,
+            "additionalCost": 45
+          },
+          "SUV": {
+            "basePrice": 429.95,
+            "additionalCost": 45
+          },
+          "Station Wagon": {
+            "basePrice": 429.95,
+            "additionalCost": 45
+          },
+          "MPV": {
+            "basePrice": 429.95,
+            "additionalCost": 45
+          },
+          "Coupé": {
+            "basePrice": 429.95
+          },
+          "Convertible": {
+            "basePrice": 429.95
+          },
+          "Van": {
+            "basePrice": 429.95,
+            "additionalCost": 45
+          }
+        },
+        "additionalOptions": {
+          "interior": [
+            {
+              "name": "Vomit treatment",
+              "additionalCost": 125
+            },
+            {
+              "name": "Pet hair removal",
+              "additionalCost": 50
+            },
+            {
+              "name": "Odor treatment",
+              "additionalCost": 85
+            },
+            {
+              "name": "Leather treatment",
+              "additionalCost": 50
+            }
+          ],
+          "exterior": [
+            {
+              "name": "Convertible top cleaning",
+              "additionalCost": 85
+            },
+            {
+              "name": "Polishing chrome parts",
+              "additionalCost": 55
+            },
+            {
+              "name": "Polishing headlights",
+              "additionalCost": 50
+            }
+          ]
+        },
+        "durationOptions": [],
+        "cleaningFrequencyOptions": [],
+        "_id": {
+          "$oid": "678fbf250c8e6e5690126859"
+        }
+      }
+    ]
+  },
+  "subscriptions": {
+    "title": "SUBSCRIPTIONS",
+    "subtitle": "Subscription Plans - Worry-Free Maintenance for your Vehicle",
+    "description": "With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits.",
+    "stitle": "What do we offer:",
+    "features": [
+      {
+        "title": "Expert Care",
+        "description": "Periodic cleaning and maintenance of both interior and exterior. Better rates for returning customers."
+      },
+      {
+        "title": "Flexibility",
+        "description": "Flexibility in choosing the desired frequency (monthly, quarterly, etc.)."
+      }
+    ],
+    "cta": {
+      "text": "Choose one of our subscription options and enjoy convenience and quality, without a hassle!",
+      "button": "Book Now"
+    },
+    "plans": [
+      {
+        "name": "EXTERIOR",
+        "price": "€64.95",
+        "duration": "± 45 min.",
+        "features": [
+          "Exterior cleaning",
+          "Wax treatment",
+          "Window cleaning",
+          "Rim cleaning",
+          "Tire blackening"
+        ],
+        "duration_options": {
+          "title": "Duration options",
+          "24 months": "+ €40",
+          "12 months": "+ €20",
+          "Monthly cancellable": "+ €10"
+        },
+        "cleaning_frequency": {
+          "title": "Cleaning Frequency",
+          "Every 12 weeks": "+ €10",
+          "Every 8 weeks": "+ €15"
+        },
+        "additional_options": []
+      },
+      {
+        "name": "INTERIOR",
+        "price": "€74.95",
+        "duration": "± 60 min.",
+        "features": [
+          "Window cleaning",
+          "Sill cleaning",
+          "Steam cleaning",
+          "Vacuuming",
+          "Dashboard cleaning",
+          "Plastic parts treatment",
+          "Mat steaming"
+        ],
+        "duration_options": {
+          "24 months": "+ €40",
+          "12 months": "+ €20",
+          "Monthly cancellable": "+ €10"
+        },
+        "cleaning_frequency": {
+          "Every 12 weeks": "+ €10",
+          "Every 8 weeks": "+ €15"
+        },
+        "additional_options": [
+          "Leather treatment + €15",
+          "Dog hair removal + €15",
+          "Upholstery stain removal + €15"
+        ]
+      },
+      {
+        "name": "TOTAL",
+        "price": "€99.95",
+        "duration": "± 90-120 min.",
+        "features": [
+          "Window cleaning",
+          "Sill cleaning",
+          "Steam cleaning",
+          "Vacuuming",
+          "Dashboard cleaning",
+          "Plastic parts treatment",
+          "Mat steaming",
+          "Exterior cleaning",
+          "Rim cleaning",
+          "Tire blackening",
+          "Wax treatment"
+        ],
+        "duration_options": {
+          "24 months": "+ €40",
+          "12 months": "+ €20",
+          "Monthly cancellable": "+ €10"
+        },
+        "cleaning_frequency": {
+          "Every 12 weeks": "+ €10",
+          "Every 8 weeks": "+ €15"
+        },
+        "additional_options": [
+          "Leather treatment + €15",
+          "Dog hair removal + €15",
+          "Upholstery stain removal + €15"
+        ]
+      }
+    ]
   },
   "booking": {
     "title": "Booking - On Location",
@@ -171,5 +1126,315 @@
         ]
       }
     ]
+  },
+  "feedback": {
+    "title": "Your Feedback Matters!",
+    "subtitle": "Leave Your Review and tell us how we helped you!",
+    "form_fields": {
+      "name": "Name",
+      "last_name": "Last Name",
+      "service": "Service",
+      "date_of_appointment": "Date of Appointment",
+      "rating": "Rate Your Experience",
+      "review": "Share Your Experience Here..."
+    },
+    "buttons": {
+      "submit": "Submit Feedback"
+    }
+  },
+  "terms_and_conditions": {
+    "title": "Terms & Conditions – Fast Clean Service",
+    "sections": {
+      "definitions": {
+        "title": "Article 1: Definitions",
+        "content": [
+          "Order: Any agreement between the Customer and Fast Clean Service, whereby Fast Clean Service cleans vehicles for a fee.",
+          "Customer: The natural person or legal entity that has a vehicle cleaned by Fast Clean Service.",
+          "Fast Clean Service: The contractor, registered with the Chamber of Commerce under number 70208085, located at Omweg 38, 1566 HP Assendelft."
+        ]
+      },
+      "articles": [
+        {
+          "title": "Article 2: Applicability",
+          "content": [
+            "These general terms and conditions apply to all quotations, services and agreements between Fast Clean Service and the Customer, unless expressly agreed otherwise in writing."
+          ]
+        },
+        {
+          "title": "Article 3: Appointments & Cancellation",
+          "content": [
+            "Appointments can be cancelled up to 24 hours before the start of the appointment. In that case, the customer will receive the full amount paid as store credit, to be used for a future booking.",
+            "In case of cancellation within 24 hours before the start or in case of a no‑show, the full costs of the booked cleaning will be charged.",
+            "Fast Clean Service reserves the right to reschedule appointments free of charge in case of bad weather conditions or force majeure."
+          ]
+        },
+        {
+          "title": "Article 4: Travel surcharge",
+          "content": [
+            "The standard departure point for mobile services is Omweg 38, 1566 HP Assendelft. If a franchise location is closer, this will be used as the departure point.",
+            "No additional costs will be charged for distances up to 30 km.",
+            "For distances above 30 km, €0.60 per additional kilometre will be charged.",
+            "The distance is automatically calculated based on the customer address provided."
+          ]
+        },
+        {
+          "title": "Article 5: Payment & Invoice",
+          "content": [
+            "Payment must always be made in advance via the website.",
+            "Invoices are automatically sent after payment has been completed. Accepted payment methods via Stripe: iDEAL, Visa, Mastercard, Apple Pay, Google Pay.",
+            "Accepted payment methods via Coinbase (crypto): Bitcoin (BTC), Ethereum (ETH), Ripple (XRP), Litecoin (LTC), Solana (SOL)."
+          ]
+        },
+        {
+          "title": "Article 6: Liability",
+          "content": [
+            "Fast Clean Service is not liable for existing damage or damage to sensitive vehicle parts.",
+            "No guarantee is given for complete removal of stains or scratches.",
+            "In the case of intensive treatments, such as polishing and deep cleaning, the execution is at the customer's risk."
+          ]
+        },
+        {
+          "title": "Article 7: Complaints",
+          "content": [
+            "Complaints must be reported immediately after the work has been carried out.",
+            "Complaints reported later will only be processed if there are demonstrable shortcomings."
+          ]
+        },
+        {
+          "title": "Article 8: Right of withdrawal",
+          "content": [
+            "The services of Fast Clean Service fall under customisation and are excluded from the statutory right of withdrawal as soon as the work has started or been carried out."
+          ]
+        },
+        {
+          "title": "Article 9: Access & Workspace",
+          "content": [
+            "The customer must ensure sufficient workspace and accessibility of the vehicle, so that the work can be carried out safely and efficiently."
+          ]
+        },
+        {
+          "title": "Article 10: Use of Images",
+          "content": [
+            "Fast Clean Service reserves the right to use images of work carried out for marketing purposes, unless the customer objects to this before the start of the service."
+          ]
+        },
+        {
+          "title": "Article 11: Applicable law",
+          "content": [
+            "All legal relationships with Fast Clean Service are exclusively governed by Dutch law.",
+            "Any disputes will be submitted to the competent court in Amsterdam."
+          ]
+        }
+      ]
+    }
+  },
+  "privacy_policy": {
+    "title": "Privacy Policy",
+    "sections": {
+      "intro": {
+        "last_updated": "Last updated: January 25, 2025",
+        "paragraphs": [
+          "This Privacy Policy describes Fast Clean Service's policies regarding the collection, use, and disclosure of your information when you use our Services. It explains your privacy rights and how the law protects you.",
+          "We use your personal information to provide and improve our Service. By using our Service, you agree to the collection and use of information as described in this policy."
+        ]
+      },
+      "articles": [
+        {
+          "title": "Interpretation and Definitions",
+          "content": [
+            "Interpretation",
+            "Capitalized words have the meanings defined below. The following definitions have the same meaning regardless of whether they appear in the singular or plural.",
+            "Definitions",
+            "\"Account\" means a unique account created for you to access our Service.",
+            "\"Company\" means Fast Clean Service, Omweg 38, 1566 HP Assendelft.",
+            "\"Cookies\" means small files placed on your device by a website.",
+            "\"Country\": Netherlands.",
+            "\"Device\": any device that can be used to access our service, such as a computer or smartphone.",
+            "\"Personal Data\": information relating to an identified or identifiable person.",
+            "\"Service\": the Fast Clean Service website, accessible via https://fast-clean-service.onrender.com/",
+            "\"Service Provider\": any natural or legal person who processes the data on behalf of the company.",
+            "\"Usage Data\": data collected automatically when using the service.",
+            "\"You\": the person using the service or representing the company."
+          ]
+        },
+        {
+          "title": "Data Collection and Use",
+          "content": [
+            "Types of Data Collected",
+            "Personal Data",
+            "While using our Service, we may ask you to provide us with certain personally identifiable information, including:",
+            "Email address",
+            "First and last name",
+            "Phone number",
+            "License plate number",
+            "Location data for travel cost calculation",
+            "Payment information (for processing via Stripe or Coinbase only – not stored by us)",
+            "Use of Your Data",
+            "We use your personal data for the following purposes:",
+            "To provide and administer our services",
+            "For customer support",
+            "To contact you regarding bookings",
+            "To process payments via Stripe or Coinbase",
+            "For marketing purposes, only if you have explicitly consented to this",
+            "To improve our services"
+          ]
+        },
+        {
+          "title": "Cookies",
+          "content": [
+            "We use cookies to enhance your experience, analyze our website performance, and display tailored content. You can choose to decline cookies through your browser settings."
+          ]
+        },
+        {
+          "title": "Sharing Your Data",
+          "content": [
+            "We do not share your data with third parties, unless this is necessary for the performance of our service (such as with payment providers), or if required by law."
+          ]
+        },
+        {
+          "title": "Data Security",
+          "content": [
+            "The security of your information is important to us. We use industry standard security measures to protect your personal information. However, no method of transmission over the Internet, or method of electronic storage, is 100% secure."
+          ]
+        },
+        {
+          "title": "Your Rights",
+          "content": [
+            "You have the right to access, correct, or delete your personal information. Please contact us at info@fastcleanservice.nl for any requests regarding your information."
+          ]
+        },
+        {
+          "title": "Changes to this Privacy Policy",
+          "content": [
+            "We may update this privacy policy from time to time. We advise you to review this policy periodically. Changes are effective when they are posted on this page."
+          ]
+        },
+        {
+          "title": "Contact",
+          "content": [
+            "Fast Clean Service",
+            "Omweg 38, 1566 HP Assendelft",
+            "Email: info@fastcleanservice.nl"
+          ]
+        }
+      ]
+    }
+  },
+  "customer_dashboard": {
+    "title": "Customer Dashboard",
+    "options": [
+      "Dashboard",
+      "My Bookings"
+    ],
+    "sections": [
+      {
+        "title": "Dashboard Overview",
+        "widgets": [
+          {
+            "title": "My Bookings",
+            "description": "View and manage your car care bookings.",
+            "table_headers": [
+              "Customer Name",
+              "Vehicle",
+              "Location",
+              "Service",
+              "Package",
+              "Appointment",
+              "Price",
+              "Payment Status"
+            ]
+          },
+          {
+            "title": "Notifications",
+            "none": "No Notifications available."
+          }
+        ]
+      },
+      {
+        "title": "My Bookings",
+        "search_placeholder": "Search by Vehicle, Service, or City",
+        "table_headers": [
+          "Customer Name",
+          "Company Name",
+          "Street",
+          "Zip Code",
+          "City",
+          "Email",
+          "Phone Number",
+          "Vehicle",
+          "Vehicle Type",
+          "Service Name",
+          "Package",
+          "Appointment Start",
+          "Appointment End",
+          "Price",
+          "Duration",
+          "Travel Duration",
+          "Type",
+          "Addons",
+          "Detailing",
+          "Lock Time Start",
+          "Lock Time End"
+        ]
+      }
+    ]
+  },
+  "header": {
+    "logo": "Fast Clean Service",
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "services": {
+        "title": "Services",
+        "options": [
+          "FleetCare Pro",
+          "Anywhere Autocare",
+          "Subscriptions",
+          "Other Vehicles",
+          "Store"
+        ]
+      },
+      "contact": "Contact"
+    },
+    "buttons": {
+      "login": "Log In",
+      "signup": "Sign Up",
+      "book_now": "Book Now"
+    }
+  },
+  "footer": {
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "services": "Services"
+    },
+    "terms_privacy": {
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy"
+    },
+    "social_media": {
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "twitter": "https://twitter.com",
+      "youtube": "https://youtube.com",
+      "email": "mailto:support@fastclean.com"
+    },
+    "copyright": "\u00a9 2025 Fast Clean Service. All rights reserved."
+  },
+  "cookie_banner": {
+    "title": "We respect your privacy",
+    "description": "We use cookies to improve your experience, analyze our website performance, and show you relevant content. By clicking 'Accept', you agree to the use of all cookies.",
+    "more_info": {
+      "prefix": "Please read our",
+      "terms": "Terms of Service",
+      "conjunction": "and",
+      "privacy": "Privacy Policy",
+      "suffix": "for more information."
+    },
+    "buttons": {
+      "accept": "Accept",
+      "deny": "Skip for now"
+    }
   }
 }

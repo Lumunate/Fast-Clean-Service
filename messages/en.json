@@ -22,7 +22,6 @@
         "scroll_down": "Scroll Down"
       }
     },
-
     "about_section": {
       "title": "The Best Care for Your Car Wherever You Are!",
       "description": "At Fast Clean Service your car will receive the highest quality steam cleaning and detailing, on location or at our location. Thanks to advanced techniques and high-quality products, we clean and protect your car with care and precision.",
@@ -94,11 +93,11 @@
     },
     "services_section": {
       "title": "OUR SERVICES",
-      "description": "At Fast Clean Service, we offer a wide range of professional cleaning and detailing services to keep your car in top condition. From interior to exterior, we have the expertise and techniques to take care of every detail of your vehicle",
+      "description": "Want that little bit extra? Expand your treatment with additional services for an even better result. Choose from interior, exterior or detailing options and create your own ideal treatment.",
       "services": [
         {
-          "title": "Steam Cleaning Interior & Exterior",
-          "description": "A deep cleaning that removes dirt, stains and unpleasant odours, without harsh chemicals. Our environmentally friendly steam technology leaves your car fresh and hygienic.",
+          "title": "Interior Add-ons",
+          "description": "Give your car extra attention on the outside. From convertible roof and sliding roof cleaning to cleaning the fuel filler flap and bonnet. Removing fly rust, resin or moss from seams is also an option. Plastic parts can be polished extra, and sills and door edges are thoroughly included.",
           "bullets": [
             "✔ Thorough cleaning without residue",
             "✔ Safe for fabric, leather and plastic"
@@ -106,7 +105,7 @@
           "description2": "📅 Book now and give your car the fresh start it deserves."
         },
         {
-          "title": "Paint Protection & Coatings",
+          "title": "Exterior Add-ons",
           "description": "Protect your car's paint and make it shine like new again. Our professional wax and coating treatments provide long‑lasting protection against dirt, UV radiation and weather influences.",
           "bullets": [
             "✔ Deep shine and water‑repellent effect",
@@ -115,8 +114,8 @@
           "description2": "📅 Schedule a detailing treatment."
         },
         {
-          "title": "Polishing & Headlight Restoration",
-          "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
+          "title": "Detailing Add-ons",
+          "description": "Complete your treatment with professional detailing. Think of polishing headlights or chrome parts, a clay bar treatment for smooth paint, or a protective paint sealant. Choose from 1-, 2- or 3-step polishing for the best result, or go for a durable glass coating that protects your car for a long time.",
           "bullets": [
             "✔ Removes dullness and yellowing for brighter light",
             "✔ Better visibility and a fresher look"
@@ -139,45 +138,45 @@
       "title": "OUR PACKAGES",
       "packages": [
         {
-          "title": "Steam Cleaning & Detailing",
-          "description": "On-site or in our workshop. Interior and exterior thoroughly cleaned and protected."
+          "title": "Machine Rental",
+          "description": "Rent professional detailing equipment for temporary use - ideal for DIYers, hobbyists or self-employed people."
         },
         {
-          "title": "Commercial Fleet Service",
-          "description": " Professional maintenance for commercial vehicles and fleets."
+          "title": "Subscriptions",
+          "description": "Fixed cleaning times at a low rate. Never worry about your car care again."
         },
         {
-          "title": "Detailing & Paint Correction",
-          "description": "Removes swirls and micro-scratches. Restores deep gloss and paint seal.\n"
+          "title": "Business Services",
+          "description": "Fleet maintenance for companies, leasing companies and mobility services. Efficient, scalable and professional."
         },
         {
-          "title": "Paint Protection & Coating",
-          "description": "Long-lasting protection against dirt, UV and weather influences. Keeps your car in top condition for longer."
+          "title": "Training & Coaching",
+          "description": "Learn to detail like a pro or start your own cleaning company with our e-books, practical training and guidance."
         }
       ]
     },
     "anywhere_autocare_section": {
-      "title": "Anywhere AutoCare",
-      "description": "Every car and situation requires a different approach. Have your car treated on location or at our location, exactly where and when it is needed.",
+      "title": "Detailing Service",
+      "description": "Every car requires a customized approach. Have your vehicle treated where and when it suits you – at our location or simply at your home.",
       "services": [
         {
           "title": "Detail Shop",
-          "description": "Bring your car to our location and have it treated in detail with the right products and techniques."
+          "description": "Bring your car to our branch in Assendelft. Here we treat every detail with the right techniques and high-quality products for a long-lasting result."
         },
         {
           "title": "Mobile Service",
-          "description": "No time to come by? We come to you - at home, at the office or wherever it suits you."
+          "description": "No time to come by? No problem. We come to you – at home, at the office or at any desired location."
         }
       ],
       "packages": [
         {
           "name": "Standard",
-          "category": "Basic Cleaning",
+          "category": "Basic",
           "price": "From",
           "title": "Included",
           "features": [
-            "Interior or exterior steam cleaning",
-            "Rim and window cleaning",
+            "Steam cleaning interior and/or exterior",
+            "Cleaning rims, sills and windows",
             "Basic protection"
           ],
           "description": "For whom? Ideal for a quick, global cleaning.",
@@ -188,14 +187,14 @@
         },
         {
           "name": "Deluxe",
-          "category": "Deep Cleaning & Protection",
+          "category": "Most Chosen",
           "price": "From",
           "features": [
-            "Thorough deep cleaning",
-            "Paint sealant & protective wax",
-            "Steam cleaning of upholstery"
+            "Including all services of the Standard Package",
+            "Deep cleaning / Leather treatment",
+            "Removes moss, resin & fly rust"
           ],
-          "description": "For whom? Perfect for those who really want to maintain their car well and thoroughly.",
+          "description": "For whom? Choose Deluxe for a complete treatment of your car.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -206,11 +205,11 @@
           "category": "Showroom Finish",
           "price": "From",
           "features": [
-            "Interior & Exterior Premium",
-            "Polishing and scratch removal",
-            "Headlight polishing"
+            "Including all services of the Standard & Deluxe Package",
+            "Hood cleaning",
+            "1-step polishing + headlights"
           ],
-          "description": "For whom? The ultimate treatment for a luxurious look and perfect condition.",
+          "description": "For whom? Book now for the ultimate showroom finish.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -222,63 +221,60 @@
       "services": [
         {
           "id": "fleet-care-pro",
-          "titlemain": "FLEET PRO",
-          "titlesub": "ALWAYS A REPRESENTATIVE FLEET",
-          "description": "Keep your company vehicles in top condition with our mobile cleaning service. We come to your location and offer tailor-made solutions for every fleet, from basic cleaning to full detailing.",
-          "highlight": "✔️ Tailor-made packages – Tailored to your fleet<br/>✔️ Mobile service – Cleaning on location, when it suits you<br/>✔️ Consistent appearance – Your fleet always presentable<br/>✔️ Efficient & professional – Minimal downtime, maximum results",
+          "title": "FleetCare Pro",
+          "description": "Elevate your fleet’s appearance with our cutting-edge mobile cleaning service. FleetCare Pro brings professional-grade steam cleaning technology directly to your location, ensuring your vehicles are spotless and ready for the road - anywhere, anytime.",
+          "highlight": "With FleetCare Pro, pristine vehicles are just a booking away.",
           "button": {
-            "text": "Plan your fleet cleaning now",
+            "text": "Book Now",
             "link": "/fleet"
           }
         },
         {
           "id": "subscriptions",
-          "titlemain": "SUBSCRIPTIONS",
-          "titlesub": "ALWAYS A CLEAN CAR",
-          "description": "With a Fast Clean Service subscription, your car will always be in top condition. Regular professional cleaning, tailored to your rhythm – no maintenance worries.",
-          "highlight": "✔️ Flexible plans – Monthly, annually or 24 months<br/>✔️ Affordable rates – Save on periodic cleaning<br/>✔️ Save time – We ensure a clean car, without any hassle<br/>✔️ Always presentable – Your car exudes professionalism",
+          "title": "Subscriptions",
+          "description": "Transform your vehicle maintenance routine with our flexible subscription plans. Experience premium care tailored to your schedule and preferences.",
+          "highlight": "Choose your plan and never worry about a dirty car again!",
+          "special_highlight": "24 months | Yearly | Monthly plans",
           "button": {
-            "text": "Choose your subscription",
+            "text": "Book Now",
             "link": "/subscribe"
           }
         }
       ]
     },
     "other_vehicles_care_section": {
-      "title": "Other Vehicles Care",
-      "description": "Ensure your vehicles' longevity with our comprehensive maintenance plans designed to keep your car in optimal condition for years to come.",
+      "title": "Vehicle Care",
+      "description": "Every vehicle deserves a tailor-made approach. Whether it's a car, motorcycle, camper or boat: we provide professional cleaning and long-term protection - precisely tailored to use and conditions.",
       "categories": [
         {
           "name": "Cars",
           "services": [
-            "Steam washing",
-            "Window washing",
-            "Polishing chrome parts",
-            "Waxing",
-            "Cleaning rims",
-            "Blackening tires"
+            "Steam cleaning interior & exterior",
+            "Cleaning rims, windows & sills",
+            "Waxing & blackening tires",
+            "Polishing & applying coating"
           ],
-          "description": "We provide specialized steam cleaning that avoids scratches and restores your car’s shine."
+          "description": "We provide deep cleaning and visible shine. Protect your paintwork, remove scratches and make your car look like new again."
         },
         {
-          "name": "Campers, Caravans, Boats, and Trucks",
+          "name": "Campers & Caravans",
           "services": [
-            "Interior and Exterior Cleaning",
-            "Advanced Steam Cleaning",
-            "Flexible Services",
-            "Engine & Mechanical Cleaning"
+            "Interior & exterior steam cleaning",
+            "Roof cleaning & deep cabin cleaning",
+            "Insect, resin and dirt removal",
+            "Coating against UV & dirt"
           ],
-          "description": "We offer comprehensive interior and exterior steam cleaning, including detailed cabin sanitization and engine cleaning for ultimate freshness and performance."
+          "description": "Ideal for preparing for holidays or long-term protection during storage."
         },
         {
-          "name": "Bikes",
+          "name": "Motorcycles, Scooters & Bicycles",
           "services": [
-            "Motorbikes (Street, Cruiser, Touring, and Sport)",
-            "Dirt Bikes",
-            "Electric Bikes",
-            "Scooters"
+            "Thorough steam cleaning",
+            "Cleaning of chain, wheels & rims",
+            "Nourishing plastic parts",
+            "Polishing & applying coating"
           ],
-          "description": "Whether it's a casual ride or a high-performance machine, we’ve got your two-wheelers covered with professional cleaning and care services."
+          "description": "Whether you drive sporty or tour recreationally: we give your two-wheeler the care it deserves. \uD83D\uDD18 More information\n"
         }
       ],
       "button": {
@@ -1323,7 +1319,6 @@
       ]
     }
   },
-
   "customer_dashboard": {
     "title": "Customer Dashboard",
     "options": [
