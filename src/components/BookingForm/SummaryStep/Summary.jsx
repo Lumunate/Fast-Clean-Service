@@ -21,6 +21,10 @@ const Summary = () => {
     fetchPackages();
   }, [fetchPackages]);
 
+    useEffect(() => {
+        console.log("Form Data: ", formData); // This will log the form data
+    }, [formData]);
+
   if (!packages) {
     return null;
   }
@@ -78,9 +82,9 @@ const Summary = () => {
             <SummaryItem
               label={t("steps.8.sections.2")}
               value={
-                formData?.vehicleDetails?.kenteken
-                  ? formData.vehicleDetails.kenteken
-                  : '---'
+                  formData?.vehicleDetails?.kenteken
+                      ? formData.vehicleDetails.kenteken
+                      : formData?.licensePlate || '---'
               }
             />
             <SummaryItem label={t("steps.8.sections.2")} value={formData?.carType} />
