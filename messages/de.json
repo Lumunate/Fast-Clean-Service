@@ -1381,26 +1381,26 @@
     ]
   },
   "header": {
-    "logo": "Snelle Schoonmaakservice",
-    "navigatie": {
+    "logo": "Fast Clean Service",
+    "navigation": {
       "home": "Home",
-      "about": "Over",
+      "about": "About",
       "services": {
-        "title": "Diensten",
-        "opties": [
+        "title": "Services",
+        "options": [
           "FleetCare Pro",
           "Anywhere Autocare",
-          "Abonnementen",
-          "Andere voertuigen",
-          "Winkel"
+          "Subscriptions",
+          "Other Vehicles",
+          "Store"
         ]
       },
       "contact": "Contact"
     },
-    "knoppen": {
-      "login": "Inloggen",
-      "signup": "Aanmelden",
-      "book_now": "Boek nu"
+    "buttons": {
+      "login": "Log In",
+      "signup": "Sign Up",
+      "book_now": "Book Now"
     }
   },
   "footer": {
