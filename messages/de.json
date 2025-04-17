@@ -5,5 +5,171 @@
   },
   "aboutus":{
     "BackgroundSectionHeading": "Wij zijn een gespecialiseerd mobiel poetsbedrijf voor elk type voertuig"
+  },
+  "booking": {
+    "title": "Booking - On Location",
+    "toggle": [
+      "Op Locatie",
+      "Onze vestiging"
+    ],
+    "stepbar": [
+      "Locatie",
+      "Kenteken",
+      "Voertuigtype",
+      "Soort service",
+      "Pakketkeuze",
+      "Extra opties",
+      "Detailing",
+      "Afspraak plannen",
+      "Overzicht",
+      "Bevestiging"
+    ],
+    "footer": [
+      "Price",
+      "Duration",
+      "Back",
+      "Next",
+      "Submit"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "title": "Locatie Selectie",
+        "description": [
+          "Kies uw gewenste locatie voor de service",
+          "Of het nu op locatie is of in ons filiaal, wij staan klaar om schoon te maken!"
+        ],
+        "options": ["Op Locatie", "Onze vestiging", "Wij komen naar u toe, waar u ook bent.", "Kom langs bij ons filiaal, Samsonweg 1A, Wormerveer."]
+      },
+      {
+        "step": 2,
+        "title": "Kenteken invoeren",
+        "description": [
+          "Voer uw kenteken in om uw voertuig te identificeren.",
+          " Geen kenteken? Vink het vakje aan om verder te gaan zonder kenteken."
+        ],
+        "option": "Rijd door zonder kentekenplaat"
+      },
+      {
+        "step": 3,
+        "title": "Voertuigtype",
+        "description": [
+          "Selecteer het type voertuig dat u wilt laten reinigen.",
+          "Onze service past zich aan uw voertuig aan voor het beste resultaat!"
+        ],
+        "vehicle_types": [
+          "Hatchback",
+          "Coupé",
+          "Cabriolet",
+          "Sedan",
+          "Stationwagen",
+          "SUV",
+          "MPV",
+          "Pick-up",
+          "Bestelwagen",
+          "Motorfiets"
+        ]
+      },
+      {
+        "step": 4,
+        "title": "Service Type",
+        "description": [
+          "Please select a cleaning package.",
+          "Tailored solutions for spotless spaces!"
+        ],
+        "options": ["Anywhere Autocare", "Subscription Plans"]
+      },
+      {
+        "step": 5,
+        "title": "Pakketkeuze",
+        "description": [
+          "Kies het gewenste pakket voor uw voertuig.",
+          "Geniet van professionele reiniging en optimale zorg!"
+        ],
+        "package_options": ["Ideaal voor het regelmatige onderhoud van uw voertuig.", "Grondige reiniging voor een volledig vernieuwd voertuig.", "Ultieme detailing voor showroomglans."]
+      },
+      {
+        "step": 6,
+        "title": "Extra Opties",
+        "description": [
+          "Kies aanvullende services om uw voertuig nog grondiger te laten reinigen.",
+          "Upgrade uw schoonmaakbeurt voor een perfect resultaat!"
+        ]
+      },
+      {
+        "step": 7,
+        "title": "Detailing",
+        "description": [
+          "Kies uw detailing-opties voor een showroom-afwerking.",
+          "Hoe fijner de details, hoe beter het eindresultaat!"
+        ]
+      },
+      {
+        "step": 8,
+        "title": "Afspraak inplannen",
+        "description": [
+          "Kies een datum en tijd die u het beste uitkomt.",
+          "Wij zorgen ervoor dat uw voertuig op het gewenste moment gereinigd wordt!"
+        ],
+        "error": [
+          "Ongeldige gegevens ontvangen van server",
+          "Fout bij het ophalen van tijdslots"
+        ],
+        "unavailable": "Geen slots beschikbaar"
+      },
+      {
+        "step": 9,
+        "title": "Overzicht",
+        "description": [
+          "Controleer uw keuzes voordat u doorgaat.",
+          "Uw voertuig wordt op het afgesproken moment met zorg gereinigd!"
+        ],
+        "sections": [
+          "Voertuiginformatie",
+          "Add-ons",
+          "Voertuigtype",
+          "Service",
+          "Servicetype",
+          "Pakkettype",
+          "Subpakkettype",
+          "Details",
+          "Geen details",
+          "Afspraak",
+          "Geen add-ons"
+        ],
+        "apply_coupon": "Code toepassen",
+        "button": "Coupon toepassen",
+        "other": [
+          "Oorspronkelijke prijs:",
+          "Kortingsbedrag:",
+          "Eindprijs:"
+        ]
+      },
+      {
+        "step": 10,
+        "title": "Bevestiging van uw afspraak",
+        "description": [
+          "Controleer uw gegevens en bevestig uw reservering.",
+          "We zorgen ervoor dat uw voertuig perfect wordt gereinigd!"
+        ],
+        "form_fields": [
+          "Voornaam",
+          "Achternaam",
+          "Telefoonnummer",
+          "Bedrijfsnaam",
+          "E-mailadres",
+          "Merk en model voertuig",
+          "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga"
+        ]
+      },
+      {
+        "step": 11,
+        "title": "Afrekenen",
+        "description": [
+          "Kies uw gewenste betaalmethode om uw reservering te voltooien.",
+          "ondersteunt alleen eenmalige betalingen. Onze abonnementen kunnen daarom alleen worden aangeschaft via"
+        ]
+      }
+    ]
   }
 }

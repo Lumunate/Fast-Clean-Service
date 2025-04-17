@@ -1015,7 +1015,18 @@
           "Please choose your vehicle type.",
           "Our service adapts to your vehicle’s needs!"
         ],
-        "vehicle_types": ["Van", "Convertible", "SUV", "Coupe", "Hatchback", "Pick-up Truck", "Sedan", "Station Wagon", "MPV", "Motorbike"]
+        "vehicle_types": [
+          "Hatchback",
+          "Coupe",
+          "Convertible",
+          "Sedan",
+          "Station Wagon",
+          "SUV",
+          "MPV",
+          "Pick-up Truck",
+          "Van",
+          "Motorbike"
+        ]
       },
       {
         "step": 4,
