@@ -314,59 +314,59 @@
     }
   },
   "about": {
-    "title": "ABOUT",
-    "description": "We differentiate our cleaning at your convenience anytime and anywhere. Our steam cleaning technology ensures a deep clean, even through the toughest spots equipped with superior hot water. We provide efficient professional service for all types of vehicles.",
+    "title": "OVER",
+    "description": "\"Wij onderscheiden ons door onze reiniging, altijd en overal, voor uw gemak. Onze stoomreinigingstechnologie zorgt voor een grondige reiniging, zelfs op de meest hardnekkige plekken, dankzij superieur heet water. Wij bieden efficiënte, professionele service voor alle soorten voertuigen.",
     "qualities": {
       "quality_as_priority": {
-        "title": "Quality as Priority",
-        "description": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail."
+        "title": "Kwaliteit als prioriteit",
+        "description": "We geven prioriteit aan aanpakkwaliteit met volledig uitgeruste servicebussen en geavanceerde reinigingstechnieken om elk detail te perfectioneren."
       },
       "our_values": {
-        "title": "Our Values",
-        "description": "Every car deserves the best, and we deliver excellence for both business and private customers."
+        "title": "Onze waarden",
+        "description": "Elke auto verdient het beste en wij leveren uitmuntendheid voor zowel zakelijke als particuliere klanten."
       },
       "experts_in_detail": {
         "title": "Experts in Detail",
-        "description": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+        "description": "Ons gecertificeerde team gebruikt geavanceerde technieken voor polijsten, coaten en stoomreinigen voor een perfect resultaat."
       },
       "our_successes": {
-        "title": "Our Successes",
-        "description": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+        "title": "Onze successen",
+        "description": "Als gecertificeerd leider in detailonderhoud bieden wij professionele behandelingen die de levensduur van voertuigen verlengen en hun uiterlijk als nieuw herstellen."
       }
     },
     "detailing_shop": {
       "title": "DETAILING SHOP",
-      "description": "Experience the ultimate in car care, available at our professional detailing shop.",
+      "description": "Ervaar de ultieme autoverzorging, beschikbaar in onze professionele detailing shop.",
       "features": [
         {
           "id": 1,
-          "title": "Professional Equipment",
-          "subpara": "Our detailing shop is equipped with cutting-edge tools:",
+          "title": "Professionele apparatuur",
+          "subpara": "Onze detailing shop is uitgerust met geavanceerde gereedschappen:",
           "details": [
-            "Latest detailing technology",
-            "Motorcycle-specific resources",
-            "Showroom-quality results",
-            "Meticulous attention to detail"
+            "Nieuwste detailingtechnologie",
+            "Motorspecifieke middelen",
+            "Resultaten van showroomkwaliteit",
+            "Nauwkeurige aandacht voor detail"
           ]
         },
         {
           "id": 2,
-          "title": "Expert Technicians",
-          "subpara": "Our certified detailing experts bring unparalleled skill to every job:",
+          "title": "Deskundige technici",
+          "subpara": "Onze gecertificeerde detailing experts brengen ongeëvenaarde vaardigheden naar elke klus:",
           "details": [
-            "Certified detailing experts",
-            "Unparalleled skill for every job",
-            "Modern equipment and technology",
-            "Exceptional customer service"
+            "Gecertificeerde detailing experts",
+            "Ongeëvenaarde vaardigheden voor elke klus",
+            "Moderne apparatuur en technologie",
+            "Uitzonderlijke klantenservice"
           ]
         }
       ]
     },
     "founder_section": {
-      "title": "MEET THE FOUNDER",
+      "title": "ONTMOET DE OPRICHTER",
       "name": "Felicio Perk",
       "role": "Founder & CEO",
-      "bio": "Visit us, gain professional service of lower risk, top-tier work quality.",
+      "bio": "Bezoek ons Ben profiteer van professionele service met minder risico en werk van topkwaliteit.",
       "social_media": [
         "facebook",
         "instagram",
@@ -375,7 +375,7 @@
       ]
     },
     "gallery_section": {
-      "title": "See the Difference for Yourself",
+      "title": "Zie zelf het verschil",
       "cta": {
         "text": "Bekijk het verschil zelf! Boek vandaag nog.",
         "buttons": {
@@ -388,20 +388,20 @@
       "title": "TESTIMONIALS"
     },
     "cta_section": {
-      "title": "Ready for a Sparkling Clean Ride?",
-      "description": "Now Ready to make your car shine? Book online now and experience for yourself why so many customers choose Fast Clean Service!",
-      "button": "Book Now"
+      "title": "Klaar voor een sprankelende schoonmaak Rijden?",
+      "description": "Klaar om uw auto te laten stralen? Boek nu online en ervaar zelf waarom zoveel klanten voor Fast Clean Service kiezen!",
+      "button": "Boek Nu"
     }
   },
   "contact": {
-    "title": "CONTACT US",
-    "subtitle": "Always Available for You",
-    "description": "Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.",
+    "title": "NEEM CONTACT MET ONS OP",
+    "subtitle": "Altijd voor u bereikbaar",
+    "description": "Heeft u een vraag of wilt u een afspraak maken? Neem gerust contact met ons op! Fast Clean Service staat voor u klaar met professionele stoomreiniging en autodetailing, zowel op locatie als in onze vestiging.",
     "form": {
-      "name": "Name*",
+      "name": "Naam*",
       "email": "Email*",
-      "message": "Message*",
-      "button": "Submit"
+      "message": "Bericht*",
+      "button": "Verzenden"
     },
     "contact_details": {
       "phone": "020 2404004",
@@ -409,156 +409,156 @@
       "address": "Oranjweg 38 1566 HP Assendelft"
     },
     "working_hours": {
-      "title": "WORKING HOURS",
-      "description": "We work by appointment only! Do you want to come by for a treatment on location? Make an appointment in advance to ensure availability.",
-      "days": "Monday to Sunday",
+      "title": "WERKTIJDEN",
+      "description": "Wij werken uitsluitend op afspraak! Wilt u langskomen? Voor een behandeling op locatie? Maak vooraf een afspraak om beschikbaarheid te garanderen.",
+      "days": "Maandag t/m zondag",
       "hours": "08:00 - 17:30"
     },
     "faq": {
-      "title": "Frequently Asked Questions (FAQs)",
+      "title": "Veelgestelde vragen (FAQ)",
       "questions": [
         {
-          "question": "Do I need to make an appointment to visit your location?",
-          "answer": "Yes, we work by appointment only. This prevents long waiting times and ensures that we have enough time for your vehicle. Easily make an appointment via our website."
+          "question": "Moet ik een afspraak maken om langs te komen bij jullie vestiging?",
+          "answer": "Ja, wij werken uitsluitend op afspraak. Zo voorkomen we lange wachttijden en hebben we voldoende tijd voor uw auto. Maak eenvoudig een afspraak via onze website."
         },
         {
-          "question": "How can I make an appointment?",
-          "answer": "You can make an appointment via our online booking page, by telephone or via WhatsApp. We advise you to book in advance due to the crowds."
+          "question": "Hoe kan ik een afspraak maken?",
+          "answer": "Je kunt een afspraak maken via onze online boekingspagina, telefonisch of via WhatsApp. We adviseren om op tijd te reserveren i.v.m. de drukte."
         },
         {
-          "question": "Can you be reached via WhatsApp?",
-          "answer": "Yes, we can be reached via WhatsApp for questions, quotes and bookings. Click on the WhatsApp button on our website to contact us directly."
+          "question": "Zijn jullie bereikbaar via WhatsApp?",
+          "answer": "Ja, wij zijn bereikbaar via WhatsApp voor vragen, offertes en boekingen. Klik op de WhatsApp-knop op onze website om direct contact op te nemen."
         },
         {
-          "question": "What are your opening hours?",
-          "answer": "We are open 7 days a week from 08:00 – 17:30, but by appointment only. Contact us for availability."
+          "question": "Wat zijn jullie openingstijden?",
+          "answer": "Wij zijn 7 dagen per week geopend van 08:00 – 17:30 uur, maar uitsluitend op afspraak. Neem contact op voor beschikbaarheid."
         },
         {
-          "question": "Can I bring my car to you without an appointment?",
-          "answer": "No, we work by appointment only. This prevents waiting times and ensures that we can offer the best service."
+          "question": "Kan ik mijn auto zonder afspraak bij jullie langsbrengen?",
+          "answer": "Nee, wij werken alleen op afspraak. Dit voorkomt wachttijden en zorgt ervoor dat we de beste service kunnen bieden."
         },
         {
-          "question": "Do you offer home service?",
-          "answer": "Yes. We are a mobile detailing service and come to your home, work or other desired location. The first 30 km from our location are free; after that we charge a small mileage fee."
+          "question": "Bieden jullie service aan huis?",
+          "answer": "Ja. Wij zijn een mobiele detailingservice en komen bij jou thuis, op het werk of een andere gewenste locatie. De eerste 30 km vanaf onze vestiging zijn gratis, daarna rekenen we een kleine kilometervergoeding."
         },
         {
-          "question": "What is your drop-off location for mobile service?",
-          "answer": "Our drop-off location is Omweg 38, 1566 AZ Assendelft. From here we charge any additional mileage costs."
+          "question": "Wat is jullie uitrij-locatie voor mobiele service?",
+          "answer": "Onze uitrij-locatie is Omweg 38, 1566 AZ Assendelft. Vanaf hier berekenen we eventuele extra kilometerkosten."
         },
         {
-          "question": "Can I contact you for a business collaboration?",
-          "answer": "Certainly! We work with companies, fleets, leasing companies and garages. Send us an email or call us for a customized quote."
+          "question": "Kan ik contact opnemen voor een zakelijke samenwerking?",
+          "answer": "Zeker! Wij werken met bedrijven, wagenparken, leasebedrijven en garages. Stuur ons een e-mail of bel voor een op maat gemaakte offerte."
         },
         {
-          "question": "How quickly can I expect a response to my request?",
-          "answer": "We usually respond to emails and WhatsApp messages within 24 hours. For urgent questions, it is best to call us."
+          "question": "Hoe snel kan ik een reactie verwachten op mijn aanvraag?",
+          "answer": "Wij reageren doorgaans binnen 24 uur op e-mails en WhatsApp-berichten. Voor dringende vragen kun je ons het beste bellen."
         },
         {
-          "question": "What if I want to change or cancel my appointment?",
-          "answer": "No problem! Let us know at least 24 hours in advance, then we will schedule a new time together."
+          "question": "Wat als ik mijn afspraak wil wijzigen of annuleren?",
+          "answer": "Geen probleem! Laat het ons minimaal 24 uur van tevoren weten, dan plannen we samen een nieuw tijdstip in."
         }
       ]
     }
   },
   "fleetcare": {
     "title": "FleetCare",
-    "subtitle": "WagenPark Maintenance - Professional Maintenance for your Fleet",
-    "description": "At Fast Clean Service we offer a complete and worry-free service with WagenPark Maintenance maintenance solutions for business fleets. We understand that your vehicles have a role as the calling card of your company, and that is why we ensure that every vehicle is always there looking representative. With our mobile service, we perform maintenance on location, which takes some time and saves costs, without having to interrupt your business operations.",
-    "stitle": "Our Services",
+    "subtitle": "WagenPark Onderhoud - Professioneel onderhoud voor uw wagenpark",
+    "description": "Bij Fast Clean Service bieden we een complete en zorgeloze service met WagenPark Onderhoud onderhoudsoplossingen voor bedrijfswagenparken. Wij begrijpen dat uw voertuigen het visitekaartje van uw bedrijf zijn en daarom zorgen wij ervoor dat elk voertuig er altijd representatief uitziet. Met onze mobiele service voeren we onderhoud op locatie uit, wat tijd bespaart en kosten bespaart, zonder uw bedrijfsvoering te onderbreken.",
+    "stitle": "Onze Diensten",
     "services": [
       {
-        "title": "Exterior maintenance",
-        "description": "Thorough steam cleaning, washing, and protection of the paint."
+        "title": "Exterieuronderhoud",
+        "description": "Grondig stoomreinigen, wassen en beschermen van de lak."
       },
       {
-        "title": "Interior maintenance",
-        "description": "Deep cleaning with steam, vacuuming, dashboard cleaning, and cleaning upholstery."
+        "title": "Interieuronderhoud",
+        "description": "Diepgaande reiniging met stoom, stofzuigen, dashboardreiniging en bekledingreiniging."
       },
       {
-        "title": "Protective Coatings",
-        "description": "Long-lasting protection with high-quality waxes & coating treatments."
+        "title": "Beschermende Coatings",
+        "description": "Langdurige bescherming met hoogwaardige waxen en coatingbehandelingen."
       }
     ],
-    "quality_focus": "We focus on high quality using the latest techniques and environmentally friendly products. Your vehicles stay in top condition for longer, which ensures a sustainable and professional fleet.",
+    "quality_focus": "Wij richten ons op hoge kwaliteit met behulp van de nieuwste technieken en milieuvriendelijke producten. Uw voertuigen blijven langer in topconditie, wat zorgt voor een duurzaam en professioneel wagenpark.",
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Vraag een offerte aan",
       "fields": {
-        "business": "Business",
-        "address": "Address",
-        "name": "Name",
+        "business": "Zakelijk",
+        "address": "Adres",
+        "name": "Naam",
         "email": "Email",
-        "vehicle_type": "Vehicle Type",
-        "fleet_size": "Fleet Size",
+        "vehicle_type": "Voertuigtype",
+        "fleet_size": "Vlootgrootte",
         "vehicle_types": {
-          "none": "None",
-          "cars": "Cars (all types)",
+          "none": "Geen",
+          "cars": "Auto's (alle typen)",
           "suvs": "SUVs",
-          "bikes": "Bikes (all types)",
-          "trucks": "Trucks",
+          "bikes": "Motoren (alle typen)",
+          "trucks": "Vrachtauto's",
           "campers": "Campers",
-          "boats": "Boats"
+          "boats": "Boten"
         }
       },
-      "button": "Submit"
+      "button": "Verzenden"
     }
   },
   "other_vehicles": {
-    "title": "OTHER VEHICLES",
-    "subtitle": "Specialized AutoCare for Bikes, Boats, Planes, and More!",
+    "title": "ANDERE VOERTUIGEN",
+    "subtitle": "Gespecialiseerde autoverzorging voor motoren, boten, vliegtuigen en meer!",
     "description": [
       {
         "icon": "🚴",
-        "text": "Expert Bike Maintenance and Detailing"
+        "text": "Deskundig motoronderhoud en -detailing"
       },
       {
         "icon": "⛵",
-        "text": "Comprehensive Care for Boats"
+        "text": "Uitgebreide zorg voor boten"
       },
       {
         "icon": "✈️",
-        "text": "Precision Cleaning and Maintenance for Aircraft"
+        "text": "PPrecisiereiniging en -onderhoud voor vliegtuigen"
       },
       {
         "icon": "🚗",
-        "text": "Tailored Services for Specialty Vehicles"
+        "text": "Services op maat voor speciale voertuigen"
       }
     ],
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Vraag een offerte aan",
       "fields": {
-        "name": "Name",
+        "name": "Naam",
         "email": "Email",
-        "phone_number": "Phone Number",
+        "phone_number": "Telefoonnummer",
         "vehicle_type": {
-          "label": "Vehicle Type",
+          "label": "Voertuigtype",
           "options": {
-            "none": "None",
-            "bikes": "Bikes (all types)",
-            "trucks": "Trucks",
+            "none": "Geen",
+            "bikes": "Fietsen (alle typen)",
+            "trucks": "Vrachtauto's",
             "campers": "Campers",
-            "boats": "Boats"
+            "boats": "Boten"
           }
         },
         "service_type": {
           "label": "Service Type",
           "options": {
-            "none": "None",
+            "none": "Geen",
             "anywhere_autocare": "Anywhere AutoCare",
             "fleetcare_pro": "FleetCare Pro"
           }
         },
         "location": {
-          "label": "Location",
+          "label": "Locatie",
           "options": {
-            "none": "None",
+            "none": "Geen",
             "onsite": "Onsite",
-            "your_place": "Your Place"
+            "your_place": "Uw plek"
           }
         },
-        "address": "Address",
-        "number_of_vehicles": "Number of Vehicles"
+        "address": "Adres",
+        "number_of_vehicles": "Aantal voertuigen"
       },
-      "button": "Submit"
+      "button": "Verzenden"
     }
   },
   "anywhere_autocare": {
@@ -1128,185 +1128,186 @@
     ]
   },
   "feedback": {
-    "title": "Your Feedback Matters!",
-    "subtitle": "Leave Your Review and tell us how we helped you!",
+    "title": "Uw Feedback Telt!",
+    "subtitle": "Laat uw review achter en vertel ons hoe we u geholpen hebben!",
     "form_fields": {
-      "name": "Name",
-      "last_name": "Last Name",
+      "name": "Naam",
+      "last_name": "Achternaam",
       "service": "Service",
-      "date_of_appointment": "Date of Appointment",
-      "rating": "Rate Your Experience",
-      "review": "Share Your Experience Here..."
+      "date_of_appointment": "Datum van de Afspraak",
+      "rating": "Beoordeel uw Ervaring",
+      "review": "Deel hier uw Ervaring..."
     },
     "buttons": {
-      "submit": "Submit Feedback"
+      "submit": "Feedback indienen"
     }
   },
   "terms_and_conditions": {
-    "title": "Terms & Conditions – Fast Clean Service",
+    "title": "Algemene voorwaarden – Fast Clean Service",
     "sections": {
       "definitions": {
-        "title": "Article 1: Definitions",
+        "title": "Artikel 1: Definities",
         "content": [
-          "Order: Any agreement between the Customer and Fast Clean Service, whereby Fast Clean Service cleans vehicles for a fee.",
-          "Customer: The natural person or legal entity that has a vehicle cleaned by Fast Clean Service.",
-          "Fast Clean Service: The contractor, registered with the Chamber of Commerce under number 70208085, located at Omweg 38, 1566 HP Assendelft."
+          "Opdracht: Iedere overeenkomst tussen Klant en Fast Clean Service, waarbij Fast Clean Service tegen betaling voertuigen reinigt.",
+          "Klant: De natuurlijke persoon of rechtspersoon die een voertuig door Fast Clean Service laat reinigen.",
+          "Fast Clean Service: De opdrachtnemer, ingeschreven bij de Kamer van Koophandel onder nummer 70208085, gevestigd aan de Omweg 38, 1566 HP Assendelft."
         ]
       },
       "articles": [
         {
-          "title": "Article 2: Applicability",
+          "title": "Artikel 2: Toepasselijkheid",
           "content": [
-            "These general terms and conditions apply to all quotations, services and agreements between Fast Clean Service and the Customer, unless expressly agreed otherwise in writing."
+            "Deze algemene voorwaarden zijn van toepassing op alle offertes, diensten en overeenkomsten tussen Fast Clean Service en Klant, tenzij uitdrukkelijk en schriftelijk anders is overeengekomen."
           ]
         },
         {
-          "title": "Article 3: Appointments & Cancellation",
+          "title": "Artikel 3: Afspraken & Annulering",
           "content": [
-            "Appointments can be cancelled up to 24 hours before the start of the appointment. In that case, the customer will receive the full amount paid as store credit, to be used for a future booking.",
-            "In case of cancellation within 24 hours before the start or in case of a no‑show, the full costs of the booked cleaning will be charged.",
-            "Fast Clean Service reserves the right to reschedule appointments free of charge in case of bad weather conditions or force majeure."
+            "Afspraken kunnen tot 24 uur voor aanvang van de afspraak worden geannuleerd. In dat geval ontvangt de klant het volledige betaalde bedrag als tegoedbon, te gebruiken voor een volgende boeking.",
+            "Bij annulering binnen 24 uur voor aanvang of bij no-show worden de volledige kosten van de geboekte schoonmaak in rekening gebracht.",
+            "Fast Clean Service behoudt zich het recht voor om afspraken kosteloos te verplaatsen in geval van slechte weersomstandigheden of overmacht."
           ]
         },
         {
-          "title": "Article 4: Travel surcharge",
+          "title": "Artikel 4: Reiskostenvergoeding",
           "content": [
-            "The standard departure point for mobile services is Omweg 38, 1566 HP Assendelft. If a franchise location is closer, this will be used as the departure point.",
-            "No additional costs will be charged for distances up to 30 km.",
-            "For distances above 30 km, €0.60 per additional kilometre will be charged.",
-            "The distance is automatically calculated based on the customer address provided."
+            "Het standaard vertrekpunt voor mobiele diensten is Omweg 38, 1566 HP Assendelft. Indien een franchiselocatie dichterbij is, wordt dit als vertrekpunt gebruikt.",
+            "Voor afstanden tot 30 km worden geen extra kosten in rekening gebracht.",
+            "Voor afstanden boven de 30 km wordt € 0,60 per extra kilometer in rekening gebracht.",
+            "De afstand wordt automatisch berekend op basis van het opgegeven klantadres."
+
           ]
         },
         {
-          "title": "Article 5: Payment & Invoice",
+          "title": "Artikel 5: Betaling & Factuur",
           "content": [
-            "Payment must always be made in advance via the website.",
-            "Invoices are automatically sent after payment has been completed. Accepted payment methods via Stripe: iDEAL, Visa, Mastercard, Apple Pay, Google Pay.",
-            "Accepted payment methods via Coinbase (crypto): Bitcoin (BTC), Ethereum (ETH), Ripple (XRP), Litecoin (LTC), Solana (SOL)."
+            "Betaling dient altijd vooraf via de website te geschieden.",
+            "Facturen worden automatisch verzonden nadat de betaling is voltooid. Geaccepteerde betaalmethoden via Stripe: iDEAL, Visa, Mastercard, Apple Pay, Google Pay.",
+            "Geaccepteerde betaalmethoden via Coinbase (crypto): Bitcoin (BTC), Ethereum (ETH), Ripple (XRP), Litecoin (LTC), Solana (SOL)."
           ]
         },
         {
-          "title": "Article 6: Liability",
+          "title": "Artikel 6: Aansprakelijkheid",
           "content": [
-            "Fast Clean Service is not liable for existing damage or damage to sensitive vehicle parts.",
-            "No guarantee is given for complete removal of stains or scratches.",
-            "In the case of intensive treatments, such as polishing and deep cleaning, the execution is at the customer's risk."
+            "Fast Clean Service is niet aansprakelijk voor bestaande schade of schade aan gevoelige voertuigonderdelen.",
+            "Er wordt geen garantie gegeven op het volledig verwijderen van vlekken of krassen.",
+            "Bij intensieve behandelingen, zoals polijsten en dieptereiniging, is de uitvoering voor risico van de klant."
           ]
         },
         {
-          "title": "Article 7: Complaints",
+          "title": "Artikel 7: Klachten",
           "content": [
-            "Complaints must be reported immediately after the work has been carried out.",
-            "Complaints reported later will only be processed if there are demonstrable shortcomings."
+            "Klachten dienen direct na uitvoering van de werkzaamheden te worden gemeld.",
+            "Klachten die later worden gemeld, worden alleen in behandeling genomen indien er sprake is van aantoonbare tekortkomingen."
           ]
         },
         {
-          "title": "Article 8: Right of withdrawal",
+          "title": "Artikel 8: Herroepingsrecht",
           "content": [
-            "The services of Fast Clean Service fall under customisation and are excluded from the statutory right of withdrawal as soon as the work has started or been carried out."
+            "De diensten van Fast Clean Service vallen onder maatwerk en zijn uitgesloten van het wettelijk herroepingsrecht zodra de werkzaamheden zijn aangevangen of uitgevoerd."
           ]
         },
         {
-          "title": "Article 9: Access & Workspace",
+          "title": "Artikel 9: Toegang & Werkruimte",
           "content": [
-            "The customer must ensure sufficient workspace and accessibility of the vehicle, so that the work can be carried out safely and efficiently."
+            "De klant dient zorg te dragen voor voldoende werkruimte en bereikbaarheid van het voertuig, zodat de werkzaamheden veilig en efficiënt kunnen worden uitgevoerd."
           ]
         },
         {
-          "title": "Article 10: Use of Images",
+          "title": "Artikel 10: Gebruik van afbeeldingen",
           "content": [
-            "Fast Clean Service reserves the right to use images of work carried out for marketing purposes, unless the customer objects to this before the start of the service."
+            "Fast Clean Service behoudt zich het recht voor om afbeeldingen van uitgevoerde werkzaamheden te gebruiken voor marketingdoeleinden, tenzij de klant hiertegen vóór aanvang van de dienstverlening bezwaar maakt."
           ]
         },
         {
-          "title": "Article 11: Applicable law",
+          "title": "Artikel 11: Toepasselijk recht",
           "content": [
-            "All legal relationships with Fast Clean Service are exclusively governed by Dutch law.",
-            "Any disputes will be submitted to the competent court in Amsterdam."
+            "Op alle rechtsverhoudingen met Fast Clean Service is uitsluitend Nederlands recht van toepassing.",
+            "Alle geschillen zullen worden voorgelegd aan de bevoegde rechter te Amsterdam."
           ]
         }
       ]
     }
   },
   "privacy_policy": {
-    "title": "Privacy Policy",
+    "title": "Privacybeleid",
     "sections": {
       "intro": {
-        "last_updated": "Last updated: January 25, 2025",
+        "last_updated": "Laatst bijgewerkt: 25 januari 2025",
         "paragraphs": [
-          "This Privacy Policy describes Fast Clean Service's policies regarding the collection, use, and disclosure of your information when you use our Services. It explains your privacy rights and how the law protects you.",
-          "We use your personal information to provide and improve our Service. By using our Service, you agree to the collection and use of information as described in this policy."
+          "Dit privacybeleid beschrijft het beleid van Fast Clean Service met betrekking tot het verzamelen, gebruiken en openbaar maken van uw gegevens wanneer u onze diensten gebruikt. Het legt uw privacyrechten uit en hoe de wet u beschermt.",
+          "We gebruiken uw persoonsgegevens om onze dienst te leveren en te verbeteren. Door onze dienst te gebruiken, gaat u akkoord met het verzamelen en gebruiken van gegevens zoals beschreven in dit beleid."
         ]
       },
-      "articles": [
+      "artikelen": [
         {
-          "title": "Interpretation and Definitions",
-          "content": [
-            "Interpretation",
-            "Capitalized words have the meanings defined below. The following definitions have the same meaning regardless of whether they appear in the singular or plural.",
-            "Definitions",
-            "\"Account\" means a unique account created for you to access our Service.",
-            "\"Company\" means Fast Clean Service, Omweg 38, 1566 HP Assendelft.",
-            "\"Cookies\" means small files placed on your device by a website.",
-            "\"Country\": Netherlands.",
-            "\"Device\": any device that can be used to access our service, such as a computer or smartphone.",
-            "\"Personal Data\": information relating to an identified or identifiable person.",
-            "\"Service\": the Fast Clean Service website, accessible via https://fast-clean-service.onrender.com/",
-            "\"Service Provider\": any natural or legal person who processes the data on behalf of the company.",
-            "\"Usage Data\": data collected automatically when using the service.",
-            "\"You\": the person using the service or representing the company."
+          "titel": "Interpretatie en definities",
+          "inhoud": [
+            "Interpretatie",
+            "Woorden met een hoofdletter hebben de hieronder gedefinieerde betekenis. De volgende definities hebben dezelfde betekenis, ongeacht of ze in het enkelvoud of meervoud voorkomen.",
+            "Definities",
+            "\"Account\" betekent een uniek account dat voor u is aangemaakt om toegang te krijgen tot onze Service.",
+            "\"Bedrijf\" betekent Fast Clean Service, Omweg 38, 1566 HP Assendelft.",
+            "\"Cookies\" betekent kleine bestanden die door een website op uw apparaat worden geplaatst.",
+            "\"Land\": Nederland.",
+            "\"Apparaat\": elk apparaat dat kan worden gebruikt om toegang te krijgen tot onze service, zoals een computer of smartphone.",
+            "\"Persoonsgegevens\": informatie met betrekking tot een geïdentificeerde of identificeerbare persoon.",
+            "\"Service\": de website van Fast Clean Service, toegankelijk via https://fast-clean-service.onrender.com/",
+            "Dienstverlener: iedere natuurlijke of rechtspersoon die namens het bedrijf gegevens verwerkt.",
+            "Gebruiksgegevens: gegevens die automatisch worden verzameld tijdens het gebruik van de dienst.",
+            "U: de persoon die de dienst gebruikt of het bedrijf vertegenwoordigt."
           ]
         },
         {
-          "title": "Data Collection and Use",
+          "title": "Gegevensverzameling en -gebruik",
           "content": [
-            "Types of Data Collected",
-            "Personal Data",
-            "While using our Service, we may ask you to provide us with certain personally identifiable information, including:",
-            "Email address",
-            "First and last name",
-            "Phone number",
-            "License plate number",
-            "Location data for travel cost calculation",
-            "Payment information (for processing via Stripe or Coinbase only – not stored by us)",
-            "Use of Your Data",
-            "We use your personal data for the following purposes:",
-            "To provide and administer our services",
-            "For customer support",
-            "To contact you regarding bookings",
-            "To process payments via Stripe or Coinbase",
-            "For marketing purposes, only if you have explicitly consented to this",
-            "To improve our services"
+            "Soorten verzamelde gegevens",
+            "Persoonsgegevens",
+            "Tijdens het gebruik van onze Dienst kunnen wij u vragen om bepaalde persoonlijk identificeerbare informatie te verstrekken, waaronder:",
+            "E-mailadres",
+            "Voornaam en achternaam",
+            "Telefoonnummer",
+            "Kenteken",
+            "Locatiegegevens voor reiskostenberekening",
+            "Betaalgegevens (alleen voor verwerking via Stripe of Coinbase – niet door ons opgeslagen)",
+            "Gebruik van uw gegevens",
+            "Wij gebruiken uw persoonsgegevens voor de volgende doeleinden:",
+            "Om onze diensten te leveren en te beheren",
+            "Voor klantenondersteuning",
+            "Om contact met u op te nemen over boekingen",
+            "Om betalingen te verwerken via Stripe of Coinbase",
+            "Voor marketingdoeleinden, alleen als u hier expliciet toestemming voor heeft gegeven",
+            "Om onze diensten te verbeteren"
           ]
         },
         {
           "title": "Cookies",
           "content": [
-            "We use cookies to enhance your experience, analyze our website performance, and display tailored content. You can choose to decline cookies through your browser settings."
+            "Wij gebruiken cookies om uw ervaring, analyseer de prestaties van onze website en toon op maat gemaakte content. U kunt cookies weigeren via uw browserinstellingen."
           ]
         },
         {
-          "title": "Sharing Your Data",
+          "title": "Delen van uw gegevens",
           "content": [
-            "We do not share your data with third parties, unless this is necessary for the performance of our service (such as with payment providers), or if required by law."
+            "We delen uw gegevens niet met derden, tenzij dit noodzakelijk is voor de uitvoering van onze dienst (zoals met betalingsproviders) of indien wettelijk vereist."
           ]
         },
         {
-          "title": "Data Security",
+          "title": "Gegevensbeveiliging",
           "content": [
-            "The security of your information is important to us. We use industry standard security measures to protect your personal information. However, no method of transmission over the Internet, or method of electronic storage, is 100% secure."
+            "De beveiliging van uw gegevens is belangrijk voor ons. We gebruiken industriestandaard beveiligingsmaatregelen om uw persoonsgegevens te beschermen. Geen enkele methode van overdracht via internet of elektronische opslagmethode is echter 100% veilig."
           ]
         },
         {
-          "title": "Your Rights",
+          "title": "Uw rechten",
           "content": [
-            "You have the right to access, correct, or delete your personal information. Please contact us at info@fastcleanservice.nl for any requests regarding your information."
+            "U hebt het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. Neem contact met ons op via info@fastcleanservice.nl voor vragen over uw gegevens."
           ]
         },
         {
-          "title": "Changes to this Privacy Policy",
+          "title": "Wijzigingen in dit privacybeleid",
           "content": [
-            "We may update this privacy policy from time to time. We advise you to review this policy periodically. Changes are effective when they are posted on this page."
+            "We kunnen dit privacybeleid van tijd tot tijd bijwerken. We raden u aan dit beleid regelmatig te raadplegen. Wijzigingen treden in werking zodra ze op deze pagina worden geplaatst."
           ]
         },
         {
@@ -1314,104 +1315,104 @@
           "content": [
             "Fast Clean Service",
             "Omweg 38, 1566 HP Assendelft",
-            "Email: info@fastcleanservice.nl"
+            "E-mail: info@fastcleanservice.nl"
           ]
         }
       ]
     }
   },
   "customer_dashboard": {
-    "title": "Customer Dashboard",
+    "title": "Klantendashboard",
     "options": [
       "Dashboard",
-      "My Bookings"
+      "Mijn boekingen"
     ],
     "sections": [
       {
-        "title": "Dashboard Overview",
+        "title": "Dashboardoverzicht",
         "widgets": [
           {
-            "title": "My Bookings",
-            "description": "View and manage your car care bookings.",
+            "title": "Mijn boekingen",
+            "description": "Bekijk en beheer uw auto-onderhoudsboekingen.",
             "table_headers": [
-              "Customer Name",
-              "Vehicle",
-              "Location",
+              "Klantnaam",
+              "Voertuig",
+              "Locatie",
               "Service",
-              "Package",
-              "Appointment",
-              "Price",
-              "Payment Status"
+              "Pakket",
+              "Afspraak",
+              "Prijs",
+              "Betaalstatus"
             ]
           },
           {
-            "title": "Notifications",
-            "none": "No Notifications available."
+            "title": "Meldingen",
+            "none": "Geen meldingen beschikbaar."
           }
         ]
       },
       {
-        "title": "My Bookings",
-        "search_placeholder": "Search by Vehicle, Service, or City",
+        "title": "Mijn boekingen",
+        "search_placeholder": "Zoeken op voertuig, service of stad",
         "table_headers": [
-          "Customer Name",
-          "Company Name",
-          "Street",
-          "Zip Code",
-          "City",
-          "Email",
-          "Phone Number",
-          "Vehicle",
-          "Vehicle Type",
-          "Service Name",
-          "Package",
-          "Appointment Start",
-          "Appointment End",
-          "Price",
-          "Duration",
-          "Travel Duration",
+          "Klantnaam",
+          "Bedrijfsnaam",
+          "Straat",
+          "Postcode",
+          "Plaats",
+          "E-mailadres",
+          "Telefoonnummer",
+          "Voertuig",
+          "Voertuigtype",
+          "Naam service",
+          "Pakket",
+          "Start afspraak",
+          "Einde afspraak",
+          "Prijs",
+          "Duur",
+          "Reisduur",
           "Type",
-          "Addons",
-          "Detailing",
-          "Lock Time Start",
-          "Lock Time End"
+          "Aanvullingen",
+          "Details",
+          "Start vergrendelingstijd",
+          "Einde vergrendelingstijd"
         ]
       }
     ]
   },
   "header": {
-    "logo": "Fast Clean Service",
-    "navigation": {
+    "logo": "Snelle Schoonmaakservice",
+    "navigatie": {
       "home": "Home",
-      "about": "About",
+      "about": "Over",
       "services": {
-        "title": "Services",
-        "options": [
+        "title": "Diensten",
+        "opties": [
           "FleetCare Pro",
           "Anywhere Autocare",
-          "Subscriptions",
-          "Other Vehicles",
-          "Store"
+          "Abonnementen",
+          "Andere voertuigen",
+          "Winkel"
         ]
       },
       "contact": "Contact"
     },
-    "buttons": {
-      "login": "Log In",
-      "signup": "Sign Up",
-      "book_now": "Book Now"
+    "knoppen": {
+      "login": "Inloggen",
+      "signup": "Aanmelden",
+      "book_now": "Boek nu"
     }
   },
   "footer": {
     "links": {
       "home": "Home",
-      "about": "About",
+      "about": "Over",
       "contact": "Contact",
-      "services": "Services"
+      "services": "Diensten"
     },
     "terms_privacy": {
-      "terms": "Terms & Conditions",
-      "privacy": "Privacy Policy"
+      "terms": "Voorwaarden & Voorwaarden",
+      "privacy": "Privacybeleid"
     },
     "social_media": {
       "facebook": "https://facebook.com",
@@ -1420,7 +1421,7 @@
       "youtube": "https://youtube.com",
       "email": "mailto:support@fastclean.com"
     },
-    "copyright": "\u00a9 2025 Fast Clean Service. All rights reserved."
+    "copyright": "\u00a9 2025 Fast Clean Service. Alle rechten voorbehouden."
   },
   "cookie_banner": {
     "title": "We respect your privacy",
