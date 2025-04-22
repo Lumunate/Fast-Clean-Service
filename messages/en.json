@@ -96,8 +96,8 @@
       "description": "Want that little bit extra? Expand your treatment with additional services for an even better result. Choose from interior, exterior or detailing options and create your own ideal treatment.",
       "services": [
         {
-          "title": "Interior Add-ons",
-          "description": "Give your car extra attention on the outside. From convertible roof and sliding roof cleaning to cleaning the fuel filler flap and bonnet. Removing fly rust, resin or moss from seams is also an option. Plastic parts can be polished extra, and sills and door edges are thoroughly included.",
+          "title": "Steam Cleaning Interior & Exterior",
+          "description": "A deep cleaning that removes dirt, stains and unpleasant odours, without harsh chemicals. Our environmentally friendly steam technology leaves your car fresh and hygienic.",
           "bullets": [
             "✔ Thorough cleaning without residue",
             "✔ Safe for fabric, leather and plastic"
@@ -105,7 +105,7 @@
           "description2": "📅 Book now and give your car the fresh start it deserves."
         },
         {
-          "title": "Exterior Add-ons",
+          "title": "Paint Protection & Coatings",
           "description": "Protect your car's paint and make it shine like new again. Our professional wax and coating treatments provide long‑lasting protection against dirt, UV radiation and weather influences.",
           "bullets": [
             "✔ Deep shine and water‑repellent effect",
@@ -114,8 +114,8 @@
           "description2": "📅 Schedule a detailing treatment."
         },
         {
-          "title": "Detailing Add-ons",
-          "description": "Complete your treatment with professional detailing. Think of polishing headlights or chrome parts, a clay bar treatment for smooth paint, or a protective paint sealant. Choose from 1-, 2- or 3-step polishing for the best result, or go for a durable glass coating that protects your car for a long time.",
+          "title": "Polishing & Headlight Restoration",
+          "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
           "bullets": [
             "✔ Removes dullness and yellowing for brighter light",
             "✔ Better visibility and a fresher look"
