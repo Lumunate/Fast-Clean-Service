@@ -138,20 +138,20 @@
       "title": "OUR PACKAGES",
       "packages": [
         {
-          "title": "Machine Rental",
-          "description": "Rent professional detailing equipment for temporary use - ideal for DIYers, hobbyists or self-employed people."
+          "title": "Steam Cleaning & Detailing",
+          "description": "On-site or in our workshop. Interior and exterior thoroughly cleaned and protected."
         },
         {
-          "title": "Subscriptions",
-          "description": "Fixed cleaning times at a low rate. Never worry about your car care again."
+          "title": "Commercial Fleet Service",
+          "description": " Professional maintenance for commercial vehicles and fleets."
         },
         {
-          "title": "Business Services",
-          "description": "Fleet maintenance for companies, leasing companies and mobility services. Efficient, scalable and professional."
+          "title": "Detailing & Paint Correction",
+          "description": "Removes swirls and micro-scratches. Restores deep gloss and paint seal.\n"
         },
         {
-          "title": "Training & Coaching",
-          "description": "Learn to detail like a pro or start your own cleaning company with our e-books, practical training and guidance."
+          "title": "Paint Protection & Coating",
+          "description": "Long-lasting protection against dirt, UV and weather influences. Keeps your car in top condition for longer."
         }
       ]
     },
