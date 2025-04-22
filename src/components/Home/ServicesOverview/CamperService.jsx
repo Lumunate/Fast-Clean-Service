@@ -80,9 +80,10 @@ export default function CamperService() {
         <CamperServiceBox id="fleet-care-pro">
           <FadeIn direction="left" distance={100} duration={1}>
             <Box>
-              <ServiceHeading>{t("services.0.title")}</ServiceHeading>
+              <ServiceHeading>{t("services.0.titlemain")}</ServiceHeading>
+              <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.0.titlesub")}</ServiceHeading>
               <ServiceItemDesciptionB>{t("services.0.description")}</ServiceItemDesciptionB>
-              <ServiceItemHighlight>{t("services.0.highlight")}</ServiceItemHighlight>
+              <ServiceItemHighlight><span dangerouslySetInnerHTML={{ __html: t("services.0.highlight") }} /></ServiceItemHighlight>
             </Box>
             <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
               {t("services.0.button.text")}
@@ -93,11 +94,13 @@ export default function CamperService() {
         <CamperServiceBox id="subscriptions">
           <FadeIn direction="right" distance={100} duration={1}>
             <Box>
-              <ServiceHeading>{t("services.1.title")}</ServiceHeading>
+              <ServiceHeading>{t("services.1.titlemain")}</ServiceHeading>
+              <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.1.titlesub")}</ServiceHeading>
               <ServiceItemDesciptionB>{t("services.1.description")}</ServiceItemDesciptionB>
-              <ServiceItemHighlight>{t("services.1.highlight")}</ServiceItemHighlight>
+              <ServiceItemHighlight><span dangerouslySetInnerHTML={{ __html: t("services.1.highlight") }} />
+              </ServiceItemHighlight>
 
-              <ServiceItemHighlight special>{t("services.1.special_highlight")}</ServiceItemHighlight>
+              {/*<ServiceItemHighlight special>{t("services.1.special_highlight")}</ServiceItemHighlight>*/}
             </Box>
             <ServiceItemCTA sx={{ marginTop: "2rem" }} special onClick={() => (window.location.href = "/subscribe")}>
               {t("services.0.button.text")}
