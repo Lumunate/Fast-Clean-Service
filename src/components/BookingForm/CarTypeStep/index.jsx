@@ -15,12 +15,14 @@ import Subtract1 from '../../../../public/carsIcons/Subtract-1.svg';
 import Subtract2 from '../../../../public/carsIcons/Subtract-2.svg';
 import Subtract3 from '../../../../public/carsIcons/Subtract-3.svg';
 import Subtract from '../../../../public/carsIcons/Subtract.svg';
+import HatchBack from '../../../../public/carsIcons/hatchback-car.svg';
 import Union1 from '../../../../public/carsIcons/Union-1.svg';
 import Union2 from '../../../../public/carsIcons/Union-2.svg';
 import Union3 from '../../../../public/carsIcons/Union-3.svg';
 import UnionIcon from '../../../../public/carsIcons/Union.svg';
 import BikeIcon from '../../../../public/bookingFormIcons/BikeIcon.png';
-import SuvIcon from '../../../../public/carsIcons/suv.webp';
+import SuvIcon from '../../../../public/carsIcons/suv.svg';
+import WagonIcon from '../../../../public/carsIcons/wagon.svg';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
 import {useTranslations} from "next-intl";
 
@@ -113,7 +115,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.0"),
       icon: (
         <Image
-          src={Subtract}
+          src={HatchBack}
           alt={'car type'}
           width={40}
           height={40}
@@ -125,7 +127,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.1"),
       icon: (
         <Image
-          src={UnionIcon}
+          src={Subtract2}
           alt={'car type'}
           width={40}
           height={40}
@@ -137,7 +139,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.2"),
       icon: (
         <Image
-          src={SuvIcon}
+          src={UnionIcon}
           alt={'car type'}
           width={40}
           height={40}
@@ -149,7 +151,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.3"),
       icon: (
         <Image
-          src={Subtract2}
+          src={Subtract1}
           alt={'car type'}
           width={40}
           height={40}
@@ -161,7 +163,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.4"),
       icon: (
         <Image
-          src={UnionIcon}
+          src={WagonIcon}
           alt={'car type'}
           width={40}
           height={40}
@@ -173,7 +175,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.5"),
       icon: (
         <Image
-          src={Union2}
+          src={SuvIcon}
           alt={'car type'}
           width={40}
           height={40}
@@ -185,7 +187,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.6"),
       icon: (
         <Image
-          src={Subtract1}
+          src={Union3}
           alt={'car type'}
           width={40}
           height={40}
@@ -197,7 +199,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.7"),
       icon: (
         <Image
-          src={Subtract3}
+          src={Union2}
           alt={'car type'}
           width={40}
           height={40}
@@ -209,7 +211,7 @@ const Index = () => {
       name: t("steps.2.vehicle_types.8"),
       icon: (
         <Image
-          src={Union3}
+          src={Subtract}
           alt={'car type'}
           width={40}
           height={40}
