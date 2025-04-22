@@ -1020,6 +1020,10 @@
       "On-location",
       "Detailing Shop"
     ],
+    "toggleInfo": [
+      "We come to you, wherever you are.",
+      "Visit our location: Omweg 38, Assendelft."
+    ],
     "stepbar": [
       "Location",
       "License Plate",
