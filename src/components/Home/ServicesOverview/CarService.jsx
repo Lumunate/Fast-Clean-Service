@@ -50,11 +50,11 @@ export default function CarService() {
   ];
 
   return (
-    <CarServicesContainer>
-      {servicesData.map(({ img, title, description, anchor }, index) => (
-        <CarServiceItem key={index} anchor={anchor} icon={img} title={title} description={description} />
-      ))}
-    </CarServicesContainer>
+      <CarServicesContainer>
+        {servicesData.map(({ img, title, description, anchor }, index) => (
+            <CarServiceItem key={index} anchor={anchor} icon={img} title={title} description={description} />
+        ))}
+      </CarServicesContainer>
   );
 }
 
@@ -68,41 +68,41 @@ const CarServiceItem = ({ icon, title, description, anchor }) => {
   };
 
   return (
-    <ServiceItemContainer onClick={handleClick}>
-      <ServiceItemBox>
-        <ServiceItemIconContainer>
-          <ServiceItemIcon
-            src={icon}
-            alt={title}
-            width={65}
-            height={65}
-            sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
-          />
-        </ServiceItemIconContainer>
+      <ServiceItemContainer onClick={handleClick}>
+        <ServiceItemBox>
+          <ServiceItemIconContainer>
+            <ServiceItemIcon
+                src={icon}
+                alt={title}
+                width={65}
+                height={65}
+                sx={{ "@media (max-width: 600px)": { transform: "scale(0.6)" } }}
+            />
+          </ServiceItemIconContainer>
 
-        <ServiceItemHeading variant={"h4"}>{title}</ServiceItemHeading>
+          <ServiceItemHeading variant={"h4"}>{title}</ServiceItemHeading>
 
-        <ServiceItemDescription variant={"p"}>{description}</ServiceItemDescription>
-        <Link href="/aboutus" passHref>
-          <Button
-              variant="contained"
-              sx={{
-                padding: "1rem 3rem",
-                fontSize: "1.5rem",
-                fontWeight: 500,
-                borderRadius: "50px",
-                backgroundColor: "#fff",
-                color: "black",
-                fontFamily: "DMSans",
-                "&:hover": {
-                  backgroundColor: theme.palette.primary.accent,
-                },
-              }}
-          >
-            More Information
-          </Button>
-        </Link>
-      </ServiceItemBox>
-    </ServiceItemContainer>
+          <ServiceItemDescription variant={"p"}>{description}</ServiceItemDescription>
+          <Link href="/aboutus" passHref>
+            <Button
+                variant="contained"
+                sx={{
+                  padding: "1rem 3rem",
+                  fontSize: "1.5rem",
+                  fontWeight: 500,
+                  borderRadius: "50px",
+                  backgroundColor: "#fff",
+                  color: "black",
+                  fontFamily: "DMSans",
+                  "&:hover": {
+                    backgroundColor: theme.palette.primary.accent,
+                  },
+                }}
+            >
+              More Information
+            </Button>
+          </Link>
+        </ServiceItemBox>
+      </ServiceItemContainer>
   );
 };

@@ -311,6 +311,59 @@
           "description": "Deep cleaning for a fresh, well-groomed appearance."
         }
       ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions (FAQs)",
+      "questions": [
+        {
+          "question": "Where can I have my car cleaned?",
+          "answer": "You can choose to have it cleaned on location or visit our location. Both options offer the same high-quality service."
+        },
+        {
+          "question": "How long does a standard cleaning take?",
+          "answer": [
+            "Standard cleaning: ± 1 hour",
+            "Deluxe cleaning: 1.5 – 2 hours",
+            "Premium detailing & coating: 4+ hours"
+          ]
+        },
+        {
+          "question": "What is the difference between the cleaning packages?",
+          "answer": [
+            "Standard: Basic cleaning for interior or exterior.",
+            "Deluxe: Thorough deep cleaning with extra protection.",
+            "Premium: Full detailing, polishing and paint sealing."
+          ]
+        },
+        {
+          "question": "How long does a ceramic coating last?",
+          "answer": "Depending on the coating you choose, your paint will be protected against dirt, UV and weather influences for 6 months to 5 years."
+        },
+        {
+          "question": "Do you need electricity or water on location?",
+          "answer": "Yes, we need a power and water connection. Please indicate when booking whether this is available."
+        },
+        {
+          "question": "How quickly can I make an appointment?",
+          "answer": "You can usually get an appointment within 2 to 5 days. During busy periods, the waiting time may be slightly longer."
+        },
+        {
+          "question": "My car is extremely dirty, what now?",
+          "answer": "For heavily soiled vehicles, we recommend deluxe or premium detailing. Contact us if you are unsure about the best option."
+        },
+        {
+          "question": "Do you offer cleaning for commercial vehicles and fleets?",
+          "answer": "Yes! We have special fleet services for companies, including on-site maintenance."
+        },
+        {
+          "question": "How can I pay?",
+          "answer": "You can easily pay via iDEAL, pin or cash."
+        },
+        {
+          "question": "Do you offer subscriptions?",
+          "answer": "Yes, with a subscription your car will always stay clean at a fixed, affordable rate."
+        }
+      ]
     }
   },
   "about": {

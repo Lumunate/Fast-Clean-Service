@@ -8,6 +8,7 @@ import Testimonials from "../../components/Home/testimonials/Testimonials";
 import ServicesOverview from "../../components/Home/ServicesOverview/ServicesOverview";
 import About from "../../components/Home/about/About";
 import Services from "../../components/Home/services/Services";
+import Questions from "../../components/Home/faq";
 import OverServiceOverview from "../../components/Home/overServices/OverServiceOverview"
 import HowDoesItWork from "../../components/Home/howDoesItWork/HowDoesItWork";
 import { Box } from "@mui/material";
@@ -69,6 +70,10 @@ export default function Home() {
                       <DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results"
                                         textBox2="Fast, Flawless, Eco-Friendly"/>
                   </Box>
+
+                  <HomePkgsInBox sx={{margin: "0 auto", justifyContent: "center", "@media (max-width: 1150px)": {width: "100%"}}}>
+                      <Questions/>
+                  </HomePkgsInBox>
 
                   <HomePkgsInBox sx={{margin: "0 auto"}}>
                       {/* <Box
