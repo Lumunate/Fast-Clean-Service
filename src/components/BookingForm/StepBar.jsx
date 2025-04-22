@@ -80,7 +80,7 @@ const StepBar = () => {
       <StepBarLine />
       <StepsContainer>
         {items.map((item, index) => {
-          let adjustedIndex = index >= 5 ? index + 1 : index; // Adjust the index to skip sub package step
+          let adjustedIndex = index >= 5 ? index + 1 : index;
           return (
             <StepItem
               key={index}

@@ -611,7 +611,7 @@ export const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
 // STEP BAR
 
 export const StepBarContainer = styled(Box)(({ theme }) => ({
-  maxWidth: "765px",
+  maxWidth: "890px",
   margin: "0 auto",
   position: "relative",
   "@media (max-width: 600px)": {
@@ -700,8 +700,14 @@ export const StepImageContainer = styled(Box)(({ theme, selected = false, curren
 export const StepLabel = styled(Typography)(({ theme, current }) => ({
   marginTop: "10px",
   fontFamily: "Unbounded",
-  fontSize: "8px",
+  fontSize: "12px",
   color: current ? theme.palette.mode === "dark" ? "#fff" : "black" : theme.palette.mode === "dark" ? "#FFFFFF" : "#A4A4A4",
+  "@media (max-width: 950px)": {
+    fontSize: "10px",
+  },
+  "@media (max-width: 770px)": {
+    fontSize: "8px",
+  },
   "@media (max-width: 600px)": {
     fontSize: current ? "0.7rem" : "0px",
     marginTop: "4.5rem",
