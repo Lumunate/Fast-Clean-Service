@@ -198,6 +198,15 @@ export const FormProvider = ({ children }) => {
     if (currentStep > 2) calculateFormColors();
   }, [formData, currentStep, calculatePricing, calculateFormColors]);
 
+  const goToStep = useCallback(
+      (targetStep) => {
+        if (targetStep < currentStep) {
+          setCurrentStep(targetStep);
+        }
+      },
+      [currentStep]
+  );
+
   const nextStep = async (step = 1) => {
     if (currentStep === 10) {
       // Submit the form
@@ -274,6 +283,7 @@ export const FormProvider = ({ children }) => {
         currentStep,
         nextStep,
         prevStep,
+        goToStep,
         price,
         duration,
         calculatePricing,

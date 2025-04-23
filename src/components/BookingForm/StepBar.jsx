@@ -29,7 +29,7 @@ import {useTranslations} from "next-intl";
 
 const StepBar = () => {
   const t = useTranslations('booking');
-  const { currentStep } = useMultiStepForm();
+  const { currentStep, goToStep } = useMultiStepForm();
   const items = [
     {
       label: t("stepbar.0"),
@@ -89,6 +89,8 @@ const StepBar = () => {
               invert={item.invert}
               selected={adjustedIndex < currentStep}
               current={currentStep === adjustedIndex + 1}
+              onClick={() => goToStep(adjustedIndex)}
+              clickable={adjustedIndex < currentStep}
             />
           );
         })}
@@ -105,6 +107,8 @@ const StepItem = ({
   selected = false,
   current = false,
   invert = false,
+                    onClick,
+                    clickable,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -112,7 +116,8 @@ const StepItem = ({
     invert && theme.palette.mode === 'light' ? 'invert(1)' : 'none';
 
   return (
-    <StepItemOuterContainer>
+    <StepItemOuterContainer onClick={clickable ? onClick : undefined}
+                            style={{ cursor: clickable ? 'pointer' : 'default', position: 'relative' }}>
       <StepItemContainer selected={selected} current={current}>
         {selected && (
           <StepCheckImageContainer>
