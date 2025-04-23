@@ -8,6 +8,7 @@ import {
     createTheme,
     ThemeProvider,
     useMediaQuery,
+    styled,
 } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
@@ -30,9 +31,65 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('UTC');
 
+// Custom styled component to override MUI classes
+const StyledCalendarContainer = styled(Box)(({ theme, darkMode }) => ({
+    '& .MuiPickersLayout-root .MuiPickersDay-root': {
+        color: darkMode ? '#ffffff !important' : '#000000 !important',
+    },
+    '& .MuiPickersLayout-root .MuiPickersDay-root.Mui-disabled': {
+        color: darkMode ? '#666666 !important' : '#aaaaaa !important',
+        opacity: 0.6,
+    },
+    '& .css-1asoz3s-MuiPickersLayout-root .MuiPickersDay-root': {
+        color: darkMode ? '#ffffff !important' : '#000000 !important',
+    },
+    '& .css-1asoz3s-MuiPickersLayout-root .MuiPickersDay-root.Mui-disabled': {
+        color: darkMode ? '#666666 !important' : '#aaaaaa !important',
+        opacity: 0.6,
+    },
+    // Additional selectors to ensure all day elements are covered
+    '& .MuiDateCalendar-root .MuiPickersDay-root': {
+        color: darkMode ? '#ffffff !important' : '#000000 !important',
+    },
+    '& .MuiDateCalendar-root .MuiPickersDay-root.Mui-disabled': {
+        color: darkMode ? '#666666 !important' : '#aaaaaa !important',
+        opacity: 0.6,
+    },
+}));
+
 const theme = createTheme({
     palette: {
-        mode: 'light', // This will be overridden by the system preference
+        mode: 'light',
+    },
+    components: {
+        MuiPickersDay: {
+            styleOverrides: {
+                root: {
+                    color: '#000000',
+                    '&.Mui-disabled': {
+                        color: '#aaaaaa',
+                    },
+                },
+            },
+        },
+    },
+});
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+    components: {
+        MuiPickersDay: {
+            styleOverrides: {
+                root: {
+                    color: '#ffffff',
+                    '&.Mui-disabled': {
+                        color: '#666666',
+                    },
+                },
+            },
+        },
     },
 });
 
@@ -50,11 +107,25 @@ const SmallScreenView = () => {
     const isSmallScreen = useMediaQuery('(max-width:600px)');
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-    const darkTheme = createTheme({
-        palette: {
-            mode: 'dark',
-        },
-    });
+    useEffect(() => {
+        // Add global styles to override MUI's date picker styles
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = `
+            .css-1asoz3s-MuiPickersLayout-root .MuiPickersDay-root {
+                color: ${prefersDarkMode ? '#ffffff !important' : '#000000 !important'};
+            }
+            .css-1asoz3s-MuiPickersLayout-root .MuiPickersDay-root.Mui-disabled {
+                color: ${prefersDarkMode ? '#666666 !important' : '#aaaaaa !important'};
+                opacity: 0.6;
+            }
+        `;
+        document.head.appendChild(style);
+
+        return () => {
+            document.head.removeChild(style);
+        };
+    }, [prefersDarkMode]);
 
     useEffect(() => {
         const fetchTimeSlots = async (offset) => {
@@ -136,10 +207,14 @@ const SmallScreenView = () => {
                 sx={{
                     borderRadius: '50%',
                     position: 'relative',
-                    color: prefersDarkMode ? '#ffffff' : '#000000', // Ensure dates are black in light mode and white in dark mode
+                    color: prefersDarkMode ? '#ffffff !important' : '#000000 !important',
                     '&.Mui-selected': {
                         backgroundColor: 'transparent',
                         border: 'none',
+                    },
+                    '&.Mui-disabled': {
+                        color: prefersDarkMode ? '#666666 !important' : '#aaaaaa !important',
+                        opacity: 0.6,
                     },
                     ...(isDisabled && {
                         '&:before': {
@@ -147,7 +222,7 @@ const SmallScreenView = () => {
                             position: 'absolute',
                             width: '50%',
                             height: '1px',
-                            backgroundColor: prefersDarkMode ? '#C2C2C2' : '#000000', // Ensure consistent with mode
+                            backgroundColor: prefersDarkMode ? '#C2C2C2' : '#000000',
                             top: '50%',
                             left: '25%',
                         },
@@ -184,112 +259,115 @@ const SmallScreenView = () => {
     return (
         <ThemeProvider theme={prefersDarkMode ? darkTheme : theme}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Box p={isSmallScreen ? 2 : 4}>
-                    <Typography variant="h6" gutterBottom textAlign="center">
-                        {t("steps.7.title")}
-                    </Typography>
+                <StyledCalendarContainer darkMode={prefersDarkMode}>
+                    <Box p={isSmallScreen ? 2 : 4}>
+                        <Typography variant="h6" gutterBottom textAlign="center">
+                            {t("steps.7.title")}
+                        </Typography>
 
-                    <Box
-                        sx={{
-                            mt: 2,
-                            display: 'flex',
-                            flexDirection: isSmallScreen ? 'column' : 'row',
-                            gap: isSmallScreen ? 2 : 4,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}
-                    >
                         <Box
                             sx={{
+                                mt: 2,
                                 display: 'flex',
+                                flexDirection: isSmallScreen ? 'column' : 'row',
+                                gap: isSmallScreen ? 2 : 4,
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                width: '100%',
-                                maxWidth: isSmallScreen ? '100%' : '50%',
                             }}
                         >
-                            <StaticDatePicker
-                                orientation={isSmallScreen ? 'portrait' : 'portrait'}
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                disablePast
-                                shouldDisableDate={shouldDisableDate}
+                            <Box
                                 sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                     width: '100%',
-                                    '& .MuiPickersCalendarHeader-root': {
-                                        color: prefersDarkMode ? '#ffffff' : '#000000',
-                                    },
-                                    '& .MuiTypography-root': {
-                                        color: prefersDarkMode ? '#ffffff' : '#000000',
-                                    },
-                                    '& .MuiPickersDay-root': {
-                                        color: prefersDarkMode ? '#ffffff' : '#000000',
-                                    },
-                                    '& .MuiPickersDay-root.Mui-disabled': {
-                                        color: prefersDarkMode ? '#666666' : '#aaaaaa',
-                                    },
-                                    '& .MuiPickersDay-root:not(.Mui-selected)': {
-                                        borderColor: prefersDarkMode ? '#C2C2C2' : 'transparent',
-                                    },
-                                    backgroundColor: prefersDarkMode ? 'transparent' : 'inherit',
-                                    border: prefersDarkMode ? '1px solid #C2C2C2' : 'none', // Remove border in light theme
-                                    borderRadius: prefersDarkMode ? '8px' : '0',
+                                    maxWidth: isSmallScreen ? '100%' : '50%',
                                 }}
-                                slots={{ day: CustomDay }}
-                            />
-                        </Box>
+                            >
+                                <StaticDatePicker
+                                    orientation={isSmallScreen ? 'portrait' : 'portrait'}
+                                    value={selectedDate}
+                                    onChange={handleDateChange}
+                                    disablePast
+                                    shouldDisableDate={shouldDisableDate}
+                                    sx={{
+                                        width: '100%',
+                                        '& .MuiPickersCalendarHeader-root': {
+                                            color: prefersDarkMode ? '#ffffff' : '#000000',
+                                        },
+                                        '& .MuiTypography-root': {
+                                            color: prefersDarkMode ? '#ffffff' : '#000000',
+                                        },
+                                        '& .MuiPickersDay-root': {
+                                            color: `${prefersDarkMode ? '#ffffff' : '#000000'} !important`,
+                                        },
+                                        '& .MuiPickersDay-root.Mui-disabled': {
+                                            color: `${prefersDarkMode ? '#666666' : '#aaaaaa'} !important`,
+                                            opacity: 0.6,
+                                        },
+                                        '& .MuiPickersDay-root:not(.Mui-selected)': {
+                                            borderColor: prefersDarkMode ? '#C2C2C2' : 'transparent',
+                                        },
+                                        backgroundColor: prefersDarkMode ? 'transparent' : 'inherit',
+                                        border: prefersDarkMode ? '1px solid #C2C2C2' : 'none',
+                                        borderRadius: prefersDarkMode ? '8px' : '0',
+                                    }}
+                                    slots={{ day: CustomDay }}
+                                />
+                            </Box>
 
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                flex: 1,
-                                maxWidth: '32rem',
-                                zIndex: selectedDate ? 1 : -1,
-                                opacity: selectedDate ? 1 : 0,
-                                transform: selectedDate ? 'translateX(0)' : 'translateX(-130%)',
-                                pointerEvents: selectedDate ? 1 : 0,
-                                visibility: selectedDate ? 'visible' : 'hidden',
-                                transition:
-                                    'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
-                            }}
-                        >
-                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
-                                {selectedDate?.format('ddd, MMMM D')}
-                            </Typography>
-                            {selectedDateTimeslots ? (
-                                selectedDateTimeslots.slots.map((slot, slotIndex) => (
-                                    <Button
-                                        key={slotIndex}
-                                        variant="outlined"
-                                        sx={{
-                                            margin: '0.5rem 0',
-                                            fontSize: isSmallScreen ? '0.75rem' : '1rem',
-                                            backgroundColor:
-                                                selectedTimeSlot === slot.start ? '#348feb' : 'inherit', // Highlight selected time slot
-                                            color:
-                                                selectedTimeSlot === slot.start ? 'white' : 'inherit', // Change text color for selected time slot
-                                            '&:hover': {
-                                                backgroundColor:
-                                                    selectedTimeSlot === slot.start
-                                                        ? '#348feb'
-                                                        : 'inherit', // Maintain highlight on hover
-                                            },
-                                        }}
-                                        onClick={() => handleTimeSlotClick(slot.start)}
-                                    >
-                                        {slot.start}
-                                    </Button>
-                                ))
-                            ) : (
-                                <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
-                                    {t("steps.7.unavailable")}
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    flex: 1,
+                                    maxWidth: '32rem',
+                                    zIndex: selectedDate ? 1 : -1,
+                                    opacity: selectedDate ? 1 : 0,
+                                    transform: selectedDate ? 'translateX(0)' : 'translateX(-130%)',
+                                    pointerEvents: selectedDate ? 1 : 0,
+                                    visibility: selectedDate ? 'visible' : 'hidden',
+                                    transition:
+                                        'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
+                                }}
+                            >
+                                <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
+                                    {selectedDate?.format('ddd, MMMM D')}
                                 </Typography>
-                            )}
+                                {selectedDateTimeslots ? (
+                                    selectedDateTimeslots.slots.map((slot, slotIndex) => (
+                                        <Button
+                                            key={slotIndex}
+                                            variant="outlined"
+                                            sx={{
+                                                margin: '0.5rem 0',
+                                                fontSize: isSmallScreen ? '0.75rem' : '1rem',
+                                                backgroundColor:
+                                                    selectedTimeSlot === slot.start ? '#348feb' : 'inherit',
+                                                color:
+                                                    selectedTimeSlot === slot.start ? 'white' : 'inherit',
+                                                '&:hover': {
+                                                    backgroundColor:
+                                                        selectedTimeSlot === slot.start
+                                                            ? '#348feb'
+                                                            : 'inherit',
+                                                },
+                                            }}
+                                            onClick={() => handleTimeSlotClick(slot.start)}
+                                        >
+                                            {slot.start}
+                                        </Button>
+                                    ))
+                                ) : (
+                                    <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
+                                        {t("steps.7.unavailable")}
+                                    </Typography>
+                                )}
+                            </Box>
                         </Box>
                     </Box>
-                </Box>
+                </StyledCalendarContainer>
             </LocalizationProvider>
         </ThemeProvider>
     );
