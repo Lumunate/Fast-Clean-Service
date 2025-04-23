@@ -311,6 +311,59 @@
           "description": "Diepe reiniging voor een frisse, verzorgde uitstraling."
         }
       ]
+    },
+    "faq": {
+      "title": "Veelgestelde vragen (FAQ's)",
+      "questions": [
+        {
+          "question": "Waar kan ik mijn auto laten reinigen?",
+          "answer": "U kunt ervoor kiezen om hem op locatie te laten reinigen of langs te komen. Beide opties bieden dezelfde hoogwaardige service."
+        },
+        {
+          "question": "Hoe lang duurt een standaardreiniging?",
+          "answer": [
+            "Standaardreiniging: ± 1 uur",
+            "Deluxe reiniging: 1,5 – 2 uur",
+            "Premium detailing & coating: 4+ uur"
+          ]
+        },
+        {
+          "question": "Wat is het verschil tussen de reinigingspakketten?",
+          "answer": [
+            "Standaard: Basisreiniging voor interieur of exterieur.",
+            "Deluxe: Grondige dieptereiniging met extra bescherming.",
+            "Premium: Volledige detailing, polijsten en lakverzegeling."
+          ]
+        },
+        {
+          "question": "Hoe lang gaat een keramische coating mee?",
+          "answer": "Afhankelijk van de coating die u kiest, is uw lak 6 maanden tot 5 jaar beschermd tegen vuil, uv-straling en weersinvloeden."
+        },
+        {
+          "question": "Heeft u elektriciteit of water nodig op locatie?",
+          "answer": "Ja, we hebben een stroom- en wateraansluiting nodig. Geef bij het boeken aan of deze beschikbaar is."
+        },
+        {
+          "question": "Hoe snel kan ik een afspraak maken?",
+          "answer": "Meestal kunt u binnen 2 tot 5 dagen een afspraak maken. Tijdens drukke periodes kan de wachttijd iets langer zijn."
+        },
+        {
+          "question": "Mijn auto is extreem vuil, wat nu?",
+          "answer": "Voor zwaar vervuilde voertuigen adviseren wij deluxe of premium detailing. Neem contact met ons op als u twijfelt over de beste optie."
+        },
+        {
+          "question": "Bieden jullie ook reiniging aan voor bedrijfswagens en wagenparken?",
+          "answer": "Ja! We hebben speciale wagenparkdiensten voor bedrijven, inclusief onderhoud op locatie."
+        },
+        {
+          "question": "Hoe kan ik betalen?",
+          "answer": "Je kunt eenvoudig betalen via iDEAL, pin of contant."
+        },
+        {
+          "question": "Bieden jullie abonnementen aan?",
+          "answer": "Ja, met een abonnement blijft je auto altijd schoon tegen een vast, betaalbaar tarief."
+        }
+      ]
     }
   },
   "about": {
