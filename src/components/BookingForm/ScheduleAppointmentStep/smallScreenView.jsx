@@ -136,7 +136,7 @@ const SmallScreenView = () => {
                 sx={{
                     borderRadius: '50%',
                     position: 'relative',
-                    color: prefersDarkMode ? '#ffffff' : 'inherit',
+                    color: prefersDarkMode ? '#ffffff' : '#000000', // Ensure dates are black in light mode and white in dark mode
                     '&.Mui-selected': {
                         backgroundColor: 'transparent',
                         border: 'none',
@@ -147,7 +147,7 @@ const SmallScreenView = () => {
                             position: 'absolute',
                             width: '50%',
                             height: '1px',
-                            backgroundColor: prefersDarkMode ? '#C2C2C2' : 'inherit',
+                            backgroundColor: prefersDarkMode ? '#C2C2C2' : '#000000', // Ensure consistent with mode
                             top: '50%',
                             left: '25%',
                         },
@@ -217,22 +217,22 @@ const SmallScreenView = () => {
                                 sx={{
                                     width: '100%',
                                     '& .MuiPickersCalendarHeader-root': {
-                                        color: prefersDarkMode ? '#ffffff' : 'inherit',
+                                        color: prefersDarkMode ? '#ffffff' : '#000000',
                                     },
                                     '& .MuiTypography-root': {
-                                        color: prefersDarkMode ? '#ffffff' : 'inherit',
+                                        color: prefersDarkMode ? '#ffffff' : '#000000',
                                     },
                                     '& .MuiPickersDay-root': {
-                                        color: prefersDarkMode ? '#ffffff' : 'inherit',
+                                        color: prefersDarkMode ? '#ffffff' : '#000000',
                                     },
                                     '& .MuiPickersDay-root.Mui-disabled': {
-                                        color: prefersDarkMode ? '#666666' : 'inherit',
+                                        color: prefersDarkMode ? '#666666' : '#aaaaaa',
                                     },
                                     '& .MuiPickersDay-root:not(.Mui-selected)': {
-                                        borderColor: prefersDarkMode ? '#C2C2C2' : 'inherit',
+                                        borderColor: prefersDarkMode ? '#C2C2C2' : 'transparent',
                                     },
                                     backgroundColor: prefersDarkMode ? 'transparent' : 'inherit',
-                                    border: prefersDarkMode ? '1px solid #C2C2C2' : 'none',
+                                    border: prefersDarkMode ? '1px solid #C2C2C2' : 'none', // Remove border in light theme
                                     borderRadius: prefersDarkMode ? '8px' : '0',
                                 }}
                                 slots={{ day: CustomDay }}
