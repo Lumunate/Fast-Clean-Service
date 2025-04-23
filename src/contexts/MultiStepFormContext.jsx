@@ -26,6 +26,8 @@ export const FormProvider = ({ children }) => {
   const [duration, setDuration] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [color, setColor] = useState('#000000');
+  // Track completed steps
+  const [completedSteps, setCompletedSteps] = useState(new Set([0]));
 
   function parseHighestDuration(durationStr) {
     // Remove all non-numeric and non-slash characters
@@ -52,10 +54,10 @@ export const FormProvider = ({ children }) => {
     const carType = formData.carType;
 
     if (
-      !pkg ||
-      !pkg.vehicleOptions ||
-      !carType ||
-      !(carType in pkg.vehicleOptions)
+        !pkg ||
+        !pkg.vehicleOptions ||
+        !carType ||
+        !(carType in pkg.vehicleOptions)
     ) {
       return 0;
     }
@@ -84,24 +86,19 @@ export const FormProvider = ({ children }) => {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
           const addonPrice =
-            pkg.additionalOptions?.interior?.find((a) => a.name === addon)
-              ?.additionalCost ||
-            pkg.additionalOptions?.exterior?.find((a) => a.name === addon)
-              ?.additionalCost ||
-            0;
-
-          // const addonDuration =
-          //   pkg.additionalOptions.interior.find((a) => a.name === addon)?.additionalTime ||
-          //   pkg.additionalOptions.exterior.find((a) => a.name === addon)?.additionalTime;
+              pkg.additionalOptions?.interior?.find((a) => a.name === addon)
+                  ?.additionalCost ||
+              pkg.additionalOptions?.exterior?.find((a) => a.name === addon)
+                  ?.additionalCost ||
+              0;
 
           newPrice += addonPrice;
-          // duration += addonDuration;
         });
       }
       if (formData.selectedDetailingOptions?.length > 0) {
         Object.values(formData.selectedDetailingOptions).forEach((addon) => {
           const addonPrice = pkg.additionalOptions?.detailing?.find(
-            (a) => a.name === addon
+              (a) => a.name === addon
           )?.additionalCost;
 
           if (addonPrice === 'On Request') {
@@ -157,8 +154,8 @@ export const FormProvider = ({ children }) => {
       let updatedData = { ...prevData, ...newData };
 
       if (
-        newData.selectedPackageType &&
-        newData.selectedPackageType !== prevData.selectedPackageType
+          newData.selectedPackageType &&
+          newData.selectedPackageType !== prevData.selectedPackageType
       ) {
         setPrice(0);
         setDuration(0);
@@ -179,8 +176,8 @@ export const FormProvider = ({ children }) => {
       }
 
       if (
-        newData.selectedPackage &&
-        newData?.selectedPackage?.id !== prevData?.selectedPackage?.id
+          newData.selectedPackage &&
+          newData?.selectedPackage?.id !== prevData?.selectedPackage?.id
       ) {
         setPrice(0);
         setDuration(0);
@@ -192,22 +189,53 @@ export const FormProvider = ({ children }) => {
     });
   };
 
-  // Recalculate pricing whenever formData is updated
-  useEffect(() => {
-    calculatePricing();
-    if (currentStep > 2) calculateFormColors();
-  }, [formData, currentStep, calculatePricing, calculateFormColors]);
-
-  const goToStep = useCallback(
-      (targetStep) => {
-        if (targetStep < currentStep) {
-          setCurrentStep(targetStep);
+  // Check if current step is complete based on form data
+  const isStepComplete = useCallback((step) => {
+    switch (step) {
+      case 0: // Location Selection
+        return !!formData.service;
+      case 1: // License Plate
+        return !!formData.licensePlate && !!formData.vehicleDetails;
+      case 2: // Car Type
+        return !!formData.carType;
+      case 3: // Package Selection
+        return !!formData.selectedPackageType;
+      case 4: // Subscription Packages
+        if (formData.selectedPackageType === 'Subscription Plans') {
+          return !!formData.selectedPackage && !!formData.packageType;
         }
-      },
-      [currentStep]
-  );
+        return true;
+      case 5: // Autocare Packages
+        if (formData.selectedPackageType === 'Anywhere Autocare') {
+          return !!formData.selectedPackage && !!formData.packageType;
+        }
+        return true;
+      case 6: // Additional Options
+        return true; // Optional step
+      case 7: // Detailing
+        return true; // Optional step
+      case 8: // Schedule Appointment
+        return !!formData.selectedTime;
+      case 9: // Summary
+        return true; // Always completable
+      case 10: // Person Particulars
+        return !!formData.firstName && !!formData.surname && !!formData.email && !!formData.phoneNumber;
+      case 11: // Checkout
+        return true;
+      default:
+        return false;
+    }
+  }, [formData]);
 
+  // Update completedSteps when moving to next step
   const nextStep = async (step = 1) => {
+    // Mark current step as completed
+    setCompletedSteps(prev => {
+      const newSet = new Set(prev);
+      newSet.add(currentStep);
+      return newSet;
+    });
+
     if (currentStep === 10) {
       // Submit the form
       try {
@@ -232,11 +260,11 @@ export const FormProvider = ({ children }) => {
           travelDistance: formData.travelDistance,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length
-              ? formData.selectedAdditionalOptions
-              : null,
+                ? formData.selectedAdditionalOptions
+                : null,
             detailing: formData.selectedDetailingOptions?.length
-              ? formData.selectedDetailingOptions
-              : null,
+                ? formData.selectedDetailingOptions
+                : null,
           },
         };
 
@@ -245,7 +273,7 @@ export const FormProvider = ({ children }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data), // Stringify the data object
+          body: JSON.stringify(data),
           credentials: 'include',
         });
 
@@ -260,14 +288,26 @@ export const FormProvider = ({ children }) => {
       }
     }
 
-    setCurrentStep((prevStep) => prevStep + step);
+    const newStep = currentStep + step;
+    setCurrentStep(newStep);
+
+    // If we're skipping a step (like with Subscription Plans), mark the skipped step as complete too
+    if (step > 1) {
+      for (let i = currentStep + 1; i < newStep; i++) {
+        setCompletedSteps(prev => {
+          const newSet = new Set(prev);
+          newSet.add(i);
+          return newSet;
+        });
+      }
+    }
   };
 
   const prevStep = () => {
     if (currentStep === 0) return;
     if (
-      currentStep === 6 &&
-      formData?.selectedPackageType === 'Subscription Plans'
+        currentStep === 6 &&
+        formData?.selectedPackageType === 'Subscription Plans'
     ) {
       setCurrentStep((prevStep) => prevStep - 2);
       return;
@@ -275,22 +315,77 @@ export const FormProvider = ({ children }) => {
     setCurrentStep((prevStep) => prevStep - 1);
   };
 
+  // Function to check if a step is accessible (can be navigated to)
+  const isStepAccessible = useCallback((stepIndex) => {
+    // Convert to adjusted index to match form flow (account for gap at index 5)
+    const adjustedIndex = stepIndex >= 5 ? stepIndex + 1 : stepIndex;
+
+    // Can always go back to previous steps
+    if (adjustedIndex <= currentStep) {
+      return true;
+    }
+
+    // Can only go forward to the next available step and if all previous steps are complete
+    if (adjustedIndex === currentStep + 1) {
+      // Check if all previous steps are in the completedSteps set
+      for (let i = 0; i < currentStep; i++) {
+        if (!completedSteps.has(i)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Can't jump ahead by more than one step
+    return false;
+  }, [currentStep, completedSteps]);
+
+  // Function to navigate to a specific step
+  const navigateToStep = useCallback((stepIndex) => {
+    // Convert to adjusted index to match form flow
+    const adjustedIndex = stepIndex >= 5 ? stepIndex + 1 : stepIndex;
+
+    if (isStepAccessible(stepIndex)) {
+      setCurrentStep(adjustedIndex);
+      return true;
+    }
+
+    return false;
+  }, [isStepAccessible]);
+
+  // Recalculate pricing whenever formData is updated
+  useEffect(() => {
+    calculatePricing();
+    if (currentStep > 2) calculateFormColors();
+
+    // Check if current step is complete and mark it
+    if (isStepComplete(currentStep)) {
+      setCompletedSteps(prev => {
+        const newSet = new Set(prev);
+        newSet.add(currentStep);
+        return newSet;
+      });
+    }
+  }, [formData, currentStep, calculatePricing, calculateFormColors, isStepComplete]);
+
   return (
-    <FormContext.Provider
-      value={{
-        formData,
-        updateFormData,
-        currentStep,
-        nextStep,
-        prevStep,
-        goToStep,
-        price,
-        duration,
-        calculatePricing,
-        color,
-      }}
-    >
-      {children}
-    </FormContext.Provider>
+      <FormContext.Provider
+          value={{
+            formData,
+            updateFormData,
+            currentStep,
+            nextStep,
+            prevStep,
+            price,
+            duration,
+            calculatePricing,
+            color,
+            navigateToStep,
+            isStepAccessible,
+            completedSteps
+          }}
+      >
+        {children}
+      </FormContext.Provider>
   );
 };
