@@ -7,11 +7,13 @@ import Link from "next/link";
 export const NavbarContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
+  flexDirection:'column',
   justifyContent: "center",
   alignItems: "center",
   padding: "2rem 4rem",
   position: "fixed",
   top: 0,
+  gap:'12px',
   zIndex: 100,
   background:
     "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))",
@@ -39,7 +41,7 @@ export const NavLinksContainer = styled(Box)(({ theme }) => ({
 
 export const NavBarLinksContainer = styled(NavLinksContainer)(({ theme }) => ({
   position: "absolute",
-  top: "50%",
+  top: "63%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   display: "flex",
@@ -81,6 +83,7 @@ export const LogoImage = styled(Image)(({ theme }) => ({
 
 export const NavLinkDropDownContainer = styled(Box)(({ theme }) => ({
   position: "relative",
+  marginLeft:'2rem'
 }));
 
 export const NavbarRightContainer = styled(Box)(({ theme }) => ({

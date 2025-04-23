@@ -8,27 +8,23 @@ import {ValidationProvider} from "../../contexts/ValidationContext";
 import {ExitIntentProvider} from "../../contexts/ExitIntentContext";
 import CookieConsentPrompt from "../../components/CookieConsentPrompt";
 import Script from "next/script";
-
+import LogoLoadingWrapper from '../../components/LogoLoadingWrapper'
 import {metadataJSON} from "./metadata";
-import {notFound} from "next/navigation";
-import {routing} from "../../i18n/routing";
 import {getMessages} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
-import LanguageSwitcher from "../../components/language-switcher/LanguageSwitcher";
 
 export const metadata = metadataJSON;
 
-export default async function RootLayout({children, params: {locale}}) {
-
-    if (!routing.locales.includes(locale)) {
-        notFound();
-    }
-    console.log('akxmksamxkamskx', locale)
+export default async function RootLayout({children}) {
     const messages = await getMessages();
     const session = await getServerSession();
 
 
-    return (<html lang={locale} suppressHydrationWarning>
+    return (<html  suppressHydrationWarning>
+         <head>
+        {/* Preload the logo for faster loading */}
+        <link rel="preload" href="/logo.png" as="image" />
+      </head>
         <body>
         <SessionProvider session={session}>
             <ThemeProvider>
@@ -38,8 +34,11 @@ export default async function RootLayout({children, params: {locale}}) {
                             <CssBaseline/>
                             <CookieConsentPrompt/>
                             <NextIntlClientProvider messages={messages}>
+                            <LogoLoadingWrapper>
+
                                 {children}
-                                <LanguageSwitcher currentLocale={locale} />
+                            </LogoLoadingWrapper>
+                              
                             </NextIntlClientProvider>
                         </ExitIntentProvider>
                     </ValidationProvider>
