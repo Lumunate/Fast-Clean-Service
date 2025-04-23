@@ -46,19 +46,20 @@ const BookingParticulars = () => {
     makeModel: '',
     location: '',
     travelDistance: 0,
+    bookingMessage: '', // New field for booking message
   });
 
   const [isChecked, setIsChecked] = useState(false);
 
   const toTitleCase = (str) => {
     return str
-      .toLowerCase()
-      .split(' ')
-      .map((word) => {
-        word = word.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(' ');
+        .toLowerCase()
+        .split(' ')
+        .map((word) => {
+          word = word.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(' ');
   };
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const BookingParticulars = () => {
 
   useEffect(() => {
     const isValid =
-      isChecked && Object.values(bookingForm).every((value) => value !== '');
+        isChecked && Object.values(bookingForm).every((value) => value !== '');
     updateValidation(isValid);
   }, [bookingForm, isChecked, updateValidation]);
 
@@ -124,141 +125,159 @@ const BookingParticulars = () => {
   };
 
   return (
-    <Box
-      sx={{
-        padding: '2rem 1rem',
-        maxWidth: '800px',
-        margin: 'auto',
-        '@media (max-width: 600px)': {
-          position: 'relative',
-          top: '-3rem',
-        },
-      }}
-    >
-      <FormContainer
-        component="form"
-        sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}
+      <Box
+          sx={{
+            padding: '2rem 1rem',
+            maxWidth: '800px',
+            margin: 'auto',
+            '@media (max-width: 600px)': {
+              position: 'relative',
+              top: '-3rem',
+            },
+          }}
       >
-        <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
-          {/* Form Fields */}
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.0")}
-                name="firstName"
-                value={bookingForm.firstName}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                }}
-              />
+        <FormContainer
+            component="form"
+            sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}
+        >
+          <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
+            {/* Form Fields */}
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.0")}
+                    name="firstName"
+                    value={bookingForm.firstName}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                    }}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.1")}
+                    name="surname"
+                    value={bookingForm.surname}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                    }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.1")}
-                name="surname"
-                value={bookingForm.surname}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                }}
-              />
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.2")}
+                    name="phoneNumber"
+                    value={bookingForm.phoneNumber}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                      marginTop: '1.5rem',
+                    }}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.3")}
+                    name="companyName"
+                    value={bookingForm.companyName}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                      marginTop: '1.5rem',
+                    }}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.2")}
-                name="phoneNumber"
-                value={bookingForm.phoneNumber}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                  marginTop: '1.5rem',
-                }}
-              />
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={12}>
+                <SelectLocationInput
+                    hoist={({ ...data }) =>
+                        setBookingForm((prevBookingForm) => ({
+                          ...prevBookingForm,
+                          ...data,
+                        }))
+                    }
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.3")}
-                name="companyName"
-                value={bookingForm.companyName}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                  marginTop: '1.5rem',
-                }}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
-              <SelectLocationInput
-                hoist={({ ...data }) =>
-                  setBookingForm((prevBookingForm) => ({
-                    ...prevBookingForm,
-                    ...data,
-                  }))
-                }
-              />
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.4")}
-                name="email"
-                value={bookingForm.email}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                  marginTop: '1.5rem',
-                  '@media (max-width: 600px)': {
-                    marginTop: '2rem',
-                  },
-                }}
-              />
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.4")}
+                    name="email"
+                    value={bookingForm.email}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                      marginTop: '1.5rem',
+                      '@media (max-width: 600px)': {
+                        marginTop: '2rem',
+                      },
+                    }}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.5")}
+                    name="makeModel"
+                    value={bookingForm.makeModel}
+                    onChange={handleChange}
+                    fullWidth
+                    sx={{
+                      borderRadius: '8px',
+                      marginTop: '1.5rem',
+                      '@media (max-width: 600px)': {
+                        marginTop: '0.9rem',
+                      },
+                    }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <CustomFormTextField
-                label={t("steps.9.form_fields.5")}
-                name="makeModel"
-                value={bookingForm.makeModel}
-                onChange={handleChange}
-                fullWidth
-                sx={{
-                  borderRadius: '8px',
-                  marginTop: '1.5rem',
-                  '@media (max-width: 600px)': {
-                    marginTop: '0.9rem',
-                  },
-                }}
-              />
-            </Grid>
-          </Grid>
 
-          <TermsContainer>
-            <StyledCheckbox
-              required
-              checked={isChecked}
-              onChange={handleCheckboxChange}
-            />
-            <TermsLabel variant="body2">
-              {t("steps.9.form_fields.6")}{' '}
-              <span>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <CustomFormTextField
+                    label={t("steps.9.form_fields.6")}
+                    name="bookingMessage"
+                    value={bookingForm.bookingMessage}
+                    onChange={handleChange}
+                    fullWidth
+                    multiline
+                    rows={4} // Make it an expanded text area
+                    sx={{
+                      borderRadius: '8px',
+                      marginTop: '1.5rem',
+                    }}
+                />
+              </Grid>
+            </Grid>
+
+            <TermsContainer>
+              <StyledCheckbox
+                  required
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+              />
+              <TermsLabel variant="body2">
+                {t("steps.9.form_fields.7")}{' '}
+                <span>
                 <a href="/terms_and_conditions">Terms and Conditions</a>
               </span>
-            </TermsLabel>
-          </TermsContainer>
-        </ThemeProvider>
-      </FormContainer>
-    </Box>
+              </TermsLabel>
+            </TermsContainer>
+          </ThemeProvider>
+        </FormContainer>
+      </Box>
   );
 };
 
