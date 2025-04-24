@@ -35,6 +35,7 @@ const BookingParticulars = () => {
   const { updateValidation } = useValidation();
   const { formData } = form;
 
+
   const [bookingForm, setBookingForm] = useState({
     firstName: '',
     surname: '',
@@ -49,7 +50,7 @@ const BookingParticulars = () => {
     bookingMessage: '', // New field for booking message
   });
 
-  const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
   const toTitleCase = (str) => {
     return str
@@ -94,7 +95,7 @@ const BookingParticulars = () => {
 
     const combinedMakeModel = [merk, handelsbenaming].filter(Boolean).join(' ');
 
-    const makeModel = toTitleCase(combinedMakeModel);
+      const makeModel = toTitleCase(combinedMakeModel);
 
     setBookingForm((prevForm) => ({
       ...prevForm,

@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 
 const StepBox = ({ currentStep, stepIndex, children, transStyles }) => {
-    console.log(`Current Step: ${currentStep}, Step Index: ${stepIndex}`);
 
     const getCustomMargin = () => {
         if (window.innerWidth > 600) return '0';
