@@ -78,7 +78,6 @@ export const FormProvider = ({ children }) => {
           if (addonPrice !== undefined || addonDuration !== undefined) {
             newPrice += addonPrice;
             duration += addonDuration;
-            console.log('duration', duration);
           }
         });
       }
@@ -149,7 +148,6 @@ export const FormProvider = ({ children }) => {
   }, [formData]);
 
   const updateFormData = (newData) => {
-    console.log(newData);
     setFormData((prevData) => {
       let updatedData = { ...prevData, ...newData };
 
@@ -278,7 +276,6 @@ export const FormProvider = ({ children }) => {
         });
 
         const res = await response.json();
-        console.log('Response:', res);
         if (res.success) {
           openSnackbar('Form submitted successfully!');
         }

@@ -205,89 +205,61 @@ export default function About() {
                             alignItems: "center",
                         },
                         alignItems: { xs: "center", md: "flex-start" },
-
                     }}
                 >
-                    <Box
-                        sx={{
-                            flex: 1,
-                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
-                            borderRadius: "10px",
-                            padding: "2rem",
-                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
-                            backdropFilter: "blur(14.4px)",
-                            textAlign: "center",
-                            boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
-                            position: "relative",
-                            maxWidth: "450px",
-                            "@media (max-width: 1150px)": {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                {t("why_choose_us.features.0.title")}
-                            </Typography>
-                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                {t("why_choose_us.features.0.description")}
-                            </Typography>
+                    {[0, 1, 2].map((index) => (
+                        <Box
+                            key={index}
+                            sx={{
+                                height: "100%",
+                                backgroundColor:
+                                    theme.palette.mode === "dark"
+                                        ? "rgba(255,255,255,0.09)"
+                                        : "#fff",
+                                borderRadius: "10px",
+                                padding: "1.6rem",
+                                border:
+                                    theme.palette.mode === "dark"
+                                        ? "0.3px solid #FFFFFF1F"
+                                        : "0.3px solid #00000030",
+                                backdropFilter: "blur(14.4px)",
+                                textAlign: "center",
+                                boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
+                                position: "relative",
+                                maxWidth: "450px",
+                                "@media (max-width: 1150px)": {
+                                    width: "100%",
+                                },
+                            }}
+                        >
+                            <Box sx={{ position: "relative", zIndex: 1 }}>
+                                <Typography
+                                    sx={{
+                                        fontWeight: 400,
+                                        mb: 1,
+                                        fontSize: "1.8rem",
+                                        color:
+                                            theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                                    }}
+                                >
+                                    {t(`why_choose_us.features.${index}.title`)}
+                                </Typography>
+                                <Typography
+                                    variant="body1"
+                                    sx={{
+                                        fontSize: "1.4em",
+                                        color:
+                                            theme.palette.mode === "dark"
+                                                ? "#C2C2C2"
+                                                : "#535353",
+                                        fontWeight: "300",
+                                    }}
+                                >
+                                    {t(`why_choose_us.features.${index}.description`)}
+                                </Typography>
+                            </Box>
                         </Box>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            flex: 1,
-                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
-                            borderRadius: "10px",
-                            padding: "2rem",
-                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
-                            backdropFilter: "blur(14.4px)",
-                            textAlign: "center",
-                            boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
-                            position: "relative",
-                            maxWidth: "450px",
-                            "@media (max-width: 1150px)": {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                {t("why_choose_us.features.1.title")}
-                            </Typography>
-                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                {t("why_choose_us.features.1.description")}
-                            </Typography>
-                        </Box>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            flex: 1,
-                            backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.09)" : "#fff",
-                            borderRadius: "10px",
-                            padding: "2rem",
-                            border: theme.palette.mode === "dark" ? "0.3px solid #FFFFFF1F" : "0.3px solid #00000030",
-                            backdropFilter: "blur(14.4px)",
-                            textAlign: "center",
-                            boxShadow: "0px 4px 7px 0 rgba(0, 0, 0, 0.08)",
-                            position: "relative",
-                            maxWidth: "450px",
-                            "@media (max-width: 1150px)": {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <Box sx={{ position: "relative", zIndex: 1 }}>
-                            <Typography sx={{ fontWeight: 400, mb: 1, fontSize: "1.8rem", color: theme.palette.mode === "dark" ? "#fff" : "#232E4A" }}>
-                                {t("why_choose_us.features.2.title")}
-                            </Typography>
-                            <Typography variant="body1" sx={{ fontSize: "1.4em", color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353", fontWeight: "300" }}>
-                                {t("why_choose_us.features.2.description")}
-                            </Typography>
-                        </Box>
-                    </Box>
+                    ))}
                 </Box>
                 <Box
                     sx={{
