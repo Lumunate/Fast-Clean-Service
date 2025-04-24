@@ -507,7 +507,7 @@ export const ServiceSubheading = styled(Typography)(({ theme, special = false })
 }));
 
 export const ServicesDesc = styled(Typography)(({ theme }) => ({
-  margin: "2rem 0",
+  margin: "0 0 1rem 0",
   lineHeight: 1.5,
   fontSize: "2.5rem !important",
   color: "#aaa",

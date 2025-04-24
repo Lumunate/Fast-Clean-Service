@@ -1,24 +1,17 @@
-import {
-    CarServicesContainer,
-    ServiceItemBox,
-    ServiceItemContainer,
-    ServiceItemDescription,
-    ServiceItemHeading,
-    ServiceItemIcon,
-    ServiceItemIconContainer,
-} from "./ServiceOverviewPckgs";
-
+"use client";
+import React, { useRef } from "react";
+import { Box, Button, Link, Typography } from "@mui/material";
+import { CarServicesContainer, ServiceItemBox, ServiceItemContainer, ServiceItemDescription, ServiceItemHeading, ServiceItemIcon, ServiceItemIconContainer } from "./ServiceOverviewPckgs";
 import PaintRoll from "../../../../public/ser3.svg";
 import PaintRollWhite from "../../../../public/ser3.svg";
 import TickBox from "../../../../public/ser1.svg";
 import TickBoxWhite from "../../../../public/ser1.svg";
 import Shield from "../../../../public/ser2.svg";
 import ShieldWhite from "../../../../public/ser2.svg";
-
 import { useTheme } from "../../../contexts/themeContext";
-import { Box, Button, Link } from "@mui/material";
-import React, { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function OverCarServices() {
     const t = useTranslations("home.services_section");
@@ -134,9 +127,6 @@ export default function OverCarServices() {
     );
 }
 
-/* ────────────────────────────
-   ⬇︎ single‑card renderer
-   ──────────────────────────── */
 const CarServiceItem = ({
                             icon,
                             title,
@@ -144,9 +134,9 @@ const CarServiceItem = ({
                             bullets = [],
                             description2,
                         }) => (
-    <ServiceItemContainer>
-        <ServiceItemBox>
-            <ServiceItemIconContainer>
+    <ServiceItemContainer sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <ServiceItemBox sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <ServiceItemIconContainer sx={{ display: "flex", justifyContent: "center" }}>
                 <ServiceItemIcon
                     src={icon}
                     alt={title}
@@ -156,44 +146,57 @@ const CarServiceItem = ({
                 />
             </ServiceItemIconContainer>
 
-            <ServiceItemHeading variant="h4">{title}</ServiceItemHeading>
+            <ServiceItemHeading variant="h4" sx={{ textAlign: "center" }}>
+                {title}
+            </ServiceItemHeading>
 
-            <ServiceItemDescription variant="p">{description}</ServiceItemDescription>
-
-            {bullets.length > 0 && (
-                <Box
-                    component="ul"
-                    sx={{
-                        width: "100%",
-                        pl: "1.5rem",
-                        m: "0.5rem 0",
-                        listStyle: "none",
-                        marginLeft: "2rem",
-                        "@media (max-width: 600px)": {
-                            marginLeft: "0",
-                        },
-                    }}
-                >
-                    {bullets.map((b, i) => (
-                        <Box
-                            component="li"
-                            key={i}
-                            sx={{
-                                textAlign: "justify",
-                                fontFamily: "DMSans",
-                                fontSize: "1.25rem",
-                                mb: "0.25rem",
-                            }}
-                        >
-                            {b}
-                        </Box>
-                    ))}
-                </Box>
-            )}
-
-            <ServiceItemDescription variant="p">
-                {description2}
+            <ServiceItemDescription variant="p" sx={{ textAlign: "center" }}>
+                {description}
             </ServiceItemDescription>
+
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", width: "100%" }}>
+                {bullets.length > 0 && (
+                    <Box
+                        component="ul"
+                        sx={{
+                            width: "100%",
+                            m: "0.5rem 0",
+                            listStyle: "none",
+                            textAlign: "left",
+                            "@media (max-width: 600px)": {
+                                marginLeft: "0",
+                            },
+                        }}
+                    >
+                        {bullets.map((b, i) => (
+                            <Box
+                                component="li"
+                                key={i}
+                                sx={{
+                                    fontFamily: "DMSans",
+                                    fontSize: "1.25rem",
+                                    mb: "0.25rem",
+                                    display: "flex",
+                                    alignItems: "center", // Align checkmark with text
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faCheckCircle}
+                                    style={{
+                                        color: "#90EE90",
+                                        marginRight: "1rem",
+                                    }}
+                                />
+                                {b}
+                            </Box>
+                        ))}
+                    </Box>
+                )}
+
+                <ServiceItemDescription variant="p" sx={{ textAlign: "left" }}>
+                    {description2}
+                </ServiceItemDescription>
+            </Box>
         </ServiceItemBox>
     </ServiceItemContainer>
 );

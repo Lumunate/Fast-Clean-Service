@@ -93,14 +93,14 @@
     },
     "services_section": {
       "title": "OUR SERVICES",
-      "description": "Want that little bit extra? Expand your treatment with additional services for an even better result. Choose from interior, exterior or detailing options and create your own ideal treatment.",
+      "description": "At Fast Clean Service, we offer a wide range of professional cleaning and detailing services to keep your car in top condition. From interior to exterior, we have the expertise and techniques to take care of every detail of your vehicle.",
       "services": [
         {
           "title": "Steam Cleaning Interior & Exterior",
           "description": "A deep cleaning that removes dirt, stains and unpleasant odours, without harsh chemicals. Our environmentally friendly steam technology leaves your car fresh and hygienic.",
           "bullets": [
-            "✔ Thorough cleaning without residue",
-            "✔ Safe for fabric, leather and plastic"
+            "Thorough cleaning without residue",
+            "Safe for fabric, leather and plastic"
           ],
           "description2": "📅 Book now and give your car the fresh start it deserves."
         },
@@ -108,8 +108,8 @@
           "title": "Paint Protection & Coatings",
           "description": "Protect your car's paint and make it shine like new again. Our professional wax and coating treatments provide long‑lasting protection against dirt, UV radiation and weather influences.",
           "bullets": [
-            "✔ Deep shine and water‑repellent effect",
-            "✔ Prevents fading and wear"
+            "Deep shine and water‑repellent effect",
+            "Prevents fading and wear"
           ],
           "description2": "📅 Schedule a detailing treatment."
         },
@@ -117,8 +117,8 @@
           "title": "Polishing & Headlight Restoration",
           "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
           "bullets": [
-            "✔ Removes dullness and yellowing for brighter light",
-            "✔ Better visibility and a fresher look"
+            "Removes dullness and yellowing for brighter light",
+            "Better visibility and a fresher look"
           ],
           "description2": "📅 Professional polishing for optimal results"
         }
@@ -224,7 +224,12 @@
           "titlemain": "FLEET PRO",
           "titlesub": "ALWAYS A REPRESENTATIVE FLEET",
           "description": "Keep your company vehicles in top condition with our mobile cleaning service. We come to your location and offer tailor-made solutions for every fleet, from basic cleaning to full detailing.",
-          "highlight": "✔️ Tailor-made packages – Tailored to your fleet<br/>✔️ Mobile service – Cleaning on location, when it suits you<br/>✔️ Consistent appearance – Your fleet always presentable<br/>✔️ Efficient & professional – Minimal downtime, maximum results",
+          "highlight": [
+            "Tailor-made packages – Tailored to your fleet",
+            "Mobile service – Cleaning on location, when it suits you",
+            "Consistent appearance – Your fleet always presentable",
+            "Efficient & professional – Minimal downtime, maximum results"
+          ],
           "button": {
             "text": "Plan your fleet cleaning now",
             "link": "/fleet"
@@ -235,7 +240,12 @@
           "titlemain": "SUBSCRIPTIONS",
           "titlesub": "ALWAYS A CLEAN CAR",
           "description": "With a Fast Clean Service subscription, your car will always be in top condition. Regular professional cleaning, tailored to your rhythm – no maintenance worries.",
-          "highlight": "✔️ Flexible plans – Monthly, annually or 24 months<br/>✔️ Affordable rates – Save on periodic cleaning<br/>✔️ Save time – We ensure a clean car, without any hassle<br/>✔️ Always presentable – Your car exudes professionalism",
+          "highlight": [
+            "Flexible plans – Monthly, annually or 24 months",
+            "Affordable rates – Save on periodic cleaning",
+            "Save time – We ensure a clean car, without any hassle",
+            "Always presentable – Your car exudes professionalism"
+          ],
           "button": {
             "text": "Choose your subscription",
             "link": "/subscribe"
@@ -307,7 +317,7 @@
           "description": "Maximum care for your car, minimum water consumption."
         },
         {
-          "title": "Interior Down to the Detail",
+          "title": "Down to the Detail",
           "description": "Deep cleaning for a fresh, well-groomed appearance."
         }
       ]
