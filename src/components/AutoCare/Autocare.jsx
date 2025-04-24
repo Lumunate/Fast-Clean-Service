@@ -21,6 +21,7 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 
 // ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
+import Preloader from "../Preloader";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
@@ -218,7 +219,7 @@ const AutoCare = () => {
                     textAlign: "center",
                 }}
             >
-                Loading...
+                <Preloader />
             </Box>
         );
     }
