@@ -71,7 +71,7 @@ export default function Home() {
                                         textBox2="Fast, Flawless, Eco-Friendly"/>
                   </Box>
 
-                  <HomePkgsInBox sx={{margin: "0 auto", justifyContent: "center", "@media (max-width: 1150px)": {width: "100%"}}}>
+                  <HomePkgsInBox sx={{margin: "0 auto", zIndex:'3' ,justifyContent: "center", "@media (max-width: 1150px)": {width: "100%"}}}>
                       <Questions/>
                   </HomePkgsInBox>
 

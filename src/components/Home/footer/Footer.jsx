@@ -4,7 +4,7 @@ import { Box, IconButton, Divider, Typography, Link as MuiLink } from "@mui/mate
 import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-material";
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
-import Logo from "../../../../public/logo.png";
+import Logo from "../../../../public/newlogo.svg";
 import {useTranslations} from "next-intl";
 
 export default function Footer() {
