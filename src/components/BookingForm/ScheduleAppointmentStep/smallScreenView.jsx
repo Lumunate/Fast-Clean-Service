@@ -1,19 +1,19 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  createTheme,
-  ThemeProvider,
-  useMediaQuery,
+    Box,
+    Typography,
+    Button,
+    Grid,
+    useTheme,
+    styled,
+    useMediaQuery,
 } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
-  LocalizationProvider,
-  StaticDatePicker,
-  PickersDay,
+    LocalizationProvider,
+    StaticDatePicker,
+    PickersDay,
 } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -24,261 +24,311 @@ import useSnackbar from '../../../hooks/useSnackbar';
 import { useValidation } from '../../../contexts/ValidationContext';
 import { Loader } from '../../mui/Loader';
 import { LoaderContainer } from './ScheduleAppointment.style';
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('UTC');
 
-const theme = createTheme({
-  palette: {
-    mode: 'light', // Use 'light' or 'dark' based on your preference
-  },
-});
+const StyledCalendarContainer = styled(Box)(({ theme }) => ({
+    '& .MuiPickersDay-root': {
+        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+        border: theme.palette.mode === 'dark' ? '1px solid #C2C2C2' : '1px solid #e0e0e0',
+        backgroundColor: 'transparent',
+        '&.Mui-disabled': {
+            color: theme.palette.mode === 'dark' ? '#666666' : '#aaaaaa',
+            borderColor: 'transparent',
+            opacity: 0.6,
+        },
+        '&:hover': {
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(194, 194, 194, 0.15)' : 'rgba(0, 0, 0, 0.04)',
+        },
+        '&.Mui-selected': {
+            backgroundColor: '#348feb !important',
+            color: '#fff !important',
+            border: `1px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`,  // Apply border for selected day as well
+            '&:after': {
+                backgroundColor: '#fff !important',
+            }
+        },
+        '&.Mui-selected:not(.Mui-disabled)': {
+            border: `1px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`,
+        },
+    },
+    '& .MuiPickersCalendarHeader-root': {
+        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+    },
+    '& .MuiTypography-root': {
+        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+    },
+    '& .MuiDialogActions-root .MuiButton-root': {
+        border: theme.palette.mode === 'dark' ? '1px solid #C2C2C2' : '1px solid #e0e0e0',
+        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+        boxShadow: 'none',
+        '&:hover': {
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(194, 194, 194, 0.15)' : 'rgba(0, 0, 0, 0.04)',
+        },
+    },
+}));
 
 const SmallScreenView = () => {
     const t = useTranslations('booking');
-  const form = useMultiStepForm();
-  const { updateValidation } = useValidation();
-  const { openSnackbar } = useSnackbar();
+    const theme = useTheme();
+    const form = useMultiStepForm();
+    const { updateValidation } = useValidation();
+    const { openSnackbar } = useSnackbar();
 
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [timeSlots, setTimeSlots] = useState([]);
-  const [availableDates, setAvailableDates] = useState([]);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null); // Track selected time slot
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [timeSlots, setTimeSlots] = useState([]);
+    const [availableDates, setAvailableDates] = useState([]);
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  useEffect(() => {
-    const fetchTimeSlots = async (offset) => {
-      try {
-        const res = await fetch(
-          `/api/booking/timeslots/weekly?date=${new Date().toISOString()}&type=${form.formData.service}&offset=${offset}&duration=${form.duration}`
+    useEffect(() => {
+        const fetchTimeSlots = async (offset) => {
+            try {
+                const res = await fetch(
+                    `/api/booking/timeslots/weekly?date=${new Date().toISOString()}&type=${form.formData.service}&offset=${offset}&duration=${form.duration}`
+                );
+                const data = await res.json();
+                if (data.success && Array.isArray(data.availableTimeSlots)) {
+                    return data.availableTimeSlots;
+                }
+                openSnackbar(t("steps.7.error.0"));
+                return [];
+            } catch (err) {
+                console.error('Error fetching time slots', err);
+                openSnackbar(t("steps.7.error.1"));
+                return [];
+            }
+        };
+
+        const fetchInitialData = async () => {
+            setIsLoading(true);
+            const initialData = await fetchTimeSlots(0);
+            setTimeSlots(initialData);
+            setAvailableDates(initialData.map((slot) => dayjs(slot.time)));
+            setIsLoading(false);
+
+            for (let i = 1; i < 9; i++) {
+                const additionalData = await fetchTimeSlots(i);
+                setTimeSlots((prev) => [...prev, ...additionalData]);
+                setAvailableDates((prev) => [
+                    ...prev,
+                    ...additionalData.map((slot) => dayjs(slot.time)),
+                ]);
+            }
+        };
+
+        if (form.currentStep === 8) fetchInitialData();
+    }, [form.formData.service, form.duration, form.currentStep, openSnackbar, t]);
+
+    const handleDateChange = (newDate) => {
+        setSelectedDate(newDate);
+        setSelectedTimeSlot(null);
+    };
+
+    const handleTimeSlotClick = (time) => {
+        const selectedTime = dayjs(
+            `${selectedDate.format('YYYY-MM-DD')} ${time}`,
+            'YYYY-MM-DD HH:mm'
         );
-        const data = await res.json();
-        if (data.success && Array.isArray(data.availableTimeSlots)) {
-          return data.availableTimeSlots;
-        } else {
-          console.error('Invalid response structure: ', data);
-          openSnackbar(t("steps.7.error.0"));
-          return [];
-        }
-      } catch (err) {
-        console.error('Error fetching time slots', err);
-        openSnackbar(t("steps.7.error.1"));
-        return [];
-      }
+        form.updateFormData({ selectedTime: selectedTime.toDate() });
+        setSelectedTimeSlot(time);
+        updateValidation(true);
     };
 
-    const fetchInitialData = async () => {
-      setIsLoading(true);
-
-      const initialData = await fetchTimeSlots(0);
-      setTimeSlots(initialData);
-      setAvailableDates(initialData.map((slot) => dayjs(slot.time)));
-
-      setIsLoading(false);
-
-      for (let i = 1; i < 9; i++) {
-        const additionalData = await fetchTimeSlots(i);
-        setTimeSlots((prev) => [...prev, ...additionalData]);
-        setAvailableDates((prev) => [
-          ...prev,
-          ...additionalData.map((slot) => dayjs(slot.time)),
-        ]);
-      }
+    const shouldDisableDate = (date) => {
+        return !availableDates.some((availableDate) =>
+            availableDate.isSame(date, 'day')
+        );
     };
 
-    if (form.currentStep === 8) fetchInitialData();
-  }, [form.formData.service, form.duration, form.currentStep, openSnackbar]);
+    const CustomDay = (props) => {
+        const { day, outsideCurrentMonth, selected, ...other } = props;
+        const isDisabled = shouldDisableDate(day);
+        const isAvailable = availableDates.some((availableDate) =>
+            availableDate.isSame(day, 'day')
+        );
+        const isToday = dayjs().isSame(day, 'day');
 
-  const handleDateChange = (newDate) => {
-    setSelectedDate(newDate);
-    setSelectedTimeSlot(null); // Reset selected time slot when date changes
-  };
+        return (
+            <PickersDay
+                {...other}
+                day={day}
+                outsideCurrentMonth={outsideCurrentMonth}
+                disableRipple={isDisabled}
+                selected={selected}
+                sx={{
+                    borderRadius: '50%',
+                    position: 'relative',
+                    color: `${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'} !important`,
+                    // Current date outline
+                    ...(isToday && !selected && {
+                        border: `1px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'} !important`,
+                    }),
+                    '&.Mui-selected': {
+                        backgroundColor: '#348feb !important',
+                        color: '#fff !important',
+                        border: 'none',
+                        '&:after': {
+                            backgroundColor: '#fff !important',
+                        }
+                    },
+                    '&.Mui-disabled': {
+                        color: `${theme.palette.mode === 'dark' ? '#666666' : '#aaaaaa'} !important`,
+                        opacity: 0.6,
+                    },
+                    ...(isDisabled && {
+                        '&:before': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '50%',
+                            height: '1px',
+                            backgroundColor: theme.palette.mode === 'dark' ? '#C2C2C2' : '#000000',
+                            top: '50%',
+                            left: '25%',
+                        },
+                    }),
+                    ...(isAvailable && {
+                        '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: 6,
+                            height: 6,
+                            borderRadius: '50%',
+                            backgroundColor: selected
+                                ? '#fff'
+                                : theme.palette.mode === 'dark'
+                                    ? '#fff'
+                                    : '#348feb',
+                            bottom: 4,
+                            left: 'calc(50% - 3px)',
+                        },
+                    }),
 
-  const handleTimeSlotClick = (time) => {
-    const selectedTime = dayjs(
-      `${selectedDate.format('YYYY-MM-DD')} ${time}`,
-      'YYYY-MM-DD HH:mm'
-    );
-    form.updateFormData({ selectedTime: selectedTime.toDate() });
+                }}
+            />
+        );
+    };
 
-    setSelectedTimeSlot(time); // Set the selected time slot
+    if (isLoading) {
+        return (
+            <LoaderContainer>
+                <Loader />
+            </LoaderContainer>
+        );
+    }
 
-    setTimeSlots((prev) =>
-      prev.map((slot) => ({
-        ...slot,
-        slots: slot.slots.map((s) => ({
-          ...s,
-          selected:
-            s.start === time && dayjs(slot.time).isSame(selectedDate, 'day'),
-        })),
-      }))
-    );
-
-    updateValidation(true);
-  };
-
-  const shouldDisableDate = (date) => {
-    return !availableDates.some((availableDate) =>
-      availableDate.isSame(date, 'day')
-    );
-  };
-
-  const CustomDay = (props) => {
-    const { day, outsideCurrentMonth, ...other } = props;
-    const isDisabled = shouldDisableDate(day);
-    const isAvailable = availableDates.some((availableDate) =>
-      availableDate.isSame(day, 'day')
+    const selectedDateTimeslots = timeSlots.find((d) =>
+        dayjs(d.time).isSame(selectedDate, 'day')
     );
 
     return (
-      <PickersDay
-        {...other}
-        day={day}
-        outsideCurrentMonth={outsideCurrentMonth}
-        disableRipple={isDisabled}
-        sx={{
-          borderRadius: '50%',
-          position: 'relative',
-          '&.Mui-selected': {
-            backgroundColor: 'transparent', // Remove background color for selected date
-            border: 'none', // Remove border for selected date
-          },
-          ...(isDisabled && {
-            '&:before': {
-              content: '""',
-              position: 'absolute',
-              width: '50%',
-              height: '1px',
-              backgroundColor: 'white',
-              top: '50%',
-              left: '25%',
-            },
-          }),
-          ...(isAvailable && {
-            '&:after': {
-              content: '""',
-              position: 'absolute',
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              backgroundColor: '#348feb',
-              bottom: 4,
-              left: 'calc(50% - 3px)',
-            },
-          }),
-        }}
-      />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <StyledCalendarContainer>
+                <Box p={isSmallScreen ? 2 : 4}>
+                    <Typography variant="h6" gutterBottom textAlign="center">
+                        {t("steps.7.title")}
+                    </Typography>
+
+                    <Box
+                        sx={{
+                            mt: 2,
+                            display: 'flex',
+                            flexDirection: isSmallScreen ? 'column' : 'row',
+                            gap: isSmallScreen ? 2 : 4,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '100%',
+                            maxWidth: isSmallScreen ? '100%' : '50%',
+                        }}>
+                            <StaticDatePicker
+                                orientation={isSmallScreen ? 'portrait' : 'portrait'}
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                disablePast
+                                shouldDisableDate={shouldDisableDate}
+                                sx={{
+                                    width: '100%',
+                                    '& .MuiPickersCalendarHeader-root': {
+                                        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                    },
+                                    '& .MuiTypography-root': {
+                                        color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                    },
+                                    backgroundColor: 'transparent',
+                                    border: theme.palette.mode === 'dark' ? '1px solid #C2C2C2' : '1px solid #e0e0e0',
+                                    borderRadius: '8px',
+                                    boxShadow: 'none',
+                                }}
+                                slots={{ day: CustomDay }}
+                            />
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                flex: 1,
+                                maxWidth: '32rem',
+                                zIndex: selectedDate ? 1 : -1,
+                                opacity: selectedDate ? 1 : 0,
+                                transform: selectedDate ? 'translateX(0)' : 'translateX(-130%)',
+                                pointerEvents: selectedDate ? 1 : 0,
+                                visibility: selectedDate ? 'visible' : 'hidden',
+                                transition:
+                                    'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
+                            }}
+                        >
+                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
+                                {selectedDate?.format('ddd, MMMM D')}
+                            </Typography>
+                            {selectedDateTimeslots ? (
+                                selectedDateTimeslots.slots.map((slot, slotIndex) => (
+                                    <Button
+                                        key={slotIndex}
+                                        variant="outlined"
+                                        sx={{
+                                            margin: '0.5rem 0',
+                                            fontSize: isSmallScreen ? '0.75rem' : '1rem',
+                                            backgroundColor:
+                                                selectedTimeSlot === slot.start ? '#348feb' : 'inherit',
+                                            color:
+                                                selectedTimeSlot === slot.start ? 'white' : 'inherit',
+                                            border: `1px solid ${theme.palette.mode === 'dark' ? '#C2C2C2' : '#e0e0e0'}`,
+                                            boxShadow: 'none',
+                                            '&:hover': {
+                                                backgroundColor:
+                                                    selectedTimeSlot === slot.start
+                                                        ? '#348feb'
+                                                        : 'inherit',
+                                            },
+                                        }}
+                                        onClick={() => handleTimeSlotClick(slot.start)}
+                                    >
+                                        {slot.start}
+                                    </Button>
+                                ))
+                            ) : (
+                                <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
+                                    {t("steps.7.unavailable")}
+                                </Typography>
+                            )}
+                        </Box>
+                    </Box>
+                </Box>
+            </StyledCalendarContainer>
+        </LocalizationProvider>
     );
-  };
-
-  if (isLoading) {
-    return (
-      <LoaderContainer>
-        <Loader />
-      </LoaderContainer>
-    );
-  }
-
-  // Find time slots for the selected date
-  const selectedDateTimeslots = timeSlots.find((d) =>
-    dayjs(d.time).isSame(selectedDate, 'day')
-  );
-
-  return (
-    <ThemeProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box p={4}>
-          <Typography variant="h6" gutterBottom textAlign="center">
-            Select an appointment time
-          </Typography>
-
-          <Box
-            sx={{
-              mt: 2,
-              display: 'flex',
-              gap: 4,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '3rem',
-                position: 'relative',
-              }}
-            >
-              <StaticDatePicker
-                orientation={isSmallScreen ? 'landscape' : 'portrait'}
-                value={selectedDate}
-                onChange={handleDateChange}
-                disablePast
-                shouldDisableDate={shouldDisableDate}
-                sx={{ width: '100%' }}
-                slots={{ day: CustomDay }}
-              />
-            </Box>
-
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                flex: 1,
-                maxWidth: '32rem',
-                zIndex: selectedDate ? 1 : -1,
-                opacity: selectedDate ? 1 : 0,
-                transform: selectedDate ? 'translateX(0)' : 'translateX(-130%)',
-                pointerEvents: selectedDate ? 1 : 0,
-                visibility: selectedDate ? 'visible' : 'hidden',
-                transition:
-                  'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
-              }}
-            >
-              <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
-                {selectedDate?.format('ddd, MMMM D')}
-              </Typography>
-              {selectedDateTimeslots ? (
-                selectedDateTimeslots.slots.map((slot, slotIndex) => (
-                  <Button
-                    key={slotIndex}
-                    variant="outlined"
-                    sx={{
-                      margin: '0.5rem 0',
-                      fontSize: isSmallScreen ? '0.75rem' : '1rem',
-                      backgroundColor:
-                        selectedTimeSlot === slot.start ? '#348feb' : 'inherit', // Highlight selected time slot
-                      color:
-                        selectedTimeSlot === slot.start ? 'white' : 'inherit', // Change text color for selected time slot
-                      '&:hover': {
-                        backgroundColor:
-                          selectedTimeSlot === slot.start
-                            ? '#348feb'
-                            : 'inherit', // Maintain highlight on hover
-                      },
-                    }}
-                    onClick={() => handleTimeSlotClick(slot.start)}
-                  >
-                    {slot.start}
-                  </Button>
-                ))
-              ) : (
-                <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
-                    {t("steps.7.unavailable")}
-                </Typography>
-              )}
-            </Box>
-          </Box>
-        </Box>
-      </LocalizationProvider>
-    </ThemeProvider>
-  );
 };
 
 export default SmallScreenView;

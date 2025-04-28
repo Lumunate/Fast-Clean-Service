@@ -89,13 +89,14 @@ const BookingFormFooter = () => {
     if (data.length === 0) {
       throw new Error(`No data found for ${licensePlate}`);
     }
+    console.log(data);
 
     return data[0];
   };
 
   const validatePlate = async () => {
     const plate = formData.licensePlate;
-
+    console.log("Validating license plate:", plate);
     setLoading(true);
     setError('');
 
@@ -109,19 +110,22 @@ const BookingFormFooter = () => {
       /^(([A-Z]{2}-?\d{2}-?\d{2})|([A-Z]{2}-?\d{2}-?[A-Z]{2})|(\d{2}-?[A-Z]{2}-?\d{2})|(\d{2}-?[A-Z]{3}-?\d{1})|(\d{1}-?[A-Z]{3}-?\d{2})|([A-Z]{1}-?\d{3}-?[A-Z]{2})|([A-Z]{3}-?\d{2}-?[A-Z]{1})|(\d{1}-?[A-Z]{2}-?\d{3})|([A-Z]{2}-?\d{3}-?[A-Z]{1})|([A-Z]{1}-?\d{2}-?[A-Z]{3})|([A-Z]{3}-?\d{2}-?\d{1})|(\d{3}-?[A-Z]{2}-?\d{1})|([A-Z]{2}-?[A-Z]{2}-?\d{2})|([A-Z]{1}-?\d{3}-?[A-Z]{1})|([BHK]{1}[SDJFM]{1}-?[A-Z]{2}-?\d{2}))$/;
 
     if (!dutchLicensePlateRegex.test(plate)) {
+      console.log("License plate format is invalid.");
       setError('Invalid license plate format');
       setLoading(false);
       updateValidation(false);
       return false;
     }
-
+    console.log("License plate format is valid.");
     try {
       const data = await fetchLicensePlateData(plate);
       updateFormData({ vehicleDetails: data });
+      console.log("Vehicle details fetched from RDW:", data);
       updateValidation(true);
       setLoading(false);
       return true;
     } catch (err) {
+      console.log("Error fetching vehicle data:", err.message);
       setError(err.message);
       console.error(err);
       updateValidation(false);
@@ -131,12 +135,15 @@ const BookingFormFooter = () => {
   };
 
   const handleNext = async () => {
-    if (step === 2) {
+    console.log("handleNext triggered for step:", step);
+    if (step === 1) {
       if (!formData.proceedWithoutLicensePlate) {
         if (formData.licensePlate && formData.licensePlate.trim().length > 0) {
           const isValid = await validatePlate();
+          console.log("Proceeding to validate the license plate");
           if (!isValid) return;
         } else {
+          console.log("License plate is empty or 'Proceed without license plate' not checked");
           setError(
             "Please enter a license plate or check 'Proceed without license plate'"
           );

@@ -92,6 +92,7 @@ export default function HowDoesItWork() {
                         }}
                     >
                         <SingleWorkHowDoes
+                            index={index + 1}
                             icon={work.icon}
                             title={work.title}
                             description={work.description}
@@ -113,7 +114,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(24% - 22px)",
+                        left: "calc(26% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",
@@ -158,7 +159,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(71% - 22px)",
+                        left: "calc(73% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",

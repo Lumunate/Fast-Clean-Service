@@ -5,118 +5,45 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { SectionHeading } from "../mui/HomePkgs";
 import { useTheme } from "../../contexts/themeContext";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
+import HeadingLinesAnimation from "./HeadingLinesAnimation/HeadingLinesAnimation";
 
 const Questions = () => {
     const [openIndex, setOpenIndex] = useState([]);
     const { theme } = useTheme();
-    const t = useTranslations('contact.faq');
+    const t = useTranslations("home.faq");
 
-    const questionsData = [
-        {
-            question: t("questions.0.question"),
-            answer: (
-                <>
-                    <p>{t("questions.0.answer")}</p>
-                </>
+    const questionsData = Array.from({ length: 10 }, (_, i) => {
+        const question = t(`questions.${i}.question`);
+        const answer = t.raw(`questions.${i}.answer`);
+        const isArray = Array.isArray(answer);
+
+        return {
+            question,
+            answer: isArray ? (
+                <ul>
+                    {answer.map((line, idx) => (
+                        <li key={idx}>{line}</li>
+                    ))}
+                </ul>
+            ) : (
+                <p>{answer}</p>
             ),
-        },
-        {
-            question: t("questions.1.question"),
-            answer: (
-                <>
-                    <p>{t("questions.1.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.2.question"),
-            answer: (
-                <>
-                    <p>{t("questions.2.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.3.question"),
-            answer: (
-                <>
-                    <p>{t("questions.3.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.4.question"),
-            answer: (
-                <>
-                    <p>{t("questions.4.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.5.question"),
-            answer: (
-                <>
-                    <p>{t("questions.5.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.6.question"),
-            answer: (
-                <>
-                    <p>{t("questions.6.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.7.question"),
-            answer: (
-                <>
-                    <p>{t("questions.7.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.8.question"),
-            answer: (
-                <>
-                    <p>{t("questions.8.answer")}</p>
-                </>
-            ),
-        },
-        {
-            question: t("questions.9.question"),
-            answer: (
-                <>
-                    <p>{t("questions.9.answer")}</p>
-                </>
-            ),
-        },
-    ];
+        };
+    });
 
     const handleToggle = (index) => {
-        setOpenIndex((prevOpenIndex) => {
-            if (prevOpenIndex.includes(index)) {
-                return prevOpenIndex.filter((item) => item !== index);
-            } else {
-                return [...prevOpenIndex, index];
-            }
-        });
+        setOpenIndex((prevOpenIndex) =>
+            prevOpenIndex.includes(index)
+                ? prevOpenIndex.filter((item) => item !== index)
+                : [...prevOpenIndex, index]
+        );
     };
 
     return (
-        <Box sx={{ marginBottom: "3rem" }}>
-            <SectionHeading
-                variant="h1"
-                gutterBottom
-                sx={{
-                    fontSize: "4rem !important",
-                    color: theme.palette.mode === "light" ? "#232E4A" : "#FFFFFF",
-                }}
-            >
-                {t("title")}
-            </SectionHeading>
+        <Box sx={{ marginBottom: "3rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <HeadingLinesAnimation text={t("title")} sx={{ width: "100%", textAlign: "center" }} />
+
             <List sx={{ width: "100%" }}>
                 {questionsData.map((item, index) => (
                     <ListItem
@@ -143,7 +70,6 @@ const Questions = () => {
                                 }}
                             >
                                 {item.question}
-
                                 <IconButton
                                     onClick={() => handleToggle(index)}
                                     sx={{
@@ -163,7 +89,7 @@ const Questions = () => {
                                     sx={{
                                         marginTop: "2rem",
                                         color: theme.palette.mode === "light" ? "#535353" : "#C2C2C2",
-                                        "& p": {
+                                        "& p, & ul": {
                                             fontSize: "1.4rem",
                                             marginBottom: "1rem",
                                         },

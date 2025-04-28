@@ -106,7 +106,7 @@ const BookingForm = () => {
         width: '1200%',
         height: activeHeight,
         transition: 'all 300ms ease-in-out',
-        marginLeft: "5rem",
+        // marginLeft: "5rem",
         "@media (max-width: 900px)": { marginLeft: "0", },
       }}
     >

@@ -507,7 +507,7 @@ export const ServiceSubheading = styled(Typography)(({ theme, special = false })
 }));
 
 export const ServicesDesc = styled(Typography)(({ theme }) => ({
-  margin: "2rem 0",
+  margin: "0 0 1rem 0",
   lineHeight: 1.5,
   fontSize: "2.5rem !important",
   color: "#aaa",
@@ -807,7 +807,7 @@ export const Carousel = styled(Box)(({ theme }) => ({
 export const CarouselContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   transition: "all 300ms ease-in-out",
-  marginBottom: "8rem",
+  marginBottom: "3rem",
   // gap: "2rem",
 }));
 

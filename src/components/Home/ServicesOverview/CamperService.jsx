@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { Box, Typography, Button, useMediaQuery, styled } from "@mui/material";
-import { HomePkgsBox, HomePkgsInBox, HomeServicesBox, ServiceBtn1, ServicesBtn } from "../../mui/HomePkgs";
+import { Box, Typography, Button, styled } from "@mui/material";
+import { HomeServicesBox, ServiceBtn1 } from "../../mui/HomePkgs";
 import { useTheme } from "../../../contexts/themeContext";
-import styles from "./CamperService.module.css";
-import { ServiceDescription, ServiceHeading, ServiceItemContainer, ServiceItemSubheading } from "./ServiceColumnGroup";
+import { ServiceHeading, ServiceItemSubheading } from "./ServiceColumnGroup";
 import RadialCircle from "../../Decorative/RadialCircle";
 import FadeIn from "../../Animations/FadeIn";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const CamperServiceBox = styled(Box)(({ theme }) => ({
   minWidth: "500px",
@@ -19,9 +19,12 @@ export const CamperServiceBox = styled(Box)(({ theme }) => ({
   width: "40%",
   display: "flex",
   justifyContent: "space-between",
+  position: "relative", // Added for Flex positioning of the button
+  paddingBottom: "80px", // Space for the button at bottom
   "@media (max-width: 600px)": {
     minWidth: "100%",
     padding: "2rem",
+    paddingBottom: "80px", // Maintain space for button
   },
 }));
 
@@ -34,27 +37,35 @@ export const ServiceItemDesciptionB = styled(ServiceItemSubheading)(({ theme }) 
   },
 }));
 
-export const ServiceItemCTA = styled(ServiceBtn1)(({ theme }) => ({
-  padding: "1.4rem 3.7rem",
-  "@media (max-width: 600px)": {
-    padding: "1rem 1.7rem",
-  },
-}));
-
-export const ServiceItemHighlight = styled(Typography)(({ theme, special = false }) => ({
+export const ServiceItemHighlight = styled(Typography)(({ theme }) => ({
   fontSize: "1.4rem",
-  color: special
-      ? theme.palette.mode === "dark"
-          ? "#01BEFF"
-          : "#005F7F"
-      : theme.palette.mode === "dark"
-          ? "#C2C2C2"
-          : "#535353",
+  color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
   textAlign: "center",
   marginBottom: "2.5rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
   "@media (max-width: 600px)": {
     fontSize: "0.8rem",
     marginBottom: "1.6rem",
+  },
+}));
+
+export const CheckmarkItem = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "flex-start",
+  marginBottom: "0.8rem",
+  textAlign: "left",
+  width: "100%",
+}));
+
+export const ServiceItemCTA = styled(ServiceBtn1)(({ theme }) => ({
+  padding: "1.4rem 3.7rem",
+  textAlign: "center",
+  width: "80%",
+  marginTop: "auto", // Push the button to the bottom of the container
+  "@media (max-width: 600px)": {
+    padding: "1rem 1.7rem",
   },
 }));
 
@@ -63,47 +74,229 @@ export default function CamperService() {
   const { theme } = useTheme();
 
   return (
-    <HomeServicesBox
-      sx={{
-        position: "relative",
-        flexWrap: "wrap",
-        marginBottom: "10rem",
-        gap: "10.7rem",
-        "@media (max-width: 600px)": {
-          gap: "4rem",
-          flexDirection: "column",
-          alignItems: "center",
-        },
-      }}
-    >
-      <RadialCircle top={"-2rem"} left={"50%"} />
-      <CamperServiceBox id="fleet-care-pro">
-        <FadeIn direction="left" distance={100} duration={1}>
-          <Box>
-            <ServiceHeading>{t("services.0.title")}</ServiceHeading>
-            <ServiceItemDesciptionB>{t("services.0.description")}</ServiceItemDesciptionB>
-            <ServiceItemHighlight>{t("services.0.highlight")}</ServiceItemHighlight>
-          </Box>
-          <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
-            {t("services.0.button.text")}
-          </ServiceItemCTA>
-        </FadeIn>
-      </CamperServiceBox>
+      <HomeServicesBox
+          sx={{
+            position: "relative",
+            flexWrap: "wrap",
+            marginBottom: "10rem",
+            gap: "10.7rem",
+            "@media (max-width: 600px)": {
+              gap: "4rem",
+              flexDirection: "column",
+              alignItems: "center",
+            },
+          }}
+      >
+        <RadialCircle top={"-2rem"} left={"50%"} />
+        <CamperServiceBox id="fleet-care-pro">
+          <FadeIn direction="left" distance={100} duration={1}>
+            <Box>
+              <ServiceHeading>{t("services.0.titlemain")}</ServiceHeading>
+              <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.0.titlesub")}</ServiceHeading>
+              <ServiceItemDesciptionB>{t("services.0.description")}</ServiceItemDesciptionB>
 
-      <CamperServiceBox id="subscriptions">
-        <FadeIn direction="right" distance={100} duration={1}>
-          <Box>
-            <ServiceHeading>{t("services.1.title")}</ServiceHeading>
-            <ServiceItemDesciptionB>{t("services.1.description")}</ServiceItemDesciptionB>
-            <ServiceItemHighlight>{t("services.1.highlight")}</ServiceItemHighlight>
+              <ServiceItemHighlight>
+                {/* Directly listing the highlights from translation */}
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.0.highlight.0")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.0.highlight.1")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.0.highlight.2")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.0.highlight.3")}
+                  </Typography>
+                </CheckmarkItem>
+              </ServiceItemHighlight>
+            </Box>
+            <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
+              {t("services.0.button.text")}
+            </ServiceItemCTA>
+          </FadeIn>
+        </CamperServiceBox>
 
-            <ServiceItemHighlight special>{t("services.1.special_highlight")}</ServiceItemHighlight>
-          </Box>
-          <ServiceItemCTA sx={{ marginTop: "2rem" }} special onClick={() => (window.location.href = "/subscribe")}>
-            {t("services.0.button.text")}
-          </ServiceItemCTA>
-        </FadeIn>
-      </CamperServiceBox>
-    </HomeServicesBox>
+        <CamperServiceBox id="subscriptions">
+          <FadeIn direction="right" distance={100} duration={1}>
+            <Box>
+              <ServiceHeading>{t("services.1.titlemain")}</ServiceHeading>
+              <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.1.titlesub")}</ServiceHeading>
+              <ServiceItemDesciptionB>{t("services.1.description")}</ServiceItemDesciptionB>
+
+              <ServiceItemHighlight>
+                {/* Directly listing the highlights from translation */}
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.1.highlight.0")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.1.highlight.1")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.1.highlight.2")}
+                  </Typography>
+                </CheckmarkItem>
+                <CheckmarkItem>
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: "#90EE90",
+                        marginRight: "1rem",
+                        marginTop: "0.3rem",
+                      }}
+                  />
+                  <Typography
+                      variant="span"
+                      sx={{
+                        textAlign: "left",
+                        fontSize: "1.4rem",
+                        fontWeight: "300",
+                        color: theme.palette.mode === "dark" ? "#C2C2C2" : "#535353",
+                        "@media (max-width: 600px)": { fontSize: "0.8rem" },
+                      }}
+                  >
+                    {t("services.1.highlight.3")}
+                  </Typography>
+                </CheckmarkItem>
+              </ServiceItemHighlight>
+            </Box>
+            <ServiceItemCTA special onClick={() => (window.location.href = "/subscribe")}>
+              {t("services.1.button.text")}
+            </ServiceItemCTA>
+          </FadeIn>
+        </CamperServiceBox>
+      </HomeServicesBox>
   );
 }
