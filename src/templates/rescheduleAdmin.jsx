@@ -3,7 +3,7 @@ import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } fro
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
 const RescheduledBookingAdminEmail = ({ userName, userEmail, packageName, oldDate, oldTime, newDate, newTime, location }) => {
-  const accentColor = "#0070f3";
+  const accentColor = "#00c3ff";
 
   return (
     <Html>
@@ -127,11 +127,7 @@ const bookingDetailsContainer = {
 };
 
 const bookingDetails = {
-  backgroundColor: "#ffffff",
-  borderRadius: "8px",
-  padding: "16px",
-  marginBottom: "16px",
-  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+  backgroundColor: "transparent",
 };
 
 const detailText = {

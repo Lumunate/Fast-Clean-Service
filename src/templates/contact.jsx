@@ -4,7 +4,7 @@ import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } fro
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
 const ContactConfirmationEmail = ({ name, email, message }) => {
-  const accentColor = "#333333";
+  const accentColor = "#00c3ff";
   const actionColor = "#0070f3";
 
   return (

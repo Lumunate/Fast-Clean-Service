@@ -4,7 +4,7 @@ import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } fro
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
 const UpcomingBookingAdminEmail = ({ userName, userEmail, packageName, date, time, location }) => {
-  const accentColor = "#0070f3";
+  const accentColor = "#00c3ff";
 
   return (
     <Html>

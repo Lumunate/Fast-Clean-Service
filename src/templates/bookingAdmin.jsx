@@ -24,10 +24,10 @@ const AdminBookingNotificationEmail = ({ userName, userEmail, packageName, date,
               style={img}
             />
           </Section>
-          <Heading style={{ ...heading, color: accentColor }}>New Booking Notification</Heading>
+          <Heading style={{ ...heading, color: "#00c3ff" }}>New Booking Notification</Heading>
           <Text style={paragraph}>A new booking has been made. Details are below:</Text>
           <Section style={bookingDetails}>
-            <Heading as="h2" style={{ ...subheading, color: accentColor }}>
+            <Heading as="h2" style={{ ...subheading, color: "#00c3ff" }}>
               {packageName}
             </Heading>
             <Text style={detailText}>
@@ -153,8 +153,8 @@ const actionSection = {
 };
 
 const actionButton = {
-  backgroundColor: "#0070f3",
-  borderRadius: "5px",
+  backgroundColor: "#00c3ff",
+  borderRadius: "7px",
   color: "#ffffff",
   fontSize: "14px",
   fontWeight: "bold",

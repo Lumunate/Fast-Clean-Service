@@ -14,7 +14,7 @@ const BookingConfirmationEmail = ({ name, packageName, date, time, location, pri
       <Body style={main}>
         <Container style={container}>
           <Section style={imgSection}>
-            <Img src={`${baseUrl}/logo.png`} width="50" height="47" alt="Fast Clean Service" style={img} />
+            <Img src={`https://res.cloudinary.com/diiafjy31/image/upload/v1730861547/Final-05_vlcqut.svg`} width="200" height="90" alt="Fast Clean Service" style={img} />
           </Section>
           <Heading style={{ ...heading, color: accentColor }}>Booking Confirmation</Heading>
           <Text style={paragraph}>Dear {name},</Text>
@@ -113,7 +113,7 @@ const detailText = {
 
 const btn = {
   backgroundColor: "#00c3ff",
-  borderRadius: "30px",
+  borderRadius: "7px",
   color: "#ffffff",
   fontSize: "16px",
   fontWeight: "bold",

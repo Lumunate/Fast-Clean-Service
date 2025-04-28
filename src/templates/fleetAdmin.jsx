@@ -3,7 +3,10 @@ import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } fro
 // const baseUrl = process.env.VERCEL_URL;
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
-const accentColor = "#333333";
+
+const accentColor = "#00c3ff";
+const actionColor = "#0070f3";
+const textColor = "#333";
 
 const AdminFleetCareNotificationEmail = ({
   name,
@@ -14,8 +17,7 @@ const AdminFleetCareNotificationEmail = ({
   fleetSize,
   packageName = "FleetCare Pro",
 }) => {
-  const accentColor = "#333333";
-  const actionColor = "#0070f3";
+
 
   return (
     <Html>

@@ -114,7 +114,7 @@ const detailText = {
 
 const btn = {
   backgroundColor: "#00c3ff",
-  borderRadius: "30px",
+  borderRadius: "7px",
   color: "#ffffff",
   fontSize: "16px",
   fontWeight: "bold",
