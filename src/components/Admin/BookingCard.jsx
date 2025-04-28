@@ -318,6 +318,7 @@ const tableHeaders = [
 const BookingsCard = ({ bookings }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -421,7 +422,7 @@ const BookingsCard = ({ bookings }) => {
 
         <TablePagination
           component="div"
-          count={bookings.length}
+          count={bookingLength}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
