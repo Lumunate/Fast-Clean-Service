@@ -132,7 +132,9 @@
       "title": "What Our Customers Say",
       "description": "Want to share an experience?",
       "description2": "Leave your review and help others choose quality!",
-      "button": "Submit a Review"
+      "button": "Submit a Review",
+      "trustpilotBtn":"View All Trustpilot Reviews",
+      "googleBtn":"View All Google Reviews"
     },
     "packages_section": {
       "title": "OUR PACKAGES",
@@ -153,7 +155,8 @@
           "title": "Paint Protection & Coating",
           "description": "Long-lasting protection against dirt, UV and weather influences. Keeps your car in top condition for longer."
         }
-      ]
+      ],
+      "btn":" More Information"
     },
     "anywhere_autocare_section": {
       "title": "Detailing Service",

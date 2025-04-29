@@ -24,7 +24,7 @@
     },
 
     "about_section": {
-      "title": "The Best Care for Your Car Wherever You Are!",
+      "title": "De beste zorg voor uw auto, waar u ook bent!",
       "description": "Bij Fast Clean Service krijgt uw auto de hoogste kwaliteit stoomreiniging en detailing, ‘op locatie’ of in ‘onze vestiging’. Dankzij geavanceerde technieken en hoogwaardige producten reinigen én beschermen we uw auto met zorg en precisie.",
       "why_choose_us": {
         "title": "Waarom kiezen voor Fast Clean Service?",
@@ -97,31 +97,31 @@
       "description": "Wil je nét dat beetje extra? Breid je behandeling uit met aanvullende services voor een nóg beter resultaat. Kies uit interieur-, exterieur- of detailing-opties en stel je eigen ideale behandeling samen.",
       "services": [
         {
-          "title": "Interieur Add-ons",
+          "title": "Stoomreiniging interieur en exterieur",
           "description": "Laat je interieur weer fris aanvoelen. Kies bijvoorbeeld voor een dieptereiniging van de bekleding, een leerbehandeling, of een intensieve geurneutralisatie via ozon. Ook verwijdering van huisdierharen, schimmel, braaksel of het stoomreinigen van het plafond behoren tot de mogelijkheden. Zelfs kinderstoelen kunnen apart diep gereinigd worden.",
           "bullets": [
-            "✔ Thorough cleaning without residue",
-            "✔ Safe for fabric, leather and plastic"
+            "Grondige reiniging zonder residu",
+            "Veilig voor stof, leer en plastic"
           ],
-          "description2": "📅 Book now and give your car the fresh start it deserves."
+          "description2": "📅 Boek nu en geef uw auto de frisse start die hij verdient."
         },
         {
-          "title": "Exterieur Add-ons",
+          "title": "Verfbescherming en coatings",
           "description": "Geef je auto extra aandacht aan de buitenkant. Van cabriodak- en schuifdakreiniging tot het reinigen van de tankklep en motorkap. Ook het verwijderen van vliegroest, hars of mos uit naden behoort tot de opties. Kunststofdelen kunnen extra worden gepoetst, en dorpels en deurranden worden grondig meegenomen.",
           "bullets": [
-            "✔ Deep shine and water‑repellent effect",
-            "✔ Prevents fading and wear"
+            "Diepe glans en waterafstotend effect",
+            "Voorkomt vervaging en slijtage"
           ],
-          "description2": "📅 Schedule a detailing treatment."
+          "description2": "📅 Maak een afspraak voor een detailbehandeling."
         },
         {
-          "title": "Detailing Add-ons",
+          "title": "Polijsten & Koplamprestauratie",
           "description": "Maak je behandeling compleet met professionele detailing. Denk aan het polijsten van koplampen of chromen delen, een claybar behandeling voor gladde lak, of een beschermende lakverzegeling. Kies uit 1-, 2- of 3-staps polijsten voor het beste resultaat, of ga voor een duurzame glascoating die je auto langdurig beschermt.",
           "bullets": [
-            "✔ Removes dullness and yellowing for brighter light",
-            "✔ Better visibility and a fresher look"
+            "Verwijdert doffe plekken en vergeling voor helderder licht",
+            "Beter zicht en een frissere uitstraling"
           ],
-          "description2": "📅 Professional polishing for optimal results"
+          "description2": "📅 Professioneel polijsten voor een optimaal resultaat"
         }
       ],
       "buttons": {
@@ -133,7 +133,9 @@
       "title": "Wat onze klanten zeggen",
       "description": "Bij Fast Clean Service hebben we al vele tevreden klanten geholpen. Laat een review achter en vertel ons hoe we u geholpen hebben!",
       "description2": "Laat een beoordeling achter en vertel ons hoe wij u geholpen hebben!",
-      "button": "Stuur een recensie"
+      "button": "Stuur een recensie",
+      "trustpilotBtn":"Bekijk alle Trustpilot-recensies",
+      "googleBtn":"Bekijk alle Google-recensies"
     },
     "packages_section": {
       "title": "ONZE PAKKETTEN",
@@ -154,18 +156,19 @@
           "title": "Training & Coaching",
           "description": "Leer zelf detailen als een pro of start je eigen poetsbedrijf met onze e-books, praktijktrainingen en begeleiding."
         }
-      ]
+      ],
+      "btn":"Meer informatie"
     },
     "anywhere_autocare_section": {
       "title": "Detailing Service",
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
-          "title": "Detail Shop",
+          "title": "Detailwinkel",
           "description": "Breng je auto naar onze vestiging in Assendelft. Hier behandelen we elk detail met de juiste technieken en hoogwaardige producten voor een langdurig resultaat."
         },
         {
-          "title": "Mobiele Service",
+          "title": "Mobiele dienst",
           "description": "Geen tijd om langs te komen? Geen probleem. Wij komen naar je toe – aan huis, op kantoor of op elke gewenste locatie."
         }
       ],
@@ -222,9 +225,15 @@
       "services": [
         {
           "id": "fleet-care-pro",
-          "title": "FleetCare Pro",
-          "description": "Verbeter de uitstraling van uw wagenpark met onze geavanceerde mobiele reinigingsservice. FleetCare Pro brengt professionele stoomreinigingstechnologie rechtstreeks naar uw locatie, zodat uw voertuigen altijd en overal brandschoon en klaar voor de weg zijn.",
-          "highlight": "Met FleetCare Pro zijn uw voertuigen slechts een reservering verwijderd.",
+          "titlemain": "FleetCare Pro",
+          "titlesub": "ALTIJD EEN REPRESENTATIEVE VLOOT",
+          "description": "Houd uw bedrijfsvoertuigen in topconditie met onze mobiele reinigingsservice. Wij komen naar uw locatie en bieden maatoplossingen voor elke vloot, van basisreiniging tot volledige detailing.",
+          "highlight": [
+            "Pakketten op maat – Op maat gemaakt voor uw wagenpark",
+            "Mobiele service – Schoonmaak op locatie, wanneer het u uitkomt",
+            "Consistente uitstraling – Uw wagenpark altijd representatief",
+            "Efficiënt en professioneel – Minimale downtime, maximale resultaten"
+          ],
           "button": {
             "text": "Boek Nu",
             "link": "/fleet"
@@ -232,10 +241,15 @@
         },
         {
           "id": "subscriptions",
-          "title": "Abonnementen",
-          "description": "Transformeer uw auto-onderhoudsroutine met onze flexibele abonnementen. Ervaar premium service afgestemd op uw planning en voorkeuren.",
-          "highlight": "Kies uw abonnement en maak u nooit meer zorgen over een vuile auto!",
-          "special_highlight": "24 maanden | Jaarlijks | Maandelijks abonnement",
+          "titlemain": "Abonnementen",
+          "titlesub": "ALTIJD EEN SCHONE AUTO",
+          "description": "Met een Fast Clean Service-abonnement is uw auto altijd in topconditie. Regelmatige professionele reiniging, afgestemd op uw ritme – geen zorgen over onderhoud.",
+          "highlight": [
+            "Flexibele abonnementen – Maandelijks, jaarlijks of 24 maanden",
+            "Betaalbare tarieven – Bespaar op periodieke schoonmaak",
+            "Bespaar tijd – Wij zorgen voor een schone auto, zonder gedoe",
+            "Altijd representatief – Uw auto straalt professionaliteit uit"
+          ],
           "button": {
             "text": "Boek Nu",
             "link": "/subscribe"
@@ -909,10 +923,10 @@
     ]
   },
   "subscriptions": {
-    "title": "SUBSCRIPTIONS",
-    "subtitle": "Subscription Plans - Worry-Free Maintenance for your Vehicle",
-    "description": "With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits.",
-    "stitle": "What do we offer:",
+    "title": "ABONNEMENTEN",
+    "subtitle": "Abonnementsplannen - Zorgeloos onderhoud voor uw voertuig",
+    "description": "Met onze Fast Clean Service-abonnementen bieden we een flexibele en voordelige manier om uw auto altijd in topconditie te houden. Kies uit verschillende opties, afgestemd op uw behoeften en rijstijl, met regelmatig onderhoud en exclusieve voordelen.",
+    "stitle": "Wat bieden wij:",
     "features": [
       {
         "title": "Expert Care",
@@ -924,8 +938,8 @@
       }
     ],
     "cta": {
-      "text": "Choose one of our subscription options and enjoy convenience and quality, without a hassle!",
-      "button": "Book Now"
+      "text": "Kies een van onze abonnementsvormen en geniet van gemak en kwaliteit, zonder gedoe!",
+      "button": "Boek nu"
     },
     "plans": [
       {
