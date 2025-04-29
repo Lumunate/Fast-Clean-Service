@@ -50,9 +50,9 @@ const BookingParticulars = () => {
     bookingMessage: '', // New field for booking message
   });
 
-    const [isChecked, setIsChecked] = useState(false);
+    const isChecked = formData?.termsAccepted ?? false;
 
-  const toTitleCase = (str) => {
+    const toTitleCase = (str) => {
     return str
         .toLowerCase()
         .split(' ')
@@ -121,11 +121,13 @@ const BookingParticulars = () => {
     form.updateFormData({ [name]: value });
   };
 
-  const handleCheckboxChange = (e) => {
-    setIsChecked(e.target.checked);
-  };
+    const handleCheckboxChange = (e) => {
+        const checked = e.target.checked;
+        form.updateFormData({ termsAccepted: checked });
+    };
 
-  return (
+
+    return (
       <Box
           sx={{
             padding: '2rem 1rem',

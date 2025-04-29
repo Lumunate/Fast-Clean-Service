@@ -82,6 +82,15 @@ const StepBar = () => {
             <StepsContainer>
                 {items.map((item, index) => {
                     let adjustedIndex = index >= 5 ? index + 1 : index;
+
+                    // Block Summary access if appointment is not yet completed
+                    const isSummaryStep = index === 8; // 8th index = Summary
+                    const isAppointmentDone = currentStep > 8; // Appointment should be completed (currentStep > 8)
+
+                    const finalIsAccessible = isSummaryStep
+                        ? isAppointmentDone // Only allow Summary if Appointment is completed
+                        : isStepAccessible(index);
+
                     return (
                         <StepItem
                             key={index}
@@ -92,7 +101,7 @@ const StepBar = () => {
                             current={currentStep === adjustedIndex + 1}
                             index={index}
                             onStepClick={() => navigateToStep(index)}
-                            isAccessible={isStepAccessible(index)}
+                            isAccessible={finalIsAccessible}
                         />
                     );
                 })}

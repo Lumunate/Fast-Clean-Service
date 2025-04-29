@@ -61,11 +61,22 @@ const BookingFormFooter = () => {
       setIsBtnInvalid(true);
     } else if (currentStep === 8) {
       setIsBtnInvalid(!formData.selectedTime);
-    } else {
-      setIsBtnInvalid(false);
-    }
+    } else if (currentStep === 10) {
+        const requiredFieldsFilled =
+            formData.firstName &&
+            formData.surname &&
+            formData.email &&
+            formData.phoneNumber &&
+            formData.termsAccepted;
 
-    calculatePricing();
+        setIsBtnInvalid(!requiredFieldsFilled);
+      }
+      else {
+        setIsBtnInvalid(false);
+      }
+
+
+      calculatePricing();
   }, [formData, currentStep, calculatePricing]);
 
   const scrollToTop = () => {
