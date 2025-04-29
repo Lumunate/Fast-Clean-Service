@@ -426,7 +426,7 @@ export default function Testimonials() {
                           },
                       }}
                   >
-                      View All Trustpilot Reviews
+                    {t("trustpilotBtn")}
                   </Button>
               </Link>
           </Box>
@@ -456,7 +456,7 @@ export default function Testimonials() {
                           },
                       }}
                   >
-                      View All Google Reviews
+                      {t("googleBtn")}
                   </Button>
               </Link>
           </Box>
