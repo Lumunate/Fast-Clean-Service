@@ -31,9 +31,11 @@ import SunIcon from "@mui/icons-material/WbSunny";
 import MoonIcon from "../../../public/navbar/Moon.svg";
 import LoginModal from "../../components/Login/LoginModal";
 import SignUpModal from "../../components/SignUp/SignUpModal";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
+import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
 
 const MobileNavbar = () => {
+     const locale = useLocale();
     const { theme, toggleTheme } = useTheme();
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const anchorEl = useRef(null);
@@ -169,6 +171,7 @@ const MobileNavbar = () => {
                 </IconButton>
 
                 <NavbarRightContainer>
+                        <LanguageSwitcher currentLocale={locale} />
                     <NavLinkDropDownContainer>
                         <IconButton
                             onClick={handleUserMenuToggle}

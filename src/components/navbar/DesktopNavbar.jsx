@@ -17,7 +17,7 @@ import {
     NavLinkDropDownContainer,
     NavLinksContainer
 } from "../../components/mui/navbarPkgs";
-import Logo from "../../../public/logo.png";
+import Logo from "../../../public/newlogo.svg";
 import CustomLink from "../CustomLink";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Box, Button, IconButton } from "@mui/material";
@@ -34,8 +34,14 @@ import LoginModal from "../../components/Login/LoginModal";
 import SignUpModal from "../../components/SignUp/SignUpModal";
 import {useTranslations} from "next-intl";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhoneFlip} from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp, faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { useLocale } from 'next-intl';
+import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
 
 const DesktopNavbar = () => {
+  const locale = useLocale();
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const { data: session, status: sessionStatus } = useSession();
@@ -120,6 +126,24 @@ const DesktopNavbar = () => {
 
   return (
     <NavbarContainer>
+      <Box sx={{ maxWidth:'1560px', width:'100%' ,justifyContent:'end', display:'flex', gap:'20px', }}>
+          <CustomLink href="tel:020-2440994">
+            <NavLinkButton sx={{ display:'flex', gap:'8px'}}><FontAwesomeIcon icon={faPhoneFlip} />020-2440994</NavLinkButton>
+          </CustomLink>
+          <CustomLink href="mailto:info@fastcleanservice.nl">
+            <NavLinkButton sx={{ display:'flex', gap:'8px'}}><FontAwesomeIcon icon={faEnvelope} />info@fastcleanservice.nl</NavLinkButton>
+          </CustomLink>
+          <CustomLink href="/">
+            <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faWhatsapp} /></NavLinkButton>
+          </CustomLink>
+          <CustomLink href="/">
+            <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faFacebookF} /></NavLinkButton>
+          </CustomLink>
+          <CustomLink href="/">
+            <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faInstagram} /></NavLinkButton>
+          </CustomLink>
+          <LanguageSwitcher currentLocale={locale} />
+      </Box>
       <NavbarInnerContainer>
         <LogoContainer>
           <CustomLink href="/">

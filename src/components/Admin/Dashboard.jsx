@@ -7,10 +7,11 @@ import { useBookings } from "../../contexts/BookingsContext";
 
 const Dashboard = ({}) => {
   const { bookings } = useBookings();
+    const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
 
   return (
     <Box sx={{ padding: "16px" }}>
-      <StatsCards bookingLenght={bookings.length} />
+        <StatsCards bookingLenght={bookingLength} />
 
       <Box sx={{ marginTop: "30px" }}>
         <Grid container spacing={3}>
