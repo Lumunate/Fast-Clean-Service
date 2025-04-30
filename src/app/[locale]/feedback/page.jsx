@@ -6,8 +6,12 @@ import {
   FeedbackParaTypography,
 } from "./feedback.style";
 import FeedbackForm from "../../../components/feedback/FeedbackForm";
+import { useTranslations } from "next-intl";
 
 export default function FeedbackPage() {
+
+  const t = useTranslations("feedback")
+
   return (
     <FeedbackContainer>
       <Grid
@@ -17,10 +21,10 @@ export default function FeedbackPage() {
       >
         <Grid xs={24} sx={{ position: "relative" }}>
           <FeedbackHeadingTypography>
-            Your Feedback Matters!
+            {t("title")}
           </FeedbackHeadingTypography>
           <FeedbackParaTypography variant="body1">
-            Leave Your Review and tell us how we helped you!
+            {t("subtitle")}
           </FeedbackParaTypography>
         </Grid>
 
