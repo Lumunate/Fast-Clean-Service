@@ -1,6 +1,6 @@
 import React from "react";
 import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
-// const baseUrl = process.env.VERCEL_URL;
+// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : "";
 
 const BookingConfirmationEmail = ({ name, packageName, date, time, location, price }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
-// const baseUrl = process.env.VERCEL_URL;
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? `https://${process.env.NEXT_PUBLIC_BASE_URL}` : "";
 
 const AdminContactNotificationEmail = ({ name, email, message }) => {
   const accentColor = "#00c3ff";

@@ -223,6 +223,7 @@ export default function About() {
                                         : "#fff",
                                 borderRadius: "10px",
                                 padding: "1.6rem",
+                                flex: "1",
                                 border:
                                     theme.palette.mode === "dark"
                                         ? "0.3px solid #FFFFFF1F"
