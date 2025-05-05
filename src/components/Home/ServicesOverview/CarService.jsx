@@ -13,7 +13,7 @@ import CarCheckIcon from "../../../../public/servicesicons/CarCheck.svg";
 import ClipBoardPlusIcon from "../../../../public/servicesicons/ClipBoardPlus.svg";
 import MapIcon from "../../../../public/servicesicons/Map.svg";
 import UnionIcon from "../../../../public/servicesicons/Union.svg";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button, Link } from "@mui/material";
 import React from "react";
 
@@ -64,6 +64,8 @@ export default function CarService() {
 }
 
 const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
+    const t = useTranslations('home.packages_section');
+    const locale = useLocale();
     const { theme } = useTheme();
     const handleClick = () => {
         const element = document.getElementById(anchor);
@@ -75,8 +77,10 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
     // Set bottom spacing based on whether it's the second box or not
     const bottomSpacing = isSecondBox ? "0px" : "20px";
 
+    const maxHeight = locale === 'en' ? '330px' : '350px';
+
     return (
-        <ServiceItemContainer onClick={handleClick}>
+        <ServiceItemContainer sx={{maxHeight}} onClick={handleClick}>
             <ServiceItemBox sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -127,7 +131,7 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
                             width: "80%",
                         }}
                     >
-                        More Information
+                        {t("btn")}
                     </Button>
                 </Link>
             </ServiceItemBox>

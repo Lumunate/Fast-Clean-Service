@@ -6,13 +6,16 @@ import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 export default function About() {
+  const locale = useLocale();
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
     const t = useTranslations('home.about_section');
+
+    const cardHeight = locale === 'en' ?  "23%": "25%";
 
     const [imageSrc, setImageSrc] = useState("/g1.jpg"); // Default image
 
@@ -195,6 +198,7 @@ export default function About() {
                 <Box
                     sx={{
                         display: "flex",
+                        height: cardHeight,
                         flexDirection: "row",
                         justifyContent: { xs: "center", md: "space-between" },
                         gap: "1rem",
@@ -203,6 +207,7 @@ export default function About() {
                         "@media (max-width: 1150px)": {
                             flexDirection: "column",
                             alignItems: "center",
+                            height:'auto',
                         },
                         alignItems: { xs: "center", md: "flex-start" },
                     }}
