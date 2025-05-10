@@ -1,10 +1,11 @@
 import React from "react";
 import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
-// const baseUrl = process.env.VERCEL_URL;
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? `https://${process.env.NEXT_PUBLIC_BASE_URL}` : "";
 
 const AdminContactNotificationEmail = ({ name, email, message }) => {
-  const accentColor = "#0070f3";
+  const accentColor = "#00c3ff";
+  const actionColor = "#0070f3";
   const textColor = "#333";
 
   return (
@@ -25,17 +26,16 @@ const AdminContactNotificationEmail = ({ name, email, message }) => {
           <Heading style={{ ...heading, color: accentColor }}>New Contact Us Submission</Heading>
           <Text style={paragraph}>You have received a new message from the &quot;Contact Us&quot; form on the website.</Text>
           <Section style={contactDetails}>
-            <Text style={subheading}>Contact Details</Text>
+            <Text style={subheading}>Contact Inquiry Details</Text>
             <Text style={detailText}>
               <strong>Name:</strong> {name}
             </Text>
             <Text style={detailText}>
               <strong>Email:</strong> {email}
             </Text>
-          </Section>
-          <Section style={messageSection}>
-            <Text style={subheading}>Message</Text>
-            <Text style={detailText}>{message}</Text>
+            <Text style={detailText}>
+              <strong>Your Message:</strong> {message}
+            </Text>
           </Section>
           <Section style={actionSection}>
             <Text style={paragraph}>You can reply directly to this email or use the contact email provided above.</Text>

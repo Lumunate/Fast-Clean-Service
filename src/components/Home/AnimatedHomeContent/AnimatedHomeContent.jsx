@@ -120,7 +120,7 @@ export default function AnimatedHomeContent() {
             {/* content */}
             <Box
                 sx={{
-                    mt: {xs: "8%", md: "-5%", lg: "8%"},
+                    mt: {xs: "8%", md: "-5%", lg: "1%"},
                     mb: "10%",
                     height: "100%",
                     display: "flex",
@@ -200,6 +200,7 @@ export default function AnimatedHomeContent() {
                         gap: 2,
                         flexDirection: {xs: "column", sm: "row"},
                         mb: "8rem",
+                        mt: {xs: "3rem", xl: "0"}
                     }}
                 >
                     <Link href="/booking" passHref>
