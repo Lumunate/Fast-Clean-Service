@@ -77,7 +77,7 @@ const AutocarePackages = () => {
   let displayedPackages = allPackages || [];
 
   // Apply filtering based on carType
-  if (form.formData.carType === 'Motor') {
+  if (form.formData.carType === 'Motorbike') {
     if (packageTypeName !== 'premium') {
       // For 'Motor' and not 'premium', only show 'Exterior' packages
       displayedPackages = allPackages.filter(
