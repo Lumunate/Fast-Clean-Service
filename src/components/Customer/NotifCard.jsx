@@ -77,15 +77,6 @@ const NotifCard = () => {
     const userId = session?.user?.id;
 
     useEffect(() => {
-        console.log("🟡 Session status:", status);
-        if (session) {
-            console.log("🔐 Session object:", session);
-        } else {
-            console.log("❌ No session available");
-        }
-    }, [session, status]);
-
-    useEffect(() => {
         const fetchNotifications = async () => {
             if (userId) {
                 setLoading(true);
@@ -93,13 +84,11 @@ const NotifCard = () => {
                 try {
                     const response = await fetch(`/api/notifications?userId=${userId}`);
                     const data = await response.json();
-                    console.log("📥 Notification response:", data);
                     if (data.success) {
                         const sortedNotifications = data.notifications.sort(
                             (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
                         );
                         setNotifications(sortedNotifications);
-                        console.log("✅ Notifications loaded and sorted");
                     } else {
                         console.warn("⚠️ Notification fetch failed:", data.message);
                     }

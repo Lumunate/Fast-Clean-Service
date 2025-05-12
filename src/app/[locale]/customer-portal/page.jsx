@@ -29,7 +29,7 @@ const CustomerDashboard = () => {
                 return <Dashboard />;
             case t("options.1"):
                 return <BookingsPage />;
-            case 'Notifications':
+            case t("options.2"):
                 return <NotificationsPage />;
             default:
                 return <Dashboard />;
