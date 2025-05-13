@@ -121,7 +121,7 @@ const SmallScreenView = () => {
             }
         };
 
-        if (form.currentStep === 8) fetchInitialData();
+       fetchInitialData();
     }, [form.formData.service, form.duration, form.currentStep, openSnackbar, t]);
 
     const handleDateChange = (newDate) => {
