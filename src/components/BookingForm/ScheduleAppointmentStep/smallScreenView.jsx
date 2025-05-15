@@ -71,7 +71,7 @@ const StyledCalendarContainer = styled(Box)(({ theme }) => ({
     },
 }));
 
-const SmallScreenView = () => {
+const SmallScreenView = ({forceFetchInitialData = false}) => {
     const t = useTranslations('booking');
     const theme = useTheme();
     const form = useMultiStepForm();
@@ -121,8 +121,10 @@ const SmallScreenView = () => {
             }
         };
 
-       fetchInitialData();
-    }, [form.formData.service, form.duration, form.currentStep, openSnackbar, t]);
+       if (form.currentStep === 8 || forceFetchInitialData) {
+      fetchInitialData();
+    }
+    }, [form.formData.service, form.duration, form.currentStep, openSnackbar, forceFetchInitialData,t]);
 
     const handleDateChange = (newDate) => {
         setSelectedDate(newDate);

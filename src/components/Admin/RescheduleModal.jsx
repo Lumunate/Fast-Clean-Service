@@ -79,7 +79,7 @@ const Modal = ({ booking, serviceType, duration, handleCloseModal, open }) => {
 
       <DialogContent>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <ScheduleAppointment />
+          <ScheduleAppointment forceFetchInitialData={true}  />
         </LocalizationProvider>
 
         <Box
