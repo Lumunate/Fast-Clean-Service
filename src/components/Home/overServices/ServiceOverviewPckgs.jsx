@@ -19,8 +19,8 @@ export const CarServicesContainer = styled(Box)(({ theme }) => ({
 
 export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   width: "456px",
-  minHeight: "325px",
-  // maxHeight: "330px",
+  minHeight: "390px",
+  maxHeight: "390px",
   textAlign: "center",
   borderRadius: "1rem",
   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",

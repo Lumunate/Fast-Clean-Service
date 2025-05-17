@@ -363,7 +363,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
   fontWeight: "300",
   lineHeight: "210%",
-  width: "50%",
+  width: "60%",
   opacity: 0,
   animation: "showContent 1s ease-in-out 0.3s 1 forwards",
   display: "flex",

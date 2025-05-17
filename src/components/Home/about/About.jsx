@@ -140,7 +140,6 @@ export default function About() {
                 width: "100%",
                 margin: "0 auto",
                 marginRight: "52%",
-                marginLeft: "-5rem",
                   "@media (max-width: 1400px)": {
                       marginLeft: "5rem",
                       marginRight: "48%",
@@ -243,7 +242,7 @@ export default function About() {
                                     sx={{
                                         fontWeight: 400,
                                         mb: 1,
-                                        fontSize: "1.8rem",
+                                        fontSize: "1.6rem",
                                         color:
                                             theme.palette.mode === "dark" ? "#fff" : "#232E4A",
                                     }}

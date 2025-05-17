@@ -51,7 +51,8 @@ export default function OverCarServices() {
     };
 
     return (
-        <CarServicesContainer ref={servicesOverviewRef}>
+        <CarServicesContainer sx={{
+  px:  "1rem" }} ref={servicesOverviewRef}>
             {servicesData.map(
                 ({ img, imgDark, title, description, bullets, description2 }, idx) => (
                     <CarServiceItem
@@ -102,6 +103,7 @@ export default function OverCarServices() {
                         </Button>
                     </Link>
 
+                    <Link href='/contact' >
                     <Button
                         variant="contained"
                         onClick={scrollToServices}
@@ -118,9 +120,10 @@ export default function OverCarServices() {
                                 backgroundColor: theme.palette.primary.accent,
                             },
                         }}
-                    >
+                        >
                         {t("buttons.learn_more")}
                     </Button>
+                    </Link>
                 </Box>
             </Box>
         </CarServicesContainer>

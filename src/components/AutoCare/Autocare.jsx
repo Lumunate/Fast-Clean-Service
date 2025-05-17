@@ -22,6 +22,7 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 // ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 import Preloader from "../Preloader";
+import Link from "next/link";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
@@ -831,8 +832,9 @@ const AutoCare = () => {
                                         gap: "8px",
                                     }}
                                 >
+                                    {/* <Link href="/booking"> */}
                                     <CardButton
-                                        onClick={() => handleSubCatChange(pkg?.name)}
+                                    onClick={() => window.location.href = "/booking"}
                                         sx={{
                                             backgroundColor: "#1C79CC",
                                             color: "white",
@@ -842,9 +844,10 @@ const AutoCare = () => {
                                                 backgroundColor: "#2998ff",
                                             },
                                         }}
-                                    >
+                                        >
                                         Book Now
                                     </CardButton>
+                                        {/* </Link>  */}
                                     <CardButton
                                         onClick={() => handleSubCatChange(pkg?.name)}
                                         sx={{

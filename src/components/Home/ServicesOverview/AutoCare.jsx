@@ -107,7 +107,7 @@ export default function Autocare() {
                     },
                   }}
                 >
-                  <ServiceBtn1>
+                  <ServiceBtn1 onClick={() => window.location.href = "/autocare"}>
                       {t("packages.0.buttons.learn_more")}
                   </ServiceBtn1>
                   <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.0.buttons.book_now")}</ServiceBtn1>
@@ -176,7 +176,7 @@ export default function Autocare() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <ServiceBtn1>
+                  <ServiceBtn1  onClick={() => window.location.href = "/autocare"}>
                       {t("packages.1.buttons.learn_more")}
                   </ServiceBtn1>
                   <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.1.buttons.book_now")}</ServiceBtn1>
@@ -244,7 +244,7 @@ export default function Autocare() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <ServiceBtn1>
+                  <ServiceBtn1 onClick={() => window.location.href = "/autocare"}>
                       {t("packages.2.buttons.learn_more")}
                   </ServiceBtn1>
                   <ServiceBtn1 special={true} onClick={() => window.location.href = "/booking"}>{t("packages.2.buttons.book_now")}</ServiceBtn1>

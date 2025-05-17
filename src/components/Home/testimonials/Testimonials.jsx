@@ -410,7 +410,7 @@ export default function Testimonials() {
           </Typography>
           {renderCarousel(trustpilotReviews, tpCarousel)}
           <Box sx={{ textAlign: "center" }}>
-              <Link href="/" passHref>
+              <Link href="https://www.trustpilot.com/review/www.fastcleanservice.nl" passHref>
                   <Button
                       variant="contained"
                       sx={{
@@ -440,7 +440,7 @@ export default function Testimonials() {
           </Typography>
           {renderCarousel(googleReviews, ggCarousel)}
           <Box sx={{ textAlign: "center" }}>
-              <Link href="/" passHref>
+              <Link href="https://www.google.com/search?sca_esv=861d6c36a75495fa&rlz=1C1GCEU_en&sxsrf=AHTn8zosmPqY1lmi1rraCn-Xf6zaYwsE1Q:1747500187450&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfapRvAnP8clww20TpR4E95CUX4eTaUYZDu_1AGGck5SUtbHtWKsJTsZt-t7_a4hOLwM92PEFX1Lu7GY7IqvphT7KQpwAJWnKSKYFJWmUuOcyWpIoA%3D%3D&q=Fast+Clean+Service+Reviews&sa=X&ved=2ahUKEwjl3Ku_-aqNAxX7RaQEHcw7DGMQ0bkNegQIPRAE&biw=1366&bih=607" passHref>
                   <Button
                       variant="contained"
                       sx={{
