@@ -8,6 +8,7 @@ import {
   CarouselControls,
   CarouselDate,
   CarouselDetails,
+  CarouselDetailsPara,
   CarouselImg,
   CarouselItemInner,
   CarouselName,
@@ -253,7 +254,7 @@ export default function Testimonials() {
   const ggCarousel = useCarousel(googleReviews);
 
   const renderCarousel = (items, car) => (
-      <Carousel sx={{ width: "90%", "@media (max-width:1200px)": { width: "100%" } }}>
+      <Carousel sx={{ width: "90%", "@media (max-width:1100px)": { width: "90%" } }}>
         <CarouselContentContainer
             ref={car.sliderRef}
             sx={{
@@ -320,10 +321,10 @@ export default function Testimonials() {
                     </CarouselStarsBox>
 
                     <CarouselDetails>
-                      <p>
+                      <CarouselDetailsPara>
                         {r.details.slice(0, 196)}
                         {r.details.length > 196 ? "…" : ""}
-                      </p>
+                      </CarouselDetailsPara>
                     </CarouselDetails>
 
                     <CarouselSignatures
@@ -361,10 +362,10 @@ export default function Testimonials() {
 
         {/* Controls */}
         <CarouselControls>
-          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", "@media (max-width:1700px)": { left: 0 }, "@media (max-width:600px)": { left: "-2rem" } }}>
+          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", zIndex:50,"@media (max-width:1700px)": { left: "-6rem" }, "@media (max-width:600px)": { left: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} style={{ transform: "rotate(180deg)" }} />
           </CarouselBtn>
-          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: 0 }, "@media (max-width:600px)": { right: "-2rem" } }}>
+          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: "-6rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} />
           </CarouselBtn>
         </CarouselControls>

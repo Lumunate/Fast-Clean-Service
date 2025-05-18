@@ -22,6 +22,7 @@ export const HomePkgsBox = styled(Box)(({ theme }) => ({
 
 export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   maxWidth: "1440px",
+  margin:'0 auto',
   width: "100%",
   display: "flex",
   flexWrap: "wrap",
@@ -29,7 +30,7 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   position: "relative",
   zIndex: "2",
 
-  "@media (max-width: 1150px)": {
+  "@media (max-width: 1100px)": {
     width: "80%",
   },
   "@media (max-width: 600px)": {
@@ -800,7 +801,7 @@ export const ServiceBtn = styled(Button)(({ theme }) => ({
 }));
 
 export const Carousel = styled(Box)(({ theme }) => ({
-  overflow: "hidden",
+  // overflow: "hidden",
   position: "relative",
 }));
 
@@ -817,7 +818,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   transition: "all 300ms ease-in-out",
   padding: "1rem",
-  height: "32rem",
+  height: "36rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
   "@media (max-width: 600px)": {height:"36rem"}
@@ -904,6 +905,13 @@ export const CarouselDetails = styled(Box)(({ theme }) => ({
   //   },
   // },
 }));
+export const CarouselDetailsPara = styled("p")(({ theme }) => ({
+  fontSize: "1.4rem",
+  "@media (max-width: 900px)": {
+    fontSize: "1.2rem !important",
+  },
+}));
+
 
 export const CarouselSignatures = styled(Box)(({ theme }) => ({
   display: "flex",
