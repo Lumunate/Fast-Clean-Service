@@ -859,7 +859,13 @@ export const CarouselImg = styled(Box)(({ theme }) => ({
   border: `2px solid ${theme.palette.primary.accent}`,
   borderRadius: "50%",
   marginRight: "1rem",
+   width: 50, 
+   height: 50, 
+   borderRadius: "50%", 
+   objectFit: "cover",
   "@media (max-width: 900px)": {
+    marginRight: "0rem",
+    height: 25,
     minHeight: "3.5rem",
     width: "3.5rem",
   },
@@ -908,7 +914,7 @@ export const CarouselDetails = styled(Box)(({ theme }) => ({
 export const CarouselDetailsPara = styled("p")(({ theme }) => ({
   fontSize: "1.4rem",
   "@media (max-width: 900px)": {
-    fontSize: "1.2rem !important",
+    fontSize: "1rem !important",
   },
 }));
 
@@ -933,6 +939,9 @@ export const CarouselName = styled(Typography)(({ theme }) => ({
   "@media (max-width: 900px)": {
     fontSize: "1.2rem !important", // Reduce font size for smaller screens
   },
+  "@media (max-width: 600px)": {
+    fontSize: "1rem !important", 
+  },
 }));
 
 export const CarouselDate = styled(Typography)(({ theme }) => ({
@@ -941,6 +950,9 @@ export const CarouselDate = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#C6C6C6" : "#6D6D6D",
   "@media (max-width: 900px)": {
     fontSize: "1rem !important",
+  },
+  "@media (max-width: 600px)": {
+    fontSize: "8px !important",
   },
 }));
 

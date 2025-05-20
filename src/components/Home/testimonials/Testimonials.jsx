@@ -334,7 +334,6 @@ export default function Testimonials() {
                         <CarouselImg
                             src={r.image}
                             alt={r.name}
-                            style={{ width: 50, height: 50, borderRadius: "50%", objectFit: "cover" }}
                         />
                         <Box sx={{ ml: "1rem" }}>
                           <CarouselName>{r.name}</CarouselName>
