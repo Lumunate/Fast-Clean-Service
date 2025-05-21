@@ -9,7 +9,7 @@ import TickBoxWhite from "../../../../public/ser1.svg";
 import Shield from "../../../../public/ser2.svg";
 import ShieldWhite from "../../../../public/ser2.svg";
 import { useTheme } from "../../../contexts/themeContext";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +17,9 @@ export default function OverCarServices() {
     const t = useTranslations("home.services_section");
     const { theme } = useTheme();
     const servicesOverviewRef = useRef(null);
+
+     const locale = useLocale()
+         const cardHeight = locale === 'en' ?  "390px": "440px";
 
     /* --- pulled from i18n JSON above --- */
     const servicesData = [
@@ -62,6 +65,7 @@ export default function OverCarServices() {
                         description={description}
                         bullets={bullets}
                         description2={description2}
+                        cardHeight={cardHeight}
                     />
                 )
             )}
@@ -136,8 +140,9 @@ const CarServiceItem = ({
                             description,
                             bullets = [],
                             description2,
+                            cardHeight
                         }) => (
-    <ServiceItemContainer sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <ServiceItemContainer sx={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight:cardHeight, maxHeight:cardHeight }}>
         <ServiceItemBox sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <ServiceItemIconContainer sx={{ display: "flex", justifyContent: "center" }}>
                 <ServiceItemIcon
