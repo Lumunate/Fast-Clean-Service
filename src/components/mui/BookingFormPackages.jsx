@@ -638,7 +638,7 @@ export const StepsContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "start",
   marginBottom: "1rem",
 }));
 

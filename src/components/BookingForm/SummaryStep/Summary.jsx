@@ -80,7 +80,7 @@ const Summary = () => {
           <Box sx={{ marginBottom: '2rem' }}>
             <SummaryHeading>{t("steps.8.sections.0")}</SummaryHeading>
             <SummaryItem
-              label={t("steps.8.sections.2")}
+              label={t("stepbar.1")}
               value={
                   formData?.vehicleDetails?.kenteken
                       ? formData.vehicleDetails.kenteken

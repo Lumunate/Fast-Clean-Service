@@ -596,24 +596,24 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
     },
   },
   "@media (max-width: 600px)": {
-    width: "530px",
+    width: "290px",
     height: "524px",
   },
-  "@media (max-width: 550px)": {
-    width: "480px",
-  },
-  "@media (max-width: 500px)": {
-    width: "430px",
-  },
-  "@media (max-width: 450px)": {
-    width: "360px",
-  },
-  "@media (max-width: 400px)": {
-    width: "290px",
-  },
-  "@media (max-width: 350px)": {
-    width: "290px",
-  },
+  // "@media (max-width: 550px)": {
+  //   width: "480px",
+  // },
+  // "@media (max-width: 500px)": {
+  //   width: "430px",
+  // },
+  // "@media (max-width: 450px)": {
+  //   width: "360px",
+  // },
+  // "@media (max-width: 400px)": {
+  //   width: "290px",
+  // },
+  // "@media (max-width: 350px)": {
+  //   width: "290px",
+  // },
   "@media (max-width: 300px)": {
     width: "210px",
   },

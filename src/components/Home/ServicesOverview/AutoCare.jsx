@@ -88,7 +88,9 @@ export default function Autocare() {
                     </Box>
                   </ServiceDetail>
 
-                  <ServiceDetail>
+                  <ServiceDetail sx={{"@media (max-width: 600px)": {
+                    marginBottom:"6rem"
+  },}}>
                    <Box>
                       <div className="innerdeet">
                           {t("packages.0.description")}
