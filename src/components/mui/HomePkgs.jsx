@@ -348,6 +348,19 @@ export const Card = styled(Box)(({ theme }) => ({
       display: "none",
     },
   },
+  "@media (max-width:460px)": {
+     "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "10px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  }
 }));
 
 export const CardName = styled(Typography)(({ theme }) => ({
@@ -357,6 +370,9 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+  "@media (max-width:600px)": {
+  fontSize: "1.4rem",
+  }
 
 }));
 

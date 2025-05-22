@@ -337,6 +337,7 @@ export default function LongTermVehicleCare() {
                           fontSize: "1.6rem",
                           fontWeight: "300",
                           "@media (max-width:1258px)": { fontSize: "1.4rem" },
+                           "@media (max-width:600px)": { fontSize: "1.2rem" },
                         }}
                       >
                         {pkg}

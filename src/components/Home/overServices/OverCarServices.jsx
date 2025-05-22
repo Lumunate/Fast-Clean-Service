@@ -19,7 +19,9 @@ export default function OverCarServices() {
     const servicesOverviewRef = useRef(null);
 
      const locale = useLocale()
-         const cardHeight = locale === 'en' ?  "390px": "440px";
+        const cardHeight = locale === 'en'
+        ? "390px"
+        : (window.innerWidth < 400 ? "440px" : "440px");
 
     /* --- pulled from i18n JSON above --- */
     const servicesData = [

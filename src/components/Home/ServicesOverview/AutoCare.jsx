@@ -17,11 +17,13 @@ import {
     ServiceDetailHeading,
 } from "../../mui/HomePkgs";
 import {useTheme} from "../../../contexts/themeContext";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 export default function Autocare() {
-    const t = useTranslations('home.anywhere_autocare_section');
+  const t = useTranslations('home.anywhere_autocare_section');
   const { theme } = useTheme();
+  const locale = useLocale()
+  const cardBottom = locale === "en" ? "-80%": "-90%" ;
 
     return (
       <HomePkgsBox
@@ -122,7 +124,9 @@ export default function Autocare() {
                 //  img="/bike2.jpg"
                 img="/mercedessteering.jpg"
               />
-              <ServiceContent className="service__content">
+              <ServiceContent sx={{ "@media (max-width: 600px)": {
+    bottom: cardBottom,
+  },}} className="service__content">
                 <Box>
                     <ServiceName sx={{ color: "#2998ff" }}>{t("packages.1.name")}</ServiceName>
                     <ServiceCat>{t("packages.1.category")}</ServiceCat>
