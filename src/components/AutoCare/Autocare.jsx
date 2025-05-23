@@ -23,6 +23,7 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 import Preloader from "../Preloader";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
@@ -125,6 +126,7 @@ const ModdedCard = ({ card, color }) => {
 
 const AutoCare = () => {
     const { theme } = useTheme();
+    const t = useTranslations('home.about_section');
 
     // API fetch hook
     const { packages, loading, error, fetchPackages } = useAutocarePackages();
@@ -845,7 +847,7 @@ const AutoCare = () => {
                                             },
                                         }}
                                         >
-                                        Book Now
+                                         {t("cta.buttons.book_now")}
                                     </CardButton>
                                         {/* </Link>  */}
                                     <CardButton

@@ -335,7 +335,7 @@ export const CardButton = styled(Button)(({ theme }) => ({
 
   "@media (max-width: 600px)": {
     alignSelf: "center",
-    fontSize: "1.6rem",
+    fontSize: "1.2rem",
     width: "80%",
     marginTop: 0,
   },

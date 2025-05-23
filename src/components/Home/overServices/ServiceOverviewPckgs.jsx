@@ -41,6 +41,9 @@ export const ServiceItemBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   margin: "3.5rem 1.8rem",
+   "@media (max-width: 380px)": {
+      margin: "1rem",
+   }
 }));
 
 export const ServiceItemIconContainer = styled(Box)(({ theme }) => ({

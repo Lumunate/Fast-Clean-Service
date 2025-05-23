@@ -323,8 +323,8 @@ export default function About() {
                                 <Button
                                     variant="contained"
                                     sx={{
-                                        padding: "1.5rem 3rem",
-                                        fontSize: "1.5rem",
+                                        padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                        fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                         fontWeight: 500,
                                         borderRadius: "50px",
                                         backgroundColor: "primary.accentDark",
@@ -342,8 +342,8 @@ export default function About() {
                                 <Button
                                     variant="contained"
                                     sx={{
-                                        padding: "1.5rem 3rem",
-                                        fontSize: "1.5rem",
+                                        padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                        fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                         fontWeight: 500,
                                         borderRadius: "50px",
                                         backgroundColor: "#B8B8B8",

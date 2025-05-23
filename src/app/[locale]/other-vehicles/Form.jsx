@@ -85,13 +85,13 @@ export default function Form() {
         backdropFilter: "blur(2.4px)",
         borderRadius: "32px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-        padding: "2rem",
+        padding: {xs:'1rem',sm:"2rem"},
       }}
     >
       <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
         <ServiceHeading
           sx={{
-            fontSize: "3.2rem",
+            fontSize: {xs:"2rem",sm:"3.2rem"},
             marginTop: "2rem",
             marginBottom: "0.5rem",
           }}
@@ -108,7 +108,7 @@ export default function Form() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            "@media (max-width: 600px)": { padding: "2rem", paddingTop: "1rem" },
+            "@media (max-width: 600px)": { padding: "1rem", paddingTop: "1rem" },
           }}
         >
           <Grid container spacing={4}>
@@ -142,6 +142,7 @@ export default function Form() {
                 onChange={handleChange}
                 fullWidth
                 sx={{
+                  marginTop:{xs:"-20px", sm:'0px'},
                   "& .MuiInputBase-input": {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
@@ -164,6 +165,7 @@ export default function Form() {
                 onChange={handleChange}
                 fullWidth
                 sx={{
+                   marginTop:{xs:"-20px", sm:'0px'},
                   "& .MuiInputBase-input": {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },
@@ -404,6 +406,7 @@ export default function Form() {
                 onChange={handleChange}
                 fullWidth
                 sx={{
+                   marginTop:{xs:"-20px", sm:'0px'},
                   "& .MuiInputBase-input": {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                   },

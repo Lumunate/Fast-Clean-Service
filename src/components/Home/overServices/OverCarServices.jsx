@@ -92,9 +92,8 @@ export default function OverCarServices() {
                         <Button
                             variant="contained"
                             sx={{
-                                px: "3rem",
-                                py: "1.5rem",
-                                fontSize: "1.5rem",
+                                padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                 fontWeight: 500,
                                 borderRadius: "50px",
                                 backgroundColor: "primary.accentDark",
@@ -114,9 +113,8 @@ export default function OverCarServices() {
                         variant="contained"
                         onClick={scrollToServices}
                         sx={{
-                            px: "3rem",
-                            py: "1.5rem",
-                            fontSize: "1.5rem",
+                            padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                             fontWeight: 500,
                             borderRadius: "50px",
                             backgroundColor: "#B8B8B8",

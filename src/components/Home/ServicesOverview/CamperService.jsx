@@ -28,7 +28,7 @@ export const CamperServiceBox = styled(Box)(({ theme }) => ({
   "@media (max-width: 600px)": {
     minWidth: "100%",
     padding: "2rem",
-    paddingBottom: "80px", // Maintain space for button
+    paddingBottom: "40px", // Maintain space for button
     height:'auto',
   },
 }));
@@ -89,6 +89,7 @@ export default function CamperService() {
               gap: "4rem",
               flexDirection: "column",
               alignItems: "center",
+              marginBottom: "4rem",
             },
           }}
       >

@@ -105,7 +105,7 @@ export default function FleetCareProForm() {
     >
       <ThemeProvider theme={(outerTheme) => deepmerge(outerTheme, theme)}>
         <ServiceHeading sx={{
-          fontSize: '3.2rem',
+          fontSize: {xs:'2rem',sm:'3.2rem'},
           marginTop: "2rem",
           marginBottom: "0.5rem",
         }}>{t("title")}</ServiceHeading>

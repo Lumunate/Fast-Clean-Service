@@ -415,7 +415,7 @@ export default function Testimonials() {
                       variant="contained"
                       sx={{
                           padding: "1.5rem 3rem",
-                          fontSize: "1.5rem",
+                          fontSize: "1.2rem",
                           fontWeight: 500,
                           borderRadius: "50px",
                           backgroundColor: "primary.accentDark",
@@ -445,7 +445,7 @@ export default function Testimonials() {
                       variant="contained"
                       sx={{
                           padding: "1.5rem 3rem",
-                          fontSize: "1.5rem",
+                          fontSize: "1.2rem",
                           fontWeight: 500,
                           borderRadius: "50px",
                           backgroundColor: "primary.accentDark",

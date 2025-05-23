@@ -62,7 +62,7 @@ const Questions = () => {
                             <Typography
                                 variant="h4"
                                 sx={{
-                                    fontSize: "1.6rem !important",
+                                    fontSize: {xs:"1.4rem !important",sm:"1.6rem !important"},
                                     color: theme.palette.mode === "light" ? "#232E4A" : "#FFFFFF",
                                     display: "flex",
                                     justifyContent: "space-between",
@@ -90,7 +90,7 @@ const Questions = () => {
                                         marginTop: "2rem",
                                         color: theme.palette.mode === "light" ? "#535353" : "#C2C2C2",
                                         "& p, & ul": {
-                                            fontSize: "1.4rem",
+                                            fontSize: {xs:"1.2rem", sm:"1.4rem"},
                                             marginBottom: "1rem",
                                         },
                                         fontWeight: "300",
