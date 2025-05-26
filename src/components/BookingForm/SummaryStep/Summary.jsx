@@ -77,7 +77,7 @@ const Summary = () => {
         }}
       >
         <Grid item xs={12} md={6}>
-          <Box sx={{ marginBottom: '2rem' }}>
+          <Box sx={{ marginBottom: '2rem', marginTop:{xs:'3rem', sm:'auto'} }}>
             <SummaryHeading>{t("steps.8.sections.0")}</SummaryHeading>
             <SummaryItem
               label={t("stepbar.1")}

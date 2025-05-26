@@ -122,6 +122,7 @@ const Detailing = () => {
                           fontSize: "1.2rem",
                           lineHeight: "2.4rem",
                           marginBottom: "1.2rem",
+                          textAlign:'center',
                       }}
                   >
                       No Detailing Add-ons

@@ -39,6 +39,7 @@ const Index = () => {
           flexDirection: "column",
 
           "@media (max-width: 600px)": {
+            width:'100%',
             marginTop: "4.1rem",
           },
         }}

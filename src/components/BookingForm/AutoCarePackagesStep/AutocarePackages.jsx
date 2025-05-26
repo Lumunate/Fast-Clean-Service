@@ -78,7 +78,7 @@ const AutocarePackages = () => {
 
   // Apply filtering based on carType
   if (form.formData.carType === 'Motorbike') {
-    if (packageTypeName !== 'premium') {
+   if (packageTypeName !== 'premium' && Array.isArray(allPackages)) {
       // For 'Motor' and not 'premium', only show 'Exterior' packages
       displayedPackages = allPackages.filter(
         (pkg) => pkg.name.toLowerCase() === 'exterior'
@@ -197,8 +197,8 @@ const AutocarePackagesCard = ({
           width: '14rem',
           height: 'auto',
           boxShadow: 'none !important',
-          padding: '0 1.7rem',
-          paddingBottom: '-2rem',
+          padding: '0 0.6rem',
+          paddingBottom: '1rem',
           paddingTop: '1.9rem',
         },
       }}
