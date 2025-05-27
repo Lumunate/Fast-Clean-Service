@@ -181,8 +181,8 @@ const CarServiceItem = ({
                                 component="li"
                                 key={i}
                                 sx={{
-                                    fontFamily: "DMSans",
-                                    fontSize: "1.25rem",
+                                    fontFamily: "Unbounded",
+                                    fontSize: "1.3rem",
                                     mb: "0.25rem",
                                     display: "flex",
                                     alignItems: "center", // Align checkmark with text

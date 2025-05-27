@@ -279,7 +279,7 @@ export default function Testimonials() {
                       backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
                       visibility:     isActive || isNext ? "visible" : "hidden",
                       position:       isActive || isNext ? "relative" : "absolute",
-                      background: "transparent",
+                      background: "white",
                       border: "none",
                     }}
                 >
