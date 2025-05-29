@@ -37,7 +37,7 @@ export const calculateDistance = async (destination) => {
   }
 };
 
-const SelectLocationInput = () => {
+const SelectLocationInput = ({ hoist }) => {
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
 
@@ -56,6 +56,7 @@ const SelectLocationInput = () => {
           travelDistance: distanceInKm,
           travelDuration: duration, 
         });
+        hoist?.(data);
         updateValidation(true);
       } catch (error) {
         console.error("Error getting distance:", error);
