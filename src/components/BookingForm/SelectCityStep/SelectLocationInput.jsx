@@ -56,7 +56,11 @@ const SelectLocationInput = ({ hoist }) => {
           travelDistance: distanceInKm,
           travelDuration: duration, 
         });
-        hoist?.(data);
+        hoist?.({
+          location: place?.description,
+          travelDistance: distanceInKm,
+          travelDuration: duration,
+        });
         updateValidation(true);
       } catch (error) {
         console.error("Error getting distance:", error);
