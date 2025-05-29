@@ -24,7 +24,7 @@ export const useGooglePlaces = () => {
   const fetchPredictions = async (input) => {
     if (!input || !window.google || !initialized) return;
 
-    const service = new window.google.maps.places.AutocompleteSuggestion ();
+    const service = new window.google.maps.places.AutocompleteService();
     try {
       const response = await service.getPlacePredictions({
         input,
