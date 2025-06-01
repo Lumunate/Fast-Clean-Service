@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const CamperServiceBox = styled(Box)(({ theme }) => ({
+  height:'100%',
   minWidth: "500px",
   flexShrink: 1,
   flexDirection: "column",
@@ -21,10 +22,14 @@ export const CamperServiceBox = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   position: "relative", // Added for Flex positioning of the button
   paddingBottom: "80px", // Space for the button at bottom
+  "@media (max-width: 1107px)": {
+   height:'auto',
+  },
   "@media (max-width: 600px)": {
     minWidth: "100%",
     padding: "2rem",
-    paddingBottom: "80px", // Maintain space for button
+    paddingBottom: "40px", // Maintain space for button
+    height:'auto',
   },
 }));
 
@@ -84,12 +89,14 @@ export default function CamperService() {
               gap: "4rem",
               flexDirection: "column",
               alignItems: "center",
+              marginBottom: "4rem",
             },
           }}
       >
         <RadialCircle top={"-2rem"} left={"50%"} />
         <CamperServiceBox id="fleet-care-pro">
           <FadeIn direction="left" distance={100} duration={1}>
+            <Box sx={{display:'flex', flexDirection:'column', alignItems:'center',height:'100%', "@media (max-width: 1107px)": {height:'auto'}}}>
             <Box>
               <ServiceHeading>{t("services.0.titlemain")}</ServiceHeading>
               <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.0.titlesub")}</ServiceHeading>
@@ -190,11 +197,13 @@ export default function CamperService() {
             <ServiceItemCTA special onClick={() => (window.location.href = "/fleet")}>
               {t("services.0.button.text")}
             </ServiceItemCTA>
+            </Box>
           </FadeIn>
         </CamperServiceBox>
 
         <CamperServiceBox id="subscriptions">
           <FadeIn direction="right" distance={100} duration={1}>
+             <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', height:'100%', "@media (max-width: 1107px)": {height:'auto'}}}>
             <Box>
               <ServiceHeading>{t("services.1.titlemain")}</ServiceHeading>
               <ServiceHeading sx={{ fontSize: "2rem" }}>{t("services.1.titlesub")}</ServiceHeading>
@@ -295,6 +304,7 @@ export default function CamperService() {
             <ServiceItemCTA special onClick={() => (window.location.href = "/subscribe")}>
               {t("services.1.button.text")}
             </ServiceItemCTA>
+            </Box>
           </FadeIn>
         </CamperServiceBox>
       </HomeServicesBox>

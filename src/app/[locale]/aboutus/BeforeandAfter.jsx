@@ -48,7 +48,7 @@ const StyledImageBox = styled(Box)`
 const SwiperContainer = styled(Box)`
     width: 100%;
     padding: 2rem 0;
-
+ height: auto;
     margin-top: 9rem;
 
     @media (max-width: 900px) {
@@ -73,17 +73,17 @@ const BeforeAfterSwiper = () => {
     const updateBoxSize = () => {
       if (!swiperRef.current) return;
 
+    const viewportHeight = window.innerHeight;
+    const ninetyVH = window.innerWidth > 900 ? viewportHeight * 0.43 : viewportHeight * 0.35;
       const swiperWidth = swiperRef.current.clientWidth;
       let newSlidesPerView;
-
       if(swiperWidth < 900) {
-        setBoxSize(300);
-        newSlidesPerView = swiperWidth / 316;
+        newSlidesPerView = swiperWidth / (ninetyVH + 16);
       } else {
-        setBoxSize(600);
-        newSlidesPerView = swiperWidth / 616;
+        newSlidesPerView = swiperWidth / (ninetyVH + 16); 
       }
 
+    setBoxSize(ninetyVH);
       setSlidesPerView(newSlidesPerView);
     };
 

@@ -245,7 +245,11 @@ export default function FeedbackForm() {
                     transition: "transform 0.3s ease",
                     "&.Mui-focused": {
                       transform: "translate(0, -30px) scale(0.75)",
+                     opacity: 1,
                     },
+                    "&.MuiFormLabel-filled": {
+                    opacity: 0,
+                  },
                   },
                 }}
                 sx={{

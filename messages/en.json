@@ -1395,7 +1395,8 @@
     "title": "Customer Dashboard",
     "options": [
       "Dashboard",
-      "My Bookings"
+      "My Bookings",
+      "Notifications"
     ],
     "sections": [
       {

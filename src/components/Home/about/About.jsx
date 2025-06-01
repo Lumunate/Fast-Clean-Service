@@ -6,16 +6,13 @@ import { useTheme } from "../../../contexts/themeContext";
 import BestCareHeading from "./BestCareHeading";
 import { HomePkgsInBox } from "../../mui/HomePkgs";
 import { DecorativeBackgroundImage } from "../../Decorative/Decorative.style";
-import {useLocale, useTranslations} from "next-intl";
+import {useTranslations} from "next-intl";
 
 export default function About() {
-  const locale = useLocale();
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const [hasAnimated, setHasAnimated] = useState(false);
     const t = useTranslations('home.about_section');
-
-    const cardHeight = locale === 'en' ?  "23%": "25%";
 
     const [imageSrc, setImageSrc] = useState("/g1.jpg"); // Default image
 
@@ -139,8 +136,8 @@ export default function About() {
               sx={{
                 width: "100%",
                 margin: "0 auto",
+                marginLeft: "5rem",
                 marginRight: "52%",
-                marginLeft: "-5rem",
                   "@media (max-width: 1400px)": {
                       marginLeft: "5rem",
                       marginRight: "48%",
@@ -198,7 +195,7 @@ export default function About() {
                 <Box
                     sx={{
                         display: "flex",
-                        height: cardHeight,
+                        height: "25%",
                         flexDirection: "row",
                         justifyContent: { xs: "center", md: "space-between" },
                         gap: "1rem",
@@ -243,9 +240,12 @@ export default function About() {
                                     sx={{
                                         fontWeight: 400,
                                         mb: 1,
-                                        fontSize: "1.8rem",
+                                        fontSize: "1.6rem",
                                         color:
                                             theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                                            "@media (max-width: 1370px)": {
+                                              fontSize: "1.4rem",
+                                },
                                     }}
                                 >
                                     {t(`why_choose_us.features.${index}.title`)}
@@ -253,12 +253,15 @@ export default function About() {
                                 <Typography
                                     variant="body1"
                                     sx={{
-                                        fontSize: "1.4em",
+                                        fontSize: "1.4rem",
                                         color:
                                             theme.palette.mode === "dark"
                                                 ? "#C2C2C2"
                                                 : "#535353",
                                         fontWeight: "300",
+                                         "@media (max-width: 1370px)": {
+                                              fontSize: "1.2rem",
+                                },
                                     }}
                                 >
                                     {t(`why_choose_us.features.${index}.description`)}
@@ -320,8 +323,8 @@ export default function About() {
                                 <Button
                                     variant="contained"
                                     sx={{
-                                        padding: "1.5rem 3rem",
-                                        fontSize: "1.5rem",
+                                        padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                        fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                         fontWeight: 500,
                                         borderRadius: "50px",
                                         backgroundColor: "primary.accentDark",
@@ -339,8 +342,8 @@ export default function About() {
                                 <Button
                                     variant="contained"
                                     sx={{
-                                        padding: "1.5rem 3rem",
-                                        fontSize: "1.5rem",
+                                        padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                        fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                         fontWeight: 500,
                                         borderRadius: "50px",
                                         backgroundColor: "#B8B8B8",

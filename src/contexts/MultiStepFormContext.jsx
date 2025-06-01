@@ -149,6 +149,9 @@ export const FormProvider = ({ children }) => {
 
   const updateFormData = (newData) => {
     setFormData((prevData) => {
+      if (newData.carType === 'Coupe') {
+        newData.carType = 'Coupé';
+      }
       let updatedData = { ...prevData, ...newData };
 
       if (
