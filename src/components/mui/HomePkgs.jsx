@@ -22,6 +22,7 @@ export const HomePkgsBox = styled(Box)(({ theme }) => ({
 
 export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   maxWidth: "1440px",
+  margin:'0 auto',
   width: "100%",
   display: "flex",
   flexWrap: "wrap",
@@ -29,7 +30,7 @@ export const HomePkgsInBox = styled(Box)(({ theme }) => ({
   position: "relative",
   zIndex: "2",
 
-  "@media (max-width: 1150px)": {
+  "@media (max-width: 1100px)": {
     width: "80%",
   },
   "@media (max-width: 600px)": {
@@ -347,6 +348,19 @@ export const Card = styled(Box)(({ theme }) => ({
       display: "none",
     },
   },
+  "@media (max-width:460px)": {
+     "& div": {
+      position: "absolute",
+      top: "35%",
+      left: "10px",
+      width: "100%",
+      // width: "450px",
+      textAlign: "left",
+      color: "#eee",
+      transform: "translate(0, -50%)",
+      display: "none",
+    },
+  }
 }));
 
 export const CardName = styled(Typography)(({ theme }) => ({
@@ -356,6 +370,9 @@ export const CardName = styled(Typography)(({ theme }) => ({
   animation: "showContent 1s ease-in-out forwards",
   color: "#FFFFFF",
   marginBottom: "3rem",
+  "@media (max-width:600px)": {
+  fontSize: "1.4rem",
+  }
 
 }));
 
@@ -363,7 +380,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   fontSize: "1.6rem",
   fontWeight: "300",
   lineHeight: "210%",
-  width: "50%",
+  width: "60%",
   opacity: 0,
   animation: "showContent 1s ease-in-out 0.3s 1 forwards",
   display: "flex",
@@ -507,7 +524,7 @@ export const ServiceSubheading = styled(Typography)(({ theme, special = false })
 }));
 
 export const ServicesDesc = styled(Typography)(({ theme }) => ({
-  margin: "2rem 0",
+  margin: "0 0 1rem 0",
   lineHeight: 1.5,
   fontSize: "2.5rem !important",
   color: "#aaa",
@@ -595,24 +612,24 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
     },
   },
   "@media (max-width: 600px)": {
-    width: "530px",
+    width: "290px",
     height: "524px",
   },
-  "@media (max-width: 550px)": {
-    width: "480px",
-  },
-  "@media (max-width: 500px)": {
-    width: "430px",
-  },
-  "@media (max-width: 450px)": {
-    width: "360px",
-  },
-  "@media (max-width: 400px)": {
-    width: "290px",
-  },
-  "@media (max-width: 350px)": {
-    width: "290px",
-  },
+  // "@media (max-width: 550px)": {
+  //   width: "480px",
+  // },
+  // "@media (max-width: 500px)": {
+  //   width: "430px",
+  // },
+  // "@media (max-width: 450px)": {
+  //   width: "360px",
+  // },
+  // "@media (max-width: 400px)": {
+  //   width: "290px",
+  // },
+  // "@media (max-width: 350px)": {
+  //   width: "290px",
+  // },
   "@media (max-width: 300px)": {
     width: "210px",
   },
@@ -800,14 +817,14 @@ export const ServiceBtn = styled(Button)(({ theme }) => ({
 }));
 
 export const Carousel = styled(Box)(({ theme }) => ({
-  overflow: "hidden",
+  // overflow: "hidden",
   position: "relative",
 }));
 
 export const CarouselContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   transition: "all 300ms ease-in-out",
-  marginBottom: "8rem",
+  marginBottom: "3rem",
   // gap: "2rem",
 }));
 
@@ -817,7 +834,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   transition: "all 300ms ease-in-out",
   padding: "1rem",
-  height: "32rem",
+  height: "36rem",
   overflow: "hidden",
   backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
   "@media (max-width: 600px)": {height:"36rem"}
@@ -858,7 +875,13 @@ export const CarouselImg = styled(Box)(({ theme }) => ({
   border: `2px solid ${theme.palette.primary.accent}`,
   borderRadius: "50%",
   marginRight: "1rem",
+   width: 50, 
+   height: 50, 
+   borderRadius: "50%", 
+   objectFit: "cover",
   "@media (max-width: 900px)": {
+    marginRight: "0rem",
+    height: 25,
     minHeight: "3.5rem",
     width: "3.5rem",
   },
@@ -904,6 +927,13 @@ export const CarouselDetails = styled(Box)(({ theme }) => ({
   //   },
   // },
 }));
+export const CarouselDetailsPara = styled("p")(({ theme }) => ({
+  fontSize: "1.4rem",
+  "@media (max-width: 900px)": {
+    fontSize: "1rem !important",
+  },
+}));
+
 
 export const CarouselSignatures = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -925,6 +955,9 @@ export const CarouselName = styled(Typography)(({ theme }) => ({
   "@media (max-width: 900px)": {
     fontSize: "1.2rem !important", // Reduce font size for smaller screens
   },
+  "@media (max-width: 600px)": {
+    fontSize: "1rem !important", 
+  },
 }));
 
 export const CarouselDate = styled(Typography)(({ theme }) => ({
@@ -933,6 +966,9 @@ export const CarouselDate = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "#C6C6C6" : "#6D6D6D",
   "@media (max-width: 900px)": {
     fontSize: "1rem !important",
+  },
+  "@media (max-width: 600px)": {
+    fontSize: "8px !important",
   },
 }));
 

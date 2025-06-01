@@ -54,7 +54,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                 password,
             });
             if (!res.ok) throw new Error("Invalid Email or Password");
-            if (res?.url) router.replace("/dashboard");
+            if (res?.url) router.replace("/customer-portal");
         } catch (err) {
             setError("Invalid Email or password");
         }

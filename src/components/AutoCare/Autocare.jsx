@@ -21,6 +21,9 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 
 // ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
+import Preloader from "../Preloader";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
@@ -123,6 +126,7 @@ const ModdedCard = ({ card, color }) => {
 
 const AutoCare = () => {
     const { theme } = useTheme();
+    const t = useTranslations('home.about_section');
 
     // API fetch hook
     const { packages, loading, error, fetchPackages } = useAutocarePackages();
@@ -218,7 +222,7 @@ const AutoCare = () => {
                     textAlign: "center",
                 }}
             >
-                Loading...
+                <Preloader />
             </Box>
         );
     }
@@ -830,8 +834,9 @@ const AutoCare = () => {
                                         gap: "8px",
                                     }}
                                 >
+                                    {/* <Link href="/booking"> */}
                                     <CardButton
-                                        onClick={() => handleSubCatChange(pkg?.name)}
+                                    onClick={() => window.location.href = "/booking"}
                                         sx={{
                                             backgroundColor: "#1C79CC",
                                             color: "white",
@@ -841,9 +846,10 @@ const AutoCare = () => {
                                                 backgroundColor: "#2998ff",
                                             },
                                         }}
-                                    >
-                                        Book Now
+                                        >
+                                         {t("cta.buttons.book_now")}
                                     </CardButton>
+                                        {/* </Link>  */}
                                     <CardButton
                                         onClick={() => handleSubCatChange(pkg?.name)}
                                         sx={{

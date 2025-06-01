@@ -32,25 +32,20 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
             <IconButton
                 onClick={handleClick}
                 sx={{
-                    position: "fixed",
-                    bottom: 20,
-                    right: 20,
-                    zIndex: 1000,
-                    width: 50,
-                    height: 50,
-                    borderRadius: "50%",
-                    backgroundColor: "#0070f3",
+                    width: 'auto',
+                    height: "auto",
+                    borderRadius: "0px",
+                    // backgroundColor: "#0070f3",
                     color: "#fff",
-                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                    "&:hover": {
-                        backgroundColor: "#005bb5",
-                    },
+                    padding:'0px',
+                    marginTop:'-3px',
+                    
                 }}
             >
                 {currentLocale === "en" ? (
-                    <GB style={{ width: "30px", height: "30px" }} />
+                   <GB style={{ width: "24px", height: "24px" }} />
                 ) : (
-                    <NL style={{ width: "30px", height: "30px" }} />
+                    <NL style={{ width: "24px", height: "24px" }} />
                 )}
             </IconButton>
 

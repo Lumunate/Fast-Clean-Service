@@ -83,7 +83,17 @@ class UserService {
   }
 
   async authenticateEmail(token: string): Promise<void> {
-    // TODO
+    const user = await userRepository.findByEmailVerificationToken(token);
+    
+    if (!user) {
+      throw new Error("Invalid or expired verification token");
+    }
+    
+    // Update user's verification status
+    await userRepository.update(user._id.toString(), {
+      emailVerified: true,
+      emailVerificationToken: null // Clear the token after verification
+    });
   }
 }
 

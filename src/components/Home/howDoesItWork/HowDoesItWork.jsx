@@ -8,6 +8,8 @@ import {useTranslations} from "next-intl";
 
 
 const SectionContainer = styled(Box)(({ theme }) => ({
+    maxWidth:"1440px",
+    margin:"0 auto",
     position: "relative",
     padding: "2rem 0",
     width: "100%",
@@ -19,7 +21,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
 }));
 
 const ResponsiveGrid = styled(Grid)(({ theme }) => ({
-    width: "90%",
+    width: "100%",
     maxWidth: "1500px",
     margin: "0 auto",
     display: "grid",
@@ -92,6 +94,7 @@ export default function HowDoesItWork() {
                         }}
                     >
                         <SingleWorkHowDoes
+                            index={index + 1}
                             icon={work.icon}
                             title={work.title}
                             description={work.description}
@@ -104,7 +107,7 @@ export default function HowDoesItWork() {
                 sx={{
                     position: "absolute",
                     top: "50%",
-                    left: "5%",
+                    left: "0%",
                     right: "5%",
                     zIndex: -1,
                     display: { xs: "block", lg: "block" },
@@ -113,7 +116,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(24% - 22px)",
+                        left: "calc(26% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",
@@ -122,11 +125,11 @@ export default function HowDoesItWork() {
                         filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
                         "@media (max-width: 1400px)": {
                             top: "-12rem",
-                            left: "48%",
+                            left: "49%",
                         },
                         "@media (max-width: 768px)": {
                             top: "-26rem",
-                            left: "40%",
+                            left: "50%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -135,7 +138,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(49% - 22px)",
+                        left: "calc(51% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",
@@ -143,13 +146,14 @@ export default function HowDoesItWork() {
                         backgroundSize: "contain",
                         filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
                         "@media (max-width: 1400px)": {
+                        width: "75px",
                             top: "4rem",
                             left: "72%",
                             transform: "rotate(90deg)",
                         },
                         "@media (max-width: 768px)": {
                             top: "3rem",
-                            left: "40%",
+                            left: "50%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -158,7 +162,7 @@ export default function HowDoesItWork() {
                 <Box
                     sx={{
                         position: "absolute",
-                        left: "calc(71% - 22px)",
+                        left: "calc(78% - 22px)",
                         backgroundImage: 'url("/Arrow_04.svg")',
                         width: "75px",
                         height: "75px",
@@ -172,7 +176,7 @@ export default function HowDoesItWork() {
                         },
                         "@media (max-width: 768px)": {
                             top: "28rem",
-                            left: "40%",
+                            left: "50%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },

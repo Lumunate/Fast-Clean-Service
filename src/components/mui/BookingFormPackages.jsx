@@ -611,7 +611,7 @@ export const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
 // STEP BAR
 
 export const StepBarContainer = styled(Box)(({ theme }) => ({
-  maxWidth: "765px",
+  maxWidth: "990px",
   margin: "0 auto",
   position: "relative",
   "@media (max-width: 600px)": {
@@ -623,14 +623,14 @@ export const StepBarContainer = styled(Box)(({ theme }) => ({
 export const StepBarLine = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "2rem",
-  left: "1.4rem",
-  width: "calc(100% - 2.8rem)",
+  left: "3.4rem",
+  width: "calc(100% - 3.8rem)",
   height: "1px",
   backgroundColor: "gray",
   "@media (max-width: 600px)": {
     top: "1rem",
-    width: "calc(100% - 4rem)",
-    left: "2rem",
+    width: "calc(100% - 6rem)",
+    left: "4rem",
   },
 }));
 
@@ -638,7 +638,7 @@ export const StepsContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "start",
   marginBottom: "1rem",
 }));
 
@@ -670,6 +670,7 @@ export const StepItemOuterContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  width:'100%'
 }));
 
 export const StepCheckImageContainer = styled(Box)(({ theme }) => ({
@@ -700,8 +701,17 @@ export const StepImageContainer = styled(Box)(({ theme, selected = false, curren
 export const StepLabel = styled(Typography)(({ theme, current }) => ({
   marginTop: "10px",
   fontFamily: "Unbounded",
-  fontSize: "8px",
+  fontSize: "12px",
   color: current ? theme.palette.mode === "dark" ? "#fff" : "black" : theme.palette.mode === "dark" ? "#FFFFFF" : "#A4A4A4",
+  "@media (max-width: 1080px)": {
+    fontSize: "10px",
+  },
+  "@media (max-width: 880px)": {
+    fontSize: "8px",
+  },
+  "@media (max-width: 720px)": {
+    fontSize: "6px",
+  },
   "@media (max-width: 600px)": {
     fontSize: current ? "0.7rem" : "0px",
     marginTop: "4.5rem",

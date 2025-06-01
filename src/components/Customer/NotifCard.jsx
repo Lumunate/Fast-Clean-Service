@@ -5,11 +5,12 @@ import MailIcon from '@mui/icons-material/Mail';
 import DoneIcon from '@mui/icons-material/Done';
 import { CardBody, CardHeading, StyledCard } from '../mui/AdminPkgs';
 import { useSession } from "next-auth/react";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
 
 const NotificationCard = ({ id, message, status, date, onStatusChange }) => {
     const handleClick = () => {
         if (status === "unread") {
+            console.log(`📨 Marking notification ${id} as read`);
             onStatusChange(id);
         }
     };
@@ -70,7 +71,7 @@ const NotificationCard = ({ id, message, status, date, onStatusChange }) => {
 
 const NotifCard = () => {
     const t = useTranslations('customer_dashboard.sections.0');
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [notifications, setNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
     const userId = session?.user?.id;
@@ -79,6 +80,7 @@ const NotifCard = () => {
         const fetchNotifications = async () => {
             if (userId) {
                 setLoading(true);
+                console.log(`🔄 Fetching notifications for userId: ${userId}`);
                 try {
                     const response = await fetch(`/api/notifications?userId=${userId}`);
                     const data = await response.json();
@@ -87,12 +89,17 @@ const NotifCard = () => {
                             (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
                         );
                         setNotifications(sortedNotifications);
+                    } else {
+                        console.warn("⚠️ Notification fetch failed:", data.message);
                     }
                 } catch (error) {
-                    console.error("Failed to fetch notifications:", error);
+                    console.error("❌ Failed to fetch notifications:", error);
                 } finally {
                     setLoading(false);
+                    console.log("⏹️ Notification fetch complete");
                 }
+            } else {
+                console.warn("🚫 No userId available, skipping fetch");
             }
         };
 
@@ -100,6 +107,7 @@ const NotifCard = () => {
     }, [userId]);
 
     const markAsRead = async (notificationId) => {
+        console.log(`📤 Sending mark-as-read for notificationId: ${notificationId}`);
         setNotifications((prev) =>
             prev.map((notif) =>
                 notif._id === notificationId ? { ...notif, status: "read" } : notif
@@ -107,23 +115,26 @@ const NotifCard = () => {
         );
 
         try {
-            await fetch(`/api/notifications/update-status`, {
+            const response = await fetch(`/api/notifications/update-status`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ notificationId, status: "read" }),
             });
+
+            if (response.ok) {
+                console.log(`✅ Notification ${notificationId} marked as read successfully`);
+            } else {
+                console.warn(`⚠️ Failed to update status for ${notificationId}`);
+            }
         } catch (error) {
-            console.error("Failed to update notification status:", error);
+            console.error("❌ Error while updating notification status:", error);
         }
     };
 
     return (
-        <StyledCard sx={{
-            maxHeight: '600px',
-            overflowY: 'scroll'
-        }}>
+        <StyledCard sx={{ maxHeight: '600px', overflowY: 'scroll' }}>
             <CardBody>
                 <CardHeading sx={{ marginBottom: '20px', color: '#333' }}>
                     {t("widgets.1.title")}

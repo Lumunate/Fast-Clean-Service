@@ -108,7 +108,7 @@ export default function HeadingLinesAnimation({ text, children }) {
       ref={scrollRef}
       style={{
         display: "inline-block",
-        textAlign: "start",
+        textAlign: "center",
         position: "relative",
         margin: "10px 0",
       }}

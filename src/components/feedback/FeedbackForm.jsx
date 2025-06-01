@@ -12,6 +12,7 @@ import useSnackbar from '../../hooks/useSnackbar';
 import { feedbackSchema } from '../../types/feedback';
 import {useSubmitFeedbackForm} from '../../hooks/useFeedbackForm'
 import { useTheme } from '../../contexts/themeContext';
+import { useTranslations } from 'next-intl';
 
 const datePickerStyles = `
   .feedback-datepicker::placeholder {
@@ -29,6 +30,9 @@ const defaultValues = {
 }
 
 export default function FeedbackForm() {
+
+  const t = useTranslations("feedback")
+
     const theme = useTheme()
 
     const snackbarContext = useSnackbar();
@@ -93,7 +97,7 @@ export default function FeedbackForm() {
           <Grid container columns={24} gap={2} alignItems={"start"} sx={{ mb: "40px" }}>
             <Grid xs={24} md={11.5}>
               <StyledTextField
-                label="Name"
+                label={t("form_fields.name")}
                 variant="standard"
                 fullWidth
                 margin="none"
@@ -114,7 +118,7 @@ export default function FeedbackForm() {
               }}
             >
               <StyledTextField
-                label="Last Name"
+                label={t("form_fields.last_name")}
                 variant="standard"
                 fullWidth
                 margin="none"
@@ -128,13 +132,13 @@ export default function FeedbackForm() {
 
             <Grid sx={{ marginTop: "44px" }} xs={24} md={11.5}>
               <CustomFormControl fullWidth variant="standard" labelfontsize="16px" error={!!errors.Service}>
-                <InputLabel id="Service">Service</InputLabel>
+                <InputLabel id="Service">{t("form_fields.service")}</InputLabel>
                 <Controller
                   name="Service"
                   control={control}
                   render={({ field }) => (
                     <StyledSelectField
-                      label="Service"
+                      label={t("form_fields.service")}
                       value={field.value}
                       onChange={field.onChange}
                       variant="standard"
@@ -183,7 +187,7 @@ export default function FeedbackForm() {
                       selected={field.value}
                       onChange={(date) => field.onChange(date)}
                       className="feedback-datepicker"
-                      placeholderText="Date of Appointment"
+                      placeholderText={t("form_fields.date_of_appointment")}
                       dateFormat="MM/dd/yyyy"
                       isClearable
                     />
@@ -199,7 +203,7 @@ export default function FeedbackForm() {
 
             <Grid sx={{ marginTop: "44px" }} xs={24} md={12}>
               <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "start" }}>
-                <CustomInputLabel id="experience">Rate Your Experience</CustomInputLabel>
+                <CustomInputLabel id="experience">{t("form_fields.rating")}</CustomInputLabel>
                 <Controller
                   name="experience"
                   control={control}
@@ -225,7 +229,7 @@ export default function FeedbackForm() {
 
             <Grid sx={{ marginTop: "44px" }} xs={24}>
               <StyledTextField
-                label="Share Your Experience Here..."
+                label={t("form_fields.review")}
                 variant="standard"
                 fullWidth
                 multiline
@@ -241,7 +245,11 @@ export default function FeedbackForm() {
                     transition: "transform 0.3s ease",
                     "&.Mui-focused": {
                       transform: "translate(0, -30px) scale(0.75)",
+                     opacity: 1,
                     },
+                    "&.MuiFormLabel-filled": {
+                    opacity: 0,
+                  },
                   },
                 }}
                 sx={{
@@ -279,7 +287,7 @@ export default function FeedbackForm() {
             type="submit"
             special
           >
-            {loading ? <CircularProgress size={24} /> : "Submit Feedback"}
+            {loading ? <CircularProgress size={24} /> : t("buttons.submit")}
           </Button>
         </form>
 

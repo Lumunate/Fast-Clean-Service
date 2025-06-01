@@ -8,38 +8,28 @@ import {
   CarouselControls,
   CarouselDate,
   CarouselDetails,
+  CarouselDetailsPara,
   CarouselImg,
   CarouselItemInner,
   CarouselName,
   CarouselSignatures,
   CarouselStarsBox,
-  HomePkgsBox,
   HomePkgsInBox,
   ServicesOverviewWrapper,
 } from "../../mui/HomePkgs";
 import { Box, Button, Link, Typography } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 import { useFeedback } from "../../../hooks/useFeedback";
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
-import {useTranslations} from "next-intl";
-
+import { useTranslations } from "next-intl";
 
 export default function Testimonials() {
   const { theme } = useTheme();
-  const sliderRef = useRef(null);
-  const t = useTranslations('home.customer_reviews_section');
-  const [activeStep, setActiveStep] = useState(0);
-  const [activeHeight, setActiveHeight] = useState("auto");
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-  const { feedbacks, fetchAll } = useFeedback();
+  const t = useTranslations("home.customer_reviews_section");
+  const { feedbacks } = useFeedback();          // already fetches in parent hook
 
   const TESTIMONIALS = [
     {
@@ -180,302 +170,297 @@ export default function Testimonials() {
     },
   ];
 
-  const [testimonials, setTestimonials] = useState(TESTIMONIALS);
+  const initialTrustpilot = TESTIMONIALS.filter(r =>
+      r.socialIcons?.some(ic => ic.alt === "Trustpilot")
+  );
+  const initialGoogle = TESTIMONIALS.filter(r =>
+      r.socialIcons?.some(ic => ic.alt === "Google")
+  );
+
+  const [trustpilotReviews, setTrustpilotReviews] = useState(initialTrustpilot);
+  const [googleReviews,    setGoogleReviews]    = useState(initialGoogle);
 
   useEffect(() => {
-    const updatedTestimonials = [...TESTIMONIALS];
-    feedbacks.slice(0, 5).forEach((feedback, index) => {
-      const feedbackObj = {
-        stars: feedback.stars,
-        name: `${feedback.name} ${feedback.lastName}`,
-        details: feedback.feedback ?? "",
+    if (!feedbacks?.length) return;
+
+    // Start with fresh copies so we never mutate state directly
+    const tp = [...initialTrustpilot];
+    const gg = [...initialGoogle];
+
+    feedbacks.forEach((fb, idx) => {
+      const fbObj = {
+        stars: fb.stars,
+        name:  `${fb.name} ${fb.lastName ?? ""}`.trim(),
+        details: fb.feedback ?? "",
         image: "https://swiperjs.com/demos/images/nature-2.jpg",
-        date: new Date(feedback.createdAt).toLocaleDateString("en-US", {
+        date: new Date(fb.createdAt).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
-          day: "2-digit",
+          day:   "2-digit",
         }),
         socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
       };
-      updatedTestimonials.splice((index + 1) * 3, 0, feedbackObj);
+
+      if (tp.length <= gg.length) {
+        tp.push(fbObj);
+      } else {
+        gg.push(fbObj);
+      }
     });
 
-    setTestimonials(updatedTestimonials);
+    setTrustpilotReviews(tp);
+    setGoogleReviews(gg);
   }, [feedbacks]);
 
-  useEffect(() => {
-    setIsLargeScreen(window.innerWidth > 1100);
+  function useCarousel(items) {
+    const sliderRef = useRef(null);
+    const [activeStep,   setActiveStep]   = useState(0);
+    const [activeHeight, setActiveHeight] = useState("auto");
+    const [isLarge,      setIsLarge]      = useState(false);
 
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 1100);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    useEffect(() => {
+      setIsLarge(window.innerWidth > 1100);
+      const onResize = () => setIsLarge(window.innerWidth > 1100);
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
+    }, []);
 
-  useLayoutEffect(() => {
-    if (sliderRef.current) {
-      const children = sliderRef.current.childNodes;
-      let height = 0;
-      let indexActive = null;
+    useLayoutEffect(() => {
+      if (!sliderRef.current) return;
+      const kids = sliderRef.current.childNodes;
+      let tallest = 0;
+      let activeIdx = Array.from(kids).findIndex(k => k.classList.contains("active"));
 
-      children.forEach((el, index) => {
-        const list = Array.from(el.classList);
-        let tempHeight = 0;
-        if (list.includes("active")) indexActive = index;
-
-        if (list.includes("active") || index === indexActive + 1) {
-          for (let i = 0; i < el.children.length; i++) {
-            tempHeight += el.children[i].offsetHeight;
-          }
+      kids.forEach((el, i) => {
+        if (i === activeIdx || i === (activeIdx + 1)) {
+          let h = Array.from(el.children).reduce((s, c) => s + c.offsetHeight, 0);
+          if (h > tallest) tallest = h;
         }
-        if (height < tempHeight) height = tempHeight;
       });
+      setActiveHeight(`${tallest + 70}px`);
+    }, [activeStep, items]);
 
-      setActiveHeight(`${height + 70}px`);
-    }
-  }, [activeStep]);
+    return {
+      sliderRef,
+      activeStep,
+      activeHeight,
+      isLarge,
+      next: () => setActiveStep(p => (p === items.length - 1 ? 0 : p + 1)),
+      back: () => setActiveStep(p => (p === 0 ? items.length - 1 : p - 1)),
+    };
+  }
 
-  const handleNext = () => {
-    setActiveStep((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-  const handleBack = () => {
-    setActiveStep((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
+  const tpCarousel = useCarousel(trustpilotReviews);
+  const ggCarousel = useCarousel(googleReviews);
 
-  return (
-    <HomePkgsInBox
-      sx={{
-        margin: "0 auto",
-        position: "relative",
-        backgroundColor: "transparent",
-        padding: "2rem",
-      }}
-    >
-      <ServicesOverviewWrapper>
-        <HeadingLinesAnimation sx={{ width: "50%", marginBottom: "7rem" }}>{t("title")}</HeadingLinesAnimation>
-        <Typography
-          sx={{
-            textAlign: "center",
-            fontSize: "1.55rem",
-            lineHeight: 1.7,
-            paddingTop: "2rem",
-            "@media (max-width: 900px)": {
-              textAlign: "center",
-            },
-            "@media (max-width: 600px)": {
-              fontSize: "12px",
-              textAlign: "center",
-            },
-          }}
-        >
-          {t("description")}
-        </Typography>
-        <Typography
-          sx={{
-            textAlign: "center",
-            fontSize: "1.55rem",
-            fontWeight: "500",
-            lineHeight: 1.7,
-            "@media (max-width: 900px)": {
-              textAlign: "center",
-            },
-            "@media (max-width: 600px)": {
-              fontSize: "12px",
-              textAlign: "center",
-            },
-          }}
-        >
-          {t("description2")}
-        </Typography>
-        <Link href="/feedback" passHref>
-          <Button
-            variant="contained"
-            sx={{
-              marginTop: "1rem",
-              padding: "1.5rem 3rem",
-              fontSize: "16px",
-              fontWeight: 500,
-              backgroundColor: "primary.accentDark",
-              color: "white",
-              borderRadius: "50px",
-              fontFamily: "DMSans",
-              "&:hover": {
-                backgroundColor: "#00BEFF",
-              },
-            }}
-          >
-            {t("button")}
-          </Button>
-        </Link>
-      </ServicesOverviewWrapper>
-      <HomePkgsInBox
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "relative",
-          "@media (max-width: 1150px)": {
-            width: "100%",
-          },
-        }}
-      >
-        <Carousel
-          sx={{
-            width: "90%",
-            "@media (max-width: 1200px)": { width: "100%" },
-          }}
-        >
-          <CarouselContentContainer
-            ref={sliderRef}
+  const renderCarousel = (items, car) => (
+      <Carousel sx={{ width: "90%", "@media (max-width:1100px)": { width: "90%" } }}>
+        <CarouselContentContainer
+            ref={car.sliderRef}
             sx={{
               display: "flex",
               transition: "all 600ms ease-in-out",
               marginBottom: "3rem",
-              height: activeHeight,
+              height: car.activeHeight,
             }}
-          >
-            {testimonials.map((testimonial, index) => {
-              const isActive = activeStep === index;
-              const isActiveNext = isLargeScreen && (activeStep + 1) % testimonials.length === index;
+        >
+          {items.map((r, i) => {
+            const isActive = car.activeStep === i;
+            const isNext   = car.isLarge && (car.activeStep + 1) % items.length === i;
 
-              return (
+            return (
                 <CarouselContentItem
-                  key={index}
-                  className={isActive || isActiveNext ? "active" : ""}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    transition: "opacity 600ms ease-in-out",
-                    width: isLargeScreen ? "50%" : "100%",
-                    backdropFilter: isActive || isActiveNext ? "blur(0px)" : "blur(10px)",
-                    visibility: isActive || isActiveNext ? "visible" : "hidden",
-                    position: isActive || isActiveNext ? "relative" : "absolute",
-                    background: "transparent",
-                    border: "none",
-                    alignSelf: "flex-start",
-                    justifyContent: "stretch",
-                  }}
+                    key={i}
+                    className={isActive || isNext ? "active" : ""}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: car.isLarge ? "50%" : "100%",
+                      backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
+                      visibility:     isActive || isNext ? "visible" : "hidden",
+                      position:       isActive || isNext ? "relative" : "absolute",
+                      background: "white",
+                      border: "none",
+                    }}
                 >
                   <CarouselItemInner
-                    sx={{
-                      padding: "2rem",
-                      borderRadius: "20px",
-
-                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.5)",
-                      border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
-                      backdropFilter: "blur(10.4px)",
-                    }}
+                      sx={{
+                        p: "2rem",
+                        borderRadius: "20px",
+                        backgroundColor:
+                            theme.palette.mode === "dark"
+                                ? "rgba(255,255,255,0.03)"
+                                : "rgba(255,255,255,0.5)",
+                        border: `1px solid ${
+                            theme.palette.mode === "dark"
+                                ? "rgba(255,255,255,0.12)"
+                                : "white"
+                        }`,
+                        backdropFilter: "blur(10.4px)",
+                      }}
                   >
                     <CarouselStarsBox
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        paddingBottom: "1rem",
-                        justifyContent: "space-between",
-                        "& svg": {
-                          fontSize: "1.4rem",
-                          marginRight: "0.3rem",
-                          color: "gold",
-                        },
-                      }}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          pb: "1rem",
+                          "& svg": { fontSize: "1.4rem", mr: "0.3rem", color: "gold" },
+                        }}
                     >
                       <Box>
-                        {Array.from({ length: 5 }, (_, i) => (
-                          <FontAwesomeIcon icon={faStar} key={i} className={i < testimonial.stars ? "colorstar" : ""} />
+                        {Array.from({ length: 5 }, (_, k) => (
+                            <FontAwesomeIcon
+                                key={k}
+                                icon={faStar}
+                                className={k < r.stars ? "colorstar" : ""}
+                            />
                         ))}
                       </Box>
-                      <Box
-                        component="img"
-                        src="/testimonialQou.svg"
-                        alt="asd"
-                        sx={{
-                          width: "37px",
-                          height: "26px",
-                        }}
-                      />
+                      <Box component="img" src="/testimonialQou.svg" alt="" sx={{ width: 37, height: 26 }} />
                     </CarouselStarsBox>
 
                     <CarouselDetails>
-                      <p>
-                        {testimonial.details.slice(0, 196)}
-                        {testimonial.details.length > 196 ? "..." : ""}
-                      </p>
+                      <CarouselDetailsPara>
+                        {r.details.slice(0, 196)}
+                        {r.details.length > 196 ? "…" : ""}
+                      </CarouselDetailsPara>
                     </CarouselDetails>
 
                     <CarouselSignatures
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginTop: "1rem",
-                      }}
+                        sx={{ display: "flex", justifyContent: "space-between", mt: "1rem" }}
                     >
                       <Box sx={{ display: "flex", alignItems: "center" }}>
                         <CarouselImg
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                          }}
+                            src={r.image}
+                            alt={r.name}
                         />
-                        <Box sx={{ marginLeft: "1rem" }}>
-                          <CarouselName>{testimonial.name}</CarouselName>
-                          <CarouselDate>{testimonial.date}</CarouselDate>
+                        <Box sx={{ ml: "1rem" }}>
+                          <CarouselName>{r.name}</CarouselName>
+                          <CarouselDate>{r.date}</CarouselDate>
                         </Box>
                       </Box>
 
                       <Box sx={{ display: "flex", gap: "0.5rem" }}>
-                        {testimonial.socialIcons?.map((iconObj, idx) => (
-                          <Box
-                            component="img"
-                            key={idx}
-                            src={iconObj.icon}
-                            alt={iconObj.alt}
-                            sx={{
-                              width: "50px",
-                              // height: "50px",
-                            }}
-                          />
+                        {r.socialIcons?.map((ic, idx) => (
+                            <Box
+                                key={idx}
+                                component="img"
+                                src={ic.icon}
+                                alt={ic.alt}
+                                sx={{ width: 50 }}
+                            />
                         ))}
                       </Box>
                     </CarouselSignatures>
                   </CarouselItemInner>
                 </CarouselContentItem>
-              );
-            })}
-          </CarouselContentContainer>
-        </Carousel>
+            );
+          })}
+        </CarouselContentContainer>
 
+        {/* Controls */}
         <CarouselControls>
-          <CarouselBtn
-            onClick={handleBack}
-            sx={{
-              left: "-8rem",
-              "@media (max-width: 1700px)": { left: "0rem" },
-              "@media (max-width: 1200px)": { left: "-6rem" },
-              "@media (max-width: 600px)": { left: "-2rem" },
-            }}
-          >
-            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} style={{transform: "rotate(180deg)"}} />
+          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", zIndex:50,"@media (max-width:1700px)": { left: "-6rem" }, "@media (max-width:600px)": { left: "-5rem" } }}>
+            <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} style={{ transform: "rotate(180deg)" }} />
           </CarouselBtn>
-
-          <CarouselBtn
-            onClick={handleNext}
-            sx={{
-              right: "-8rem",
-              "@media (max-width: 1700px)": { right: "0rem" },
-              "@media (max-width: 1200px)": { right: "-6rem" },
-              "@media (max-width: 600px)": { right: "-2rem" },
-            }}
-          >
-            <Image src={"/testimonials/testimonial-chevron-right.png"} alt={"control arrow"} width={58} height={58} />
-            </CarouselBtn>
+          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: "-6rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
+            <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} />
+          </CarouselBtn>
         </CarouselControls>
+      </Carousel>
+  );
+
+  return (
+      <HomePkgsInBox sx={{ m: "0 auto", position: "relative", p: "2rem" }}>
+        <ServicesOverviewWrapper>
+          <HeadingLinesAnimation sx={{ width: "50%", mb: "7rem" }}>
+            {t("title")}
+          </HeadingLinesAnimation>
+          <Typography sx={{ textAlign: "center", fontSize: "1.55rem", lineHeight: 1.7, pt: "2rem" }}>
+            {t("description")}
+          </Typography>
+          <Typography sx={{ textAlign: "center", fontSize: "1.55rem", fontWeight: 500, lineHeight: 1.7 }}>
+            {t("description2")}
+          </Typography>
+          <Link href="/feedback" passHref>
+            <Button
+                variant="contained"
+                sx={{
+                  mt: "1rem",
+                  p: "1.5rem 3rem",
+                  fontSize: 16,
+                  fontWeight: 500,
+                  backgroundColor: "primary.accentDark",
+                  color: "#fff",
+                  borderRadius: "50px",
+                  fontFamily: "DMSans",
+                  "&:hover": { backgroundColor: "#00BEFF" },
+                }}
+            >
+              {t("button")}
+            </Button>
+          </Link>
+        </ServicesOverviewWrapper>
+
+        <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Trustpilot Reviews</Typography>
+          <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
+            ⭐ 4.8/5 based on 250+ reviews
+          </Typography>
+          {renderCarousel(trustpilotReviews, tpCarousel)}
+          <Box sx={{ textAlign: "center" }}>
+              <Link href="https://www.trustpilot.com/review/www.fastcleanservice.nl" passHref>
+                  <Button
+                      variant="contained"
+                      sx={{
+                          padding: "1.5rem 3rem",
+                          fontSize: "1.2rem",
+                          fontWeight: 500,
+                          borderRadius: "50px",
+                          backgroundColor: "primary.accentDark",
+                          color: "white",
+                          fontFamily: "DMSans",
+                          "&:hover": {
+                              backgroundColor: theme.palette.primary.accent,
+                          },
+                      }}
+                  >
+                    {t("trustpilotBtn")}
+                  </Button>
+              </Link>
+          </Box>
+        </HomePkgsInBox>
+
+        {/* ---------- GOOGLE ---------- */}
+        <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Google Reviews</Typography>
+          <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
+            ⭐ 4.7/5 based on 180+ reviews
+          </Typography>
+          {renderCarousel(googleReviews, ggCarousel)}
+          <Box sx={{ textAlign: "center" }}>
+              <Link href="https://www.google.com/search?sca_esv=861d6c36a75495fa&rlz=1C1GCEU_en&sxsrf=AHTn8zosmPqY1lmi1rraCn-Xf6zaYwsE1Q:1747500187450&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfapRvAnP8clww20TpR4E95CUX4eTaUYZDu_1AGGck5SUtbHtWKsJTsZt-t7_a4hOLwM92PEFX1Lu7GY7IqvphT7KQpwAJWnKSKYFJWmUuOcyWpIoA%3D%3D&q=Fast+Clean+Service+Reviews&sa=X&ved=2ahUKEwjl3Ku_-aqNAxX7RaQEHcw7DGMQ0bkNegQIPRAE&biw=1366&bih=607" passHref>
+                  <Button
+                      variant="contained"
+                      sx={{
+                          padding: "1.5rem 3rem",
+                          fontSize: "1.2rem",
+                          fontWeight: 500,
+                          borderRadius: "50px",
+                          backgroundColor: "primary.accentDark",
+                          color: "white",
+                          fontFamily: "DMSans",
+                          "&:hover": {
+                              backgroundColor: theme.palette.primary.accent,
+                          },
+                      }}
+                  >
+                      {t("googleBtn")}
+                  </Button>
+              </Link>
+          </Box>
+        </HomePkgsInBox>
       </HomePkgsInBox>
-    </HomePkgsInBox>
   );
 }

@@ -246,7 +246,7 @@ const ShopOpenCloseModal = ({ isOpen, handleClose, selectedDate, availableDates,
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        openSnackbar("Saved! " + (!isShopOpen ? "Open" : "Closed") + " shop on " + selectedDate.format("YYYY-MM-DD"));
+        openSnackbar("Saved! " + (event.target.checked ? "Open" : "Closed") + " shop on " + selectedDate.format("YYYY-MM-DD"));
       })
       .catch((err) => {
         console.error(err);

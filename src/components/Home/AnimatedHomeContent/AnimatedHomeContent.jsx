@@ -1,225 +1,242 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Typography, Button, Box, IconButton, Link } from "@mui/material";
-import { gsap } from "gsap";
-import { useTheme } from "../../../contexts/themeContext";
-import { HomeHeroContainer } from "../../mui/HomePkgs";
+import React, {useEffect, useMemo, useRef, useState} from "react";
+import {Typography, Button, Box, IconButton, Link} from "@mui/material";
+import {gsap} from "gsap";
+import {useTheme} from "../../../contexts/themeContext";
+import {HomeHeroContainer} from "../../mui/HomePkgs";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import HomeSocialsBox from "./HomeSocialsBox";
 import {useTranslations} from "next-intl";
 
-const AnimatedHomeContent = () => {
-  const { theme } = useTheme();
-    const t = useTranslations('home.hero_section');
+export default function AnimatedHomeContent() {
+    const {theme} = useTheme();
+    const t = useTranslations("home.hero_section");
 
-  const typographyRef = useRef(null);
-  const tlRef = useRef(null);
-  const [currentText, setCurrentText] = useState("");
+    /* refs & state */
+    const mainRef = useRef(null);
+    const tl = useRef(null);
+    const [mainLine, setMainLine] = useState("");
+    const [subLine, setSubLine] = useState("");
 
-  const lines = useMemo(() => [
-      t("subtitle.0"),
-      t("subtitle.1"),
-      t("subtitle.2"),
-  ], []);
+    const lines = useMemo(
+        () => [
+            t("subtitle.0"),
+            t("subtitle.1"),
+            t("subtitle.2"),
+            t("subtitle.3"),
+            t("subtitle.4"),
+        ],
+        [t]
+    );
 
-  const handleScroll = () => {
-    window.scrollBy({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
+    const subLines = useMemo(
+        () => [
+            t("subsubtitle.0"),
+            t("subsubtitle.1"),
+            t("subsubtitle.2"),
+            t("subsubtitle.3"),
+            t("subsubtitle.4"),
+        ],
+        [t]
+    );
 
-  useEffect(() => {
-    const container = typographyRef.current;
+    /* smooth scroll */
+    const handleScroll = () =>
+        window.scrollBy({top: window.innerHeight, behavior: "smooth"});
 
-    tlRef.current = gsap.timeline({ repeat: -1 });
+    /* headline animation */
+    useEffect(() => {
+        const container = mainRef.current;
+        tl.current = gsap.timeline({repeat: -1});
 
-    lines.forEach((line, index) => {
-      tlRef.current
-        .to(container, {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.inOut",
-          onComplete: () => setCurrentText(line),
-        })
-        .to(container, {
-          opacity: 1,
-          duration: 0.5,
-          ease: "power2.inOut",
-        })
-        .to({}, { duration: 3 }); // Pause for 2 seconds
-    });
+        lines.forEach((line, i) => {
+            tl.current
+                .to(container, {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        setMainLine(line);
+                        setSubLine(subLines[i]);
+                    },
+                })
+                .to(container, {opacity: 1, duration: 0.5, ease: "power2.inOut"})
+                .to({}, {duration: 3}); // pause
+        });
 
-    // Start with the first line visible
-    setCurrentText(lines[0]);
-    gsap.set(container, { opacity: 1 });
+        /* start with first pair visible */
+        setMainLine(lines[0]);
+        setSubLine(subLines[0]);
+        gsap.set(container, {opacity: 1});
 
-    return () => {
-      if (tlRef.current) tlRef.current.kill();
-    };
-  }, [lines]);
+        return () => tl.current && tl.current.kill();
+    }, [lines, subLines]);
 
-  return (
-      <HomeHeroContainer
-          sx={{
-              position: "relative",
-              width: "100%",
-              height: "100vh",
-              backgroundColor: "#000",
-              overflow: "hidden",
-              zIndex: "8",
-          }}
-      >
-          <Box
-              component="video"
-              src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
-              autoPlay
-              muted
-              loop
-              playsInline
-              sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  zIndex: -1,
-              }}
-          />
-
-          <Box
-              sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "rgba(0, 0, 0, 0.3)",
-                  zIndex: -1,
-              }}
-          />
-
-      <HomeSocialsBox />
-      <Box
-        sx={{
-          marginTop: "8%",
-          marginBottom: "10%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          alignItems: "center",
-            "@media (max-width: 1380px)": {
-                marginTop: "-5%",
-            },
-            "@media (max-width: 900px)": {
-                marginTop: "8%",
-            },
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            // justifyContent: "space-between",
-            alignItems: "center",
-              "@media (max-width: 600px)": {
-                padding: "2rem",
-              },
-          }}
-        >
-          <Typography
-            variant="h1"
+    /* ─────────────── render ─────────────── */
+    return (
+        <HomeHeroContainer
             sx={{
-              animation: "fadeIn 1s ease-in-out forwards",
-              // marginTop: "-30rem",
-              letterSpacing: "8px",
-              fontWeight: 700,
-              marginBottom: "6rem",
-              fontFamily: "Unbounded",
-              fontSize: {
-                xs: "2rem",
-                sm: "3.5rem",
-                md: "4rem",
-                lg: "4.8rem",
-                xl: "4.8rem",
-              },
-              textAlign: "center",
-              color: "white",
+                position: "relative",
+                width: "100%",
+                height: "100vh",
+                backgroundColor: "#000",
+                overflow: "hidden",
+                zIndex: 8,
             }}
-          >
-              {t("title")}
-          </Typography>
-          <Box ref={typographyRef}>
-            <Typography
-              sx={{
-                letterSpacing: "2px",
-                textAlign: "center",
-                fontFamily: "Unbounded",
-                fontSize: {
-                  xs: "1.5rem",
-                  sm: "2rem",
-                  md: "3rem",
-                  lg: "4rem",
-                  xl: "4rem",
-                },
-                color: "white",
-                marginBottom: "7rem",
-              }}
-              variant="h2"
-            >
-              {currentText}
-            </Typography>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            gap: "2rem",
-            flexDirection: { xs: "column", sm: "row" },
-            margin: "0 auto",
-            marginBottom: "8rem",
-          }}
         >
-            <Link href="/booking" passHref>
-                <Button
-                    variant="contained"
+            {/* video background */}
+            <Box
+                component="video"
+                src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
+                autoPlay
+                muted
+                loop
+                playsInline
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    zIndex: -1,
+                }}
+            />
+            {/* dark overlay */}
+            <Box
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                    zIndex: -1,
+                }}
+            />
+
+            <HomeSocialsBox />
+
+            {/* content */}
+            <Box
+                sx={{
+                    mt: {xs: "8%", md: "-5%", lg: "1%"},
+                    mb: "10%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}
+            >
+                {/* main title & animated lines */}
+                <Box
                     sx={{
-                        padding: "1.5rem 3rem",
-                        fontSize: "1.6rem",
-                        fontWeight: "bold",
-                        backgroundColor: "primary.accentDark",
-                        borderRadius: "50px",
-                        color: "white",
-                        fontFamily: "DMSans",
-                        "&:hover": {
-                            backgroundColor: theme.palette.primary.accent,
-                        },
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        px: {xs: 2, sm: 0},
                     }}
                 >
-                    Book Now
-                </Button>
-            </Link>
-        </Box>
+                    <Typography
+                        variant="h1"
+                        sx={{
+                            letterSpacing: "8px",
+                            fontWeight: 700,
+                            mb: "6rem",
+                            fontFamily: "Unbounded",
+                            fontSize: {
+                                xs: "2rem",
+                                sm: "3.5rem",
+                                md: "4rem",
+                                lg: "4.8rem",
+                            },
+                            textAlign: "center",
+                            color: "white",
+                        }}
+                    >
+                        {t("title")}
+                    </Typography>
 
-        <IconButton
-          onClick={handleScroll}
-          sx={{
-            animation: "bubbleDown 1s ease-in-out infinite 1s",
-            backgroundColor: "transparent",
-            color: "white",
-            padding: "1rem",
-            border: "1px solid white",
-            width: "40px",
-            height: "40px",
-          }}
-        >
-          <ArrowDownwardIcon sx={{ fontSize: "2rem" }} />
-        </IconButton>
-      </Box>
-    </HomeHeroContainer>
-  );
-};
+                    {/* animated headline */}
+                    <Box ref={mainRef}>
+                        <Typography
+                            variant="h2"
+                            sx={{
+                                letterSpacing: "2px",
+                                textAlign: "center",
+                                fontFamily: "Unbounded",
+                                fontSize: {
+                                    xs: "1.5rem",
+                                    sm: "2rem",
+                                    md: "3rem",
+                                    lg: "4rem",
+                                },
+                                color: "white",
+                            }}
+                        >
+                            {mainLine}
+                        </Typography>
 
-export default AnimatedHomeContent;
+                        <Typography
+                            sx={{
+                                mt: 1,
+                                letterSpacing: "1px",
+                                textAlign: "center",
+                                fontFamily: "DMSans",
+                                fontSize: {xs: "1.2rem", sm: "1.6rem", md: "2rem", lg: "2.4rem"},
+                                color: "white",
+                            }}
+                        >
+                            {subLine}
+                        </Typography>
+                    </Box>
+                </Box>
+
+                {/* CTA button */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: 2,
+                        flexDirection: {xs: "column", sm: "row"},
+                        mb: "8rem",
+                        mt: {xs: "3rem", xl: "0"}
+                    }}
+                >
+                    <Link href="/booking" passHref>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                px: "3rem",
+                                py: "1.5rem",
+                                fontSize: "1.6rem",
+                                fontWeight: "bold",
+                                backgroundColor: "primary.accentDark",
+                                borderRadius: "50px",
+                                color: "white",
+                                fontFamily: "DMSans",
+                                "&:hover": {backgroundColor: theme.palette.primary.accent},
+                            }}
+                        >
+                            {t("buttons.book_now")}
+                        </Button>
+                    </Link>
+                </Box>
+
+                {/* scroll‑down icon */}
+                <IconButton
+                    onClick={handleScroll}
+                    sx={{
+                        animation: "bubbleDown 1s ease-in-out infinite 1s",
+                        color: "white",
+                        border: "1px solid white",
+                        width: 40,
+                        height: 40,
+                    }}
+                >
+                    <ArrowDownwardIcon sx={{fontSize: "2rem"}} />
+                </IconButton>
+            </Box>
+        </HomeHeroContainer>
+    );
+}
