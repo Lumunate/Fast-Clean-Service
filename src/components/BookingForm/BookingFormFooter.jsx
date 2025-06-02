@@ -207,7 +207,7 @@ const BookingFormFooter = () => {
         <NextPrevButton dull onClick={handleBack}>
           {t("footer.2")}
         </NextPrevButton>
-        <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid}>
+        <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid || currentStep === 11}>
           {currentStep === 11 ? t("footer.4") : t("footer.3")}
         </NextPrevButton>
       </ButtonContainer>
