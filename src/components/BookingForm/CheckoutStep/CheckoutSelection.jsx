@@ -10,6 +10,8 @@ import StoreOutlinedIcon from "@mui/icons-material/StoreOutlined";
 import CheckIcon from "../../../../public/bookingFormIcons/Check.svg";
 import CheckMark from "../../../../public/bookingFormIcons/CheckMark.svg";
 import Image from "next/image";
+import PaymentButton from "../../../components/payment-button/PaymentButton"
+import StripeCheckoutButton from "../../../components/payment-button/StripeCheckoutButton";
 
 const shakeAnimation = `
   @keyframes shake {
@@ -29,7 +31,7 @@ const shakeAnimation = `
 `;
 
 const CheckoutSelection = () => {
-  const { updateFormData, formData, nextStep } = useMultiStepForm(); // Use hook for form data
+  const { updateFormData, formData, nextStep, price, selectedPackageType } = useMultiStepForm(); // Use hook for form data
   const [selectedOption, setSelectedOption] = useState(formData.service || null);
   const [openModal, setOpenModal] = useState(false);
   const [modalInfo, setModalInfo] = useState("");
@@ -46,8 +48,9 @@ const CheckoutSelection = () => {
   }, [selectedOption, updateValidation]);
 
   const handlePackageSelect = (pkg) => {
-    // TODO
-  };
+  setSelectedOption(pkg.service);
+  updateFormData({ service: pkg.service });
+};
 
   const handleInfoClick = (tagline) => {
     setModalInfo(tagline);
@@ -72,7 +75,7 @@ const CheckoutSelection = () => {
           }}
         />
       ),
-      disbaled: false,
+      disabled: false,
       tagline: "Use Stripe for checkout.",
       service: "Stripe",
     },
@@ -89,7 +92,7 @@ const CheckoutSelection = () => {
           }}
         />
       ),
-      disabled: formData.packageType === "Anywhere Autocare",
+      disabled: formData.selectedPackageType === "Anywhere Autocare",
       tagline: "Use coinbase for checkout.",
       service: "Coinbase",
     },
@@ -122,7 +125,7 @@ const CheckoutSelection = () => {
           >
             <Box
               sx={{
-                cursor: "pointer",
+                cursor: pkg.disabled ? "not-allowed" : "pointer",
                 padding: "1rem",
                 borderRadius: "10px",
                 transition: "all 0.3s ease",
@@ -262,6 +265,25 @@ const CheckoutSelection = () => {
           </Box>
         </Box>
       </Modal>
+      {selectedOption === "Coinbase" && (
+  <Box mt={4} textAlign="center">
+    <PaymentButton
+      amount={price}
+      currency="eur"
+      description={`Payment for ${formData.selectedPackageType || "Service"}`}
+      customerEmail={formData.email}
+    />
+  </Box>
+)}
+
+{selectedOption === "Stripe" && (
+  <Box mt={4} textAlign="center">
+    <StripeCheckoutButton 
+      amount={price}
+      productName={formData.selectedPackageType || "Service"} 
+    />
+  </Box>
+)}
     </Box>
   );
 };
