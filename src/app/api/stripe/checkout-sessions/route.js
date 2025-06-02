@@ -1,43 +1,70 @@
-// app/api/checkout-sessions/route.js
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
-    const { amount, userEmail, userId, paymentMode } = await request.json();
+    try {
+        const { amount, userEmail, userId, paymentMode, productName = 'Custom Product' } = await request.json();
 
-    const price = await stripe.prices.create({
-        currency: 'eur',
-        unit_amount: amount,
-        product_data: {
-            name: 'Custom Payment',
-        },
-    });
+        let price;
 
-    const session = await stripe.checkout.sessions.create({
-        success_url: 'http://localhost:3000/user/checkout-success',
-        cancel_url: 'http://localhost:3000/user/subscriptions',
-        payment_method_types: ['card', 'ideal'],
-        line_items: [
-            {
-                price: price.id,
-                quantity: 1,
+        if (paymentMode === 'subscription') {
+            // Create product and recurring price for subscription
+            const product = await stripe.products.create({
+                name: productName,
+            });
+
+            price = await stripe.prices.create({
+                unit_amount: amount,
+                currency: 'eur',
+                recurring: { interval: 'month' }, // Change to 'year' if needed
+                product: product.id,
+            });
+        } else {
+            // Create one-time price without recurring
+            price = await stripe.prices.create({
+                currency: 'eur',
+                unit_amount: amount,
+                product_data: {
+                    name: productName,
+                },
+            });
+        }
+
+        // Create the checkout session
+        const session = await stripe.checkout.sessions.create({
+            success_url: 'http://localhost:3000/user/checkout-success',
+            cancel_url: 'http://localhost:3000/user/subscriptions',
+            payment_method_types: ['card', 'ideal'],
+            mode: paymentMode === 'subscription' ? 'subscription' : 'payment',
+            line_items: [
+                {
+                    price: price.id,
+                    quantity: 1,
+                },
+            ],
+            client_reference_id: userId,
+            customer_email: userEmail,
+            metadata: {
+                userEmail,
+                userId,
+                paymentMode,
             },
-        ],
-        mode: 'payment',
-        client_reference_id: userId,
-        customer_email: userEmail,
-        metadata: {
-            userEmail: userEmail,
-            userId: userId,
-            paymentMode: paymentMode
-        },
-    });
+        });
 
-    return new Response(JSON.stringify({ url: session.url }), {
-        status: 200,
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+        return new Response(JSON.stringify({ url: session.url }), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    } catch (error) {
+        console.error('Error creating Stripe session:', error);
+        return new Response(JSON.stringify({ error: 'Failed to create checkout session' }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    }
 }
