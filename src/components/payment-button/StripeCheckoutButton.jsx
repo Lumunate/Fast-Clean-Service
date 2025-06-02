@@ -24,7 +24,13 @@ export default function StripeCheckoutButton() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ amount, userEmail, userId }),
+                body: JSON.stringify({
+                    amount,
+                    userEmail,
+                    userId,
+                    paymentMode: 'subscription',
+                    productName: 'Custom Product'
+                }),
             });
 
             const { url } = await response.json();
