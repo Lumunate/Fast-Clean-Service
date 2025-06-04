@@ -91,6 +91,9 @@ export const NavbarRightContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: { xs: "1rem", sm: "1rem", md: "1.5rem", xl: "4rem" },
   marginLeft: "4rem",
+  "@media (max-width: 1200px)": {
+    marginLeft: "0rem", 
+  },
 }));
 
 export const DropDownLink = styled(Typography)(({ theme }) => ({

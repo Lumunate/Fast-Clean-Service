@@ -13,7 +13,7 @@ export async function POST(request) {
             },
             pricing_type: 'fixed_price',
             // redirect_url: 'https://yourdomain.com/success',
-            redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+            redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking/payment-success`,
             cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
             metadata: {
                 customer_email: customerEmail,
