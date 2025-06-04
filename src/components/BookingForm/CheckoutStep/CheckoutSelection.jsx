@@ -92,7 +92,7 @@ const CheckoutSelection = () => {
           }}
         />
       ),
-      disabled: formData.selectedPackageType === "Anywhere Autocare",
+      disabled: formData.selectedPackageType === "Subscription Plans",
       tagline: "Use coinbase for checkout.",
       service: "Coinbase",
     },
