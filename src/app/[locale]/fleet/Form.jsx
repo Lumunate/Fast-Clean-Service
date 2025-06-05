@@ -233,6 +233,7 @@ export default function FleetCareProForm() {
                   id="vehicleType"
                   value={formData.vehicleType}
                   label={t("fields.vehicle_type")}
+                  MenuProps={{ disableScrollLock: true }}
                   onChange={(e) => {
                     e.target.name = "vehicleType";
                     handleChange(e);
@@ -300,6 +301,7 @@ export default function FleetCareProForm() {
                   labelId="fleetSize-label"
                   id="fleetSize"
                   value={formData.fleetSize}
+                  MenuProps={{ disableScrollLock: true }}
                   label={t("fields.fleet_size")}
                   onChange={(e) => {
                     e.target.name = "fleetSize";
