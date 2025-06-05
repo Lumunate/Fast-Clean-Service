@@ -31,9 +31,7 @@ const CouponsCard = () => {
     };
 
     loadCoupons();
-  }, [getCoupons]);
-
-  console.log(coupons);
+  }, []);
 
   const handleDelete = (id) => {
     setCoupons(coupons.filter((_, i) => i !== id));
@@ -90,7 +88,7 @@ const CouponsCard = () => {
                     <TableCellCustom sx={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
                       <IconButton
                         onClick={() => {
-                          handleDelete(row._id);
+                          handleDelete(coupon._id);
                         }}
                       >
                         <DeleteIcon />

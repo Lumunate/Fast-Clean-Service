@@ -67,6 +67,7 @@ const BookingFormFooter = () => {
             formData.surname &&
             formData.email &&
             formData.phoneNumber &&
+            formData.makeModel &&
             formData.termsAccepted;
 
         setIsBtnInvalid(!requiredFieldsFilled);
