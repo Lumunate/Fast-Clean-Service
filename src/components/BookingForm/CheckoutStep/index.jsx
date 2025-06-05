@@ -1,15 +1,12 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
-import CheckoutSelection from "./CheckoutStep";
+import CheckoutSelection from "./CheckoutSelection";
 import {useTranslations} from "next-intl";
-import Link from "next/link";
-import { useTheme } from "../../../contexts/themeContext";
 
 const Index = () => {
     const t = useTranslations('booking');
 
-  const { theme } = useTheme();
 
   return (
     <Box sx={{

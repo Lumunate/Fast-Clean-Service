@@ -7,7 +7,8 @@ export interface IVehicleService extends IOtherVehicles, Document {
 
 const OtherVehiclesSchema: Schema = new Schema({
   name: { type: String, required: true },
-  address: { type: String, required: true },
+  address: { type: String,
+  default: '' },
   email: { type: String, required: true },
   vehicleType: { type: String, required: true },
   phone: { type: String, required: true },

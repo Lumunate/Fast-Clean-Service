@@ -21,11 +21,11 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
     const { theme } = useTheme();
 
 
-    useEffect(() => {
-        if (sessionStatus === "authenticated") {
-            router.replace("/");
-        }
-    }, [sessionStatus, router]);
+    // useEffect(() => {
+    //     if (sessionStatus === "authenticated") {
+    //         router.replace("/");
+    //     }
+    // }, [sessionStatus, router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,7 +54,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                 password,
             });
             if (!res.ok) throw new Error("Invalid Email or Password");
-            if (res?.url) router.replace("/customer-portal");
+            // if (res?.url) router.replace("/customer-portal");
         } catch (err) {
             setError("Invalid Email or password");
         }

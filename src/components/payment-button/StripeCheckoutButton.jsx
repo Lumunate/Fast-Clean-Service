@@ -6,8 +6,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import {useSession} from "next-auth/react";
 
-export default function StripeCheckoutButton() {
-    const [amount, setAmount] = useState(1000);
+export default function StripeCheckoutButton({ amount, productName }) {
+    // const [amount, setAmount] = useState(1000);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { data: session } = useSession();
@@ -15,6 +15,12 @@ export default function StripeCheckoutButton() {
     const handleCheckout = async () => {
         setLoading(true);
         setError(null);
+        if (!session) {
+      setError("You must be logged in to make a payment.");
+      setLoading(false);
+      return;
+    }
+
         const userEmail = session.user.email;
         const userId = session.user.id;
 
@@ -24,12 +30,22 @@ export default function StripeCheckoutButton() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ amount, userEmail, userId }),
+                body: JSON.stringify({
+                    amount,
+                    userEmail,
+                    userId,
+                    paymentMode: 'subscription',
+                    productName,
+                }),
             });
 
             const { url } = await response.json();
 
-            window.open(url, '_blank');
+            if (url) {
+        window.open(url, "_blank");
+      } else {
+        throw new Error("No redirect URL received");
+      }
         } catch (err) {
             setError('An error occurred while processing your request.');
             console.error(err);
@@ -45,7 +61,7 @@ export default function StripeCheckoutButton() {
                 disabled={loading}
                 startIcon={loading && <CircularProgress size={20} />}
             >
-                {loading ? 'Processing...' : 'Subscribe'}
+                {loading ? 'Processing...' : 'Stripe'}
             </Button>
             {error && (
                 <Alert severity="error" sx={{ mt: 2, width: '100%' }}>

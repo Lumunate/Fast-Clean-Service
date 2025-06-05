@@ -84,18 +84,20 @@ export const CustomFormDateField = styled(DatePicker)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: "1rem 1.5rem",
     color: "#050505",
-    fontSize: "0.8rem",
+    fontSize: "1.8rem",
     fontWeight: "300",
+    color: theme.palette.mode === "light" ? "#818181" : "#fff",
   },
 
   "& label": {
     border: "none",
-    color: theme.palette.primary.contrastText,
-    fontSize: "1rem",
+    // color: theme.palette.primary.contrastText,
+     color: theme.palette.mode === "light" ? "#818181" : "#fff",
+    fontSize: "1.4rem",
     fontWeight: 400,
     lineHeight: 1.21,
     position: "relative",
-    transform: "translate(0%, -30%) scale(1)",
+    transform: "translate(3%, -30%) scale(1)",
   },
 
   "& label.Mui-focused": {
