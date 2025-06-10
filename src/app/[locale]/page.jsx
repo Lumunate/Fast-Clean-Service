@@ -19,7 +19,7 @@ import {useTranslations} from "next-intl";
 import {Fragment} from "react";
 
 export default function Home() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('home');
   return (
       <>
           <Navbar/>
@@ -46,7 +46,7 @@ export default function Home() {
                   <About/>
                   <Stats/>
 
-                  <DecorativeSpacer textBox1="100% Satisfaction Gauranteed" textBox2="On Location or At Our Branch"/>
+                  <DecorativeSpacer textBox1={t("decorativeText.text1")} textBox2={t("decorativeText.text2")}/>
 
                   <HowDoesItWork/>
                   <OverServiceOverview/>
@@ -59,7 +59,7 @@ export default function Home() {
                   <ServicesOverview/>
 
                   <Box sx={{"@media (max-width: 700px)": {display: "none"}}}>
-                      <DecorativeSpacer reversed textBox1="100% Satisfaction" textBox2="Anywhere, Anytime"/>
+                      <DecorativeSpacer reversed textBox1={t("decorativeText.text3")} textBox2={t("decorativeText.text4")}/>
                   </Box>
 
                   <HomePkgsInBox sx={{margin: "0 auto", "@media (max-width: 1150px)": {width: "100%"}}}>
@@ -67,8 +67,8 @@ export default function Home() {
                   </HomePkgsInBox>
 
                   <Box sx={{"@media (max-width: 700px)": {display: "none"}}}>
-                      <DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results"
-                                        textBox2="Fast, Flawless, Eco-Friendly"/>
+                      <DecorativeSpacer textBox1={t("decorativeText.text5")}
+                                        textBox2={t("decorativeText.text6")}/>
                   </Box>
 
                   <HomePkgsInBox sx={{margin: "0 auto", zIndex:'3' ,justifyContent: "center", "@media (max-width: 1150px)": {width: "100%"}}}>
