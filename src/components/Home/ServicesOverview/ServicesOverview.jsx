@@ -20,7 +20,7 @@ export default function ServicesOverview() {
         margin: "0 auto",
         "@media (max-width: 1200px)": { width: "100%" },
         marginTop:"14rem",
-        "@media (max-width: 600px)": { marginTop: "-4rem" },
+        "@media (max-width: 600px)": { marginTop: "4rem" },
       }}
     >
       <ServicesOverviewWrapper>
