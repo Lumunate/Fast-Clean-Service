@@ -291,7 +291,6 @@ export default function Testimonials() {
                         backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
                         visibility:     isActive || isNext ? "visible" : "hidden",
                         position:       isActive || isNext ? "relative" : "absolute",
-                      background: "white",
                       border: "none",
                     }}
                 >
@@ -376,7 +375,7 @@ export default function Testimonials() {
           <CarouselBtn onClick={car.back} sx={{ left: "-8rem", zIndex:50,"@media (max-width:1700px)": { left: "-6rem" }, "@media (max-width:600px)": { left: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} style={{ transform: "rotate(180deg)" }} />
           </CarouselBtn>
-          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: "-6rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
+          <CarouselBtn onClick={car.next} sx={{ right: "-14rem", "@media (max-width:1700px)": { right: "-10rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} />
           </CarouselBtn>
         </CarouselControls>
@@ -416,7 +415,7 @@ export default function Testimonials() {
         </ServicesOverviewWrapper>
 
         <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Trustpilot Reviews</Typography>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center" }}>Trustpilot Reviews</Typography>
           <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
             ⭐ 4.8/5 based on 250+ reviews
           </Typography>
@@ -446,7 +445,7 @@ export default function Testimonials() {
 
         {/* ---------- GOOGLE ---------- */}
         <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Google Reviews</Typography>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center" }}>Google Reviews</Typography>
           <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
             ⭐ 4.7/5 based on 180+ reviews
           </Typography>

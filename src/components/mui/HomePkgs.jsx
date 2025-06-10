@@ -327,7 +327,6 @@ export const Card = styled(Box)(({ theme }) => ({
       position: "absolute",
       top: "35%",
       left: "70px",
-      width: "100%",
       // width: "450px",
       textAlign: "left",
       color: "#eee",
@@ -352,8 +351,8 @@ export const Card = styled(Box)(({ theme }) => ({
      "& div": {
       position: "absolute",
       top: "35%",
-      left: "10px",
-      width: "95%",
+      left: "20px",
+      width: "100%",
       // width: "450px",
       textAlign: "left",
       color: "#eee",
@@ -371,7 +370,8 @@ export const CardName = styled(Typography)(({ theme }) => ({
   color: "#FFFFFF",
   marginBottom: "3rem",
   "@media (max-width:600px)": {
-  fontSize: "1.4rem",
+  fontSize: "1.6rem",
+    marginBottom: "1.5rem",
   }
 
 }));
@@ -386,8 +386,8 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   color: "#FFFFFF",
-  "@media (max-width:1258px)": { fontSize: "1rem", lineHeight: "2rem", width: "85%" },
-  "@media (max-width:600px)": { alignItems: "flex-start" },
+  "@media (max-width:1258px)": { fontSize: "1.6rem", lineHeight: "2rem", width: "85%" },
+  "@media (max-width:900px)": { alignItems: "flex-start", fontSize: "1.4rem" },
 
 }));
 
@@ -763,8 +763,8 @@ export const ServiceBtn1 = styled(ButtonBase)(({ theme, special = false }) => ({
     color: theme.palette.primary.main,
     backgroundColor: special ? theme.palette.primary.accent : "rgba(218, 218, 218, 0.45)",
   },
-  "@media (max-width: 600px)": {
-    fontSize: "1rem !important",
+  "@media (max-width: 900px)": {
+    fontSize: "1.2rem !important",
     padding: "0.5rem 1rem",
   },
 }));
