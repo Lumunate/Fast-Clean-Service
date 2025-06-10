@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Collapse, IconButton, List, ListItem, Typography } from "@mui/material";
+import { Box, Button, Collapse, IconButton, List, ListItem, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { SectionHeading } from "../mui/HomePkgs";
 import { useTheme } from "../../contexts/themeContext";
 import { useTranslations } from "next-intl";
 import HeadingLinesAnimation from "./HeadingLinesAnimation/HeadingLinesAnimation";
+import Link from "next/link";
 
 const Questions = () => {
     const [openIndex, setOpenIndex] = useState([]);
@@ -103,6 +104,27 @@ const Questions = () => {
                     </ListItem>
                 ))}
             </List>
+            <Box sx={{ textAlign: "center", marginTop:'4rem' }}>
+                          <Link href="/contact" passHref>
+                              <Button
+                                  variant="contained"
+                                  sx={{
+                                      padding: "1.5rem 3rem",
+                                      fontSize: "1.2rem",
+                                      fontWeight: 500,
+                                      borderRadius: "50px",
+                                      backgroundColor: "primary.accentDark",
+                                      color: "white",
+                                      fontFamily: "DMSans",
+                                      "&:hover": {
+                                          backgroundColor: theme.palette.primary.accent,
+                                      },
+                                  }}
+                              >
+                                  {t("button")}
+                              </Button>
+                          </Link>
+                      </Box>
         </Box>
     );
 };
