@@ -14,8 +14,9 @@ import ClipBoardPlusIcon from "../../../../public/servicesicons/ClipBoardPlus.sv
 import MapIcon from "../../../../public/servicesicons/Map.svg";
 import UnionIcon from "../../../../public/servicesicons/Union.svg";
 import { useLocale, useTranslations } from "next-intl";
-import { Button, Link } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
+import Link from "next/link";
 
 export default function CarService() {
     const t = useTranslations('home.packages_section');
@@ -105,8 +106,8 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
 
                 <Link
                     href="/aboutus"
-                    passHref
-                    sx={{
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
                         position: "absolute",
                         bottom: bottomSpacing, // Use the dynamic bottom spacing
                         left: 0,

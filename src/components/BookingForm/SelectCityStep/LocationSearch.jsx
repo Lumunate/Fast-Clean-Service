@@ -48,8 +48,8 @@ const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
 
         "& label": {
           marginTop: '1.5rem',
-          color: theme.palette.mode === "light" ? "#000" : "#fff",
-          fontSize: "1rem",
+          color: theme.palette.mode === "light" ? "#818181" : "#fff",
+          fontSize: "1.4rem",
           fontWeight: 400,
           lineHeight: 1.21,
           position: "relative",
@@ -63,10 +63,12 @@ const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
         "& .MuiOutlinedInput-root": {
           padding: '5px',
           borderRadius: "6px",
-          fontSize: "0.9rem",
+          fontSize: "1.8rem",
           boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
           backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "white",
           backdropFilter: theme.palette.mode === "dark" ? "blur(8px)" : "none",
+          fontWeight: 300,
+          color: theme.palette.mode === "light" ? "#818181" : "#fff",
 
           "& fieldset *": {
             display: 'hidden',

@@ -116,6 +116,8 @@ const BookingForm = () => {
           currentStep={currentStep}
           stepIndex={step.stepIndex}
           transStyles={transStyles}
+          packageTypeName={(formData?.packageType?.name || '').toLowerCase()}
+          carType={formData?.carType}
         >
           {step.condition !== undefined && !step.condition ? (
             <></>

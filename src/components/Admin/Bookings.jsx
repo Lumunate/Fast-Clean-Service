@@ -314,7 +314,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>Duration</ModalLabel>
-                                    <ModalValue>{selectedBooking.price}mins</ModalValue>
+                                    <ModalValue>{selectedBooking.duration}mins</ModalValue>
                                 </ModalContentBox>
 
                                 <ModalContentBox>

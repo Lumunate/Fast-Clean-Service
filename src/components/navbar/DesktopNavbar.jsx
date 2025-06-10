@@ -17,7 +17,7 @@ import {
     NavLinkDropDownContainer,
     NavLinksContainer
 } from "../../components/mui/navbarPkgs";
-import Logo from "../../../public/newlogo.svg";
+import Logo from "../../../public/logo.png";
 import CustomLink from "../CustomLink";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Box, Button, IconButton } from "@mui/material";

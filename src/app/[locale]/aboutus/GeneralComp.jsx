@@ -47,6 +47,8 @@ const ValueProposition = () => {
                     border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "#8D8D8D69"}`,
                     backdropFilter: "blur(2.4px)",
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                    "@media (max-width: 600px)": {  paddingLeft: "2rem",
+                    paddingRight: "2rem",},
                 }}
             >
                 <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
@@ -57,7 +59,7 @@ const ValueProposition = () => {
                                 spacing={3}
                                 alignItems="center" // ✅ Centers content vertically
                                 sx={{
-                                    padding: "2.5rem 2rem", // Increased padding for better spacing
+                                    padding: {xs:"1rem",sm:"2.5rem 2rem",} // Increased padding for better spacing
                                 }}
                             >
                                 <Grid item xs={12} md={4}>

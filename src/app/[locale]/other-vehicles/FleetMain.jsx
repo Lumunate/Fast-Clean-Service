@@ -179,7 +179,7 @@ export default function OtherVehiclesMain() {
             <Box
                 sx={{
                   flex: "1",
-                  padding: "2rem",
+                  padding: {xs:'1rem',sm:"2rem"},
                   zIndex: 10,
                 }}
             >

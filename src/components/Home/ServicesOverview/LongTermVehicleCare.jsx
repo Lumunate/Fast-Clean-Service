@@ -192,8 +192,8 @@ export default function LongTermVehicleCare() {
                 t("categories.0.services.1"),
                 t("categories.0.services.2"),
                 t("categories.0.services.3"),
-                t("categories.0.services.4"),
-                t("categories.0.services.5"),
+                // t("categories.0.services.4"),
+                // t("categories.0.services.5"),
             ],
             description: t("categories.0.description"),
         },
@@ -337,6 +337,7 @@ export default function LongTermVehicleCare() {
                           fontSize: "1.6rem",
                           fontWeight: "300",
                           "@media (max-width:1258px)": { fontSize: "1.4rem" },
+                           "@media (max-width:600px)": { fontSize: "1.2rem" },
                         }}
                       >
                         {pkg}

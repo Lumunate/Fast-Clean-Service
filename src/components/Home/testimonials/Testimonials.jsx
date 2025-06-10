@@ -8,6 +8,7 @@ import {
   CarouselControls,
   CarouselDate,
   CarouselDetails,
+  CarouselDetailsPara,
   CarouselImg,
   CarouselItemInner,
   CarouselName,
@@ -253,7 +254,7 @@ export default function Testimonials() {
   const ggCarousel = useCarousel(googleReviews);
 
   const renderCarousel = (items, car) => (
-      <Carousel sx={{ width: "90%", "@media (max-width:1200px)": { width: "100%" } }}>
+      <Carousel sx={{ width: "90%", "@media (max-width:1100px)": { width: "90%" } }}>
         <CarouselContentContainer
             ref={car.sliderRef}
             sx={{
@@ -278,7 +279,7 @@ export default function Testimonials() {
                       backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
                       visibility:     isActive || isNext ? "visible" : "hidden",
                       position:       isActive || isNext ? "relative" : "absolute",
-                      background: "transparent",
+                      background: "white",
                       border: "none",
                     }}
                 >
@@ -320,10 +321,10 @@ export default function Testimonials() {
                     </CarouselStarsBox>
 
                     <CarouselDetails>
-                      <p>
+                      <CarouselDetailsPara>
                         {r.details.slice(0, 196)}
                         {r.details.length > 196 ? "…" : ""}
-                      </p>
+                      </CarouselDetailsPara>
                     </CarouselDetails>
 
                     <CarouselSignatures
@@ -333,7 +334,6 @@ export default function Testimonials() {
                         <CarouselImg
                             src={r.image}
                             alt={r.name}
-                            style={{ width: 50, height: 50, borderRadius: "50%", objectFit: "cover" }}
                         />
                         <Box sx={{ ml: "1rem" }}>
                           <CarouselName>{r.name}</CarouselName>
@@ -361,10 +361,10 @@ export default function Testimonials() {
 
         {/* Controls */}
         <CarouselControls>
-          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", "@media (max-width:1700px)": { left: 0 }, "@media (max-width:600px)": { left: "-2rem" } }}>
+          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", zIndex:50,"@media (max-width:1700px)": { left: "-6rem" }, "@media (max-width:600px)": { left: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} style={{ transform: "rotate(180deg)" }} />
           </CarouselBtn>
-          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: 0 }, "@media (max-width:600px)": { right: "-2rem" } }}>
+          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: "-6rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
             <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} />
           </CarouselBtn>
         </CarouselControls>
@@ -410,12 +410,12 @@ export default function Testimonials() {
           </Typography>
           {renderCarousel(trustpilotReviews, tpCarousel)}
           <Box sx={{ textAlign: "center" }}>
-              <Link href="/" passHref>
+              <Link href="https://www.trustpilot.com/review/www.fastcleanservice.nl" passHref>
                   <Button
                       variant="contained"
                       sx={{
                           padding: "1.5rem 3rem",
-                          fontSize: "1.5rem",
+                          fontSize: "1.2rem",
                           fontWeight: 500,
                           borderRadius: "50px",
                           backgroundColor: "primary.accentDark",
@@ -440,12 +440,12 @@ export default function Testimonials() {
           </Typography>
           {renderCarousel(googleReviews, ggCarousel)}
           <Box sx={{ textAlign: "center" }}>
-              <Link href="/" passHref>
+              <Link href="https://www.google.com/search?sca_esv=861d6c36a75495fa&rlz=1C1GCEU_en&sxsrf=AHTn8zosmPqY1lmi1rraCn-Xf6zaYwsE1Q:1747500187450&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfapRvAnP8clww20TpR4E95CUX4eTaUYZDu_1AGGck5SUtbHtWKsJTsZt-t7_a4hOLwM92PEFX1Lu7GY7IqvphT7KQpwAJWnKSKYFJWmUuOcyWpIoA%3D%3D&q=Fast+Clean+Service+Reviews&sa=X&ved=2ahUKEwjl3Ku_-aqNAxX7RaQEHcw7DGMQ0bkNegQIPRAE&biw=1366&bih=607" passHref>
                   <Button
                       variant="contained"
                       sx={{
                           padding: "1.5rem 3rem",
-                          fontSize: "1.5rem",
+                          fontSize: "1.2rem",
                           fontWeight: 500,
                           borderRadius: "50px",
                           backgroundColor: "primary.accentDark",

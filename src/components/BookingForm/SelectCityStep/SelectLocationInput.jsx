@@ -37,7 +37,7 @@ export const calculateDistance = async (destination) => {
   }
 };
 
-const SelectLocationInput = () => {
+const SelectLocationInput = ({ hoist }) => {
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
 
@@ -55,6 +55,11 @@ const SelectLocationInput = () => {
           location: place.description,
           travelDistance: distanceInKm,
           travelDuration: duration, 
+        });
+        hoist?.({
+          location: place?.description,
+          travelDistance: distanceInKm,
+          travelDuration: duration,
         });
         updateValidation(true);
       } catch (error) {

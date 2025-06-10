@@ -24,7 +24,13 @@ export default function StripeCheckoutButton() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ amount, userEmail, userId }),
+                body: JSON.stringify({
+                    amount,
+                    userEmail,
+                    userId,
+                    paymentMode: 'subscription',
+                    productName: 'Custom Product'
+                }),
             });
 
             const { url } = await response.json();
@@ -45,7 +51,7 @@ export default function StripeCheckoutButton() {
                 disabled={loading}
                 startIcon={loading && <CircularProgress size={20} />}
             >
-                {loading ? 'Processing...' : 'Subscribe'}
+                {loading ? 'Processing...' : 'Stripe'}
             </Button>
             {error && (
                 <Alert severity="error" sx={{ mt: 2, width: '100%' }}>

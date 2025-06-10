@@ -9,7 +9,7 @@ import TickBoxWhite from "../../../../public/ser1.svg";
 import Shield from "../../../../public/ser2.svg";
 import ShieldWhite from "../../../../public/ser2.svg";
 import { useTheme } from "../../../contexts/themeContext";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +17,11 @@ export default function OverCarServices() {
     const t = useTranslations("home.services_section");
     const { theme } = useTheme();
     const servicesOverviewRef = useRef(null);
+
+     const locale = useLocale()
+        const cardHeight = locale === 'en'
+        ? "390px"
+        : (window.innerWidth < 400 ? "440px" : "440px");
 
     /* --- pulled from i18n JSON above --- */
     const servicesData = [
@@ -51,7 +56,8 @@ export default function OverCarServices() {
     };
 
     return (
-        <CarServicesContainer ref={servicesOverviewRef}>
+        <CarServicesContainer sx={{
+  px:  "1rem" }} ref={servicesOverviewRef}>
             {servicesData.map(
                 ({ img, imgDark, title, description, bullets, description2 }, idx) => (
                     <CarServiceItem
@@ -61,6 +67,7 @@ export default function OverCarServices() {
                         description={description}
                         bullets={bullets}
                         description2={description2}
+                        cardHeight={cardHeight}
                     />
                 )
             )}
@@ -85,9 +92,8 @@ export default function OverCarServices() {
                         <Button
                             variant="contained"
                             sx={{
-                                px: "3rem",
-                                py: "1.5rem",
-                                fontSize: "1.5rem",
+                                padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                                 fontWeight: 500,
                                 borderRadius: "50px",
                                 backgroundColor: "primary.accentDark",
@@ -102,13 +108,13 @@ export default function OverCarServices() {
                         </Button>
                     </Link>
 
+                    <Link href='/contact' >
                     <Button
                         variant="contained"
                         onClick={scrollToServices}
                         sx={{
-                            px: "3rem",
-                            py: "1.5rem",
-                            fontSize: "1.5rem",
+                            padding: {xs:"1.5rem 2.4rem" ,sm:"1.5rem 3rem"},
+                                fontSize: {xs:"1.2rem" ,sm:"1.5rem"},
                             fontWeight: 500,
                             borderRadius: "50px",
                             backgroundColor: "#B8B8B8",
@@ -118,9 +124,10 @@ export default function OverCarServices() {
                                 backgroundColor: theme.palette.primary.accent,
                             },
                         }}
-                    >
+                        >
                         {t("buttons.learn_more")}
                     </Button>
+                    </Link>
                 </Box>
             </Box>
         </CarServicesContainer>
@@ -133,8 +140,9 @@ const CarServiceItem = ({
                             description,
                             bullets = [],
                             description2,
+                            cardHeight
                         }) => (
-    <ServiceItemContainer sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <ServiceItemContainer sx={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight:cardHeight, maxHeight:cardHeight }}>
         <ServiceItemBox sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <ServiceItemIconContainer sx={{ display: "flex", justifyContent: "center" }}>
                 <ServiceItemIcon
@@ -173,8 +181,8 @@ const CarServiceItem = ({
                                 component="li"
                                 key={i}
                                 sx={{
-                                    fontFamily: "DMSans",
-                                    fontSize: "1.25rem",
+                                    fontFamily: "Unbounded",
+                                    fontSize: "1.3rem",
                                     mb: "0.25rem",
                                     display: "flex",
                                     alignItems: "center", // Align checkmark with text

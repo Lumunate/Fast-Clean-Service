@@ -29,7 +29,7 @@ export const ServiceItemContainer = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
   backdropFilter: "blur(2.4px)",
   "@media (max-width: 600px)": {
-    // width: "80%",
+    width: "320px",
     minHeight: 0,
     // backdropFilter: 0,
   },

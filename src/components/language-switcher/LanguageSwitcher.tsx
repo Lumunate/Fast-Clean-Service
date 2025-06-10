@@ -63,13 +63,13 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                     horizontal: "center",
                 }}
             >
-                <MenuItem onClick={() => switchLanguage("en")}>
-                    <GB style={{ width: "24px", height: "24px", marginRight: "8px" }} />
-                    English
-                </MenuItem>
                 <MenuItem onClick={() => switchLanguage("de")}>
                     <NL style={{ width: "24px", height: "24px", marginRight: "8px" }} />
                     Deutsch
+                </MenuItem>
+                <MenuItem onClick={() => switchLanguage("en")}>
+                    <GB style={{ width: "24px", height: "24px", marginRight: "8px" }} />
+                    English
                 </MenuItem>
             </Menu>
         </>

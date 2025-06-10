@@ -116,7 +116,7 @@ export default function Stats() {
     {
       icon: Customer,
       type: "customer",
-      head: "9510+",
+      head: "12850+",
       desc: t("stats.2.description"),
     },
   ];

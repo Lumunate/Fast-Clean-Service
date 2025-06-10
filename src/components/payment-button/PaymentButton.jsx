@@ -14,7 +14,7 @@ const PaymentButton = ({ amount, currency, description, customerEmail }) => {
         setError(null);
         try {
             const sanitizedAmount = typeof amount === 'string' ? amount.replace(/[^0-9.]/g, '') : amount;
-            const response = await fetch('/api/payments/create-payment-session', {
+            const response = await fetch('/api/coinbase/checkout-sessions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
