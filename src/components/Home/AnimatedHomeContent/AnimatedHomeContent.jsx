@@ -129,16 +129,30 @@ export default function AnimatedHomeContent() {
             {/* content */}
             <Box
                 sx={{
-                    mt: {xs: "8%", md: "-5%", lg: "1%"},
-                    mb: "10%",
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "space-between",
                     alignItems: "center",
+                    justifyContent: {
+                        xs: "flex-start",
+                        lg: "center", // vertically center only on large screens
+                    },
+                    pt: {
+                        xs: "8%", // top padding for small screens
+                        lg: 0,    // remove top padding on large
+                    },
+                    pb: {
+                        xs: "10%", // bottom padding for small
+                        lg: 0,
+                    },
+                    mt: {
+                        xs: 0,
+                        lg: "-10rem",
+                    }
                 }}
             >
-                {/* main title & animated lines */}
+
+            {/* main title & animated lines */}
                 <Box
                     sx={{
                         display: "flex",
@@ -152,16 +166,16 @@ export default function AnimatedHomeContent() {
                         sx={{
                             letterSpacing: "8px",
                             fontWeight: 700,
-                            mb: "6rem",
+                            mb: "5rem",
                             fontFamily: "Unbounded",
-                            fontSize: {
-                                xs: "2rem",
-                                sm: "3.5rem",
-                                md: "4rem",
-                                lg: "4.8rem",
-                            },
+                            fontSize: "2rem",
+                            "@media (min-width:600px)": { fontSize: "3.5rem" },
+                            "@media (min-width:900px)": { fontSize: "4rem" },
+                            "@media (min-width:1200px)": { fontSize: "4rem" },
+                            "@media (min-width:1536px)": { fontSize: "4.8rem" },
                             textAlign: "center",
                             color: "white",
+
                         }}
                     >
                         {t("title")}
@@ -175,13 +189,13 @@ export default function AnimatedHomeContent() {
                                 letterSpacing: "2px",
                                 textAlign: "center",
                                 fontFamily: "Unbounded",
-                                fontSize: {
-                                    xs: "1.5rem",
-                                    sm: "2rem",
-                                    md: "3rem",
-                                    lg: "4rem",
-                                },
+                                fontSize: "1.5rem",
+                                "@media (min-width:600px)": { fontSize: "2rem" },
+                                "@media (min-width:900px)": { fontSize: "3rem" },
+                                "@media (min-width:1200px)": { fontSize: "3.6rem" },
+                                "@media (min-width:1536px)": { fontSize: "4.5rem" },
                                 color: "white",
+
                             }}
                         >
                             {mainLine}
@@ -193,8 +207,14 @@ export default function AnimatedHomeContent() {
                                 letterSpacing: "1px",
                                 textAlign: "center",
                                 fontFamily: "DMSans",
-                                fontSize: {xs: "1.2rem", sm: "1.6rem", md: "2rem", lg: "2.4rem"},
+                                fontSize: "1.2rem",
+                                "@media (min-width:600px)": { fontSize: "1.6rem" },
+                                "@media (min-width:900px)": { fontSize: "2rem" },
+                                "@media (min-width:1200px)": { fontSize: "2.4rem" },
+                                "@media (min-width:1536px)": { fontSize: "3rem" },
                                 color: "white",
+                                mb: "5rem",
+
                             }}
                         >
                             {subLine}
@@ -208,7 +228,7 @@ export default function AnimatedHomeContent() {
                         display: "flex",
                         gap: 2,
                         flexDirection: {xs: "column", sm: "row"},
-                        mb: "8rem",
+                        mb: "5rem",
                         mt: {xs: "3rem", xl: "0"}
                     }}
                 >
@@ -218,7 +238,11 @@ export default function AnimatedHomeContent() {
                             sx={{
                                 px: "3rem",
                                 py: "1.5rem",
-                                fontSize: "1.6rem",
+                                fontSize: "2rem",
+                                "@media (min-width:600px)": { fontSize: "2.2rem" },
+                                "@media (min-width:900px)": { fontSize: "2.4rem" },
+                                "@media (min-width:1200px)": { fontSize: "2.6rem" },
+                                "@media (min-width:1536px)": { fontSize: "2.6rem" },
                                 fontWeight: "bold",
                                 backgroundColor: "primary.accentDark",
                                 borderRadius: "50px",
