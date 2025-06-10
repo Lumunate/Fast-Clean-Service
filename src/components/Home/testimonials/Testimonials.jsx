@@ -212,11 +212,20 @@ export default function Testimonials() {
     setGoogleReviews(gg);
   }, [feedbacks]);
 
-  function useCarousel(items) {
+  function useCarousel(items, autoplayDelay = 3000) {
     const sliderRef = useRef(null);
     const [activeStep,   setActiveStep]   = useState(0);
     const [activeHeight, setActiveHeight] = useState("auto");
     const [isLarge,      setIsLarge]      = useState(false);
+
+      useEffect(() => {
+          if (!items.length) return;
+          const id = setInterval(() => {
+              setActiveStep(prev => (prev === items.length - 1 ? 0 : prev + 1));
+              }, autoplayDelay);
+
+          return () => clearInterval(id);        // clean-up on unmount / items change
+      }, [items.length, autoplayDelay]);
 
     useEffect(() => {
       setIsLarge(window.innerWidth > 1100);
@@ -276,9 +285,12 @@ export default function Testimonials() {
                       display: "flex",
                       flexDirection: "column",
                       width: car.isLarge ? "50%" : "100%",
-                      backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
-                      visibility:     isActive || isNext ? "visible" : "hidden",
-                      position:       isActive || isNext ? "relative" : "absolute",
+                        transition: "opacity 600ms ease-in-out, transform 600ms ease-in-out",
+                        opacity:    isActive || isNext ? 1 : 0,
+                        transform:  isActive ? "translateX(0)" : isNext ? "translateX(10%)" : "translateX(-10%)", // tiny slide from left
+                        backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
+                        visibility:     isActive || isNext ? "visible" : "hidden",
+                        position:       isActive || isNext ? "relative" : "absolute",
                       background: "white",
                       border: "none",
                     }}
