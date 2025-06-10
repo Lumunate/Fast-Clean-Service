@@ -170,12 +170,14 @@ export default function Testimonials() {
     },
   ];
 
-  const initialTrustpilot = TESTIMONIALS.filter(r =>
-      r.socialIcons?.some(ic => ic.alt === "Trustpilot")
-  );
-  const initialGoogle = TESTIMONIALS.filter(r =>
-      r.socialIcons?.some(ic => ic.alt === "Google")
-  );
+    const initialTrustpilot = TESTIMONIALS
+        .filter(r => r.stars === 5 && r.socialIcons?.some(ic => ic.alt === "Trustpilot"))
+        .slice(0, 5);
+
+    const initialGoogle = TESTIMONIALS
+        .filter(r => r.stars === 5 && r.socialIcons?.some(ic => ic.alt === "Google"))
+        .slice(0, 5);
+
 
   const [trustpilotReviews, setTrustpilotReviews] = useState(initialTrustpilot);
   const [googleReviews,    setGoogleReviews]    = useState(initialGoogle);
@@ -208,8 +210,8 @@ export default function Testimonials() {
       }
     });
 
-    setTrustpilotReviews(tp);
-    setGoogleReviews(gg);
+      setTrustpilotReviews(tp.slice(0, 5));
+      setGoogleReviews(gg.slice(0, 5));
   }, [feedbacks]);
 
   function useCarousel(items, autoplayDelay = 3000) {
