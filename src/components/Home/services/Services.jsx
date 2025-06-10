@@ -90,11 +90,11 @@ export default function Services() {
     >
       <Box
         sx={{
-          width: "50%",
+            width: "50%",
           margin: "0 auto",
           paddingLeft: "9rem",
-          "@media (max-width: 1280px)": { paddingLeft: 0 },
-          "@media (max-width: 600px)": { width: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
+          "@media (max-width: 1280px)": { paddingLeft: 0, width: "auto" },
+          "@media (max-width: 992px)": { width: "100%", display: "flex", alignItems: "center", justifyContent: "center" },
         }}
       >
         <HeadingLinesAnimation text={t("title")} sx={{ width: "100%" }} />
@@ -153,6 +153,7 @@ export default function Services() {
               "@media (max-width: 1050px)": {
                 padding: "0 1rem",
                 gap: "1rem",
+                  marginBottom: 0,
               },
             }}
           >
