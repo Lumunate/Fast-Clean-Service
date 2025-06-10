@@ -18,7 +18,7 @@ import {useTranslations} from "next-intl";
 
 const StatsSectionContainer = styled(Box)(({ theme }) => ({
   margin: "4rem auto",
-  padding: "20.7rem 7rem 2rem",
+  padding: "15.7rem 7rem 2rem",
   width: "100%",
   "@media (max-width: 900px)": {
     padding: "10rem 2rem 2rem",
