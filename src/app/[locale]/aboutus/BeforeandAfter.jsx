@@ -146,6 +146,7 @@ const BeforeAfterSwiper = () => {
                 marginTop: "2rem",
                 "@media (max-width: 600px)": {
                     marginTop: "3rem",
+                    padding: "2rem",
                 },
                 "@media (max-width: 1400px)": {
                     marginTop: "2rem",

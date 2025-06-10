@@ -417,7 +417,7 @@ export default function Testimonials() {
         </ServicesOverviewWrapper>
 
         <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center" }}>Trustpilot Reviews</Typography>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center", "@media (max-width:900px)": { fontSize: "1.8rem" } }}>Trustpilot Reviews</Typography>
           <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
             ⭐ 4.8/5 based on 250+ reviews
           </Typography>
@@ -447,7 +447,7 @@ export default function Testimonials() {
 
         {/* ---------- GOOGLE ---------- */}
         <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center" }}>Google Reviews</Typography>
+          <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center", "@media (max-width:900px)": { fontSize: "1.8rem" } }}>Google Reviews</Typography>
           <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
             ⭐ 4.7/5 based on 180+ reviews
           </Typography>
