@@ -209,7 +209,7 @@ export default function About() {
               <Box
                 sx={{
                   display: "flex",
-                  height: "31%",
+                  height: "25%",
                   flexDirection: "row",
                   justifyContent: { xs: "center", md: "space-between" },
                   gap: "1rem",
@@ -270,19 +270,19 @@ export default function About() {
                           sx={{
                             fontWeight: 400,
                             mb: 1,
-                            fontSize: "1.6rem",
+                            fontSize: "1.4rem",
                             color:
                               theme.palette.mode === "dark"
                                 ? "#fff"
                                 : "#232E4A",
                             "@media (max-width: 1370px)": {
-                              fontSize: "1.4rem",
+                              fontSize: "1.2rem",
                             },
                           }}
                         >
                           {t(`why_choose_us.features.${index}.title`)}
                         </Typography>
-                        <Typography
+                        {/* <Typography
                           variant="body1"
                           sx={{
                             fontSize: "1.4rem",
@@ -297,7 +297,7 @@ export default function About() {
                           }}
                         >
                           {t(`why_choose_us.features.${index}.description`)}
-                        </Typography>
+                        </Typography> */}
                       </Box>
                     </Box>
                   );

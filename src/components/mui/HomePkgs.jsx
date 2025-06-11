@@ -353,7 +353,7 @@ export const Card = styled(Box)(({ theme }) => ({
       position: "absolute",
       top: "35%",
       left: "10px",
-      width: "100%",
+      width: "95%",
       // width: "450px",
       textAlign: "left",
       color: "#eee",
