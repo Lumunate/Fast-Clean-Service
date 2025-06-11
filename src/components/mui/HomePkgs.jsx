@@ -836,7 +836,7 @@ export const CarouselContentItem = styled(Box)(({ theme }) => ({
   padding: "1rem",
   height: "36rem",
   overflow: "hidden",
-  backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)", // Light mode: minimal opacity; Dark mode: further reduced opacity
+  backgroundColor: theme.palette.mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.01)", // Light mode: minimal opacity; Dark mode: further reduced opacity
   "@media (max-width: 600px)": {height:"36rem"}
 }));
 
