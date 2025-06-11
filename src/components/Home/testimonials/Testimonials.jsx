@@ -214,9 +214,10 @@ export default function Testimonials() {
             position: "relative",
             padding: "5rem",
             overflow: "visible",
-            ".swiper-button-prev": { left: "-2rem", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
-            ".swiper-button-next": { right: "-2rem", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
+            ".swiper-button-prev": { left: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
+            ".swiper-button-next": { right: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
             "@media (max-width: 992px)": {padding: "0rem", maxWidth: "100%"},
+            ".swiper-horizontal":{height:"100%", padding:"3rem"}
         }}
        >
         <Swiper
