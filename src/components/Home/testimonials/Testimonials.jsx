@@ -32,6 +32,8 @@ export default function Testimonials() {
     const { theme } = useTheme();
     const t = useTranslations("home.customer_reviews_section");
     const { feedbacks } = useFeedback();
+    const [activeIndex, setActiveIndex] = useState(0);
+
 
     // your TESTIMONIALS array, initialTrustpilot & initialGoogle setup
     const TESTIMONIALS = [
@@ -228,20 +230,12 @@ export default function Testimonials() {
             spaceBetween={20}
             breakpoints={{ 0: { slidesPerView: 1 }, 992: { slidesPerView: 2 } }}
             onSwiper={(swiper) => {
-                const updateHeights = () => {
-                    const visible = swiper.slides.filter(slide =>
-                        slide.style.transform.includes("translateX(0%)") ||
-                        slide.style.transform.includes("translateX(10%)")
-                    );
-                    let maxH = 0;
-                    visible.forEach(slide => {
-                        slide.style.height = "auto";
-                        maxH = Math.max(maxH, slide.offsetHeight);
-                    });
-                    visible.forEach(slide => slide.style.height = `${maxH}px`);
-                };
-                swiper.on("init slideChange resize", updateHeights);
-                updateHeights();
+                swiper.on("init slideChange resize", () => {
+                    setActiveIndex(swiper.realIndex); // update active index
+                });
+            }}
+            onSlideChange={(swiper) => {
+                setActiveIndex(swiper.realIndex);
             }}
         >
             {items.map((r, i) => (
@@ -249,7 +243,8 @@ export default function Testimonials() {
                     <CarouselContentItem sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
                         <CarouselItemInner
                             sx={{
-                                p: "2rem", borderRadius: "20px",
+                                p: "2rem",
+                                borderRadius: "20px",
                                 backgroundColor: theme.palette.mode === "dark"
                                     ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.5)",
                                 border: `1px solid ${
@@ -258,6 +253,10 @@ export default function Testimonials() {
                                 }`,
                                 backdropFilter: "blur(10.4px)",
                                 height: "100%",
+                                transition: "box-shadow 0.3s ease",
+                                boxShadow: (i === activeIndex || i === activeIndex + 1)
+                                    ? "0px 4px 12px rgba(0, 0, 0, 0.1)"
+                                    : "none"
                             }}
                         >
                             <CarouselStarsBox sx={{
