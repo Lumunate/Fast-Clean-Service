@@ -181,6 +181,7 @@ const MobileNavbar = () => {
                             aria-haspopup="true"
                             sx={{
                                 zIndex: "10",
+                                marginLeft:'2.8rem'
                             }}
                         >
                             <LogoImage src={UserIcon} alt="User Icon" width={15} height={15} style={{ objectFit: "contain" }} />
