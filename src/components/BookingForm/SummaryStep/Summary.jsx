@@ -14,6 +14,7 @@ const Summary = () => {
   const { updateValidation } = useValidation();
   updateValidation(true);
   const { theme } = useTheme();
+  console.log("FORMDATA:", formData);
 
   const { packages, loading, error, fetchPackages } = useAutocarePackages();
 
@@ -88,6 +89,30 @@ const Summary = () => {
               }
             />
             <SummaryItem label={t("steps.8.sections.2")} value={formData?.carType} />
+              {formData?.vehicleDetails && (
+                  <>
+                      <SummaryItem
+                          label={t("steps.9.sections.11")}
+                          value={formData.vehicleDetails.merk || '---'}
+                      />
+                      <SummaryItem
+                          label={t("steps.9.sections.12")}
+                          value={formData.vehicleDetails.handelsbenaming || '---'}
+                      />
+                      <SummaryItem
+                          label={t("steps.9.sections.13")}
+                          value={formData.vehicleDetails.inrichting || '---'}
+                      />
+                      <SummaryItem
+                          label={t("steps.9.sections.14")}
+                          value={formData.vehicleDetails.aantal_zitplaatsen || '---'}
+                      />
+                      <SummaryItem
+                          label={t("steps.9.sections.15")}
+                          value={formData.vehicleDetails.eerste_kleur || '---'}
+                      />
+                  </>
+              )}
           </Box>
           <Box>
             <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
