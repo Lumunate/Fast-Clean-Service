@@ -77,7 +77,7 @@ export default function Footer() {
             </Box>
 
             {/* Copyright Centered */}
-            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem", "@media (max-width: 992px)": { display: "none" } }}>
+            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem",  transition: "all 0.5s ease-in-out", "@media (max-width: 1250px)": { display: "flex", justifyContent:"end", paddingRight:"10px" } , "@media (max-width: 992px)": { display: "none" } }}>
                 <Typography variant="body2" sx={copyrightStyle}>
                     {t("copyright")}
                 </Typography>

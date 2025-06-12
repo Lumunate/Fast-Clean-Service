@@ -81,7 +81,9 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
     const maxHeight = locale === 'en' ? '330px' : '350px';
 
     return (
-        <ServiceItemContainer sx={{maxHeight}} onClick={handleClick}>
+        <ServiceItemContainer sx={{maxHeight}} 
+        // onClick={handleClick}
+        >
             <ServiceItemBox sx={{
                 display: "flex",
                 flexDirection: "column",

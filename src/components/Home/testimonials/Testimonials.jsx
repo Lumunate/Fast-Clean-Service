@@ -212,12 +212,12 @@ export default function Testimonials() {
             maxWidth: "100%",
             mx: "auto",
             position: "relative",
-            padding: "5rem",
+            // padding: "5rem",
             overflow: "visible",
             ".swiper-button-prev": { left: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
             ".swiper-button-next": { right: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
             "@media (max-width: 992px)": {padding: "0rem", maxWidth: "100%"},
-            ".swiper-horizontal":{height:"100%", padding:"3rem"}
+            ".swiper-horizontal":{height:"100%", padding:{xs:"0rem", sm:"3rem"}}
         }}
        >
         <Swiper
@@ -306,7 +306,9 @@ export default function Testimonials() {
     );
 
     return (
-        <HomePkgsInBox sx={{ m: "0 auto", position: "relative", p: "2rem" }}>
+        <HomePkgsInBox sx={{ m: "0 auto", position: "relative", p: "2rem", "@media (max-width: 1100px)": {
+    width: "100%", 
+  }, }}>
             <ServicesOverviewWrapper>
                 <HeadingLinesAnimation sx={{ width: "50%", mb: "7rem" }}>
                     {t("title")}
