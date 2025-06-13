@@ -63,15 +63,15 @@ export default function AboutUs() {
             <BeforeAfterSwiper />
         </Box>
 
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1="100% Satisfaction" textBox2="On-Demand Cleaning, Anywhere" reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1={t("decorativeText.text1")} textBox2={t("decorativeText.text2")} reversed sx={{ display: { xs: "none", sm: "block"} }} /></Box>
         <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
             <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
                 <HeadingLinesAnimation>{t("testimonials.title")}</HeadingLinesAnimation>
             </Box>
             <Reviews />
         </Box>
-        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1="Convenient Cleaning, Guaranteed Results"
-                                                                                         textBox2="Fast, Flawless, Eco-Friendly" sx={{ display: { xs: "none", sm: "block"} }} /></Box>
+        <Box sx={{ "@media (max-width: 700px)": { display: "none"}, }}><DecorativeSpacer textBox1={t("decorativeText.text3")}
+                                                                                         textBox2={t("decorativeText.text4")} sx={{ display: { xs: "none", sm: "block"} }} /></Box>
 
         <Box sx={{marginTop: { xs: "4rem", lg: "2rem"}}}>
             <CallToActionBox hideImage={true} />

@@ -16,7 +16,7 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
   gap:'12px',
   zIndex: 100,
   background:
-    "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))",
+    "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))",
   transition: "padding 0.4s ease, background 0.3s ease",
 
   // Media query for screens smaller than 1368px
