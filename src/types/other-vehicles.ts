@@ -3,8 +3,10 @@ import {z} from "zod";
 const VehicleType = z.enum(["Bikes (all types)", "Trucks", "Campers", "Boats"]);
 
 export const otherVehiclesSchema = z.object({
-  address: z.string().max(200, "Address is too long").optional(),
-  name: z.string().min(1, "Name is required").max(100, "Name is too long"),
+address: z
+  .any()
+  .transform(val => val == null ? '' : String(val)),
+    name: z.string().min(1, "Name is required").max(100, "Name is too long"),
   email: z.string().email("Invalid email address"),
   phone: z.string(),
   serviceType: z.enum(["Anywhere AutoCare", "FleetCare Pro"]),

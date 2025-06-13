@@ -23,21 +23,21 @@
       }
     },
     "about_section": {
-      "title": "The Best Care for Your Car Wherever You Are!",
+      "title": "The Best Care for Your Car Wherever You Are.",
       "description": "At Fast Clean Service your car will receive the highest quality steam cleaning and detailing, on location or at our location. Thanks to advanced techniques and high-quality products, we clean and protect your car with care and precision.",
       "why_choose_us": {
         "title": "Why Choose Fast Clean Service?",
         "features": [
           {
-            "title": "Ease",
+            "title": "At your location or ours",
             "description": " On location or at our location."
           },
           {
-            "title": "Thorough Cleaning",
+            "title": "Deep steam cleaning",
             "description": "Steam penetrates deeply and removes stubborn dirt."
           },
           {
-            "title": "Perfect Result",
+            "title": "Showroom-quality finish",
             "description": "Showroom quality every time."
           }
         ]
@@ -74,7 +74,7 @@
       "title": "HOW DOES IT WORK?",
       "steps": [
         {
-          "title": "Choose your location",
+          "title": "Choose location",
           "description": "We come to you or you bring your car to our location."
         },
         {
@@ -82,11 +82,11 @@
           "description": "Select from our detailing and cleaning services."
         },
         {
-          "title": "Make an appointment",
+          "title": "Book your appointment",
           "description": "Simply choose a date and time."
         },
         {
-          "title": "We will do the rest",
+          "title": "We do the rest",
           "description": "Your car will be perfectly cleaned and cared for."
         }
       ]
@@ -137,7 +137,7 @@
       "googleBtn":"View All Google Reviews"
     },
     "packages_section": {
-      "title": "OUR PACKAGES",
+      "title": "Additional Services",
       "packages": [
         {
           "title": "Steam Cleaning & Detailing",
@@ -163,11 +163,11 @@
       "description": "Every car requires a customized approach. Have your vehicle treated where and when it suits you – at our location or simply at your home.",
       "services": [
         {
-          "title": "Detail Shop",
+          "title": "In Shop",
           "description": "Bring your car to our branch in Assendelft. Here we treat every detail with the right techniques and high-quality products for a long-lasting result."
         },
         {
-          "title": "Mobile Service",
+          "title": "On Location",
           "description": "No time to come by? No problem. We come to you – at home, at the office or at any desired location."
         }
       ],
@@ -336,8 +336,8 @@
           "question": "How long does a standard cleaning take?",
           "answer": [
             "Standard cleaning: ± 1 hour",
-            "Deluxe cleaning: 1.5 – 2 hours",
-            "Premium detailing & coating: 4+ hours"
+            "Deluxe cleaning: 1 – 3 hours",
+            "Premium detailing & coating: 4 - 6+ hours"
           ]
         },
         {
@@ -350,15 +350,15 @@
         },
         {
           "question": "How long does a ceramic coating last?",
-          "answer": "Depending on the coating you choose, your paint will be protected against dirt, UV and weather influences for 6 months to 5 years."
+          "answer": "Depending on the coating chosen, your paint will remain protected against dirt, UV and weather influences for up to 3 years."
         },
         {
           "question": "Do you need electricity or water on location?",
-          "answer": "Yes, we need a power and water connection. Please indicate when booking whether this is available."
+          "answer": "No, we do not need a power or water connection. Is this available? Then you can indicate this when booking."
         },
         {
           "question": "How quickly can I make an appointment?",
-          "answer": "You can usually get an appointment within 2 to 5 days. During busy periods, the waiting time may be slightly longer."
+          "answer": "You can usually get an appointment within 1 to 5 days. During busy periods the waiting time may be a little longer."
         },
         {
           "question": "My car is extremely dirty, what now?",
@@ -370,13 +370,22 @@
         },
         {
           "question": "How can I pay?",
-          "answer": "You can easily pay via iDEAL, pin or cash."
+          "answer": "You can easily pay via iDEAL, Credit Card, Apple Pay, Google Pay & Cryptocurrency"
         },
         {
           "question": "Do you offer subscriptions?",
           "answer": "Yes, with a subscription your car will always stay clean at a fixed, affordable rate."
         }
-      ]
+      ],
+      "button":"Still have questions?"
+    },
+    "decorativeText":{
+      "text1":"100% Satisfaction Guaranteed",
+      "text2":"On Location or At Our Branch",
+      "text3":"100% Satisfaction",
+      "text4":"Anywhere, Anytime",
+      "text5":"Convenient Cleaning, Guaranteed Results",
+      "text6":"Fast, Flawless, Eco-Friendly"
     }
   },
   "about": {
@@ -457,6 +466,12 @@
       "title": "Ready for a Sparkling Clean Ride?",
       "description": "Now Ready to make your car shine? Book online now and experience for yourself why so many customers choose Fast Clean Service!",
       "button": "Book Now"
+    },
+    "decorativeText":{
+      "text1":"100% Satisfaction",
+      "text2":"On-Demand Cleaning, Anywhere",
+      "text3":"Convenient Cleaning, Guaranteed Results",
+      "text4":"Fast, Flawless, Eco-Friendly"
     }
   },
   "contact": {
@@ -1160,7 +1175,12 @@
           "Detailings",
           "No Detailings",
           "Appointment",
-          "No Add Ons"
+          "No Add Ons",
+          "Brand",
+          "Trade name",
+          "Furnishing",
+          "Number of Seats",
+          "First Color"
         ],
         "apply_coupon": "Apply Code",
         "button": "Apply Coupon",

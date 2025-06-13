@@ -45,6 +45,7 @@ const PaymentButton = ({ amount, currency, description, customerEmail }) => {
     return (
         <>
             <Button
+                sx={{margin:"8px 0px"}}
                 onClick={handlePayment}
                 disabled={loading}
                 startIcon={loading && <CircularProgress size={20} />}

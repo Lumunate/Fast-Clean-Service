@@ -32,7 +32,7 @@ export default async function RootLayout({children}) {
                     <ValidationProvider>
                         <ExitIntentProvider>
                             <CssBaseline/>
-                            <CookieConsentPrompt/>
+                            {/*<CookieConsentPrompt/>*/}
                             <NextIntlClientProvider messages={messages}>
                             <LogoLoadingWrapper>
 
