@@ -70,6 +70,11 @@ const bookingSchema: Schema = new Schema({
     start: { type: Date, default: null },
     end: { type: Date, required: true },
   },
+  status: {
+        type: String,
+        enum: ['PENDING', 'COMPLETED'],
+        default: 'PENDING',
+    },
 });
 
 export default mongoose.models.Booking ||

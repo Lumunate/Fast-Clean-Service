@@ -27,8 +27,16 @@ import AddIcon from "@mui/icons-material/Add";
 import BookingProfileCard from "./BookingProfileCard";
 import { EditBookingModal } from "./EditBookingModal";
 
+import BookingForm from "../../components/BookingForm";
+import RescheduleModal from "./RescheduleModal";
+import useSnackbar from "../../hooks/useSnackbar";
+import { useBookings } from "../../contexts/BookingsContext";
+import {error} from "next/dist/build/output/log";
+
 const BookingsPage = ({}) => {
     const { bookings: bookingsData } = useBookings();
+    console.log("this is booking data:",bookingsData[0]);
+    
     const isMobile = useMediaQuery("(max-width:600px)");
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [newBooking, setNewBooking] = useState(null);
@@ -179,6 +187,28 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
         }
     }
 
+    async function handleCompleteBooking() {
+  try {
+    const response = await fetch(`/api/booking?id=${selectedBooking._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "COMPLETED" }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update status");
+    }
+
+    openSnackbar("Booking marked as Completed", "success");
+    selectedBooking.status = "COMPLETED"; // Update local state (optional)
+  } catch (error) {
+    openSnackbar("Error updating status: " + error.message, "error");
+  }
+}
+
+
     const handleResceduleClose = () => {
         setResceduleOpen(null);
     };
@@ -203,7 +233,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     };
 
     if (!open) return null;
-    console.log("aaaaaaaaa", selectedBooking);
+    console.log("aaaaaaaaa", selectedBooking.status);
 
     return (
         <>
@@ -326,6 +356,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                     </Box>
 
                     {/* Complete Button */}
+                    {selectedBooking.status !== "COMPLETED" && (
                     <Box
                         sx={{
                             display: "flex",
@@ -333,8 +364,9 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                             marginTop: "20px",
                         }}
                     >
-                        <ModalButton onClick={() => alert("Service Completed!")}>Complete</ModalButton>
+                        <ModalButton  onClick={handleCompleteBooking}>Complete</ModalButton>
                     </Box>
+                    )}
                 </DialogContent>
             </Dialog>
         </>
@@ -379,11 +411,6 @@ const BookingPageTextField = ({ searchQuery, handleSearchChange }) => {
         />
     );
 };
-import BookingForm from "../../components/BookingForm";
-import RescheduleModal from "./RescheduleModal";
-import useSnackbar from "../../hooks/useSnackbar";
-import { useBookings } from "../../contexts/BookingsContext";
-import {error} from "next/dist/build/output/log";
 
 const NewBookingFormModal = ({ handleCloseModal, open }) => {
     if (!open) return null;
