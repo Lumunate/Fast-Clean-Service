@@ -258,12 +258,15 @@ export default function ContactMain() {
                 fontSize: "1.6rem",
                 fontWeight: 300,
                 color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                "@media (max-width: 992px)" :{
+                  padding:"0 20px"
+                },
                 "@media (max-width: 600px)": {
                   fontSize: "1.2rem",
+                  padding:"0px"
                 },
               }}
             >
-              {" "}
               Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to
               help you with professional steam cleaning and car detailing, both on location and at our branch.
             </Typography>

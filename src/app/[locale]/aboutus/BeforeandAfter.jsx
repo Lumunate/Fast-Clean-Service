@@ -29,6 +29,7 @@ import arb9 from "../../../../public/about/swipperImg/arb9.png";
 import arb10 from "../../../../public/about/swipperImg/arb10.png";
 import arb11 from "../../../../public/about/swipperImg/arb11.png";
 import {useTranslations} from "next-intl";
+import { Autoplay } from "swiper/modules";
 
 const beforeAfterImages = [
     [ar1, ar7, ar2, ar3, ar10, ar4, ar5, ar6, ar8, ar9, ar11],
@@ -96,9 +97,14 @@ const BeforeAfterSwiper = () => {
     <SwiperContainer ref={swiperRef}>
       {/* Before Images */}
       <Swiper
+        modules={[Autoplay]}
+        loop={true}
+        autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+        }}
         spaceBetween={32}
         slidesPerView={slidesPerView} // Default for mobile
-        loop={false}
         allowTouchMove={true}
       >
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((_, index) => (
