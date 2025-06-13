@@ -81,7 +81,9 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
     const maxHeight = locale === 'en' ? '330px' : '350px';
 
     return (
-        <ServiceItemContainer sx={{maxHeight}} onClick={handleClick}>
+        <ServiceItemContainer sx={{maxHeight}} 
+        // onClick={handleClick}
+        >
             <ServiceItemBox sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -123,14 +125,18 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
                             fontSize: "1.5rem",
                             fontWeight: 500,
                             borderRadius: "50px",
-                            backgroundColor: "#fff",
-                            color: "black",
+                            backgroundColor: theme.palette.mode === "dark" ? "transparent" : "#fff",
+                            color: theme.palette.mode === "dark" ? "#fff" : "#000",
+                            border: theme.palette.mode === "dark" ? "1px solid #c2c2c2" : "none",
                             fontFamily: "DMSans",
                             "&:hover": {
-                                backgroundColor: theme.palette.primary.accent,
+                                backgroundColor: theme.palette.mode === "dark"
+                                    ? "rgba(255,255,255,0.1)"
+                                    : theme.palette.primary.accent,
                             },
                             width: "80%",
                         }}
+
                     >
                         {t("btn")}
                     </Button>

@@ -1,21 +1,17 @@
 "use client";
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Carousel,
-  CarouselBtn,
-  CarouselContentContainer,
-  CarouselContentItem,
-  CarouselControls,
-  CarouselDate,
-  CarouselDetails,
-  CarouselDetailsPara,
-  CarouselImg,
-  CarouselItemInner,
-  CarouselName,
-  CarouselSignatures,
-  CarouselStarsBox,
-  HomePkgsInBox,
-  ServicesOverviewWrapper,
+    CarouselContentItem,
+    CarouselDetails,
+    CarouselDetailsPara,
+    CarouselImg,
+    CarouselItemInner,
+    CarouselName,
+    CarouselStarsBox,
+    CarouselSignatures,
+    CarouselDate,
+    HomePkgsInBox,
+    ServicesOverviewWrapper,
 } from "../../mui/HomePkgs";
 import { Box, Button, Link, Typography } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,441 +22,374 @@ import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 export default function Testimonials() {
-  const { theme } = useTheme();
-  const t = useTranslations("home.customer_reviews_section");
-  const { feedbacks } = useFeedback();          // already fetches in parent hook
+    const { theme } = useTheme();
+    const t = useTranslations("home.customer_reviews_section");
+    const { feedbacks } = useFeedback();
+    const [activeIndex, setActiveIndex] = useState(0);
 
-  const TESTIMONIALS = [
-    {
-      stars: 5,
-      name: "Emre",
-      details:
-          "Betrouwbaar en netjes.\nVandaag langsgeweest om de auto van binnen en buitenkant schoon te laten maken. Ik moet zeggen dat ik zeer tevreden ben met het resultaat!",
-      image: "https://swiperjs.com/demos/images/nature-3.jpg",
-      date: "December 13, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Richard Da Costa Abreu",
-      details:
-          "ENORM blij mee, een nette jonge man verscheen aan de deur en na een kort gesprekje van wensen etc is hij aan het werk gegaan. ik had de duurste pakket gekozen de combi de luxe paket buiten en binnen voor €189,95 . een hoop geld maar meer dan waard. hij is ruim 3 uur bezig geweest maar mijn auto is echt spik en span en alle kleine hoekjes en gaatjes, spleetjes tussen alle knopjes, vakjes ect etc zijn onder handen genomen hij was ook best vies moet ik toegeven. mijn auto leek wel nieuw zowel binnen als buiten net als hij de show room uit kwam. het begon later te regenen en je zag dat de regen druppels echt op de auto bleven liggen en er daarna afgleden nu 1 week later nog steeds het geval.  ik ben erg blij hij krijgt van mij een dikke 10. nogmaals bedankt.",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "Febuary 01, 2025",
-      socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
 
-    {
-      stars: 5,
-      name: "Klant",
-      details: "snel en superschoon!",
-      image: "https://swiperjs.com/demos/images/nature-1.jpg",
-      date: "April 25, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Igor Dotsenko",
-      details:
-          "I ordered exterior washing a few times already. Both times washerman arrived in time and did the work very well and professionally. Both times I was happy with the result and I will proceed using services provided by the company",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "June 06, 2023",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Radbout Platvoet",
-      details:
-          "Ik wilde mijn auto weer netjes hebben na 5 jaar gebruik. Ik heb er geen verstand van dus dan is het moeilijk een bedrijf te selecteren. Fast Clean werd me aangeraden dus dan doe je dat maar. Het was een volledig terechte verwijzing. Gewoon hele fijne mensen, geen haast, secuur en eerlijk.",
-      image: "https://swiperjs.com/demos/images/nature-3.jpg",
-      date: "November 15, 2024",
-      socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
+    // your TESTIMONIALS array, initialTrustpilot & initialGoogle setup
+    const TESTIMONIALS = [
+        {
+            stars: 5,
+            name: "Emre",
+            details:
+                "Betrouwbaar en netjes.\nVandaag langsgeweest om de auto van binnen en buitenkant schoon te laten maken. Ik moet zeggen dat ik zeer tevreden ben met het resultaat!",
+            image: "https://swiperjs.com/demos/images/nature-3.jpg",
+            date: "December 13, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Richard Da Costa Abreu",
+            details:
+                "ENORM blij mee, een nette jonge man verscheen aan de deur en na een kort gesprekje van wensen etc is hij aan het werk gegaan. ik had de duurste pakket gekozen de combi de luxe paket buiten en binnen voor €189,95 . een hoop geld maar meer dan waard. hij is ruim 3 uur bezig geweest maar mijn auto is echt spik en span en alle kleine hoekjes en gaatjes, spleetjes tussen alle knopjes, vakjes ect etc zijn onder handen genomen hij was ook best vies moet ik toegeven. mijn auto leek wel nieuw zowel binnen als buiten net als hij de show room uit kwam. het begon later te regenen en je zag dat de regen druppels echt op de auto bleven liggen en er daarna afgleden nu 1 week later nog steeds het geval.  ik ben erg blij hij krijgt van mij een dikke 10. nogmaals bedankt.",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "Febuary 01, 2025",
+            socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+        },
 
-    {
-      stars: 5,
-      name: "AT",
-      details:
-          "Ze doen wat ze beloven. Prima\nAfspraak snel gemaakt. Geen lange wachttijd.\nKomen op afgesproken tijd. Vriendelijke werkers. \nResultaat is boven verwachting.",
-      image: "https://swiperjs.com/demos/images/nature-3.jpg",
-      date: "October 29, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Klant",
-      details:
-          "Top bedrijf\nTop bedrijf, lekker snel en uitstekend schoongemaakt. beveel ze bij iedereen aan!\nIk kom zeker bij ze terug voor me boot en caravan ;-)",
-      image: "https://swiperjs.com/demos/images/nature-1.jpg",
-      date: "September 24, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Harlememermeer Transport",
-      details: "Uitstekende service en het resultaat was super!",
-      image: "https://swiperjs.com/demos/images/nature-1.jpg",
-      date: "Febuary 01, 2024",
-      socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
+        {
+            stars: 5,
+            name: "Klant",
+            details: "snel en superschoon!",
+            image: "https://swiperjs.com/demos/images/nature-1.jpg",
+            date: "April 25, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Igor Dotsenko",
+            details:
+                "I ordered exterior washing a few times already. Both times washerman arrived in time and did the work very well and professionally. Both times I was happy with the result and I will proceed using services provided by the company",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "June 06, 2023",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Radbout Platvoet",
+            details:
+                "Ik wilde mijn auto weer netjes hebben na 5 jaar gebruik. Ik heb er geen verstand van dus dan is het moeilijk een bedrijf te selecteren. Fast Clean werd me aangeraden dus dan doe je dat maar. Het was een volledig terechte verwijzing. Gewoon hele fijne mensen, geen haast, secuur en eerlijk.",
+            image: "https://swiperjs.com/demos/images/nature-3.jpg",
+            date: "November 15, 2024",
+            socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+        },
 
-    {
-      stars: 5,
-      name: "C. R.",
-      details:
-          "Het was vrij simpel om de online…\nHet was vrij simpel om de online afspraak te maken. De service was inventief en volledig en dacht goed mee over de mogelijkheden. De auto was spik en span en weer als nieuw! En dat terwijl ik er geen vrij voor hoefde te nemen. Voorwaar een fantastische ervaring!",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "September 09, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Anthonie Lagerburg",
-      details:
-          "Top service en super netjes en correct\nAuto super netjes schoongemaakt van binnen en van buiten ziet er uit als nieuw ongebruikt",
-      image: "https://swiperjs.com/demos/images/nature-3.jpg",
-      date: "September 04, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Igor Dotsenko",
-      details:
-          "I ordered exterior washing a few times already. Both times washerman arrived in time and did the work very well and professionally. Both times I was happy with the result and I will proceed using services provided by the company",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "June 06, 2023",
-      socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
+        {
+            stars: 5,
+            name: "AT",
+            details:
+                "Ze doen wat ze beloven. Prima\nAfspraak snel gemaakt. Geen lange wachttijd.\nKomen op afgesproken tijd. Vriendelijke werkers. \nResultaat is boven verwachting.",
+            image: "https://swiperjs.com/demos/images/nature-3.jpg",
+            date: "October 29, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Klant",
+            details:
+                "Top bedrijf\nTop bedrijf, lekker snel en uitstekend schoongemaakt. beveel ze bij iedereen aan!\nIk kom zeker bij ze terug voor me boot en caravan ;-)",
+            image: "https://swiperjs.com/demos/images/nature-1.jpg",
+            date: "September 24, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Harlememermeer Transport",
+            details: "Uitstekende service en het resultaat was super!",
+            image: "https://swiperjs.com/demos/images/nature-1.jpg",
+            date: "Febuary 01, 2024",
+            socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+        },
 
-    {
-      stars: 5,
-      name: "Nadine",
-      details: "Goed werk.\nAuto goed schoon! Had wat vlekken in de bekleding die er uit zijn.",
-      image: "https://swiperjs.com/demos/images/nature-1.jpg",
-      date: "September 04, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Klant",
-      details: "Goede service.\nGoede service, er wordt geurig gewerkt en het eindresultaat is super!",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "August 19, 2024",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-    {
-      stars: 5,
-      name: "Herman Bijkerk",
-      details:
-          "Wow. Wat een service! Auto als nieuw, zowel binnen als buiten. Interieur was vreselijk i.v.m. honden. Nu dus als nieuw. En erg vriendelijk!",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "April 04, 2023",
-      socialIcons: [{ icon: "/Google.png", alt: "Google" }],
-    },
+        {
+            stars: 5,
+            name: "C. R.",
+            details:
+                "Het was vrij simpel om de online…\nHet was vrij simpel om de online afspraak te maken. De service was inventief en volledig en dacht goed mee over de mogelijkheden. De auto was spik en span en weer als nieuw! En dat terwijl ik er geen vrij voor hoefde te nemen. Voorwaar een fantastische ervaring!",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "September 09, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Anthonie Lagerburg",
+            details:
+                "Top service en super netjes en correct\nAuto super netjes schoongemaakt van binnen en van buiten ziet er uit als nieuw ongebruikt",
+            image: "https://swiperjs.com/demos/images/nature-3.jpg",
+            date: "September 04, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Igor Dotsenko",
+            details:
+                "I ordered exterior washing a few times already. Both times washerman arrived in time and did the work very well and professionally. Both times I was happy with the result and I will proceed using services provided by the company",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "June 06, 2023",
+            socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+        },
 
-    {
-      stars: 5,
-      name: "Klant",
-      details:
-          "Top service en vriendelijke medewerker.\nTop service en vriendelijke medewerker. auto zag er weer als nieuw uit. Ik ga hier zeker vaker gebruik van maken. Bedankt!!!",
-      image: "https://swiperjs.com/demos/images/nature-2.jpg",
-      date: "August 16, 2023",
-      socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
-    },
-  ];
+        {
+            stars: 5,
+            name: "Nadine",
+            details: "Goed werk.\nAuto goed schoon! Had wat vlekken in de bekleding die er uit zijn.",
+            image: "https://swiperjs.com/demos/images/nature-1.jpg",
+            date: "September 04, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Klant",
+            details: "Goede service.\nGoede service, er wordt geurig gewerkt en het eindresultaat is super!",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "August 19, 2024",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+        {
+            stars: 5,
+            name: "Herman Bijkerk",
+            details:
+                "Wow. Wat een service! Auto als nieuw, zowel binnen als buiten. Interieur was vreselijk i.v.m. honden. Nu dus als nieuw. En erg vriendelijk!",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "April 04, 2023",
+            socialIcons: [{ icon: "/Google.png", alt: "Google" }],
+        },
 
-  const initialTrustpilot = TESTIMONIALS.filter(r =>
-      r.socialIcons?.some(ic => ic.alt === "Trustpilot")
-  );
-  const initialGoogle = TESTIMONIALS.filter(r =>
-      r.socialIcons?.some(ic => ic.alt === "Google")
-  );
+        {
+            stars: 5,
+            name: "Klant",
+            details:
+                "Top service en vriendelijke medewerker.\nTop service en vriendelijke medewerker. auto zag er weer als nieuw uit. Ik ga hier zeker vaker gebruik van maken. Bedankt!!!",
+            image: "https://swiperjs.com/demos/images/nature-2.jpg",
+            date: "August 16, 2023",
+            socialIcons: [{ icon: "/Trustpilot.png", alt: "Trustpilot" }],
+        },
+    ];
 
-  const [trustpilotReviews, setTrustpilotReviews] = useState(initialTrustpilot);
-  const [googleReviews,    setGoogleReviews]    = useState(initialGoogle);
+    const initialTrustpilot = TESTIMONIALS
+        .filter(r => r.stars === 5 && r.socialIcons?.some(ic => ic.alt === "Trustpilot"))
+        .slice(0, 5);
+    const initialGoogle = TESTIMONIALS
+        .filter(r => r.stars === 5 && r.socialIcons?.some(ic => ic.alt === "Google"))
+        .slice(0, 5);
 
-  useEffect(() => {
-    if (!feedbacks?.length) return;
-
-    // Start with fresh copies so we never mutate state directly
-    const tp = [...initialTrustpilot];
-    const gg = [...initialGoogle];
-
-    feedbacks.forEach((fb, idx) => {
-      const fbObj = {
-        stars: fb.stars,
-        name:  `${fb.name} ${fb.lastName ?? ""}`.trim(),
-        details: fb.feedback ?? "",
-        image: "https://swiperjs.com/demos/images/nature-2.jpg",
-        date: new Date(fb.createdAt).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day:   "2-digit",
-        }),
-        socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
-      };
-
-      if (tp.length <= gg.length) {
-        tp.push(fbObj);
-      } else {
-        gg.push(fbObj);
-      }
-    });
-
-    setTrustpilotReviews(tp);
-    setGoogleReviews(gg);
-  }, [feedbacks]);
-
-  function useCarousel(items) {
-    const sliderRef = useRef(null);
-    const [activeStep,   setActiveStep]   = useState(0);
-    const [activeHeight, setActiveHeight] = useState("auto");
-    const [isLarge,      setIsLarge]      = useState(false);
+    const [trustpilotReviews, setTrustpilotReviews] = useState(initialTrustpilot);
+    const [googleReviews, setGoogleReviews] = useState(initialGoogle);
 
     useEffect(() => {
-      setIsLarge(window.innerWidth > 1100);
-      const onResize = () => setIsLarge(window.innerWidth > 1100);
-      window.addEventListener("resize", onResize);
-      return () => window.removeEventListener("resize", onResize);
-    }, []);
+        if (!feedbacks?.length) return;
+        const tp = [...initialTrustpilot];
+        const gg = [...initialGoogle];
 
-    useLayoutEffect(() => {
-      if (!sliderRef.current) return;
-      const kids = sliderRef.current.childNodes;
-      let tallest = 0;
-      let activeIdx = Array.from(kids).findIndex(k => k.classList.contains("active"));
+        feedbacks.forEach(fb => {
+            const fbObj = {
+                stars: fb.stars,
+                name: `${fb.name} ${fb.lastName ?? ""}`.trim(),
+                details: fb.feedback ?? "",
+                image: "https://swiperjs.com/demos/images/nature-2.jpg",
+                date: new Date(fb.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric", month: "long", day: "2-digit"
+                }),
+                socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
+            };
+            if (tp.length <= gg.length) tp.push(fbObj);
+            else gg.push(fbObj);
+        });
 
-      kids.forEach((el, i) => {
-        if (i === activeIdx || i === (activeIdx + 1)) {
-          let h = Array.from(el.children).reduce((s, c) => s + c.offsetHeight, 0);
-          if (h > tallest) tallest = h;
-        }
-      });
-      setActiveHeight(`${tallest + 70}px`);
-    }, [activeStep, items]);
+        setTrustpilotReviews(tp.slice(0, 5));
+        setGoogleReviews(gg.slice(0, 5));
+    }, [feedbacks]);
 
-    return {
-      sliderRef,
-      activeStep,
-      activeHeight,
-      isLarge,
-      next: () => setActiveStep(p => (p === items.length - 1 ? 0 : p + 1)),
-      back: () => setActiveStep(p => (p === 0 ? items.length - 1 : p - 1)),
-    };
-  }
-
-  const tpCarousel = useCarousel(trustpilotReviews);
-  const ggCarousel = useCarousel(googleReviews);
-
-  const renderCarousel = (items, car) => (
-      <Carousel sx={{ width: "90%", "@media (max-width:1100px)": { width: "90%" } }}>
-        <CarouselContentContainer
-            ref={car.sliderRef}
-            sx={{
-              display: "flex",
-              transition: "all 600ms ease-in-out",
-              marginBottom: "3rem",
-              height: car.activeHeight,
+    const renderSwiper = (items) => (
+        <Box sx={{
+            maxWidth: "100%",
+            mx: "auto",
+            position: "relative",
+            // padding: "5rem",
+            overflow: "visible",
+            ".swiper-button-prev": { left: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
+            ".swiper-button-next": { right: "0px", zIndex: 10, "@media (max-width: 992px)": {display: "none"}, },
+            "@media (max-width: 992px)": {padding: "0rem", maxWidth: "100%"},
+            ".swiper-horizontal":{height:"100%", padding:{xs:"0rem", sm:"3rem"}}
+        }}
+       >
+        <Swiper
+            modules={[Autoplay, Navigation]}
+            loop
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            navigation
+            spaceBetween={20}
+            breakpoints={{ 0: { slidesPerView: 1 }, 992: { slidesPerView: 2 } }}
+            onSwiper={(swiper) => {
+                swiper.on("init slideChange resize", () => {
+                    setActiveIndex(swiper.realIndex); // update active index
+                });
+            }}
+            onSlideChange={(swiper) => {
+                setActiveIndex(swiper.realIndex);
             }}
         >
-          {items.map((r, i) => {
-            const isActive = car.activeStep === i;
-            const isNext   = car.isLarge && (car.activeStep + 1) % items.length === i;
+            {items.map((r, i) => (
+                <SwiperSlide key={i}>
+                    <CarouselContentItem sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+                        <CarouselItemInner
+                            sx={{
+                                p: "2rem",
+                                borderRadius: "20px",
+                                backgroundColor: theme.palette.mode === "dark"
+                                    ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.5)",
+                                border: `1px solid ${
+                                    theme.palette.mode === "dark"
+                                        ? "rgba(255,255,255,0.12)" : "white"
+                                }`,
+                                backdropFilter: "blur(10.4px)",
+                                height: "100%",
+                                transition: "box-shadow 0.3s ease",
+                                boxShadow: (i === activeIndex || i === activeIndex + 1)
+                                    ? "0px 4px 12px rgba(0, 0, 0, 0.1)"
+                                    : "none"
+                            }}
+                        >
+                            <CarouselStarsBox sx={{
+                                display: "flex", justifyContent: "space-between", alignItems: "center", pb: "1rem",
+                                "& svg": { fontSize: "1.4rem", mr: "0.3rem", color: "gold" }
+                            }}>
+                                <Box>
+                                    {Array.from({ length: 5 }, (_, k) => (
+                                        <FontAwesomeIcon
+                                            key={k} icon={faStar}
+                                            className={k < r.stars ? "colorstar" : ""}
+                                        />
+                                    ))}
+                                </Box>
+                                <Box component="img" src="/testimonialQou.svg" alt=""
+                                     sx={{ width: 37, height: 26 }} />
+                            </CarouselStarsBox>
 
-            return (
-                <CarouselContentItem
-                    key={i}
-                    className={isActive || isNext ? "active" : ""}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: car.isLarge ? "50%" : "100%",
-                      backdropFilter: isActive || isNext ? "blur(0)" : "blur(10px)",
-                      visibility:     isActive || isNext ? "visible" : "hidden",
-                      position:       isActive || isNext ? "relative" : "absolute",
-                      background: "white",
-                      border: "none",
-                    }}
-                >
-                  <CarouselItemInner
-                      sx={{
-                        p: "2rem",
-                        borderRadius: "20px",
-                        backgroundColor:
-                            theme.palette.mode === "dark"
-                                ? "rgba(255,255,255,0.03)"
-                                : "rgba(255,255,255,0.5)",
-                        border: `1px solid ${
-                            theme.palette.mode === "dark"
-                                ? "rgba(255,255,255,0.12)"
-                                : "white"
-                        }`,
-                        backdropFilter: "blur(10.4px)",
-                      }}
-                  >
-                    <CarouselStarsBox
+                            <CarouselDetails>
+                                <CarouselDetailsPara>
+                                    {r.details.slice(0, 196)}
+                                    {r.details.length > 196 ? "…" : ""}
+                                </CarouselDetailsPara>
+                            </CarouselDetails>
+
+                            <CarouselSignatures sx={{ display: "flex", justifyContent: "space-between", mt: "1rem" }}>
+                                <Box sx={{ display: "flex", alignItems: "center" }}>
+                                    <CarouselImg src={r.image} alt={r.name} />
+                                    <Box sx={{ ml: "1rem" }}>
+                                        <CarouselName>{r.name}</CarouselName>
+                                        <CarouselDate>{r.date}</CarouselDate>
+                                    </Box>
+                                </Box>
+                                <Box sx={{ display: "flex", gap: "0.5rem" }}>
+                                    {r.socialIcons?.map((ic, idx) => (
+                                        <Box key={idx} component="img" src={ic.icon} alt={ic.alt} sx={{ width: 50 }} />
+                                    ))}
+                                </Box>
+                            </CarouselSignatures>
+                        </CarouselItemInner>
+                    </CarouselContentItem>
+                </SwiperSlide>
+            ))}
+        </Swiper>
+        </Box>
+    );
+
+    return (
+        <HomePkgsInBox sx={{ m: "0 auto", position: "relative", p: "2rem", "@media (max-width: 1100px)": {
+    width: "100%", 
+  }, }}>
+            <ServicesOverviewWrapper>
+                <HeadingLinesAnimation sx={{ width: "50%", mb: "7rem" }}>
+                    {t("title")}
+                </HeadingLinesAnimation>
+                <Typography sx={{ textAlign: "center", fontSize: "1.55rem", lineHeight: 1.7, pt: "2rem" }}>
+                    {t("description")}
+                </Typography>
+                <Typography sx={{ textAlign: "center", fontSize: "1.55rem", fontWeight: 500, lineHeight: 1.7 }}>
+                    {t("description2")}
+                </Typography>
+                <Link href="/feedback" passHref>
+                    <Button
+                        variant="contained"
                         sx={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          pb: "1rem",
-                          "& svg": { fontSize: "1.4rem", mr: "0.3rem", color: "gold" },
+                            mt: "1rem", p: "1.5rem 3rem", fontSize: 16, fontWeight: 500,
+                            backgroundColor: "primary.accentDark", color: "#fff",
+                            borderRadius: "50px", fontFamily: "DMSans",
+                            "&:hover": { backgroundColor: "#00BEFF" },
                         }}
                     >
-                      <Box>
-                        {Array.from({ length: 5 }, (_, k) => (
-                            <FontAwesomeIcon
-                                key={k}
-                                icon={faStar}
-                                className={k < r.stars ? "colorstar" : ""}
-                            />
-                        ))}
-                      </Box>
-                      <Box component="img" src="/testimonialQou.svg" alt="" sx={{ width: 37, height: 26 }} />
-                    </CarouselStarsBox>
+                        {t("button")}
+                    </Button>
+                </Link>
+            </ServicesOverviewWrapper>
 
-                    <CarouselDetails>
-                      <CarouselDetailsPara>
-                        {r.details.slice(0, 196)}
-                        {r.details.length > 196 ? "…" : ""}
-                      </CarouselDetailsPara>
-                    </CarouselDetails>
+            {/* Trustpilot */}
+            <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center", "@media (max-width: 992px)": {padding: 0}, }}>
+                <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center",
+                    "@media (max-width:900px)": { fontSize: "1.8rem" } }}>
+                    Trustpilot Reviews
+                </Typography>
+                <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
+                    ⭐ 4.8/5 based on 250+ reviews
+                </Typography>
+                {renderSwiper(trustpilotReviews)}
+                <Box sx={{ textAlign: "center" }}>
+                    <Link href="https://www.trustpilot.com/review/www.fastcleanservice.nl" passHref>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                padding: "1.5rem 3rem", fontSize: "1.2rem", fontWeight: 500,
+                                borderRadius: "50px", backgroundColor: "primary.accentDark",
+                                color: "#fff", fontFamily: "DMSans",
+                                "&:hover": { backgroundColor: theme.palette.primary.accent },
+                            }}
+                        >
+                            {t("trustpilotBtn")}
+                        </Button>
+                    </Link>
+                </Box>
+            </HomePkgsInBox>
 
-                    <CarouselSignatures
-                        sx={{ display: "flex", justifyContent: "space-between", mt: "1rem" }}
+            {/* Google */}
+            <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center", "@media (max-width: 992px)": {padding: 0}, }}>
+                <Typography sx={{ mb: 1, fontSize: "3.6rem", textAlign: "center",
+                    "@media (max-width:900px)": { fontSize: "1.8rem" } }}>
+                    Google Reviews
+                </Typography>
+                <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
+                    ⭐ 4.7/5 based on 180+ reviews
+                </Typography>
+                {renderSwiper(googleReviews)}
+                <Box sx={{ textAlign: "center" }}>
+                    <Link
+                        href="https://www.google.com/search?...
+            "
+                        passHref
                     >
-                      <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <CarouselImg
-                            src={r.image}
-                            alt={r.name}
-                        />
-                        <Box sx={{ ml: "1rem" }}>
-                          <CarouselName>{r.name}</CarouselName>
-                          <CarouselDate>{r.date}</CarouselDate>
-                        </Box>
-                      </Box>
-
-                      <Box sx={{ display: "flex", gap: "0.5rem" }}>
-                        {r.socialIcons?.map((ic, idx) => (
-                            <Box
-                                key={idx}
-                                component="img"
-                                src={ic.icon}
-                                alt={ic.alt}
-                                sx={{ width: 50 }}
-                            />
-                        ))}
-                      </Box>
-                    </CarouselSignatures>
-                  </CarouselItemInner>
-                </CarouselContentItem>
-            );
-          })}
-        </CarouselContentContainer>
-
-        {/* Controls */}
-        <CarouselControls>
-          <CarouselBtn onClick={car.back} sx={{ left: "-8rem", zIndex:50,"@media (max-width:1700px)": { left: "-6rem" }, "@media (max-width:600px)": { left: "-5rem" } }}>
-            <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} style={{ transform: "rotate(180deg)" }} />
-          </CarouselBtn>
-          <CarouselBtn onClick={car.next} sx={{ right: "-8rem", "@media (max-width:1700px)": { right: "-6rem" }, "@media (max-width:600px)": { right: "-5rem" } }}>
-            <Image src="/testimonials/testimonial-chevron-right.png" alt="" width={58} height={58} />
-          </CarouselBtn>
-        </CarouselControls>
-      </Carousel>
-  );
-
-  return (
-      <HomePkgsInBox sx={{ m: "0 auto", position: "relative", p: "2rem" }}>
-        <ServicesOverviewWrapper>
-          <HeadingLinesAnimation sx={{ width: "50%", mb: "7rem" }}>
-            {t("title")}
-          </HeadingLinesAnimation>
-          <Typography sx={{ textAlign: "center", fontSize: "1.55rem", lineHeight: 1.7, pt: "2rem" }}>
-            {t("description")}
-          </Typography>
-          <Typography sx={{ textAlign: "center", fontSize: "1.55rem", fontWeight: 500, lineHeight: 1.7 }}>
-            {t("description2")}
-          </Typography>
-          <Link href="/feedback" passHref>
-            <Button
-                variant="contained"
-                sx={{
-                  mt: "1rem",
-                  p: "1.5rem 3rem",
-                  fontSize: 16,
-                  fontWeight: 500,
-                  backgroundColor: "primary.accentDark",
-                  color: "#fff",
-                  borderRadius: "50px",
-                  fontFamily: "DMSans",
-                  "&:hover": { backgroundColor: "#00BEFF" },
-                }}
-            >
-              {t("button")}
-            </Button>
-          </Link>
-        </ServicesOverviewWrapper>
-
-        <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Trustpilot Reviews</Typography>
-          <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
-            ⭐ 4.8/5 based on 250+ reviews
-          </Typography>
-          {renderCarousel(trustpilotReviews, tpCarousel)}
-          <Box sx={{ textAlign: "center" }}>
-              <Link href="https://www.trustpilot.com/review/www.fastcleanservice.nl" passHref>
-                  <Button
-                      variant="contained"
-                      sx={{
-                          padding: "1.5rem 3rem",
-                          fontSize: "1.2rem",
-                          fontWeight: 500,
-                          borderRadius: "50px",
-                          backgroundColor: "primary.accentDark",
-                          color: "white",
-                          fontFamily: "DMSans",
-                          "&:hover": {
-                              backgroundColor: theme.palette.primary.accent,
-                          },
-                      }}
-                  >
-                    {t("trustpilotBtn")}
-                  </Button>
-              </Link>
-          </Box>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                padding: "1.5rem 3rem", fontSize: "1.2rem", fontWeight: 500,
+                                borderRadius: "50px", backgroundColor: "primary.accentDark",
+                                color: "#fff", fontFamily: "DMSans",
+                                "&:hover": { backgroundColor: theme.palette.primary.accent },
+                            }}
+                        >
+                            {t("googleBtn")}
+                        </Button>
+                    </Link>
+                </Box>
+            </HomePkgsInBox>
         </HomePkgsInBox>
-
-        {/* ---------- GOOGLE ---------- */}
-        <HomePkgsInBox sx={{ mt: "4rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography sx={{ mb: 1, fontSize: "3.6rem" }}>Google Reviews</Typography>
-          <Typography sx={{ fontSize: "1.55rem", mb: "2rem", textAlign: "center" }}>
-            ⭐ 4.7/5 based on 180+ reviews
-          </Typography>
-          {renderCarousel(googleReviews, ggCarousel)}
-          <Box sx={{ textAlign: "center" }}>
-              <Link href="https://www.google.com/search?sca_esv=861d6c36a75495fa&rlz=1C1GCEU_en&sxsrf=AHTn8zosmPqY1lmi1rraCn-Xf6zaYwsE1Q:1747500187450&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfapRvAnP8clww20TpR4E95CUX4eTaUYZDu_1AGGck5SUtbHtWKsJTsZt-t7_a4hOLwM92PEFX1Lu7GY7IqvphT7KQpwAJWnKSKYFJWmUuOcyWpIoA%3D%3D&q=Fast+Clean+Service+Reviews&sa=X&ved=2ahUKEwjl3Ku_-aqNAxX7RaQEHcw7DGMQ0bkNegQIPRAE&biw=1366&bih=607" passHref>
-                  <Button
-                      variant="contained"
-                      sx={{
-                          padding: "1.5rem 3rem",
-                          fontSize: "1.2rem",
-                          fontWeight: 500,
-                          borderRadius: "50px",
-                          backgroundColor: "primary.accentDark",
-                          color: "white",
-                          fontFamily: "DMSans",
-                          "&:hover": {
-                              backgroundColor: theme.palette.primary.accent,
-                          },
-                      }}
-                  >
-                      {t("googleBtn")}
-                  </Button>
-              </Link>
-          </Box>
-        </HomePkgsInBox>
-      </HomePkgsInBox>
-  );
+    );
 }

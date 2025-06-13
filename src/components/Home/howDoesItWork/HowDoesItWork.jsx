@@ -77,7 +77,9 @@ export default function HowDoesItWork() {
     }
 
     return (
-        <SectionContainer sx={{ marginBottom: "10rem"}}>
+        <SectionContainer sx={{ marginBottom: "15rem", "@media (max-width: 1200px)": {
+                marginBottom: "10rem",
+            },}}>
             <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
                 <HeadingLinesAnimation text={t("title")} />
             </Box>

@@ -33,7 +33,7 @@ export default function Footer() {
                     "@media (max-width: 1368px)": {
                         padding: "0 6rem",
                     },
-                    "@media (max-width: 900px)": {
+                    "@media (max-width: 992px)": {
                         display: "none",
                     },
                 }}
@@ -77,7 +77,7 @@ export default function Footer() {
             </Box>
 
             {/* Copyright Centered */}
-            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem", "@media (max-width: 900px)": { display: "none" } }}>
+            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem",  transition: "all 0.5s ease-in-out", "@media (max-width: 1250px)": { display: "flex", justifyContent:"end", paddingRight:"10px" } , "@media (max-width: 992px)": { display: "none" } }}>
                 <Typography variant="body2" sx={copyrightStyle}>
                     {t("copyright")}
                 </Typography>
@@ -91,7 +91,8 @@ export default function Footer() {
                     display: "flex",
                     alignItems: "center",
                     gap: "1rem",
-                    "@media (max-width: 900px)": { display: "none" },
+                    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
+                    "@media (max-width: 992px)": { display: "none" },
                 }}
             >
                 <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>{t("terms_privacy.terms")}</MuiLink>
@@ -99,7 +100,7 @@ export default function Footer() {
                 <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
             </Box>
 
-            <Box sx={{ display: "none", "@media (max-width: 900px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
+            <Box sx={{ display: "none", "@media (max-width: 992px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
                 <Box>
                     <Image src={Logo} alt="logo" width={70} height={45} style={{ objectFit: "contain" }} />
                 </Box>

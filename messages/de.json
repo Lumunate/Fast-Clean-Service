@@ -1177,7 +1177,12 @@
           "Details",
           "Geen details",
           "Afspraak",
-          "Geen add-ons"
+          "Geen add-ons",
+          "Merk",
+          "Handelsbenaming",
+          "Inrichting",
+          "Aantal zitplaatsen",
+          "Eerste kleur"
         ],
         "apply_coupon": "Code toepassen",
         "button": "Coupon toepassen",

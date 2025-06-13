@@ -83,7 +83,10 @@ export const LogoImage = styled(Image)(({ theme }) => ({
 
 export const NavLinkDropDownContainer = styled(Box)(({ theme }) => ({
   position: "relative",
-  marginLeft:'2rem'
+  marginLeft:'2rem',
+  "@media (max-width: 1400px)": {
+    marginLeft: "0", // Reduce font size for smaller screens
+  },
 }));
 
 export const NavbarRightContainer = styled(Box)(({ theme }) => ({

@@ -1175,7 +1175,12 @@
           "Detailings",
           "No Detailings",
           "Appointment",
-          "No Add Ons"
+          "No Add Ons",
+          "Brand",
+          "Trade name",
+          "Furnishing",
+          "Number of Seats",
+          "First Color"
         ],
         "apply_coupon": "Apply Code",
         "button": "Apply Coupon",
