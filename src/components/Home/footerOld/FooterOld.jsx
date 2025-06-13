@@ -69,7 +69,7 @@ export default function Footer() {
               "& img": { objectFit: "contain" },
             }}
           >
-            <Image src="/logo.png" alt="img" width={200} height={200} />
+            <Image src="/updatedLogo.svg" alt="img" width={200} height={200} />
           </HomeCollageCtr>
           <Typography>
             {" "}

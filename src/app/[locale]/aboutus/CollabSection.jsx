@@ -130,7 +130,7 @@ export default function CollabSection() {
                 <IconContainer>
                     <Box
                         component="img"
-                        src="/logo.png"
+                        src="/updatedLogo.svg"
                         alt="Fast Clean Service"
                         sx={{ width: "auto", height: "auto", marginBottom: { xs: "2rem", sm: "0" } }}
                     />

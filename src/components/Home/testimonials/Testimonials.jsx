@@ -199,7 +199,7 @@ export default function Testimonials() {
                 date: new Date(fb.createdAt).toLocaleDateString("en-US", {
                     year: "numeric", month: "long", day: "2-digit"
                 }),
-                socialIcons: [{ icon: "/logo.png", alt: "Fast Clean Service" }],
+                socialIcons: [{ icon: "/updatedLogo.svg", alt: "Fast Clean Service" }],
             };
             if (tp.length <= gg.length) tp.push(fbObj);
             else gg.push(fbObj);

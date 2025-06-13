@@ -246,18 +246,18 @@ export const FormProvider = ({ children }) => {
           surname: formData.surname,
           companyName: formData.companyName,
           street: formData.street,
-          zipCode: formData.zipCode,
-          city: formData.city,
+         zipCode: formData.zipCode || "1011AC",
+          city: formData.location,
           email: formData.email,
           phoneNumber: formData.phoneNumber,
           vehicleMakeAndModel: formData.makeModel,
-          message: formData.message,
+          message: formData.bookingMessage,
           serviceName: formData.selectedPackageType,
           packageType: formData.packageType.name,
           packageName: formData.selectedPackage.name,
           appointmentTimestamp: formData.selectedTime,
           vehicleDetails: formData.vehicleDetails,
-          vehicleType: formData.vehicleType,
+          vehicleType: formData.carType,
           travelDistance: formData.travelDistance,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length
@@ -268,6 +268,8 @@ export const FormProvider = ({ children }) => {
                 : null,
           },
         };
+        console.log("this is MUltiStepForm data:",data);
+        
 
         const response = await fetch('/api/booking', {
           method: 'POST',
