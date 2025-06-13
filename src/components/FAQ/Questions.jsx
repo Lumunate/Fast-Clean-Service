@@ -111,7 +111,8 @@ const Questions = () => {
                 variant="h1"
                 gutterBottom
                 sx={{
-                    fontSize: "4rem !important",
+                    textAlign: "center",
+                    fontSize: {xs:"2.2rem !important", sm:"2.8rem !important", md:"4rem !important"},
                     color: theme.palette.mode === "light" ? "#232E4A" : "#FFFFFF",
                 }}
             >

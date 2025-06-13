@@ -203,6 +203,7 @@ export default function Form() {
                   id="vehicleType"
                   value={formData.vehicleType}
                   label={t("fields.vehicle_type.label")}
+                  MenuProps={{ disableScrollLock: true }}
                   onChange={(e) => {
                     e.target.name = "vehicleType";
                     handleChange(e);
@@ -238,7 +239,7 @@ export default function Form() {
                     <MenuItem value="">
                         <em>{t("fields.vehicle_type.options.none")}</em>
                     </MenuItem>
-                    <MenuItem value="Bikes">{t("fields.vehicle_type.options.bikes")}</MenuItem>
+                    <MenuItem value="Bikes (all types)">{t("fields.vehicle_type.options.bikes")}</MenuItem>
                     <MenuItem value="Trucks">{t("fields.vehicle_type.options.trucks")}</MenuItem>
                     <MenuItem value="Campers">{t("fields.vehicle_type.options.campers")}</MenuItem>
                     <MenuItem value="Boats">{t("fields.vehicle_type.options.boats")}</MenuItem>
@@ -269,6 +270,7 @@ export default function Form() {
                   id="serviceType"
                   value={formData.serviceType}
                   label={t("fields.service_type.label")}
+                  MenuProps={{ disableScrollLock: true }}
                   onChange={(e) => {
                     e.target.name = "serviceType";
                     handleChange(e);
@@ -333,6 +335,7 @@ export default function Form() {
                   id="location"
                   value={formData.location}
                   label="Location"
+                  MenuProps={{ disableScrollLock: true }}
                   onChange={(e) => {
                     e.target.name = "location";
                     handleChange(e);

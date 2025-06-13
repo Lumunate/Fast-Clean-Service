@@ -33,6 +33,9 @@ export const ServicesContainer = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   marginBottom: "3rem",
   gap: "9.7rem",
+ "@media (max-width: 900px)": {
+ gap: "2rem",
+},
   "@media (max-width: 600px)": {
     maxWidth: "450px",
     flexDirection: "column",
@@ -52,8 +55,9 @@ export const ServiceItemContainer = styled(Box)(({ theme }) => ({
   minHeight: "auto",
   boxShadow: "none",
   backgroundColor: "transparent !important",
-  "@media (max-width: 600px)": {
-    maxWidth: "100%",
+  "@media (max-width: 900px)": {
+    maxWidth: "auto",
+    width: "100%",
     padding: "1rem",
   },
 }));

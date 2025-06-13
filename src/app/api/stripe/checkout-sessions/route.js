@@ -15,7 +15,7 @@ export async function POST(request) {
             });
 
             price = await stripe.prices.create({
-                unit_amount: amount,
+                unit_amount: amount * 100,
                 currency: 'eur',
                 recurring: { interval: 'month' }, // Change to 'year' if needed
                 product: product.id,
@@ -24,7 +24,7 @@ export async function POST(request) {
             // Create one-time price without recurring
             price = await stripe.prices.create({
                 currency: 'eur',
-                unit_amount: amount,
+                unit_amount: amount * 100,
                 product_data: {
                     name: productName,
                 },
@@ -33,8 +33,8 @@ export async function POST(request) {
 
         // Create the checkout session
         const session = await stripe.checkout.sessions.create({
-            success_url: 'http://localhost:3000/user/checkout-success',
-            cancel_url: 'http://localhost:3000/user/subscriptions',
+            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking/payment-success`,
+            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking`,
             payment_method_types: ['card', 'ideal'],
             mode: paymentMode === 'subscription' ? 'subscription' : 'payment',
             line_items: [

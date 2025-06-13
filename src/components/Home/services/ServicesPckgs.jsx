@@ -9,6 +9,11 @@ export const ServicesDivider = styled(Divider)(({ theme }) => ({
   "@media (min-width: 600px) and (max-width: 900px)": {
     margin: "auto 0.5rem",
   },
+  "@media (max-width: 600px)":{
+     background: "linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 1) 50%, transparent 100%)",
+     width: "80px",
+      height: "2px",
+  }
 }));
 
 export const HorizontalServicesDivider = styled(Divider)(({ theme }) => ({

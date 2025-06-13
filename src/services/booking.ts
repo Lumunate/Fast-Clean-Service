@@ -240,55 +240,83 @@ class BookingService {
   }
 
   async rescheduleBooking(id: string, dateTime: Date, userId: string): Promise<IBooking | null> {
-    const booking = await bookingRepository.reschedule(id, dateTime);
+    // First get the existing booking to access all its properties
+    const booking = await bookingRepository.findById(id);
     if (!booking) {
       throw new Error("Booking not found");
     }
 
-    const event = calendar.updateEvent(booking.calendarEventId, {
-      startTime: dateTime.toISOString(),
-      endTime: new Date(dateTime.getTime() + booking.duration * 60 * 1000).toISOString(),
-    });
+    // Calculate all new time values based on the new dateTime
+    const newEndTime = new Date(dateTime.getTime() + booking.duration * 60 * 1000);
+    
+    // Prepare the update object with all time-related fields
+    const updateData: Partial<IBooking> = {
+        appointmentTimestamp: dateTime,
+        appointmentEndTimestamp: newEndTime,
+        lockTime: {
+            start: new Date(dateTime.getTime() - (booking.travelDuration || 0) * 60 * 1000),
+            end: new Date(newEndTime.getTime() + (booking.travelDuration || 0) * 60 * 1000)
+        }
+    };
 
-    const formattedDate = new Date(dateTime).toLocaleDateString("en-US", {
+    // Update the booking with all new time values
+    const updatedBooking = await bookingRepository.update(id, updateData);
+    if (!updatedBooking) {
+        throw new Error("Failed to update booking");
+    }
+
+    // Update the calendar event with new times
+    try {
+        await calendar.updateEvent(booking.calendarEventId, {
+            startTime: dateTime.toISOString(),
+            endTime: newEndTime.toISOString(),
+        });
+    } catch (error) {
+        console.error("Failed to update calendar event:", error);
+        // Consider whether to proceed or throw error here
+    }
+
+    // Format dates/times for notifications and emails
+    const formattedDate = dateTime.toLocaleDateString("en-US", {
       weekday: "long",
       day: "numeric",
       month: "long",
       year: "numeric",
     });
-    const formattedTime = new Date(dateTime).toLocaleTimeString("en-US", {
+    const formattedTime = dateTime.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
     });
 
+    // Create notification
     const notificationMessage = `Your booking on ${formattedDate} at ${formattedTime} has been rescheduled. Please check your email or visit the customer portal for more details.`;
+    
+    try {
+        await notificationRepository.create({
+            user: userId,
+            message: notificationMessage,
+        });
+    } catch (error) {
+        console.error("Failed to create notification:", error);
+    }
 
-    await notificationRepository.create({
-      user: userId,
-      message: notificationMessage,
-    });
+    // Send reschedule email
+    try {
+        await this.sendResceduleEmail(
+            booking.email,
+            booking.firstName,
+            booking.serviceName,
+            formattedDate,
+            formattedTime,
+            `${booking.street}, ${booking.city}, ${booking.zipCode}`
+        );
+    } catch (error) {
+        console.error("Failed to send reschedule email:", error);
+    }
 
-    await this.sendResceduleEmail(
-      booking.email,
-      booking.firstName,
-      booking.serviceName,
-      new Date(dateTime).toLocaleDateString("en-US", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
-      new Date(dateTime).toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }),
-      `${booking.street}, ${booking.city}, ${booking.zipCode}`
-    );
-
-    return booking;
-  }
+    return updatedBooking;
+}
 
   async deleteBooking(id: string): Promise<IBooking | null> {
     return await bookingRepository.delete(id);
