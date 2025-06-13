@@ -12,8 +12,9 @@ export async function POST(request) {
                 currency: currency || 'USD',
             },
             pricing_type: 'fixed_price',
-            redirect_url: 'https://yourdomain.com/success',
-            cancel_url: 'https://yourdomain.com/cancel',
+            // redirect_url: 'https://yourdomain.com/success',
+            redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/booking/payment-success`,
+            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
             metadata: {
                 customer_email: customerEmail,
             },

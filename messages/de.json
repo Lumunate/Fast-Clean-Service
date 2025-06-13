@@ -24,21 +24,21 @@
     },
 
     "about_section": {
-      "title": "De beste zorg voor uw auto, waar u ook bent!",
+      "title": "De beste zorg voor uw auto, waar u ook bent.",
       "description": "Bij Fast Clean Service krijgt uw auto de hoogste kwaliteit stoomreiniging en detailing, ‘op locatie’ of in ‘onze vestiging’. Dankzij geavanceerde technieken en hoogwaardige producten reinigen én beschermen we uw auto met zorg en precisie.",
       "why_choose_us": {
         "title": "Waarom kiezen voor Fast Clean Service?",
         "features": [
           {
-            "title": "Gemak",
+            "title": "Bij u op locatie of bij ons",
             "description": "Op locatie of in onze vestiging."
           },
           {
-            "title": "Grondige reiniging",
+            "title": "Diepe stoomreiniging",
             "description": "Stoom dringt diep door en verwijdert hardnekkig vuil."
           },
           {
-            "title": "Perfect resultaat",
+            "title": "Showroomkwaliteit afwerking",
             "description": "Elke keer showroomkwaliteit."
           }
         ]
@@ -75,7 +75,7 @@
       "title": "HOE WERKT HET?",
       "steps": [
         {
-          "title": "Kies je locatie",
+          "title": "Locatie kiezen",
           "description": "Wij komen naar jou toe of je brengt je auto naar onze vestiging."
         },
         {
@@ -138,7 +138,7 @@
       "googleBtn":"Bekijk alle Google-recensies"
     },
     "packages_section": {
-      "title": "ONZE PAKKETTEN",
+      "title": "Andere diensten",
       "packages": [
         {
           "title": "Machineverhuur",
@@ -164,11 +164,11 @@
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
-          "title": "Detailwinkel",
+          "title": "In de winkel",
           "description": "Breng je auto naar onze vestiging in Assendelft. Hier behandelen we elk detail met de juiste technieken en hoogwaardige producten voor een langdurig resultaat."
         },
         {
-          "title": "Mobiele dienst",
+          "title": "Op Locatie",
           "description": "Geen tijd om langs te komen? Geen probleem. Wij komen naar je toe – aan huis, op kantoor of op elke gewenste locatie."
         }
       ],
@@ -336,9 +336,9 @@
         {
           "question": "Hoe lang duurt een standaardreiniging?",
           "answer": [
-            "Standaardreiniging: ± 1 uur",
-            "Deluxe reiniging: 1,5 – 2 uur",
-            "Premium detailing & coating: 4+ uur"
+            "Standaard reiniging: ± 1 uur",
+            "Deluxe reiniging: 1 – 3 uur",
+            "Premium detailing & coating: 4 - 6+ uur"
           ]
         },
         {
@@ -351,15 +351,15 @@
         },
         {
           "question": "Hoe lang gaat een keramische coating mee?",
-          "answer": "Afhankelijk van de coating die u kiest, is uw lak 6 maanden tot 5 jaar beschermd tegen vuil, uv-straling en weersinvloeden."
+          "answer": "Afhankelijk van de gekozen coating blijft je lak tot 3 jaar beschermd tegen vuil, UV en weersinvloeden."
         },
         {
-          "question": "Heeft u elektriciteit of water nodig op locatie?",
-          "answer": "Ja, we hebben een stroom- en wateraansluiting nodig. Geef bij het boeken aan of deze beschikbaar is."
+          "question": "Hebben jullie stroom of water nodig op locatie?",
+          "answer": "Nee, wij hebben geen stroom- of wateraansluiting nodig. Is dit wél aanwezig? Dan kun je dit tijdens het boeken aangeven"
         },
         {
           "question": "Hoe snel kan ik een afspraak maken?",
-          "answer": "Meestal kunt u binnen 2 tot 5 dagen een afspraak maken. Tijdens drukke periodes kan de wachttijd iets langer zijn."
+          "answer": "Je kunt meestal binnen 1 tot 5 dagen terecht. In drukke periodes kan de wachttijd iets langer zijn."
         },
         {
           "question": "Mijn auto is extreem vuil, wat nu?",
@@ -371,14 +371,24 @@
         },
         {
           "question": "Hoe kan ik betalen?",
-          "answer": "Je kunt eenvoudig betalen via iDEAL, pin of contant."
+          "answer": "Betalen kan eenvoudig via iDEAL, Creditcard, Apple Pay, Google Pay & Cryptocurrency"
         },
         {
           "question": "Bieden jullie abonnementen aan?",
           "answer": "Ja, met een abonnement blijft je auto altijd schoon tegen een vast, betaalbaar tarief."
         }
-      ]
+      ],
+      "button":"Heeft u nog vragen?"
+    },
+    "decorativeText":{
+        "text1":"100% Tevredenheid Gegarandeerd",
+        "text2":"Op Locatie of Bij Onze Vestiging",
+        "text3":"100% Tevredenheid",
+        "text4":"Overal, Altijd",
+        "text5":"Gemakkelijk Schoonmaken, Gegarandeerd Resultaat",
+        "text6":"Snel, Vlekkeloos, Milieuvriendelijk"
     }
+
   },
   "about": {
     "title": "OVER",
@@ -458,6 +468,12 @@
       "title": "Klaar voor een sprankelende schoonmaak Rijden?",
       "description": "Klaar om uw auto te laten stralen? Boek nu online en ervaar zelf waarom zoveel klanten voor Fast Clean Service kiezen!",
       "button": "Boek Nu"
+    },
+    "decorativeText":{
+      "text1":"100% Tevredenheid",
+      "text2":"Schoonmaak op aanvraag, overal",
+      "text3":"Gemakkelijk schoonmaken, gegarandeerd resultaat",
+      "text4":"Snel, Vlekkeloos, Milieuvriendelijk"
     }
   },
   "contact": {
@@ -1161,7 +1177,12 @@
           "Details",
           "Geen details",
           "Afspraak",
-          "Geen add-ons"
+          "Geen add-ons",
+          "Merk",
+          "Handelsbenaming",
+          "Inrichting",
+          "Aantal zitplaatsen",
+          "Eerste kleur"
         ],
         "apply_coupon": "Code toepassen",
         "button": "Coupon toepassen",

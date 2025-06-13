@@ -53,7 +53,7 @@ const SingleWorkHowDoes = ({ icon, title, description, index, sx = {} }) => {
             ref={cardRef}
             className={`${styles.card} ${isVisible ? styles.visible : ""}`}
         >
-            <CardContent sx={{ width: "330px" }}>
+            <CardContent sx={{ width: "330px", padding: "0" }}>
                 <Image
                     className="iconPic"
                     width={80}
