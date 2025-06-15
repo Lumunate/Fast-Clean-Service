@@ -3,6 +3,8 @@ import Payment from '../models/Payments';
 
 class PaymentsRepository {
     async savePayment(session) {
+        console.log('savePayment 123 bug', session);
+        
         const userId = session.metadata.userId;
         const payment = new Payment({
             userId: userId,
