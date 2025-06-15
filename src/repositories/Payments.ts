@@ -22,7 +22,7 @@ class PaymentsRepository {
             userId: subscription.client_reference_id,
             Subscription: {
                 billingCycle: subscription.plan.interval === 'month' ? 'monthly' : 'yearly',
-                status: subscription.status === 'paid' ? 'active' : 'incomplete',
+                status: subscription.status === 'paid' ? 'active' : 'pastDue',
                 paymentMethod: 'stripe',
                 packageId: subscription.metadata?.packageId,
                 nextBilledAt: new Date(subscription.current_period_end * 1000),
@@ -35,7 +35,7 @@ class PaymentsRepository {
     }
 
     async handleSubscriptionPayment(invoice: { subscription: any; }) {
-        const subscription = invoice.client_reference_id;
+        const subscription = invoice.subscription;
         return Payment.findOneAndUpdate(
             {'Subscription.packageId': subscription.metadata?.packageId},
             {
