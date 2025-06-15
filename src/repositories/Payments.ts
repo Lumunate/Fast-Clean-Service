@@ -17,15 +17,15 @@ class PaymentsRepository {
         return payment;
     }
 
-    async saveSubscription(subscription: { metadata: { userId: any; packageId: any; }; plan: { interval: any; }; status: string; current_period_end: number; current_period_start: number; }) {
+    async saveSubscription(subscription: { client_reference_id: string, metadata: { userId: any; packageId: any; }; plan: { interval: any; }; status: string; current_period_end: number; current_period_start: number; }) {
         const payment = new Payment({
-            userId: subscription.metadata?.userId,
+            userId: subscription.client_reference_id,
             Subscription: {
-                billingCycle: subscription.plan.interval, // e.g., 'monthly' or 'yearly'
-                status: subscription.status === 'active' ? 'active' : 'pastDue',
+                billingCycle: subscription.plan.interval === 'month' ? 'monthly' : 'yearly',
+                status: subscription.status === 'paid' ? 'active' : 'incomplete',
                 paymentMethod: 'stripe',
-                packageId: subscription.metadata?.packageId, // Pass packageId in metadata
-                nextBilledAt: new Date(subscription.current_period_end * 1000), // Convert to Date
+                packageId: subscription.metadata?.packageId,
+                nextBilledAt: new Date(subscription.current_period_end * 1000),
                 startDate: new Date(subscription.current_period_start * 1000),
                 endDate: null, // End date is null for active subscriptions
             },
@@ -35,7 +35,7 @@ class PaymentsRepository {
     }
 
     async handleSubscriptionPayment(invoice: { subscription: any; }) {
-        const subscription = invoice.subscription;
+        const subscription = invoice.client_reference_id;
         return Payment.findOneAndUpdate(
             {'Subscription.packageId': subscription.metadata?.packageId},
             {

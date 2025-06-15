@@ -15,7 +15,7 @@ const PaymentsSchema = new Schema(
       },
       status: {
         type: String,
-        enum: ["active", "pastDue"],
+        enum: ["active", "pastDue", "incomplete"],
         required: false,
       },
       paymentMethod: {

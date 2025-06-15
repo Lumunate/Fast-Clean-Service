@@ -22,6 +22,8 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
     }
 
+    console.log('event.typeevent.type', event.type);
+    
     // Handle the event
     switch (event.type) {
         // One-time payment success
@@ -31,7 +33,7 @@ export async function POST(request) {
             const userEmail = session.metadata.userEmail;
             console.log('User email:', userEmail);
 
-            // await paymentsServices.savePaymentToDatabase(session);
+            await paymentsServices.savePaymentToDatabase(session);
             break;
 
         // Subscription created
