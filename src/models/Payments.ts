@@ -50,7 +50,6 @@ const PaymentsSchema = new Schema(
         },
         packageId: {
           type: Schema.Types.ObjectId,
-          required: true,
         },
         status: {
           type: String,
