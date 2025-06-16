@@ -34,7 +34,7 @@ export default function StripeCheckoutButton({ amount, productName }) {
                     amount,
                     userEmail,
                     userId,
-                    paymentMode: 'subscription',
+                    paymentMode: productName.selectedPackageType === 'Anywhere Autocare' ? 'payment' : 'subscription',
                     productName,
                 }),
             });

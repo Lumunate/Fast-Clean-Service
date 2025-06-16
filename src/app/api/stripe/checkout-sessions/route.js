@@ -7,6 +7,7 @@ export async function POST(request) {
         const { amount, userEmail, userId, paymentMode='payment', productName = 'Custom Product' } = await request.json();
 
         let price;
+        console.log('paymentpaymentpayment', paymentMode);
 
         if (paymentMode === 'subscription') {
             // Create product and recurring price for subscription
