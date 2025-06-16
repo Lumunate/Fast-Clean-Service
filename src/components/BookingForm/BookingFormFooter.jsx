@@ -15,6 +15,7 @@ import { Loader } from '../mui/Loader';
 import { duration } from '@mui/material';
 import {useTranslations} from "next-intl";
 import Alert from '@mui/material/Alert';
+import {useSession} from "next-auth/react";
 
 
 const BookingFormFooter = () => {
@@ -30,6 +31,7 @@ const BookingFormFooter = () => {
     calculatePricing,
   } = useMultiStepForm();
   const { theme } = useTheme();
+  const { data: session } = useSession();
   const { isValid, updateValidation } = useValidation();
   const [isBtnInvalid, setIsBtnInvalid] = useState(false);
 
