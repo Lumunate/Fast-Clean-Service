@@ -27,6 +27,10 @@ const PaymentsSchema = new Schema(
         type: Schema.Types.ObjectId,
         required: false,
       },
+      bookingId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+      },
       nextBilledAt: {
         type: Date,
       },
@@ -48,8 +52,9 @@ const PaymentsSchema = new Schema(
           type: Number,
           required: true,
         },
-        packageId: {
+        bookingId: {
           type: Schema.Types.ObjectId,
+          required: true,
         },
         status: {
           type: String,
