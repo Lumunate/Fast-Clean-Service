@@ -197,6 +197,7 @@ const Page = () => {
   }
 
   const autocarePackages = packages?.packages;
+  console.log("autocarePackages>>>>>>>>:", autocarePackages)
 
   const handleSubmit = async () => {
     try {

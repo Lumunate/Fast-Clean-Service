@@ -643,6 +643,8 @@
     }
   },
   "anywhere_autocare": {
+    "title": "Rates",
+    "button":"Book Now",
     "standard": [
       {
         "id": "autocare-standard-exterior",
