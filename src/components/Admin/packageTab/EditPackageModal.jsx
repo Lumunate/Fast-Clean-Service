@@ -32,6 +32,7 @@ const EditPackageModal = ({
   handleSubmit,
 }) => {
   if (!selectedPackage) return null;
+  console.log("this is editPackageModal:", selectedPackage)
 
   const displayName = formatPackageName(selectedPackage.id);
 
