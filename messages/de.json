@@ -645,6 +645,8 @@
     }
   },
   "anywhere_autocare": {
+    "title": "Tarieven",
+    "button":"Boek nu",
     "standard": [
       {
         "id": "autocare-standard-exterior",
