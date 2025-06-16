@@ -25,6 +25,7 @@ export default function StripeCheckoutButton({ amount, productName }) {
         const userId = session.user.id;
 
         try {
+            console.log('productName.selectedPackageType', productName)
             const response = await fetch('/api/stripe/checkout-sessions', {
                 method: 'POST',
                 headers: {
@@ -34,7 +35,7 @@ export default function StripeCheckoutButton({ amount, productName }) {
                     amount,
                     userEmail,
                     userId,
-                    paymentMode: productName.selectedPackageType === 'Anywhere Autocare' ? 'payment' : 'subscription',
+                    paymentMode: productName === 'Anywhere Autocare' ? 'payment' : 'subscription',
                     productName,
                 }),
             });
