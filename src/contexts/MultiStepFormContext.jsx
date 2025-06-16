@@ -246,7 +246,7 @@ export const FormProvider = ({ children }) => {
           surname: formData.surname,
           companyName: formData.companyName,
           street: formData.street,
-            zipCode: formData.zipCode || "1011AC",
+            zipCode: formData.zipCode || null,
             city: formData.location,
             email: formData.email,
             phoneNumber: formData.phoneNumber,
