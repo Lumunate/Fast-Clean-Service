@@ -15,7 +15,7 @@ const PaymentsSchema = new Schema(
       },
       status: {
         type: String,
-        enum: ["active", "pastDue"],
+        enum: ["active", "pastDue", "incomplete"],
         required: false,
       },
       paymentMethod: {
@@ -26,6 +26,10 @@ const PaymentsSchema = new Schema(
       packageId: {
         type: Schema.Types.ObjectId,
         required: false,
+      },
+      bookingId: {
+        type: Schema.Types.ObjectId,
+        required: true,
       },
       nextBilledAt: {
         type: Date,
@@ -48,7 +52,7 @@ const PaymentsSchema = new Schema(
           type: Number,
           required: true,
         },
-        packageId: {
+        bookingId: {
           type: Schema.Types.ObjectId,
           required: true,
         },

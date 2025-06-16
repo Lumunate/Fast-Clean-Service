@@ -3,63 +3,85 @@ import Payment from '../models/Payments';
 
 class PaymentsRepository {
     async savePayment(session) {
+        console.log('savePayment 123 bug', session);
+
         const userId = session.metadata.userId;
-        const payment = new Payment({
-            userId: userId,
-            oneTimePayment: [{
-                date: new Date(),
-                price: session.amount_total / 100,
-                packageId: session.metadata?.packageId,
-                status: 'Paid',
-            }],
-        });
-        await payment.save();
+        const update = {
+            $push: {
+                oneTimePayment: {
+                    date: new Date(),
+                    price: session.amount_total / 100,
+                    packageId: session.metadata?.packageId,
+                    status: 'Paid',
+                }
+            }
+        };
+
+        const payment = await Payment.findOneAndUpdate(
+            { userId },
+            update,
+            { upsert: true, new: true } // create if doesn't exist
+        );
+
         return payment;
     }
 
-    async saveSubscription(subscription: { metadata: { userId: any; packageId: any; }; plan: { interval: any; }; status: string; current_period_end: number; current_period_start: number; }) {
-        const payment = new Payment({
-            userId: subscription.metadata?.userId,
-            Subscription: {
-                billingCycle: subscription.plan.interval, // e.g., 'monthly' or 'yearly'
-                status: subscription.status === 'active' ? 'active' : 'pastDue',
-                paymentMethod: 'stripe',
-                packageId: subscription.metadata?.packageId, // Pass packageId in metadata
-                nextBilledAt: new Date(subscription.current_period_end * 1000), // Convert to Date
-                startDate: new Date(subscription.current_period_start * 1000),
-                endDate: null, // End date is null for active subscriptions
-            },
-        });
-        await payment.save();
+
+    async saveSubscription(subscription) {
+        const userId = subscription.client_reference_id;
+        const update = {
+            $set: {
+                Subscription: {
+                    billingCycle: subscription.plan.interval === 'month' ? 'monthly' : 'yearly',
+                    status: subscription.status === 'paid' ? 'active' : 'pastDue',
+                    paymentMethod: 'stripe',
+                    packageId: subscription.metadata?.packageId,
+                    nextBilledAt: new Date(subscription.current_period_end * 1000),
+                    startDate: new Date(subscription.current_period_start * 1000),
+                    endDate: null,
+                }
+            }
+        };
+
+        const payment = await Payment.findOneAndUpdate(
+            { userId },
+            update,
+            { upsert: true, new: true }
+        );
+
         return payment;
     }
 
-    async handleSubscriptionPayment(invoice: { subscription: any; }) {
+
+    async handleSubscriptionPayment(invoice) {
         const subscription = invoice.subscription;
+
         return Payment.findOneAndUpdate(
-            {'Subscription.packageId': subscription.metadata?.packageId},
+            { userId: subscription.metadata.userId },
             {
                 $set: {
                     'Subscription.nextBilledAt': new Date(subscription.current_period_end * 1000),
                     'Subscription.status': subscription.status === 'active' ? 'active' : 'pastDue',
-                },
+                }
             },
-            {new: true}
+            { new: true }
         );
     }
 
+
     async cancelSubscription(subscription) {
         return Payment.findOneAndUpdate(
-            {'Subscription.packageId': subscription.metadata?.packageId},
+            { userId: subscription.metadata.userId },
             {
                 $set: {
                     'Subscription.status': 'canceled',
                     'Subscription.endDate': new Date(),
-                },
+                }
             },
-            {new: true}
+            { new: true }
         );
     }
+
 }
 
 const paymentsRepository = new PaymentsRepository();
