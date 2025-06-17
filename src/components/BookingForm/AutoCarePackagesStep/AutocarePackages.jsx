@@ -189,8 +189,8 @@ const AutocarePackagesCard = ({
       sx={{
         position: 'relative',
         padding: '24px 35px',
-        width:
-          packageType.toLowerCase() !== 'premium' ? 'auto' : 'calc(33% - 2rem)',
+        width:"100%",
+          // packageType.toLowerCase() !== 'premium' ? 'auto' : 'calc(33% - 2rem)',
         borderRadius: '15px',
         backgroundColor: 'primary.main',
         boxShadow: '0px 4px 30.1px 0 rgba(0, 0, 0, 0.25)',
