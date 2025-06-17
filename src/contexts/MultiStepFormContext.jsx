@@ -268,7 +268,6 @@ export const FormProvider = ({ children }) => {
                 : null,
           },
         };
-        console.log("this is MUltiStepForm data:",data);
         
 
         const response = await fetch('/api/booking', {

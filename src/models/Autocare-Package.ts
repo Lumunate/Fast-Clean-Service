@@ -28,7 +28,10 @@ const packageSchema = new mongoose.Schema({
   id: String,
   name: String,
   description: String,
-  packages: [String],
+  packages: {
+    en:[String],
+    de:[String],
+  },
   totalDuration: String,
   duration: String,
   price: String,

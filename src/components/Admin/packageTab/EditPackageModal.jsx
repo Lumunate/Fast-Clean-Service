@@ -10,6 +10,7 @@ import {
   StyledButton,
   SaveButton,
 } from "./StyledComponents";
+import { useLocale } from "next-intl";
 
 // Helper function to format package names
 const formatPackageName = (id) => {
@@ -31,8 +32,8 @@ const EditPackageModal = ({
   handleAddAdditionalOption,
   handleSubmit,
 }) => {
+  const locale = useLocale();
   if (!selectedPackage) return null;
-  console.log("this is editPackageModal:", selectedPackage)
 
   const displayName = formatPackageName(selectedPackage.id);
 
@@ -187,7 +188,7 @@ const EditPackageModal = ({
         {/* Included Services */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
           <SubSectionTitle>Included Services</SubSectionTitle>
-          {selectedPackage.packages.map((service, idx) => (
+          {selectedPackage.packages?.[locale]?.map((service, idx) => (
             <Box key={idx} sx={{ display: "flex", alignItems: "center", marginBottom: "1.5rem" }}>
               <TextField
                 variant="outlined"

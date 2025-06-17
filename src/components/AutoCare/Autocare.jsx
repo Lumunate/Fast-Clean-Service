@@ -23,7 +23,7 @@ import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAni
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 // import Preloader from "../Preloader";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { fontSize, fontWeight } from "@mui/system";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
@@ -128,6 +128,7 @@ const ModdedCard = ({ card, color }) => {
 const AutoCare = () => {
   const { theme } = useTheme();
   const t = useTranslations("anywhere_autocare");
+  const locale = useLocale()
 
   // API fetch hook
   const { packages, loading, error, fetchPackages } = useAutocarePackages();
@@ -1121,7 +1122,7 @@ const AutoCare = () => {
 
                 {/* The bullet points for the package */}
                 <CardDetails>
-                  {(pkg?.packages || []).map((point, idx) => (
+                  {(pkg?.packages?.[locale] || []).map((point, idx) => (
                     <ListItem
                       key={idx}
                       sx={{

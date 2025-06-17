@@ -12,9 +12,11 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SubSectionTitle } from "./StyledComponents";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, renderVehiclePricing, renderAddOns }) => {
     const displayCategory = isSubscription ? "Subscription" : category.charAt(0).toUpperCase() + category.slice(1);
+    const locale = useLocale()
 
     return (
         <Accordion
@@ -78,7 +80,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                             Included Services
                         </SubSectionTitle>
                         <Box component="ul" sx={{ listStyle: "disc", paddingLeft: "20px" }}>
-                            {pkg.packages.map((service, idx) => (
+                            {pkg.packages?.[locale]?.map((service, idx) => (
                                 <li key={idx} style={{ fontSize: "1.6rem" }}>
                                     {service}
                                 </li>
