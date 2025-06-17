@@ -18,7 +18,7 @@ import { useLocale } from "next-intl";
 const DetailingBox = ({ color, selected, expanded, name, nameDe, price, available, options, onClick }) => {
   const { theme } = useTheme();
     const locale = useLocale();
-    const label = locale === "de" ? nameDe : name;
+    const label = locale === 'de' && nameDe ? nameDe : name;
   return (
       <Box>
         <AdditionalOption

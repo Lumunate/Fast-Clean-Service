@@ -29,7 +29,7 @@ const AdditionalOptionsBox = ({
 }) => {
   const { theme } = useTheme();
   const locale = useLocale();
-  const label = locale === 'de' ? nameDe : name;
+  const label = locale === 'de' && nameDe ? nameDe : name;
 
   return (
     <Box>
