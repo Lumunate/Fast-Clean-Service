@@ -13,9 +13,12 @@ import {
 } from "../../mui/BookingFormPackages";
 import { useTheme } from "../../../contexts/themeContext";
 import { alpha } from "@mui/material/styles";
+import { useLocale } from "next-intl";
 
-const DetailingBox = ({ color, selected, expanded, name, price, available, options, onClick }) => {
+const DetailingBox = ({ color, selected, expanded, name, nameDe, price, available, options, onClick }) => {
   const { theme } = useTheme();
+    const locale = useLocale();
+    const label = locale === "de" ? nameDe : name;
   return (
       <Box>
         <AdditionalOption
@@ -29,7 +32,7 @@ const DetailingBox = ({ color, selected, expanded, name, price, available, optio
                       : "#ffffff",
             }}
         >
-          <AdditionalOptionText variant="p">{name}</AdditionalOptionText>
+          <AdditionalOptionText variant="p">{label}</AdditionalOptionText>
           <AdditionalOptionText variant="p">
             {available ? `+ €${price}` : price}
           </AdditionalOptionText>
@@ -87,6 +90,7 @@ const Detailing = () => {
   const { updateValidation } = useValidation();
   const selectedPackage = form.formData.selectedPackage;
   const { theme } = useTheme();
+    const locale = useLocale();
 
   const handleClick = (optionName) => {
     const selectedOptions = form.formData.selectedDetailingOptions || [];
@@ -134,6 +138,7 @@ const Detailing = () => {
                       key={index}
                       color={form.color}
                       name={option.name}
+                      nameDe={option.nameDe}
                       price={option.additionalCost}
                       available={option.available}
                       options={option.options}

@@ -68,10 +68,10 @@ const Page = () => {
         updatedPackage.additionalOptions[type][idx].name = value;
       } else if (field === "addonNameDe") {
         updatedPackage.additionalOptions[type][idx].nameDe = value;
-      } const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
-          updatedPackage.additionalOptions[addonType][index].additionalCost = value;
-        } else if (field.startsWith("addonTime")) {
+      } else if (field.startsWith("addonPrice")) {
+        const [_, addonType] = field.split("_");
+        updatedPackage.additionalOptions[addonType][index].additionalCost = value;
+      } else if (field.startsWith("addonTime")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
           updatedPackage.additionalOptions[addonType][index].additionalTime = value;

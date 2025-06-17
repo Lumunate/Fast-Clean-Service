@@ -15,17 +15,21 @@ import Image from 'next/image';
 import CheckMark from '../../../../public/bookingFormIcons/CheckMark.svg';
 import { calculateFilter } from '../../../lib/colorFilters';
 import { alpha } from '@mui/material/styles';
+import { useLocale } from 'next-intl';
 
 const AdditionalOptionsBox = ({
   color,
   selected,
   expanded,
   name,
+    nameDe,
   price,
   options = [],
   onClick,
 }) => {
   const { theme } = useTheme();
+  const locale = useLocale();
+  const label = locale === 'de' ? nameDe : name;
 
   return (
     <Box>
@@ -39,7 +43,7 @@ const AdditionalOptionsBox = ({
               : '#ffffff',
         }}
       >
-        <AdditionalOptionText selected={selected}>{name}</AdditionalOptionText>
+        <AdditionalOptionText selected={selected}>{label}</AdditionalOptionText>
         <AdditionalOptionText variant="p">+ €{price}</AdditionalOptionText>
       </AdditionalOption>
       {expanded && options.length > 0 && (
@@ -156,6 +160,7 @@ const AdditionalOptions = () => {
                       <AdditionalOptionsBox
                         key={optionIndex}
                         name={option.name}
+                        nameDe={option.nameDe}
                         price={option.additionalCost}
                         color={form.color}
                         options={option.options}
