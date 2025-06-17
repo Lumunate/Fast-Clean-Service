@@ -1,12 +1,13 @@
-// Page.js
+  // Page.js
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider } from "@mui/material";
-
+  import { useLocale } from "next-intl";
 // Import data, updatePackages: updateAutocarePackages
 import { useAutocarePackages } from "../../../../hooks/useAutocarePackages";
 import { useSubscriptionPackages } from "../../../../hooks/useSubscriptionPackages";
+
 
 // Import components
 import Header from "../../../../components/Admin/packageTab/Header";
@@ -26,6 +27,7 @@ import {
 import useSnackbar from "../../../../hooks/useSnackbar";
 
 const Page = () => {
+  const locale = useLocale();
   const [tabValue, setTabValue] = useState(0); // 0: Service Packages, 1: Subscription Packages
   const [openModal, setOpenModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -61,17 +63,15 @@ const Page = () => {
         updatedPackage.price = `€ ${value.toFixed(2)}`;
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
-      } else if (field.startsWith("addonName")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
-          updatedPackage.additionalOptions[addonType][index].name = value;
-        }
-      } else if (field.startsWith("addonPrice")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
+      } else if (field === "addonName") {
+        // existing English handler
+        updatedPackage.additionalOptions[type][idx].name = value;
+      } else if (field === "addonNameDe") {
+        updatedPackage.additionalOptions[type][idx].nameDe = value;
+      } const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
           updatedPackage.additionalOptions[addonType][index].additionalCost = value;
-        }
-      } else if (field.startsWith("addonTime")) {
+        } else if (field.startsWith("addonTime")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
           updatedPackage.additionalOptions[addonType][index].additionalTime = value;
@@ -106,8 +106,10 @@ const Page = () => {
       }
 
       updatedPackage.additionalOptions[addonType].push({
-        name: "",
+        name: "",        // English
+        nameDe: "",
         additionalCost: 0,
+        additionalTime: 0
       });
 
       return updatedPackage;
@@ -155,7 +157,7 @@ const Page = () => {
                   marginBottom: "8px",
                 }}
               >
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>{item.name}</Typography>
+                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}> { locale==="de" ? item.nameDe : item.name }</Typography>
                 <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
                   {typeof item.additionalCost === "number" ? `€${item.additionalCost}` : item.additionalCost}
                 </Typography>
@@ -197,6 +199,7 @@ const Page = () => {
   }
 
   const autocarePackages = packages?.packages;
+  console.log("autocarePackages>>>>>>>>:", autocarePackages)
 
   const handleSubmit = async () => {
     try {

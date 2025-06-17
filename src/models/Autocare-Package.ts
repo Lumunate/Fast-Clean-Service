@@ -53,7 +53,8 @@ const AutocareServiceSchema = new mongoose.Schema({
 
 const optionsSchema = new mongoose.Schema({
   id: String,
-  name: String,
+  name: String,       // English title
+  nameDe: String,
   duration: String,
   price: String,
 });
