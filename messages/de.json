@@ -647,6 +647,11 @@
   "anywhere_autocare": {
     "title": "Tarieven",
     "button":"Boek nu",
+    "packageNames":["Exterieur","Interieur","Compleet"],
+    "from":"Van",
+    "duration":"Duur",
+    "choice":"Keuze van het volk",
+    "economy":"Economie",
     "standard": [
       {
         "id": "autocare-standard-exterior",
