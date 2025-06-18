@@ -131,11 +131,7 @@ const AutoCare = () => {
 
   // API fetch hook
   const { packages, loading, error, fetchPackages } = useAutocarePackages();
-  console.log("this is packages:", packages);
-  console.log(
-    "Standard package price:",
-    packages?.packages?.standard[0]
-  );
+  
   const packagesAll = packages?.packages;
 
   // Same tab logic: Standard, Deluxe, Premium
@@ -384,7 +380,7 @@ const AutoCare = () => {
                     fontSize: "18px",
                   }}
                 >
-                  Economy
+                  {t("economy")}
                 </Typography>
               </Box>
               {/* FRONT-SIDE IMAGE */}
@@ -442,7 +438,7 @@ const AutoCare = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
                   <Typography sx={{ fontWeight: "500", color: "#7ed56f" }}>
                     {packagesAll?.standard[0]?.price}
                   </Typography>
@@ -454,7 +450,7 @@ const AutoCare = () => {
                     width: "80%",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
                   <Typography sx={{ fontWeight: "300" }}>
                     {packages?.packages?.standard[0]?.totalDuration}
                   </Typography>
@@ -479,14 +475,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "14px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Exterior
+                    {t("packageNames.0")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -500,11 +496,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                      {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                         fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -526,14 +522,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "14px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Interior
+                    {t("packageNames.1")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -547,11 +543,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                     {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                          fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -572,14 +568,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "14px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Combi
+                    {t("packageNames.2")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -593,11 +589,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                     {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                          fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -654,7 +650,7 @@ const AutoCare = () => {
                     fontSize: "1.6rem !important",
                   }}
                 >
-                  Peoples Choice
+                  {t("choice")}
                 </Typography>
               </Box>
               <div
@@ -709,7 +705,7 @@ const AutoCare = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
                   <Typography sx={{ fontWeight: "500", color: "#2998ff" }}>
                     {packages?.packages?.deluxe[0]?.price}
                   </Typography>
@@ -721,7 +717,7 @@ const AutoCare = () => {
                     width: "80%",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
                   <Typography sx={{ fontWeight: "300" }}>
                     {packages?.packages?.deluxe[0]?.totalDuration}
                   </Typography>
@@ -742,14 +738,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "14px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Exterior
+                    {t("packageNames.0")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center", margin:"10px 0px"}}
@@ -763,11 +759,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                     {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                          fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -788,14 +784,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "16px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Interior
+                    {t("packageNames.1")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -809,11 +805,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                      {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                          fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -834,14 +830,14 @@ const AutoCare = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: "14px !important",
                       color: "#292929A6",
                       "@media (max-width: 1024px)": {
                         fontSize: "12px !important",
                       },
                     }}
                   >
-                    Combi
+                    {t("packageNames.2")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -855,11 +851,11 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                      {t("from")}
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "22px !important",
+                        fontSize: "20px !important",
                          fontWeight:500,
                         "@media (max-width: 1024px)": {
                           fontSize: "16px !important",
@@ -971,7 +967,7 @@ const AutoCare = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>From:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
                   <Typography sx={{ fontWeight: "500", color: "#ff7730" }}>
                     {packages?.packages?.premium[0]?.price}
                   </Typography>
@@ -983,7 +979,7 @@ const AutoCare = () => {
                     width: "80%",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "300" }}>Duration:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
                   <Typography sx={{ fontWeight: "300" }}>
                     {packages?.packages?.premium[0]?.totalDuration}
                   </Typography>
@@ -1024,7 +1020,7 @@ const AutoCare = () => {
                         },
                       }}
                     >
-                      From
+                      {t("from")}
                     </Typography>
                     <Typography
                       sx={{

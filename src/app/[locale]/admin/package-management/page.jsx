@@ -119,7 +119,6 @@ const Page = () => {
       if (!updatedPackage.additionalOptions[addonType]) {
         updatedPackage.additionalOptions[addonType] = [];
       }
-
       updatedPackage.additionalOptions[addonType].push({
         name: "",
         additionalCost: 0,

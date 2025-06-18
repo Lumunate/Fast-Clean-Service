@@ -172,7 +172,7 @@ export const NextPrevButton = styled(ButtonBase)(({ theme, dull = false }) => ({
     width: "10.4rem",
     height: "3.1rem",
     fontSize: "1.2rem",
-    lineHeight: "1.5rem",
+    lineHeight: "0 !important",
     fontWeight: "500",
   },
 }));
