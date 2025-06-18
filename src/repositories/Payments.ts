@@ -11,7 +11,7 @@ class PaymentsRepository {
                 oneTimePayment: {
                     date: new Date(),
                     price: session.amount_total / 100,
-                    packageId: session.metadata?.packageId,
+                    bookingId: session.metadata?.bookingId,
                     status: 'Paid',
                 }
             }
@@ -35,7 +35,7 @@ class PaymentsRepository {
                     billingCycle: subscription.plan.interval === 'month' ? 'monthly' : 'yearly',
                     status: subscription.status === 'paid' ? 'active' : 'pastDue',
                     paymentMethod: 'stripe',
-                    packageId: subscription.metadata?.packageId,
+                    bookingId: subscription.metadata?.bookingId,
                     nextBilledAt: new Date(subscription.current_period_end * 1000),
                     startDate: new Date(subscription.current_period_start * 1000),
                     endDate: null,
