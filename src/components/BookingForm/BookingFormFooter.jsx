@@ -172,7 +172,6 @@ const BookingFormFooter = () => {
                         currency: 'eur',
                         description: `Payment for ${formData.selectedPackageType || 'Service'}`,
                         customerEmail: formData.email,
-                        bookingId: formData.bookingId,
                     }),
                 });
                 const data = await res.json();
@@ -192,7 +191,6 @@ const BookingFormFooter = () => {
                         userId,
                         paymentMode: 'subscription',
                         productName: formData.selectedPackageType || 'Service',
-                        bookingId: formData.bookingId,
                     }),
                 });
                 const { url } = await res.json();

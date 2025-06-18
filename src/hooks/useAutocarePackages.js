@@ -14,6 +14,7 @@ export const useAutocarePackages = () => {
         throw new Error('Failed to fetch autocare packages');
       }
       const data = await response.json();
+      
       setPackages(data);
     } catch (err) {
       setError(err.message);

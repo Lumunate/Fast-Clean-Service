@@ -645,6 +645,13 @@
     }
   },
   "anywhere_autocare": {
+    "title": "Tarieven",
+    "button":"Boek nu",
+    "packageNames":["Exterieur","Interieur","Compleet"],
+    "from":"Van",
+    "duration":"Duur",
+    "choice":"Keuze van het volk",
+    "economy":"Economie",
     "standard": [
       {
         "id": "autocare-standard-exterior",
@@ -1200,12 +1207,12 @@
           "We zorgen ervoor dat uw voertuig perfect wordt gereinigd!"
         ],
         "form_fields": [
-          "Voornaam",
-          "Achternaam",
-          "Telefoonnummer",
-          "Bedrijfsnaam",
-          "E-mailadres",
-          "Merk en model voertuig",
+          "Voornaam *",
+          "Achternaam ",
+          "Telefoonnummer *",
+          "Bedrijfsnaam *",
+          "E-mailadres *",
+          "Merk en model voertuig *",
           "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga"
         ]
       },
