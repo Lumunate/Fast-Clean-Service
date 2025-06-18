@@ -1,12 +1,13 @@
-// Page.js
+  // Page.js
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider } from "@mui/material";
-
+  import { useLocale } from "next-intl";
 // Import data, updatePackages: updateAutocarePackages
 import { useAutocarePackages } from "../../../../hooks/useAutocarePackages";
 import { useSubscriptionPackages } from "../../../../hooks/useSubscriptionPackages";
+
 
 // Import components
 import Header from "../../../../components/Admin/packageTab/Header";
@@ -26,6 +27,7 @@ import {
 import useSnackbar from "../../../../hooks/useSnackbar";
 
 const Page = () => {
+  const locale = useLocale();
   const [tabValue, setTabValue] = useState(0); // 0: Service Packages, 1: Subscription Packages
   const [openModal, setOpenModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -61,37 +63,20 @@ const Page = () => {
         updatedPackage.price = `€ ${value.toFixed(2)}`;
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
-      } else if (field.startsWith("addonName")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (
-          updatedPackage.additionalOptions &&
-          updatedPackage.additionalOptions[addonType]
-        ) {
-          updatedPackage.additionalOptions[addonType][index].name = value;
-        }
+      } else if (field === "addonName") {
+        // existing English handler
+        updatedPackage.additionalOptions[type][idx].name = value;
+      } else if (field === "addonNameDe") {
+        updatedPackage.additionalOptions[type][idx].nameDe = value;
       } else if (field.startsWith("addonPrice")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (
-          updatedPackage.additionalOptions &&
-          updatedPackage.additionalOptions[addonType]
-        ) {
-          updatedPackage.additionalOptions[addonType][index].additionalCost =
-            value;
-        }
+        const [_, addonType] = field.split("_");
+        updatedPackage.additionalOptions[addonType][index].additionalCost = value;
       } else if (field.startsWith("addonTime")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (
-          updatedPackage.additionalOptions &&
-          updatedPackage.additionalOptions[addonType]
-        ) {
-          updatedPackage.additionalOptions[addonType][index].additionalTime =
-            value;
+        if (updatedPackage.additionalOptions && updatedPackage.additionalOptions[addonType]) {
+          updatedPackage.additionalOptions[addonType][index].additionalTime = value;
         }
-      } else if (
-        field.startsWith("basePrice") ||
-        field.startsWith("additionalCost") ||
-        field.startsWith("additionalTime")
-      ) {
+      } else if (field.startsWith("basePrice") || field.startsWith("additionalCost") || field.startsWith("additionalTime")) {
         // Handle vehicle-specific pricing updates
         // Assuming 'field' is one of the vehicle fields
         const vehicleFields = ["basePrice", "additionalCost", "additionalTime"];
@@ -119,10 +104,12 @@ const Page = () => {
       if (!updatedPackage.additionalOptions[addonType]) {
         updatedPackage.additionalOptions[addonType] = [];
       }
+
       updatedPackage.additionalOptions[addonType].push({
-        name: "",
+        name: "",        // English
+        nameDe: "",
         additionalCost: 0,
-        options: [],
+        additionalTime: 0
       });
 
       return updatedPackage;
@@ -136,31 +123,14 @@ const Page = () => {
         <SubSectionTitle>Vehicle-Specific Pricing</SubSectionTitle>
         <Box component="ul" sx={{ listStyle: "none", paddingLeft: 0 }}>
           {Object.keys(vehicleOptions).map((vehicle) => (
-            <li
-              key={vehicle}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginBottom: "8px",
-              }}
-            >
-              <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
-                {vehicle}
-              </Typography>
+            <li key={vehicle} style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
+              <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>{vehicle}</Typography>
               <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
                 €{vehicleOptions[vehicle].basePrice.toFixed(2)}
                 {vehicleOptions[vehicle].additionalCost !== 0 && (
-                  <span>
-                    {" "}
-                    + €{vehicleOptions[vehicle].additionalCost.toFixed(2)}
-                  </span>
+                  <span> + €{vehicleOptions[vehicle].additionalCost.toFixed(2)}</span>
                 )}
-                {vehicleOptions[vehicle].additionalTime !== 0 && (
-                  <span>
-                    {" "}
-                    (± {vehicleOptions[vehicle].additionalTime} min.)
-                  </span>
-                )}
+                {vehicleOptions[vehicle].additionalTime !== 0 && <span> (± {vehicleOptions[vehicle].additionalTime} min.)</span>}
               </Typography>
             </li>
           ))}
@@ -187,13 +157,9 @@ const Page = () => {
                   marginBottom: "8px",
                 }}
               >
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
-                  {item.name}
-                </Typography>
+                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}> { locale==="de" ? item.nameDe : item.name }</Typography>
                 <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
-                  {typeof item.additionalCost === "number"
-                    ? `€${item.additionalCost}`
-                    : item.additionalCost}
+                  {typeof item.additionalCost === "number" ? `€${item.additionalCost}` : item.additionalCost}
                 </Typography>
               </li>
             ))}
@@ -216,11 +182,7 @@ const Page = () => {
     );
   };
 
-  const {
-    packages,
-    fetchPackages: fetchAutocarePackages,
-    updatePackage: updateAutocarePackages,
-  } = useAutocarePackages();
+  const { packages, fetchPackages: fetchAutocarePackages, updatePackage: updateAutocarePackages } = useAutocarePackages();
   const {
     packages: subscriptionPackages,
     fetchPackages: fetchSubscriptionPackages,
@@ -237,7 +199,7 @@ const Page = () => {
   }
 
   const autocarePackages = packages?.packages;
-  console.log("autocarePackages>>>>>>>>:", autocarePackages);
+  console.log("autocarePackages>>>>>>>>:", autocarePackages)
 
   const handleSubmit = async () => {
     try {
@@ -264,9 +226,7 @@ const Page = () => {
         {tabValue === 0 && (
           <Box>
             <SectionTitle>Service Packages</SectionTitle>
-            <SecondaryTypography>
-              Manage your service packages, pricing structure, and add-ons
-            </SecondaryTypography>
+            <SecondaryTypography>Manage your service packages, pricing structure, and add-ons</SecondaryTypography>
 
             {Object.entries(autocarePackages)
               .filter(([k, v]) => k !== "_id" && k !== "__v")
@@ -288,9 +248,7 @@ const Page = () => {
         {tabValue === 1 && (
           <Box>
             <SectionTitle variant="h5">Subscription Packages</SectionTitle>
-            <SecondaryTypography>
-              Manage your subscription packages and pricing
-            </SecondaryTypography>
+            <SecondaryTypography>Manage your subscription packages and pricing</SecondaryTypography>
 
             <PackageList
               packages={subscriptionPackages}

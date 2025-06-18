@@ -3,6 +3,7 @@ import { vehicleOptionSchema } from "./SubscriptionPackage";
 
 const optionSchema = new mongoose.Schema({
   name: String,
+  nameDe: String,
   additionalCost: mongoose.Schema.Types.Mixed,
   available: Boolean,
   options: [String],
@@ -28,7 +29,10 @@ const packageSchema = new mongoose.Schema({
   id: String,
   name: String,
   description: String,
-  packages: [String],
+  packages: {
+    en:[String],
+    de:[String],
+  },
   totalDuration: String,
   duration: String,
   price: String,

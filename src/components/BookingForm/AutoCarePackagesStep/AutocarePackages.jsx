@@ -16,6 +16,7 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
+import { useLocale } from 'next-intl';
 
 const AutocarePackages = () => {
   const { theme } = useTheme();
@@ -180,6 +181,7 @@ const AutocarePackagesCard = ({
 }) => {
   const { theme } = useTheme();
   const formattedPrice = Number(price.replace('€', '').trim()).toFixed(2);
+   const locale = useLocale();
 
   return (
     <Box
@@ -281,7 +283,7 @@ const AutocarePackagesCard = ({
           }}
         >
           {descriptionItems &&
-            descriptionItems.map((option, index) => (
+            descriptionItems?.[locale].map((option, index) => (
               <Box
                 key={index}
                 sx={{
