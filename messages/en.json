@@ -643,6 +643,13 @@
     }
   },
   "anywhere_autocare": {
+    "title": "Rates",
+    "button":"Book Now",
+    "packageNames":["Exterior","Interior","Complete"],
+    "from":"From",
+    "duration":"Duration",
+    "choice":"Peoples Choice",
+    "economy":"Economy",
     "standard": [
       {
         "id": "autocare-standard-exterior",
