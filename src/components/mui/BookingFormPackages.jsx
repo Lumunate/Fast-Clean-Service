@@ -203,6 +203,7 @@ export const SubscriptionPkgsContainer = styled(Box)(({ theme }) => ({
 
 export const SubscriptionCardContainer = styled(Box)(({ theme, selected }) => ({
   position: "relative",
+  cursor: 'pointer',
   width: "207px",
   height: "280px",
   borderRadius: "15px",

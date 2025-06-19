@@ -648,6 +648,10 @@
     "title": "Tarieven",
     "button":"Boek nu",
     "packageNames":["Exterieur","Interieur","Compleet"],
+    "detailing":"Detaillering",
+    "standardHeading":"Standaard",
+    "showroom":"Toonzaal",
+    "premiumHeading":"Premie",
     "from":"Van",
     "duration":"Duur",
     "choice":"Keuze van het volk",
@@ -1213,6 +1217,7 @@
           "Bedrijfsnaam",
           "E-mailadres",
           "Merk en model voertuig",
+          "Bericht",
           "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga"
         ]
       },

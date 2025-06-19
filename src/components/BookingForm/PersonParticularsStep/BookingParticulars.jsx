@@ -152,6 +152,7 @@ const BookingParticulars = () => {
                     name="firstName"
                     value={bookingForm.firstName}
                     onChange={handleChange}
+                    required
                     fullWidth
                     sx={{
                       borderRadius: '8px',
@@ -164,6 +165,7 @@ const BookingParticulars = () => {
                     name="surname"
                     value={bookingForm.surname}
                     onChange={handleChange}
+                    required
                     fullWidth
                     sx={{
                       borderRadius: '8px',
@@ -178,6 +180,7 @@ const BookingParticulars = () => {
                     name="phoneNumber"
                     value={bookingForm.phoneNumber}
                     onChange={handleChange}
+                    required
                     fullWidth
                     sx={{
                       borderRadius: '8px',
@@ -219,6 +222,7 @@ const BookingParticulars = () => {
                     name="email"
                     value={bookingForm.email}
                     onChange={handleChange}
+                    required
                     fullWidth
                     sx={{
                       borderRadius: '8px',
@@ -235,6 +239,7 @@ const BookingParticulars = () => {
                     name="makeModel"
                     value={bookingForm.makeModel}
                     onChange={handleChange}
+                    required
                     fullWidth
                     sx={{
                       borderRadius: '8px',
@@ -253,6 +258,7 @@ const BookingParticulars = () => {
                     label={t("steps.9.form_fields.6")}
                     name="bookingMessage"
                     value={bookingForm.bookingMessage}
+                    required
                     onChange={handleChange}
                     fullWidth
                     multiline

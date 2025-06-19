@@ -185,6 +185,7 @@ const AutocarePackagesCard = ({
     <Box
       onClick={onClick}
       sx={{
+        cursor: 'pointer',
         position: 'relative',
         padding: '24px 35px',
         width:"100%",

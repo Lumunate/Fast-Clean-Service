@@ -418,7 +418,7 @@ const AutoCare = () => {
                   textAlign: "center",
                 }}
               >
-                <span className="heading--span heading--span-1">Standard</span>
+                <span className="heading--span heading--span-1">{t("standardHeading")}</span>
               </Typography>
 
               {/* FROM PRICE + DURATION, directly from the new data */}
@@ -463,7 +463,7 @@ const AutoCare = () => {
               className="tab__side tab__side--back tab__side--back-1"
             >
               <div className="tab__cta">
-                <Typography  className="tab__value">Standard</Typography>
+                <Typography  className="tab__value">{t("standardHeading")}</Typography>
                 <Box
                   sx={{
                     display: "flex",
@@ -947,7 +947,7 @@ const AutoCare = () => {
                   textAlign: "center",
                 }}
               >
-                <span className="heading--span heading--span-3">Premium</span>
+                <span className="heading--span heading--span-3">{t("premiumHeading")}</span>
               </Typography>
 
               {/* fromPrice, fromDuration for Premium */}
@@ -988,7 +988,7 @@ const AutoCare = () => {
             </div>
             <div className="tab__side tab__side--back tab__side--back-3">
               <div className="tab__cta">
-                <Typography className="tab__value">Premium</Typography>
+                <Typography className="tab__value">{t("premiumHeading")}</Typography>
                 <Box
                   sx={{
                     display: "flex",
@@ -1006,7 +1006,7 @@ const AutoCare = () => {
                       },
                     }}
                   >
-                    Showroom
+                    {t("showroom")}
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -1164,12 +1164,15 @@ const AutoCare = () => {
                   {/* </Link>  */}
                   <CardButton
                     onClick={() => handleSubCatChange(pkg?.name)}
+                    disabled= {pkg?.name === "Compleet"}
                     sx={{
                       backgroundColor: subCat === pkg?.name ? color : "",
                       color: "black !important",
                       justifyContent: "center",
+                      cursor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "not-allowed !important" : "pointer",
+                      pointerEvents: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "visible !important" : "pointer",
                       "&:hover": {
-                        backgroundColor: `${color} !important`,
+                        backgroundColor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "#dedede" : `${color} !important`,
                         color: "primary.main !important",
                       },
                     }}
@@ -1230,7 +1233,7 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Exterior",
+                      type: t("packageNames.0"),
                       options: additionalOptions.exterior || [],
                     }}
                     color={color}
@@ -1238,7 +1241,7 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Interior",
+                      type: t("packageNames.1"),
                       options: additionalOptions.interior || [],
                     }}
                     color={color}
@@ -1246,7 +1249,7 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Detailing",
+                      type: t("detailing"),
                       options: additionalOptions.detailing || [],
                     }}
                     color={color}

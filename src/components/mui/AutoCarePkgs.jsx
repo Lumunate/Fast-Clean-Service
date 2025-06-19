@@ -154,10 +154,10 @@ export const AutoTab = styled(Box)(({ theme }) => ({
     },
 
     "& .tab__value": {
-      fontSize: "4rem",
+      fontSize: "3.5rem",
       fontWeight: "600",
       "@media (max-width: 1024px)": {
-        fontSize: "3.5rem",
+        fontSize: "3rem",
       },
 
       "@media (max-width: 900px)": {
