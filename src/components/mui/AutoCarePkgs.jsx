@@ -21,6 +21,12 @@ export const AutoTabContainer = styled(Box)(({ theme }) => ({
   // width: "100%",
   // minWidth: "700px"
   zIndex  : 1,
+  "@media (max-width: 900px)": {
+        padding: "2rem",
+    },
+    "@media (max-width: 800px)": {
+        padding: "5rem",
+    },
 }));
 
 export const AutoTab = styled(Box)(({ theme }) => ({
@@ -148,8 +154,11 @@ export const AutoTab = styled(Box)(({ theme }) => ({
     },
 
     "& .tab__value": {
-      fontSize: "4.5rem",
-      fontWeight: "100",
+      fontSize: "4rem",
+      fontWeight: "600",
+      "@media (max-width: 1024px)": {
+        fontSize: "3.5rem",
+      },
 
       "@media (max-width: 900px)": {
         fontSize: "2.8rem",

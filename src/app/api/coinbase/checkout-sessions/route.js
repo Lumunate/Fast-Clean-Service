@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     try {
-        const { amount, currency, description, customerEmail } = await request.json();
+        const { amount, currency, description, customerEmail, bookingId } = await request.json();
 
         const payload = {
             name: 'Your Product Name',
@@ -17,6 +17,7 @@ export async function POST(request) {
             cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/en/cancel`,
             metadata: {
                 customer_email: customerEmail,
+                bookingId,
             },
         };
 
