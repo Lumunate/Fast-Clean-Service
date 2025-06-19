@@ -246,6 +246,7 @@ export const FormProvider = ({ children }) => {
           surname: formData.surname,
           companyName: formData.companyName,
           street: formData.street,
+
          zipCode: formData.zipCode || "1011AC",
           city: formData.location,
           email: formData.email,
@@ -258,6 +259,7 @@ export const FormProvider = ({ children }) => {
           appointmentTimestamp: formData.selectedTime,
           vehicleDetails: formData.vehicleDetails,
           vehicleType: formData.carType,
+
           travelDistance: formData.travelDistance,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length

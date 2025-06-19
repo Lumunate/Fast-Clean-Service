@@ -150,7 +150,9 @@ const Page = () => {
               <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
                 {vehicle}
               </Typography>
+
               <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+
                 €{vehicleOptions[vehicle].basePrice.toFixed(2)}
                 {vehicleOptions[vehicle].additionalCost !== 0 && (
                   <span>
@@ -193,7 +195,9 @@ const Page = () => {
                 <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
                   {item.name}
                 </Typography>
+
                 <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+
                   {typeof item.additionalCost === "number"
                     ? `€${item.additionalCost}`
                     : item.additionalCost}
@@ -239,8 +243,10 @@ const Page = () => {
     return <Loader />;
   }
 
+
   const autocarePackages =
     locale === "en" ? englishPackages : packages?.packages;
+
 
   const handleSubmit = async () => {
     try {

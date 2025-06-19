@@ -646,14 +646,17 @@
     "title": "Rates",
     "button":"Book Now",
     "packageNames":["Exterior","Interior","Complete"],
+
     "detailing":"Detailing",
     "standardHeading":"Standard",
     "showroom":"Showroom",
     "premiumHeading":"Premium",
+
     "from":"From",
     "duration":"Duration",
     "choice":"Peoples Choice",
     "economy":"Economy",
+
     "description":["Complete exterior care for your vehicle","Premium exterior care for your vehicle","Ultimate showroom quality care for your vehicle"],
     "packages":{
       "standard": [
@@ -2418,13 +2421,13 @@
           "Let’s make sure everything is perfect for your cleaning!"
         ],
         "form_fields": [
-          "First Name",
-          "Surname",
-          "Phone Number",
-          "Company Name",
-          "Email",
-          "Make and Model of Vehicle",
-          "Message",
+          "First Name *",
+          "Surname *",
+          "Phone Number *",
+          "Company Name *",
+          "Email *",
+          "Make and Model of Vehicle *",
+          "Message *",
           "I certify that I have read and agree to the"
         ]
       },
