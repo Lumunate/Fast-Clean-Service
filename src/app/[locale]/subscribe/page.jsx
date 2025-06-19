@@ -9,10 +9,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages";
 import { useTheme } from "../../../contexts/themeContext";
-import { useSession } from "next-auth/react";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
-import PaymentButton from "../../../components/payment-button/PaymentButton";
-import StripeCheckoutButton from "../../../components/payment-button/StripeCheckoutButton";
 import { DecorativeBackgroundImage } from "../../../components/Decorative/Decorative.style";
 import RadialCircle from "../../../components/Decorative/RadialCircle";
 import { ServiceSubtitle, ServiceCard, ServiceIcon } from "../fleet/FleetMain";
@@ -52,7 +49,6 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
     const [selectedAdditionalOptions, setSelectedAdditionalOptions] = useState([]);
     const [additionalOpen, setAdditionalOpen] = useState(false);
     const { theme } = useTheme();
-    const { data: session } = useSession();
 
     useEffect(() => {
         let newPrice = parsePrice(pkg.price);
@@ -136,17 +132,6 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                     >
                         {pkg.duration}
                     </Typography>
-                    {session?.user && (
-                        <>
-                            <PaymentButton
-                                amount={pkg.price}
-                                currency={"EUR"}
-                                customerEmail={session.user.email}
-                                description={pkg.name}
-                            />
-                            <StripeCheckoutButton />
-                        </>
-                    )}
                 </StyledPriceContainer>
 
                 {/* Options list (features) */}
@@ -203,7 +188,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                             display: "flex",
                                             justifyContent: "space-between",
                                             padding: "1rem",
-                                            mx: { xs: "24px", md: "61px" },
+                                            // mx: { xs: "24px", md: "61px" },
                                             cursor: "pointer",
                                             backgroundColor:
                                                 option.duration === selectedDuration?.duration
@@ -217,11 +202,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                         }}
                                     >
                                         <Typography
-                                            sx={{
+                                            sx={{ fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color:
                                                     option.duration === selectedDuration?.duration
                                                         ? highlightColor === "#005BAC"
-                                                            ? "#C1C1C1"
+                                                            ? "white"
                                                             : "#585858"
                                                         : theme.palette.mode === "dark"
                                                             ? "#C1C1C1"
@@ -231,11 +216,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                             {option.duration}
                                         </Typography>
                                         <Typography
-                                            sx={{
+                                            sx={{fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color:
                                                     option.duration === selectedDuration?.duration
                                                         ? highlightColor === "#005BAC"
-                                                            ? "#C1C1C1"
+                                                            ? "white"
                                                             : "#585858"
                                                         : theme.palette.mode === "dark"
                                                             ? "#C1C1C1"
@@ -286,7 +271,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                             display: "flex",
                                             justifyContent: "space-between",
                                             padding: "1rem",
-                                            mx: { xs: "24px", md: "61px" },
+                                            // mx: { xs: "24px", md: "61px" },
                                             borderRadius: "12px",
                                             my: "8px",
                                             cursor: "pointer",
@@ -301,10 +286,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     >
                                         <Typography
                                             sx={{
+                                                fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color:
                                                     option.frequency === selectedFrequency?.frequency
                                                         ? highlightColor === "#005BAC"
-                                                            ? "#C1C1C1"
+                                                            ? "white"
                                                             : "#585858"
                                                         : theme.palette.mode === "dark"
                                                             ? "#C1C1C1"
@@ -315,10 +301,11 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                         </Typography>
                                         <Typography
                                             sx={{
+                                                fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color:
                                                     option.frequency === selectedFrequency?.frequency
                                                         ? highlightColor === "#005BAC"
-                                                            ? "#C1C1C1"
+                                                            ? "white"
                                                             : "#585858"
                                                         : theme.palette.mode === "dark"
                                                             ? "#C1C1C1"
@@ -376,7 +363,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                             display: "flex",
                                             justifyContent: "space-between",
                                             padding: "1rem",
-                                            mx: { xs: "24px", md: "61px" },
+                                            // mx: { xs: "24px", md: "61px" },
                                             borderRadius: "12px",
                                             my: "8px",
                                             cursor: "pointer",
@@ -390,9 +377,10 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     >
                                         <Typography
                                             sx={{
+                                                fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color: selectedAdditionalOptions.includes(option.name)
                                                     ? highlightColor === "#005BAC"
-                                                        ? "#C1C1C1"
+                                                        ? "white"
                                                         : "#585858"
                                                     : theme.palette.mode === "dark"
                                                         ? "#C1C1C1"
@@ -403,9 +391,10 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                         </Typography>
                                         <Typography
                                             sx={{
+                                                fontSize:{xs:"1rem",sm:"1.4rem"},
                                                 color: selectedAdditionalOptions.includes(option.name)
                                                     ? highlightColor === "#005BAC"
-                                                        ? "#C1C1C1"
+                                                        ? "white"
                                                         : "#585858"
                                                     : theme.palette.mode === "dark"
                                                         ? "#C1C1C1"

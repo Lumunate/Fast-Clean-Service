@@ -16,8 +16,11 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
+import { englishPackages } from '../../../lib/enData.js'; 
+import { useLocale } from 'next-intl';
 
 const AutocarePackages = () => {
+  const locale = useLocale();
   const { theme } = useTheme();
   const [selectedPackage, setSelectedPackage] = useState(null);
   const form = useMultiStepForm();
@@ -73,19 +76,27 @@ const AutocarePackages = () => {
   }
 
   const packageTypeName = form.formData?.packageType?.name?.toLocaleLowerCase();
-  const allPackages = packages.packages[packageTypeName];
+  const allPackages =
+  locale === 'en'
+    ?  englishPackages?.[packageTypeName] || []
+    : packages?.packages?.[packageTypeName] || [];
   let displayedPackages = allPackages || [];
 
+  
+console.log(123,allPackages)
   // Apply filtering based on carType
-  if (form.formData.carType === 'Motorbike') {
-   if (packageTypeName !== 'premium' && Array.isArray(allPackages)) {
-      // For 'Motor' and not 'premium', only show 'Exterior' packages
-      displayedPackages = allPackages.filter(
-        (pkg) => pkg.name.toLowerCase() === 'exterior'
-      );
+ const exteriorName = locale === 'en' ? 'Exterior' : 'Exterieur';
+
+if (form.formData.carType === 'Motorbike') {
+  if (packageTypeName !== 'premium' && Array.isArray(allPackages)) {
+    displayedPackages = allPackages.filter(
+      (pkg) =>
+        pkg.name?.toLowerCase() === exteriorName.toLowerCase() &&
+      pkg.vehicleOptions?.Motorbike
+    );
     }
-    // For 'premium', show all packages
-  }
+}
+console.log(321,allPackages)
 
   return (
     <Box
@@ -185,6 +196,7 @@ const AutocarePackagesCard = ({
     <Box
       onClick={onClick}
       sx={{
+        cursor: 'pointer',
         position: 'relative',
         padding: '24px 35px',
         width:"100%",

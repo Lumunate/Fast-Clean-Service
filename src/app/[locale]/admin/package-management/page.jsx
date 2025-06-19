@@ -14,6 +14,8 @@ import PackageTabs from "../../../../components/Admin/packageTab/PackageTabs";
 import PackageList from "../../../../components/Admin/packageTab/PackageList";
 import EditPackageModal from "../../../../components/Admin/packageTab/EditPackageModal";
 import { Loader } from "../../../../components/mui/Loader";
+import { useLocale } from "next-intl";
+import { englishPackages } from "../../../../lib/enData";
 
 // Import styled components
 import {
@@ -31,6 +33,7 @@ const Page = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isSubscription, setIsSubscription] = useState(false);
   const { openSnackbar } = useSnackbar();
+  const locale = useLocale();
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -147,7 +150,9 @@ const Page = () => {
               <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
                 {vehicle}
               </Typography>
-              <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
+
+              <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+
                 €{vehicleOptions[vehicle].basePrice.toFixed(2)}
                 {vehicleOptions[vehicle].additionalCost !== 0 && (
                   <span>
@@ -190,7 +195,9 @@ const Page = () => {
                 <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
                   {item.name}
                 </Typography>
-                <Typography sx={{ fontWeight: 600, fontSize: "1.6rem" }}>
+
+                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+
                   {typeof item.additionalCost === "number"
                     ? `€${item.additionalCost}`
                     : item.additionalCost}
@@ -236,8 +243,10 @@ const Page = () => {
     return <Loader />;
   }
 
-  const autocarePackages = packages?.packages;
-  console.log("autocarePackages>>>>>>>>:", autocarePackages);
+
+  const autocarePackages =
+    locale === "en" ? englishPackages : packages?.packages;
+
 
   const handleSubmit = async () => {
     try {
