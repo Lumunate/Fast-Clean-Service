@@ -654,6 +654,1215 @@
     "duration":"Duration",
     "choice":"Peoples Choice",
     "economy":"Economy",
+    "description":["Complete exterior care for your vehicle","Premium exterior care for your vehicle","Ultimate showroom quality care for your vehicle"],
+    "packages":{
+      "standard": [
+    {
+      "id": "autocare-standard-exterior",
+      "name": "Exterieur",
+      "description": "this is english",
+      "packages": [
+        "Exterieur Stoomreinigen",
+        "Bandenzwarten",
+        "Ramen en spiegels reinigen",
+        "Spuitwax aanbrengen",
+        "Velgenreiniging"
+      ],
+      "totalDuration": "60 min",
+      "duration": "± 60 min.",
+      "price": "€ 99.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 74.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "SUV": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Station Wagon": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "MPV": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Coupé": {
+          "basePrice": 74.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 74.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Pick-up Truck": {
+          "basePrice": 74.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Motorbike": {
+          "basePrice": 64.95,
+          "additionalCost": 0,
+          "additionalTime": 0,
+          "notes": "exterior only"
+        }
+      },
+      "additionalOptions": {
+        "interior": [
+          {
+            "name": "Kinderstoel dieptereinigen (Per stoel)",
+            "additionalCost": 25,
+            "options": [
+              "Deep cleaning for child seats",
+              "Removes stains and dirt"
+            ],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfc6"
+            }
+          },
+          {
+            "name": "Ozonbehandeling",
+            "additionalCost": 125,
+            "options": [
+              "Eliminates odors",
+              "Kills bacteria and germs"
+            ],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfc7"
+            }
+          }
+        ],
+        "exterior": [
+          {
+            "name": "Cabriodak reinigen",
+            "additionalCost": 95,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfc8"
+            }
+          },
+          {
+            "name": "Dorpels en deurranden",
+            "additionalCost": 15,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfc9"
+            }
+          },
+          {
+            "name": "Hars stippen",
+            "additionalCost": 30,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfca"
+            }
+          },
+          {
+            "name": "Kunststofdelen poetsen en voeden",
+            "additionalCost": 30,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfcb"
+            }
+          },
+          {
+            "name": "Mos uit de naden",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfcc"
+            }
+          },
+          {
+            "name": "Motorkap reiniging",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfcd"
+            }
+          },
+          {
+            "name": "Schuif-kanteldak reinigen",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfce"
+            }
+          },
+          {
+            "name": "Polijsten chrome delen",
+            "additionalCost": 85,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfcf"
+            }
+          },
+          {
+            "name": "Polijsten koplampen",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd0"
+            }
+          },
+          {
+            "name": "Claybar behandeling",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd1"
+            }
+          }
+        ],
+        "detailing": [
+          {
+            "name": "Polijsten 1-stap (lichte krasverwijdering)",
+            "additionalCost": 225,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd3"
+            }
+          },
+          {
+            "name": "Polijsten 2-stap (medium krasverwijdering)",
+            "additionalCost": 350,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd4"
+            }
+          },
+          {
+            "name": "Polijsten 3-stap (maximale correctie)",
+            "additionalCost": 475,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd5"
+            }
+          },
+          {
+            "name": "Lakverzegeling",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd6"
+            }
+          },
+          {
+            "name": "Ramen coaten (voorzijde)",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd7"
+            }
+          },
+          {
+            "name": "Ramen coaten (achterzijde)",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd8"
+            }
+          },
+          {
+            "name": "Keramische coating",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685293f53f8fac5c60babfd9"
+            }
+          }
+        ],
+        "_id": {
+          "$oid": "685293f53f8fac5c60babfc5"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "685293f53f8fac5c60babfc4"
+      }
+    },
+    {
+      "id": "autocare-standard-interior",
+      "name": "Interieur",
+      "description": "Complete interieurverzorging voor uw voertuig",
+      "packages": [
+        "Dashboard en vakjes afnemen",
+        "Dorpels en deurranden reinigen",
+        "Matten uitstomen",
+        "Ramen en spiegels reinigen",
+        "Stofzuigen",
+        "Stoomreiniging interieur globaal"
+      ],
+      "totalDuration": "60 min",
+      "duration": "60 min",
+      "price": "€ 119.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 89.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "SUV": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Station Wagon": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "MPV": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Coupé": {
+          "basePrice": 89.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 99.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        },
+        "Pick-up Truck": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 10
+        }
+      },
+      "additionalOptions": {
+        "interior": [
+          {
+            "name": "Braaksel behandeling",
+            "additionalCost": 175,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac398"
+            }
+          },
+          {
+            "name": "Dierenharen verwijderen",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac399"
+            }
+          },
+          {
+            "name": "Geurbehandeling",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39a"
+            }
+          },
+          {
+            "name": "Kinderstoel dieptereinigen (Per stoel)",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39b"
+            }
+          },
+          {
+            "name": "Leerbehandeling",
+            "additionalCost": 85,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39c"
+            }
+          },
+          {
+            "name": "Motorkap reiniging",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39d"
+            }
+          },
+          {
+            "name": "Ozonbehandeling ",
+            "additionalCost": 125,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39e"
+            }
+          },
+          {
+            "name": "Plafond stoomreinigen",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac39f"
+            }
+          },
+          {
+            "name": "Schimmelbehandeling",
+            "additionalCost": 149,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a0"
+            }
+          },
+          {
+            "name": "Vlekken verwijderen bekleding",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a1"
+            }
+          }
+        ],
+        "exterior": [
+          {
+            "name": "Schuif-kanteldak reinigen",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a2"
+            }
+          },
+          {
+            "name": "Motorkap reiniging",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a3"
+            }
+          },
+          {
+            "name": "Polijsten chrome delen",
+            "additionalCost": 85,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a4"
+            }
+          },
+          {
+            "name": "Polijsten koplampen",
+            "additionalCost": 74,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a5"
+            }
+          }
+        ],
+        "detailing": [
+          {
+            "name": "Stoelen waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a6"
+            }
+          },
+          {
+            "name": "Matten waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a7"
+            }
+          },
+          {
+            "name": "Leder Interieur Coaten ",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685295ae3f8fac5c60bac3a8"
+            }
+          }
+        ],
+        "_id": {
+          "$oid": "685295ae3f8fac5c60bac397"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "685295ae3f8fac5c60bac396"
+      }
+    },
+    {
+      "id": "autocare-standard-complete",
+      "name": "Compleet",
+      "description": "Compleet interieur- en exterieurverzorgingspakket",
+      "packages": [
+        "Alle bovenstaande (Exterieur + Interieur) - diensten, add-ons en detailing toevoegen"
+      ],
+      "totalDuration": "90 min",
+      "duration": "90 min",
+      "price": "€ 179.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 139.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 139.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        },
+        "SUV": {
+          "basePrice": 139.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        },
+        "Station Wagon": {
+          "basePrice": 139.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        },
+        "MPV": {
+          "basePrice": 139.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        },
+        "Coupé": {
+          "basePrice": 139.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 139.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 139.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        },
+        "Pick-up Truck": {
+          "basePrice": 74.95,
+          "additionalCost": 15,
+          "additionalTime": 15
+        }
+      },
+      "additionalOptions": {
+        "interior": [],
+        "exterior": [],
+        "detailing": [],
+        "_id": {
+          "$oid": "684fef56d1c6db045255245e"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "684fef56d1c6db045255245d"
+      }
+    }
+  ],
+  "deluxe": [
+    {
+      "id": "autocare-deluxe-exterior",
+      "name": "Exterieur",
+      "description": "Premium exterieurverzorging voor uw voertuig",
+      "packages": [
+        "Banden zwarten",
+        "Exterieur wassen met shampoo",
+        "Exterieur afspoelen",
+        "Exterieur stoomreinigen",
+        "Handwash",
+        "Kunststofdelen poetsen",
+        "Mos uit de naden",
+        "Hars stippen verwijderen",
+        "Ramen en spiegels reinigen",
+        "Spray wax aanbrengen",
+        "Tankklep reinigen",
+        "Velgenreiniging"
+      ],
+      "totalDuration": "90 min",
+      "duration": "90 min",
+      "price": "€139.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 89.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "SUV": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Station Wagon": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "MPV": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Coupé": {
+          "basePrice": 89.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 89.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Pick-up Truck": {
+          "basePrice": 89.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Motorbike": {
+          "basePrice": 79.95,
+          "additionalCost": 0,
+          "additionalTime": 0,
+          "notes": "exterior only"
+        }
+      },
+      "additionalOptions": {
+        "interior": [
+          {
+            "name": "Kinderstoel dieptereinigen (Per stoel)",
+            "additionalCost": 25,
+            "options": [
+              "Deep cleaning for child seats",
+              "Removes stains and dirt"
+            ],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4a6"
+            }
+          },
+          {
+            "name": "Ozonbehandeling ",
+            "additionalCost": 95,
+            "options": [
+              "Eliminates odors",
+              "Kills bacteria and germs"
+            ],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4a7"
+            }
+          }
+        ],
+        "exterior": [
+          {
+            "name": "Cabriodak reinigen",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4a8"
+            }
+          },
+          {
+            "name": "Schuif-kanteldak reinigen",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4a9"
+            }
+          },
+          {
+            "name": "Dorpels en deurranden",
+            "additionalCost": 15,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4aa"
+            }
+          },
+          {
+            "name": "Motorkap reiniging",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4ab"
+            }
+          },
+          {
+            "name": "Polijsten chrome delen",
+            "additionalCost": 85,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4ac"
+            }
+          },
+          {
+            "name": "Polijsten koplampen",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4ad"
+            }
+          }
+        ],
+        "detailing": [
+          {
+            "name": "Polijsten 1-stap (lichte krasverwijdering)",
+            "additionalCost": 225,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b1"
+            }
+          },
+          {
+            "name": "Polijsten 2-stap (medium krasverwijdering)",
+            "additionalCost": 350,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b2"
+            }
+          },
+          {
+            "name": "Polijsten 3-stap (maximale correctie)",
+            "additionalCost": 475,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b3"
+            }
+          },
+          {
+            "name": "Lakverzegeling",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b4"
+            }
+          },
+          {
+            "name": "Ramen coaten (voorzijde",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b5"
+            }
+          },
+          {
+            "name": "Ramen coaten (achterzijde)",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b6"
+            }
+          },
+          {
+            "name": "Keramische coating",
+            "additionalCost": 750,
+            "options": [],
+            "_id": {
+              "$oid": "685298033f8fac5c60bac4b7"
+            }
+          }
+        ],
+        "_id": {
+          "$oid": "685298033f8fac5c60bac4a5"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "685298033f8fac5c60bac4a4"
+      }
+    },
+    {
+      "id": "autocare-deluxe-interior",
+      "name": "Interieur",
+      "description": "Premium interieurverzorging voor uw voertuig",
+      "packages": [
+        "Dashboard en vakjes afnemen",
+        "Detailing interieur",
+        "Dorpels en deurranden reinigen",
+        "Kunststofdelen poetsen",
+        "Leerbehandeling",
+        "Matten stripe",
+        "Matten uitstomen",
+        "Ramen en spiegels reinigen",
+        "Shamporellen van de bekleding",
+        "Stofzuigen",
+        "Stoomreiniging intensief interieur",
+        "Vlekken verwijderen uit de bekleding"
+      ],
+      "totalDuration": "90 min",
+      "duration": "90 min",
+      "price": "€199.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 149.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 149.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "SUV": {
+          "basePrice": 144.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Station Wagon": {
+          "basePrice": 149.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "MPV": {
+          "basePrice": 149.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Coupé": {
+          "basePrice": 149.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 149.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 149.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        },
+        "Pick-up Truck": {
+          "basePrice": 149.95,
+          "additionalCost": 10,
+          "additionalTime": 0
+        }
+      },
+      "additionalOptions": {
+        "interior": [
+          {
+            "name": "Geurbehandeling ",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac90c"
+            }
+          },
+          {
+            "name": "Dierenharen verwijderen",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac90d"
+            }
+          },
+          {
+            "name": "Ozonbehandeling",
+            "additionalCost": 125,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac90e"
+            }
+          },
+          {
+            "name": "Plafond stoomreinigen",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac90f"
+            }
+          },
+          {
+            "name": "Schimmelbehandeling",
+            "additionalCost": 149,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac910"
+            }
+          }
+        ],
+        "exterior": [
+          {
+            "name": "Schuif-kanteldak reinigen",
+            "additionalCost": 25,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac916"
+            }
+          },
+          {
+            "name": "Motorkap reiniging ",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac917"
+            }
+          },
+          {
+            "name": "Polijsten chrome delen",
+            "additionalCost": 85,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac918"
+            }
+          },
+          {
+            "name": "Polijsten koplampen",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac919"
+            }
+          }
+        ],
+        "detailing": [
+          {
+            "name": "Stoelen waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac91a"
+            }
+          },
+          {
+            "name": "Matten waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac91b"
+            }
+          },
+          {
+            "name": "Leder Interieur Coaten",
+            "additionalCost": 250,
+            "options": [],
+            "_id": {
+              "$oid": "68529ac33f8fac5c60bac91c"
+            }
+          }
+        ],
+        "_id": {
+          "$oid": "68529ac33f8fac5c60bac90b"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "68529ac33f8fac5c60bac90a"
+      }
+    },
+    {
+      "id": "autocare-deluxe-complete",
+      "name": "Compleet",
+      "description": "Premium compleet zorgpakket",
+      "packages": [
+        "Alle bovenstaande (Exterieur + Interieur) - diensten, add-ons en detailing toevoegen"
+      ],
+      "totalDuration": "150 min",
+      "duration": "150 min",
+      "price": "€299.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 189.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 189.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "SUV": {
+          "basePrice": 189.95,
+          "additionalCost": 15,
+          "additionalTime": 0
+        },
+        "Station Wagon": {
+          "basePrice": 189.95,
+          "additionalCost": 15,
+          "additionalTime": 0
+        },
+        "MPV": {
+          "basePrice": 189.95,
+          "additionalCost": 15,
+          "additionalTime": 0
+        },
+        "Coupé": {
+          "basePrice": 189.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 189.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 189.95,
+          "additionalCost": 15,
+          "additionalTime": 0
+        },
+        "Pick-up Truck": {
+          "basePrice": 189.95,
+          "additionalCost": 15,
+          "additionalTime": 0
+        }
+      },
+      "additionalOptions": {
+        "interior": [],
+        "exterior": [],
+        "_id": {
+          "$oid": "678fbf250c8e6e5690126845"
+        },
+        "detailing": []
+      },
+      "_id": {
+        "$oid": "678fbf250c8e6e5690126844"
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": []
+    }
+  ],
+  "premium": [
+    {
+      "id": "autocare-premium-showroom",
+      "name": "Showroom Package",
+      "description": "Ultieme showroomkwaliteit voor uw voertuig",
+      "packages": [
+        "Banden zwarten",
+        "Dashboard en vakjes afnemen",
+        "Detailing interieur en exterieur",
+        "Dierenharen verwijderen",
+        "Dorpels en deurranden reinigen",
+        "Exterieur wassen met shampoo",
+        "Exterieur afspoelen",
+        "Exterieur stoomreinigen",
+        "Geurbehandeling",
+        "Handwash",
+        "Hars stippen",
+        "Leerbehandeling",
+        "Matten stripe",
+        "Matten uitstomen",
+        "Mos uit de naden",
+        "Motorkap reiniging",
+        "Plafond stoomreinigen",
+        "Polijsten chromendelen",
+        "Polijsten geheel voertuig (1-stap)",
+        "Polijsten koplampen",
+        "Ramen en spiegels reinigen",
+        "Schuif-kanteldak reinigen",
+        "Sealer lak aanbrengen (6 maanden bescherming)",
+        "Shamporellen van de bekleding",
+        "Spray wax aanbrengen",
+        "Stofzuigen",
+        "Stoomreiniging intensief interieur",
+        "Tankklep reinigen",
+        "Velgenreiniging",
+        "Vlekken verwijderen uit de bekleding",
+        "Wielkasten reinigen"
+      ],
+      "totalDuration": "240 min",
+      "duration": "240 min",
+      "price": "€549.95",
+      "vehicleOptions": {
+        "Hatchback": {
+          "basePrice": 429.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Sedan": {
+          "basePrice": 429.95,
+          "additionalCost": 45,
+          "additionalTime": 30
+        },
+        "SUV": {
+          "basePrice": 429.95,
+          "additionalCost": 45,
+          "additionalTime": 30
+        },
+        "Station Wagon": {
+          "basePrice": 429.95,
+          "additionalCost": 45,
+          "additionalTime": 30
+        },
+        "MPV": {
+          "basePrice": 429.95,
+          "additionalCost": 45,
+          "additionalTime": 30
+        },
+        "Coupé": {
+          "basePrice": 429.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Convertible": {
+          "basePrice": 429.95,
+          "additionalCost": 0,
+          "additionalTime": 0
+        },
+        "Van": {
+          "basePrice": 429.95,
+          "additionalCost": 45,
+          "additionalTime": 30
+        }
+      },
+      "additionalOptions": {
+        "interior": [
+          {
+            "name": "Braaksel behandeling",
+            "additionalCost": 175,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca3a"
+            }
+          },
+          {
+            "name": "Ozonbehandeling",
+            "additionalCost": 125,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca3b"
+            }
+          },
+          {
+            "name": "Schimmelbehandeling ",
+            "additionalCost": 149,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca3c"
+            }
+          }
+        ],
+        "exterior": [
+          {
+            "name": "Cabriodak reinigen",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca44"
+            }
+          },
+          {
+            "name": "Claybar behandeling (lakverontreinigingen verwijderen)",
+            "additionalCost": 75,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca45"
+            }
+          }
+        ],
+        "detailing": [
+          {
+            "name": "Polijsten extra stap (medium krasverwijdering) ",
+            "additionalCost": 125,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca4d"
+            }
+          },
+          {
+            "name": "Polijsten extra stap (maximale correctie) ",
+            "additionalCost": 125,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca4e"
+            }
+          },
+          {
+            "name": "Ramen coaten (voorzijde)",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca4f"
+            }
+          },
+          {
+            "name": "Ramen coaten (achterzijde)",
+            "additionalCost": 150,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca50"
+            }
+          },
+          {
+            "name": "Stoelen waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca51"
+            }
+          },
+          {
+            "name": "Matten waterafstotend impregneren",
+            "additionalCost": 99,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca52"
+            }
+          },
+          {
+            "name": "Leder Interieur Coaten",
+            "additionalCost": 250,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca53"
+            }
+          },
+          {
+            "name": "Keramische coating",
+            "additionalCost": 750,
+            "options": [],
+            "_id": {
+              "$oid": "68529d5a3f8fac5c60baca54"
+            }
+          }
+        ],
+        "_id": {
+          "$oid": "68529d5a3f8fac5c60baca39"
+        }
+      },
+      "durationOptions": [],
+      "cleaningFrequencyOptions": [],
+      "_id": {
+        "$oid": "68529d5a3f8fac5c60baca38"
+      }
+    }
+  ]
+    },
     "standard": [
       {
         "id": "autocare-standard-exterior",

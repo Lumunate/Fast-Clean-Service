@@ -14,6 +14,8 @@ import PackageTabs from "../../../../components/Admin/packageTab/PackageTabs";
 import PackageList from "../../../../components/Admin/packageTab/PackageList";
 import EditPackageModal from "../../../../components/Admin/packageTab/EditPackageModal";
 import { Loader } from "../../../../components/mui/Loader";
+import { useLocale } from "next-intl";
+import { englishPackages } from "../../../../lib/enData";
 
 // Import styled components
 import {
@@ -31,6 +33,7 @@ const Page = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isSubscription, setIsSubscription] = useState(false);
   const { openSnackbar } = useSnackbar();
+  const locale = useLocale();
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -236,8 +239,8 @@ const Page = () => {
     return <Loader />;
   }
 
-  const autocarePackages = packages?.packages;
-  console.log("autocarePackages>>>>>>>>:", autocarePackages);
+  const autocarePackages =
+    locale === "en" ? englishPackages : packages?.packages;
 
   const handleSubmit = async () => {
     try {

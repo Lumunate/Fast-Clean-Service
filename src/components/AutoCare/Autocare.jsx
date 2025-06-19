@@ -18,12 +18,13 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import RadialCircle from "../Decorative/RadialCircle";
 import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import { englishPackages } from "../../lib/enData.js";
 
 // ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 // import Preloader from "../Preloader";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { fontSize, fontWeight } from "@mui/system";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
@@ -128,6 +129,7 @@ const ModdedCard = ({ card, color }) => {
 const AutoCare = () => {
   const { theme } = useTheme();
   const t = useTranslations("anywhere_autocare");
+  const locale = useLocale();
 
   // API fetch hook
   const { packages, loading, error, fetchPackages } = useAutocarePackages();
@@ -216,36 +218,11 @@ const AutoCare = () => {
     }
   };
 
-  // If still loading or error
-//   if (loading) {
-//     return (
-//       <Box
-//         sx={{
-//           marginTop: "15rem",
-//           color: theme.palette.mode === "dark" ? "white" : "black",
-//           textAlign: "center",
-//         }}
-//       >
-//         <Preloader />
-//       </Box>
-//     );
-//   }
-//   if (error) {
-//     return (
-//       <Box
-//         sx={{
-//           marginTop: "15rem",
-//           color: theme.palette.mode === "dark" ? "white" : "black",
-//           textAlign: "center",
-//         }}
-//       >
-//         Error: {error}
-//       </Box>
-//     );
-//   }
-
   // Grab the array for selected tab: standard, deluxe, or premium
-  const allPackages = packages?.packages?.[selectedTab.toLowerCase()] || [];
+ const allPackages =
+  locale === "en"
+    ? englishPackages?.[selectedTab.toLowerCase()] || []
+    : packages?.packages?.[selectedTab.toLowerCase()] || [];
 
   // For "From: ___" and "Duration: ___" on the front side
   const firstPkg = allPackages[0];
@@ -1075,7 +1052,7 @@ const AutoCare = () => {
                 "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
             }}
           >
-            {allPackages.map((pkg, index) => (
+            {allPackages?.map((pkg, index) => (
               <Card key={pkg?.id || index} color={color}>
                 <div className="style style--1" />
                 <CardHeader color={color}>
@@ -1164,7 +1141,7 @@ const AutoCare = () => {
                   {/* </Link>  */}
                   <CardButton
                     onClick={() => handleSubCatChange(pkg?.name)}
-                    disabled= {pkg?.name === "Compleet"}
+                    disabled= {pkg?.name === "Compleet" || pkg?.name === "Complete"}
                     sx={{
                       backgroundColor: subCat === pkg?.name ? color : "",
                       color: "black !important",
