@@ -254,7 +254,7 @@ export const FormProvider = ({ children }) => {
           message: formData.bookingMessage,
           serviceName: formData.selectedPackageType,
           packageType: formData.packageType.name,
-          packageName: formData.selectedPackage.name,
+          packageName: formData.selectedPackage.id,
           appointmentTimestamp: formData.selectedTime,
           vehicleDetails: formData.vehicleDetails,
           vehicleType: formData.carType,
