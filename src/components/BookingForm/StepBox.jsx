@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 
 const StepBox = ({ currentStep, stepIndex, children, transStyles, packageTypeName,  carType  }) => {
 
-    const value = ( window.innerWidth > 389 ? "-7rem" : "0rem")
-    const forSummery = ( window.innerWidth > 389 ? "-7rem" : "-8rem")
+    const value = ( window.innerWidth > 400 ? "-7rem" : "1rem")
+    const forSummery = ( window.innerWidth > 400 ? "-7rem" : "-10rem")
 
 
     const getCustomMargin = () => {

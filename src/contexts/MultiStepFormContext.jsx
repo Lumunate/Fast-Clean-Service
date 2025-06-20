@@ -71,7 +71,7 @@ export const FormProvider = ({ children }) => {
     if (formData.selectedPackageType === 'Subscription Plans') {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
-          const _addon = pkg.additionalOptions.find((a) => a.name === addon);
+          const _addon = pkg.additionalOptions.find((a) => a._id === addon);
           const addonPrice = _addon?.additionalCost;
           const addonDuration = _addon?.additionalTime;
 
@@ -85,9 +85,9 @@ export const FormProvider = ({ children }) => {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
           const addonPrice =
-              pkg.additionalOptions?.interior?.find((a) => a.name === addon)
+              pkg.additionalOptions?.interior?.find((a) => a._id === addon)
                   ?.additionalCost ||
-              pkg.additionalOptions?.exterior?.find((a) => a.name === addon)
+              pkg.additionalOptions?.exterior?.find((a) => a._id === addon)
                   ?.additionalCost ||
               0;
 
@@ -97,7 +97,7 @@ export const FormProvider = ({ children }) => {
       if (formData.selectedDetailingOptions?.length > 0) {
         Object.values(formData.selectedDetailingOptions).forEach((addon) => {
           const addonPrice = pkg.additionalOptions?.detailing?.find(
-              (a) => a.name === addon
+              (a) => a._id === addon
           )?.additionalCost;
 
           if (addonPrice === 'On Request') {

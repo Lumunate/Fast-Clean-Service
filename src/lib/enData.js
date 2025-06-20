@@ -77,9 +77,7 @@ export const englishPackages = {
               "Deep cleaning for child seats",
               "Removes stains and dirt"
             ],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfc6"
-            }
+            "_id": "685293f53f8fac5c60babfc6"
           },
           {
             "name": "Ozone treatment",
@@ -88,9 +86,8 @@ export const englishPackages = {
               "Eliminates odors",
               "Kills bacteria and germs"
             ],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfc7"
-            }
+            "_id":  "685293f53f8fac5c60babfc7"
+            
           }
         ],
         "exterior": [
@@ -98,81 +95,71 @@ export const englishPackages = {
             "name": "Convertible top cleaning",
             "additionalCost": 95,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfc8"
-            }
+            "_id": "685293f53f8fac5c60babfc8",
+            
           },
           {
             "name": "Sills and door edges",
             "additionalCost": 15,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfc9"
-            }
+            "_id": "685293f53f8fac5c60babfc9"
+            
           },
           {
             "name": "Resin dots",
             "additionalCost": 30,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfca"
-            }
+            "_id": "685293f53f8fac5c60babfca"
+            
           },
           {
             "name": "Polish and nourish plastic parts",
             "additionalCost": 30,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfcb"
-            }
+            "_id": "685293f53f8fac5c60babfcb"
+            
           },
           {
             "name": "Moss from seams",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfcc"
-            }
+            "_id":  "685293f53f8fac5c60babfcc"
+            
           },
           {
             "name": "Engine compartment cleaning",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfcd"
-            }
+            "_id": "685293f53f8fac5c60babfcd"
+            
           },
           {
             "name": "Clean sliding-tilting roof",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfce"
-            }
+            "_id": "685293f53f8fac5c60babfce"
+            
           },
           {
             "name": "Polish chrome parts",
             "additionalCost": 85,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfcf"
-            }
+            "_id":  "685293f53f8fac5c60babfcf"
+            
           },
           {
             "name": "Polish headlights",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd0"
-            }
+            "_id": "685293f53f8fac5c60babfd0"
+            
           },
           {
             "name": "Claybar treatment",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd1"
-            }
+            "_id":  "685293f53f8fac5c60babfd1"
+            
           }
         ],
         "detailing": [
@@ -180,68 +167,59 @@ export const englishPackages = {
             "name": "Polishing 1-step (light scratch removal)",
             "additionalCost": 225,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd3"
-            }
+            "_id": "685293f53f8fac5c60babfd3"
+            
           },
           {
             "name": "Polishing 2-step (medium scratch removal)",
             "additionalCost": 350,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd4"
-            }
+            "_id":  "685293f53f8fac5c60babfd4"
+            
           },
           {
             "name": "Polishing 3-step (maximum correction)",
             "additionalCost": 475,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd5"
-            }
+            "_id": "685293f53f8fac5c60babfd5"
+            
           },
           {
             "name": "Paint sealant",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd6"
-            }
+            "_id": "685293f53f8fac5c60babfd6"
+            
           },
           {
             "name": "Coat windows (front)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd7"
-            }
+            "_id":  "685293f53f8fac5c60babfd7"
+            
           },
           {
             "name": "Coat windows (rear)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd8"
-            }
+            "_id": "685293f53f8fac5c60babfd8"
+            
           },
           {
             "name": "Ceramic coating",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685293f53f8fac5c60babfd9"
-            }
+            "_id": "685293f53f8fac5c60babfd9"
+            
           }
         ],
-        "_id": {
-          "$oid": "685293f53f8fac5c60babfc5"
-        }
+        "_id": "685293f53f8fac5c60babfc5"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "685293f53f8fac5c60babfc4"
-      }
+      "_id":  "685293f53f8fac5c60babfc4"
+      
     },
     {
       "id": "autocare-standard-interior",
@@ -311,81 +289,70 @@ export const englishPackages = {
             "name": "Vomit treatment",
             "additionalCost": 175,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac398"
-            }
+            "_id":  "685295ae3f8fac5c60bac398"
+            
           },
           {
             "name": "Pet hair removal",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac399"
-            }
+            "_id":  "685295ae3f8fac5c60bac399"
+            
           },
           {
             "name": "Odor treatment",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39a"
-            }
+            "_id":  "685295ae3f8fac5c60bac39a"
+            
           },
           {
             "name": "Deep clean child seat (Per seat)",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39b"
-            }
+            "_id": "685295ae3f8fac5c60bac39b"
+            
           },
           {
             "name": "Leather treatment",
             "additionalCost": 85,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39c"
-            }
+            "_id":  "685295ae3f8fac5c60bac39c"
+            
           },
           {
             "name": "Engine compartment cleaning",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39d"
-            }
+            "_id":  "685295ae3f8fac5c60bac39d"
+            
           },
           {
             "name": "Ozone treatment ",
             "additionalCost": 125,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39e"
-            }
+            "_id":  "685295ae3f8fac5c60bac39e"
+            
           },
           {
             "name": "Steam clean ceiling",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac39f"
-            }
+            "_id": "685295ae3f8fac5c60bac39f"
+            
           },
           {
             "name": "Mold treatment",
             "additionalCost": 149,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a0"
-            }
+            "_id": "685295ae3f8fac5c60bac3a0"
           },
           {
             "name": "Stain removal upholstery",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a1"
-            }
+            "_id":  "685295ae3f8fac5c60bac3a1"
+            
           }
         ],
         "exterior": [
@@ -393,33 +360,29 @@ export const englishPackages = {
             "name": "Clean sliding-tilting roof",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a2"
-            }
+            "_id":  "685295ae3f8fac5c60bac3a2"
+            
           },
           {
             "name": "Engine compartment cleaning ",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a3"
-            }
+            "_id":  "685295ae3f8fac5c60bac3a3"
+            
           },
           {
             "name": "Polish chrome parts",
             "additionalCost": 85,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a4"
-            }
+            "_id": "685295ae3f8fac5c60bac3a4"
+            
           },
           {
             "name": "Polish headlights",
             "additionalCost": 74,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a5"
-            }
+            "_id": "685295ae3f8fac5c60bac3a5"
+            
           }
         ],
         "detailing": [
@@ -427,36 +390,31 @@ export const englishPackages = {
             "name": "Water repellent impregnate seats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a6"
-            }
+            "_id": "685295ae3f8fac5c60bac3a6"
+            
           },
           {
             "name": "Water repellent impregnate mats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a7"
-            }
+            "_id":  "685295ae3f8fac5c60bac3a7"
+            
           },
           {
             "name": "Coat Leather Interior",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685295ae3f8fac5c60bac3a8"
-            }
+            "_id":  "685295ae3f8fac5c60bac3a8"
+            
           }
         ],
-        "_id": {
-          "$oid": "685295ae3f8fac5c60bac397"
-        }
+        "_id":"685295ae3f8fac5c60bac397"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "685295ae3f8fac5c60bac396"
-      }
+      "_id": "685295ae3f8fac5c60bac396"
+      
     },
     {
       "id": "autocare-standard-complete",
@@ -519,15 +477,13 @@ export const englishPackages = {
         "interior": [],
         "exterior": [],
         "detailing": [],
-        "_id": {
-          "$oid": "684fef56d1c6db045255245e"
-        }
+        "_id": "684fef56d1c6db045255245e"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "684fef56d1c6db045255245d"
-      }
+      "_id": "684fef56d1c6db045255245d"
+      
     }
   ],
   "deluxe": [
@@ -614,9 +570,8 @@ export const englishPackages = {
               "Deep cleaning for child seats",
               "Removes stains and dirt"
             ],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4a6"
-            }
+            "_id":"685298033f8fac5c60bac4a6"
+            
           },
           {
             "name": "Ozone treatment ",
@@ -625,9 +580,8 @@ export const englishPackages = {
               "Eliminates odors",
               "Kills bacteria and germs"
             ],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4a7"
-            }
+            "_id": "685298033f8fac5c60bac4a7"
+            
           }
         ],
         "exterior": [
@@ -635,49 +589,43 @@ export const englishPackages = {
             "name": "Convertible top cleaning",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4a8"
-            }
+            "_id": "685298033f8fac5c60bac4a8"
+            
           },
           {
             "name": "Clean sliding-tilting roof",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4a9"
-            }
+            "_id": "685298033f8fac5c60bac4a9"
+            
           },
           {
             "name": "Sills and door edges",
             "additionalCost": 15,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4aa"
-            }
+            "_id":  "685298033f8fac5c60bac4aa"
+            
           },
           {
             "name": "Engine compartment cleaning",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4ab"
-            }
+            "_id":  "685298033f8fac5c60bac4ab"
+            
           },
           {
             "name": "Polish chrome parts",
             "additionalCost": 85,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4ac"
-            }
+            "_id":  "685298033f8fac5c60bac4ac"
+            
           },
           {
             "name": "Polish headlights",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4ad"
-            }
+            "_id": "685298033f8fac5c60bac4ad"
+            
           }
         ],
         "detailing": [
@@ -685,68 +633,59 @@ export const englishPackages = {
             "name": "Polishing 1-step (light scratch removal)",
             "additionalCost": 225,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b1"
-            }
+            "_id":  "685298033f8fac5c60bac4b1"
+            
           },
           {
             "name": "Polishing 2-step (medium scratch removal)",
             "additionalCost": 350,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b2"
-            }
+            "_id":  "685298033f8fac5c60bac4b2"
+            
           },
           {
             "name": "Polishing 3-step (maximum correction)",
             "additionalCost": 475,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b3"
-            }
+            "_id":  "685298033f8fac5c60bac4b3"
+            
           },
           {
             "name": "Paint sealant",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b4"
-            }
+            "_id":  "685298033f8fac5c60bac4b4"
+            
           },
           {
             "name": "Coat windows (front)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b5"
-            }
+            "_id":  "685298033f8fac5c60bac4b5"
+            
           },
           {
             "name": "Coat windows (rear)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b6"
-            }
+            "_id":  "685298033f8fac5c60bac4b6"
+            
           },
           {
             "name": "Ceramic coating",
             "additionalCost": 750,
             "options": [],
-            "_id": {
-              "$oid": "685298033f8fac5c60bac4b7"
-            }
+            "_id": "685298033f8fac5c60bac4b7"
+            
           }
         ],
-        "_id": {
-          "$oid": "685298033f8fac5c60bac4a5"
-        }
+        "_id": "685298033f8fac5c60bac4a5"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "685298033f8fac5c60bac4a4"
-      }
+      "_id": "685298033f8fac5c60bac4a4"
+      
     },
     {
       "id": "autocare-deluxe-interior",
@@ -822,41 +761,36 @@ export const englishPackages = {
             "name": "Odor treatment ",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac90c"
-            }
+            "_id": "68529ac33f8fac5c60bac90c"
+            
           },
           {
             "name": "Pet hair removal",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac90d"
-            }
+            "_id": "68529ac33f8fac5c60bac90d"
+            
           },
           {
             "name": "Ozone treatment",
             "additionalCost": 125,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac90e"
-            }
+            "_id":  "68529ac33f8fac5c60bac90e"
+            
           },
           {
             "name": "Steam clean ceiling",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac90f"
-            }
+            "_id": "68529ac33f8fac5c60bac90f"
+            
           },
           {
             "name": "Mold treatment",
             "additionalCost": 149,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac910"
-            }
+            "_id": "68529ac33f8fac5c60bac910"
+            
           }
         ],
         "exterior": [
@@ -864,33 +798,29 @@ export const englishPackages = {
             "name": "Clean sliding-tilting roof",
             "additionalCost": 25,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac916"
-            }
+            "_id": "68529ac33f8fac5c60bac916"
+            
           },
           {
             "name": "Engine compartment cleaning",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac917"
-            }
+            "_id":  "68529ac33f8fac5c60bac917"
+            
           },
           {
             "name": "Polish chrome parts",
             "additionalCost": 85,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac918"
-            }
+            "_id":"68529ac33f8fac5c60bac918"
+            
           },
           {
             "name": "Polish headlights",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac919"
-            }
+            "_id":  "68529ac33f8fac5c60bac919"
+            
           }
         ],
         "detailing": [
@@ -898,36 +828,31 @@ export const englishPackages = {
             "name": "Water repellent impregnate seats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac91a"
-            }
+            "_id": "68529ac33f8fac5c60bac91a"
+            
           },
           {
             "name": "Water repellent impregnate mats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac91b"
-            }
+            "_id":  "68529ac33f8fac5c60bac91b"
+            
           },
           {
             "name": "Coat Leather Interior",
             "additionalCost": 250,
             "options": [],
-            "_id": {
-              "$oid": "68529ac33f8fac5c60bac91c"
-            }
+            "_id":  "68529ac33f8fac5c60bac91c"
+            
           }
         ],
-        "_id": {
-          "$oid": "68529ac33f8fac5c60bac90b"
-        }
+        "_id": "68529ac33f8fac5c60bac90b"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "68529ac33f8fac5c60bac90a"
-      }
+      "_id":  "68529ac33f8fac5c60bac90a"
+      
     },
     {
       "id": "autocare-deluxe-complete",
@@ -989,14 +914,12 @@ export const englishPackages = {
       "additionalOptions": {
         "interior": [],
         "exterior": [],
-        "_id": {
-          "$oid": "678fbf250c8e6e5690126845"
-        },
+        "_id": "678fbf250c8e6e5690126845"
+        ,
         "detailing": []
       },
-      "_id": {
-        "$oid": "678fbf250c8e6e5690126844"
-      },
+      "_id": "678fbf250c8e6e5690126844"
+      ,
       "durationOptions": [],
       "cleaningFrequencyOptions": []
     }
@@ -1090,25 +1013,22 @@ export const englishPackages = {
             "name": "Vomit treatment",
             "additionalCost": 175,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca3a"
-            }
+            "_id": "68529d5a3f8fac5c60baca3a"
+            
           },
           {
             "name": "Ozone treatment",
             "additionalCost": 125,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca3b"
-            }
+            "_id": "68529d5a3f8fac5c60baca3b"
+            
           },
           {
             "name": "Mold treatment ",
             "additionalCost": 149,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca3c"
-            }
+            "_id":  "68529d5a3f8fac5c60baca3c"
+            
           }
         ],
         "exterior": [
@@ -1116,17 +1036,15 @@ export const englishPackages = {
             "name": "Convertible top cleaning",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca44"
-            }
+            "_id": "68529d5a3f8fac5c60baca44"
+            
           },
           {
             "name": "Claybar treatment (remove paint contaminants)",
             "additionalCost": 75,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca45"
-            }
+            "_id": "68529d5a3f8fac5c60baca45"
+            
           }
         ],
         "detailing": [
@@ -1134,76 +1052,66 @@ export const englishPackages = {
             "name": "Polishing extra step (medium scratch removal)",
             "additionalCost": 125,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca4d"
-            }
+            "_id":  "68529d5a3f8fac5c60baca4d"
+            
           },
           {
             "name": "Polishing extra step (maximum correction)",
             "additionalCost": 125,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca4e"
-            }
+            "_id": "68529d5a3f8fac5c60baca4e"
+            
           },
           {
             "name": "Coat windows (front)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca4f"
-            }
+            "_id":  "68529d5a3f8fac5c60baca4f"
+            
           },
           {
             "name": "Coat windows (rear)",
             "additionalCost": 150,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca50"
-            }
+            "_id":  "68529d5a3f8fac5c60baca50"
+            
           },
           {
             "name": "Water repellent impregnate seats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca51"
-            }
+            "_id": "68529d5a3f8fac5c60baca51"
+            
           },
           {
             "name": "Water repellent impregnate mats",
             "additionalCost": 99,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca52"
-            }
+            "_id": "68529d5a3f8fac5c60baca52"
+            
           },
           {
             "name": "Coat Leather Interior",
             "additionalCost": 250,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca53"
-            }
+            "_id":  "68529d5a3f8fac5c60baca53"
+            
           },
           {
             "name": "Ceramic coating",
             "additionalCost": 750,
             "options": [],
-            "_id": {
-              "$oid": "68529d5a3f8fac5c60baca54"
-            }
+            "_id": "68529d5a3f8fac5c60baca54"
+            
           }
         ],
-        "_id": {
-          "$oid": "68529d5a3f8fac5c60baca39"
-        }
+        "_id":  "68529d5a3f8fac5c60baca39"
+        
       },
       "durationOptions": [],
       "cleaningFrequencyOptions": [],
-      "_id": {
-        "$oid": "68529d5a3f8fac5c60baca38"
-      }
+      "_id":  "68529d5a3f8fac5c60baca38"
+      
     }
   ]
 };
