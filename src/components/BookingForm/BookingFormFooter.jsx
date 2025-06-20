@@ -262,7 +262,7 @@ const BookingFormFooter = () => {
       <PricingSpacer />
       <PricingTextContainer>
         <PricingText>{t("footer.0")}</PricingText>
-        <PricingText>$ {isNaN(price) ? 0.0 : price.toFixed(2)}</PricingText>
+        <PricingText>€ {isNaN(price) ? 0.0 : price.toFixed(2)}</PricingText>
       </PricingTextContainer>
       <PricingTextContainer sx={{ marginBottom: '3rem' }}>
         <PricingText>{t("footer.1")}</PricingText>

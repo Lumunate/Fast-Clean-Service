@@ -175,7 +175,7 @@ class BookingService {
     if (bookingData.serviceName === "Subscription Plans") {
       if (bookingData.serviceAddons.addons?.length > 0) {
         bookingData.serviceAddons.addons.forEach((addon) => {
-          const _addon = pkg.additionalOptions.find((a) => a.name === addon);
+          const _addon = pkg.additionalOptions.find((a) => a._id === addon);
           const addonPrice = _addon?.additionalCost;
           // const addonDuration = _addon?.additionalTime;
 
@@ -188,8 +188,8 @@ class BookingService {
       if (bookingData.serviceAddons.addons?.length > 0) {
         bookingData.serviceAddons.addons.forEach((addon) => {
           const addonPrice =
-            pkg.additionalOptions.interior.find((a) => a.name === addon)?.additionalCost ||
-            pkg.additionalOptions.exterior.find((a) => a.name === addon)?.additionalCost;
+            pkg.additionalOptions.interior.find((a) => a._id.toString() === addon)?.additionalCost ||
+            pkg.additionalOptions.exterior.find((a) => a._id.toString() === addon)?.additionalCost;
           // const addonDuration =
           // pkg.additionalOptions.interior.find((a) => a.name === addon)?.additionalTime ||
           // pkg.additionalOptions.exterior.find((a) => a.name === addon)?.additionalTime;
@@ -203,9 +203,9 @@ class BookingService {
       // Detailing exists only for autocare and doesn't have extra duration
       if (bookingData.serviceAddons.detailing?.length > 0) {
         bookingData.serviceAddons.detailing.forEach((addon) => {
-          const addonPrice = pkg.additionalOptions.detailing.find((a) => a.name === addon)?.additionalCost;
+          const addonPrice = pkg.additionalOptions.detailing.find((a) => a._id.toString() === addon)?.additionalCost;
 
-          if (!addonPrice) throw new Error("Addon not found");
+          if (!addonPrice) throw new Error("Detailing not found");
           else if (addonPrice === "On Request") return;
 
           price += addonPrice;

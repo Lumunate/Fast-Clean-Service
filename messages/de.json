@@ -2328,14 +2328,14 @@
         "vehicle_types": [
           "Hatchback",
           "Coupé",
-          "Cabriolet",
+          "Convertible",
           "Sedan",
-          "Stationwagen",
+          "Station Wagon",
           "SUV",
           "MPV",
-          "Pick-up",
-          "Bestelwagen",
-          "Motorfiets"
+          "Pick-up Truck",
+          "Van",
+          "Motorbike"
         ]
       },
       {
