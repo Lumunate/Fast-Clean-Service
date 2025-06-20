@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 import useMultiStepForm from '../../../hooks/useMultiStepForm';
 import { useValidation } from '../../../contexts/ValidationContext';
 import Image from 'next/image';
-import bg from '../../../../public/voor1.jpg';
+import bg1 from '../../../../public/1.png';
+import bg2 from '../../../../public/voor1.jpg';
+import bg3 from '../../../../public/2.png';
 import { options } from '../../../app/[locale]/autocare/data';
 import {
   SubscriptionPkgsContainer,
@@ -29,6 +31,7 @@ import {useTranslations} from "next-intl";
 const colors = ['#5DFA48', '#005BAC', '#BA8B1D'];
 
 const SubscriptionPackages = () => {
+  const backgrounds = [bg1, bg2, bg3];
     const t = useTranslations('booking');
   const [selectedPackage, setSelectedPackage] = useState(null);
   const form = useMultiStepForm();
@@ -105,7 +108,7 @@ const SubscriptionPackages = () => {
           {packages.map((pkg, index) => (
             <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
               <SubscriptionPackagesCard
-                image={bg}
+                image={backgrounds[index % backgrounds.length]}
                 color={colors[index]}
                 packageType={pkg.name}
                 id={pkg.id}
@@ -128,7 +131,7 @@ const SubscriptionPackages = () => {
         packages.map((pkg, index) => (
           <SubscriptionPackagesCard
             key={index}
-            image={bg}
+            image={backgrounds[index % backgrounds.length]}
             color={colors[index]}
             packageType={pkg.name}
             id={pkg.id}

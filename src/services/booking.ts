@@ -154,10 +154,10 @@ class BookingService {
 
     let pkg;
     if (bookingData.serviceName === "Subscription Plans") {
-      pkg = subscriptionPackages.find((pkg) => pkg.name.toLowerCase() === bookingData.packageName.toLowerCase());
+      pkg = subscriptionPackages.find((pkg) => pkg.id.toLowerCase() === bookingData.packageName.toLowerCase());
     } else {
-      pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg.name === bookingData.packageName);
-    }
+      pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg?.id === bookingData.packageName);
+    } 
 
     if (!pkg) {
       console.log(packages);
