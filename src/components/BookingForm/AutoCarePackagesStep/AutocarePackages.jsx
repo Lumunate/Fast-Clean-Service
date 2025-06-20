@@ -83,7 +83,6 @@ const AutocarePackages = () => {
   let displayedPackages = allPackages || [];
 
   
-console.log(123,allPackages)
   // Apply filtering based on carType
  const exteriorName = locale === 'en' ? 'Exterior' : 'Exterieur';
 
@@ -96,7 +95,6 @@ if (form.formData.carType === 'Motorbike') {
     );
     }
 }
-console.log(321,allPackages)
 
   return (
     <Box

@@ -48,7 +48,9 @@ const LiscencePlate = () => {
                     />
                 }
                 label={t("steps.1.option")}
-                sx={{ marginTop: 2 }}
+                sx={{ marginTop: 2, "& .css-gsz4yx-MuiTypography-root":{
+                    fontSize:{xs:"10px",sm:"14px"}
+                } }}
             />
         </Box>
     );

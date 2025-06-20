@@ -232,7 +232,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <StyledCalendarContainer>
                 <Box p={isSmallScreen ? 2 : 4}>
-                    <Typography variant="h6" gutterBottom textAlign="center">
+                    <Typography variant="h6" gutterBottom textAlign="center" sx={{display:"none"}}>
                         {t("steps.7.title")}
                     </Typography>
 
@@ -263,9 +263,17 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                     width: '100%',
                                     '& .MuiPickersCalendarHeader-root': {
                                         color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                         fontSize:{xs:"10px",sm:"14px"},
                                     },
                                     '& .MuiTypography-root': {
                                         color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                        fontSize:{xs:"10px",sm:"14px"},
+                                    },
+                                    '& .css-8yp5da-MuiPickersCalendarHeader-labelContainer': {
+                                         fontSize:{xs:"10px",sm:"14px"},
+                                    },
+                                    '& .MuiPickersLayout-actionBar':{
+                                        display:"none",
                                     },
                                     backgroundColor: 'transparent',
                                     border: theme.palette.mode === 'dark' ? '1px solid #C2C2C2' : '1px solid #e0e0e0',

@@ -28,7 +28,7 @@ const StepBox = ({ currentStep, stepIndex, children, transStyles, packageTypeNam
         <Box
             className={currentStep === stepIndex ? 'active' : ''}
             sx={{
-                 width: currentStep === 8 ? 'calc(100% / 12)' : 'calc(100% / 11)',
+                 width: currentStep === 8 || currentStep === 7 ? 'calc(100% / 12)' : 'calc(100% / 11)',
                 transition: 'all 300ms ease-in-out',
                 opacity: 0,
                 marginLeft: {
