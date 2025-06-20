@@ -33,7 +33,7 @@ const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
         onPlaceSelect?.(newValue);
         setInputValue(newValue?.description || "");
       }}
-      renderInput={(params) => <TextField {...params} label="Search locations" variant="outlined" fullWidth />}
+      renderInput={(params) => <TextField {...params} required label="Search locations" variant="outlined" fullWidth />}
       renderOption={(props, option) => (
         <Box component="li" {...props} key={option.place_id}>
           <Box>

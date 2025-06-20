@@ -163,6 +163,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                 disableRipple={isDisabled}
                 selected={selected}
                 sx={{
+                    fontSize: "1.2rem",
                     borderRadius: '50%',
                     position: 'relative',
                     color: `${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'} !important`,
@@ -291,7 +292,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                     'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
                             }}
                         >
-                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
+                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2, fontSize:'1.6rem' }}>
                                 {selectedDate?.format('ddd, MMMM D')}
                             </Typography>
                             {selectedDateTimeslots ? (
@@ -301,7 +302,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                         variant="outlined"
                                         sx={{
                                             margin: '0.5rem 0',
-                                            fontSize: isSmallScreen ? '0.75rem' : '1rem',
+                                            fontSize: isSmallScreen ? '1rem' : '1.4rem',
                                             backgroundColor:
                                                 selectedTimeSlot === slot.start ? '#348feb' : 'inherit',
                                             color:

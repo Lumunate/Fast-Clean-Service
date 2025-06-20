@@ -18,12 +18,15 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import RadialCircle from "../Decorative/RadialCircle";
 import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import { englishPackages } from "../../lib/enData.js";
 
 // ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 // import Preloader from "../Preloader";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+
+import { useLocale, useTranslations } from "next-intl";
+
 import { fontSize, fontWeight } from "@mui/system";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
@@ -129,6 +132,9 @@ const AutoCare = () => {
   const { theme } = useTheme();
   const t = useTranslations("anywhere_autocare");
 
+  const locale = useLocale();
+
+
   // API fetch hook
   const { packages, loading, error, fetchPackages } = useAutocarePackages();
   
@@ -216,36 +222,12 @@ const AutoCare = () => {
     }
   };
 
-  // If still loading or error
-//   if (loading) {
-//     return (
-//       <Box
-//         sx={{
-//           marginTop: "15rem",
-//           color: theme.palette.mode === "dark" ? "white" : "black",
-//           textAlign: "center",
-//         }}
-//       >
-//         <Preloader />
-//       </Box>
-//     );
-//   }
-//   if (error) {
-//     return (
-//       <Box
-//         sx={{
-//           marginTop: "15rem",
-//           color: theme.palette.mode === "dark" ? "white" : "black",
-//           textAlign: "center",
-//         }}
-//       >
-//         Error: {error}
-//       </Box>
-//     );
-//   }
 
   // Grab the array for selected tab: standard, deluxe, or premium
-  const allPackages = packages?.packages?.[selectedTab.toLowerCase()] || [];
+ const allPackages =
+  locale === "en"
+    ? englishPackages?.[selectedTab.toLowerCase()] || []
+    : packages?.packages?.[selectedTab.toLowerCase()] || [];
 
   // For "From: ___" and "Duration: ___" on the front side
   const firstPkg = allPackages[0];
@@ -418,7 +400,8 @@ const AutoCare = () => {
                   textAlign: "center",
                 }}
               >
-                <span className="heading--span heading--span-1">Standard</span>
+                <span className="heading--span heading--span-1">{t("standardHeading")}</span>
+
               </Typography>
 
               {/* FROM PRICE + DURATION, directly from the new data */}
@@ -463,7 +446,9 @@ const AutoCare = () => {
               className="tab__side tab__side--back tab__side--back-1"
             >
               <div className="tab__cta">
-                <Typography  className="tab__value">Standard</Typography>
+
+                <Typography  className="tab__value">{t("standardHeading")}</Typography>
+
                 <Box
                   sx={{
                     display: "flex",
@@ -600,6 +585,7 @@ const AutoCare = () => {
                         },
                       }}
                     >
+
                       {packagesAll?.standard[2]?.price}
                     </Typography>
                   </Box>
@@ -850,6 +836,7 @@ const AutoCare = () => {
                           fontSize: "10px !important",
                         },
                       }}
+
                     >
                       {t("from")}
                     </Typography>
@@ -862,6 +849,7 @@ const AutoCare = () => {
                         },
                       }}
                     >
+
                       {packagesAll?.deluxe[2]?.price}
                     </Typography>
                   </Box>
@@ -947,7 +935,8 @@ const AutoCare = () => {
                   textAlign: "center",
                 }}
               >
-                <span className="heading--span heading--span-3">Premium</span>
+                <span className="heading--span heading--span-3">{t("premiumHeading")}</span>
+
               </Typography>
 
               {/* fromPrice, fromDuration for Premium */}
@@ -988,7 +977,9 @@ const AutoCare = () => {
             </div>
             <div className="tab__side tab__side--back tab__side--back-3">
               <div className="tab__cta">
-                <Typography className="tab__value">Premium</Typography>
+
+                <Typography className="tab__value">{t("premiumHeading")}</Typography>
+
                 <Box
                   sx={{
                     display: "flex",
@@ -1006,7 +997,9 @@ const AutoCare = () => {
                       },
                     }}
                   >
-                    Showroom
+
+                    {t("showroom")}
+
                   </Typography>
                   <Box
                     sx={{ display: "flex", gap: "6px", alignItems: "center" }}
@@ -1019,6 +1012,7 @@ const AutoCare = () => {
                           fontSize: "10px !important",
                         },
                       }}
+
                     >
                       {t("from")}
                     </Typography>
@@ -1075,7 +1069,7 @@ const AutoCare = () => {
                 "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
             }}
           >
-            {allPackages.map((pkg, index) => (
+            {allPackages?.map((pkg, index) => (
               <Card key={pkg?.id || index} color={color}>
                 <div className="style style--1" />
                 <CardHeader color={color}>
@@ -1125,6 +1119,7 @@ const AutoCare = () => {
                         display: "flex",
                       }}
                     >
+
                       <FontAwesomeIcon
                         icon={faCheckCircle}
                         style={{
@@ -1164,12 +1159,19 @@ const AutoCare = () => {
                   {/* </Link>  */}
                   <CardButton
                     onClick={() => handleSubCatChange(pkg?.name)}
+
+                    disabled= {pkg?.name === "Compleet" || pkg?.name === "Complete"}
+
                     sx={{
                       backgroundColor: subCat === pkg?.name ? color : "",
                       color: "black !important",
                       justifyContent: "center",
+
+                      cursor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "not-allowed !important" : "pointer",
+                      pointerEvents: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "visible !important" : "pointer",
                       "&:hover": {
-                        backgroundColor: `${color} !important`,
+                        backgroundColor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "#dedede" : `${color} !important`,
+
                         color: "primary.main !important",
                       },
                     }}
@@ -1230,7 +1232,9 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Exterior",
+
+                      type: t("packageNames.0"),
+
                       options: additionalOptions.exterior || [],
                     }}
                     color={color}
@@ -1238,7 +1242,9 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Interior",
+
+                      type: t("packageNames.1"),
+
                       options: additionalOptions.interior || [],
                     }}
                     color={color}
@@ -1246,7 +1252,9 @@ const AutoCare = () => {
                   <ModdedCard
                     card={{
                       name: selectedTab,
-                      type: "Detailing",
+
+                      type: t("detailing"),
+
                       options: additionalOptions.detailing || [],
                     }}
                     color={color}
