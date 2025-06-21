@@ -3,9 +3,11 @@ import { Autocomplete, Box, TextField } from "@mui/material";
 import { useGooglePlaces } from "../../../hooks/useGooglePlaces";
 import { useTheme } from "../../../contexts/themeContext";
 import { CustomFormTextField } from "../../mui/NewFormPkgs";
+import {useTranslations} from "next-intl";
 
 const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
   const { theme } = useTheme();
+  const t = useTranslations('booking');
   const { inputValue, options, loading, initialized, handleInputChange, setInputValue } = useGooglePlaces();
 
   if (preSelectedPlace?.description) {
@@ -33,7 +35,7 @@ const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
         onPlaceSelect?.(newValue);
         setInputValue(newValue?.description || "");
       }}
-      renderInput={(params) => <TextField {...params} required label="Search locations" variant="outlined" fullWidth />}
+      renderInput={(params) => <TextField {...params} required label= {t("steps.9.form_fields.8")} variant="outlined" fullWidth />}
       renderOption={(props, option) => (
         <Box component="li" {...props} key={option.place_id}>
           <Box>
