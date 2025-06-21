@@ -2293,11 +2293,11 @@
       "Bevestiging"
     ],
     "footer": [
-      "Price",
-      "Duration",
-      "Back",
-      "Next",
-      "Submit"
+      "Prijs",
+      "Duur",
+      "Terug",
+      "Volgende",
+      "Verzenden"
     ],
     "steps": [
       {
@@ -2434,8 +2434,8 @@
           "E-mailadres",
           "Merk en model voertuig",
           "Bericht",
-
-          "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga"
+          "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga",
+          "Zoek locatie"
         ]
       },
       {
@@ -2702,10 +2702,10 @@
     ]
   },
   "header": {
-    "logo": "Fast Clean Service",
+    "logo": "Snelle schoonmaakservice",
     "navigation": {
       "home": "Home",
-      "about": "About",
+      "about": "Over",
       "services": {
         "title": "Services",
         "options": [
@@ -2719,9 +2719,9 @@
       "contact": "Contact"
     },
     "buttons": {
-      "login": "Log In",
-      "signup": "Sign Up",
-      "book_now": "Book Now"
+      "login": "Inloggen",
+      "signup": "Aanmelden",
+      "book_now": "Boek nu"
     }
   },
   "footer": {
