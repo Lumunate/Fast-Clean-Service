@@ -12,6 +12,7 @@ import LogoLoadingWrapper from '../../components/LogoLoadingWrapper'
 import {metadataJSON} from "./metadata";
 import {getMessages} from "next-intl/server";
 import {NextIntlClientProvider} from "next-intl";
+import { LoginModalProvider } from '../../contexts/ModalContext';
 
 export const metadata = metadataJSON;
 
@@ -31,6 +32,7 @@ export default async function RootLayout({children}) {
                 <SnackbarProvider>
                     <ValidationProvider>
                         <ExitIntentProvider>
+                            <LoginModalProvider>
                             <CssBaseline/>
                             {/*<CookieConsentPrompt/>*/}
                             <NextIntlClientProvider messages={messages}>
@@ -40,6 +42,7 @@ export default async function RootLayout({children}) {
                             </LogoLoadingWrapper>
                               
                             </NextIntlClientProvider>
+                            </LoginModalProvider>
                         </ExitIntentProvider>
                     </ValidationProvider>
                 </SnackbarProvider>

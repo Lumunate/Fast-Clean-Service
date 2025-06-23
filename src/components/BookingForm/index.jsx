@@ -7,10 +7,32 @@ import BookingForm from "./BookingForm";
 import BookingFormFooter from "./BookingFormFooter";
 import ServiceToggle from "./ServiceToggle";
 import {ValidationProvider} from "../../contexts/ValidationContext";
+import { useLoginModal } from '../../contexts/ModalContext';
+import useSnackbar from '../../hooks/useSnackbar';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useTheme } from "../../contexts/themeContext";
+import {useEffect} from "react";
 
 const Index = () => {
     const { theme } = useTheme();
+    const { data: session, status } = useSession();
+    const router = useRouter();
+    const { openLoginModal } = useLoginModal();
+    const { openSnackbar } = useSnackbar();
+
+    useEffect(() => {
+        // once session check is done and user is NOT logged in:
+        if (status === 'authenticated' || status === 'loading') return;
+        // unauthenticated
+        openSnackbar("You must be logged in to book!");
+        openLoginModal();
+    }, [status, session, openSnackbar, openLoginModal, router]);
+
+    // while loading or redirecting, don’t show the booking form
+    if (status !== 'authenticated') {
+        return null;
+    }
 
   return (
     <ValidationProvider>

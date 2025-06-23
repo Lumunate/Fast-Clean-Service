@@ -3,6 +3,9 @@ import { Box, Grid, Typography, IconButton, Modal } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../../contexts/themeContext';
 import { useValidation } from '../../../contexts/ValidationContext';
+import { useSession } from 'next-auth/react';
+import { useLoginModal } from '../../../contexts/ModalContext';
+import useSnackbar from '../../../hooks/useSnackbar';
 import useMultiStepForm from '../../../hooks/useMultiStepForm';
 import InfoIcon from '@mui/icons-material/Info';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -38,6 +41,9 @@ const LocationSelection = () => {
   const [modalInfo, setModalInfo] = useState('');
   const { theme } = useTheme();
   const { updateValidation } = useValidation();
+    const { data: session } = useSession();
+    const { openLoginModal } = useLoginModal();
+    const { openSnackbar } = useSnackbar();
     const t = useTranslations('booking');
 
     const packages = [
@@ -82,6 +88,11 @@ const LocationSelection = () => {
   }, [selectedOption, updateValidation]);
 
   const handlePackageSelect = (pkg) => {
+      if (!session) {
+          openSnackbar("You must be logged in to proceed!");
+          setTimeout(openLoginModal, 2000);
+          return;
+      }
     setSelectedOption(pkg.name);
     updateFormData({ service: pkg.service });
     nextStep();

@@ -16,6 +16,7 @@ import { duration } from '@mui/material';
 import {useTranslations} from "next-intl";
 import Alert from '@mui/material/Alert';
 import {useSession} from "next-auth/react";
+import {useLoginModal} from '../../contexts/ModalContext';
 
 
 const BookingFormFooter = () => {
@@ -34,6 +35,7 @@ const BookingFormFooter = () => {
   const { data: session } = useSession();
   const { isValid, updateValidation } = useValidation();
   const [isBtnInvalid, setIsBtnInvalid] = useState(false);
+  const { openLoginModal } = useLoginModal();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -159,6 +161,7 @@ const BookingFormFooter = () => {
 
         try {
             if (formData.service === 'Coinbase') {
+                if (!session) throw new Error('You must be logged in to pay.');
                 // Coinbase flow
                 const amt =
                     typeof price === 'string'
@@ -209,6 +212,11 @@ const BookingFormFooter = () => {
 
   const handleNext = async () => {
     console.log("handleNext triggered for step:", step);
+      if (!session) {
+          setError("You must be logged in to Proceed!.");
+          setTimeout(openLoginModal, 2000);
+          return;
+      }
       if (currentStep === 11) {
           await initiatePayment();
           return;
