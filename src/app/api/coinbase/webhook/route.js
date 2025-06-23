@@ -24,6 +24,16 @@ export async function POST(req) {
         // e.g., update user in DB by metadata.customer_email
 
         console.log('Payment confirmed for:', metadata.customer_email);
+        const bookingId = metadata.bookingId;
+        if (bookingId) {
+            console.log(`[Coinbase] Marking booking ${bookingId} as PAID`);
+            await Booking.findByIdAndUpdate(bookingId, {
+                'payment.status': 'PAID',
+                'payment.provider': 'coinbase',
+                'payment.sessionId': event.data.code,
+                'payment.lastUpdated': new Date(),
+            });
+        }
     }
 
     return NextResponse.json({ received: true });

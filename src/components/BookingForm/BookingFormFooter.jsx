@@ -14,6 +14,9 @@ import {
 import { Loader } from '../mui/Loader';
 import { duration } from '@mui/material';
 import {useTranslations} from "next-intl";
+import Alert from '@mui/material/Alert';
+import {useSession} from "next-auth/react";
+
 
 const BookingFormFooter = () => {
   const t = useTranslations('booking');
@@ -28,11 +31,15 @@ const BookingFormFooter = () => {
     calculatePricing,
   } = useMultiStepForm();
   const { theme } = useTheme();
+  const { data: session } = useSession();
   const { isValid, updateValidation } = useValidation();
   const [isBtnInvalid, setIsBtnInvalid] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const [payLoading, setPayLoading] = useState(false);
+  const [payError, setPayError] = useState('');
 
   const step = currentStep;
 
@@ -146,8 +153,67 @@ const BookingFormFooter = () => {
     }
   };
 
+    const initiatePayment = async () => {
+        setPayError('');
+        setPayLoading(true);
+
+        try {
+            if (formData.service === 'Coinbase') {
+                // Coinbase flow
+                const amt =
+                    typeof price === 'string'
+                        ? price.replace(/[^0-9.]/g, '')
+                        : price;
+                const res = await fetch('/api/coinbase/checkout-sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: amt,
+                        currency: 'eur',
+                        description: `Payment for ${formData.selectedPackageType || 'Service'}`,
+                        customerEmail: formData.email,
+                        bookingId: formData.bookingId,
+                    }),
+                });
+                const data = await res.json();
+                if (!res.ok || !data.checkoutUrl)
+                    throw new Error(data.error || 'No checkout URL returned');
+                window.open(data.checkoutUrl, '_blank');
+            } else {
+                // Stripe flow
+                if (!session) throw new Error('You must be logged in to pay.');
+                const { email: userEmail, id: userId } = session.user;
+                const res = await fetch('/api/stripe/checkout-sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: price,
+                        userEmail,
+                        userId,
+                        paymentMode: 'subscription',
+                        productName: formData.selectedPackageType || 'Service',
+                        bookingId: formData.bookingId,
+                    }),
+                });
+                const { url } = await res.json();
+                if (!url) throw new Error('No redirect URL received');
+                window.open(url, '_blank');
+            }
+        } catch (e) {
+            console.error(e);
+            setPayError(e.message);
+        } finally {
+            setPayLoading(false);
+        }
+    };
+
   const handleNext = async () => {
     console.log("handleNext triggered for step:", step);
+      if (currentStep === 11) {
+          await initiatePayment();
+          return;
+      }
+
     if (step === 1) {
       if (!formData.proceedWithoutLicensePlate) {
         if (formData.licensePlate && formData.licensePlate.trim().length > 0) {
@@ -198,7 +264,7 @@ const BookingFormFooter = () => {
       <PricingSpacer />
       <PricingTextContainer>
         <PricingText>{t("footer.0")}</PricingText>
-        <PricingText>$ {isNaN(price) ? 0.0 : price.toFixed(2)}</PricingText>
+        <PricingText>€ {isNaN(price) ? 0.0 : price.toFixed(2)}</PricingText>
       </PricingTextContainer>
       <PricingTextContainer sx={{ marginBottom: '3rem' }}>
         <PricingText>{t("footer.1")}</PricingText>
@@ -208,11 +274,25 @@ const BookingFormFooter = () => {
         <NextPrevButton dull onClick={handleBack}>
           {t("footer.2")}
         </NextPrevButton>
-        <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid || currentStep === 11}>
-          {currentStep === 11 ? t("footer.4") : t("footer.3")}
+        <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid || payLoading}>
+            {currentStep === 11
+                ? payLoading
+                    ? 'Processing…'
+                    : 'Pay Now'
+                : t('footer.3')}
         </NextPrevButton>
       </ButtonContainer>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+                {error}
+            </Alert>
+        )}
+        {/* payment-specific error */}
+        {payError && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+                {payError}
+            </Alert>
+        )}
     </PricingContainer>
   );
 };
