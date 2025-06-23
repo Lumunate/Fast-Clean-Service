@@ -45,11 +45,10 @@ export async function POST(request) {
                     quantity: 1,
                 },
             ],
-            client_reference_id: userId,
+            client_reference_id: bookingId,
             customer_email: userEmail,
             metadata: {
                 userEmail,
-                userId,
                 paymentMode,
             },
         });

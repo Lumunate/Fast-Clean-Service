@@ -181,15 +181,13 @@ const BookingFormFooter = () => {
                 window.open(data.checkoutUrl, '_blank');
             } else {
                 // Stripe flow
-                if (!session) throw new Error('You must be logged in to pay.');
-                const { email: userEmail, id: userId } = session.user;
+                const userEmail = formData.email;
                 const res = await fetch('/api/stripe/checkout-sessions', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         amount: price,
                         userEmail,
-                        userId,
                         paymentMode: 'subscription',
                         productName: formData.selectedPackageType || 'Service',
                         bookingId: formData.bookingId,
