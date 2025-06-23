@@ -261,25 +261,25 @@ const CheckoutSelection = () => {
           </Box>
         </Box>
       </Modal>
-      {selectedOption === "Coinbase" && (
-  <Box mt={4} textAlign="center">
-    <PaymentButton
-      amount={price}
-      currency="eur"
-      description={`Payment for ${formData.selectedPackageType || "Service"}`}
-      customerEmail={formData.email}
-    />
-  </Box>
-)}
+{/*      {isSelected === "Coinbase" && (*/}
+{/*  <Box mt={4} textAlign="center">*/}
+{/*    <PaymentButton*/}
+{/*      amount={price}*/}
+{/*      currency="eur"*/}
+{/*      description={`Payment for ${formData.selectedPackageType || "Service"}`}*/}
+{/*      customerEmail={formData.email}*/}
+{/*    />*/}
+{/*  </Box>*/}
+{/*)}*/}
 
-{selectedOption === "Stripe" && (
-  <Box mt={4} textAlign="center">
-    <StripeCheckoutButton 
-      amount={price}
-      productName={formData.selectedPackageType || "Service"} 
-    />
-  </Box>
-)}
+{/*{isSelected === "Stripe" && (*/}
+{/*  <Box mt={4} textAlign="center">*/}
+{/*    <StripeCheckoutButton */}
+{/*      amount={price}*/}
+{/*      productName={formData.selectedPackageType || "Service"} */}
+{/*    />*/}
+{/*  </Box>*/}
+{/*)}*/}
     </Box>
   );
 };
