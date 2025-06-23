@@ -22,14 +22,11 @@ const Index = () => {
     const { openSnackbar } = useSnackbar();
 
     useEffect(() => {
-        // once session check is done and user is NOT logged in:
         if (status === 'authenticated' || status === 'loading') return;
-        // unauthenticated
         openSnackbar("You must be logged in to book!");
         openLoginModal();
     }, [status, session, openSnackbar, openLoginModal, router]);
 
-    // while loading or redirecting, don’t show the booking form
     if (status !== 'authenticated') {
         return null;
     }
