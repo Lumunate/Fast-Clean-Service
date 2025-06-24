@@ -767,8 +767,8 @@ export const ServiceBtn1 = styled(ButtonBase)(({ theme, special = false }) => ({
     backgroundColor: special ? theme.palette.primary.accent : "rgba(218, 218, 218, 0.45)",
   },
   "@media (max-width: 900px)": {
-    fontSize: "1.2rem !important",
-    padding: "0.5rem 1rem",
+    fontSize: "1.4rem !important",
+    padding: "1rem 2rem",
   },
 }));
 
