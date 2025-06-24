@@ -13,7 +13,7 @@ const isValidEmail = (email) => {
     return emailRegex.test(email);
 };
 
-const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
+const LoginModal = ({ onClose, setOpenSignup }) => {
     const router = useRouter();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -80,7 +80,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
             zIndex: 100000,
             backdropFilter: "blur(10px)",
           }}
-          onClick={() => setOpenLogin(false)}
+          onClick={onClose}
         >
           <CustomCard
             sx={{
@@ -194,7 +194,7 @@ const LoginModal = ({ setOpenLogin, setOpenSignup }) => {
                     Don’t have an account?{" "}
                     <span
                       onClick={() => {
-                        setOpenLogin(false);
+                          onClose();
                         setOpenSignup(true);
                       }}
                       style={{ cursor: "pointer", color: "#00BEFF" }}

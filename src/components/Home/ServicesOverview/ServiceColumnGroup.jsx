@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Box, Paper, styled, Typography } from "@mui/material";
 import { useTheme } from "../../../contexts/themeContext";
 import { HomePkgsBox, HomePkgsInBox } from "../../mui/HomePkgs";
-import FadeIn from "../../Animations/FadeIn";
 import {useTranslations} from "next-intl";
+import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
 
 export const ServiceHeading = styled(Typography)(({ theme }) => ({
   fontSize:"40px", 
@@ -116,9 +116,7 @@ export default function ServiceColumnGroup() {
         },
       }}
     >
-      <FadeIn direction="up" distance={100} duration={0.5}>
-        <ServiceHeading>{t("title")}</ServiceHeading>
-      </FadeIn>
+      <HeadingLinesAnimation>{t("title")}</HeadingLinesAnimation>
       <ServiceDescription>
         {t("description")}
       </ServiceDescription>

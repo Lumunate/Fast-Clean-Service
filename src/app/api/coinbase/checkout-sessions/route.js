@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import Booking from '../../../../models/Booking';
 
 export async function POST(request) {
     try {
@@ -44,6 +45,19 @@ export async function POST(request) {
         }
 
         const data = await response.json();
+        const chargeCode = data.data.code;
+
+        console.log('[Coinbase] Created charge', chargeCode, 'for booking', bookingId);
+
+        await Booking.findByIdAndUpdate(bookingId, {
+            payment: {
+                provider: 'coinbase',
+                sessionId: chargeCode,
+                status: 'PENDING',
+                lastUpdated: new Date(),
+            }
+        });
+
 
         return NextResponse.json({ checkoutUrl: data.data.hosted_url });
     } catch (error) {

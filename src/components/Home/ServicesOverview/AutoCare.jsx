@@ -131,7 +131,9 @@ export default function Autocare() {
       "&:hover": {
         bottom: locale === "en"? "0%" : "-7% !important",
       },}}} className="service__content">
-                <Box>
+                <Box sx={{ "@media (max-width: 600px)": {
+                            marginBottom: "3rem",
+                        }}}>
                     <ServiceName sx={{ color: "#2998ff" }}>{t("packages.1.name")}</ServiceName>
                     <ServiceCat>{t("packages.1.category")}</ServiceCat>
                 </Box>
@@ -154,7 +156,10 @@ export default function Autocare() {
                   paddingLeft: { sm: 2, xs: 0 },
                   color: "#2899FF",
                   listStyleType: "disc",
-                  fontSize:"16px"
+                  fontSize:"16px",
+                    "@media (max-width: 600px)": {
+                        fontSize: "12px",
+                    },
                 }}
               >
                           <ListItem sx={{ display: "list-item", marginBottom: "-6px", py: "0px" }}>

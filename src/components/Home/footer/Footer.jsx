@@ -76,11 +76,46 @@ export default function Footer() {
                 </Box>
             </Box>
 
-            {/* Copyright Centered */}
-            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem",  transition: "all 0.5s ease-in-out", "@media (max-width: 1250px)": { display: "flex", justifyContent:"end", paddingRight:"10px" } , "@media (max-width: 992px)": { display: "none" } }}>
-                <Typography variant="body2" sx={copyrightStyle}>
+            <Box
+                sx={{
+                    position: "relative",
+                    py: 2,
+                    px: { xl: "12rem", lg: "6rem" },
+                    "@media (max-width: 992px)": { display: "none" },
+                }}
+            >
+                {/* centered */}
+                <Typography align="center" variant="body2" sx={copyrightStyle}>
                     {t("copyright")}
                 </Typography>
+
+                {/* absolutely positioned at the right */}
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        right: "120px",
+                        transform: "translateY(-50%)",
+                        display: "flex",
+                        gap: "1rem",
+                        "@media (max-width: 1366px)": { right: "7rem", bottom: "4.5rem" },
+                        "@media (max-width: 992px)": { display: "none" },
+                    }}
+                >
+                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                        const needsInvert = name === "visa" || name === "apple";
+                        return (
+                            <Image
+                                key={name}
+                                src={`/${name}.svg`}
+                                alt={name}
+                                width={24}
+                                height={24}
+                                style={{ filter: needsInvert ? "invert(1)" : "none" }}
+                            />
+                        );
+                    })}
+                </Box>
             </Box>
 
             <Box
@@ -117,6 +152,22 @@ export default function Footer() {
                      <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
                     <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                </Box>
+
+                <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
+                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                        const needsInvert = name === "visa" || name === "apple";
+                        return (
+                            <Image
+                                key={name}
+                                src={`/${name}.svg`}
+                                alt={name}
+                                width={24}
+                                height={24}
+                                style={{ filter: needsInvert ? "invert(1)" : "none" }}
+                            />
+                        );
+                    })}
                 </Box>
 
                 <Typography variant="body2" sx={{ ...copyrightStyle }}>

@@ -92,6 +92,12 @@
         }
       ]
     },
+    "auto": {
+      "title": "Premium Zorgdiensten\""
+    },
+    "gallery_section": {
+      "title": "Voor en na"
+    },
     "services_section": {
       "title": "ONZE EXTRA OPTIES",
       "description": "Wil je nét dat beetje extra? Breid je behandeling uit met aanvullende services voor een nóg beter resultaat. Kies uit interieur-, exterieur- of detailing-opties en stel je eigen ideale behandeling samen.",
@@ -160,7 +166,7 @@
       "btn":"Meer informatie"
     },
     "anywhere_autocare_section": {
-      "title": "Detailing Service",
+      "title": "Detaildiensten",
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
@@ -191,7 +197,8 @@
         },
         {
           "name": "Deluxe",
-          "category": "Meest Gekozen",
+          "category": "MEEST POPULAIR!",
+          "popular": "MEEST POPULAIR!",
           "price": "Vanaf",
           "features": [
             "Inclusief alle diensten van het Standard Pakket",
@@ -290,6 +297,26 @@
             "Polijsten & aanbrengen coating"
           ],
           "description": "Of je nu sportief rijdt of recreatief toert: wij geven jouw tweewieler de zorg die hij verdient."
+        },
+        {
+          "name": "Vrachtwagens",
+          "services": [
+            "Grondige stoomreiniging van de kajuit",
+            "Reiniging van dorpels, ramen en spiegels",
+            "Professioneel reinigen van dashboard en cockpit",
+            "Voeren van de kunststof onderdelen"
+          ],
+          "description": "Houd uw kajuit fris, schoon en representatief - van binnen en van buiten.\n"
+        },
+        {
+          "name": "Boten",
+          "services": [
+            "Antikalk- en antiroestbehandeling",
+            "Stoomreiniging van dek en interieur",
+            "Polijsten van metalen en kunststof onderdelen",
+            "Coating tegen zout, zon en water"
+          ],
+          "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
         }
       ],
       "button": {
@@ -334,7 +361,7 @@
           "answer": "U kunt ervoor kiezen om hem op locatie te laten reinigen of langs te komen. Beide opties bieden dezelfde hoogwaardige service."
         },
         {
-          "question": "Hoe lang duurt een standaardreiniging?",
+          "question": "Hoe lang duurt een reiniging?",
           "answer": [
             "Standaard reiniging: ± 1 uur",
             "Deluxe reiniging: 1 – 3 uur",

@@ -32,14 +32,7 @@ export default function ServicesOverview() {
           <RadialCircle bottom={"-22rem"} right={"-22rem"} />
           <DecorativeBackgroundImage top="-15rem" right="-30rem" width="92rem" height="119rem" variant="2" />
         </Box>
-
-        <ServiceColumnGroup />
-
-        <Box sx={{ position: "relative" }}>
-          <Autocare />
-
-          <RadialCircle bottom={"10rem"} left={"0rem"} />
-        </Box>
+          <ServiceColumnGroup />
 
         <CamperService />
       </ServicesOverviewWrapper>

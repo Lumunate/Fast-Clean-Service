@@ -7,6 +7,13 @@ interface ILockTime {
   end: Date;
 }
 
+export interface IPayment {
+  status: 'PENDING' | 'PAID' | 'FAILED';
+  provider: 'stripe' | 'coinbase' | null;
+  sessionId: string | null;
+  lastUpdated: Date | null;
+}
+
 export interface IBooking extends Document {
   firstName: string;
   surname: string;
@@ -33,6 +40,8 @@ export interface IBooking extends Document {
   vehicleDetails?: LicensePlateData | undefined | null;
   serviceAddons: { addons: string[]; detailing: string[] };
   lockTime: ILockTime;
+  bookingStatus: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+  payment: IPayment;
 }
 
 const bookingSchema: Schema = new Schema({
@@ -70,11 +79,25 @@ const bookingSchema: Schema = new Schema({
     start: { type: Date, default: null },
     end: { type: Date, required: true },
   },
-  status: {
-        type: String,
-        enum: ['PENDING', 'COMPLETED'],
-        default: 'PENDING',
+  bookingStatus: {
+    type: String,
+    enum: ['PENDING', 'CONFIRMED', 'CANCELLED'],
+    default: 'PENDING',
+  },
+  payment: {
+    status: {
+      type: String,
+      enum: ['PENDING', 'PAID', 'FAILED'],
+      default: 'PENDING',
     },
+    provider: {
+      type: String,
+      enum: ['stripe', 'coinbase', null],
+      default: null,
+    },
+    sessionId: { type: String, default: null },       // Stripe session.id or Coinbase charge code
+    lastUpdated: { type: Date, default: null },
+  },
 });
 
 export default mongoose.models.Booking ||

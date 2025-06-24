@@ -21,6 +21,8 @@ import FadeIn from "../../Animations/FadeIn";
 import {useTranslations} from "next-intl";
 
 function getTransitionStyles(index, curIndex, len) {
+    const diff = index - curIndex;
+    const isSecond = diff === 2;
   return index === curIndex
     ? {
         left: 0,
@@ -81,19 +83,25 @@ function getTransitionStyles(index, curIndex, len) {
             height: "87px",
           },
           "@media only screen and (max-width: 500px)": {
-            left: `calc(-35% + ${180 * (index - curIndex)}px)`,
-            width: "157px",
-            height: "87px",
+              left: isSecond
+                  ? `calc(-60% + ${180 * diff}px)`
+                  : `calc(-45% + ${180 * diff}px)`,
+            width: "120px",
+            height: "60px",
           },
           "@media only screen and (max-width: 430px)": {
-            left: `calc(-40% + ${180 * (index - curIndex)}px)`,
-            width: "157px",
-            height: "87px",
+              left: isSecond
+                  ? `calc(-60% + ${180 * diff}px)`
+                  : `calc(-45% + ${180 * diff}px)`,
+            width: "120px",
+            height: "60px",
           },
           "@media only screen and (max-width: 400px)": {
-            left: `calc(-40% + ${180 * (index - curIndex)}px)`,
-            width: "157px",
-            height: "87px",
+              left: isSecond
+                  ? `calc(-60% + ${180 * diff}px)`
+                  : `calc(-45% + ${180 * diff}px)`,
+            width: "120px",
+            height: "60px",
           },
         }
       : {
@@ -219,12 +227,34 @@ export default function LongTermVehicleCare() {
             ],
             description: t("categories.2.description"),
         },
+        {
+            imgSrc: "/truck.webp",
+            name: t("categories.3.name"),
+            pkgs: [
+                t("categories.3.services.0"),
+                t("categories.3.services.1"),
+                t("categories.3.services.2"),
+                t("categories.3.services.3"),
+            ],
+            description: t("categories.3.description"),
+        },
+        {
+            imgSrc: "/boat.png",
+            name: t("categories.4.name"),
+            pkgs: [
+                t("categories.4.services.0"),
+                t("categories.4.services.1"),
+                t("categories.4.services.2"),
+                t("categories.4.services.3"),
+            ],
+            description: t("categories.4.description"),
+        }
     ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
-    }, 10000);
+    }, 100000000);
 
     return () => {
       clearTimeout(timer);
