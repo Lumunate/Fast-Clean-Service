@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { Box, Grid, Typography, styled } from "@mui/material";
+import React, {useMemo} from "react";
+import {Box, Grid, Typography, styled, useMediaQuery} from "@mui/material";
 import SingleWorkHowDoes from "./SingleWorkHowDoes";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../HeadingLinesAnimation/HeadingLinesAnimation";
@@ -71,10 +71,18 @@ export default function HowDoesItWork() {
         },
     ];
 
-    const reorderedWorks = [...works];
-    if (typeof window !== "undefined" && window.innerWidth <= 1400 && window.innerWidth >= 768) {
-        [reorderedWorks[2], reorderedWorks[3]] = [reorderedWorks[3], reorderedWorks[2]];
-    }
+    const isSwappedRange = useMediaQuery(
+        "(min-width:768px) and (max-width:1400px)"
+    );
+
+    // only _reorder_ when in that exact breakpoint range
+    const reorderedWorks = useMemo(
+        () =>
+            isSwappedRange
+                ? [works[0], works[1], works[3], works[2]]
+                : works,
+        [works, isSwappedRange]
+    );
 
     return (
         <SectionContainer sx={{ marginBottom: "15rem", "@media (max-width: 1200px)": {
@@ -96,7 +104,7 @@ export default function HowDoesItWork() {
                         }}
                     >
                         <SingleWorkHowDoes
-                            index={index + 1}
+                            index={work.id}
                             icon={work.icon}
                             title={work.title}
                             description={work.description}
@@ -148,8 +156,8 @@ export default function HowDoesItWork() {
                         backgroundSize: "contain",
                         filter: theme.palette.mode === "dark" ? "invert(1)" : "none",
                         "@media (max-width: 1400px)": {
-                        width: "75px",
-                            top: "4rem",
+                        width: "40px",
+                            top: "1rem",
                             left: "72%",
                             transform: "rotate(90deg)",
                         },
