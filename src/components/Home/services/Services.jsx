@@ -10,7 +10,7 @@ import { useTheme } from "../../../contexts/themeContext";
 import ThreeDComponent from "./ThreeDComponent";
 import CalendarIcon from "../../../../public/decorative/Calendar-Time--Streamline-Tabler.svg";
 import ClockIcon from "../../../../public/decorative/Clock-Hour-4--Streamline-Tabler.svg";
-import GroupIcon from "../../../../public/decorative/Group 29.svg";
+import GroupIcon from "../../../../public/decorative/steering.svg";
 import UserIcon from "../../../../public/decorative/User-Edit--Streamline-Tabler.svg";
 import MapIcon from "../../../../public/decorative/Map-Pin--Streamline-Tabler.svg";
 import LeafIcon from "../../../../public/decorative/Leaf--Streamline-Tabler.svg";
