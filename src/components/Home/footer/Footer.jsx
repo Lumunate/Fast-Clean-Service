@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Box, IconButton, Divider, Typography, Link as MuiLink } from "@mui/material";
-import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-material";
+import { Facebook, Instagram, Twitter, YouTube, Email, WhatsApp, Star } from "@mui/icons-material";
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import Logo from "../../../../public/newlogo.svg";
@@ -70,8 +70,8 @@ export default function Footer() {
                 <Box sx={{ display: "flex", gap: "1rem" }}>
                     <SocialIcon href="https://facebook.com" Icon={Facebook} />
                     <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
-                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                    <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
+                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon href="mailto:support@fastclean.com" Icon={Email} />
                 </Box>
             </Box>
@@ -114,8 +114,8 @@ export default function Footer() {
                 <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
                     <SocialIcon href="https://facebook.com" Icon={Facebook} />
                     <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
-                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                     <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
+                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
                 </Box>
 

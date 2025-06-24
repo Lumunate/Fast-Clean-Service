@@ -9,9 +9,9 @@ import {
     ServiceItemIconContainer,
 } from "../../mui/ServiceOverviewPckgs";
 import { useTheme } from "../../../contexts/themeContext";
-import CarCheckIcon from "../../../../public/servicesicons/CarCheck.svg";
-import ClipBoardPlusIcon from "../../../../public/servicesicons/ClipBoardPlus.svg";
-import MapIcon from "../../../../public/servicesicons/Map.svg";
+import Coating from "../../../../public/servicesicons/Coating.svg";
+import paint from "../../../../public/servicesicons/paint.svg";
+import carWash from "../../../../public/servicesicons/carWash.svg";
 import UnionIcon from "../../../../public/servicesicons/Union.svg";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@mui/material";
@@ -23,7 +23,7 @@ export default function CarService() {
 
     const servicesData = [
         {
-            img: MapIcon,
+            img: carWash,
             title: t("packages.0.title"),
             anchor: "anywhere-auto-care",
             description: t("packages.0.description"),
@@ -35,13 +35,13 @@ export default function CarService() {
             description: t("packages.1.description"),
         },
         {
-            img: ClipBoardPlusIcon,
+            img: paint,
             anchor: "subscriptions",
             title: t("packages.2.title"),
             description: t("packages.2.description"),
         },
         {
-            img: CarCheckIcon,
+            img: Coating,
             title: t("packages.3.title"),
             anchor: "long-term-vehicle-care",
             description: t("packages.3.description"),
