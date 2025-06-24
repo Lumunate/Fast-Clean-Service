@@ -61,7 +61,9 @@ export default function Home() {
                   </Box>
 
                   <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
-                      <ServiceColumnGroup />
+                      <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+                        <HeadingLinesAnimation>{t("auto.title")}</HeadingLinesAnimation>
+                      </Box>
 
                       <Box sx={{ position: "relative" }}>
                           <Autocare />
