@@ -16,7 +16,11 @@ import CallToActionBox from "../../components/Home/actioncard/CallToActionBox";
 import DecorativeSpacer from "../../components/Decorative/Spacer";
 import { DecorativeBackgroundImage, FoggyBackgroundImage } from "../../components/Decorative/Decorative.style";
 import {useTranslations} from "next-intl";
-import {Fragment} from "react";
+import React, {Fragment} from "react";
+import HeadingLinesAnimation from "../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
+import BeforeAfterSwiper from "./aboutus/BeforeandAfter";
+import ServiceColumnGroup from "../../components/Home/ServicesOverview/ServiceColumnGroup";
+import Autocare from "../../components/Home/ServicesOverview/AutoCare";
 
 export default function Home() {
   const t = useTranslations('home');
@@ -49,7 +53,25 @@ export default function Home() {
                   <DecorativeSpacer textBox1={t("decorativeText.text1")} textBox2={t("decorativeText.text2")}/>
 
                   <HowDoesItWork/>
-                  <OverServiceOverview/>
+                  <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
+                      <Box sx={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+                          <HeadingLinesAnimation>{t("gallery_section.title")}</HeadingLinesAnimation>
+                      </Box>
+                      <BeforeAfterSwiper />
+                  </Box>
+
+                  <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
+                      <ServiceColumnGroup />
+
+                      <Box sx={{ position: "relative" }}>
+                          <Autocare />
+                      </Box>
+                  </Box>
+
+                  <Box sx={{marginTop: { xs: "4rem", lg: "10rem"}}}>
+                    <OverServiceOverview/>
+                  </Box>
+
                   <Box sx={{position: "relative"}}>
                       <Testimonials/>
 
