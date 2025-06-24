@@ -219,6 +219,28 @@ export default function LongTermVehicleCare() {
             ],
             description: t("categories.2.description"),
         },
+        {
+            imgSrc: "/car1.jpg",
+            name: t("categories.3.name"),
+            pkgs: [
+                t("categories.3.services.0"),
+                t("categories.3.services.1"),
+                t("categories.3.services.2"),
+                t("categories.3.services.3"),
+            ],
+            description: t("categories.3.description"),
+        },
+        {
+            imgSrc: "/boat.png",
+            name: t("categories.4.name"),
+            pkgs: [
+                t("categories.4.services.0"),
+                t("categories.4.services.1"),
+                t("categories.4.services.2"),
+                t("categories.4.services.3"),
+            ],
+            description: t("categories.4.description"),
+        }
     ];
 
   useEffect(() => {
