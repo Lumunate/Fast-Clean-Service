@@ -6,9 +6,11 @@ import { useValidation } from '../../../contexts/ValidationContext';
 import { useTheme } from '../../../contexts/themeContext';
 import { SummaryHeading } from '../../mui/BookingFormPackages';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
+import {englishPackages} from "../../../lib/enData.js"
 
 const Summary = () => {
+  const locale = useLocale()
     const t = useTranslations('booking');
   const { formData } = useMultiStepForm();
   const { updateValidation } = useValidation();
@@ -16,7 +18,11 @@ const Summary = () => {
   const { theme } = useTheme();
   console.log("FORMDATA:", formData);
 
-  const { packages, loading, error, fetchPackages } = useAutocarePackages();
+  const { packages: apiPackages, loading, error, fetchPackages } = useAutocarePackages();
+
+const packages = locale === "en"
+  ? { packages: englishPackages }
+  : apiPackages;
 
   useEffect(() => {
     fetchPackages();
@@ -39,7 +45,7 @@ const Summary = () => {
           pkg.additionalOptions?.detailing ||
           [];
         const matchedOption = optionsList.find(
-          (option) => option.name === optionName
+          (option) => option._id === optionName
         );
         if (matchedOption) {
           return matchedOption.additionalCost || 0;
@@ -92,7 +98,7 @@ const Summary = () => {
               {formData?.vehicleDetails && (
                   <>
                       <SummaryItem
-                          label={t("steps.8.sections.11")}
+                          label={`${t("steps.8.sections.11")}`}
                           value={formData.vehicleDetails.merk || '---'}
                       />
                       <SummaryItem
@@ -114,13 +120,13 @@ const Summary = () => {
                   </>
               )}
           </Box>
-          <Box>
+          <Box>{console.log(123123,formData.selectedAdditionalOptions)}
             <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
             {formData?.selectedAdditionalOptions?.length ? (
               formData.selectedAdditionalOptions.map((option, index) => (
                 <SummaryItem
                   key={index}
-                  label={option}
+                  label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name}
                   value={
                     getOptionPrice(option, 'interior') +
                     getOptionPrice(option, 'exterior')
@@ -163,7 +169,7 @@ const Summary = () => {
               formData.selectedDetailingOptions.map((option, index) => (
                 <SummaryItem
                   key={index}
-                  label={option}
+                  label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name}
                   value={getOptionPrice(option, 'detailing')}
                 />
               ))

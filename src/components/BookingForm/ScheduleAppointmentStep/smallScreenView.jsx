@@ -163,6 +163,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                 disableRipple={isDisabled}
                 selected={selected}
                 sx={{
+                    fontSize: "1.2rem",
                     borderRadius: '50%',
                     position: 'relative',
                     color: `${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'} !important`,
@@ -231,7 +232,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <StyledCalendarContainer>
                 <Box p={isSmallScreen ? 2 : 4}>
-                    <Typography variant="h6" gutterBottom textAlign="center">
+                    <Typography variant="h6" gutterBottom textAlign="center" sx={{display:"none"}}>
                         {t("steps.7.title")}
                     </Typography>
 
@@ -262,9 +263,17 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                     width: '100%',
                                     '& .MuiPickersCalendarHeader-root': {
                                         color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                         fontSize:{xs:"10px",sm:"14px"},
                                     },
                                     '& .MuiTypography-root': {
                                         color: theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                                        fontSize:{xs:"10px",sm:"14px"},
+                                    },
+                                    '& .css-8yp5da-MuiPickersCalendarHeader-labelContainer': {
+                                         fontSize:{xs:"10px",sm:"14px"},
+                                    },
+                                    '& .MuiPickersLayout-actionBar':{
+                                        display:"none",
                                     },
                                     backgroundColor: 'transparent',
                                     border: theme.palette.mode === 'dark' ? '1px solid #C2C2C2' : '1px solid #e0e0e0',
@@ -291,7 +300,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                     'opacity 0.75s ease, transform 0.75s ease, visibility 0s ease 0.25s',
                             }}
                         >
-                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2 }}>
+                            <Typography variant="body1" sx={{ textAlign: 'center', mb: 2, fontSize:'1.6rem' }}>
                                 {selectedDate?.format('ddd, MMMM D')}
                             </Typography>
                             {selectedDateTimeslots ? (
@@ -301,7 +310,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                                         variant="outlined"
                                         sx={{
                                             margin: '0.5rem 0',
-                                            fontSize: isSmallScreen ? '0.75rem' : '1rem',
+                                            fontSize: isSmallScreen ? '1rem' : '1.4rem',
                                             backgroundColor:
                                                 selectedTimeSlot === slot.start ? '#348feb' : 'inherit',
                                             color:

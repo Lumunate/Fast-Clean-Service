@@ -16,6 +16,7 @@ import { alpha } from "@mui/material/styles";
 
 const DetailingBox = ({ color, selected, expanded, name, price, available, options, onClick }) => {
   const { theme } = useTheme();
+    const formatEuro = (amount) => `€${parseFloat(amount).toFixed(2)}`;
   return (
       <Box>
         <AdditionalOption
@@ -31,7 +32,7 @@ const DetailingBox = ({ color, selected, expanded, name, price, available, optio
         >
           <AdditionalOptionText variant="p">{name}</AdditionalOptionText>
           <AdditionalOptionText variant="p">
-            {available ? `+ €${price}` : price}
+              {available ? `+ ${formatEuro(price)}` : formatEuro(price)}
           </AdditionalOptionText>
         </AdditionalOption>
         {expanded && (
@@ -137,9 +138,9 @@ const Detailing = () => {
                       price={option.additionalCost}
                       available={option.available}
                       options={option.options}
-                      selected={form.formData.selectedDetailingOptions?.includes(option.name)}
-                      expanded={form.formData.expandedDetailingOption === option.name}
-                      onClick={() => handleClick(option.name)}
+                      selected={form.formData.selectedDetailingOptions?.includes(option._id)}
+                      expanded={form.formData.expandedDetailingOption === option._id}
+                      onClick={() => handleClick(option._id)}
                   />
               ))}
           </AdditionalContent>

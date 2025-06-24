@@ -8,7 +8,7 @@ const Index = () => {
     const t = useTranslations('booking');
   return (
     <Box>
-      <BookingFormHeading>
+      <BookingFormHeading >
           {t("steps.4.title")}
       </BookingFormHeading>
 

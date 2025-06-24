@@ -250,8 +250,8 @@ const Index = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem',
-        marginTop: '5rem',
+        // padding: '2rem',
+        // marginTop: '5rem',
 
         '@media (max-width: 600px)': {
           marginTop: 0,

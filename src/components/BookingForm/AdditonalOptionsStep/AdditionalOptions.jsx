@@ -160,12 +160,12 @@ const AdditionalOptions = () => {
                         color={form.color}
                         options={option.options}
                         selected={form.formData.selectedAdditionalOptions?.includes(
-                          option.name
+                          option._id
                         )}
                         expanded={
-                          form.formData.expandedAdditionalOption === option.name
+                          form.formData.expandedAdditionalOption === option._id
                         }
-                        onClick={() => handleClick(option.name)}
+                        onClick={() => handleClick(option._id)}
                       />
                     )
                   )

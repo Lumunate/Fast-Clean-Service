@@ -6,13 +6,14 @@ import { Box } from '@mui/material';
 import { CustomFormTextField } from '../../mui/NewFormPkgs';
 import { NextPrevButton } from '../../mui/BookingFormPackages';
 import useMultiStepForm from "../../../hooks/useMultiStepForm";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 export default function CouponApplier({ basePrice }) {
   const { applyCoupon, loading, error } = useCoupons();
     const t = useTranslations('booking');
   const [code, setCode] = useState("");
   const [discountInfo, setDiscountInfo] = useState(null);
+  const locale = useLocale()
 
   const form = useMultiStepForm();
 
@@ -64,7 +65,7 @@ export default function CouponApplier({ basePrice }) {
         <NextPrevButton
           sx={{
             padding: "1.6rem 2.2rem",
-            width: "217px",
+            width: locale === "en" ? "217px":"270px",
             top: "1rem",
             "@media (max-width: 600px)": {
               top: "1.5rem",

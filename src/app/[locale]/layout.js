@@ -24,7 +24,7 @@ export default async function RootLayout({children}) {
     return (<html  suppressHydrationWarning>
          <head>
         {/* Preload the logo for faster loading */}
-        <link rel="preload" href="/logo.png" as="image" />
+        <link rel="preload" href="/updatedLogo.svg" as="image" />
       </head>
         <body>
         <SessionProvider session={session}>

@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
     try {
-        const { amount, userEmail, userId, paymentMode='payment', productName = 'Custom Product' } = await request.json();
+        const { amount, userEmail, userId, paymentMode='payment', productName = 'Custom Product', bookingId } = await request.json();
 
         let price;
         console.log('paymentpaymentpayment', paymentMode);
@@ -51,6 +51,7 @@ export async function POST(request) {
                 userEmail,
                 userId,
                 paymentMode,
+                bookingId,
             },
         });
 
