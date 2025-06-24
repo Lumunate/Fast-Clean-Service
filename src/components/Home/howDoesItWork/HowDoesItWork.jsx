@@ -139,7 +139,7 @@ export default function HowDoesItWork() {
                         },
                         "@media (max-width: 768px)": {
                             top: "-26rem",
-                            left: "50%",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -163,7 +163,7 @@ export default function HowDoesItWork() {
                         },
                         "@media (max-width: 768px)": {
                             top: "3rem",
-                            left: "50%",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
@@ -186,7 +186,7 @@ export default function HowDoesItWork() {
                         },
                         "@media (max-width: 768px)": {
                             top: "28rem",
-                            left: "50%",
+                            left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
                         },
