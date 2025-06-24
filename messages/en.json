@@ -190,7 +190,8 @@
         },
         {
           "name": "Deluxe",
-          "category": "Deep Cleaning & Protection",
+          "category": "MOST POPULAR!",
+          "popular": "MOST POPULAR!",
           "price": "From",
           "features": [
             "Thorough deep cleaning",
@@ -288,7 +289,7 @@
             "Nourishing plastic parts",
             "Polishing & applying coating"
           ],
-          "description": "Whether you drive sporty or tour recreationally: we give your two-wheeler the care it deserves. \uD83D\uDD18 More information\n"
+          "description": "Whether you drive sporty or tour recreationally: we give your two-wheeler the care it deserves. \n"
         },
         {
           "name": "Trucks",
@@ -298,7 +299,7 @@
             "Dashboard & cockpit professionally cleaned",
             "Feeding of the plastic parts"
           ],
-          "description": "Keep your cabin fresh, clean and presentable - inside and out.\uD83D\uDD18 More information\n"
+          "description": "Keep your cabin fresh, clean and presentable - inside and out.\n"
         },
         {
           "name": "Boats",
@@ -308,7 +309,7 @@
             "Polishing of metal & plastic parts",
             "Coating against salt, sun & water"
           ],
-          "description": "From sloop to speedboat: we ensure that your boat shines and is protected at every sailing moment.\uD83D\uDD18 More information\n"
+          "description": "From sloop to speedboat: we ensure that your boat shines and is protected at every sailing moment.\n"
         }
       ],
       "button": {

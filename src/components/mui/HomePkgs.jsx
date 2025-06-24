@@ -352,7 +352,7 @@ export const Card = styled(Box)(({ theme }) => ({
       position: "absolute",
       top: "35%",
       left: "20px",
-      width: "100%",
+      width: "90%",
       // width: "450px",
       textAlign: "left",
       color: "#eee",
@@ -613,7 +613,7 @@ export const ServicesItem = styled(Paper)(({ theme }) => ({
   },
   "@media (max-width: 600px)": {
     width: "290px",
-    height: "524px",
+    height: "515px",
   },
   // "@media (max-width: 550px)": {
   //   width: "480px",
@@ -738,6 +738,9 @@ export const ServiceDetail = styled(Box)(({ theme }) => ({
 
       "& span": {
         fontWeight: "500",
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "12px",
       },
 
       // "&:before": {

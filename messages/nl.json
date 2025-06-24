@@ -160,7 +160,7 @@
       "btn":"Meer informatie"
     },
     "anywhere_autocare_section": {
-      "title": "Detailing Service",
+      "title": "Detaildiensten",
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
@@ -191,7 +191,8 @@
         },
         {
           "name": "Deluxe",
-          "category": "Meest Gekozen",
+          "category": "MEEST POPULAIR!",
+          "popular": "MEEST POPULAIR!",
           "price": "Vanaf",
           "features": [
             "Inclusief alle diensten van het Standard Pakket",
@@ -299,7 +300,7 @@
             "Professioneel reinigen van dashboard en cockpit",
             "Voeren van de kunststof onderdelen"
           ],
-          "description": "Houd uw kajuit fris, schoon en representatief - van binnen en van buiten.\uD83D\uDD18 Meer informatie\n"
+          "description": "Houd uw kajuit fris, schoon en representatief - van binnen en van buiten.\n"
         },
         {
           "name": "Boten",
@@ -309,7 +310,7 @@
             "Polijsten van metalen en kunststof onderdelen",
             "Coating tegen zout, zon en water"
           ],
-          "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\uD83D\uDD18 Meer informatie\n"
+          "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
         }
       ],
       "button": {
