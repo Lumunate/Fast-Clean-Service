@@ -51,6 +51,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
 
             {/* Dropdown Menu */}
             <Menu
+                disableScrollLock={true}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
@@ -65,7 +66,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
             >
                 <MenuItem onClick={() => switchLanguage("nl")}>
                     <NL style={{ width: "24px", height: "24px", marginRight: "8px" }} />
-                    Deutsch
+                    Dutch
                 </MenuItem>
                 <MenuItem onClick={() => switchLanguage("en")}>
                     <GB style={{ width: "24px", height: "24px", marginRight: "8px" }} />

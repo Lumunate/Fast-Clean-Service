@@ -206,7 +206,7 @@ export default function LongTermVehicleCare() {
             description: t("categories.0.description"),
         },
         {
-            imgSrc: "/boat.png",
+            imgSrc: "/Caravans.png",
             name: t("categories.1.name"),
             pkgs: [
                 t("categories.1.services.0"),

@@ -119,14 +119,18 @@ export default function Autocare() {
               </ServiceContent>
             </ServicesItem>
 
-            <ServicesItem sx={{ marginTop: "-2.5rem",   "@media (max-width: 1400px)": { marginTop: 0 }, }}>
+            <ServicesItem sx={{ marginTop: "-2.5rem",   "@media (max-width: 1400px)": { marginTop: 0 },  }}>
               <PkgImgCtr
                 //  img="/bike2.jpg"
                 img="/mercedessteering.jpg"
               />
               <ServiceContent sx={{ "@media (max-width: 600px)": {
     bottom: cardBottom,
-  },}} className="service__content">
+  },"@media (max-width: 600px)": {
+     bottom: cardBottom,
+      "&:hover": {
+        bottom: locale === "en"? "0%" : "-7% !important",
+      },}}} className="service__content">
                 <Box sx={{ "@media (max-width: 600px)": {
                             marginBottom: "3rem",
                         }}}>
