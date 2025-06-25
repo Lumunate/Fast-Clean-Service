@@ -120,7 +120,7 @@ const BeforeAfterSwiper = () => {
                   alignItems: "center",
                 }}
               >
-                <StyledImageBox component="img" src={beforeAfterImages[0][index].src} alt={`Before ${index + 1}`} />
+                <StyledImageBox component="img" src={beforeAfterImages[0][index].src} alt={`Before ${index + 1}`} loading="lazy" decoding="async"/>
               </Box>
 
               <Box sx={{ height: `32px` }} />
@@ -134,7 +134,7 @@ const BeforeAfterSwiper = () => {
                   alignItems: "center",
                 }}
               >
-                <StyledImageBox component="img" src={beforeAfterImages[1][index].src} alt={`After ${index + 1}`} />
+                <StyledImageBox component="img" src={beforeAfterImages[1][index].src} alt={`After ${index + 1}`} loading="lazy" decoding="async" />
               </Box>
             </Stack>
           </SwiperSlide>
