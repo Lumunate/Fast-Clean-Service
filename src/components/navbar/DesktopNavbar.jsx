@@ -261,7 +261,7 @@ const DesktopNavbar = () => {
                       sx={{
                           display: "flex",
                           gap: "1rem",
-                          width: "200px",
+                          width: "230px",
                           justifyContent: "flex-end",
                       }}
                   >

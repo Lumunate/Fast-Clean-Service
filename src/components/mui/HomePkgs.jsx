@@ -768,7 +768,7 @@ export const ServiceBtn1 = styled(ButtonBase)(({ theme, special = false }) => ({
   },
   "@media (max-width: 900px)": {
     fontSize: "1.4rem !important",
-    padding: "1rem 2rem",
+    padding: "0.5rem 1rem",
   },
 }));
 

@@ -126,9 +126,9 @@ const CheckoutSelection = () => {
                 borderRadius: "10px",
                 transition: "all 0.3s ease",
                 backgroundColor: theme.palette.primary.main,
-                border: `${isSelected === pkg.service ? "2px" : "1px"} solid ${
-                    isSelected === pkg.service ? "#1C79CC" : "#A5A5A5"
-                }`,
+               border: `${isSelected(pkg.service) ? "2px" : "1px"} solid ${
+                  isSelected(pkg.service) ? "#1C79CC" : "#A5A5A5"
+                      }`,
                 boxSizing: "border-box",
                 transformOrigin: "center center",
                 boxShadow: "0px 4px 12.3px 0px #0000002B",
@@ -150,7 +150,7 @@ const CheckoutSelection = () => {
                   position: "absolute",
                   right: 5,
                   top: 5,
-                  display: isSelected === pkg.service ? "block" : "none",
+                  display: isSelected(pkg.service) ? "block" : "none",
                 }}
               >
                 <Image alt="check icon" width={20} height={20} src={CheckMark} />
