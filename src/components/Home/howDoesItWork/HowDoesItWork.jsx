@@ -137,7 +137,13 @@ export default function HowDoesItWork() {
                             top: "-12rem",
                             left: "49%",
                         },
-                        "@media (max-width: 768px)": {
+                         "@media (max-width: 768px)": {
+                            top: "-26rem",
+                            left: "45%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                         },
+                        "@media (max-width: 400px)": {
                             top: "-26rem",
                             left: "40%",
                             transform: "rotate(90deg)",
@@ -162,7 +168,13 @@ export default function HowDoesItWork() {
                             transform: "rotate(90deg)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "3rem",
+                            top: "1rem",
+                            left: "45%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                        },
+                        "@media (max-width: 400px)": {
+                            top: "1rem",
                             left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",
@@ -185,7 +197,13 @@ export default function HowDoesItWork() {
                             transform: "scale(-1, -1)",
                         },
                         "@media (max-width: 768px)": {
-                            top: "28rem",
+                            top: "25.5rem",
+                            left: "45%",
+                            transform: "rotate(90deg)",
+                            width: "50px",
+                        },
+                        "@media (max-width: 400px)": {
+                            top: "25.5rem",
                             left: "40%",
                             transform: "rotate(90deg)",
                             width: "50px",

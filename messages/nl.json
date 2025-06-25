@@ -2368,10 +2368,10 @@
       {
         "step": 4,
         "title": "Service Type",
-        "description": [
-          "Please select a cleaning package.",
-          "Tailored solutions for spotless spaces!"
-        ],
+       "description": [
+       "Selecteer een schoonmaakpakket.",
+       "Op maat gemaakte oplossingen voor vlekkeloze ruimtes!"
+       ],
         "options": ["Anywhere Autocare", "Subscription Plans"]
       },
       {

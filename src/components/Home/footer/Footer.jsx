@@ -99,6 +99,9 @@ export default function Footer() {
                         display: "flex",
                         gap: "1rem",
                         "@media (max-width: 1366px)": { right: "7rem", bottom: "4.5rem" },
+                        "@media (min-width: 992px) and (max-width: 1365.98px)": {
+                        bottom: "0rem",
+                        },
                         "@media (max-width: 992px)": { display: "none" },
                     }}
                 >
@@ -119,21 +122,46 @@ export default function Footer() {
             </Box>
 
             <Box
-                sx={{
-                    position: "absolute",
-                    bottom: "4rem",
-                    left: "11rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
-                    "@media (max-width: 992px)": { display: "none" },
-                }}
-            >
-                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>{t("terms_privacy.terms")}</MuiLink>
-                <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
-            </Box>
+  sx={{
+    position: "absolute",
+    bottom: "4rem",
+    left: "11rem",
+    display: "flex",
+    alignItems: "center",
+    gap: "1rem",
+    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
+    "@media (min-width: 992px) and (max-width: 1082px)": {
+      flexDirection: "column",
+      alignItems: "flex-start",
+      gap: "0.5rem", 
+       bottom: "1.5rem",
+    },
+    "@media (min-width: 1083px) and (max-width: 1365.98px)": {
+      bottom: "4rem",
+    },
+    "@media (max-width: 992px)": {
+      display: "none",
+    },
+  }}
+>
+  <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>
+    {t("terms_privacy.terms")}
+  </MuiLink>
+  <Divider
+    orientation="vertical"
+    flexItem
+    sx={{
+      bgcolor: "#FFF",
+      "@media (min-width: 992px) and (max-width: 1082px)": {
+        display: "none", // Hide divider when links are stacked
+      },
+    }}
+  />
+  <MuiLink href="/privacy-policy" sx={smallLinkStyles}>
+    {t("terms_privacy.privacy")}
+  </MuiLink>
+</Box>
+
 
             <Box sx={{ display: "none", "@media (max-width: 992px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
                 <Box>
@@ -200,6 +228,10 @@ const copyrightStyle = {
     fontWeight: "500",
     fontFamily: "DMSans",
     textAlign: "center",
+    "@media (max-width: 992px)":{
+         fontSize: "1.2rem",
+         marginTop:"1rem"
+    }
 };
 
 const SocialIcon = ({ href, Icon }) => (
