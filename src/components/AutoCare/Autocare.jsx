@@ -142,6 +142,7 @@ const AutoCare = () => {
 
   // Same tab logic: Standard, Deluxe, Premium
   const [selectedTab, setSelectedTab] = useState("Standard");
+    const [hasClickedTab, setHasClickedTab] = useState(false);
   const [subCat, setSubCat] = useState(""); // e.g., "Exterior", "Interior", or "Complete" etc.
   const [mainCardsVisible, setMainCardsVisible] = useState(true);
   const [addonsVisible, setAddonsVisible] = useState(false);
@@ -194,6 +195,7 @@ const AutoCare = () => {
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
+      setHasClickedTab(true);
     setSubCat("");
     // Force show main cards immediately
     setMainCardsVisible(true);
@@ -320,7 +322,7 @@ const AutoCare = () => {
         >
           {/* ---------- STANDARD ---------- */}
           <AutoTab
-            className={selectedTab === "Standard" ? "selected" : ""}
+              className={hasClickedTab && selectedTab === "Standard" ? "selected" : ""}
             onClick={() => handleTabChange("Standard")}
             sx={{
               flex: "1 1 30%",
@@ -596,7 +598,7 @@ const AutoCare = () => {
 
           {/* ---------- DELUXE ---------- */}
           <AutoTab
-            className={selectedTab === "Deluxe" ? "selected" : ""}
+              className={hasClickedTab && selectedTab === "Deluxe" ? "selected" : ""}
             onClick={() => handleTabChange("Deluxe")}
             sx={{
               flex: "1 1 30%",
@@ -860,7 +862,7 @@ const AutoCare = () => {
 
           {/* ---------- PREMIUM ---------- */}
           <AutoTab
-            className={selectedTab === "Premium" ? "selected" : ""}
+              className={hasClickedTab && selectedTab === "Premium" ? "selected" : ""}
             onClick={() => handleTabChange("Premium")}
             sx={{
               flex: "1 1 30%",
