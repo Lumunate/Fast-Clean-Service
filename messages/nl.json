@@ -614,7 +614,7 @@
   },
   "other_vehicles": {
     "title": "ANDERE VOERTUIGEN",
-    "subtitle": "Gespecialiseerde autoverzorging voor motoren, boten, vliegtuigen en meer!",
+    "subtitle": "Gespecialiseerde reiniging en verzorging van alle soorten voertuigen",
     "description": [
       {
         "icon": "🚴",
@@ -631,10 +631,40 @@
       {
         "icon": "🚗",
         "text": "Services op maat voor speciale voertuigen"
+      },
+      {
+        "icon": "🚐",
+        "text": "Uitgebreide reiniging en onderhoud voor campers"
+      },
+      {
+        "icon": "🚚",
+        "text": "Zware detailing en professionele service voor vrachtwagens"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Motoren, Scooters en Fietsen",
+        "text": "Ook tweewielers verdienen professionele aandacht. Bij Fast Clean Service reinigen we motoren, scooters en (elektrische) fietsen grondig met stoom, inclusief de ketting, wielen en velgen. Kunststof onderdelen worden gevoed en beschermd tegen veroudering, en de lak kan desgewenst gepolijst worden. Voor langdurige bescherming brengen we een hoogwaardige coating aan. Hierdoor blijft uw tweewieler er niet alleen netjes uitzien, maar is hij ook beter bestand tegen vuil, regen en dagelijkse invloeden. Ideaal voor liefhebbers en dagelijks gebruik."
+      },
+      {
+        "heading": "Boten",
+        "text": "Een boot heeft extra bescherming nodig vanwege zon, zout en water. Fast Clean Service biedt gespecialiseerde reiniging en verzorging voor boten, zowel van buiten als van binnen. We verwijderen kalkaanslag en roestsporen met een gerichte antikalk- en antiroestbehandeling en reinigen het hele oppervlak grondig met stoom. Ook de binnenkant van de boot kan professioneel gereinigd worden, inclusief bekleding, vloeren en kunststof onderdelen. Metalen en kunststof oppervlakken op het dek worden gepolijst voor een nette uitstraling. We kunnen de boot ook behandelen met een duurzame coating die beschermt tegen uv-straling, zout en vocht. Zo blijft uw boot in topconditie, van binnen en van buiten."
+      },
+      {
+        "heading": "Campers & Caravans",
+        "text": "Campers en caravans vereisen een grondige en zorgvuldige reiniging, zowel van binnen als van buiten. Fast Clean Service verzorgt een complete stoomreiniging van exterieur en interieur, inclusief dieptereiniging en dakreiniging. Wij verwijderen hardnekkig vuil zoals insectenresten, hars en vervuiling van de weg. Voor langdurige bescherming tegen uv-straling, regen en vuil kunt u kiezen voor een speciale coating. Deze houdt uw camper of caravan in topconditie, klaar voor elk seizoen en elke reis."
+      },
+      {
+        "heading": "Vrachtauto's",
+        "text": "Voor vrachtwagens bieden wij een professionele cabinebehandeling die zorgt voor een frisse, representatieve uitstraling. Wij reinigen de gehele cabine grondig met stoom, inclusief dorpels, ramen, spiegels en moeilijk bereikbare hoeken. Het dashboard, de cockpit en de opbergvakken worden zorgvuldig gereinigd en ontdaan van stof, vet en vlekken. Kunststof onderdelen worden gevoed voor een nette afwerking en een langere levensduur. Ideaal voor transportbedrijven of zelfstandige chauffeurs die hun voertuig schoon, hygiënisch en professioneel willen houden."
+      },
+      {
+        "heading": "Vliegtuigen",
+        "text": "Ook vliegtuigen verdienen een grondige en hygiënische reiniging. Fast Clean Service biedt stoomreiniging van het gehele interieur, waarbij stoelen, wanden, vloeren en opbergvakken professioneel worden behandeld. Dankzij onze stoomtechnologie worden vuil, bacteriën en onaangename geurtjes effectief verwijderd, zonder gebruik van agressieve middelen. Ideaal voor privéjets, sportvliegtuigen of vliegtuigen die regelmatig passagiers vervoeren. Wij zorgen voor een frisse en representatieve cabine, klaar voor de volgende vlucht."
       }
     ],
     "quote_form": {
-      "title": "Vraag een offerte aan",
+      "title": "Aanvraag",
       "fields": {
         "name": "Naam",
         "email": "Email",
@@ -642,19 +672,20 @@
         "vehicle_type": {
           "label": "Voertuigtype",
           "options": {
-            "none": "Geen",
-            "bikes": "Fietsen (alle typen)",
-            "trucks": "Vrachtauto's",
-            "campers": "Campers",
-            "boats": "Boten"
+            "bicycle": "Fiets",
+            "scooter": "Scooter",
+            "motorcycle": "Motor",
+            "boat": "Boot",
+            "truck": "Vrachtwagen",
+            "airplane": "Vliegtuig"
           }
         },
         "service_type": {
           "label": "Service Type",
           "options": {
-            "none": "Geen",
-            "anywhere_autocare": "Anywhere AutoCare",
-            "fleetcare_pro": "FleetCare Pro"
+            "one_time_your_location": "Eenmalige schoonmaak op uw gekozen locatie",
+            "one_time_our_location": "Eenmalige schoonmaak op onze locatie",
+            "subscription": "Schoonmaakabonnement"
           }
         },
         "location": {
@@ -666,6 +697,8 @@
           }
         },
         "address": "Adres",
+        "desired_services": "Gewenste diensten",
+        "desired_services_placeholder": "schrijf hier uw wensen, reiniging van het interieur, aanbrengen van een coating etc.",
         "number_of_vehicles": "Aantal voertuigen"
       },
       "button": "Verzenden"

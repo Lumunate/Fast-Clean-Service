@@ -612,7 +612,7 @@
   },
   "other_vehicles": {
     "title": "OTHER VEHICLES",
-    "subtitle": "Specialized AutoCare for Bikes, Boats, Planes, and More!",
+    "subtitle": "Specialized Cleaning and Care of All Types of Vehicles",
     "description": [
       {
         "icon": "🚴",
@@ -629,10 +629,40 @@
       {
         "icon": "🚗",
         "text": "Tailored Services for Specialty Vehicles"
+      },
+      {
+        "icon": "🚐",
+        "text": "Comprehensive Cleaning and Maintenance for Campers"
+      },
+      {
+        "icon": "🚚",
+        "text": "Heavy-Duty Detailing and Professional Service for Trucks"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Motorcycles, Scooters & Bicycles",
+        "text": "Two-wheelers also deserve professional attention. At Fast Clean Service, we thoroughly clean motorcycles, scooters and (electric) bicycles with steam, including the chain, wheels and rims. Plastic parts are nourished and protected against aging, and paintwork can be polished if desired. For long-term protection, we apply a high-quality coating. This not only keeps your two-wheeler looking neat, but it is also more resistant to dirt, rain and daily influences. Ideal for enthusiasts and daily use."
+      },
+      {
+        "heading": "Boats",
+        "text": "A boat needs extra protection due to sun, salt and water. Fast Clean Service offers specialized cleaning and care for boats, both on the outside and the interior. We remove limescale and rust traces with a targeted anti-limescale and anti-rust treatment, and thoroughly clean the entire surface with steam. The inside of the boat can also be professionally cleaned, including upholstery, floors and plastic parts. Metal and plastic surfaces on deck are polished for a neat appearance. We can also treat the boat with a durable coating that protects against UV radiation, salt and moisture. This keeps your boat in top condition, inside and out."
+      },
+      {
+        "heading": "Campers & Caravans",
+        "text": "Campers and caravans require thorough and careful cleaning, both inside and out. Fast Clean Service provides a complete steam cleaning of the exterior and interior, including deep cleaning and roof cleaning. We remove stubborn dirt such as insect remains, resin and road pollution. For long-term protection against UV radiation, rain and dirt, you can opt for a special coating. This keeps your camper or caravan in top condition, ready for every season and every trip."
+      },
+      {
+        "heading": "Trucks",
+        "text": "For trucks, we offer a professional cabin treatment that ensures a fresh, representative appearance. We thoroughly clean the entire cabin with steam, including sills, windows, mirrors and hard-to-reach corners. The dashboard, cockpit and storage compartments are carefully cleaned and freed of dust, grease and stains. Plastic parts are fed for a neat, neat finish and longer life. Ideal for transport companies or independent drivers who want to keep their vehicle clean, hygienic and professional."
+      },
+      {
+        "heading": "Airplanes",
+        "text": "Airplanes also deserve a thorough and hygienic cleaning. Fast Clean Service offers steam cleaning of the entire interior, with seats, walls, floors and storage compartments being treated professionally. Thanks to our steam technology, dirt, bacteria and unpleasant odours are effectively removed, without the use of aggressive agents. Ideal for private jets, sports aircraft or aircraft that regularly transport passengers. We ensure a fresh and representative cabin, ready for the next flight."
       }
     ],
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Application",
       "fields": {
         "name": "Name",
         "email": "Email",
@@ -640,19 +670,20 @@
         "vehicle_type": {
           "label": "Vehicle Type",
           "options": {
-            "none": "None",
-            "bikes": "Bikes (all types)",
-            "trucks": "Trucks",
-            "campers": "Campers",
-            "boats": "Boats"
+            "bicycle": "Bicycle",
+            "scooter": "Scooter",
+            "motorcycle": "Motorcycle",
+            "boat": "Boat",
+            "truck": "Truck",
+            "airplane": "Airplane"
           }
         },
         "service_type": {
           "label": "Service Type",
           "options": {
-            "none": "None",
-            "anywhere_autocare": "Anywhere AutoCare",
-            "fleetcare_pro": "FleetCare Pro"
+            "one_time_your_location": "One-time cleaning at your chosen location",
+            "one_time_our_location": "One-time cleaning at our location",
+            "subscription": "Cleaning subscription"
           }
         },
         "location": {
@@ -664,6 +695,8 @@
           }
         },
         "address": "Address",
+        "desired_services": "Desired services",
+        "desired_services_placeholder": "Write your wishes here, cleaning of the interior, applying a coating etc.",
         "number_of_vehicles": "Number of Vehicles"
       },
       "button": "Submit"
