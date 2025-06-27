@@ -421,19 +421,19 @@
     "qualities": {
       "quality_as_priority": {
         "title": "Quality as Priority",
-        "description": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail."
+        "description": "We deliver quality in every detail – with equipped service vans and high-end techniques for a flawless result, everywhere and always."
       },
       "our_values": {
         "title": "Our Values",
-        "description": "Every car deserves the best, and we deliver excellence for both business and private customers."
+        "description": "Every car deserves top care. We stand for reliability, honesty and delivering consistent quality – for everyone."
       },
       "experts_in_detail": {
         "title": "Experts in Detail",
-        "description": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+        "description": "Our certified team works with advanced steam, polishing and coating techniques for visible and lasting results."
       },
       "our_successes": {
         "title": "Our Successes",
-        "description": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+        "description": "Thousands of satisfied customers. Our treatments extend the life of vehicles and restore showroom shine – time and time again."
       }
     },
     "detailing_shop": {
@@ -506,21 +506,23 @@
     "subtitle": "Always Available for You",
     "description": "Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.",
     "form": {
-      "name": "Name*",
-      "email": "Email*",
-      "message": "Message*",
+      "name": "Name",
+      "email": "Email",
+      "phone":"phone number",
+      "message": "message / question*",
       "button": "Submit"
     },
     "contact_details": {
-      "phone": "020 2404004",
-      "email": "info@fastcleanservice.nl",
-      "address": "Oranjweg 38 1566 HP Assendelft"
+      "title":"Our Contact Options:",
+      "phone": "Telephone :",
+      "email": "E-mail:",
+      "address": "Location:"
     },
     "working_hours": {
       "title": "WORKING HOURS",
-      "description": "We work by appointment only! Do you want to come by for a treatment on location? Make an appointment in advance to ensure availability.",
-      "days": "Monday to Sunday",
-      "hours": "08:00 - 17:30"
+      "description": "We work by appointment only! Would you like to visit our location? Or a cleaning on location? Make an appointment in advance to guarantee availability.",
+      "days": "Mon to Fri",
+      "hours": "08:00-18:00"
     },
     "faq": {
       "title": "Frequently Asked Questions (FAQs)",
@@ -569,27 +571,27 @@
     }
   },
   "fleetcare": {
-    "title": "FleetCare",
-    "subtitle": "WagenPark Maintenance - Professional Maintenance for your Fleet",
+    "title": "Business services",
+    "subtitle": "Professional Maintenance for your Fleet",
     "description": "At Fast Clean Service we offer a complete and worry-free service with WagenPark Maintenance maintenance solutions for business fleets. We understand that your vehicles have a role as the calling card of your company, and that is why we ensure that every vehicle is always there looking representative. With our mobile service, we perform maintenance on location, which takes some time and saves costs, without having to interrupt your business operations.",
-    "stitle": "Our Services",
+    "stitle": "Our business services",
     "services": [
       {
-        "title": "Exterior maintenance",
-        "description": "Thorough steam cleaning, washing, and protection of the paint."
+        "title": "Fleet management",
+        "description": "We make sure that your fleet always looks clean, well-maintained and professional. Whether it's cars, vans or trucks - we take care of everything down to the last detail."
       },
       {
-        "title": "Interior maintenance",
-        "description": "Deep cleaning with steam, vacuuming, dashboard cleaning, and cleaning upholstery."
+        "title": "Brand dealers & garages",
+        "description": "For dealers and garages, appearance is essential. Our detailing services contribute to a premium presentation of new and used vehicles. From paint corrections to showroom treatments; we make the difference for your customers."
       },
       {
-        "title": "Protective Coatings",
-        "description": "Long-lasting protection with high-quality waxes & coating treatments."
+        "title": "Leasing & rental companies",
+        "description": "We keep lease and rental cars in top condition, increase customer satisfaction and help to maximize the residual value of your vehicles. Our service fits perfectly with your rental process and ensures efficiency and representativeness of your vehicles."
       }
     ],
     "quality_focus": "We focus on high quality using the latest techniques and environmentally friendly products. Your vehicles stay in top condition for longer, which ensures a sustainable and professional fleet.",
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Business application",
       "fields": {
         "business": "Business",
         "address": "Address",
@@ -2190,7 +2192,7 @@
     "title": "SUBSCRIPTIONS",
     "subtitle": "Subscription Plans - Worry-Free Maintenance for your Vehicle",
     "description": "With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits.",
-    "stitle": "What do we offer:",
+    "stitle": "Why choose a subscription?",
     "features": [
       {
         "title": "Expert Care",
@@ -2228,7 +2230,7 @@
           "Every 12 weeks": "+ €10",
           "Every 8 weeks": "+ €15"
         },
-        "additional_options": []
+        "additional_options": ["Cleaning Frequency"]
       },
       {
         "name": "INTERIOR",

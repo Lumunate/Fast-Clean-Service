@@ -370,6 +370,7 @@ export default function FleetMain() {
                 </Typography>
               </ServiceCard>
             </Grid>
+
             <Grid item xs={12} md={4}>
               <ServiceCard>
                 <ServiceIcon>
@@ -398,6 +399,7 @@ export default function FleetMain() {
                 </Typography>
               </ServiceCard>
             </Grid>
+
           </Grid>
         </Box>
 

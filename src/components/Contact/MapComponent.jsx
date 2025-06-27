@@ -12,7 +12,7 @@ import("react-leaflet");
 // });
 
 const MapComponent = () => {
-  const position = [52.212992, 5.27937];
+  const position = [52.510712772663986, 4.78314223967393];
 
   return (
       <Box sx={{ width: "100%", height: "100%" }}>
@@ -22,7 +22,7 @@ const MapComponent = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker position={position}>
-            <Popup>Nederland</Popup>
+            <Popup>Oude Blaauwweg 14 1521 RN Wormerveer</Popup>
           </Marker>
         </MapContainer>
       </Box>

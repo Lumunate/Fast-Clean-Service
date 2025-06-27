@@ -62,7 +62,7 @@ export default function ContactCard2() {
         </ServiceItemDescription>
 
         <ServiceItemDescription sx={{ paddingTop: "0.5rem", color: "#58CDFA", fontWeight: "400", fontSize: "1.4rem" }}>
-          08.00 – 17.30
+          {t("hours")}
         </ServiceItemDescription>
       </ServiceItemBox>
     </ContactCardContainer>
