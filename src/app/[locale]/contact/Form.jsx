@@ -38,6 +38,7 @@ export default function Form() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone:"",
     message: "",
   });
 
@@ -59,6 +60,7 @@ export default function Form() {
       setFormData({
         name: "",
         email: "",
+        phone:"",
         message: "",
       });
     } catch (error) {
@@ -84,6 +86,19 @@ export default function Form() {
         name="email"
         type="email"
         value={formData.email}
+        onChange={handleChange}
+        fullWidth
+        required
+        sx={{
+          boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+          borderRadius: "8px",
+        }}
+      />
+      <CustomFormTextField
+        label={t("phone")}
+        name="phone"
+        type="number"
+        value={formData.phone}
         onChange={handleChange}
         fullWidth
         required
