@@ -41,32 +41,6 @@ export const VehicleContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-const SectionHeader = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    marginTop: "4rem",
-    marginBottom: "1rem",
-}));
-
-const SectionHeading = styled(Typography)(({ theme }) => ({
-    fontSize: "2.4rem",
-    fontWeight: 600,
-    color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
-    "@media (max-width: 600px)": {
-        fontSize: "1.8rem",
-    },
-}));
-
-const SectionText = styled(Typography)(({ theme }) => ({
-    fontSize: "1.8rem",
-    lineHeight: 1.6,
-    marginBottom: "2rem",
-    color: theme.palette.mode === "light" ? "#535353" : "#C5C5C5",
-    "@media (max-width: 600px)": {
-        fontSize: "1.4rem",
-    },
-}));
-
 
 export const CustomListItem = styled(ListItem)(({ theme }) => ({
   display: "flex",
@@ -209,33 +183,6 @@ export default function OtherVehiclesMain() {
                       {t("description.5.text")}
                   </CustomListItem>
               </List>
-
-                <Box>
-                    <SectionHeader>
-                        <FontAwesomeIcon icon={faMotorcycle} style={{ marginRight: "1rem", fontSize: "2.4rem", color: "#1C79CC" }} />
-                        <SectionHeading component="h3">{t("sections.0.heading")}</SectionHeading>
-                    </SectionHeader>
-                    <SectionText>{t("sections.0.text")}</SectionText>
-
-                    <SectionHeader>
-                        <FontAwesomeIcon icon={faShip} style={{ marginRight: "1rem", fontSize: "2.4rem", color: "#1C79CC" }} />
-                        <SectionHeading component="h3">{t("sections.1.heading")}</SectionHeading>
-                    </SectionHeader>
-                    <SectionText>{t("sections.1.text")}</SectionText>
-
-                    <SectionHeader>
-                        <FontAwesomeIcon icon={faCaravan} style={{ marginRight: "1rem", fontSize: "2.4rem", color: "#1C79CC" }} />
-                        <SectionHeading component="h3">{t("sections.2.heading")}</SectionHeading>
-                    </SectionHeader>
-                    <SectionText>{t("sections.2.text")}</SectionText>
-
-                    <SectionHeader>
-                        <FontAwesomeIcon icon={faTruck} style={{ marginRight: "1rem", fontSize: "2.4rem", color: "#1C79CC" }} />
-                        <SectionHeading component="h3">{t("sections.3.heading")}</SectionHeading>
-                    </SectionHeader>
-                    <SectionText>{t("sections.3.text")}</SectionText>
-
-                </Box>
             </Box>
 
             <Box
