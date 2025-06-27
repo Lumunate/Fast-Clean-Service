@@ -573,7 +573,9 @@
   "fleetcare": {
     "title": "FleetCare",
     "subtitle": "WagenPark Onderhoud - Professioneel onderhoud voor uw wagenpark",
-    "description": "Bij Fast Clean Service bieden we een complete en zorgeloze service met WagenPark Onderhoud onderhoudsoplossingen voor bedrijfswagenparken. Wij begrijpen dat uw voertuigen het visitekaartje van uw bedrijf zijn en daarom zorgen wij ervoor dat elk voertuig er altijd representatief uitziet. Met onze mobiele service voeren we onderhoud op locatie uit, wat tijd bespaart en kosten bespaart, zonder uw bedrijfsvoering te onderbreken.",
+    "description": "Fast Clean Service biedt maatwerkoplossingen voor zakelijke klanten die waarde hechten aan professionaliteit, kwaliteit en betrouwbaarheid. Of je nu een wagenpark beheert, auto's verhuurt, een taxi- of vervoersdienst runt, of evenementen organiseert – wij zorgen ervoor dat jouw voertuigen altijd representatief zijn.",
+    "why": "Waarom Kiezen Voor Onze Zakelijke Diensten?",
+    "wdesc": "Wij begrijpen dat een goed onderhouden wagenpark cruciaal is voor het imago en succes van jouw bedrijf. Onze uitgebreide, flexibele oplossingen besparen je tijd, geld en zorgen ervoor dat je voertuigen continu in optimale staat verkeren.",
     "stitle": "Onze Diensten",
     "services": [
       {

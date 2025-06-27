@@ -571,7 +571,9 @@
   "fleetcare": {
     "title": "FleetCare",
     "subtitle": "WagenPark Maintenance - Professional Maintenance for your Fleet",
-    "description": "At Fast Clean Service we offer a complete and worry-free service with WagenPark Maintenance maintenance solutions for business fleets. We understand that your vehicles have a role as the calling card of your company, and that is why we ensure that every vehicle is always there looking representative. With our mobile service, we perform maintenance on location, which takes some time and saves costs, without having to interrupt your business operations.",
+    "description": "Fast Clean Service offers customized solutions for business customers who value professionalism, quality and reliability. Whether you manage a fleet, rent out cars, run a taxi or transport service, or organize events – we ensure that your vehicles are always presentable.",
+    "why": "Why choose our business services?",
+    "wdesc": "We understand that a well-maintained fleet is crucial to the image and success of your company. Our comprehensive, flexible solutions save you time, money and ensure that your vehicles are always in optimum condition.",
     "stitle": "Our Services",
     "services": [
       {
