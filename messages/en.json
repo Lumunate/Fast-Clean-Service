@@ -2221,9 +2221,10 @@
   },
   "subscriptions": {
     "title": "SUBSCRIPTIONS",
-    "subtitle": "Subscription Plans - Worry-Free Maintenance for your Vehicle",
+    "subtitle": "Worry-Free Maintenance for your Vehicle",
     "description": "With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits.",
     "stitle": "What do we offer:",
+    "warning": "Minimum term: 3 months*",
     "features": [
       {
         "title": "Expert Care",

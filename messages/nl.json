@@ -2226,9 +2226,10 @@
   },
   "subscriptions": {
     "title": "ABONNEMENTEN",
-    "subtitle": "Abonnementsplannen - Zorgeloos onderhoud voor uw voertuig",
+    "subtitle": "Zorgeloos onderhoud voor uw voertuig",
     "description": "Met onze Fast Clean Service-abonnementen bieden we een flexibele en voordelige manier om uw auto altijd in topconditie te houden. Kies uit verschillende opties, afgestemd op uw behoeften en rijstijl, met regelmatig onderhoud en exclusieve voordelen.",
     "stitle": "Wat bieden wij:",
+    "warning": "Minimale looptijd: 3 maanden*",
     "features": [
       {
         "title": "Expert Care",

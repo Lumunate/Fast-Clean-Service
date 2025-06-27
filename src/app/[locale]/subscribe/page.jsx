@@ -180,6 +180,21 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     opacity: durationOpen ? 1 : 0,
                                 }}
                             >
+                                {durationOpen && (
+                                    <Typography
+                                        sx={{
+                                            mt: 1,
+                                            fontSize: "1.2rem",
+                                            fontStyle: "italic",
+                                            fontWeight: "bold",
+                                            color: theme.palette.text.secondary,
+                                            textAlign: "center",
+                                            margin: "1rem 0",
+                                        }}
+                                    >
+                                        {t("warning")}
+                                    </Typography>
+                                )}
                                 {pkg.durationOptions.map((option) => (
                                     <Box
                                         onClick={() => setSelectedDuration(option)}
