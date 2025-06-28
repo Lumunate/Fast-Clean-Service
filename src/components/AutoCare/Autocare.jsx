@@ -19,8 +19,6 @@ import RadialCircle from "../Decorative/RadialCircle";
 import { DecorativeBackgroundImage } from "../Decorative/Decorative.style";
 import HeadingLinesAnimation from "../Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import { englishPackages } from "../../lib/enData.js";
-
-// ---- Bring in the hook that fetches data from the new API ----
 import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 // import Preloader from "../Preloader";
 import Link from "next/link";
