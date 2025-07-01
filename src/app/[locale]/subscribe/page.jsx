@@ -170,7 +170,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Duration options{" "}
+                                {t("plans.0.duration_options.title")}
                                 <FontAwesomeIcon icon={durationOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -268,7 +268,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Cleaning Frequency{" "}
+                               {t("plans.0.cleaning_frequency.title")}
                                 <FontAwesomeIcon icon={frequencyOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -354,7 +354,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Additional Options{" "}
+                               {t("plans.0.additional_options.0")}
                                 <FontAwesomeIcon icon={additionalOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -440,7 +440,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     color: "gray",
                                 }}
                             >
-                                Additional Options{" "}
+                                {t("plans.0.additional_options.0")}
                                 <FontAwesomeIcon icon={faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                         </Box>
@@ -692,7 +692,7 @@ const Page = () => {
                             {t("cta.text")}
                         </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+                    {/* <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
                         <Link href="/booking" passHref>
                             <Button
                                 variant="contained"
@@ -712,7 +712,7 @@ const Page = () => {
                                 {t("cta.button")}
                             </Button>
                         </Link>
-                    </Box>
+                    </Box> */}
                 </Box>
             </Container>
             <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>

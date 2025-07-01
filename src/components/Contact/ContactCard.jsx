@@ -13,6 +13,7 @@ import { Box } from "@mui/material";
 import { ContactCardContainer } from "./Contact.style";
 import { useTheme } from "../../contexts/themeContext";
 import {useTranslations} from "next-intl";
+import Link from "next/link";
 
 export default function ContactCard() {
     const t = useTranslations('contact.contact_details');
@@ -42,7 +43,7 @@ export default function ContactCard() {
                 color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
               }}
             >
-              Our Contact Options:
+              {t("title")}
             </ServiceItemHeading>
           </Box>
 
@@ -63,7 +64,7 @@ export default function ContactCard() {
                 width: "100%",
               }}
             >
-              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>Telephone :</ServiceItemDescription>
+              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>{t("phone")}</ServiceItemDescription>
               <ServiceItemDescription sx={{ width: "auto", textAlign: "right" }}>
                 <a href="tel:+31202440994" style={{ color: "#2E75E8", textDecoration: "none" }}>
                   020 2440994
@@ -79,7 +80,7 @@ export default function ContactCard() {
                 width: "100%",
               }}
             >
-              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>E-mail:</ServiceItemDescription>
+              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>{t("email")}</ServiceItemDescription>
               <ServiceItemDescription sx={{ width: "auto", textAlign: "right" }}>
                 <a
                   href="mailto:Info@fastcleanservice.nl"
@@ -101,10 +102,15 @@ export default function ContactCard() {
                 width: "100%",
               }}
             >
-              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>Location:</ServiceItemDescription>
+              <ServiceItemDescription sx={{ width: "auto", textAlign: "left" }}>{t("address")}</ServiceItemDescription>
+             <Link  href="https://www.google.com/maps?q=Oude+Blaauwweg+14+1521+RN+Wormerveer"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}>
               <ServiceItemDescription sx={{ width: "auto", textAlign: "right", color: "#2E75E8" }}>
-                Omweg 38 1566 HP Assendelft
+                Oude Blaauwweg 14 1521 RN Wormerveer
               </ServiceItemDescription>
+             </Link>
             </Box>
           </Box>
         </ServiceItemBox>
