@@ -121,6 +121,9 @@ export default function BackgroundSection() {
       <Box sx={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
         <SectionContainer>
           <TextContainer>
+            <Description sx={{ fontWeight: "bold", fontSize: "2rem"}}>
+              {t('sub')}
+            </Description>
             <Description>
               {t('description')}
             </Description>
