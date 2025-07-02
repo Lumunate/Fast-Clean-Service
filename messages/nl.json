@@ -92,6 +92,12 @@
         }
       ]
     },
+    "auto": {
+      "title": "Premium Zorgdiensten\""
+    },
+    "gallery_section": {
+      "title": "Voor en na"
+    },
     "services_section": {
       "title": "ONZE EXTRA OPTIES",
       "description": "Wil je nét dat beetje extra? Breid je behandeling uit met aanvullende services voor een nóg beter resultaat. Kies uit interieur-, exterieur- of detailing-opties en stel je eigen ideale behandeling samen.",
@@ -160,7 +166,7 @@
       "btn":"Meer informatie"
     },
     "anywhere_autocare_section": {
-      "title": "Detailing Service",
+      "title": "Detaildiensten",
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
@@ -191,7 +197,8 @@
         },
         {
           "name": "Deluxe",
-          "category": "Meest Gekozen",
+          "category": "MEEST POPULAIR!",
+          "popular": "MEEST POPULAIR!",
           "price": "Vanaf",
           "features": [
             "Inclusief alle diensten van het Standard Pakket",
@@ -290,6 +297,26 @@
             "Polijsten & aanbrengen coating"
           ],
           "description": "Of je nu sportief rijdt of recreatief toert: wij geven jouw tweewieler de zorg die hij verdient."
+        },
+        {
+          "name": "Vrachtwagens",
+          "services": [
+            "Grondige stoomreiniging van de kajuit",
+            "Reiniging van dorpels, ramen en spiegels",
+            "Professioneel reinigen van dashboard en cockpit",
+            "Voeren van de kunststof onderdelen"
+          ],
+          "description": "Houd uw kajuit fris, schoon en representatief - van binnen en van buiten.\n"
+        },
+        {
+          "name": "Boten",
+          "services": [
+            "Antikalk- en antiroestbehandeling",
+            "Stoomreiniging van dek en interieur",
+            "Polijsten van metalen en kunststof onderdelen",
+            "Coating tegen zout, zon en water"
+          ],
+          "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
         }
       ],
       "button": {
@@ -334,7 +361,7 @@
           "answer": "U kunt ervoor kiezen om hem op locatie te laten reinigen of langs te komen. Beide opties bieden dezelfde hoogwaardige service."
         },
         {
-          "question": "Hoe lang duurt een standaardreiniging?",
+          "question": "Hoe lang duurt een reiniging?",
           "answer": [
             "Standaard reiniging: ± 1 uur",
             "Deluxe reiniging: 1 – 3 uur",
@@ -391,24 +418,25 @@
 
   },
   "about": {
-    "title": "OVER",
-    "description": "\"Wij onderscheiden ons door onze reiniging, altijd en overal, voor uw gemak. Onze stoomreinigingstechnologie zorgt voor een grondige reiniging, zelfs op de meest hardnekkige plekken, dankzij superieur heet water. Wij bieden efficiënte, professionele service voor alle soorten voertuigen.",
+    "title": "Over Fast Clean Service – Premium Autoreiniging & Detailing",
+    "sub": "Kwaliteit. Gemak. Flexibiliteit.",
+    "description": "Sinds 2018 levert Fast Clean Service hoogwaardige detailing en autoreiniging. Onze focus? Perfectie in elk detail. Of je nu kiest voor reinigen op locatie of je auto bij onze vestiging brengt – wij garanderen een showroom waardige afwerking.\nWij onderscheiden ons door flexibele, grondige reiniging – altijd en overal. Met geavanceerde hogedrukstoom technologie reinigen we voertuigen tot in de kleinste details. Deze methode verwijdert effectief vuil, vet en bacteriën, zelfs op de meest hardnekkige plekken, zonder schade aan te richten. Wij bieden efficiënte, professionele service voor alle soorten voertuigen – bij jou op locatie of bij onze vestiging.\n",
     "qualities": {
       "quality_as_priority": {
         "title": "Kwaliteit als prioriteit",
-        "description": "We geven prioriteit aan aanpakkwaliteit met volledig uitgeruste servicebussen en geavanceerde reinigingstechnieken om elk detail te perfectioneren."
+        "description": "Wij leveren kwaliteit in elk detail – met uitgeruste servicebussen en high-end technieken voor een foutloos resultaat, overal en altijd."
       },
       "our_values": {
         "title": "Onze waarden",
-        "description": "Elke auto verdient het beste en wij leveren uitmuntendheid voor zowel zakelijke als particuliere klanten."
+        "description": "Elke auto verdient topzorg. We staan voor betrouwbaarheid, eerlijkheid en het leveren van constante kwaliteit – voor iedereen."
       },
       "experts_in_detail": {
         "title": "Experts in Detail",
-        "description": "Ons gecertificeerde team gebruikt geavanceerde technieken voor polijsten, coaten en stoomreinigen voor een perfect resultaat."
+        "description": "Ons gecertificeerd team werkt met geavanceerde stoom-, polijst- en coat technieken voor zichtbaar én duurzaam resultaat."
       },
       "our_successes": {
         "title": "Onze successen",
-        "description": "Als gecertificeerd leider in detailonderhoud bieden wij professionele behandelingen die de levensduur van voertuigen verlengen en hun uiterlijk als nieuw herstellen."
+        "description": "Duizenden tevreden klanten. Onze behandelingen verlengen de levensduur van voertuigen en herstellen showroomglans – keer op keer."
       }
     },
     "detailing_shop": {
@@ -465,8 +493,8 @@
       "title": "TESTIMONIALS"
     },
     "cta_section": {
-      "title": "Klaar voor een sprankelende schoonmaak Rijden?",
-      "description": "Klaar om uw auto te laten stralen? Boek nu online en ervaar zelf waarom zoveel klanten voor Fast Clean Service kiezen!",
+      "title": "Klaar voor een auto die straalt als nieuw?",
+      "description": "Boek direct online en zie waarom klanten blijven terugkomen bij Fast Clean Service.",
       "button": "Boek Nu"
     },
     "decorativeText":{
@@ -481,21 +509,23 @@
     "subtitle": "Altijd voor u bereikbaar",
     "description": "Heeft u een vraag of wilt u een afspraak maken? Neem gerust contact met ons op! Fast Clean Service staat voor u klaar met professionele stoomreiniging en autodetailing, zowel op locatie als in onze vestiging.",
     "form": {
-      "name": "Naam*",
-      "email": "Email*",
-      "message": "Bericht*",
+      "name": "Naam",
+      "email": "Email",
+      "phone":"telefoonnummer",
+      "message": "bericht / vraag",
       "button": "Verzenden"
     },
     "contact_details": {
-      "phone": "020 2404004",
-      "email": "info@fastcleanservice.nl",
-      "address": "Oranjweg 38 1566 HP Assendelft"
+      "title":"Onze contactmogelijkheden :",
+      "phone": "Telefoon:",
+      "email": "Emailadres:",
+      "address": "Locatie:"
     },
     "working_hours": {
       "title": "WERKTIJDEN",
-      "description": "Wij werken uitsluitend op afspraak! Wilt u langskomen? Voor een behandeling op locatie? Maak vooraf een afspraak om beschikbaarheid te garanderen.",
-      "days": "Maandag t/m zondag",
-      "hours": "08:00 - 17:30"
+      "description": "Wij werken uitsluitend op afspraak! Wilt u langskomen bij onze vestiging? Of een reiniging op locatie? Maak vooraf een afspraak om beschikbaarheid te garanderen.",
+      "days": "Ma t/m Vr",
+      "hours": " 08:00-18:00"
     },
     "faq": {
       "title": "Veelgestelde vragen (FAQ)",
@@ -544,27 +574,29 @@
     }
   },
   "fleetcare": {
-    "title": "FleetCare",
-    "subtitle": "WagenPark Onderhoud - Professioneel onderhoud voor uw wagenpark",
-    "description": "Bij Fast Clean Service bieden we een complete en zorgeloze service met WagenPark Onderhoud onderhoudsoplossingen voor bedrijfswagenparken. Wij begrijpen dat uw voertuigen het visitekaartje van uw bedrijf zijn en daarom zorgen wij ervoor dat elk voertuig er altijd representatief uitziet. Met onze mobiele service voeren we onderhoud op locatie uit, wat tijd bespaart en kosten bespaart, zonder uw bedrijfsvoering te onderbreken.",
-    "stitle": "Onze Diensten",
+     "title": "Zakelijke diensten",
+     "subtitle": "Professioneel onderhoud voor uw wagenpark",
+    "description": "Fast Clean Service biedt maatwerkoplossingen voor zakelijke klanten die waarde hechten aan professionaliteit, kwaliteit en betrouwbaarheid. Of je nu een wagenpark beheert, auto's verhuurt, een taxi- of vervoersdienst runt, of evenementen organiseert – wij zorgen ervoor dat jouw voertuigen altijd representatief zijn.",
+    "why": "Waarom Kiezen Voor Onze Zakelijke Diensten?",
+    "wdesc": "Wij begrijpen dat een goed onderhouden wagenpark cruciaal is voor het imago en succes van jouw bedrijf. Onze uitgebreide, flexibele oplossingen besparen je tijd, geld en zorgen ervoor dat je voertuigen continu in optimale staat verkeren.",
+   "stitle": "Onze zakelijke diensten",
     "services": [
       {
-        "title": "Exterieuronderhoud",
-        "description": "Grondig stoomreinigen, wassen en beschermen van de lak."
+        "title": "Wagenparkbeheer",
+        "description": "We zorgen ervoor dat jouw wagenpark er altijd schoon, verzorgd en professioneel uitziet. Of het nu gaat om auto's, bestelbussen of vrachtwagens – wij verzorgen alles tot in detail."
       },
       {
-        "title": "Interieuronderhoud",
-        "description": "Diepgaande reiniging met stoom, stofzuigen, dashboardreiniging en bekledingreiniging."
+        "title": "Merkdealers & Garagebedrijven",
+        "description": "Voor dealers en garages is uitstraling essentieel. Onze detailing services dragen bij aan een premium presentatie van nieuwe en gebruikte voertuigen. Van lakcorrecties tot showroombehandelingen; wij maken het verschil voor jouw klanten."
       },
       {
-        "title": "Beschermende Coatings",
-        "description": "Langdurige bescherming met hoogwaardige waxen en coatingbehandelingen."
+        "title": "Lease- & verhuurbedrijven",
+        "description": "Wij houden lease- en verhuurauto’s in topconditie, verhogen de klanttevredenheid en helpen om de restwaarde van jouw voertuigen te maximaliseren. Onze service sluit perfect aan op jouw verhuurproces en zorgt voor efficiëntie en representativiteit van jou voertuigen."
       }
     ],
     "quality_focus": "Wij richten ons op hoge kwaliteit met behulp van de nieuwste technieken en milieuvriendelijke producten. Uw voertuigen blijven langer in topconditie, wat zorgt voor een duurzaam en professioneel wagenpark.",
     "quote_form": {
-      "title": "Vraag een offerte aan",
+      "title": "Zakelijke aanvraag",
       "fields": {
         "business": "Zakelijk",
         "address": "Adres",
@@ -587,7 +619,7 @@
   },
   "other_vehicles": {
     "title": "ANDERE VOERTUIGEN",
-    "subtitle": "Gespecialiseerde autoverzorging voor motoren, boten, vliegtuigen en meer!",
+    "subtitle": "Gespecialiseerde reiniging en verzorging van alle soorten voertuigen",
     "description": [
       {
         "icon": "🚴",
@@ -604,10 +636,40 @@
       {
         "icon": "🚗",
         "text": "Services op maat voor speciale voertuigen"
+      },
+      {
+        "icon": "🚐",
+        "text": "Uitgebreide reiniging en onderhoud voor campers"
+      },
+      {
+        "icon": "🚚",
+        "text": "Zware detailing en professionele service voor vrachtwagens"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Motoren, Scooters en Fietsen",
+        "text": "Ook tweewielers verdienen professionele aandacht. Bij Fast Clean Service reinigen we motoren, scooters en (elektrische) fietsen grondig met stoom, inclusief de ketting, wielen en velgen. Kunststof onderdelen worden gevoed en beschermd tegen veroudering, en de lak kan desgewenst gepolijst worden. Voor langdurige bescherming brengen we een hoogwaardige coating aan. Hierdoor blijft uw tweewieler er niet alleen netjes uitzien, maar is hij ook beter bestand tegen vuil, regen en dagelijkse invloeden. Ideaal voor liefhebbers en dagelijks gebruik."
+      },
+      {
+        "heading": "Boten",
+        "text": "Een boot heeft extra bescherming nodig vanwege zon, zout en water. Fast Clean Service biedt gespecialiseerde reiniging en verzorging voor boten, zowel van buiten als van binnen. We verwijderen kalkaanslag en roestsporen met een gerichte antikalk- en antiroestbehandeling en reinigen het hele oppervlak grondig met stoom. Ook de binnenkant van de boot kan professioneel gereinigd worden, inclusief bekleding, vloeren en kunststof onderdelen. Metalen en kunststof oppervlakken op het dek worden gepolijst voor een nette uitstraling. We kunnen de boot ook behandelen met een duurzame coating die beschermt tegen uv-straling, zout en vocht. Zo blijft uw boot in topconditie, van binnen en van buiten."
+      },
+      {
+        "heading": "Campers & Caravans",
+        "text": "Campers en caravans vereisen een grondige en zorgvuldige reiniging, zowel van binnen als van buiten. Fast Clean Service verzorgt een complete stoomreiniging van exterieur en interieur, inclusief dieptereiniging en dakreiniging. Wij verwijderen hardnekkig vuil zoals insectenresten, hars en vervuiling van de weg. Voor langdurige bescherming tegen uv-straling, regen en vuil kunt u kiezen voor een speciale coating. Deze houdt uw camper of caravan in topconditie, klaar voor elk seizoen en elke reis."
+      },
+      {
+        "heading": "Vrachtauto's",
+        "text": "Voor vrachtwagens bieden wij een professionele cabinebehandeling die zorgt voor een frisse, representatieve uitstraling. Wij reinigen de gehele cabine grondig met stoom, inclusief dorpels, ramen, spiegels en moeilijk bereikbare hoeken. Het dashboard, de cockpit en de opbergvakken worden zorgvuldig gereinigd en ontdaan van stof, vet en vlekken. Kunststof onderdelen worden gevoed voor een nette afwerking en een langere levensduur. Ideaal voor transportbedrijven of zelfstandige chauffeurs die hun voertuig schoon, hygiënisch en professioneel willen houden."
+      },
+      {
+        "heading": "Vliegtuigen",
+        "text": "Ook vliegtuigen verdienen een grondige en hygiënische reiniging. Fast Clean Service biedt stoomreiniging van het gehele interieur, waarbij stoelen, wanden, vloeren en opbergvakken professioneel worden behandeld. Dankzij onze stoomtechnologie worden vuil, bacteriën en onaangename geurtjes effectief verwijderd, zonder gebruik van agressieve middelen. Ideaal voor privéjets, sportvliegtuigen of vliegtuigen die regelmatig passagiers vervoeren. Wij zorgen voor een frisse en representatieve cabine, klaar voor de volgende vlucht."
       }
     ],
     "quote_form": {
-      "title": "Vraag een offerte aan",
+      "title": "Aanvraag",
       "fields": {
         "name": "Naam",
         "email": "Email",
@@ -615,19 +677,20 @@
         "vehicle_type": {
           "label": "Voertuigtype",
           "options": {
-            "none": "Geen",
-            "bikes": "Fietsen (alle typen)",
-            "trucks": "Vrachtauto's",
-            "campers": "Campers",
-            "boats": "Boten"
+            "bicycle": "Fiets",
+            "scooter": "Scooter",
+            "motorcycle": "Motor",
+            "boat": "Boot",
+            "truck": "Vrachtwagen",
+            "airplane": "Vliegtuig"
           }
         },
         "service_type": {
           "label": "Service Type",
           "options": {
-            "none": "Geen",
-            "anywhere_autocare": "Anywhere AutoCare",
-            "fleetcare_pro": "FleetCare Pro"
+            "one_time_your_location": "Eenmalige schoonmaak op uw gekozen locatie",
+            "one_time_our_location": "Eenmalige schoonmaak op onze locatie",
+            "subscription": "Schoonmaakabonnement"
           }
         },
         "location": {
@@ -639,6 +702,8 @@
           }
         },
         "address": "Adres",
+        "desired_services": "Gewenste diensten",
+        "desired_services_placeholder": "schrijf hier uw wensen, reiniging van het interieur, aanbrengen van een coating etc.",
         "number_of_vehicles": "Aantal voertuigen"
       },
       "button": "Verzenden"
@@ -2166,9 +2231,11 @@
   },
   "subscriptions": {
     "title": "ABONNEMENTEN",
-    "subtitle": "Abonnementsplannen - Zorgeloos onderhoud voor uw voertuig",
+    "subtitle": "Zorgeloos onderhoud voor uw voertuig",
     "description": "Met onze Fast Clean Service-abonnementen bieden we een flexibele en voordelige manier om uw auto altijd in topconditie te houden. Kies uit verschillende opties, afgestemd op uw behoeften en rijstijl, met regelmatig onderhoud en exclusieve voordelen.",
-    "stitle": "Wat bieden wij:",
+    "stitle": "Waarom kiezen voor een abonnement?",
+    "warning": "Minimale looptijd: 3 maanden*",
+
     "features": [
       {
         "title": "Expert Care",
@@ -2196,17 +2263,17 @@
           "Tire blackening"
         ],
         "duration_options": {
-          "title": "Duration options",
+          "title": "Duuropties",
           "24 months": "+ €40",
           "12 months": "+ €20",
           "Monthly cancellable": "+ €10"
         },
         "cleaning_frequency": {
-          "title": "Cleaning Frequency",
+          "title": "Reinigingsfrequentie",
           "Every 12 weeks": "+ €10",
           "Every 8 weeks": "+ €15"
         },
-        "additional_options": []
+        "additional_options": ["Reinigingsfrequentie"]
       },
       {
         "name": "INTERIOR",
@@ -2341,10 +2408,10 @@
       {
         "step": 4,
         "title": "Service Type",
-        "description": [
-          "Please select a cleaning package.",
-          "Tailored solutions for spotless spaces!"
-        ],
+       "description": [
+       "Selecteer een schoonmaakpakket.",
+       "Op maat gemaakte oplossingen voor vlekkeloze ruimtes!"
+       ],
         "options": ["Anywhere Autocare", "Subscription Plans"]
       },
       {
@@ -2742,7 +2809,7 @@
       "youtube": "https://youtube.com",
       "email": "mailto:support@fastclean.com"
     },
-    "copyright": "\u00a9 2025 Fast Clean Service. Alle rechten voorbehouden."
+    "copyright": "\u00a9 Fast Clean Service – KvK 70208085"
   },
   "cookie_banner": {
     "title": "We respect your privacy",

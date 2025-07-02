@@ -39,6 +39,7 @@ import { faEnvelope, faPhoneFlip} from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { useLocale } from 'next-intl';
 import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
+import { useLoginModal } from "../../contexts/ModalContext";
 
 const DesktopNavbar = () => {
   const locale = useLocale();
@@ -54,8 +55,7 @@ const DesktopNavbar = () => {
   const userDropdownRef = useRef(null);
   const t = useTranslations("header");
     const [scrolled, setScrolled] = useState(false);
-
-  const [openLogin, setOpenLogin] = useState(false);
+    const { openLoginModal, isLoginModalOpen, closeLoginModal } = useLoginModal();
   const [openSignup, setOpenSignup] = useState(false);
 
   const handleUserMenuToggle = () => {
@@ -78,9 +78,7 @@ const DesktopNavbar = () => {
   };
 
   const handleOpenModal = (modalType) => {
-    if (modalType === "login") {
-      setOpenLogin(true);
-    } else if (modalType === "signup") {
+    if (modalType === "signup") {
       setOpenSignup(true);
     }
   };
@@ -263,7 +261,7 @@ const DesktopNavbar = () => {
                       sx={{
                           display: "flex",
                           gap: "1rem",
-                          width: "200px",
+                          width: "230px",
                           justifyContent: "flex-end",
                       }}
                   >
@@ -282,7 +280,7 @@ const DesktopNavbar = () => {
                                   borderColor: "rgba(255, 255, 255, 0.7)",
                               },
                           }}
-                          onClick={() => handleOpenModal("login")}
+                          onClick={openLoginModal}
                       >
                           {t("buttons.login")}
                       </Button>
@@ -397,8 +395,8 @@ const DesktopNavbar = () => {
           </NavLinksContainer>
       </NavbarInnerContainer>
 
-      {openLogin && <LoginModal setOpenLogin={setOpenLogin} setOpenSignup={setOpenSignup} />}
-      {openSignup && <SignUpModal setOpenSignup={setOpenSignup} setOpenLogin={setOpenLogin} />}
+        {isLoginModalOpen && <LoginModal onClose={closeLoginModal} setOpenSignup={setOpenSignup} />}
+      {openSignup && <SignUpModal setOpenSignup={setOpenSignup} setOpenLogin={openLoginModal} />}
     </NavbarContainer>
   );
 };

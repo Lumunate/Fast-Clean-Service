@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import paymentsServices from "../../../../services/payments";
+import Booking from '../../../../models/Booking';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -23,7 +24,7 @@ export async function POST(request) {
     }
 
     console.log('event.typeevent.type', event.type);
-    
+
     // Handle the event
     switch (event.type) {
         // One-time payment success
@@ -34,6 +35,16 @@ export async function POST(request) {
             console.log('User email:', userEmail);
 
             await paymentsServices.savePaymentToDatabase(session);
+            const _bookingId = session.metadata.bookingId;
+            if (_bookingId) {
+                console.log(`[Stripe] Marking booking ${_bookingId} as PAID`);
+                await Booking.findByIdAndUpdate(_bookingId, {
+                    'payment.status': 'PAID',
+                    'payment.provider': 'stripe',
+                    'payment.sessionId': session.id,
+                    'payment.lastUpdated': new Date(),
+                });
+            }
             break;
 
         // Subscription created
@@ -43,6 +54,16 @@ export async function POST(request) {
 
             // Update your database with the new subscription
             await paymentsServices.saveSubscriptionToDatabase(subscriptionCreated);
+            const bookingId = subscriptionCreated.metadata.bookingId;
+            if (bookingId) {
+                console.log(`[Stripe] Marking booking ${bookingId} as PAID (subscription start)`);
+                await Booking.findByIdAndUpdate(bookingId, {
+                    'payment.status': 'PAID',
+                    'payment.provider': 'stripe',
+                    'payment.sessionId': subscription.id,
+                    'payment.lastUpdated': new Date(),
+                });
+            }
             break;
 
         // Subscription payment succeeded
@@ -52,6 +73,14 @@ export async function POST(request) {
 
             // Update your database or send a confirmation email
             await paymentsServices.handleSubscriptionPayment(invoice);
+            const bookingid = invoice.metadata.bookingId;
+            if (bookingid) {
+                console.log(`[Stripe] Marking booking ${bookingid} as PAID (renewal)`);
+                await Booking.findByIdAndUpdate(bookingid, {
+                    'payment.status': 'PAID',
+                    'payment.lastUpdated': new Date(),
+                });
+            }
             break;
 
         // Subscription canceled
@@ -61,6 +90,14 @@ export async function POST(request) {
 
             // Update your database to reflect the canceled subscription
             await paymentsServices.cancelSubscriptionInDatabase(subscriptionDeleted);
+            const bookingiD = subscriptionDeleted.metadata.bookingId;
+            if (bookingiD) {
+                console.log(`[Stripe] Marking booking ${bookingiD} as FAILED (subscription canceled)`);
+                await Booking.findByIdAndUpdate(bookingiD, {
+                    'payment.status': 'FAILED',
+                    'payment.lastUpdated': new Date(),
+                });
+            }
             break;
 
         default:

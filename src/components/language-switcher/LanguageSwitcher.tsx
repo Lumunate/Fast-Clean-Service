@@ -21,7 +21,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
     };
 
     const switchLanguage = (locale: string) => {
-        const currentPath = pathname.replace(/^\/(en|de)/, ""); // Remove existing locale prefix
+        const currentPath = pathname.replace(/^\/(en|nl)/, ""); // Remove existing locale prefix
         router.push(`/${locale}${currentPath}`);
         handleClose(); // Close the dropdown after switching language
     };
@@ -51,6 +51,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
 
             {/* Dropdown Menu */}
             <Menu
+                disableScrollLock={true}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
@@ -63,9 +64,9 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                     horizontal: "center",
                 }}
             >
-                <MenuItem onClick={() => switchLanguage("de")}>
+                <MenuItem onClick={() => switchLanguage("nl")}>
                     <NL style={{ width: "24px", height: "24px", marginRight: "8px" }} />
-                    Deutsch
+                    Dutch
                 </MenuItem>
                 <MenuItem onClick={() => switchLanguage("en")}>
                     <GB style={{ width: "24px", height: "24px", marginRight: "8px" }} />

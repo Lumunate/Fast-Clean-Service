@@ -122,124 +122,6 @@ export const ServiceIcon = styled(Box)(({ theme }) => ({
 export default function FleetMain() {
   const theme = useTheme();
     const t = useTranslations('fleetcare');
-
-  /*
-    return (
-        <FleetContainer sx={{}}>
-            <HomePkgsInBox
-                sx={{
-                    margin: "0 auto",
-                    position: "relative",
-                    padding: "15rem 2rem",
-                    borderRadius: "10px",
-                    flexDirection: "column",
-                    maxWidth: "1571px",
-                    "@media (max-width: 1150px)": {
-                        width: "100%",
-                    },
-                }}
-            >
-                <Box
-                    sx={{
-                        zIndex: 20,
-                        textAlign: "center",
-                        marginBottom: "3rem",
-                    }}
-                >
-                    <FleetSubheading
-                        sx={{
-                            fontSize: "5.6rem",
-                            fontWeight: "600",
-                            marginBottom: "7.4rem",
-                            "@media (max-width: 900px)": {
-                                fontSize: "4rem",
-                                marginBottom: "4rem",
-                            },
-                            "@media (max-width: 600px)": {
-                                fontSize: "2.8rem",
-                                marginBottom: "2rem",
-                            },
-                        }}
-                    >
-                        FLEETCARE PRO
-                    </FleetSubheading>
-                </Box>
-
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        zIndex: 10,
-                        gap: "2rem",
-                        "@media (max-width: 600px)": {
-                            flexDirection: "column",
-                            gap: "5rem",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        },
-                    }}
-                >
-                    <Box
-                        sx={{
-                            flex: "1",
-                            color: theme => (theme.palette.mode === "light" ? "#1C79CC" : "#C5C5C5"),
-                            marginTop: "3rem",
-                            marginLeft: "2rem",
-                            width: "100%",
-                            "@media (max-width: 600px)": {
-                                marginLeft: "3rem",
-                                marginRight: "3rem",
-                            },
-                        }}
-                    >
-                        <FleetSubheading sx={{marginBottom: "5.3rem"}}>
-                            Fleet Maintenance at Your Location or Employee’s Premises
-                        </FleetSubheading>
-                        <List
-                            sx={{
-                                fontSize: "2rem",
-                                margin: 0,
-                                padding: 0,
-                            }}
-                        >
-                            <CustomListItem>
-                                <FontAwesomeIcon icon={faTools} />
-                                On-site Service Excellence
-                            </CustomListItem>
-                            <CustomListItem>
-                                <FontAwesomeIcon icon={faCalendarAlt} />
-                                Flexible Scheduling
-                            </CustomListItem>
-                            <CustomListItem>
-                                <FontAwesomeIcon icon={faLeaf} />
-                                Eco-Friendly & Sustainable
-                            </CustomListItem>
-                            <CustomListItem>
-                                <FontAwesomeIcon icon={faMoneyBillWave} />
-                                Great Value for Money
-                            </CustomListItem>
-                        </List>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            flex: "1",
-                            padding: "2rem",
-                            zIndex: 10,
-                        }}
-                    >
-                        <Form />
-                    </Box>
-                </Box>
-                <DecorativeBackgroundImage top={"55%"} left={"-20%"} width="90rem" height="200rem" flip />
-                <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />
-                <RadialCircle top={"90%"} left={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />
-            </HomePkgsInBox>
-        </FleetContainer>
-    );
-    */
   return (
     <Container
       sx={{
@@ -296,6 +178,33 @@ export default function FleetMain() {
           >
               {t("description")}
           </Typography>
+            <Typography
+                variant="h3"
+                sx={{
+                    textAlign: "center",
+                    color: theme.palette.mode === "dark" ? "#fff" : "#232E4A",
+                    fontSize: "3.2rem",
+                    marginBottom: "2rem",
+                    marginTop: "3rem",
+                    "@media (max-width: 600px)": { fontSize: "2rem" },
+                }}
+            >
+                {t("why")}
+            </Typography>
+            <Typography
+                sx={{
+                    textAlign: "center",
+                    maxWidth: "1110px",
+                    margin: "0 auto",
+                    fontWeight: "300",
+                    color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000",
+                    fontSize: "1.8rem",
+                    lineHeight: 1.6,
+                    "@media (max-width: 600px)": { fontSize: "1.2rem" },
+                }}
+            >
+                {t("wdesc")}
+            </Typography>
         </Box>
 
         <Box sx={{ mb: 8 }}>
@@ -370,6 +279,7 @@ export default function FleetMain() {
                 </Typography>
               </ServiceCard>
             </Grid>
+
             <Grid item xs={12} md={4}>
               <ServiceCard>
                 <ServiceIcon>
@@ -398,6 +308,7 @@ export default function FleetMain() {
                 </Typography>
               </ServiceCard>
             </Grid>
+
           </Grid>
         </Box>
 

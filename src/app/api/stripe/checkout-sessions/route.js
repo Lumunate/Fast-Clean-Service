@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import Booking from '../../../../models/Booking';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -52,6 +53,17 @@ export async function POST(request) {
                 paymentMode,
                 bookingId,
             },
+        });
+
+        console.log('[Stripe] Created session', session.id, 'for booking', bookingId);
+
+        await Booking.findByIdAndUpdate(bookingId, {
+            payment: {
+                provider: 'stripe',
+                sessionId: session.id,
+                status: 'PENDING',
+                lastUpdated: new Date(),
+            }
         });
 
         return new Response(JSON.stringify({ url: session.url }), {

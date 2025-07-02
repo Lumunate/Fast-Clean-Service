@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 import { useSubscriptionPackages } from "../../../hooks/useSubscriptionPackages";
 import { useTheme } from "../../../contexts/themeContext";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
@@ -22,6 +22,7 @@ import {
     ImageWrapper,
     SubscriptionsContainer,
 } from "./Subscribe.style";
+import { subData } from "../../../lib/subData.js";
 
 // Define some colors and gradients for styling
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
@@ -169,7 +170,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Duration options{" "}
+                                {t("plans.0.duration_options.title")}
                                 <FontAwesomeIcon icon={durationOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -180,6 +181,21 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     opacity: durationOpen ? 1 : 0,
                                 }}
                             >
+                                {durationOpen && (
+                                    <Typography
+                                        sx={{
+                                            mt: 1,
+                                            fontSize: "1.2rem",
+                                            fontStyle: "italic",
+                                            fontWeight: "bold",
+                                            color: theme.palette.text.secondary,
+                                            textAlign: "center",
+                                            margin: "1rem 0",
+                                        }}
+                                    >
+                                        {t("warning")}
+                                    </Typography>
+                                )}
                                 {pkg.durationOptions.map((option) => (
                                     <Box
                                         onClick={() => setSelectedDuration(option)}
@@ -252,7 +268,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Cleaning Frequency{" "}
+                               {t("plans.0.cleaning_frequency.title")}
                                 <FontAwesomeIcon icon={frequencyOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -338,7 +354,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     textAlign: "center",
                                 }}
                             >
-                                Additional Options{" "}
+                               {t("plans.0.additional_options.0")}
                                 <FontAwesomeIcon icon={additionalOpen ? faChevronUp : faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                             <Box
@@ -424,7 +440,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     color: "gray",
                                 }}
                             >
-                                Additional Options{" "}
+                                {t("plans.0.additional_options.0")}
                                 <FontAwesomeIcon icon={faChevronDown} style={{ marginLeft: "0.5rem" }} />
                             </Typography>
                         </Box>
@@ -439,10 +455,15 @@ const Page = () => {
     const t = useTranslations("subscriptions");
     const { packages, loading, error, fetchPackages } = useSubscriptionPackages();
     const { theme } = useTheme();
+    const locale = useLocale();
 
     useEffect(() => {
         fetchPackages();
     }, [fetchPackages]);
+
+    console.log(packages);
+
+
 
     if (error) {
         return (
@@ -603,7 +624,9 @@ const Page = () => {
         );
     }
 
-    if (!packages) {
+    const packagesToUse = locale === "en" ? subData : packages;
+
+    if (!packagesToUse || (locale !== "en" && loading)) {
         return null;
     }
 
@@ -669,7 +692,7 @@ const Page = () => {
                             {t("cta.text")}
                         </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+                    {/* <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
                         <Link href="/booking" passHref>
                             <Button
                                 variant="contained"
@@ -689,12 +712,12 @@ const Page = () => {
                                 {t("cta.button")}
                             </Button>
                         </Link>
-                    </Box>
+                    </Box> */}
                 </Box>
             </Container>
             <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>
             <SubscriptionsContainer>
-                {packages.map((pkg, index) => (
+                {packagesToUse.map((pkg, index) => (
                     <PackageCard key={index} pkg={pkg} index={index} highlightColor={colors[index % 3]} />
                 ))}
             </SubscriptionsContainer>

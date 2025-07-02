@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Box, IconButton, Divider, Typography, Link as MuiLink } from "@mui/material";
-import { Facebook, Instagram, Twitter, YouTube, Email } from "@mui/icons-material";
+import { Facebook, Instagram, Twitter, YouTube, Email, WhatsApp, Star } from "@mui/icons-material";
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import Logo from "../../../../public/newlogo.svg";
@@ -70,35 +70,98 @@ export default function Footer() {
                 <Box sx={{ display: "flex", gap: "1rem" }}>
                     <SocialIcon href="https://facebook.com" Icon={Facebook} />
                     <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
-                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                    <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
+                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon href="mailto:support@fastclean.com" Icon={Email} />
                 </Box>
             </Box>
 
-            {/* Copyright Centered */}
-            <Box sx={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem",  transition: "all 0.5s ease-in-out", "@media (max-width: 1250px)": { display: "flex", justifyContent:"end", paddingRight:"10px" } , "@media (max-width: 992px)": { display: "none" } }}>
-                <Typography variant="body2" sx={copyrightStyle}>
-                    {t("copyright")}
-                </Typography>
-            </Box>
-
             <Box
                 sx={{
-                    position: "absolute",
-                    bottom: "4rem",
-                    left: "11rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
+                    position: "relative",
+                    py: 2,
+                    px: { xl: "12rem", lg: "6rem" },
                     "@media (max-width: 992px)": { display: "none" },
                 }}
             >
-                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>{t("terms_privacy.terms")}</MuiLink>
-                <Divider orientation="vertical" flexItem sx={{ bgcolor: "#FFF" }} />
-                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
+                {/* centered */}
+                <Typography align="center" variant="body2" sx={copyrightStyle}>
+                    {t("copyright")}
+                </Typography>
+
+                {/* absolutely positioned at the right */}
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        right: "120px",
+                        transform: "translateY(-50%)",
+                        display: "flex",
+                        gap: "1rem",
+                        "@media (max-width: 1366px)": { right: "7rem", bottom: "4.5rem" },
+                        "@media (min-width: 992px) and (max-width: 1365.98px)": {
+                        bottom: "0rem",
+                        },
+                        "@media (max-width: 992px)": { display: "none" },
+                    }}
+                >
+                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                        const needsInvert = name === "visa" || name === "apple";
+                        return (
+                            <Image
+                                key={name}
+                                src={`/${name}.svg`}
+                                alt={name}
+                                width={24}
+                                height={24}
+                                style={{ filter: needsInvert ? "invert(1)" : "none" }}
+                            />
+                        );
+                    })}
+                </Box>
             </Box>
+
+            <Box
+  sx={{
+    position: "absolute",
+    bottom: "4rem",
+    left: "11rem",
+    display: "flex",
+    alignItems: "center",
+    gap: "1rem",
+    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
+    "@media (min-width: 992px) and (max-width: 1082px)": {
+      flexDirection: "column",
+      alignItems: "flex-start",
+      gap: "0.5rem", 
+       bottom: "1.5rem",
+    },
+    "@media (min-width: 1083px) and (max-width: 1365.98px)": {
+      bottom: "4rem",
+    },
+    "@media (max-width: 992px)": {
+      display: "none",
+    },
+  }}
+>
+  <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>
+    {t("terms_privacy.terms")}
+  </MuiLink>
+  <Divider
+    orientation="vertical"
+    flexItem
+    sx={{
+      bgcolor: "#FFF",
+      "@media (min-width: 992px) and (max-width: 1082px)": {
+        display: "none", // Hide divider when links are stacked
+      },
+    }}
+  />
+  <MuiLink href="/privacy-policy" sx={smallLinkStyles}>
+    {t("terms_privacy.privacy")}
+  </MuiLink>
+</Box>
+
 
             <Box sx={{ display: "none", "@media (max-width: 992px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
                 <Box>
@@ -114,9 +177,25 @@ export default function Footer() {
                 <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
                     <SocialIcon href="https://facebook.com" Icon={Facebook} />
                     <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://twitter.com" Icon={Twitter} />
-                    <SocialIcon href="https://youtube.com" Icon={YouTube} />
+                     <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
+                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                </Box>
+
+                <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
+                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                        const needsInvert = name === "visa" || name === "apple";
+                        return (
+                            <Image
+                                key={name}
+                                src={`/${name}.svg`}
+                                alt={name}
+                                width={24}
+                                height={24}
+                                style={{ filter: needsInvert ? "invert(1)" : "none" }}
+                            />
+                        );
+                    })}
                 </Box>
 
                 <Typography variant="body2" sx={{ ...copyrightStyle }}>
@@ -149,6 +228,10 @@ const copyrightStyle = {
     fontWeight: "500",
     fontFamily: "DMSans",
     textAlign: "center",
+    "@media (max-width: 992px)":{
+         fontSize: "1.2rem",
+         marginTop:"1rem"
+    }
 };
 
 const SocialIcon = ({ href, Icon }) => (

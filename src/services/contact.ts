@@ -34,6 +34,7 @@ class ContactService {
         {
           name: data.name,
           email: data.email,
+          phone: data.phone,
           message: data.message,
         }
     );

@@ -45,6 +45,7 @@ export default function Form() {
     serviceType: "",
     location: "",
     numVehicles: "",
+      desiredServices: ""
   });
 
   const handleChange = (e) => {
@@ -114,6 +115,7 @@ export default function Form() {
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <CustomFormTextField
+                  required
                 label={t("fields.name")}
                 name="name"
                 value={formData.name}
@@ -136,6 +138,7 @@ export default function Form() {
 
             <Grid item xs={12}>
               <CustomFormTextField
+                  required
                 label={t("fields.email")}
                 name="email"
                 value={formData.email}
@@ -159,6 +162,7 @@ export default function Form() {
 
             <Grid item xs={12}>
               <CustomFormTextField
+                  required
                 label={t("fields.phone_number")}
                 name="phone"
                 value={formData.phone}
@@ -181,7 +185,7 @@ export default function Form() {
             </Grid>
 
             <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined">
+              <FormControl fullWidth variant="outlined" required>
                 <InputLabel
                   id="vehicleType-label"
                   sx={{
@@ -236,19 +240,18 @@ export default function Form() {
                     },
                   }}
                 >
-                    <MenuItem value="">
-                        <em>{t("fields.vehicle_type.options.none")}</em>
-                    </MenuItem>
-                    <MenuItem value="Bikes (all types)">{t("fields.vehicle_type.options.bikes")}</MenuItem>
-                    <MenuItem value="Trucks">{t("fields.vehicle_type.options.trucks")}</MenuItem>
-                    <MenuItem value="Campers">{t("fields.vehicle_type.options.campers")}</MenuItem>
-                    <MenuItem value="Boats">{t("fields.vehicle_type.options.boats")}</MenuItem>
+                    <MenuItem value="bicycle">{t("fields.vehicle_type.options.bicycle")}</MenuItem>
+                    <MenuItem value="scooter">{t("fields.vehicle_type.options.scooter")}</MenuItem>
+                    <MenuItem value="motorcycle">{t("fields.vehicle_type.options.motorcycle")}</MenuItem>
+                    <MenuItem value="boat">{t("fields.vehicle_type.options.boat")}</MenuItem>
+                    <MenuItem value="truck">{t("fields.vehicle_type.options.truck")}</MenuItem>
+                    <MenuItem value="airplane">{t("fields.vehicle_type.options.airplane")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
             <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined">
+              <FormControl fullWidth variant="outlined" required>
                 <InputLabel
                   id="serviceType-label"
                   sx={{
@@ -303,17 +306,21 @@ export default function Form() {
                     },
                   }}
                 >
-                    <MenuItem value="">
-                        <em>{t("fields.service_type.options.none")}</em>
+                    <MenuItem value="one_time_your_location">
+                        {t("fields.service_type.options.one_time_your_location")}
                     </MenuItem>
-                    <MenuItem value="Anywhere AutoCare">{t("fields.service_type.options.anywhere_autocare")}</MenuItem>
-                    <MenuItem value="FleetCare Pro">{t("fields.service_type.options.fleetcare_pro")}</MenuItem>
+                    <MenuItem value="one_time_our_location">
+                        {t("fields.service_type.options.one_time_our_location")}
+                    </MenuItem>
+                    <MenuItem value="subscription">
+                        {t("fields.service_type.options.subscription")}
+                    </MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
             <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined">
+              <FormControl fullWidth variant="outlined" required>
                 <InputLabel
                   id="location-label"
                   sx={{
@@ -321,7 +328,9 @@ export default function Form() {
                     color: theme.palette.mode === "dark" ? "#fff" : "#050505",
                     transform: "translate(10%, 70%) scale(1)",
                     "&.MuiInputLabel-shrink": {
-                      transform: "translate(10%, -105%) scale(1)",
+                        transform: formData.serviceType === "one_time_our_location"
+                        ? "translate(0%, -115%) scale(1)"
+                            : "translate(10%, -105%) scale(1)"
                     },
                     "&.Mui-focused": {
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505", // Retain color on focus
@@ -329,6 +338,8 @@ export default function Form() {
                   }}
                 >
                     {t("fields.location.label")}
+                    {formData.serviceType === "one_time_our_location" &&
+                    ` — Oude Blaauwweg 14, 1521 RN Wormerveer`}
                 </InputLabel>
                 <Select
                   labelId="location-label"
@@ -368,23 +379,24 @@ export default function Form() {
                     },
                   }}
                 >
-                    <MenuItem value="">
-                        <em>{t("fields.location.options.none")}</em>
-                    </MenuItem>
-                    <MenuItem value="Onsite">{t("fields.location.options.onsite")}</MenuItem>
-                    <MenuItem value="Your Place">{t("fields.location.options.your_place")}</MenuItem>
+                    <MenuItem value="onsite">{t("fields.location.options.onsite")}</MenuItem>
+                    <MenuItem value="your_place">{t("fields.location.options.your_place")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {formData.location === "Your Place" && (
+            {formData.location === "your_place" && (
               <Grid item xs={12}>
                 <CustomFormTextField
+                    required
                   label={t("fields.address")}
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
                   fullWidth
+                  InputProps={{
+                      readOnly: formData.serviceType === "one_time_our_location"
+                  }}
                   sx={{
                     "& .MuiInputBase-input": {
                       color: theme.palette.mode === "dark" ? "#fff" : "#050505",
@@ -401,8 +413,34 @@ export default function Form() {
               </Grid>
             )}
 
+              <Grid item xs={12}>
+                  <CustomFormTextField
+                      required
+                      label={t("fields.desired_services")}
+                      name="desiredServices"
+                      value={formData.desiredServices}
+                      onChange={handleChange}
+                      placeholder={t("fields.desired_services_placeholder")}
+                      fullWidth
+                      sx={{
+                          marginTop:{xs:"-20px", sm:'0px'},
+                          "& .MuiInputBase-input": {
+                              color: theme.palette.mode === "dark" ? "#fff" : "#050505",
+                          },
+                          "& label": {
+                              color: theme.palette.mode === "dark" ? "#fff" : "#050505",
+                          },
+                          "& .MuiOutlinedInput-root": {
+                              backgroundColor: "rgba(255, 255, 255, 0.1)",
+                              boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
+                          },
+                      }}
+                  />
+              </Grid>
+
             <Grid item xs={12}>
               <CustomFormTextField
+                  required
                 label={t("fields.number_of_vehicles")}
                 name="numVehicles"
                 value={formData.numVehicles}

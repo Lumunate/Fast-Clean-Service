@@ -35,7 +35,7 @@ import {error} from "next/dist/build/output/log";
 
 const BookingsPage = ({}) => {
     const { bookings: bookingsData } = useBookings();
-    console.log("this is booking data:",bookingsData[0]);
+    console.log("this is booking data:",bookingsData);
     
     const isMobile = useMediaQuery("(max-width:600px)");
     const [selectedBooking, setSelectedBooking] = useState(null);
@@ -349,7 +349,9 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>Payment Status</ModalLabel>
-                                    <ModalValue>{selectedBooking.paymentStatus}</ModalValue>
+                                    <ModalValue>
+                                        {selectedBooking.payment?.status?.toUpperCase() || 'PENDING'}
+                                    </ModalValue>
                                 </ModalContentBox>
                             </Box>
                         </Box>

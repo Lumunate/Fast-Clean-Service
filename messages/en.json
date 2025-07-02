@@ -91,6 +91,12 @@
         }
       ]
     },
+    "auto": {
+      "title": "Premium Care Services"
+    },
+    "gallery_section": {
+      "title": "Before And After"
+    },
     "services_section": {
       "title": "OUR SERVICES",
       "description": "At Fast Clean Service, we offer a wide range of professional cleaning and detailing services to keep your car in top condition. From interior to exterior, we have the expertise and techniques to take care of every detail of your vehicle.",
@@ -190,7 +196,8 @@
         },
         {
           "name": "Deluxe",
-          "category": "Deep Cleaning & Protection",
+          "category": "MOST POPULAR!",
+          "popular": "MOST POPULAR!",
           "price": "From",
           "features": [
             "Thorough deep cleaning",
@@ -288,7 +295,27 @@
             "Nourishing plastic parts",
             "Polishing & applying coating"
           ],
-          "description": "Whether you drive sporty or tour recreationally: we give your two-wheeler the care it deserves. \uD83D\uDD18 More information\n"
+          "description": "Whether you drive sporty or tour recreationally: we give your two-wheeler the care it deserves. \n"
+        },
+        {
+          "name": "Trucks",
+          "services": [
+            "Thorough steam cleaning of the cabin",
+            "Cleaning of sills, windows & mirrors",
+            "Dashboard & cockpit professionally cleaned",
+            "Feeding of the plastic parts"
+          ],
+          "description": "Keep your cabin fresh, clean and presentable - inside and out.\n"
+        },
+        {
+          "name": "Boats",
+          "services": [
+            "Anti-limescale & anti-rust treatment",
+            "Steam cleaning of deck & interior",
+            "Polishing of metal & plastic parts",
+            "Coating against salt, sun & water"
+          ],
+          "description": "From sloop to speedboat: we ensure that your boat shines and is protected at every sailing moment.\n"
         }
       ],
       "button": {
@@ -333,7 +360,7 @@
           "answer": "You can choose to have it cleaned on location or visit our location. Both options offer the same high-quality service."
         },
         {
-          "question": "How long does a standard cleaning take?",
+          "question": "How long does a cleaning take?",
           "answer": [
             "Standard cleaning: ± 1 hour",
             "Deluxe cleaning: 1 – 3 hours",
@@ -389,24 +416,25 @@
     }
   },
   "about": {
-    "title": "ABOUT",
-    "description": "We differentiate our cleaning at your convenience anytime and anywhere. Our steam cleaning technology ensures a deep clean, even through the toughest spots equipped with superior hot water. We provide efficient professional service for all types of vehicles.",
+    "title": "About Fast Clean Service – Premium AutorCare & Detailing",
+    "sub": "Quality. Convenience. Flexibility.",
+    "description": "Fast Clean Service has been delivering high-quality detailing and car cleaning since 2018. Our focus? Perfection in every detail. Whether you choose to have your car cleaned on location or bring it to our location – we guarantee a showroom-worthy finish.\nWe distinguish ourselves through flexible, thorough cleaning – anytime, anywhere. With advanced high-pressure steam technology, we clean vehicles down to the smallest detail. This method effectively removes dirt, grease and bacteria, even from the most stubborn spots, without causing damage. We offer efficient, professional service for all types of vehicles – at your location or at our location.",
     "qualities": {
       "quality_as_priority": {
         "title": "Quality as Priority",
-        "description": "We prioritize approach quality with fully equipped service buses and cutting-edge cleaning techniques to perfect every detail."
+        "description": "We deliver quality in every detail – with equipped service vans and high-end techniques for a flawless result, everywhere and always."
       },
       "our_values": {
         "title": "Our Values",
-        "description": "Every car deserves the best, and we deliver excellence for both business and private customers."
+        "description": "Every car deserves top care. We stand for reliability, honesty and delivering consistent quality – for everyone."
       },
       "experts_in_detail": {
         "title": "Experts in Detail",
-        "description": "Our certified team uses advanced techniques in polishing, coating, and steam cleaning for flawless results."
+        "description": "Our certified team works with advanced steam, polishing and coating techniques for visible and lasting results."
       },
       "our_successes": {
         "title": "Our Successes",
-        "description": "As a certified leader in detailing, we provide professional treatments that extend vehicle life and restore its like-new appearance."
+        "description": "Thousands of satisfied customers. Our treatments extend the life of vehicles and restore showroom shine – time and time again."
       }
     },
     "detailing_shop": {
@@ -463,8 +491,8 @@
       "title": "TESTIMONIALS"
     },
     "cta_section": {
-      "title": "Ready for a Sparkling Clean Ride?",
-      "description": "Now Ready to make your car shine? Book online now and experience for yourself why so many customers choose Fast Clean Service!",
+      "title": "Ready for a car that shines like new?",
+      "description": "Book online now and see why customers keep coming back to Fast Clean Service.",
       "button": "Book Now"
     },
     "decorativeText":{
@@ -479,21 +507,23 @@
     "subtitle": "Always Available for You",
     "description": "Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to help you with professional steam cleaning and car detailing, both on location and at our branch.",
     "form": {
-      "name": "Name*",
-      "email": "Email*",
-      "message": "Message*",
+      "name": "Name",
+      "email": "Email",
+      "phone":"phone number",
+      "message": "message / question*",
       "button": "Submit"
     },
     "contact_details": {
-      "phone": "020 2404004",
-      "email": "info@fastcleanservice.nl",
-      "address": "Oranjweg 38 1566 HP Assendelft"
+      "title":"Our Contact Options:",
+      "phone": "Telephone :",
+      "email": "E-mail:",
+      "address": "Location:"
     },
     "working_hours": {
       "title": "WORKING HOURS",
-      "description": "We work by appointment only! Do you want to come by for a treatment on location? Make an appointment in advance to ensure availability.",
-      "days": "Monday to Sunday",
-      "hours": "08:00 - 17:30"
+      "description": "We work by appointment only! Would you like to visit our location? Or a cleaning on location? Make an appointment in advance to guarantee availability.",
+      "days": "Mon to Fri",
+      "hours": "08:00-18:00"
     },
     "faq": {
       "title": "Frequently Asked Questions (FAQs)",
@@ -542,27 +572,29 @@
     }
   },
   "fleetcare": {
-    "title": "FleetCare",
-    "subtitle": "WagenPark Maintenance - Professional Maintenance for your Fleet",
-    "description": "At Fast Clean Service we offer a complete and worry-free service with WagenPark Maintenance maintenance solutions for business fleets. We understand that your vehicles have a role as the calling card of your company, and that is why we ensure that every vehicle is always there looking representative. With our mobile service, we perform maintenance on location, which takes some time and saves costs, without having to interrupt your business operations.",
-    "stitle": "Our Services",
+    "title": "Business services",
+    "subtitle": "Professional Maintenance for your Fleet",
+    "description": "Fast Clean Service offers customized solutions for business customers who value professionalism, quality and reliability. Whether you manage a fleet, rent out cars, run a taxi or transport service, or organize events – we ensure that your vehicles are always presentable.",
+    "why": "Why choose our business services?",
+    "wdesc": "We understand that a well-maintained fleet is crucial to the image and success of your company. Our comprehensive, flexible solutions save you time, money and ensure that your vehicles are always in optimum condition.",
+    "stitle": "Our business services",
     "services": [
       {
-        "title": "Exterior maintenance",
-        "description": "Thorough steam cleaning, washing, and protection of the paint."
+        "title": "Fleet management",
+        "description": "We make sure that your fleet always looks clean, well-maintained and professional. Whether it's cars, vans or trucks - we take care of everything down to the last detail."
       },
       {
-        "title": "Interior maintenance",
-        "description": "Deep cleaning with steam, vacuuming, dashboard cleaning, and cleaning upholstery."
+        "title": "Brand dealers & garages",
+        "description": "For dealers and garages, appearance is essential. Our detailing services contribute to a premium presentation of new and used vehicles. From paint corrections to showroom treatments; we make the difference for your customers."
       },
       {
-        "title": "Protective Coatings",
-        "description": "Long-lasting protection with high-quality waxes & coating treatments."
+        "title": "Leasing & rental companies",
+        "description": "We keep lease and rental cars in top condition, increase customer satisfaction and help to maximize the residual value of your vehicles. Our service fits perfectly with your rental process and ensures efficiency and representativeness of your vehicles."
       }
     ],
     "quality_focus": "We focus on high quality using the latest techniques and environmentally friendly products. Your vehicles stay in top condition for longer, which ensures a sustainable and professional fleet.",
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Business application",
       "fields": {
         "business": "Business",
         "address": "Address",
@@ -585,7 +617,7 @@
   },
   "other_vehicles": {
     "title": "OTHER VEHICLES",
-    "subtitle": "Specialized AutoCare for Bikes, Boats, Planes, and More!",
+    "subtitle": "Specialized Cleaning and Care of All Types of Vehicles",
     "description": [
       {
         "icon": "🚴",
@@ -602,10 +634,40 @@
       {
         "icon": "🚗",
         "text": "Tailored Services for Specialty Vehicles"
+      },
+      {
+        "icon": "🚐",
+        "text": "Comprehensive Cleaning and Maintenance for Campers"
+      },
+      {
+        "icon": "🚚",
+        "text": "Heavy-Duty Detailing and Professional Service for Trucks"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Motorcycles, Scooters & Bicycles",
+        "text": "Two-wheelers also deserve professional attention. At Fast Clean Service, we thoroughly clean motorcycles, scooters and (electric) bicycles with steam, including the chain, wheels and rims. Plastic parts are nourished and protected against aging, and paintwork can be polished if desired. For long-term protection, we apply a high-quality coating. This not only keeps your two-wheeler looking neat, but it is also more resistant to dirt, rain and daily influences. Ideal for enthusiasts and daily use."
+      },
+      {
+        "heading": "Boats",
+        "text": "A boat needs extra protection due to sun, salt and water. Fast Clean Service offers specialized cleaning and care for boats, both on the outside and the interior. We remove limescale and rust traces with a targeted anti-limescale and anti-rust treatment, and thoroughly clean the entire surface with steam. The inside of the boat can also be professionally cleaned, including upholstery, floors and plastic parts. Metal and plastic surfaces on deck are polished for a neat appearance. We can also treat the boat with a durable coating that protects against UV radiation, salt and moisture. This keeps your boat in top condition, inside and out."
+      },
+      {
+        "heading": "Campers & Caravans",
+        "text": "Campers and caravans require thorough and careful cleaning, both inside and out. Fast Clean Service provides a complete steam cleaning of the exterior and interior, including deep cleaning and roof cleaning. We remove stubborn dirt such as insect remains, resin and road pollution. For long-term protection against UV radiation, rain and dirt, you can opt for a special coating. This keeps your camper or caravan in top condition, ready for every season and every trip."
+      },
+      {
+        "heading": "Trucks",
+        "text": "For trucks, we offer a professional cabin treatment that ensures a fresh, representative appearance. We thoroughly clean the entire cabin with steam, including sills, windows, mirrors and hard-to-reach corners. The dashboard, cockpit and storage compartments are carefully cleaned and freed of dust, grease and stains. Plastic parts are fed for a neat, neat finish and longer life. Ideal for transport companies or independent drivers who want to keep their vehicle clean, hygienic and professional."
+      },
+      {
+        "heading": "Airplanes",
+        "text": "Airplanes also deserve a thorough and hygienic cleaning. Fast Clean Service offers steam cleaning of the entire interior, with seats, walls, floors and storage compartments being treated professionally. Thanks to our steam technology, dirt, bacteria and unpleasant odours are effectively removed, without the use of aggressive agents. Ideal for private jets, sports aircraft or aircraft that regularly transport passengers. We ensure a fresh and representative cabin, ready for the next flight."
       }
     ],
     "quote_form": {
-      "title": "Request a Quote",
+      "title": "Application",
       "fields": {
         "name": "Name",
         "email": "Email",
@@ -613,19 +675,20 @@
         "vehicle_type": {
           "label": "Vehicle Type",
           "options": {
-            "none": "None",
-            "bikes": "Bikes (all types)",
-            "trucks": "Trucks",
-            "campers": "Campers",
-            "boats": "Boats"
+            "bicycle": "Bicycle",
+            "scooter": "Scooter",
+            "motorcycle": "Motorcycle",
+            "boat": "Boat",
+            "truck": "Truck",
+            "airplane": "Airplane"
           }
         },
         "service_type": {
           "label": "Service Type",
           "options": {
-            "none": "None",
-            "anywhere_autocare": "Anywhere AutoCare",
-            "fleetcare_pro": "FleetCare Pro"
+            "one_time_your_location": "One-time cleaning at your chosen location",
+            "one_time_our_location": "One-time cleaning at our location",
+            "subscription": "Cleaning subscription"
           }
         },
         "location": {
@@ -637,6 +700,8 @@
           }
         },
         "address": "Address",
+        "desired_services": "Desired services",
+        "desired_services_placeholder": "Write your wishes here, cleaning of the interior, applying a coating etc.",
         "number_of_vehicles": "Number of Vehicles"
       },
       "button": "Submit"
@@ -2161,9 +2226,12 @@
   },
   "subscriptions": {
     "title": "SUBSCRIPTIONS",
-    "subtitle": "Subscription Plans - Worry-Free Maintenance for your Vehicle",
+    "subtitle": "Worry-Free Maintenance for your Vehicle",
     "description": "With our Fast Clean Service Subscription Plans we offer a flexible and economical way to always keep your vehicle in top condition. Choose from several options tailored to your needs and driving style, with regular maintenance and exclusive benefits.",
-    "stitle": "What do we offer:",
+
+    "stitle": "Why choose a subscription?",
+    "warning": "Minimum term: 3 months*",
+
     "features": [
       {
         "title": "Expert Care",
@@ -2201,7 +2269,7 @@
           "Every 12 weeks": "+ €10",
           "Every 8 weeks": "+ €15"
         },
-        "additional_options": []
+        "additional_options": ["Cleaning Frequency"]
       },
       {
         "name": "INTERIOR",
@@ -2736,7 +2804,7 @@
       "youtube": "https://youtube.com",
       "email": "mailto:support@fastclean.com"
     },
-    "copyright": "\u00a9 2025 Fast Clean Service. All rights reserved."
+    "copyright": "\u00a9 Copyright Fast Clean Service – KvK 70208085"
   },
   "cookie_banner": {
     "title": "We respect your privacy",

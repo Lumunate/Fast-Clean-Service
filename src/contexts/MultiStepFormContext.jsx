@@ -21,6 +21,7 @@ export const FormProvider = ({ children }) => {
     selectedAdditionalOptions: [],
     selectedDetailingOptions: [],
     selectedTime: new Date(2023, 0, 1),
+    bookingId: null,
   });
   const [price, setPrice] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -285,6 +286,10 @@ export const FormProvider = ({ children }) => {
         const res = await response.json();
         if (res.success) {
           openSnackbar('Form submitted successfully!');
+          setFormData(prev => ({
+            ...prev,
+            bookingId: res.data._id,
+          }));
         }
       } catch (err) {
         console.error('Error submitting form:', err);

@@ -32,27 +32,23 @@ const shakeAnimation = `
 
 const CheckoutSelection = () => {
   const { updateFormData, formData, nextStep, price, selectedPackageType } = useMultiStepForm(); // Use hook for form data
-  const [selectedOption, setSelectedOption] = useState(formData.service || null);
   const [openModal, setOpenModal] = useState(false);
   const [modalInfo, setModalInfo] = useState("");
   const { theme } = useTheme();
   const { updateValidation } = useValidation();
 
-  // Update selected option when formData changes
-  useEffect(() => {
-    setSelectedOption(formData.service);
-  }, [formData.service]);
+    useEffect(() => {
+        updateValidation(!!formData.service);
+    }, [formData.service, updateValidation]);
 
-  useEffect(() => {
-    updateValidation(!!selectedOption);
-  }, [selectedOption, updateValidation]);
+    const handlePackageSelect = (service) => {
+        updateFormData({ service });
+    };
 
-  const handlePackageSelect = (pkg) => {
-  setSelectedOption(pkg.service);
-  updateFormData({ service: pkg.service });
-};
+    const selectedService = formData.service || null;
+    const isSelected = (service) => selectedService === service;
 
-  const handleInfoClick = (tagline) => {
+    const handleInfoClick = (tagline) => {
     setModalInfo(tagline);
     setOpenModal(true);
   };
@@ -120,19 +116,19 @@ const CheckoutSelection = () => {
             item
             xs={6}
             key={pkg.name}
-            onClick={() => (pkg.disabled ? null : handlePackageSelect(pkg))}
             sx={{ cursor: pkg.disabled ? "not-allowed" : "pointer" }}
           >
             <Box
+                onClick={() => !pkg.disabled && handlePackageSelect(pkg.service)}
               sx={{
                 cursor: pkg.disabled ? "not-allowed" : "pointer",
                 padding: "1rem",
                 borderRadius: "10px",
                 transition: "all 0.3s ease",
                 backgroundColor: theme.palette.primary.main,
-                border: `${selectedOption === pkg.service ? "2px" : "1px"} solid ${
-                  selectedOption === pkg.service ? "#1C79CC" : "#A5A5A5"
-                }`,
+               border: `${isSelected(pkg.service) ? "2px" : "1px"} solid ${
+                  isSelected(pkg.service) ? "#1C79CC" : "#A5A5A5"
+                      }`,
                 boxSizing: "border-box",
                 transformOrigin: "center center",
                 boxShadow: "0px 4px 12.3px 0px #0000002B",
@@ -154,7 +150,7 @@ const CheckoutSelection = () => {
                   position: "absolute",
                   right: 5,
                   top: 5,
-                  display: selectedOption === pkg.service ? "block" : "none",
+                  display: isSelected(pkg.service) ? "block" : "none",
                 }}
               >
                 <Image alt="check icon" width={20} height={20} src={CheckMark} />

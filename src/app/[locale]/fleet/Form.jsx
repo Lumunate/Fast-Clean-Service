@@ -93,6 +93,7 @@ export default function FleetCareProForm() {
         backgroundColor: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.05)",
         border: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "white"}`,
         backdropFilter: "blur(2.4px)",
+          maxWidth: "892px",
         borderRadius: "32px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         padding: "2rem",

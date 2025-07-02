@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, List, ListItem, styled, Typography } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMotorcycle, faShip, faPlane, faBicycle } from "@fortawesome/free-solid-svg-icons";
+import { faMotorcycle, faShip, faPlane, faBicycle, faCaravan, faTruck } from "@fortawesome/free-solid-svg-icons";
 import Form from "./Form";
 import { Container, GrayBox } from "../../../components/mui/FleetPkgs";
 import { HomePkgsInBox } from "../../../components/mui/HomePkgs";
@@ -40,6 +40,7 @@ export const VehicleContainer = styled(Container)(({ theme }) => ({
     zIndex: 0,
   },
 }));
+
 
 export const CustomListItem = styled(ListItem)(({ theme }) => ({
   display: "flex",
@@ -173,6 +174,14 @@ export default function OtherVehiclesMain() {
                   <FontAwesomeIcon icon={faBicycle} />
                     {t("description.3.text")}
                 </CustomListItem>
+                  <CustomListItem>
+                      <FontAwesomeIcon icon={faCaravan} />
+                      {t("description.4.text")}
+                  </CustomListItem>
+                  <CustomListItem>
+                      <FontAwesomeIcon icon={faTruck} />
+                      {t("description.5.text")}
+                  </CustomListItem>
               </List>
             </Box>
 
