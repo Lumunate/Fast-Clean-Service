@@ -64,34 +64,34 @@ export const subData = [
             "additionalOptions": [],
             "durationOptions": [
                 {
-                    "duration": "24 maanden",
+                    "duration": "24 months",
                     "price": 59.95,
                     "additionalCost": 0
                 },
                 {
-                    "duration": "12 maanden",
+                    "duration": "12 months",
                     "price": 59.95,
                     "additionalCost": 5
                 },
                 {
-                    "duration": "Maandelijks opzegbaar",
+                    "duration": "Can be cancelled monthly",
                     "price": 59.95,
                     "additionalCost": 10
                 }
             ],
             "cleaningFrequencyOptions": [
                 {
-                    "frequency": "Elke 4 weken",
+                    "frequency": "Every 4 weeks",
                     "price": 59.95,
                     "additionalCost": 0
                 },
                 {
-                    "frequency": "Elke 8 weken",
+                    "frequency": "Every 8 weeks",
                     "price": 59.95,
                     "additionalCost": 5
                 },
                 {
-                    "frequency": "Elke 12 weken",
+                    "frequency": "Every 12 weeks",
                     "price": 59.95,
                     "additionalCost": 12.5
                 }
@@ -165,15 +165,15 @@ export const subData = [
         },
         "additionalOptions": [
             {
-                "name": "Leerbehandeling",
+                "name": "Leather treatment",
                 "price": 30
             },
             {
-                "name": "Hondenhaar verwijderen",
+                "name": "remove animal hair",
                 "price": 50
             },
             {
-                "name": "Vlekverwijdering in bekleding",
+                "name": "Removing stains from upholstery",
                 "price": 30
             }
         ],
@@ -196,17 +196,17 @@ export const subData = [
         ],
         "cleaningFrequencyOptions": [
             {
-                "frequency": "Elke 4 weken",
+                "frequency": "Every 4 weeks",
                 "price": 69.95,
                 "additionalCost": 0
             },
             {
-                "frequency": "Elke 8 weken",
+                "frequency": "Every 8 weeks",
                 "price": 69.95,
                 "additionalCost": 5
             },
             {
-                "frequency": "Elke 12 weken",
+                "frequency": "Every 12 weeks",
                 "price": 69.95,
                 "additionalCost": 12.5
             }
@@ -284,15 +284,15 @@ export const subData = [
         },
         "additionalOptions": [
             {
-                "name": "Leerbehandeling",
+                "name": "Leather treatment",
                 "price": 30
             },
             {
-                "name": "Hondenhaar verwijderen",
+                "name": "remove animal hair",
                 "price": 50
             },
             {
-                "name": "Vlekverwijdering in bekleding",
+                "name": "Removing stains from upholstery",
                 "price": 30
             }
         ],
@@ -315,17 +315,17 @@ export const subData = [
         ],
         "cleaningFrequencyOptions": [
             {
-                "frequency": "Elke 4 weken",
+                "frequency": "Every 4 weeks",
                 "price": 94.95,
                 "additionalCost": 0
             },
             {
-                "frequency": "Elke 8 weken",
+                "frequency": "Every 8 weeks",
                 "price": 94.95,
                 "additionalCost": 5
             },
             {
-                "frequency": "Elke 12 weken",
+                "frequency": "Every 12 weeks",
                 "price": 94.95,
                 "additionalCost": 12.5
             }
