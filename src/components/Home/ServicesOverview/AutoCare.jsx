@@ -23,7 +23,7 @@ export default function Autocare() {
   const t = useTranslations("home.anywhere_autocare_section");
   const { theme } = useTheme();
   const locale = useLocale();
-  const cardBottom = locale === "en" ? "-80%" : "-90%";
+  const cardBottom = locale === "en" ? "-80%" : "-86%";
 
   return (
     <HomePkgsBox
