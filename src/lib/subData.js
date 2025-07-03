@@ -179,17 +179,17 @@ export const subData = [
         ],
         "durationOptions": [
             {
-                "duration": "24 maanden",
+                "duration": "24 months",
                 "price": 69.95,
                 "additionalCost": 0
             },
             {
-                "duration": "12 maanden",
+                "duration": "12 months",
                 "price": 69.95,
                 "additionalCost": 5
             },
             {
-                "duration": "Maandelijks opzegbaar",
+                "duration": "Can be cancelled monthly",
                 "price": 69.95,
                 "additionalCost": 10
             }
@@ -298,17 +298,17 @@ export const subData = [
         ],
         "durationOptions": [
             {
-                "duration": "24 maanden",
+                "duration": "24 months",
                 "price": 94.95,
                 "additionalCost": 0
             },
             {
-                "duration": "12 maanden",
+                "duration": "12 months",
                 "price": 94.95,
                 "additionalCost": 5
             },
             {
-                "duration": "Maandelijks opzegbaar",
+                "duration": "Can be cancelled monthly",
                 "price": 94.95,
                 "additionalCost": 10
             }
