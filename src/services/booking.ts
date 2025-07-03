@@ -147,7 +147,7 @@ class BookingService {
       subscriptionPackageService.getAllPackages(),
     ]);
 
-    console.log(bookingData);
+    console.log("Bookingdata:", bookingData);
     // calculate duration as well as price
     let price: number = 0;
     let duration: number = 0;
@@ -157,7 +157,12 @@ class BookingService {
       pkg = subscriptionPackages.find((pkg) => pkg.id.toLowerCase() === bookingData.packageName.toLowerCase());
     } else {
       pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg?.id === bookingData.packageName);
-    } 
+    }
+
+
+    console.log(pkg);
+    console.log(pkg.additionalOptions.interior);
+    console.log("Booking Data:", bookingData.packageName, bookingData.serviceName, bookingData.packageType);
 
     if (!pkg) {
       console.log(packages);
@@ -187,18 +192,34 @@ class BookingService {
     } else {
       if (bookingData.serviceAddons.addons?.length > 0) {
         bookingData.serviceAddons.addons.forEach((addon) => {
-          const addonPrice =
-            pkg.additionalOptions.interior.find((a) => a._id.toString() === addon)?.additionalCost ||
-            pkg.additionalOptions.exterior.find((a) => a._id.toString() === addon)?.additionalCost;
-          // const addonDuration =
-          // pkg.additionalOptions.interior.find((a) => a.name === addon)?.additionalTime ||
-          // pkg.additionalOptions.exterior.find((a) => a.name === addon)?.additionalTime;
+          console.log(`🔍 Checking addon: ${addon}`);
+
+          const interiorMatch = pkg.additionalOptions.interior.find(
+              (a) => {
+                const match = a._id.toString() === addon;
+                console.log(`  Interior: comparing ${a._id.toString()} === ${addon} → ${match}`);
+                return match;
+              }
+          );
+
+          const exteriorMatch = pkg.additionalOptions.exterior.find(
+              (a) => {
+                const match = a._id.toString() === addon;
+                console.log(`  Exterior: comparing ${a._id.toString()} === ${addon} → ${match}`);
+                return match;
+              }
+          );
+
+          const addonPrice = interiorMatch?.additionalCost || exteriorMatch?.additionalCost;
+
+          console.log(`✅ Found addonPrice: ${addonPrice}`);
 
           if (!addonPrice) throw new Error("Addon not found");
+
           price += addonPrice;
-          // duration += addonDuration;
         });
       }
+
 
       // Detailing exists only for autocare and doesn't have extra duration
       if (bookingData.serviceAddons.detailing?.length > 0) {

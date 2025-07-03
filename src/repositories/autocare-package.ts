@@ -3,6 +3,7 @@ import { AutocareService, ServiceOptions } from "../models/Autocare-Package";
 export class AutocareServiceRepository {
   async findAll() {
     const services = await AutocareService.find();
+    console.log("services from repo: ", services);
     const options = await ServiceOptions.find();
     return { packages: services[0], options };
   }
