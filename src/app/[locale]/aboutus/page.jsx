@@ -20,7 +20,7 @@ export default function AboutUs() {
     const t = useTranslations('about');
   return (
     <Box sx={{marginTop: "15rem", "@media (max-width: 900px)": { marginTop: "8rem", } }}>
-        <Box sx={{alignItems: "center", justifyContent: "center", display: "flex" }}>
+        <Box sx={{alignItems: "center", justifyContent: "center", display: "flex", maxWidth:"1130px", margin:"0 auto" }}>
             <HeadingLinesAnimation sx={{fontSize:"56px"}}>{t("title")}</HeadingLinesAnimation>
         </Box>
 
