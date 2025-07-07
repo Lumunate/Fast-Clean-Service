@@ -82,6 +82,24 @@ class PaymentsRepository {
         );
     }
 
+    async saveCoinbaseCharge(charge) {
+        const userId = charge.metadata.userId || charge.metadata.customerEmail;
+        const update = {
+            $push: {
+                oneTimePayment: {
+                    date: new Date(),
+                    price: parseFloat(charge.pricing.local.amount),
+                    bookingId: charge.metadata.bookingId,
+                    status: 'Pending',
+                }
+            }
+        };
+        return Payment.findOneAndUpdate(
+            { userId },
+            update,
+            { upsert: true, new: true }
+        );
+    }
 }
 
 const paymentsRepository = new PaymentsRepository();
