@@ -283,7 +283,17 @@ export const FormProvider = ({ children }) => {
           credentials: 'include',
         });
 
+        if (!response.ok) {
+          const err = await response.json();
+          openSnackbar(err.message || 'Failed to create booking');
+          return;            // ←— prevent setCurrentStep
+        }
+
         const res = await response.json();
+        if (!res.success) {
+          openSnackbar(res.error || 'Server rejected booking');
+          return;            // ←— prevent setCurrentStep
+        }
         if (res.success) {
           openSnackbar('Form submitted successfully!');
           setFormData(prev => ({
@@ -294,6 +304,7 @@ export const FormProvider = ({ children }) => {
       } catch (err) {
         console.error('Error submitting form:', err);
         openSnackbar('Error submitting form');
+        return;
       }
     }
 

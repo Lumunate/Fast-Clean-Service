@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import paymentsServices from '../../../../services/payments';
 
 export async function POST(req) {
     const rawBody = await req.text();
@@ -16,25 +17,8 @@ export async function POST(req) {
 
     const event = JSON.parse(rawBody);
 
-    if (event.event.type === 'charge:confirmed') {
-        const metadata = event.event.data.metadata;
-        const chargeCode = event.event.data.code;
-
-        // ✅ Mark user as paid / activate subscription
-        // e.g., update user in DB by metadata.customer_email
-
-        console.log('Payment confirmed for:', metadata.customer_email);
-        const bookingId = metadata.bookingId;
-        if (bookingId) {
-            console.log(`[Coinbase] Marking booking ${bookingId} as PAID`);
-            await Booking.findByIdAndUpdate(bookingId, {
-                'payment.status': 'PAID',
-                'payment.provider': 'coinbase',
-                'payment.sessionId': event.data.code,
-                'payment.lastUpdated': new Date(),
-            });
-        }
-    }
+    // Delegate to your service (which will update both Payments collection and Booking.payment)
+    await paymentsServices.handleCoinbaseWebhook(event);
 
     return NextResponse.json({ received: true });
 }
