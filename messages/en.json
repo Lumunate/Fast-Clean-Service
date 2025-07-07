@@ -2408,7 +2408,11 @@
           "Please select a cleaning package.",
           "Tailored solutions for spotless spaces!"
         ],
-        "options": ["Anywhere Autocare", "Subscription Plans"]
+        "options": ["Anywhere Autocare", "Subscription Plans"],
+        "subscriptionDisabledNote": "You already have an active subscription.",
+        "errors": {
+          "subscriptionExists": "You already have a subscription. To update or cancel, please contact us from the contact page."
+        }
       },
       {
         "step": 5,
