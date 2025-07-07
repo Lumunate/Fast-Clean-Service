@@ -665,7 +665,7 @@ export const ServiceContent = styled(Box)(({ theme }) => ({
   right: "0",
   transition: "all 0.3s ease-in",
   "@media (max-width: 600px)": {
-    bottom: "-80%",
+    bottom: "-74%",
     minHeight: "400px",
   },
 }));
