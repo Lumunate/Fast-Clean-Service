@@ -17,8 +17,41 @@ export async function POST(req) {
 
     const event = JSON.parse(rawBody);
 
-    // Delegate to your service (which will update both Payments collection and Booking.payment)
-    await paymentsServices.handleCoinbaseWebhook(event);
+    const type = event.event.type;
+    console.log('[Coinbase] Received event:', type);
 
-    return NextResponse.json({ received: true });
+    switch (type) {
+        case 'charge:created': {
+            const data = event.event.data;
+            await paymentsServices.saveCoinbaseChargeToDatabase(data);
+            break;
+        }
+
+        case 'charge:confirmed': {
+            await paymentsServices.handleCoinbaseWebhook(event);
+            break;
+        }
+
+        case 'charge:failed': {
+            const data = event.event.data;
+            const bookingId = data.metadata?.bookingId;
+            if (bookingId) {
+                console.log(`[Coinbase] Marking booking ${bookingId} as FAILED`);
+                await Booking.findByIdAndUpdate(bookingId, {
+                    payment: {
+                        provider: 'coinbase',
+                        sessionId: data.code,
+                        status: 'FAILED',
+                        lastUpdated: new Date(),
+                    }
+                });
+            }
+            break;
+        }
+
+        default:
+            console.log(`[Coinbase] Unhandled event type: ${type}`);
+    }
+
+    return NextResponse.json({ received: true }, { status: 200 });
 }
