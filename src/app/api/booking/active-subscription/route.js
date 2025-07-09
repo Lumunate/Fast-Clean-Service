@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../lib/authOptions"; // wherever you keep your NextAuth options
+import { authOptions } from "../../../../lib/authOptions";
 import Payment from '../../../../models/Payments';
 
 export async function GET(request) {
@@ -10,7 +10,6 @@ export async function GET(request) {
     }
 
     const userId = session.user.id;
-    // look for an active subscription in your Payments collection
     const hasActive = await Payment.exists({
         userId,
         'Subscription.status': 'active',

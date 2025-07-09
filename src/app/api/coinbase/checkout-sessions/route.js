@@ -46,7 +46,6 @@ export async function POST(request) {
         }
 
         const data = await response.json();
-        // Persist in your payments collection + update Booking.payment
         await paymentsServices.saveCoinbaseChargeToDatabase(data);
 
         return NextResponse.json({ checkoutUrl: data.hosted_url });
