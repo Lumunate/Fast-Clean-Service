@@ -52,16 +52,12 @@ export async function PUT(req: NextRequest) {
     const id = query.get("id");
     const payload = await req.json();
 
-    // Add this console.log to see what you’re actually sending
-    console.log("PUT /api/packages/autocare payload:", JSON.stringify(payload, null, 2));
-
-    const service = await AutocareServiceService.updateService(id as string, payload);
+    const service = await AutocareServiceService.updateService(id as string, await req.json());
     if (!service) {
       return NextResponse.json({ message: "Service not found" }, { status: 404 });
     }
     return NextResponse.json(service);
   } catch (error) {
-    console.error("Zod errors:", error);
     if (error instanceof ZodError) {
       return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
