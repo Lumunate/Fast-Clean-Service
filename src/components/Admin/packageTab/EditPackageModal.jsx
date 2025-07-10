@@ -38,6 +38,15 @@ const EditPackageModal = ({
   if (!selectedPackage) return null;
   console.log("this is editPackageModal:", selectedPackage)
 
+  const services = (selectedPackage.packages || []).map(item => {
+    if (typeof item === "string") {
+      return { nl: item, en: "" };
+    }
+    return { nl: item.nl || "", en: item.en || "" };
+  });
+
+  console.log(services);
+
   const displayName = formatPackageName(selectedPackage.id);
 
   const parseDuration = (durationStr) => {
@@ -246,6 +255,7 @@ const EditPackageModal = ({
             );
           })}
         </Box>
+
 
         {/* Add-Ons */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
