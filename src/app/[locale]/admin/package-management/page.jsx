@@ -65,14 +65,20 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (
-          updatedPackage.additionalOptions &&
-          updatedPackage.additionalOptions[addonType]
-        ) {
-          updatedPackage.additionalOptions[addonType][index].name = value;
-        }
-      } else if (field.startsWith("addonPrice")) {
+      const parts = field.split("_");
+      const addonType = parts[1];              // interior/exterior/detailing
+      const lang = parts[2] || "nl";           // default to nl
+      const opts = updatedPackage.additionalOptions?.[addonType];
+      if (opts?.[index]) {
+        // ensure name is an object
+        let nameObj = typeof opts[index].name === "string"
+            ? { nl: opts[index].name, en: "" }
+            : { ...opts[index].name };
+
+        nameObj[lang] = value;
+        opts[index].name = nameObj;
+      }
+    } else if (field.startsWith("addonPrice")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (
           updatedPackage.additionalOptions &&
@@ -183,27 +189,37 @@ const Page = () => {
         <SubSectionTitle>{title}</SubSectionTitle>
         {items?.length > 0 ? (
           <Box component="ul" sx={{ listStyle: "none", paddingLeft: 0 }}>
-            {items.map((item, idx) => (
-              <li
-                key={idx}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
-                  {item.name}
-                </Typography>
+            {items.map((item, idx) => {
+              const nameObj =
+                  typeof item.name === "string"
+                      ? {nl: item.name, en: ""}
+                      : item.name;
+              // pick display string
+              const displayName =
+                  locale === "en" ? nameObj.en : nameObj.nl;
 
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+              return (
+                  <li
+                      key={idx}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "8px",
+                      }}
+                  >
+                    <Typography sx={{fontWeight: 400, fontSize: "1.6rem"}}>
+                      {displayName}
+                    </Typography>
 
-                  {typeof item.additionalCost === "number"
-                    ? `€${item.additionalCost}`
-                    : item.additionalCost}
-                </Typography>
-              </li>
-            ))}
+                    <Typography sx={{fontWeight: 400, fontSize: "1.6rem"}}>
+
+                      {typeof item.additionalCost === "number"
+                          ? `€${item.additionalCost}`
+                          : item.additionalCost}
+                    </Typography>
+                  </li>
+              );
+            })}
           </Box>
         ) : (
           <Typography color="text.secondary" sx={{ fontSize: "1.6rem" }}>
