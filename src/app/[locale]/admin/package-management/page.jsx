@@ -84,7 +84,7 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-         const parts = field.split("_");
+      const parts = field.split("_");
       const addonType = parts[1];              // interior/exterior/detailing
       const lang = parts[2] || "nl";           // default to nl
       const opts = updatedPackage.additionalOptions?.[addonType];
