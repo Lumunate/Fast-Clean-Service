@@ -247,7 +247,6 @@ const EditPackageModal = ({
           })}
         </Box>
 
-
         {/* Add-Ons */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
           <SubSectionTitle>Add-Ons</SubSectionTitle>
