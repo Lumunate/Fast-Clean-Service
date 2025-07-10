@@ -2,8 +2,13 @@
 import { z } from 'zod';
 import { vehicleOptionValidation } from './subscripton-package';
 
+const translatedString = z.object({
+    nl: z.string(),
+    en: z.string().optional().default(""),
+});
+
 const optionValidation = z.object({
-  name: z.string(),
+  name: translatedString,
   additionalCost: z.union([z.number(), z.string()]),
   available: z.boolean().optional(),
   options: z.array(z.string())
@@ -17,9 +22,9 @@ const additionalOptionsValidation = z.object({
 
 export const packageValidation = z.object({
   id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  packages: z.array(z.string()),
+  name:  z.string(),
+  description: translatedString.optional(),
+  packages: z.array(translatedString),
   totalDuration: z.string(),
   duration: z.string(),
   price: z.string(),
