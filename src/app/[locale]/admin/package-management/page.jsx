@@ -278,6 +278,12 @@ const Page = () => {
 
   // inside your Page component, before the return:
   const normalizePackage = (pkg) => {
+    // normalize the multilingual name field
+    const name =
+        typeof pkg.name === "string"
+            ? { nl: pkg.name, en: "" }
+            : { nl: pkg.name.nl, en: pkg.name.en };
+
     // normalize the included services
     const services = (pkg.packages || []).map((s) =>
         typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
@@ -295,6 +301,7 @@ const Page = () => {
 
     return {
       ...pkg,
+      name,
       packages: services,
       additionalOptions: {
         interior: normalizeOpts(pkg.additionalOptions?.interior),
@@ -304,21 +311,6 @@ const Page = () => {
     };
   };
 
-  console.log(packages);
-  const raw = packages.packages;
-  console.log("packages.packages:", packages.packages);
-  console.log("raw:", raw);
-  const normalizedAuto = Object.fromEntries(
-      Object.entries(raw).map(([cat, list]) => [
-        // fall back to empty array if list isn’t what we expect
-        cat,
-        Array.isArray(list) ? list.map(normalizePackage) : [],
-      ])
-  );
-
-
-  const autocarePackages = normalizedAuto;
-  console.log(autocarePackages);
   console.log(packages);
   const raw = packages.packages;
   console.log("packages.packages:", packages.packages);
