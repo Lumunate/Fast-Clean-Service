@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
 import { vehicleOptionSchema } from "./SubscriptionPackage";
 
+const translatedString = {
+  nl: { type: String, required: true },
+  en: { type: String, default: "" },        // you can default to empty
+};
+
 const optionSchema = new mongoose.Schema({
-  name: String,
+  name: translatedString,
   additionalCost: mongoose.Schema.Types.Mixed,
   available: Boolean,
   options: [String],
@@ -27,8 +32,11 @@ const cleaningFrequencyOptionSchema = new mongoose.Schema({
 const packageSchema = new mongoose.Schema({
   id: String,
   name: String,
-  description: String,
-  packages: [String],
+  description: translatedString,
+  packages:     [{
+    nl: { type: String, required: true },
+    en: { type: String, default: "" },
+  }],
   totalDuration: String,
   duration: String,
   price: String,
