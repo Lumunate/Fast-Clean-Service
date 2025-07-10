@@ -68,19 +68,18 @@ const EditPackageModal = ({
         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "2.5rem" }}>
           <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>Package Name:</Typography>
           <TextField
-              variant="outlined"
-              label="Package Name"
-              value={displayName}
-              disabled
-              fullWidth
-              sx={{
-                fontSize: "1.6rem",
-                borderRadius: "5px",
-                "& .MuiInputBase-input.Mui-disabled": {
-                  opacity: 1,
-                  WebkitTextFillColor: "#706B74",
-                },
-              }}
+            variant="outlined"
+            value={displayName}
+            disabled
+            fullWidth
+            sx={{
+              fontSize: "1.6rem",
+              borderRadius: "5px",
+              "& .MuiInputBase-input.Mui-disabled": {
+                opacity: 1,
+                WebkitTextFillColor: "#706B74",
+              },
+            }}
           />
         </Box>
 
@@ -195,7 +194,7 @@ const EditPackageModal = ({
         </Box>
 
         {/* Included Services */}
-        <Box sx={{ mb: "2.5rem", mt: "2rem" }}>
+        <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
           <SubSectionTitle>Included Services</SubSectionTitle>
 
           {services.map((service, idx) => {
@@ -252,7 +251,6 @@ const EditPackageModal = ({
           })}
         </Box>
 
-
         {/* Add-Ons */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
           <SubSectionTitle>Add-Ons</SubSectionTitle>
@@ -300,7 +298,7 @@ const EditPackageModal = ({
 
                     return (
                         <Grid container spacing={2} key={idx} sx={{marginBottom: "1.5rem"}}>
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={4}>
                                 <TextField
                                     variant="outlined"
                                     value={nameObj.nl}
@@ -316,7 +314,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={4}>
                                 <TextField
                                     variant="outlined"
                                     value={nameObj.en}
@@ -332,7 +330,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={4}>
                                 <TextField
                                     variant="outlined"
                                     type="number"
@@ -349,7 +347,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={4}>
                                 <TextField
                                     variant="outlined"
                                     type="number"
