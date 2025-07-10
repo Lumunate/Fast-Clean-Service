@@ -80,11 +80,12 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-         const parts = field.split("_");
-      const addonType = parts[1];
-      const lang = parts[2] || "nl";
+      const parts = field.split("_");
+      const addonType = parts[1];              // interior/exterior/detailing
+      const lang = parts[2] || "nl";           // default to nl
       const opts = updatedPackage.additionalOptions?.[addonType];
       if (opts?.[index]) {
+        // ensure name is an object
         let nameObj = typeof opts[index].name === "string"
             ? { nl: opts[index].name, en: "" }
             : { ...opts[index].name };
@@ -93,7 +94,7 @@ const Page = () => {
         opts[index].name = nameObj;
       }
     } else if (field.startsWith("addonPrice")) {
-        const [_, addonType] = field.split("_");
+        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (
           updatedPackage.additionalOptions &&
           updatedPackage.additionalOptions[addonType]
