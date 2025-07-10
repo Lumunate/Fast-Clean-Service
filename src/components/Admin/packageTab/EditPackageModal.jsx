@@ -38,6 +38,15 @@ const EditPackageModal = ({
   if (!selectedPackage) return null;
   console.log("this is editPackageModal:", selectedPackage)
 
+  const services = (selectedPackage.packages || []).map(item => {
+    if (typeof item === "string") {
+      return { nl: item, en: "" };
+    }
+    return { nl: item.nl || "", en: item.en || "" };
+  });
+
+  console.log(services);
+
   const displayName = formatPackageName(selectedPackage.id);
 
   const parseDuration = (durationStr) => {
@@ -192,40 +201,59 @@ const EditPackageModal = ({
         {/* Included Services */}
         <Box sx={{ mb: "2.5rem", mt: "2rem" }}>
           <SubSectionTitle>Included Services</SubSectionTitle>
-          {selectedPackage.packages.map((service, idx) => (
-            <Box key={idx} gap={2} mb={1} sx={{ display: "flex", alignItems: "center", marginBottom: "1.5rem" }}>
-              <TextField
-                variant="outlined"
-                label={`Service NL #${idx+1}`}
-                value={service.nl}
-                fullWidth
-                disabled
-                sx={{
-                  fontSize: "1.6rem",
-                  borderRadius: "10px",
-                  "& .MuiInputBase-input.Mui-disabled": {
-                    opacity: 1,
-                    WebkitTextFillColor: "black",
-                  },
-                }}
-              />
-              <TextField
-                  variant="outlined"
-                  label={`Service EN #${idx+1}`}
-                  value={service.en}
-                  fullWidth
-                  disabled
-                  sx={{
-                    fontSize: "1.6rem",
-                    borderRadius: "10px",
-                    "& .MuiInputBase-input.Mui-disabled": {
-                      opacity: 1,
-                      WebkitTextFillColor: "black",
-                    },
-                  }}
-              />
-            </Box>
-          ))}
+
+          {services.map((service, idx) => {
+            const nameObj = typeof service === "string"
+                ? { nl: service, en: "" } :
+                { nl: service.nl, en: service.en };
+
+            return (
+                <Box
+                    key={service._id || idx}
+                    gap={2}
+                    mb={1}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      mb: "1.5rem",
+                    }}
+                >
+                  {/* NL */}
+                  <TextField
+                      variant="outlined"
+                      label={`Service NL #${idx + 1}`}
+                      value={nameObj.nl}
+                      disabled
+                      fullWidth
+                      sx={{
+                        fontSize: "1.6rem",
+                        borderRadius: "10px",
+                        "& .MuiInputBase-input.Mui-disabled": {
+                          opacity: 1,
+                          WebkitTextFillColor: "black",
+                        },
+                      }}
+                  />
+
+                  {/* EN */}
+                  <TextField
+                      variant="outlined"
+                      label={`Service EN #${idx + 1}`}
+                      value={nameObj.en}
+                      disabled
+                      fullWidth
+                      sx={{
+                        fontSize: "1.6rem",
+                        borderRadius: "10px",
+                        "& .MuiInputBase-input.Mui-disabled": {
+                          opacity: 1,
+                          WebkitTextFillColor: "black",
+                        },
+                      }}
+                  />
+                </Box>
+            );
+          })}
         </Box>
 
 
@@ -276,7 +304,7 @@ const EditPackageModal = ({
 
                     return (
                         <Grid container spacing={2} key={idx} sx={{marginBottom: "1.5rem"}}>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <TextField
                                     variant="outlined"
                                     value={nameObj.nl}
@@ -292,7 +320,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <TextField
                                     variant="outlined"
                                     value={nameObj.en}
@@ -308,7 +336,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <TextField
                                     variant="outlined"
                                     type="number"
@@ -325,7 +353,7 @@ const EditPackageModal = ({
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <TextField
                                     variant="outlined"
                                     type="number"
