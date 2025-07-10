@@ -306,6 +306,43 @@ const Page = () => {
 
 
   const autocarePackages = normalizedAuto;
+    // normalize each add-on
+    const normalizeOpts = (arr = []) =>
+        arr.map((o) => ({
+          ...o,
+          name:
+              typeof o.name === "string"
+                  ? { nl: o.name, en: "" }
+                  : { nl: o.name.nl, en: o.name.en },
+        }));
+
+    return {
+      ...pkg,
+      name,
+      packages: services,
+      additionalOptions: {
+        interior: normalizeOpts(pkg.additionalOptions?.interior),
+        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+      },
+    };
+  };
+
+  console.log(packages);
+  const raw = packages.packages;
+  console.log("packages.packages:", packages.packages);
+  console.log("raw:", raw);
+  const normalizedAuto = Object.fromEntries(
+      Object.entries(raw).map(([cat, list]) => [
+        // fall back to empty array if list isn’t what we expect
+        cat,
+        Array.isArray(list) ? list.map(normalizePackage) : [],
+      ])
+  );
+
+
+  const autocarePackages = normalizedAuto;
+  console.log(autocarePackages);
 
 
   const handleSubmit = async () => {
