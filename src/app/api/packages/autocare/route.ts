@@ -61,7 +61,7 @@ export async function PUT(req: NextRequest) {
     }
     return NextResponse.json(service);
   } catch (error) {
-    console.error("Zod errors:", error.errors);
+    console.error("Zod errors:", error);
     if (error instanceof ZodError) {
       return NextResponse.json({ message: "Validation error", errors: error.errors }, { status: 400 });
     }
