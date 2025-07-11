@@ -51,7 +51,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                 >
                     <Typography sx={{ fontWeight: "bold", flexGrow: 1, fontSize: "1.8rem" }}>
                         {`${displayCategory} Package – ${
-                            locale === "en" ? pkg?.name?.nl : pkg?.name?.nl
+                            pkg?.name 
                         }`}
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
