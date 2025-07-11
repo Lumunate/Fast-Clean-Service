@@ -12,9 +12,18 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SubSectionTitle } from "./StyledComponents";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, renderVehiclePricing, renderAddOns }) => {
-    const displayCategory = isSubscription ? "Subscription" : category.charAt(0).toUpperCase() + category.slice(1);
+    const locale = useLocale();
+    console.log(pkg);
+    const services = (pkg.packages || []).map((s) =>
+        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
+    );
+
+    const displayCategory = isSubscription
+        ? "Subscription"
+        : category.charAt(0).toUpperCase() + category.slice(1);
 
     return (
         <Accordion
@@ -41,7 +50,9 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                     }}
                 >
                     <Typography sx={{ fontWeight: "bold", flexGrow: 1, fontSize: "1.8rem" }}>
-                        {`${displayCategory} Package - ${pkg.name}`}
+                        {`${displayCategory} Package – ${
+                            locale === "en" ? pkg?.name?.nl : pkg?.name?.nl
+                        }`}
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
                         <Box sx={{ display: "flex", flexDirection: "column", marginRight: "0.8rem", textAlign: "right" }}>
@@ -65,22 +76,22 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                     sx={{ marginBottom: "16px", fontStyle: "normal", fontSize: "1.6rem" }}
                     color="text.secondary"
                 >
-                    {pkg.description}
+                    {locale === "en" ? pkg.description.en : pkg.description.nl}
                 </Typography>
 
                 <Divider sx={{ marginBottom: "16px" }} />
 
                 {pkg.vehicleOptions && renderVehiclePricing(pkg.vehicleOptions)}
 
-                {pkg.packages && (
+                {services.length > 0 && (
                     <Box sx={{ marginBottom: "16px" }}>
                         <SubSectionTitle variant="subtitle1">
                             Included Services
                         </SubSectionTitle>
                         <Box component="ul" sx={{ listStyle: "disc", paddingLeft: "20px" }}>
-                            {pkg.packages.map((service, idx) => (
+                            {services.map((svc, idx) => (
                                 <li key={idx} style={{ fontSize: "1.6rem" }}>
-                                    {service}
+                                    {locale === "en" ? svc.en : svc.nl}
                                 </li>
                             ))}
                         </Box>

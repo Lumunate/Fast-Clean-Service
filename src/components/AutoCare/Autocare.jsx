@@ -29,6 +29,7 @@ import { fontSize, fontWeight } from "@mui/system";
 
 // Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
+  const locale = useLocale();
   const { theme } = useTheme();
 
   return (
@@ -104,7 +105,7 @@ const ModdedCard = ({ card, color }) => {
                   },
                 }}
               >
-                {option.name}
+                { locale === "en" ? option?.name?.en : option?.name?.nl}
               </Typography>
               {option.additionalCost && (
                 <Typography
@@ -224,10 +225,7 @@ const AutoCare = () => {
 
 
   // Grab the array for selected tab: standard, deluxe, or premium
- const allPackages =
-  locale === "en"
-    ? englishPackages?.[selectedTab.toLowerCase()] || []
-    : packages?.packages?.[selectedTab.toLowerCase()] || [];
+ const allPackages = packages?.packages?.[selectedTab.toLowerCase()] || [];
 
   // For "From: ___" and "Duration: ___" on the front side
   const firstPkg = allPackages[0];
@@ -1084,7 +1082,7 @@ const AutoCare = () => {
                       fontWeight: 300,
                     }}
                   >
-                    {pkg?.description}
+                    {locale === "en" ? pkg.description.en : pkg.description.nl}
                   </Typography>
 
                   <Typography
@@ -1129,7 +1127,7 @@ const AutoCare = () => {
                           marginTop: "0.25rem",
                         }}
                       />
-                      {point}
+                      { locale === "en" ? point?.en : point?.nl}
                     </ListItem>
                   ))}
                 </CardDetails>

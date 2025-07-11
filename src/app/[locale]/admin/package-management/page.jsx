@@ -40,7 +40,36 @@ const Page = () => {
   };
 
   const handleOpenModal = (pkg, subscription = false) => {
-    setSelectedPackage(pkg);
+    // 1) normalize "included services" into { nl, en } only
+    const normalizedServices = (pkg.packages || []).map(item => {
+      if (typeof item === "string") {
+        return { nl: item, en: "" };
+      }
+      // item is { _id, nl, en } → strip out _id
+      return { nl: item.nl, en: item.en };
+    });
+
+    // 2) normalize all add-ons into name: { nl, en }
+    const normalizeOpts = (arr = []) =>
+        arr.map(opt => {
+          if (typeof opt.name === "string") {
+            return { ...opt, name: { nl: opt.name, en: "" } };
+          }
+          // already object → ensure it only has nl/en
+          return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
+        });
+
+    const normalized = {
+      ...pkg,
+      packages: normalizedServices,
+      additionalOptions: {
+        interior: normalizeOpts(pkg.additionalOptions?.interior),
+        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+      },
+    };
+
+    setSelectedPackage(normalized);
     setIsSubscription(subscription);
     setOpenModal(true);
   };
@@ -65,14 +94,20 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
-        if (
-          updatedPackage.additionalOptions &&
-          updatedPackage.additionalOptions[addonType]
-        ) {
-          updatedPackage.additionalOptions[addonType][index].name = value;
-        }
-      } else if (field.startsWith("addonPrice")) {
+         const parts = field.split("_");
+      const addonType = parts[1];              // interior/exterior/detailing
+      const lang = parts[2] || "nl";           // default to nl
+      const opts = updatedPackage.additionalOptions?.[addonType];
+      if (opts?.[index]) {
+        // ensure name is an object
+        let nameObj = typeof opts[index].name === "string"
+            ? { nl: opts[index].name, en: "" }
+            : { ...opts[index].name };
+
+        nameObj[lang] = value;
+        opts[index].name = nameObj;
+      }
+    } else if (field.startsWith("addonPrice")) {
         const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
         if (
           updatedPackage.additionalOptions &&
@@ -183,27 +218,37 @@ const Page = () => {
         <SubSectionTitle>{title}</SubSectionTitle>
         {items?.length > 0 ? (
           <Box component="ul" sx={{ listStyle: "none", paddingLeft: 0 }}>
-            {items.map((item, idx) => (
-              <li
-                key={idx}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
-                  {item.name}
-                </Typography>
+            {items.map((item, idx) => {
+              const nameObj =
+                  typeof item.name === "string"
+                      ? {nl: item.name, en: ""}
+                      : item.name;
+              // pick display string
+              const displayName =
+                  locale === "en" ? nameObj.en : nameObj.nl;
 
-                <Typography sx={{ fontWeight: 400, fontSize: "1.6rem" }}>
+              return (
+                  <li
+                      key={idx}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "8px",
+                      }}
+                  >
+                    <Typography sx={{fontWeight: 400, fontSize: "1.6rem"}}>
+                      {displayName}
+                    </Typography>
 
-                  {typeof item.additionalCost === "number"
-                    ? `€${item.additionalCost}`
-                    : item.additionalCost}
-                </Typography>
-              </li>
-            ))}
+                    <Typography sx={{fontWeight: 400, fontSize: "1.6rem"}}>
+
+                      {typeof item.additionalCost === "number"
+                          ? `€${item.additionalCost}`
+                          : item.additionalCost}
+                    </Typography>
+                  </li>
+              );
+            })}
           </Box>
         ) : (
           <Typography color="text.secondary" sx={{ fontSize: "1.6rem" }}>
@@ -243,9 +288,56 @@ const Page = () => {
     return <Loader />;
   }
 
+// inside your Page component, before the return:
+  const normalizePackage = (pkg) => {
+    // normalize the multilingual name field
+    const name =
+        typeof pkg.name === "string"
+            ? { nl: pkg.name, en: "" }
+            : { nl: pkg.name.nl, en: pkg.name.en };
 
-  const autocarePackages =
-    locale === "en" ? englishPackages : packages?.packages;
+    // normalize the included services
+    const services = (pkg.packages || []).map((s) =>
+        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
+    );
+
+    // normalize each add-on
+    const normalizeOpts = (arr = []) =>
+        arr.map((o) => ({
+          ...o,
+          name:
+              typeof o.name === "string"
+                  ? { nl: o.name, en: "" }
+                  : { nl: o.name.nl, en: o.name.en },
+        }));
+
+    return {
+      ...pkg,
+      name,
+      packages: services,
+      additionalOptions: {
+        interior: normalizeOpts(pkg.additionalOptions?.interior),
+        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+      },
+    };
+  };
+
+  console.log(packages);
+  const raw = packages.packages;
+  console.log("packages.packages:", packages.packages);
+  console.log("raw:", raw);
+  const normalizedAuto = Object.fromEntries(
+      Object.entries(raw).map(([cat, list]) => [
+        // fall back to empty array if list isn’t what we expect
+        cat,
+        Array.isArray(list) ? list.map(normalizePackage) : [],
+      ])
+  );
+
+
+  const autocarePackages = normalizedAuto;
+  console.log(autocarePackages);
 
 
   const handleSubmit = async () => {

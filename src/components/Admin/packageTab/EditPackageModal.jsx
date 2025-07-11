@@ -34,6 +34,15 @@ const EditPackageModal = ({
   if (!selectedPackage) return null;
   console.log("this is editPackageModal:", selectedPackage)
 
+    const services = (selectedPackage.packages || []).map(item => {
+    if (typeof item === "string") {
+      return { nl: item, en: "" };
+    }
+    return { nl: item.nl || "", en: item.en || "" };
+  });
+
+  console.log(services);
+
   const displayName = formatPackageName(selectedPackage.id);
 
   const parseDuration = (durationStr) => {
@@ -60,17 +69,18 @@ const EditPackageModal = ({
           <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>Package Name:</Typography>
           <TextField
             variant="outlined"
-            value={displayName}
-            disabled
-            fullWidth
-            sx={{
-              fontSize: "1.6rem",
-              borderRadius: "5px",
-              "& .MuiInputBase-input.Mui-disabled": {
-                opacity: 1,
-                WebkitTextFillColor: "#706B74",
-              },
-            }}
+              label="Package Name"
+              value={displayName}
+              disabled
+              fullWidth
+              sx={{
+                fontSize: "1.6rem",
+                borderRadius: "5px",
+                "& .MuiInputBase-input.Mui-disabled": {
+                  opacity: 1,
+                  WebkitTextFillColor: "#706B74",
+                },
+              }}
           />
         </Box>
 
@@ -185,27 +195,63 @@ const EditPackageModal = ({
         </Box>
 
         {/* Included Services */}
-        <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
+        <Box sx={{ mb: "2.5rem", mt: "2rem" }}>
           <SubSectionTitle>Included Services</SubSectionTitle>
-          {selectedPackage.packages.map((service, idx) => (
-            <Box key={idx} sx={{ display: "flex", alignItems: "center", marginBottom: "1.5rem" }}>
-              <TextField
-                variant="outlined"
-                value={service}
-                fullWidth
-                disabled
-                sx={{
-                  fontSize: "1.6rem",
-                  borderRadius: "10px",
-                  "& .MuiInputBase-input.Mui-disabled": {
-                    opacity: 1,
-                    WebkitTextFillColor: "black",
-                  },
-                }}
-              />
-            </Box>
-          ))}
+          
+          {services.map((service, idx) => {
+            const nameObj = typeof service === "string"
+                ? { nl: service, en: "" } :
+                { nl: service.nl, en: service.en };
+
+            return (
+                <Box
+                    key={service._id || idx}
+                    gap={2}
+                    mb={1}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      mb: "1.5rem",
+                    }}
+                >
+                  {/* NL */}
+                  <TextField
+                      variant="outlined"
+                      label={`Service NL #${idx + 1}`}
+                      value={nameObj.nl}
+                      disabled
+                      fullWidth
+                      sx={{
+                        fontSize: "1.6rem",
+                        borderRadius: "10px",
+                        "& .MuiInputBase-input.Mui-disabled": {
+                          opacity: 1,
+                          WebkitTextFillColor: "black",
+                        },
+                      }}
+                  />
+
+                  {/* EN */}
+                  <TextField
+                      variant="outlined"
+                      label={`Service EN #${idx + 1}`}
+                      value={nameObj.en}
+                      disabled
+                      fullWidth
+                      sx={{
+                        fontSize: "1.6rem",
+                        borderRadius: "10px",
+                        "& .MuiInputBase-input.Mui-disabled": {
+                          opacity: 1,
+                          WebkitTextFillColor: "black",
+                        },
+                      }}
+                  />
+                </Box>
+            );
+          })}
         </Box>
+
 
         {/* Add-Ons */}
         <Box sx={{ marginBottom: "2.5rem", marginTop: "2rem" }}>
@@ -228,72 +274,101 @@ const EditPackageModal = ({
                 </StyledButton>
               </Box>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={4}></Grid>
-                <Grid item xs={12} sm={4}>
+                 <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (NL)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (EN)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Price (€)
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Time (min)
                   </Typography>
                 </Grid>
               </Grid>
-              {selectedPackage.additionalOptions.interior.map((addon, idx) => (
-                <Grid container spacing={2} key={idx} sx={{ marginBottom: "1.5rem" }}>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      value={addon.name}
-                      onChange={(e) => handleInputChange("addonName_interior", e.target.value, idx, "interior")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input.Mui-disabled": {
-                          opacity: 1,
-                          WebkitTextFillColor: "black",
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      type="number"
-                      value={addon.additionalCost}
-                      onChange={(e) => handleInputChange("addonPrice_interior", parseFloat(e.target.value), idx, "interior")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input": {
-                          opacity: 1,
-                          WebkitTextFillColor: "#706B74",
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      type="number"
-                      value={addon.additionalTime || 0}
-                      onChange={(e) => handleInputChange("addonTime_interior", parseInt(e.target.value), idx, "interior")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input": {
-                          opacity: 1,
-                          WebkitTextFillColor: "#706B74",
-                        },
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-              ))}
+              {selectedPackage.additionalOptions.interior.map((addon, idx) => {
+                    // normalize into { nl, en }
+                    const nameObj =
+                        typeof addon.name === "string"
+                            ? {nl: addon.name, en: ""}
+                            : addon.name;
+
+                    return (
+                        <Grid container spacing={2} key={idx} sx={{marginBottom: "1.5rem"}}>
+                            <Grid item xs={12} sm={3}>
+                                <TextField
+                                    variant="outlined"
+                                    value={nameObj.nl}
+                                    onChange={(e) => handleInputChange("addonName_interior", e.target.value, idx, "interior")}
+                                    fullWidth
+                                    sx={{
+                                        fontSize: "1.6rem",
+                                        borderRadius: "5px",
+                                        "& .MuiInputBase-input.Mui-disabled": {
+                                            opacity: 1,
+                                            WebkitTextFillColor: "black",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={3}>
+                                <TextField
+                                    variant="outlined"
+                                    value={nameObj.en}
+                                    onChange={(e) => handleInputChange("addonName_interior_en", e.target.value, idx, "interior")}
+                                    fullWidth
+                                    sx={{
+                                        fontSize: "1.6rem",
+                                        borderRadius: "5px",
+                                        "& .MuiInputBase-input.Mui-disabled": {
+                                            opacity: 1,
+                                            WebkitTextFillColor: "black",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={3}>
+                                <TextField
+                                    variant="outlined"
+                                    type="number"
+                                    value={addon.additionalCost}
+                                    onChange={(e) => handleInputChange("addonPrice_interior", parseFloat(e.target.value), idx, "interior")}
+                                    fullWidth
+                                    sx={{
+                                        fontSize: "1.6rem",
+                                        borderRadius: "5px",
+                                        "& .MuiInputBase-input": {
+                                            opacity: 1,
+                                            WebkitTextFillColor: "#706B74",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={3}>
+                                <TextField
+                                    variant="outlined"
+                                    type="number"
+                                    value={addon.additionalTime || 0}
+                                    onChange={(e) => handleInputChange("addonTime_interior", parseInt(e.target.value), idx, "interior")}
+                                    fullWidth
+                                    sx={{
+                                        fontSize: "1.6rem",
+                                        borderRadius: "5px",
+                                        "& .MuiInputBase-input": {
+                                            opacity: 1,
+                                            WebkitTextFillColor: "#706B74",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                    );
+                })}
             </Box>
           )}
 
@@ -314,24 +389,34 @@ const EditPackageModal = ({
                 </StyledButton>
               </Box>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={4}></Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (NL)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (EN)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Price (€)
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Time (min)
                   </Typography>
                 </Grid>
               </Grid>
-              {selectedPackage.additionalOptions.exterior.map((addon, idx) => (
+              {selectedPackage.additionalOptions.exterior.map((addon, idx) => {
+                  const nameObj =
+                          typeof addon.name === "string"
+                          ? { nl: addon.name, en: "" }
+                          : addon.name;
+                  return(
                 <Grid container spacing={2} key={idx} sx={{ marginBottom: "1.5rem" }}>
-                  <Grid item xs={12} sm={4}>
+                  <Grid item xs={12} sm={3}>
                     <TextField
                       variant="outlined"
-                      value={addon.name}
+                      value={nameObj.nl}
                       onChange={(e) => handleInputChange("addonName_exterior", e.target.value, idx, "exterior")}
                       fullWidth
                       sx={{
@@ -344,7 +429,23 @@ const EditPackageModal = ({
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={4}>
+                   <Grid item xs={12} sm={3}>
+                    <TextField
+                        variant="outlined"
+                        value={nameObj.en}
+                        onChange={(e) => handleInputChange("addonName_exterior_en", e.target.value, idx, "exterior")}
+                        fullWidth
+                        sx={{
+                          fontSize: "1.6rem",
+                          borderRadius: "5px",
+                          "& .MuiInputBase-input.Mui-disabled": {
+                            opacity: 1,
+                            WebkitTextFillColor: "black",
+                          },
+                        }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
                     <TextField
                       variant="outlined"
                       type="number"
@@ -361,7 +462,7 @@ const EditPackageModal = ({
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={4}>
+                  <Grid item xs={12} sm={3}>
                     <TextField
                       variant="outlined"
                       type="number"
@@ -379,7 +480,8 @@ const EditPackageModal = ({
                     />
                   </Grid>
                 </Grid>
-              ))}
+               );
+              })}
             </Box>
           )}
 
@@ -400,72 +502,100 @@ const EditPackageModal = ({
                 </StyledButton>
               </Box>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={4}></Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (NL)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>Name (EN)</Typography>
+                </Grid>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Price (€)
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
                   <Typography sx={{ fontWeight: "500", fontSize: "1.4rem", marginBottom: "1rem" }}>
                     Additional Time (min)
                   </Typography>
                 </Grid>
               </Grid>
-              {selectedPackage.additionalOptions.detailing.map((addon, idx) => (
-                <Grid container spacing={2} key={idx} sx={{ marginBottom: "1.5rem" }}>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      value={addon.name}
-                      onChange={(e) => handleInputChange("addonName_detailing", e.target.value, idx, "detailing")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input.Mui-disabled": {
-                          opacity: 1,
-                          WebkitTextFillColor: "black",
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      type="number"
-                      value={addon.additionalCost}
-                      onChange={(e) => handleInputChange("addonPrice_detailing", parseFloat(e.target.value), idx, "detailing")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input": {
-                          opacity: 1,
-                          WebkitTextFillColor: "#706B74",
-                        },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      variant="outlined"
-                      type="number"
-                      value={addon.additionalTime || 0}
-                      onChange={(e) => handleInputChange("addonTime_detailing", parseInt(e.target.value), idx, "detailing")}
-                      fullWidth
-                      sx={{
-                        fontSize: "1.6rem",
-                        borderRadius: "5px",
-                        "& .MuiInputBase-input": {
-                          opacity: 1,
-                          WebkitTextFillColor: "#706B74",
-                        },
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-              ))}
+              {selectedPackage.additionalOptions.detailing.map((addon, idx) => {
+                  const nameObj =
+                      typeof addon.name === "string"
+                          ? {nl: addon.name, en: ""}
+                          : addon.name;
+
+                  return (
+                      <Grid container spacing={2} key={idx} sx={{marginBottom: "1.5rem"}}>
+                          <Grid item xs={12} sm={3}>
+                              <TextField
+                                  variant="outlined"
+                                  value={nameObj.nl}
+                                  onChange={(e) => handleInputChange("addonName_detailing", e.target.value, idx, "detailing")}
+                                  fullWidth
+                                  sx={{
+                                      fontSize: "1.6rem",
+                                      borderRadius: "5px",
+                                      "& .MuiInputBase-input.Mui-disabled": {
+                                          opacity: 1,
+                                          WebkitTextFillColor: "black",
+                                      },
+                                  }}
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={3}>
+                              <TextField
+                                  variant="outlined"
+                                  value={nameObj.en}
+                                  onChange={(e) => handleInputChange("addonName_detailing_en", e.target.value, idx, "detailing")}
+                                  fullWidth
+                                  sx={{
+                                      fontSize: "1.6rem",
+                                      borderRadius: "5px",
+                                      "& .MuiInputBase-input.Mui-disabled": {
+                                          opacity: 1,
+                                          WebkitTextFillColor: "black",
+                                      },
+                                  }}
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={3}>
+                              <TextField
+                                  variant="outlined"
+                                  type="number"
+                                  value={addon.additionalCost}
+                                  onChange={(e) => handleInputChange("addonPrice_detailing", parseFloat(e.target.value), idx, "detailing")}
+                                  fullWidth
+                                  sx={{
+                                      fontSize: "1.6rem",
+                                      borderRadius: "5px",
+                                      "& .MuiInputBase-input": {
+                                          opacity: 1,
+                                          WebkitTextFillColor: "#706B74",
+                                      },
+                                  }}
+                              />
+                          </Grid>
+                          <Grid item xs={12} sm={3}>
+                              <TextField
+                                  variant="outlined"
+                                  type="number"
+                                  value={addon.additionalTime || 0}
+                                  onChange={(e) => handleInputChange("addonTime_detailing", parseInt(e.target.value), idx, "detailing")}
+                                  fullWidth
+                                  sx={{
+                                      fontSize: "1.6rem",
+                                      borderRadius: "5px",
+                                      "& .MuiInputBase-input": {
+                                          opacity: 1,
+                                          WebkitTextFillColor: "#706B74",
+                                      },
+                                  }}
+                              />
+                          </Grid>
+                      </Grid>
+                  );
+              })}
             </Box>
           )}
         </Box>

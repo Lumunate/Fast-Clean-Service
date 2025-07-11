@@ -7,7 +7,6 @@ import { useTheme } from '../../../contexts/themeContext';
 import { SummaryHeading } from '../../mui/BookingFormPackages';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
 import {useLocale, useTranslations} from "next-intl";
-import {englishPackages} from "../../../lib/enData.js"
 
 const Summary = () => {
   const locale = useLocale()
@@ -20,9 +19,7 @@ const Summary = () => {
 
   const { packages: apiPackages, loading, error, fetchPackages } = useAutocarePackages();
 
-const packages = locale === "en"
-  ? { packages: englishPackages }
-  : apiPackages;
+const packages =  apiPackages;
 
   useEffect(() => {
     fetchPackages();
@@ -126,7 +123,7 @@ const packages = locale === "en"
               formData.selectedAdditionalOptions.map((option, index) => (
                 <SummaryItem
                   key={index}
-                  label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name}
+                  label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name.nl}
                   value={
                     getOptionPrice(option, 'interior') +
                     getOptionPrice(option, 'exterior')
@@ -169,7 +166,7 @@ const packages = locale === "en"
               formData.selectedDetailingOptions.map((option, index) => (
                 <SummaryItem
                   key={index}
-                  label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name}
+                  label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name.nl}
                   value={getOptionPrice(option, 'detailing')}
                 />
               ))

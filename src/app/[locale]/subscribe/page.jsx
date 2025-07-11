@@ -22,7 +22,6 @@ import {
     ImageWrapper,
     SubscriptionsContainer,
 } from "./Subscribe.style";
-import { subData } from "../../../lib/subData.js";
 
 // Define some colors and gradients for styling
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
@@ -34,6 +33,7 @@ const gradients = [
 
 const PackageCard = ({ pkg, index, highlightColor }) => {
     const t = useTranslations("subscriptions");
+    const locale = useLocale()
 
     // Helper to parse the price string
     const parsePrice = (priceString) => {
@@ -145,7 +145,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
                                 }}
                             >
-                                {item}
+                                { locale === "en" ? item.en : item.nl}
                             </Typography>
                         </Box>
                     ))}
@@ -229,7 +229,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {option.duration}
+                                            {locale === "en" ? option.duration?.en : option.duration?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{fontSize:{xs:"1rem",sm:"1.4rem"},
@@ -313,7 +313,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {option.frequency}
+                                            {locale === "en" ? option.frequency?.en : option.frequency?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -403,7 +403,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                         : "#585858",
                                             }}
                                         >
-                                            {option.name}
+                                            {locale === "en" ? option.name?.en : option.name?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -624,7 +624,7 @@ const Page = () => {
         );
     }
 
-    const packagesToUse = locale === "en" ? subData : packages;
+    const packagesToUse =  packages;
 
     if (!packagesToUse || (locale !== "en" && loading)) {
         return null;

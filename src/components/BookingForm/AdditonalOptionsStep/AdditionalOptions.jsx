@@ -155,7 +155,7 @@ const AdditionalOptions = () => {
                     (option, optionIndex) => (
                       <AdditionalOptionsBox
                         key={optionIndex}
-                        name={option.name}
+                        name={option.name?.nl}
                         price={option.additionalCost}
                         color={form.color}
                         options={option.options}

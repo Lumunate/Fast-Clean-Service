@@ -1,5 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
+const translatedString = {
+    nl: { type: String, required: true },
+    en: { type: String, default: "" },
+};
+
 export const vehicleOptionSchema = new Schema(
   {
     basePrice: { type: Number, required: true },
@@ -23,12 +28,12 @@ const subscriptionPackageSchema = new Schema(
     },
     packages: [
       {
-        type: String,
+        type: translatedString,
         required: true,
       },
     ],
     description: {
-      type: String,
+      type: translatedString,
       required: true,
     },
     totalDuration: {

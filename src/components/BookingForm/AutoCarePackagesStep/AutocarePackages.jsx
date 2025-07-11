@@ -76,10 +76,7 @@ const AutocarePackages = () => {
   }
 
   const packageTypeName = form.formData?.packageType?.name?.toLocaleLowerCase();
-  const allPackages =
-  locale === 'en'
-    ?  englishPackages?.[packageTypeName] || []
-    : packages?.packages?.[packageTypeName] || [];
+  const allPackages = packages?.packages?.[packageTypeName] || [];
   let displayedPackages = allPackages || [];
 
   
@@ -187,6 +184,7 @@ const AutocarePackagesCard = ({
   selected = false,
   color,
 }) => {
+  const locale = useLocale()
   const { theme } = useTheme();
   const formattedPrice = Number(price.replace('€', '').trim()).toFixed(2);
 
@@ -259,7 +257,7 @@ const AutocarePackagesCard = ({
           },
         }}
       >
-        {description}
+        {locale === "en" ? description.en : description.nl}
       </Typography>
       <Box>
         <Typography
@@ -327,7 +325,7 @@ const AutocarePackagesCard = ({
                     },
                   }}
                 >
-                  {option}
+                 {locale === "en" ? option.en : option.nl}
                 </Typography>
               </Box>
             ))}

@@ -134,7 +134,7 @@ const Detailing = () => {
                   <DetailingBox
                       key={index}
                       color={form.color}
-                      name={option.name}
+                      name={option.name?.nl}
                       price={option.additionalCost}
                       available={option.available}
                       options={option.options}
