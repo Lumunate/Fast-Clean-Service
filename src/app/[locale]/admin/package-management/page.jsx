@@ -65,6 +65,7 @@ const Page = () => {
       },
     };
 
+
     setSelectedPackage(normalized);
     setIsSubscription(subscription);
     setOpenModal(true);
@@ -281,7 +282,9 @@ const Page = () => {
   const normalizePackage = (pkg) => {
     // normalize the included services
     const services = (pkg.packages || []).map((s) =>
-        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
+        typeof s === "string"
+            ? { nl: s, en: "" }
+            : { nl: s.nl ?? "", en: s.en ?? "" }
     );
 
     const normalizeOpts = (arr = []) =>
