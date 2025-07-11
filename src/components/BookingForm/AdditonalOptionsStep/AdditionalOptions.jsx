@@ -17,15 +17,16 @@ import { calculateFilter } from "../../../lib/colorFilters";
 import { alpha } from "@mui/material/styles";
 import { useLocale } from "next-intl";
 const AdditionalOptionsBox = ({
-  color,
-  selected,
-  expanded,
-  name,
-  price,
-  options = [],
-  onClick,
-}) => {
+                                color,
+                                selected,
+                                expanded,
+                                name,
+                                price,
+                                options = [],
+                                onClick,
+                              }) => {
   const { theme } = useTheme();
+
   return (
       <Box>
         <AdditionalOption
@@ -121,12 +122,14 @@ const AdditionalOptions = () => {
       newSelectedOptions = [...selectedOptions, optionName];
       newExpandedOption = optionName;
     }
+
     form.updateFormData({
       selectedAdditionalOptions: newSelectedOptions,
       expandedAdditionalOption: newExpandedOption,
     });
     updateValidation(newSelectedOptions.length > 0);
   };
+
   return (
       <AdditionalContainer sx={{ border: `0.4px solid ${form?.color}` }}>
         {noAddonsAvailable ? (

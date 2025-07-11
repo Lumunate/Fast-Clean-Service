@@ -76,7 +76,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                     sx={{ marginBottom: "16px", fontStyle: "normal", fontSize: "1.6rem" }}
                     color="text.secondary"
                 >
-                    {locale === "en" ? pkg.description : pkg.description}
+                    {locale === "en" ? pkg.description.en : pkg.description.nl}
                 </Typography>
 
                 <Divider sx={{ marginBottom: "16px" }} />
