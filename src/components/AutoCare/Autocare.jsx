@@ -192,6 +192,7 @@ const AutoCare = () => {
         setSelectedTab(tab);
         setHasClickedTab(true);
         setSubCat("");
+
         setMainCardsVisible(true);
 
         if (headerRef.current) {
@@ -247,43 +248,43 @@ const AutoCare = () => {
                 />
             )}
 
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginBottom: "2rem",
-                    marginTop: "15rem",
-                    "@media (max-width: 600px)": { marginTop: "5rem" },
-                }}
-            >
-                <HeadingLinesAnimation text={t("title")} />
-            </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "2rem",
+          marginTop: "15rem",
+          "@media (max-width: 600px)": { marginTop: "5rem" },
+        }}
+      >
+        <HeadingLinesAnimation text={t("title")} />
+      </Box>
 
-            <DecorativeBackgroundImage
-                top={"50%"}
-                right={"0"}
-                width="90rem"
-                height="65rem"
-                sx={{ zIndex: "1" }}
-            />
-            <RadialCircle
-                top={"20rem"}
-                right={"20rem"}
-                sx={{
-                    width: "10rem !important",
-                    height: "10rem !important",
-                    zIndex: "1",
-                }}
-            />
-            <RadialCircle
-                top={"90%"}
-                left={"20rem"}
-                sx={{
-                    width: "10rem !important",
-                    height: "10rem !important",
-                    zIndex: "1",
-                }}
-            />
+      <DecorativeBackgroundImage
+        top={"50%"}
+        right={"0"}
+        width="90rem"
+        height="65rem"
+        sx={{ zIndex: "1" }}
+      />
+      <RadialCircle
+        top={"20rem"}
+        right={"20rem"}
+        sx={{
+          width: "10rem !important",
+          height: "10rem !important",
+          zIndex: "1",
+        }}
+      />
+      <RadialCircle
+        top={"90%"}
+        left={"20rem"}
+        sx={{
+          width: "10rem !important",
+          height: "10rem !important",
+          zIndex: "1",
+        }}
+      />
 
             {/* ------------------ TABS (STANDARD, DELUXE, PREMIUM) ------------------ */}
             <HomePkgsBox
@@ -378,799 +379,799 @@ const AutoCare = () => {
                                 />
                             </div>
 
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "bold",
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-1">{t("standardHeading")}</span>
-
-                            </Typography>
-
-                            {/* FROM PRICE + DURATION, directly from the new data */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#7ed56f" }}>
-                                        {packagesAll?.standard[0]?.price}
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>
-                                        {packages?.packages?.standard[0]?.totalDuration}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </div>
-
-                        <div
-                            style={{ padding: "0px 10px" }}
-                            className="tab__side tab__side--back tab__side--back-1"
-                        >
-                            <div className="tab__cta">
-
-                                <Typography  className="tab__value">{t("standardHeading")}</Typography>
-
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        marginTop:"16px"
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.0")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-                                            {packagesAll?.standard[0]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        margin:"10px 0px"
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.1")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-                                            {packagesAll?.standard[1]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.2")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-
-                                            {packagesAll?.standard[2]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                            </div>
-                        </div>
-                    </AutoTab>
-
-                    {/* ---------- DELUXE ---------- */}
-                    <AutoTab
-                        className={hasClickedTab && selectedTab === "Deluxe" ? "selected" : ""}
-                        onClick={() => handleTabChange("Deluxe")}
-                        sx={{
-                            flex: "1 1 30%",
-                            maxWidth: "calc(33% - 16px)",
-                            "@media (max-width: 800px)": {
-                                maxWidth: "calc(90% - 16px)",
-                            },
-                        }}
-                    >
-                        <div
-                            className="tab__side tab__side--front"
-                            style={{
-                                position: "relative",
-                                height: "40rem",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "8%",
-                                    left: "-30%",
-                                    width: "120%",
-                                    height: "60px",
-                                    backgroundColor: "#2998ff",
-                                    transform: "rotate(-40deg)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 1,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        color: "white",
-                                        fontWeight: 300,
-                                        transform: "rotate(-1deg)",
-                                        fontSize: "1.6rem !important",
-                                    }}
-                                >
-                                    {t("choice")}
-                                </Typography>
-                            </Box>
-                            <div
-                                className="tab__picture tab__picture--2"
-                                style={{
-                                    marginTop: "-60px",
-                                    marginBottom: "60px",
-                                    backgroundImage: `url("/autocare-card2.png")`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        backgroundColor: "#2998ff",
-                                        opacity: 0.4,
-                                        pointerEvents: "none",
-                                    }}
-                                />
-                            </div>
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "20px",
-                                    fontWeight: 600,
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-2">Deluxe</span>
-                            </Typography>
-
-                            {/* fromPrice, fromDuration for Deluxe */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#2998ff" }}>
-                                        {packages?.packages?.deluxe[0]?.price}
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>
-                                        {packages?.packages?.deluxe[0]?.totalDuration}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </div>
-                        <div className="tab__side tab__side--back tab__side--back-2">
-                            <div className="tab__cta">
-                                <Typography className="tab__value">Deluxe</Typography>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        marginTop:"160x"
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.0")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center", margin:"10px 0px"}}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-                                            {packagesAll?.deluxe[0]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "16px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.1")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-                                            {packagesAll?.deluxe[1]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "12px !important",
-                                            },
-                                        }}
-                                    >
-                                        {t("packageNames.2")}
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-
-                                            {packagesAll?.deluxe[2]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                            </div>
-                        </div>
-                    </AutoTab>
-
-                    {/* ---------- PREMIUM ---------- */}
-                    <AutoTab
-                        className={hasClickedTab && selectedTab === "Premium" ? "selected" : ""}
-                        onClick={() => handleTabChange("Premium")}
-                        sx={{
-                            flex: "1 1 30%",
-                            maxWidth: "calc(33% - 16px)",
-                            "@media (max-width: 800px)": {
-                                maxWidth: "calc(90% - 16px)",
-                            },
-                        }}
-                    >
-                        <div
-                            className="tab__side tab__side--front"
-                            style={{
-                                position: "relative",
-                                height: "40rem",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "8%",
-                                    left: "-32%",
-                                    width: "120%",
-                                    height: "60px",
-                                    backgroundColor: "#EED502",
-                                    transform: "rotate(-40deg)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 1,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        color: "white",
-                                        fontWeight: 300,
-                                        transform: "rotate(-1deg)",
-                                        fontSize: "18px",
-                                    }}
-                                >
-                                    Bespoke
-                                </Typography>
-                            </Box>
-                            <div
-                                className="tab__picture tab__picture--3"
-                                style={{
-                                    marginTop: "-60px",
-                                    marginBottom: "60px",
-                                    backgroundImage: `url("/autocare-card3.png")`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        backgroundColor: "#EED502",
-                                        opacity: 0.4,
-                                        pointerEvents: "none",
-                                    }}
-                                />
-                            </div>
-                            <Typography
-                                className="heading"
-                                sx={{
-                                    marginTop: "1rem",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "bold",
-                                    textAlign: "center",
-                                }}
-                            >
-                                <span className="heading--span heading--span-3">{t("premiumHeading")}</span>
-
-                            </Typography>
-
-                            {/* fromPrice, fromDuration for Premium */}
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    marginTop: "1rem",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                        marginBottom: "0.5rem",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
-                                    <Typography sx={{ fontWeight: "500", color: "#ff7730" }}>
-                                        {packages?.packages?.premium[0]?.price}
-                                    </Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: "80%",
-                                    }}
-                                >
-                                    <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
-                                    <Typography sx={{ fontWeight: "300" }}>
-                                        {packages?.packages?.premium[0]?.totalDuration}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </div>
-                        <div className="tab__side tab__side--back tab__side--back-3">
-                            <div className="tab__cta">
-
-                                <Typography className="tab__value">{t("premiumHeading")}</Typography>
-
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        gap: "8px",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: "#292929A6",
-                                            "@media (max-width: 1024px)": {
-                                                fontSize: "11px !important",
-                                            },
-                                        }}
-                                    >
-
-                                        {t("showroom")}
-
-                                    </Typography>
-                                    <Box
-                                        sx={{ display: "flex", gap: "6px", alignItems: "center" }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "12px !important",
-                                                color: "#292929A6",
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "10px !important",
-                                                },
-                                            }}
-
-                                        >
-                                            {t("from")}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                fontSize: "20px !important",
-                                                fontWeight:500,
-                                                "@media (max-width: 1024px)": {
-                                                    fontSize: "16px !important",
-                                                },
-                                            }}
-                                        >
-                                            {packagesAll?.premium[0]?.price}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                            </div>
-                        </div>
-                    </AutoTab>
-                </AutoTabContainer>
-            </HomePkgsBox>
-
-            {/* ------------------ SECOND ROW: MAIN PACKAGES ------------------ */}
-            <HomePkgsBox
+              <Typography
+                className="heading"
                 sx={{
-                    "@media (max-width: 1200px)": {
-                        flexDirection: "column",
-                        alignItems: "center",
-                    },
+                  marginTop: "1rem",
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                  textAlign: "center",
                 }}
-            >
-                <HomePkgsInBox
-                    sx={{
-                        justifyContent: "center",
-                        position: "relative",
-                        "@media (max-width: 1200px)": {
-                            flexDirection: "column",
-                            alignItems: "center",
-                        },
-                        zIndex: 10,
-                    }}
-                    ref={sectionRef}
-                >
-                    <CardContainer
-                        ref={containerRef}
-                        sx={{
-                            gap: "2rem",
-                            flexWrap: "wrap",
-                            opacity: mainCardsVisible ? 1 : 0,
-                            transform: mainCardsVisible
-                                ? "translateY(0)"
-                                : "translateY(100px)",
-                            transition:
-                                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
-                        }}
-                    >
-                        {allPackages?.map((pkg, index) => (
-                            <Card key={pkg?.id || index} color={color}>
-                                <div className="style style--1" />
-                                <CardHeader color={color}>
-                                    <Typography className="heading">{pkg?.name}</Typography>
-                                </CardHeader>
-                                <CardInfo color={color} sx={{ flexDirection: "column" }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "14px !important",
-                                            color: theme.palette.mode === "dark" ? "white" : "",
-                                            marginBottom: "0.1rem",
-                                            fontWeight: 300,
-                                        }}
-                                    >
-                                        {locale === "en" ? pkg.description.en : pkg.description.nl}
-                                    </Typography>
+              >
+                <span className="heading--span heading--span-1">{t("standardHeading")}</span>
 
-                                    <Typography
-                                        className="price"
-                                        sx={{
-                                            color: color,
-                                            fontSize: "2rem",
-                                            display: "inline-flex",
-                                            alignItems: "center",
-                                        }}
-                                    >
+              </Typography>
+
+              {/* FROM PRICE + DURATION, directly from the new data */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "1rem",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
+                  <Typography sx={{ fontWeight: "500", color: "#7ed56f" }}>
+                    {packagesAll?.standard[0]?.price}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>
+                    {packages?.packages?.standard[0]?.totalDuration}
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+
+            <div
+              style={{ padding: "0px 10px" }}
+              className="tab__side tab__side--back tab__side--back-1"
+            >
+              <div className="tab__cta">
+
+                <Typography  className="tab__value">{t("standardHeading")}</Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop:"16px"
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.0")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+                    >
+                      {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                        fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+                      {packagesAll?.standard[0]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    margin:"10px 0px"
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.1")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+                    >
+                     {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+                      {packagesAll?.standard[1]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+                 <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.2")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+                    >
+                     {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+
+                      {packagesAll?.standard[2]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+              </div>
+            </div>
+          </AutoTab>
+
+          {/* ---------- DELUXE ---------- */}
+          <AutoTab
+              className={hasClickedTab && selectedTab === "Deluxe" ? "selected" : ""}
+            onClick={() => handleTabChange("Deluxe")}
+            sx={{
+              flex: "1 1 30%",
+              maxWidth: "calc(33% - 16px)",
+              "@media (max-width: 800px)": {
+                maxWidth: "calc(90% - 16px)",
+              },
+            }}
+          >
+            <div
+              className="tab__side tab__side--front"
+              style={{
+                position: "relative",
+                height: "40rem",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "8%",
+                  left: "-30%",
+                  width: "120%",
+                  height: "60px",
+                  backgroundColor: "#2998ff",
+                  transform: "rotate(-40deg)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 1,
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "white",
+                    fontWeight: 300,
+                    transform: "rotate(-1deg)",
+                    fontSize: "1.6rem !important",
+                  }}
+                >
+                  {t("choice")}
+                </Typography>
+              </Box>
+              <div
+                className="tab__picture tab__picture--2"
+                style={{
+                  marginTop: "-60px",
+                  marginBottom: "60px",
+                  backgroundImage: `url("/autocare-card2.png")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "#2998ff",
+                    opacity: 0.4,
+                    pointerEvents: "none",
+                  }}
+                />
+              </div>
+              <Typography
+                className="heading"
+                sx={{
+                  marginTop: "1rem",
+                  fontSize: "20px",
+                  fontWeight: 600,
+                  textAlign: "center",
+                }}
+              >
+                <span className="heading--span heading--span-2">Deluxe</span>
+              </Typography>
+
+              {/* fromPrice, fromDuration for Deluxe */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "1rem",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
+                  <Typography sx={{ fontWeight: "500", color: "#2998ff" }}>
+                    {packages?.packages?.deluxe[0]?.price}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>
+                    {packages?.packages?.deluxe[0]?.totalDuration}
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+            <div className="tab__side tab__side--back tab__side--back-2">
+              <div className="tab__cta">
+                <Typography className="tab__value">Deluxe</Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop:"160x"
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.0")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center", margin:"10px 0px"}}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+                    >
+                     {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+                      {packagesAll?.deluxe[0]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "16px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.1")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+                    >
+                      {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+                      {packagesAll?.deluxe[1]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "12px !important",
+                      },
+                    }}
+                  >
+                    {t("packageNames.2")}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+
+                    >
+                      {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+
+                      {packagesAll?.deluxe[2]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+              </div>
+            </div>
+          </AutoTab>
+
+          {/* ---------- PREMIUM ---------- */}
+          <AutoTab
+              className={hasClickedTab && selectedTab === "Premium" ? "selected" : ""}
+            onClick={() => handleTabChange("Premium")}
+            sx={{
+              flex: "1 1 30%",
+              maxWidth: "calc(33% - 16px)",
+              "@media (max-width: 800px)": {
+                maxWidth: "calc(90% - 16px)",
+              },
+            }}
+          >
+            <div
+              className="tab__side tab__side--front"
+              style={{
+                position: "relative",
+                height: "40rem",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "8%",
+                  left: "-32%",
+                  width: "120%",
+                  height: "60px",
+                  backgroundColor: "#EED502",
+                  transform: "rotate(-40deg)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 1,
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "white",
+                    fontWeight: 300,
+                    transform: "rotate(-1deg)",
+                    fontSize: "18px",
+                  }}
+                >
+                  Bespoke
+                </Typography>
+              </Box>
+              <div
+                className="tab__picture tab__picture--3"
+                style={{
+                  marginTop: "-60px",
+                  marginBottom: "60px",
+                  backgroundImage: `url("/autocare-card3.png")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "#EED502",
+                    opacity: 0.4,
+                    pointerEvents: "none",
+                  }}
+                />
+              </div>
+              <Typography
+                className="heading"
+                sx={{
+                  marginTop: "1rem",
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                <span className="heading--span heading--span-3">{t("premiumHeading")}</span>
+
+              </Typography>
+
+              {/* fromPrice, fromDuration for Premium */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "1rem",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("from")}:</Typography>
+                  <Typography sx={{ fontWeight: "500", color: "#ff7730" }}>
+                    {packages?.packages?.premium[0]?.price}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "80%",
+                  }}
+                >
+                  <Typography sx={{ fontWeight: "300" }}>{t("duration")}:</Typography>
+                  <Typography sx={{ fontWeight: "300" }}>
+                    {packages?.packages?.premium[0]?.totalDuration}
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+            <div className="tab__side tab__side--back tab__side--back-3">
+              <div className="tab__cta">
+
+                <Typography className="tab__value">{t("premiumHeading")}</Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "8px",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: "#292929A6",
+                      "@media (max-width: 1024px)": {
+                        fontSize: "11px !important",
+                      },
+                    }}
+                  >
+
+                    {t("showroom")}
+
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "6px", alignItems: "center" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "12px !important",
+                        color: "#292929A6",
+                        "@media (max-width: 1024px)": {
+                          fontSize: "10px !important",
+                        },
+                      }}
+
+                    >
+                      {t("from")}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "20px !important",
+                         fontWeight:500,
+                        "@media (max-width: 1024px)": {
+                          fontSize: "16px !important",
+                        },
+                      }}
+                    >
+                      {packagesAll?.premium[0]?.price}
+                    </Typography>
+                  </Box>
+                </Box>
+              </div>
+            </div>
+          </AutoTab>
+        </AutoTabContainer>
+      </HomePkgsBox>
+
+      {/* ------------------ SECOND ROW: MAIN PACKAGES ------------------ */}
+      <HomePkgsBox
+        sx={{
+          "@media (max-width: 1200px)": {
+            flexDirection: "column",
+            alignItems: "center",
+          },
+        }}
+      >
+        <HomePkgsInBox
+          sx={{
+            justifyContent: "center",
+            position: "relative",
+            "@media (max-width: 1200px)": {
+              flexDirection: "column",
+              alignItems: "center",
+            },
+            zIndex: 10,
+          }}
+          ref={sectionRef}
+        >
+          <CardContainer
+            ref={containerRef}
+            sx={{
+              gap: "2rem",
+              flexWrap: "wrap",
+              opacity: mainCardsVisible ? 1 : 0,
+              transform: mainCardsVisible
+                ? "translateY(0)"
+                : "translateY(100px)",
+              transition:
+                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+            }}
+          >
+            {allPackages?.map((pkg, index) => (
+              <Card key={pkg?.id || index} color={color}>
+                <div className="style style--1" />
+                <CardHeader color={color}>
+                  <Typography className="heading">{pkg?.name}</Typography>
+                </CardHeader>
+                <CardInfo color={color} sx={{ flexDirection: "column" }}>
+                  <Typography
+                    sx={{
+                      fontSize: "14px !important",
+                      color: theme.palette.mode === "dark" ? "white" : "",
+                      marginBottom: "0.1rem",
+                      fontWeight: 300,
+                    }}
+                  >
+                    {pkg?.description}
+                  </Typography>
+
+                  <Typography
+                    className="price"
+                    sx={{
+                      color: color,
+                      fontSize: "2rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <span
-                        style={{
-                            fontSize: "inherit",
-                            verticalAlign: "baseline",
-                            paddingRight: "1rem",
-                        }}
+                      style={{
+                        fontSize: "inherit",
+                        verticalAlign: "baseline",
+                        paddingRight: "1rem",
+                      }}
                     >
                       €
                     </span>
-                                        {pkg?.price?.replace("€", "")}
-                                    </Typography>
-                                </CardInfo>
+                    {pkg?.price?.replace("€", "")}
+                  </Typography>
+                </CardInfo>
 
-                                {/* The bullet points for the package */}
-                                <CardDetails>
-                                    {(pkg?.packages || []).map((point, idx) => (
-                                        <ListItem
-                                            key={idx}
-                                            sx={{
-                                                alignItems: "flex-start",
-                                                display: "flex",
-                                            }}
-                                        >
+                {/* The bullet points for the package */}
+                <CardDetails>
+                  {(pkg?.packages || []).map((point, idx) => (
+                    <ListItem
+                      key={idx}
+                      sx={{
+                        alignItems: "flex-start",
+                        display: "flex",
+                      }}
+                    >
 
-                                            <FontAwesomeIcon
-                                                icon={faCheckCircle}
-                                                style={{
-                                                    color: color,
-                                                    transform: "translateY(2px)",
-                                                    marginRight: "1rem",
-                                                    marginTop: "0.25rem",
-                                                }}
-                                            />
-                                            { locale === "en" ? point?.en : point?.nl}
-                                        </ListItem>
-                                    ))}
-                                </CardDetails>
+                      <FontAwesomeIcon
+                        icon={faCheckCircle}
+                        style={{
+                          color: color,
+                          transform: "translateY(2px)",
+                          marginRight: "1rem",
+                          marginTop: "0.25rem",
+                        }}
+                      />
+                      {point}
+                    </ListItem>
+                  ))}
+                </CardDetails>
 
-                                <Box
-                                    sx={{
-                                        marginTop: "auto",
-                                        display: "flex",
-                                        gap: "8px",
-                                    }}
-                                >
-                                    {/* <Link href="/booking"> */}
-                                    <CardButton
-                                        onClick={() => (window.location.href = "/booking")}
-                                        sx={{
-                                            backgroundColor: "#1C79CC",
-                                            color: "white",
-                                            justifyContent: "center",
-                                            "&:hover": {
-                                                color: "black",
-                                                backgroundColor: "#2998ff",
-                                            },
-                                        }}
-                                    >
-                                        {t("button")}
-                                    </CardButton>
-                                    {/* </Link>  */}
-                                    <CardButton
-                                        onClick={() => handleSubCatChange(pkg?.name)}
+                <Box
+                  sx={{
+                    marginTop: "auto",
+                    display: "flex",
+                    gap: "8px",
+                  }}
+                >
+                  {/* <Link href="/booking"> */}
+                  <CardButton
+                    onClick={() => (window.location.href = "/booking")}
+                    sx={{
+                      backgroundColor: "#1C79CC",
+                      color: "white",
+                      justifyContent: "center",
+                      "&:hover": {
+                        color: "black",
+                        backgroundColor: "#2998ff",
+                      },
+                    }}
+                  >
+                    {t("button")}
+                  </CardButton>
+                  {/* </Link>  */}
+                  <CardButton
+                    onClick={() => handleSubCatChange(pkg?.name)}
 
-                                        disabled= {pkg?.name === "Compleet" || pkg?.name === "Complete"}
+                    disabled= {pkg?.name === "Compleet" || pkg?.name === "Complete"}
 
-                                        sx={{
-                                            backgroundColor: subCat === pkg?.name ? color : "",
-                                            color: "black !important",
-                                            justifyContent: "center",
+                    sx={{
+                      backgroundColor: subCat === pkg?.name ? color : "",
+                      color: "black !important",
+                      justifyContent: "center",
 
-                                            cursor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "not-allowed !important" : "pointer",
-                                            pointerEvents: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "visible !important" : "pointer",
-                                            "&:hover": {
-                                                backgroundColor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "#dedede" : `${color} !important`,
+                      cursor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "not-allowed !important" : "pointer",
+                      pointerEvents: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "visible !important" : "pointer",
+                      "&:hover": {
+                        backgroundColor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "#dedede" : `${color} !important`,
 
-                                                color: "primary.main !important",
-                                            },
-                                        }}
-                                    >
-                                        Add Ons
-                                    </CardButton>
-                                </Box>
-                            </Card>
-                        ))}
-                    </CardContainer>
-                </HomePkgsInBox>
-            </HomePkgsBox>
+                        color: "primary.main !important",
+                      },
+                    }}
+                  >
+                    Add Ons
+                  </CardButton>
+                </Box>
+              </Card>
+            ))}
+          </CardContainer>
+        </HomePkgsInBox>
+      </HomePkgsBox>
 
             {/* ------------------ THIRD ROW: ADD-ONS (EXTERIOR, INTERIOR, DETAILING) ------------------ */}
             <HomePkgsBox
@@ -1210,49 +1211,49 @@ const AutoCare = () => {
                             const chosenPackage = allPackages.find((p) => p.name === subCat);
                             if (!chosenPackage) return null;
 
-                            const { additionalOptions } = chosenPackage;
-                            if (!additionalOptions) return null;
+              const { additionalOptions } = chosenPackage;
+              if (!additionalOptions) return null;
 
-                            return (
-                                <>
-                                    <ModdedCard
-                                        card={{
-                                            name: selectedTab,
+              return (
+                <>
+                  <ModdedCard
+                    card={{
+                      name: selectedTab,
 
-                                            type: t("packageNames.0"),
+                      type: t("packageNames.0"),
 
-                                            options: additionalOptions.exterior || [],
-                                        }}
-                                        color={color}
-                                    />
-                                    <ModdedCard
-                                        card={{
-                                            name: selectedTab,
+                      options: additionalOptions.exterior || [],
+                    }}
+                    color={color}
+                  />
+                  <ModdedCard
+                    card={{
+                      name: selectedTab,
 
-                                            type: t("packageNames.1"),
+                      type: t("packageNames.1"),
 
-                                            options: additionalOptions.interior || [],
-                                        }}
-                                        color={color}
-                                    />
-                                    <ModdedCard
-                                        card={{
-                                            name: selectedTab,
+                      options: additionalOptions.interior || [],
+                    }}
+                    color={color}
+                  />
+                  <ModdedCard
+                    card={{
+                      name: selectedTab,
 
-                                            type: t("detailing"),
+                      type: t("detailing"),
 
-                                            options: additionalOptions.detailing || [],
-                                        }}
-                                        color={color}
-                                    />
-                                </>
-                            );
-                        })()}
-                    </CardContainer>
-                </HomePkgsInBox>
-            </HomePkgsBox>
-        </Box>
-    );
+                      options: additionalOptions.detailing || [],
+                    }}
+                    color={color}
+                  />
+                </>
+              );
+            })()}
+          </CardContainer>
+        </HomePkgsInBox>
+      </HomePkgsBox>
+    </Box>
+  );
 };
 
 export default AutoCare;
