@@ -18,6 +18,7 @@ import 'swiper/css';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
 import { englishPackages } from '../../../lib/enData.js';
 import { useLocale } from 'next-intl';
+
 const AutocarePackages = () => {
     const locale = useLocale();
     const { theme } = useTheme();

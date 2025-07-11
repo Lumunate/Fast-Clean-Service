@@ -23,7 +23,7 @@ const subscriptionPackageSchema = new Schema(
       unique: true,
     },
     name: {
-      type: translatedString,
+      type: String,
       required: true,
     },
     packages: [
