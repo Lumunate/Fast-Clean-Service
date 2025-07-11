@@ -13,6 +13,7 @@ import {
 } from "../../mui/BookingFormPackages";
 import { useTheme } from "../../../contexts/themeContext";
 import { alpha } from "@mui/material/styles";
+import { useLocale } from "next-intl";
 const DetailingBox = ({ color, selected, expanded, name, price, available, options, onClick }) => {
     const { theme } = useTheme();
     const formatEuro = (amount) => `€${parseFloat(amount).toFixed(2)}`;
@@ -82,6 +83,7 @@ const DetailingBox = ({ color, selected, expanded, name, price, available, optio
     );
 };
 const Detailing = () => {
+    const locale = useLocale()
     const form = useMultiStepForm();
     const { updateValidation } = useValidation();
     const selectedPackage = form.formData.selectedPackage;
@@ -127,7 +129,7 @@ const Detailing = () => {
                     <DetailingBox
                         key={index}
                         color={form.color}
-                        name={option.name?.nl}
+                        name={locale === "en" ? option.name?.en  : option.name?.nl}
                         price={option.additionalCost}
                         available={option.available}
                         options={option.options}
