@@ -7,11 +7,16 @@ export const vehicleOptionValidation = z.object({
   notes: z.string().optional(),
 });
 
+const translatedStringValidation = z.object({
+  nl: z.string(),
+  en: z.string().optional(),
+});
+
 export const subscriptionPackageValidation = z.object({
   id: z.string(),
-  name: z.string(),
-  packages: z.array(z.string()),
-  description: z.string(),
+  name: translatedStringValidation,
+  packages: z.array(translatedStringValidation),
+  description: translatedStringValidation,
   totalDuration: z.string(),
   duration: z.string(),
   price: z.string(),
