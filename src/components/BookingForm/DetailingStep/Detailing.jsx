@@ -82,6 +82,7 @@ const DetailingBox = ({ color, selected, expanded, name, price, available, optio
         </Box>
     );
 };
+
 const Detailing = () => {
     const locale = useLocale()
     const form = useMultiStepForm();
