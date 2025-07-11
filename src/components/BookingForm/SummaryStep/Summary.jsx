@@ -7,248 +7,235 @@ import { useTheme } from '../../../contexts/themeContext';
 import { SummaryHeading } from '../../mui/BookingFormPackages';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
 import {useLocale, useTranslations} from "next-intl";
-import {englishPackages} from "../../../lib/enData.js"
-
 const Summary = () => {
-  const locale = useLocale()
+    const locale = useLocale()
     const t = useTranslations('booking');
-  const { formData } = useMultiStepForm();
-  const { updateValidation } = useValidation();
-  updateValidation(true);
-  const { theme } = useTheme();
-  console.log("FORMDATA:", formData);
-
-  const { packages: apiPackages, loading, error, fetchPackages } = useAutocarePackages();
-
-const packages = locale === "en"
-  ? { packages: englishPackages }
-  : apiPackages;
-
-  useEffect(() => {
-    fetchPackages();
-  }, [fetchPackages]);
-
+    const { formData } = useMultiStepForm();
+    const { updateValidation } = useValidation();
+    updateValidation(true);
+    const { theme } = useTheme();
+    console.log("FORMDATA:", formData);
+    const { packages: apiPackages, loading, error, fetchPackages } = useAutocarePackages();
+    const packages =  apiPackages;
+    useEffect(() => {
+        fetchPackages();
+    }, [fetchPackages]);
     useEffect(() => {
         console.log("Form Data: ", formData); // This will log the form data
     }, [formData]);
-
-  if (!packages) {
-    return null;
-  }
-
-  const getOptionPrice = (optionName, category) => {
-    const { _id, __v, ...relevantPackages } = packages.packages;
-    for (const pkgCategory of Object.values(relevantPackages)) {
-      for (const pkg of pkgCategory) {
-        const optionsList =
-          pkg.additionalOptions?.[category] ||
-          pkg.additionalOptions?.detailing ||
-          [];
-        const matchedOption = optionsList.find(
-          (option) => option._id === optionName
-        );
-        if (matchedOption) {
-          return matchedOption.additionalCost || 0;
-        }
-      }
+    if (!packages) {
+        return null;
     }
-    return 0;
-  };
-
-  return (
-    <Box
-      sx={{
-        padding: '3.2rem 1.6rem',
-        borderRadius: '1.5rem',
-        maxWidth: '700px',
-        margin: 'auto',
-        boxShadow: '0 2px 11.9px rgba(0, 0, 0, 0.25)',
-        '@media (max-width: 600px)': {
-          padding: '0.5rem 2.5rem',
-          border: 'none',
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
-          top: '-4rem',
-          position: 'relative',
-        },
-      }}
-    >
-      <Grid
-        container
-        spacing={4}
-        sx={{
-          '@media (max-width: 600px)': {
-            backgroundColor: 'transparent',
-            border: 'none',
-          },
-        }}
-      >
-        <Grid item xs={12} md={6}>
-          <Box sx={{ marginBottom: '2rem', marginTop:{xs:'3rem', sm:'auto'} }}>
-            <SummaryHeading>{t("steps.8.sections.0")}</SummaryHeading>
-            <SummaryItem
-              label={t("stepbar.1")}
-              value={
-                  formData?.vehicleDetails?.kenteken
-                      ? formData.vehicleDetails.kenteken
-                      : formData?.licensePlate || '---'
-              }
-            />
-            <SummaryItem label={t("steps.8.sections.2")} value={formData?.carType} />
-              {formData?.vehicleDetails && (
-                  <>
-                      <SummaryItem
-                          label={`${t("steps.8.sections.11")}`}
-                          value={formData.vehicleDetails.merk || '---'}
-                      />
-                      <SummaryItem
-                          label={t("steps.8.sections.12")}
-                          value={formData.vehicleDetails.handelsbenaming || '---'}
-                      />
-                      <SummaryItem
-                          label={t("steps.8.sections.13")}
-                          value={formData.vehicleDetails.inrichting || '---'}
-                      />
-                      <SummaryItem
-                          label={t("steps.8.sections.14")}
-                          value={formData.vehicleDetails.aantal_zitplaatsen || '---'}
-                      />
-                      <SummaryItem
-                          label={t("steps.8.sections.15")}
-                          value={formData.vehicleDetails.eerste_kleur || '---'}
-                      />
-                  </>
-              )}
-          </Box>
-          <Box>{console.log(123123,formData.selectedAdditionalOptions)}
-            <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
-            {formData?.selectedAdditionalOptions?.length ? (
-              formData.selectedAdditionalOptions.map((option, index) => (
-                <SummaryItem
-                  key={index}
-                  label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name}
-                  value={
-                    getOptionPrice(option, 'interior') +
-                    getOptionPrice(option, 'exterior')
-                  }
-                />
-              ))
-            ) : (
-              <Typography
+    const getOptionPrice = (optionName, category) => {
+        const { _id, __v, ...relevantPackages } = packages.packages;
+        for (const pkgCategory of Object.values(relevantPackages)) {
+            for (const pkg of pkgCategory) {
+                const optionsList =
+                    pkg.additionalOptions?.[category] ||
+                    pkg.additionalOptions?.detailing ||
+                    [];
+                const matchedOption = optionsList.find(
+                    (option) => option._id === optionName
+                );
+                if (matchedOption) {
+                    return matchedOption.additionalCost || 0;
+                }
+            }
+        }
+        return 0;
+    };
+    return (
+        <Box
+            sx={{
+                padding: '3.2rem 1.6rem',
+                borderRadius: '1.5rem',
+                maxWidth: '700px',
+                margin: 'auto',
+                boxShadow: '0 2px 11.9px rgba(0, 0, 0, 0.25)',
+                '@media (max-width: 600px)': {
+                    padding: '0.5rem 2.5rem',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    boxShadow: 'none',
+                    top: '-4rem',
+                    position: 'relative',
+                },
+            }}
+        >
+            <Grid
+                container
+                spacing={4}
                 sx={{
-                  fontFamily: 'Unbounded',
-                  fontSize: '0.8rem',
-                  fontWeight: 300,
-                  lineHeight: '2.4rem',
+                    '@media (max-width: 600px)': {
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                    },
                 }}
-              >
-                  {t("steps.8.sections.10")}
-              </Typography>
-            )}
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Box sx={{ marginBottom: '2rem' }}>
-            <SummaryHeading>{t("steps.8.sections.3")}</SummaryHeading>
-            <SummaryItem
-              label={t("steps.8.sections.4")}
-              value={formData.selectedPackageType}
-            />
-            <SummaryItem
-              label={t("steps.8.sections.5")}
-              value={formData.packageType?.name}
-            />
-            <SummaryItem
-              label={t("steps.8.sections.6")}
-              value={formData.selectedPackage?.name}
-            />
-          </Box>
-          <Box>
-            <SummaryHeading>{t("steps.8.sections.7")}</SummaryHeading>
-            {formData?.selectedDetailingOptions?.length ? (
-              formData.selectedDetailingOptions.map((option, index) => (
-                <SummaryItem
-                  key={index}
-                  label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name}
-                  value={getOptionPrice(option, 'detailing')}
-                />
-              ))
-            ) : (
-              <Typography
-                sx={{
-                  fontFamily: 'Unbounded',
-                  fontSize: '0.8rem',
-                  fontWeight: 300,
-                  lineHeight: '2.4rem',
-                }}
-              >
-                  {t("steps.8.sections.8")}
-              </Typography>
-            )}
-          </Box>
-          <Box>
-            <SummaryHeading>{t("steps.8.sections.9")}</SummaryHeading>
-            <SummaryItem
-              label={formData?.selectedTime?.toLocaleDateString('en-US', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-              value={formData?.selectedTime?.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true,
-              })}
-            />
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
-  );
+            >
+                <Grid item xs={12} md={6}>
+                    <Box sx={{ marginBottom: '2rem', marginTop:{xs:'3rem', sm:'auto'} }}>
+                        <SummaryHeading>{t("steps.8.sections.0")}</SummaryHeading>
+                        <SummaryItem
+                            label={t("stepbar.1")}
+                            value={
+                                formData?.vehicleDetails?.kenteken
+                                    ? formData.vehicleDetails.kenteken
+                                    : formData?.licensePlate || '---'
+                            }
+                        />
+                        <SummaryItem label={t("steps.8.sections.2")} value={formData?.carType} />
+                        {formData?.vehicleDetails && (
+                            <>
+                                <SummaryItem
+                                    label={`${t("steps.8.sections.11")}`}
+                                    value={formData.vehicleDetails.merk || '---'}
+                                />
+                                <SummaryItem
+                                    label={t("steps.8.sections.12")}
+                                    value={formData.vehicleDetails.handelsbenaming || '---'}
+                                />
+                                <SummaryItem
+                                    label={t("steps.8.sections.13")}
+                                    value={formData.vehicleDetails.inrichting || '---'}
+                                />
+                                <SummaryItem
+                                    label={t("steps.8.sections.14")}
+                                    value={formData.vehicleDetails.aantal_zitplaatsen || '---'}
+                                />
+                                <SummaryItem
+                                    label={t("steps.8.sections.15")}
+                                    value={formData.vehicleDetails.eerste_kleur || '---'}
+                                />
+                            </>
+                        )}
+                    </Box>
+                    <Box>{console.log(123123,formData.selectedAdditionalOptions)}
+                        <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
+                        {formData?.selectedAdditionalOptions?.length ? (
+                            formData.selectedAdditionalOptions.map((option, index) => (
+                                <SummaryItem
+                                    key={index}
+                                    label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name.nl}
+                                    value={
+                                        getOptionPrice(option, 'interior') +
+                                        getOptionPrice(option, 'exterior')
+                                    }
+                                />
+                            ))
+                        ) : (
+                            <Typography
+                                sx={{
+                                    fontFamily: 'Unbounded',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 300,
+                                    lineHeight: '2.4rem',
+                                }}
+                            >
+                                {t("steps.8.sections.10")}
+                            </Typography>
+                        )}
+                    </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Box sx={{ marginBottom: '2rem' }}>
+                        <SummaryHeading>{t("steps.8.sections.3")}</SummaryHeading>
+                        <SummaryItem
+                            label={t("steps.8.sections.4")}
+                            value={formData.selectedPackageType}
+                        />
+                        <SummaryItem
+                            label={t("steps.8.sections.5")}
+                            value={formData.packageType?.name}
+                        />
+                        <SummaryItem
+                            label={t("steps.8.sections.6")}
+                            value={formData.selectedPackage?.name}
+                        />
+                    </Box>
+                    <Box>
+                        <SummaryHeading>{t("steps.8.sections.7")}</SummaryHeading>
+                        {formData?.selectedDetailingOptions?.length ? (
+                            formData.selectedDetailingOptions.map((option, index) => (
+                                <SummaryItem
+                                    key={index}
+                                    label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name.nl}
+                                    value={getOptionPrice(option, 'detailing')}
+                                />
+                            ))
+                        ) : (
+                            <Typography
+                                sx={{
+                                    fontFamily: 'Unbounded',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 300,
+                                    lineHeight: '2.4rem',
+                                }}
+                            >
+                                {t("steps.8.sections.8")}
+                            </Typography>
+                        )}
+                    </Box>
+                    <Box>
+                        <SummaryHeading>{t("steps.8.sections.9")}</SummaryHeading>
+                        <SummaryItem
+                            label={formData?.selectedTime?.toLocaleDateString('en-US', {
+                                weekday: 'long',
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                            value={formData?.selectedTime?.toLocaleTimeString('en-US', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: true,
+                            })}
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
+        </Box>
+    );
 };
-
 export default Summary;
-
 const SummaryItem = ({ label, value }) => {
-  const { theme } = useTheme();
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '0.5rem',
-        padding: '0 1rem',
-        boxShadow: '0 2px 11.9px rgba(0, 0, 0, 0.25)',
-        backgroundColor:
-          theme.palette.mode === 'dark' ? 'transparent' : '#F9F9F9',
-        borderRadius: '6px',
-        border: '1px solid',
-        borderColor: theme.palette.mode === 'dark' ? '#C5C5C5' : 'transparent',
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: 'Unbounded',
-          fontSize: '0.8rem',
-          fontWeight: 300,
-          lineHeight: '2.4rem',
-          color: theme.palette.mode === 'dark' ? '#C5C5C5' : '#212121',
-        }}
-      >
-        {label}
-      </Typography>
-      <Typography
-        sx={{
-          fontFamily: 'Unbounded',
-          fontSize: '0.8rem',
-          fontWeight: 300,
-          lineHeight: '2.4rem',
-        }}
-      >
-        {typeof value === 'number' ? `€ ${value.toFixed(2)}` : value}
-      </Typography>
-    </Box>
-  );
+    const { theme } = useTheme();
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '0.5rem',
+                padding: '0 1rem',
+                boxShadow: '0 2px 11.9px rgba(0, 0, 0, 0.25)',
+                backgroundColor:
+                    theme.palette.mode === 'dark' ? 'transparent' : '#F9F9F9',
+                borderRadius: '6px',
+                border: '1px solid',
+                borderColor: theme.palette.mode === 'dark' ? '#C5C5C5' : 'transparent',
+            }}
+        >
+            <Typography
+                sx={{
+                    fontFamily: 'Unbounded',
+                    fontSize: '0.8rem',
+                    fontWeight: 300,
+                    lineHeight: '2.4rem',
+                    color: theme.palette.mode === 'dark' ? '#C5C5C5' : '#212121',
+                }}
+            >
+                {label}
+            </Typography>
+            <Typography
+                sx={{
+                    fontFamily: 'Unbounded',
+                    fontSize: '0.8rem',
+                    fontWeight: 300,
+                    lineHeight: '2.4rem',
+                }}
+            >
+                {typeof value === 'number' ? `€ ${value.toFixed(2)}` : value}
+            </Typography>
+        </Box>
+    );
 };
