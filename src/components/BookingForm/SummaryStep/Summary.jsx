@@ -115,7 +115,7 @@ const Summary = () => {
                             formData.selectedAdditionalOptions.map((option, index) => (
                                 <SummaryItem
                                     key={index}
-                                    label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name.nl}
+                                    label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name?.[locale === 'en' ? 'en' : 'nl']}
                                     value={
                                         getOptionPrice(option, 'interior') +
                                         getOptionPrice(option, 'exterior')
@@ -158,7 +158,7 @@ const Summary = () => {
                             formData.selectedDetailingOptions.map((option, index) => (
                                 <SummaryItem
                                     key={index}
-                                    label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name.nl}
+                                    label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name?.[locale === 'en' ? 'en' : 'nl']}
                                     value={getOptionPrice(option, 'detailing')}
                                 />
                             ))
