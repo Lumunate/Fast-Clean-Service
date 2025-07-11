@@ -48,15 +48,19 @@ const Page = () => {
           return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
         });
 
-    const normalized = {
-      ...pkg,
-      packages: normalizedServices,
-      additionalOptions: {
-        interior: normalizeOpts(pkg.additionalOptions?.interior),
-        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
-        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
-      },
+      return {
+        ...pkg,
+        name,
+        description,
+        packages: services,
+        additionalOptions: {
+          interior: normalizeOpts(pkg.additionalOptions?.interior),
+          exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+          detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+        },
+      };
     };
+
 
     setSelectedPackage(normalized);
     setIsSubscription(subscription);
@@ -272,53 +276,43 @@ const Page = () => {
   }
 
   const normalizePackage = (pkg) => {
+    const name = typeof pkg.name === "string"
+        ? { nl: pkg.name, en: "" }
+        : { nl: pkg.name.nl ?? "", en: pkg.name.en ?? "" };
+
+    const description = typeof pkg.description === "string"
+        ? { nl: pkg.description, en: "" }
+        : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
+
     const services = (pkg.packages || []).map((s) =>
-        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
+        typeof s === "string"
+            ? { nl: s, en: "" }
+            : { nl: s.nl ?? "", en: s.en ?? "" }
     );
 
     const normalizeOpts = (arr = []) =>
-        arr.map((o) => ({
-          ...o,
-          name:
-              typeof o.name === "string"
-                  ? { nl: o.name, en: "" }
-                  : { nl: o.name.nl, en: o.name.en },
-        }));
+        arr.map((o) => {
+          const nameObj = typeof o.name === "string"
+              ? { nl: o.name, en: "" }
+              : { nl: o.name.nl ?? "", en: o.name.en ?? "" };
 
-    return {
-      ...pkg,
-      packages: services,
-      additionalOptions: {
-        interior: normalizeOpts(pkg.additionalOptions?.interior),
-        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
-        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
-      },
-    };
-  };
+          const options = (o.options || []).map(opt =>
+              typeof opt === "string"
+                  ? { nl: opt, en: "" }
+                  : { nl: opt.nl ?? "", en: opt.en ?? "" }
+          );
 
-  const raw = packages.packages;
-  const normalizedAuto = Object.fromEntries(
-      Object.entries(raw).map(([cat, list]) => [
-        cat,
-        Array.isArray(list) ? list.map(normalizePackage) : [],
-      ])
-  );
-
-
-  const autocarePackages = normalizedAuto;
-    // normalize each add-on
-    const normalizeOpts = (arr = []) =>
-        arr.map((o) => ({
-          ...o,
-          name:
-              typeof o.name === "string"
-                  ? { nl: o.name, en: "" }
-                  : { nl: o.name.nl, en: o.name.en },
-        }));
+          return {
+            ...o,
+            name: nameObj,
+            options,
+          };
+        });
 
     return {
       ...pkg,
       name,
+      description,
       packages: services,
       additionalOptions: {
         interior: normalizeOpts(pkg.additionalOptions?.interior),

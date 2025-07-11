@@ -97,9 +97,9 @@ const AdditionalOptions = () => {
   const isSubscriptionPackage =
     form.formData.selectedPackageType === "Subscription Plans";
   const noAddonsAvailable =
-    isSubscriptionPackage ||
-    !pkg ||
-    Object.keys(pkg?.additionalOptions || {}).length === 0;
+      isSubscriptionPackage ||
+      !pkg ||
+      Object.keys(pkg?.additionalOptions || {}).length === 0;
 
   const getOptionName = (option) => {
     if (!option.name) return "";
@@ -112,7 +112,7 @@ const AdditionalOptions = () => {
     let newExpandedOption;
     if (selectedOptions.includes(optionName)) {
       newSelectedOptions = selectedOptions.filter(
-        (option) => option !== optionName
+          (option) => option !== optionName
       );
       newExpandedOption = null;
     } else {
@@ -126,58 +126,58 @@ const AdditionalOptions = () => {
     updateValidation(newSelectedOptions.length > 0);
   };
   return (
-    <AdditionalContainer sx={{ border: `0.4px solid ${form?.color}` }}>
-      {noAddonsAvailable ? (
-        <AdditionalContent>
-          <Typography
-            sx={{
-              color: theme.palette.mode === "dark" ? "#FFFFFF" : "#525252",
-              fontWeight: "regular",
-              fontSize: "1.2rem",
-              lineHeight: "2.4rem",
-              marginBottom: "1.2rem",
-            }}
-          >
-            No Additional Options
-          </Typography>
-        </AdditionalContent>
-      ) : (
-        Object.keys(pkg.additionalOptions)
-          .filter((category) => category !== "detailing" && category !== "_id")
-          .map((category, index) => (
-            <Box key={index} sx={{ width: "100%" }}>
-              <AdditionalName variant="h5">
-                {category.toUpperCase()}
-              </AdditionalName>
-              <AdditionalContent>
-                {pkg.additionalOptions[category] &&
-                pkg.additionalOptions[category]?.length !== 0 ? (
-                  pkg.additionalOptions[category]?.map(
-                    (option, optionIndex) => (
-                      <AdditionalOptionsBox
-                        key={optionIndex}
-                        name={getOptionName(option)}
-                        price={option.additionalCost}
-                        color={form.color}
-                        options={option.options}
-                        selected={form.formData.selectedAdditionalOptions?.includes(
-                          option._id
+      <AdditionalContainer sx={{ border: `0.4px solid ${form?.color}` }}>
+        {noAddonsAvailable ? (
+            <AdditionalContent>
+              <Typography
+                  sx={{
+                    color: theme.palette.mode === 'dark' ? '#FFFFFF' : '#525252',
+                    fontWeight: 'regular',
+                    fontSize: '1.2rem',
+                    lineHeight: '2.4rem',
+                    marginBottom: '1.2rem',
+                  }}
+              >
+                No Additional Options
+              </Typography>
+            </AdditionalContent>
+        ) : (
+            Object.keys(pkg.additionalOptions)
+                .filter((category) => category !== 'detailing' && category !== '_id')
+                .map((category, index) => (
+                    <Box key={index} sx={{ width: '100%' }}>
+                      <AdditionalName variant="h5">
+                        {category.toUpperCase()}
+                      </AdditionalName>
+                      <AdditionalContent>
+                        {pkg.additionalOptions[category] &&
+                        pkg.additionalOptions[category]?.length !== 0 ? (
+                            pkg.additionalOptions[category]?.map(
+                                (option, optionIndex) => (
+                                    <AdditionalOptionsBox
+                                        key={optionIndex}
+                                        name={getOptionName(option)}
+                                        price={option.additionalCost}
+                                        color={form.color}
+                                        options={option.options}
+                                        selected={form.formData.selectedAdditionalOptions?.includes(
+                                            option._id
+                                        )}
+                                        expanded={
+                                            form.formData.expandedAdditionalOption === option._id
+                                        }
+                                        onClick={() => handleClick(option._id)}
+                                    />
+                                )
+                            )
+                        ) : (
+                            <AdditionalNoOption>No Add-ons Available</AdditionalNoOption>
                         )}
-                        expanded={
-                          form.formData.expandedAdditionalOption === option._id
-                        }
-                        onClick={() => handleClick(option._id)}
-                      />
-                    )
-                  )
-                ) : (
-                  <AdditionalNoOption>No Add-ons Available</AdditionalNoOption>
-                )}
-              </AdditionalContent>
-            </Box>
-          ))
-      )}
-    </AdditionalContainer>
+                      </AdditionalContent>
+                    </Box>
+                ))
+        )}
+      </AdditionalContainer>
   );
 };
 export default AdditionalOptions;
