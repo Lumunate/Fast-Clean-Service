@@ -37,12 +37,17 @@ const Page = () => {
   };
 
   const handleOpenModal = (pkg, subscription = false) => {
-    const normalizedServices = (pkg.packages || []).map(item => {
-      if (typeof item === "string") {
-        return { nl: item, en: "" };
-      }
-      return { nl: item.nl, en: item.en };
-    });
+    // 1) normalize "included services" into { nl, en } only
+    const normalizePackage = (pkg) => {
+      // 1. Normalize name
+      const name = typeof pkg.name === "string"
+          ? { nl: pkg.name, en: "" }
+          : { nl: pkg.name.nl ?? "", en: pkg.name.en ?? "" };
+
+      // 2. Normalize description
+      const description = typeof pkg.description === "string"
+          ? { nl: pkg.description, en: "" }
+          : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
 
     const normalizeOpts = (arr = []) =>
         arr.map(opt => {
@@ -52,15 +57,19 @@ const Page = () => {
           return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
         });
 
-    const normalized = {
-      ...pkg,
-      packages: normalizedServices,
-      additionalOptions: {
-        interior: normalizeOpts(pkg.additionalOptions?.interior),
-        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
-        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
-      },
+      return {
+        ...pkg,
+        name,
+        description,
+        packages: services,
+        additionalOptions: {
+          interior: normalizeOpts(pkg.additionalOptions?.interior),
+          exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+          detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+        },
+      };
     };
+
 
     setSelectedPackage(normalized);
     setIsSubscription(subscription);
@@ -275,6 +284,7 @@ const Page = () => {
     return <Loader />;
   }
 
+  // inside your Page component, before the return:
   const normalizePackage = (pkg) => {
     const name = typeof pkg.name === "string"
         ? { nl: pkg.name, en: "" }
@@ -285,7 +295,9 @@ const Page = () => {
         : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
 
     const services = (pkg.packages || []).map((s) =>
-        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
+        typeof s === "string"
+            ? { nl: s, en: "" }
+            : { nl: s.nl ?? "", en: s.en ?? "" }
     );
 
     const normalizeOpts = (arr = []) =>
@@ -321,6 +333,7 @@ const Page = () => {
     return {
       ...pkg,
       name,
+      description,
       packages: services,
       additionalOptions: {
         interior: normalizeOpts(pkg.additionalOptions?.interior),
