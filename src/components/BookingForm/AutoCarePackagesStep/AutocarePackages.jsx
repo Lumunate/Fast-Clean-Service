@@ -156,7 +156,9 @@ const AutocarePackages = () => {
         </Box>
     );
 };
+
 export default AutocarePackages;
+
 const AutocarePackagesCard = ({
                                   description,
                                   price,
