@@ -48,19 +48,15 @@ const Page = () => {
           return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
         });
 
-      return {
-        ...pkg,
-        name,
-        description,
-        packages: services,
-        additionalOptions: {
-          interior: normalizeOpts(pkg.additionalOptions?.interior),
-          exterior: normalizeOpts(pkg.additionalOptions?.exterior),
-          detailing: normalizeOpts(pkg.additionalOptions?.detailing),
-        },
-      };
+    const normalized = {
+      ...pkg,
+      packages: normalizedServices,
+      additionalOptions: {
+        interior: normalizeOpts(pkg.additionalOptions?.interior),
+        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+      },
     };
-
 
     setSelectedPackage(normalized);
     setIsSubscription(subscription);
@@ -84,7 +80,7 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-      const parts = field.split("_");
+         const parts = field.split("_");
       const addonType = parts[1];              // interior/exterior/detailing
       const lang = parts[2] || "nl";           // default to nl
       const opts = updatedPackage.additionalOptions?.[addonType];
@@ -285,34 +281,20 @@ const Page = () => {
         : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
 
     const services = (pkg.packages || []).map((s) =>
-        typeof s === "string"
-            ? { nl: s, en: "" }
-            : { nl: s.nl ?? "", en: s.en ?? "" }
+        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
     );
 
     const normalizeOpts = (arr = []) =>
-        arr.map((o) => {
-          const nameObj = typeof o.name === "string"
-              ? { nl: o.name, en: "" }
-              : { nl: o.name.nl ?? "", en: o.name.en ?? "" };
-
-          const options = (o.options || []).map(opt =>
-              typeof opt === "string"
-                  ? { nl: opt, en: "" }
-                  : { nl: opt.nl ?? "", en: opt.en ?? "" }
-          );
-
-          return {
-            ...o,
-            name: nameObj,
-            options,
-          };
-        });
+        arr.map((o) => ({
+          ...o,
+          name:
+              typeof o.name === "string"
+                  ? { nl: o.name, en: "" }
+                  : { nl: o.name.nl, en: o.name.en },
+        }));
 
     return {
       ...pkg,
-      name,
-      description,
       packages: services,
       additionalOptions: {
         interior: normalizeOpts(pkg.additionalOptions?.interior),
@@ -349,6 +331,7 @@ const Page = () => {
 
       handleCloseModal();
     } catch (error) {
+      console.log(error);
       openSnackbar("Failed to update package", 5000);
     }
   };
