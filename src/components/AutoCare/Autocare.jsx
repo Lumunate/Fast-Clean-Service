@@ -207,9 +207,6 @@ const AutoCare = () => {
 
     const handleSubCatChange = (subCat) => {
         setSubCat(subCat);
-        setAddonsVisible(true);
-    const handleSubCatChange = (subCat) => {
-        setSubCat(subCat);
         // Force the add-ons row to show
         setAddonsVisible(true);
 
