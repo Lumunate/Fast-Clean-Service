@@ -145,7 +145,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
                                 }}
                             >
-                                {item[locale]}
+                                { locale === "en" ? item.en : item.nl}
                             </Typography>
                         </Box>
                     ))}
@@ -229,7 +229,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {option.duration[locale]}
+                                            {locale === "en" ? option.duration?.en : option.duration?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{fontSize:{xs:"1rem",sm:"1.4rem"},
@@ -313,7 +313,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {option.frequency[locale]}
+                                            {locale === "en" ? option.frequency?.en : option.frequency?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -403,7 +403,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                         : "#585858",
                                             }}
                                         >
-                                            {option.name[locale]}
+                                            {locale === "en" ? option.name?.en : option.name?.nl}
                                         </Typography>
                                         <Typography
                                             sx={{
