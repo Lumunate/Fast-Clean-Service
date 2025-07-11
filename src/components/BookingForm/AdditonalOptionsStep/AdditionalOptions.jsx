@@ -27,67 +27,68 @@ const AdditionalOptionsBox = ({
 }) => {
   const { theme } = useTheme();
   return (
-    <Box>
-      <AdditionalOption
-        onClick={onClick}
-        sx={{
-          backgroundColor: selected
-            ? alpha(color, 0.5)
-            : theme.palette.mode === "dark"
-            ? "transparent"
-            : "#FFFFFF",
-        }}
-      >
-        <AdditionalOptionText selected={selected}>{name}</AdditionalOptionText>
-        <AdditionalOptionText variant="p">+ €{price}</AdditionalOptionText>
-      </AdditionalOption>
-      {expanded && options.length > 0 && (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "4px",
-            padding: "0 1.2rem",
-            marginTop: "4px",
-            "@media (max-width: 600px)": {
-              padding: "0.5rem 1.2rem",
-              gap: 0,
-            },
-          }}
+      <Box>
+        <AdditionalOption
+            onClick={onClick}
+            sx={{
+              backgroundColor: selected
+                  ? alpha(color, 0.5)
+                  : theme.palette.mode === 'dark'
+                      ? 'transparent'
+                      : '#FFFFFF',
+            }}
         >
-          {options.map((option, index) => (
+          <AdditionalOptionText selected={selected}>{name}</AdditionalOptionText>
+          <AdditionalOptionText variant="p">+ €{price}</AdditionalOptionText>
+        </AdditionalOption>
+        {expanded && options.length > 0 && (
             <Box
-              key={index}
-              sx={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "center",
-                padding: "0 0.5rem",
-                "@media (max-width: 600px)": {
-                  padding: 0,
-                },
-              }}
-            >
-              <Image
-                src={CheckMark}
-                alt="Included Option"
-                width={12}
-                height={12}
-                style={{
-                  filter:
-                    theme.palette.mode === "dark"
-                      ? "brightness(0) invert(1)"
-                      : calculateFilter(color),
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                  padding: '0 1.2rem',
+                  marginTop: '4px',
+                  '@media (max-width: 600px)': {
+                    padding: '0.5rem 1.2rem',
+                    gap: 0,
+                  },
                 }}
-              />
-              <AdditionalOptionText variant="p">{option}</AdditionalOptionText>
+            >
+              {options.map((option, index) => (
+                  <Box
+                      key={index}
+                      sx={{
+                        display: 'flex',
+                        gap: '1rem',
+                        alignItems: 'center',
+                        padding: '0 0.5rem',
+                        '@media (max-width: 600px)': {
+                          padding: 0,
+                        },
+                      }}
+                  >
+                    <Image
+                        src={CheckMark}
+                        alt="Included Option"
+                        width={12}
+                        height={12}
+                        style={{
+                          filter:
+                              theme.palette.mode === 'dark'
+                                  ? 'brightness(0) invert(1)'
+                                  : calculateFilter(color),
+                        }}
+                    />
+                    <AdditionalOptionText variant="p">{option}</AdditionalOptionText>
+                  </Box>
+              ))}
             </Box>
-          ))}
-        </Box>
-      )}
-    </Box>
+        )}
+      </Box>
   );
 };
+
 const AdditionalOptions = () => {
   const form = useMultiStepForm();
   const { updateValidation } = useValidation();
@@ -110,6 +111,7 @@ const AdditionalOptions = () => {
     const selectedOptions = form.formData.selectedAdditionalOptions || [];
     let newSelectedOptions;
     let newExpandedOption;
+
     if (selectedOptions.includes(optionName)) {
       newSelectedOptions = selectedOptions.filter(
           (option) => option !== optionName
