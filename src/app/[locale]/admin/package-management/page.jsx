@@ -37,59 +37,33 @@ const Page = () => {
 
   const handleOpenModal = (pkg, subscription = false) => {
     // 1) normalize "included services" into { nl, en } only
-    const normalizePackage = (pkg) => {
-      // 1. Normalize name
-      const name = typeof pkg.name === "string"
-          ? { nl: pkg.name, en: "" }
-          : { nl: pkg.name.nl ?? "", en: pkg.name.en ?? "" };
+    const normalizedServices = (pkg.packages || []).map(item => {
+      if (typeof item === "string") {
+        return { nl: item, en: "" };
+      }
+      // item is { _id, nl, en } → strip out _id
+      return { nl: item.nl, en: item.en };
+    });
 
-      // 2. Normalize description
-      const description = typeof pkg.description === "string"
-          ? { nl: pkg.description, en: "" }
-          : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
+    // 2) normalize all add-ons into name: { nl, en }
+    const normalizeOpts = (arr = []) =>
+        arr.map(opt => {
+          if (typeof opt.name === "string") {
+            return { ...opt, name: { nl: opt.name, en: "" } };
+          }
+          // already object → ensure it only has nl/en
+          return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
+        });
 
-      // 3. Normalize the included services array
-      const services = (pkg.packages || []).map((s) =>
-          typeof s === "string"
-              ? { nl: s, en: "" }
-              : { nl: s.nl ?? "", en: s.en ?? "" }
-      );
-
-      // 4. Normalize each add-on group (interior/exterior/detailing)
-      const normalizeOpts = (arr = []) =>
-          arr.map((o) => {
-            // Normalize name field
-            const nameObj = typeof o.name === "string"
-                ? { nl: o.name, en: "" }
-                : { nl: o.name.nl ?? "", en: o.name.en ?? "" };
-
-            // Normalize any `options` strings to nl/en objects
-            const options = (o.options || []).map(opt =>
-                typeof opt === "string"
-                    ? { nl: opt, en: "" }
-                    : { nl: opt.nl ?? "", en: opt.en ?? "" }
-            );
-
-            return {
-              ...o,
-              name: nameObj,
-              options,
-            };
-          });
-
-      return {
-        ...pkg,
-        name,
-        description,
-        packages: services,
-        additionalOptions: {
-          interior: normalizeOpts(pkg.additionalOptions?.interior),
-          exterior: normalizeOpts(pkg.additionalOptions?.exterior),
-          detailing: normalizeOpts(pkg.additionalOptions?.detailing),
-        },
-      };
+    const normalized = {
+      ...pkg,
+      packages: normalizedServices,
+      additionalOptions: {
+        interior: normalizeOpts(pkg.additionalOptions?.interior),
+        exterior: normalizeOpts(pkg.additionalOptions?.exterior),
+        detailing: normalizeOpts(pkg.additionalOptions?.detailing),
+      },
     };
-
 
     setSelectedPackage(normalized);
     setIsSubscription(subscription);
@@ -113,7 +87,7 @@ const Page = () => {
       } else if (field === "duration") {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
-      const parts = field.split("_");
+         const parts = field.split("_");
       const addonType = parts[1];              // interior/exterior/detailing
       const lang = parts[2] || "nl";           // default to nl
       const opts = updatedPackage.additionalOptions?.[addonType];
@@ -305,43 +279,22 @@ const Page = () => {
   }
 
   const normalizePackage = (pkg) => {
-    const name = typeof pkg.name === "string"
-        ? { nl: pkg.name, en: "" }
-        : { nl: pkg.name.nl ?? "", en: pkg.name.en ?? "" };
-
-    const description = typeof pkg.description === "string"
-        ? { nl: pkg.description, en: "" }
-        : { nl: pkg.description.nl ?? "", en: pkg.description.en ?? "" };
-
+    // normalize the included services
     const services = (pkg.packages || []).map((s) =>
-        typeof s === "string"
-            ? { nl: s, en: "" }
-            : { nl: s.nl ?? "", en: s.en ?? "" }
+        typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
     );
 
     const normalizeOpts = (arr = []) =>
-        arr.map((o) => {
-          const nameObj = typeof o.name === "string"
-              ? { nl: o.name, en: "" }
-              : { nl: o.name.nl ?? "", en: o.name.en ?? "" };
-
-          const options = (o.options || []).map(opt =>
-              typeof opt === "string"
-                  ? { nl: opt, en: "" }
-                  : { nl: opt.nl ?? "", en: opt.en ?? "" }
-          );
-
-          return {
-            ...o,
-            name: nameObj,
-            options,
-          };
-        });
+        arr.map((o) => ({
+          ...o,
+          name:
+              typeof o.name === "string"
+                  ? { nl: o.name, en: "" }
+                  : { nl: o.name.nl, en: o.name.en },
+        }));
 
     return {
       ...pkg,
-      name,
-      description,
       packages: services,
       additionalOptions: {
         interior: normalizeOpts(pkg.additionalOptions?.interior),
