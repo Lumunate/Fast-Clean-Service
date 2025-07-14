@@ -47,7 +47,6 @@ export async function POST(request) {
         }
 
         const data = await response.json();
-        console.log(data);
         await paymentsServices.saveCoinbaseChargeToDatabase(data);
 
         return NextResponse.json({ checkoutUrl: data.data.hosted_url });
