@@ -2269,7 +2269,7 @@
           "Every 12 weeks": "+ €10",
           "Every 8 weeks": "+ €15"
         },
-        "additional_options": ["Cleaning Frequency"]
+        "additional_options": ["Additional Options"]
       },
       {
         "name": "INTERIOR",

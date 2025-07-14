@@ -145,7 +145,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                     color: theme.palette.mode === "dark" ? "#C1C1C1" : "#525252",
                                 }}
                             >
-                                { locale === "en" ? item.en : item.nl}
+                                {item[locale]}
                             </Typography>
                         </Box>
                     ))}
@@ -229,7 +229,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {locale === "en" ? option.duration?.en : option.duration?.nl}
+                                            {option.duration[locale]}
                                         </Typography>
                                         <Typography
                                             sx={{fontSize:{xs:"1rem",sm:"1.4rem"},
@@ -313,7 +313,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                             : "#585858",
                                             }}
                                         >
-                                            {locale === "en" ? option.frequency?.en : option.frequency?.nl}
+                                            {option.frequency[locale]}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -403,7 +403,7 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                                                         : "#585858",
                                             }}
                                         >
-                                            {locale === "en" ? option.name?.en : option.name?.nl}
+                                            {option.name[locale]}
                                         </Typography>
                                         <Typography
                                             sx={{
@@ -460,10 +460,6 @@ const Page = () => {
     useEffect(() => {
         fetchPackages();
     }, [fetchPackages]);
-
-    console.log(packages);
-
-
 
     if (error) {
         return (

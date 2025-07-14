@@ -52,9 +52,6 @@ export async function PUT(req: NextRequest) {
     const id = query.get("id");
     const payload = await req.json();
 
-    // Add this console.log to see what you’re actually sending
-    console.log("PUT /api/packages/autocare payload:", JSON.stringify(payload, null, 2));
-
     const service = await AutocareServiceService.updateService(id as string, payload);
     if (!service) {
       return NextResponse.json({ message: "Service not found" }, { status: 404 });
