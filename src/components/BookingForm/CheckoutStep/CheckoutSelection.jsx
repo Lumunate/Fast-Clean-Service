@@ -31,7 +31,7 @@ const shakeAnimation = `
 `;
 
 const CheckoutSelection = () => {
-  const { updateFormData, formData, nextStep, price, selectedPackageType } = useMultiStepForm(); // Use hook for form data
+  const { updateFormData, formData, nextStep, price, selectedPackageType } = useMultiStepForm();
   const [openModal, setOpenModal] = useState(false);
   const [modalInfo, setModalInfo] = useState("");
   const { theme } = useTheme();

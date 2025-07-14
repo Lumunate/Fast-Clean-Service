@@ -11,7 +11,6 @@ const LocationSearch = ({ onPlaceSelect, preSelectedPlace }) => {
   const { inputValue, options, loading, initialized, handleInputChange, setInputValue } = useGooglePlaces();
 
   if (preSelectedPlace?.description) {
-    console.log("preselected val");
     setInputValue(preSelectedPlace.description);
   }
 

@@ -3,10 +3,8 @@ import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import useSnackbar from '../hooks/useSnackbar';
 
-// Create the context
 export const FormContext = createContext();
 
-// Create a provider component
 export const FormProvider = ({ children }) => {
   const { openSnackbar } = useSnackbar();
   const { data: session, status } = useSession();
@@ -27,18 +25,12 @@ export const FormProvider = ({ children }) => {
   const [duration, setDuration] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [color, setColor] = useState('#000000');
-  // Track completed steps
   const [completedSteps, setCompletedSteps] = useState(new Set([0]));
 
   function parseHighestDuration(durationStr) {
-    // Remove all non-numeric and non-slash characters
     const cleaned = durationStr.replace(/[^\d/-]/g, '');
 
-    // Split on slash if exists, otherwise use the single number
     const numbers = cleaned.split('/').map(Number);
-
-    // For strings like "90~120", the split will result in a single string "90120"
-    // So we need to handle this case by splitting the string into chunks of 2-3 digits
     if (numbers.length === 1 && cleaned.length > 3) {
       const matches = cleaned.match(/\d{2,3}/g) || [];
       return Math.max(...matches.map(Number));
@@ -112,7 +104,6 @@ export const FormProvider = ({ children }) => {
       }
     }
 
-    // Add travel cost based on travelDistance
     if (formData.travelDistance) {
       let travelCost = 0;
       if (formData.travelDistance > 20) {
@@ -191,47 +182,44 @@ export const FormProvider = ({ children }) => {
     });
   };
 
-  // Check if current step is complete based on form data
   const isStepComplete = useCallback((step) => {
     switch (step) {
-      case 0: // Location Selection
+      case 0:
         return !!formData.service;
-      case 1: // License Plate
+      case 1:
         return !!formData.licensePlate && !!formData.vehicleDetails;
-      case 2: // Car Type
+      case 2:
         return !!formData.carType;
-      case 3: // Package Selection
+      case 3:
         return !!formData.selectedPackageType;
-      case 4: // Subscription Packages
+      case 4:
         if (formData.selectedPackageType === 'Subscription Plans') {
           return !!formData.selectedPackage && !!formData.packageType;
         }
         return true;
-      case 5: // Autocare Packages
+      case 5:
         if (formData.selectedPackageType === 'Anywhere Autocare') {
           return !!formData.selectedPackage && !!formData.packageType;
         }
         return true;
-      case 6: // Additional Options
-        return true; // Optional step
-      case 7: // Detailing
-        return true; // Optional step
-      case 8: // Schedule Appointment
+      case 6:
+        return true;
+      case 7:
+        return true;
+      case 8:
         return !!formData.selectedTime;
-      case 9: // Summary
-        return true; // Always completable
-      case 10: // Person Particulars
+      case 9:
+        return true;
+      case 10:
         return !!formData.firstName && !!formData.surname && !!formData.email && !!formData.phoneNumber;
-      case 11: // Checkout
+      case 11:
         return true;
       default:
         return false;
     }
   }, [formData]);
 
-  // Update completedSteps when moving to next step
   const nextStep = async (step = 1) => {
-    // Mark current step as completed
     setCompletedSteps(prev => {
       const newSet = new Set(prev);
       newSet.add(currentStep);
@@ -239,7 +227,6 @@ export const FormProvider = ({ children }) => {
     });
 
     if (currentStep === 10) {
-      // Submit the form
       try {
         const data = {
           type: formData.service,
@@ -271,7 +258,6 @@ export const FormProvider = ({ children }) => {
                 : null,
           },
         };
-        console.log("this is MUltiStepForm data:",data);
         
 
         const response = await fetch('/api/booking', {
@@ -292,7 +278,6 @@ export const FormProvider = ({ children }) => {
           }));
         }
       } catch (err) {
-        console.error('Error submitting form:', err);
         openSnackbar('Error submitting form');
       }
     }
@@ -300,7 +285,6 @@ export const FormProvider = ({ children }) => {
     const newStep = currentStep + step;
     setCurrentStep(newStep);
 
-    // If we're skipping a step (like with Subscription Plans), mark the skipped step as complete too
     if (step > 1) {
       for (let i = currentStep + 1; i < newStep; i++) {
         setCompletedSteps(prev => {
@@ -324,19 +308,13 @@ export const FormProvider = ({ children }) => {
     setCurrentStep((prevStep) => prevStep - 1);
   };
 
-  // Function to check if a step is accessible (can be navigated to)
   const isStepAccessible = useCallback((stepIndex) => {
-    // Convert to adjusted index to match form flow (account for gap at index 5)
     const adjustedIndex = stepIndex >= 5 ? stepIndex + 1 : stepIndex;
-
-    // Can always go back to previous steps
     if (adjustedIndex <= currentStep) {
       return true;
     }
 
-    // Can only go forward to the next available step and if all previous steps are complete
     if (adjustedIndex === currentStep + 1) {
-      // Check if all previous steps are in the completedSteps set
       for (let i = 0; i < currentStep; i++) {
         if (!completedSteps.has(i)) {
           return false;
@@ -345,13 +323,10 @@ export const FormProvider = ({ children }) => {
       return true;
     }
 
-    // Can't jump ahead by more than one step
     return false;
   }, [currentStep, completedSteps]);
 
-  // Function to navigate to a specific step
   const navigateToStep = useCallback((stepIndex) => {
-    // Convert to adjusted index to match form flow
     const adjustedIndex = stepIndex >= 5 ? stepIndex + 1 : stepIndex;
 
     if (isStepAccessible(stepIndex)) {
@@ -362,12 +337,10 @@ export const FormProvider = ({ children }) => {
     return false;
   }, [isStepAccessible]);
 
-  // Recalculate pricing whenever formData is updated
   useEffect(() => {
     calculatePricing();
     if (currentStep > 2) calculateFormColors();
 
-    // Check if current step is complete and mark it
     if (isStepComplete(currentStep)) {
       setCompletedSteps(prev => {
         const newSet = new Set(prev);

@@ -3,20 +3,14 @@
 
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Divider } from "@mui/material";
-
-// Import data, updatePackages: updateAutocarePackages
 import { useAutocarePackages } from "../../../../hooks/useAutocarePackages";
 import { useSubscriptionPackages } from "../../../../hooks/useSubscriptionPackages";
-
-// Import components
 import Header from "../../../../components/Admin/packageTab/Header";
 import PackageTabs from "../../../../components/Admin/packageTab/PackageTabs";
 import PackageList from "../../../../components/Admin/packageTab/PackageList";
 import EditPackageModal from "../../../../components/Admin/packageTab/EditPackageModal";
 import { Loader } from "../../../../components/mui/Loader";
 import { useLocale } from "next-intl";
-
-// Import styled components
 import {
   PageContainer,
   PackageContainer,
@@ -27,7 +21,7 @@ import {
 import useSnackbar from "../../../../hooks/useSnackbar";
 
 const Page = () => {
-  const [tabValue, setTabValue] = useState(0); // 0: Service Packages, 1: Subscription Packages
+  const [tabValue, setTabValue] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isSubscription, setIsSubscription] = useState(false);
@@ -39,22 +33,18 @@ const Page = () => {
   };
 
   const handleOpenModal = (pkg, subscription = false) => {
-    // 1) normalize "included services" into { nl, en } only
     const normalizedServices = (pkg.packages || []).map(item => {
       if (typeof item === "string") {
         return { nl: item, en: "" };
       }
-      // item is { _id, nl, en } → strip out _id
       return { nl: item.nl, en: item.en };
     });
 
-    // 2) normalize all add-ons into name: { nl, en }
     const normalizeOpts = (arr = []) =>
         arr.map(opt => {
           if (typeof opt.name === "string") {
             return { ...opt, name: { nl: opt.name, en: "" } };
           }
-          // already object → ensure it only has nl/en
           return { ...opt, name: { nl: opt.name.nl, en: opt.name.en } };
         });
 
@@ -80,9 +70,6 @@ const Page = () => {
   };
 
   const handleInputChange = (field, value, index, subfield) => {
-    // Implement state updates for the form fields
-    // This function should update the selectedPackage state accordingly
-    // Example implementation:
     setSelectedPackage((prev) => {
       if (!prev) return prev;
 
@@ -94,11 +81,10 @@ const Page = () => {
         updatedPackage.duration = `± ${value} min.`;
       } else if (field.startsWith("addonName")) {
          const parts = field.split("_");
-      const addonType = parts[1];              // interior/exterior/detailing
-      const lang = parts[2] || "nl";           // default to nl
+      const addonType = parts[1];
+      const lang = parts[2] || "nl";
       const opts = updatedPackage.additionalOptions?.[addonType];
       if (opts?.[index]) {
-        // ensure name is an object
         let nameObj = typeof opts[index].name === "string"
             ? { nl: opts[index].name, en: "" }
             : { ...opts[index].name };
@@ -107,7 +93,7 @@ const Page = () => {
         opts[index].name = nameObj;
       }
     } else if (field.startsWith("addonPrice")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
+        const [_, addonType] = field.split("_");
         if (
           updatedPackage.additionalOptions &&
           updatedPackage.additionalOptions[addonType]
@@ -116,7 +102,7 @@ const Page = () => {
             value;
         }
       } else if (field.startsWith("addonTime")) {
-        const [_, addonType] = field.split("_"); // e.g., "addonPrice_interior"
+        const [_, addonType] = field.split("_");
         if (
           updatedPackage.additionalOptions &&
           updatedPackage.additionalOptions[addonType]
@@ -129,8 +115,6 @@ const Page = () => {
         field.startsWith("additionalCost") ||
         field.startsWith("additionalTime")
       ) {
-        // Handle vehicle-specific pricing updates
-        // Assuming 'field' is one of the vehicle fields
         const vehicleFields = ["basePrice", "additionalCost", "additionalTime"];
         const vehicleField = vehicleFields.find((f) => field.includes(f));
         if (vehicleField) {
@@ -222,7 +206,6 @@ const Page = () => {
                   typeof item.name === "string"
                       ? {nl: item.name, en: ""}
                       : item.name;
-              // pick display string
               const displayName =
                   locale === "en" ? nameObj.en : nameObj.nl;
 
@@ -287,14 +270,11 @@ const Page = () => {
     return <Loader />;
   }
 
-// inside your Page component, before the return:
   const normalizePackage = (pkg) => {
-    // normalize the included services
     const services = (pkg.packages || []).map((s) =>
         typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
     );
 
-    // normalize each add-on
     const normalizeOpts = (arr = []) =>
         arr.map((o) => ({
           ...o,
@@ -315,13 +295,9 @@ const Page = () => {
     };
   };
 
-  console.log(packages);
   const raw = packages.packages;
-  console.log("packages.packages:", packages.packages);
-  console.log("raw:", raw);
   const normalizedAuto = Object.fromEntries(
       Object.entries(raw).map(([cat, list]) => [
-        // fall back to empty array if list isn’t what we expect
         cat,
         Array.isArray(list) ? list.map(normalizePackage) : [],
       ])
@@ -329,7 +305,6 @@ const Page = () => {
 
 
   const autocarePackages = normalizedAuto;
-  console.log(autocarePackages);
 
 
   const handleSubmit = async () => {
@@ -342,7 +317,6 @@ const Page = () => {
 
       handleCloseModal();
     } catch (error) {
-      console.log(error);
       openSnackbar("Failed to update package", 5000);
     }
   };

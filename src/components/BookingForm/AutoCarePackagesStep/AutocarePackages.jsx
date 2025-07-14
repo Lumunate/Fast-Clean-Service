@@ -67,7 +67,6 @@ const AutocarePackages = () => {
     const packageTypeName = form.formData?.packageType?.name?.toLocaleLowerCase();
     const allPackages = packages?.packages?.[packageTypeName] || [];
     let displayedPackages = allPackages || [];
-    // Apply filtering based on carType
     const exteriorName = locale === 'en' ? 'Exterior' : 'Exterieur';
     if (form.formData.carType === 'Motorbike') {
         if (packageTypeName !== 'premium' && Array.isArray(allPackages)) {
@@ -177,7 +176,6 @@ const AutocarePackagesCard = ({
                 position: 'relative',
                 padding: '24px 35px',
                 width:"100%",
-                // packageType.toLowerCase() !== 'premium' ? 'auto' : 'calc(33% - 2rem)',
                 borderRadius: '15px',
                 backgroundColor: 'primary.main',
                 boxShadow: '0px 4px 30.1px 0 rgba(0, 0, 0, 0.25)',
