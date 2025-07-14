@@ -692,27 +692,6 @@ const Page = () => {
                             {t("cta.text")}
                         </Typography>
                     </Box>
-                    {/* <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
-                        <Link href="/booking" passHref>
-                            <Button
-                                variant="contained"
-                                sx={{
-                                    padding: "1.5rem 3rem",
-                                    fontSize: "1.6rem",
-                                    fontWeight: "bold",
-                                    backgroundColor: "primary.accentDark",
-                                    borderRadius: "50px",
-                                    color: "white",
-                                    fontFamily: "DMSans",
-                                    "&:hover": {
-                                        backgroundColor: theme.palette.primary.accent,
-                                    },
-                                }}
-                            >
-                                {t("cta.button")}
-                            </Button>
-                        </Link>
-                    </Box> */}
                 </Box>
             </Container>
             <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>

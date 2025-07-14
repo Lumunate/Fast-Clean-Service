@@ -47,7 +47,7 @@ const BookingParticulars = () => {
     makeModel: '',
     location: '',
     travelDistance: 0,
-    bookingMessage: '', // New field for booking message
+    bookingMessage: '',
   });
 
     const isChecked = formData?.termsAccepted ?? false;
@@ -262,7 +262,7 @@ const BookingParticulars = () => {
                     onChange={handleChange}
                     fullWidth
                     multiline
-                    rows={4} // Make it an expanded text area
+                    rows={4}
                     sx={{
                       borderRadius: '8px',
                       marginTop: '1.5rem',

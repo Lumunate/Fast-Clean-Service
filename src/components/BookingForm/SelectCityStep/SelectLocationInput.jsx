@@ -32,7 +32,6 @@ export const calculateDistance = async (destination) => {
       throw new Error("Could not calculate distance");
     }
   } catch (error) {
-    console.error("Error calculating distance:", error);
     throw error;
   }
 };
@@ -63,8 +62,7 @@ const SelectLocationInput = ({ hoist }) => {
         });
         updateValidation(true);
       } catch (error) {
-        console.error("Error getting distance:", error);
-        // Handle error appropriately
+        throw error;
       }
     }
   };

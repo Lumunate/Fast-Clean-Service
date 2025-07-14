@@ -102,8 +102,8 @@ const AdditionalOptions = () => {
       Object.keys(pkg?.additionalOptions || {}).length === 0;
 
     const getOptionName = (option) => {
-        if (!option.name) return ""; // in case the name is undefined
-        return option.name[locale] || option.name.en || option.name.nl || ""; // Fallback to nl if en is missing
+        if (!option.name) return "";
+        return option.name[locale] || option.name.en || option.name.nl || "";
     };
 
     const handleClick = (optionName) => {

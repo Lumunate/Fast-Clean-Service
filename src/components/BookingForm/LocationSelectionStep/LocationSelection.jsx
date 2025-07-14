@@ -33,7 +33,7 @@ const shakeAnimation = `
 `;
 
 const LocationSelection = () => {
-  const { updateFormData, formData, nextStep } = useMultiStepForm(); // Use hook for form data
+  const { updateFormData, formData, nextStep } = useMultiStepForm();
   const [selectedOption, setSelectedOption] = useState(
     formData.service || null
   );
@@ -77,8 +77,6 @@ const LocationSelection = () => {
         },
     ];
 
-
-    // Update selected option when formData changes
   useEffect(() => {
     setSelectedOption(formData.service);
   }, [formData.service]);

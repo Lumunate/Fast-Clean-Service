@@ -27,7 +27,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { fontSize, fontWeight } from "@mui/system";
 
-// Renders the Exterior/Interior/Detailing "addon" cards
 const ModdedCard = ({ card, color }) => {
     const locale = useLocale();
     const { theme } = useTheme();
@@ -134,15 +133,13 @@ const AutoCare = () => {
     const locale = useLocale();
 
 
-    // API fetch hook
     const { packages, loading, error, fetchPackages } = useAutocarePackages();
 
     const packagesAll = packages?.packages;
 
-    // Same tab logic: Standard, Deluxe, Premium
     const [selectedTab, setSelectedTab] = useState("Standard");
     const [hasClickedTab, setHasClickedTab] = useState(false);
-    const [subCat, setSubCat] = useState(""); // e.g., "Exterior", "Interior", or "Complete" etc.
+    const [subCat, setSubCat] = useState("");
     const [mainCardsVisible, setMainCardsVisible] = useState(true);
     const [addonsVisible, setAddonsVisible] = useState(false);
 
@@ -163,7 +160,6 @@ const AutoCare = () => {
         fetchPackages();
     }, [fetchPackages]);
 
-    // Intersection observer to fade/slide in
     useEffect(() => {
         const observerCallback = (entries) => {
             entries.forEach((entry) => {
@@ -196,7 +192,6 @@ const AutoCare = () => {
         setSelectedTab(tab);
         setHasClickedTab(true);
         setSubCat("");
-        // Force show main cards immediately
         setMainCardsVisible(true);
 
         if (headerRef.current) {
@@ -212,7 +207,6 @@ const AutoCare = () => {
 
     const handleSubCatChange = (subCat) => {
         setSubCat(subCat);
-        // Force the add-ons row to show
         setAddonsVisible(true);
 
         if (subSectionRef.current) {
@@ -224,17 +218,12 @@ const AutoCare = () => {
     };
 
 
-    // Grab the array for selected tab: standard, deluxe, or premium
     const allPackages = packages?.packages?.[selectedTab.toLowerCase()] || [];
 
-    // For "From: ___" and "Duration: ___" on the front side
     const firstPkg = allPackages[0];
     const fromPrice = firstPkg?.price || "€--";
     const fromDuration = firstPkg?.duration || "-- min";
 
-    // -----------
-    // UI RENDER
-    // -----------
     return (
         <Box
             sx={{
@@ -369,7 +358,6 @@ const AutoCare = () => {
                                 style={{
                                     marginTop: "-60px",
                                     marginBottom: "60px",
-                                    // Use your new code image instead of the old one
                                     backgroundImage: `url("/autocare-card1.png")`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
@@ -1218,7 +1206,6 @@ const AutoCare = () => {
                         }}
                     >
                         {(() => {
-                            // find the chosen package by name
                             const chosenPackage = allPackages.find((p) => p.name === subCat);
                             if (!chosenPackage) return null;
 

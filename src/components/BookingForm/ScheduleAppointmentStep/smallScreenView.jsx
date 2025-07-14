@@ -98,7 +98,6 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                 openSnackbar(t("steps.7.error.0"));
                 return [];
             } catch (err) {
-                console.error('Error fetching time slots', err);
                 openSnackbar(t("steps.7.error.1"));
                 return [];
             }

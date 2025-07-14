@@ -38,31 +38,6 @@ const BookingForm = () => {
   const [activeHeight, setActiveHeight] = useState('auto');
 
   const transStyles = transitionStyles(currentStep);
-
-  // if (currentStep === 1) return <LocationSelection />;
-  // else if (currentStep === 2) return <LiscencePlateStep />;
-  // else if (currentStep === 3) return <CarTypeStep />;
-  // else if (currentStep === 4) return <PackageSelectionStep />;
-  // else if (currentStep === 5) return <SubscriptionPackagesStep />;
-  // else if (
-  //   currentStep === 6 &&
-  //   formData.selectedPackageType === 'Subscription Plans'
-  // ) {
-  //   // nextStep();
-  //   return null;
-  // } else if (
-  //   currentStep === 6 &&
-  //   formData.selectedPackageType === 'Anywhere Autocare'
-  // )
-  //   return <AutocarePackagesStep />;
-  // else if (currentStep === 7) return <AdditionalOptionsStep />;
-  // else if (currentStep === 8) return <DetailingStep />;
-  // else if (currentStep === 9) return <ScheduleAppointmentStep />;
-  // else if (currentStep === 10) return <SummaryStep />;
-  // else if (currentStep === 11) return <PersonParticularsStep />;
-
-  // return <Box>Undefined</Box>;
-
   useEffect(() => {
     if (sliderRef.current) {
       const children = sliderRef.current.childNodes;
@@ -99,14 +74,12 @@ const BookingForm = () => {
     <Box
       ref={sliderRef}
       style={{
-        // backgroundColor: 'blue',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: '1200%',
         height: activeHeight,
         transition: 'all 300ms ease-in-out',
-        // marginLeft: "5rem",
         "@media (max-width: 900px)": { marginLeft: "0", },
       }}
     >
