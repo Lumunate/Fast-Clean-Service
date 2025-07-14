@@ -21,7 +21,7 @@ class PaymentsServices {
     async saveCoinbaseChargeToDatabase(chargeData: any) {
         await paymentsRepository.saveCoinbaseCharge(chargeData);
 
-        const bookingId = chargeData.metadata.bookingId;
+        const bookingId = chargeData.data.metadata.bookingId;
         if (bookingId) {
             await Booking.findByIdAndUpdate(bookingId, {
                 payment: {
@@ -36,16 +36,14 @@ class PaymentsServices {
 
     async handleCoinbaseWebhook(event: any) {
         if (event.event.type === 'charge:confirmed') {
-            const data = event.event.data;
-            // persist in payments collection
-            await paymentsRepository.saveCoinbaseCharge(data);
-            // update booking
-            const bookingId = data.metadata.bookingId;
+            const chargeData = event.event.data;
+            await paymentsRepository.saveCoinbaseCharge(chargeData);
+            const bookingId = chargeData.data.metadata.bookingId;
             if (bookingId) {
                 await Booking.findByIdAndUpdate(bookingId, {
                     payment: {
                         provider: 'coinbase',
-                        sessionId: data.code,
+                        sessionId: chargeData.data.code,
                         status: 'PAID',
                         lastUpdated: new Date(),
                     }

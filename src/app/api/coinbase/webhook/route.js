@@ -23,6 +23,7 @@ export async function POST(req) {
     switch (type) {
         case 'charge:created': {
             const data = event.event.data;
+            console.log(data);
             await paymentsServices.saveCoinbaseChargeToDatabase(data);
             break;
         }

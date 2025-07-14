@@ -4,7 +4,7 @@ import paymentsServices from '../../../../services/payments';
 
 export async function POST(request) {
     try {
-        const { amount, currency, description, customerEmail, bookingId } = await request.json();
+        const { amount, currency, description, customerEmail, userId, bookingId } = await request.json();
 
         const payload = {
             name: 'Your Product Name',
@@ -19,6 +19,7 @@ export async function POST(request) {
             cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/en/cancel`,
             metadata: {
                 customer_email: customerEmail,
+                userId,
                 bookingId,
             },
         };
@@ -46,9 +47,10 @@ export async function POST(request) {
         }
 
         const data = await response.json();
+        console.log(data);
         await paymentsServices.saveCoinbaseChargeToDatabase(data);
 
-        return NextResponse.json({ checkoutUrl: data.hosted_url });
+        return NextResponse.json({ checkoutUrl: data.data.hosted_url });
     } catch (error) {
         console.error('Coinbase checkout error:', error);
         return NextResponse.json(
