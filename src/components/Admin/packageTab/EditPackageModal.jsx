@@ -10,6 +10,7 @@ import {
   StyledButton,
   SaveButton,
 } from "./StyledComponents";
+import { useTranslations } from "next-intl";
 
 // Helper function to format package names
 const formatPackageName = (id) => {
@@ -31,9 +32,12 @@ const EditPackageModal = ({
   handleAddAdditionalOption,
   handleSubmit,
 }) => {
+
+   const t = useTranslations("admin_dashboard")
+
   if (!selectedPackage) return null;
   console.log("this is editPackageModal:", selectedPackage)
-
+  
   const services = (selectedPackage.packages || []).map(item => {
     if (typeof item === "string") {
       return { nl: item, en: "" };
@@ -56,7 +60,7 @@ const EditPackageModal = ({
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem", marginBottom: "0.5rem" }}>Edit Package</Typography>
           <Typography sx={{ fontWeight: 600, color: "#A7A5B0", fontSize: "1.4rem", marginBottom: "2rem" }}>
-            Make changes to the package details, pricing, and add-ons below.
+           {t("description3")}
           </Typography>
         </Box>
         <IconButton onClick={handleClose}>
@@ -601,7 +605,7 @@ const EditPackageModal = ({
       </StyledDialogContent>
       <StyledDialogActions>
         <SaveButton variant="contained" onClick={handleSubmit}>
-          Save Changes
+          {t("button")}
         </SaveButton>
       </StyledDialogActions>
     </Dialog>

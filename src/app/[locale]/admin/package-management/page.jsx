@@ -11,6 +11,9 @@ import PackageList from "../../../../components/Admin/packageTab/PackageList";
 import EditPackageModal from "../../../../components/Admin/packageTab/EditPackageModal";
 import { Loader } from "../../../../components/mui/Loader";
 import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+
+// Import styled components
 import {
   PageContainer,
   PackageContainer,
@@ -27,6 +30,7 @@ const Page = () => {
   const [isSubscription, setIsSubscription] = useState(false);
   const { openSnackbar } = useSnackbar();
   const locale = useLocale();
+  const t = useTranslations("admin_dashboard")
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -345,9 +349,9 @@ const Page = () => {
       <PackageContainer>
         {tabValue === 0 && (
           <Box>
-            <SectionTitle>Service Packages</SectionTitle>
+            <SectionTitle>{t("subTitle1")}</SectionTitle>
             <SecondaryTypography>
-              Manage your service packages, pricing structure, and add-ons
+              {t("description1")}
             </SecondaryTypography>
 
             {Object.entries(autocarePackages)
@@ -369,9 +373,9 @@ const Page = () => {
 
         {tabValue === 1 && (
           <Box>
-            <SectionTitle variant="h5">Subscription Packages</SectionTitle>
+            <SectionTitle variant="h5">{t("subTitle2")}</SectionTitle>
             <SecondaryTypography>
-              Manage your subscription packages and pricing
+             {t("description2")}
             </SecondaryTypography>
 
             <PackageList
