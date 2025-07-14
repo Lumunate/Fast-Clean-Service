@@ -83,13 +83,13 @@ class PaymentsRepository {
     }
 
     async saveCoinbaseCharge(charge) {
-        const userId = charge.metadata.userId || charge.metadata.customerEmail;
+        const userId = charge.data.metadata.userId || charge.data.metadata.customeremail;
         const update = {
             $push: {
                 oneTimePayment: {
                     date: new Date(),
-                    price: parseFloat(charge.pricing.local.amount),
-                    bookingId: charge.metadata.bookingId,
+                    price: parseFloat(charge.data.pricing.local.amount),
+                    bookingId: charge.data.metadata.bookingId,
                     status: 'Pending',
                 }
             }
