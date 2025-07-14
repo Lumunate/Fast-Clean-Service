@@ -10,7 +10,6 @@ import PackageTabs from "../../../../components/Admin/packageTab/PackageTabs";
 import PackageList from "../../../../components/Admin/packageTab/PackageList";
 import EditPackageModal from "../../../../components/Admin/packageTab/EditPackageModal";
 import { Loader } from "../../../../components/mui/Loader";
-import { useLocale } from "next-intl";
 import { useLocale, useTranslations } from "next-intl";
 
 // Import styled components
