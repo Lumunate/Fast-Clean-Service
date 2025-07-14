@@ -162,6 +162,7 @@ const BookingFormFooter = () => {
         try {
             if (formData.service === 'Coinbase') {
                 if (!session) throw new Error('You must be logged in to pay.');
+                const { email: userEmail, id: uid } = session.user;
                 // Coinbase flow
                 const amt =
                     typeof price === 'string'
@@ -176,6 +177,7 @@ const BookingFormFooter = () => {
                         description: `Payment for ${formData.selectedPackageType || 'Service'}`,
                         customerEmail: formData.email,
                         bookingId: formData.bookingId,
+                        userId: uid,
                     }),
                 });
                 const data = await res.json();
