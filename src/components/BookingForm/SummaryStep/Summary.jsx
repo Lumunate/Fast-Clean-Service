@@ -21,7 +21,6 @@ const Summary = () => {
         fetchPackages();
     }, [fetchPackages]);
     useEffect(() => {
-        console.log("Form Data: ", formData); // This will log the form data
     }, [formData]);
     if (!packages) {
         return null;
