@@ -16,7 +16,6 @@ import { useLocale } from "next-intl";
 
 const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, renderVehiclePricing, renderAddOns }) => {
     const locale = useLocale();
-    console.log(pkg);
     const services = (pkg.packages || []).map((s) =>
         typeof s === "string" ? { nl: s, en: "" } : { nl: s.nl, en: s.en }
     );
@@ -76,7 +75,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                     sx={{ marginBottom: "16px", fontStyle: "normal", fontSize: "1.6rem" }}
                     color="text.secondary"
                 >
-                    {locale === "en" ? pkg.description.en : pkg.description.nl}
+                    {pkg.description[locale]}
                 </Typography>
 
                 <Divider sx={{ marginBottom: "16px" }} />
@@ -91,7 +90,7 @@ const PackageAccordion = ({ pkg, category, isSubscription, handleOpenModal, rend
                         <Box component="ul" sx={{ listStyle: "disc", paddingLeft: "20px" }}>
                             {services.map((svc, idx) => (
                                 <li key={idx} style={{ fontSize: "1.6rem" }}>
-                                    {locale === "en" ? svc.en : svc.nl}
+                                    {svc[locale]}
                                 </li>
                             ))}
                         </Box>

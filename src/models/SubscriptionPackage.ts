@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const translatedString = {
+export const translatedString = {
     nl: { type: String, required: true },
     en: { type: String, default: "" },
 };

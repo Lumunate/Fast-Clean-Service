@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { vehicleOptionSchema } from "./SubscriptionPackage";
+import { translatedString, vehicleOptionSchema } from "./SubscriptionPackage";
 
-const translatedString = {
-  nl: { type: String, required: true },
-  en: { type: String, default: "" },        // you can default to empty
-};
+// export const translatedString = {
+//   nl: { type: String, required: true },
+//   en: { type: String, default: "" },        // you can default to empty
+// };
 
 const optionSchema = new mongoose.Schema({
   name: translatedString,
