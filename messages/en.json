@@ -678,6 +678,8 @@
             "bicycle": "Bicycle",
             "scooter": "Scooter",
             "motorcycle": "Motorcycle",
+            "camper": "Camper",
+            "caravan": "Caravan",
             "boat": "Boat",
             "truck": "Truck",
             "airplane": "Airplane"
