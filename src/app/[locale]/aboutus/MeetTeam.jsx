@@ -23,8 +23,8 @@ export default function MeetTeam() {
         description:
             t("bio"),
         socialLinks: {
-            email: "mailto:felicio.perk@example.com",
-            whatsapp: "https://wa.me/1234567890",
+            email: "mailto:info@fastcleanservice.nl",
+            whatsapp: "https://wa.me/31202440994",
             instagram: "https://www.instagram.com/fastcleanservice/",
             facebook: "https://www.facebook.com/FastCleanServiceNL/",
         },
