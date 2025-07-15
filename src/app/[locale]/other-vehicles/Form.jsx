@@ -13,6 +13,7 @@ import {useTranslations} from "next-intl";
 
 const submitForm = async (formData) => {
   try {
+      console.log(formData);
     const response = await axios.post("/api/other-vehicles", formData, {
       headers: {
         "Content-Type": "application/json",
@@ -244,6 +245,8 @@ export default function Form() {
                     <MenuItem value="scooter">{t("fields.vehicle_type.options.scooter")}</MenuItem>
                     <MenuItem value="motorcycle">{t("fields.vehicle_type.options.motorcycle")}</MenuItem>
                     <MenuItem value="boat">{t("fields.vehicle_type.options.boat")}</MenuItem>
+                    <MenuItem value="camper">{t("fields.vehicle_type.options.camper")}</MenuItem>
+                    <MenuItem value="caravan">{t("fields.vehicle_type.options.caravan")}</MenuItem>
                     <MenuItem value="truck">{t("fields.vehicle_type.options.truck")}</MenuItem>
                     <MenuItem value="airplane">{t("fields.vehicle_type.options.airplane")}</MenuItem>
                 </Select>

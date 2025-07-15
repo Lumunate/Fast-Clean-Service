@@ -631,7 +631,7 @@
       },
       {
         "icon": "✈️",
-        "text": "PPrecisiereiniging en -onderhoud voor vliegtuigen"
+        "text": "Precisie reiniging en -onderhoud voor vliegtuigen"
       },
       {
         "icon": "🚗",
@@ -680,6 +680,8 @@
             "bicycle": "Fiets",
             "scooter": "Scooter",
             "motorcycle": "Motor",
+            "camper": "Camper",
+            "caravan": "Caravan",
             "boat": "Boot",
             "truck": "Vrachtwagen",
             "airplane": "Vliegtuig"
