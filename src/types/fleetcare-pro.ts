@@ -1,6 +1,17 @@
 import {z} from "zod";
 
-const VehicleType = z.enum(["Cars (all types)", "SUVs", "Bikes (all types)", "Trucks", "Campers", "Boats"]);
+const VehicleType = z.enum([
+  "Hatchback",
+  "Bus",
+  "SUVs",
+  "Motorcycle",
+  "Trucks",
+  "Station Wagon",
+  "Campers",
+  "Boats",
+  "Others"
+]);
+
 
 const FleetSize = z.enum(["1-10", "11-50", "51-100", "101-500", "500+"]);
 

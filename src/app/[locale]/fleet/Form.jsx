@@ -270,12 +270,16 @@ export default function FleetCareProForm() {
                   <MenuItem value="">
                     <em>{t("fields.vehicle_types.none")}</em>
                   </MenuItem>
-                  <MenuItem value="Cars (all types)">{t("fields.vehicle_types.cars")}</MenuItem>
-                  <MenuItem value="SUVs">{t("fields.vehicle_types.suvs")}</MenuItem>
-                  <MenuItem value="Bikes (all types)">{t("fields.vehicle_types.bikes")}</MenuItem>
-                  <MenuItem value="Trucks">{t("fields.vehicle_types.trucks")}</MenuItem>
-                  <MenuItem value="Campers">{t("fields.vehicle_types.campers")}</MenuItem>
-                  <MenuItem value="Boats">{t("fields.vehicle_types.boats")}</MenuItem>
+                    <MenuItem value="Hatchback">{t("fields.vehicle_types.hatchback")}</MenuItem>
+                    <MenuItem value="Bus">{t("fields.vehicle_types.bus")}</MenuItem>
+                    <MenuItem value="SUVs">{t("fields.vehicle_types.suvs")}</MenuItem>
+                    <MenuItem value="Motorcycle">{t("fields.vehicle_types.bikes")}</MenuItem>
+                    <MenuItem value="Trucks">{t("fields.vehicle_types.trucks")}</MenuItem>
+                    <MenuItem value="Station Wagon">{t("fields.vehicle_types.wagen")}</MenuItem>
+                    <MenuItem value="Campers">{t("fields.vehicle_types.campers")}</MenuItem>
+                    <MenuItem value="Boats">{t("fields.vehicle_types.boats")}</MenuItem>
+                    <MenuItem value="Others">{t("fields.vehicle_types.other")}</MenuItem>
+
                 </Select>
               </FormControl>
             </Grid>
