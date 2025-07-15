@@ -22,8 +22,9 @@ import {
     ImageWrapper,
     SubscriptionsContainer,
 } from "./Subscribe.style";
+import Questions from "./questions";
+import {HomePkgsInBox} from "./../../../components/mui/HomePkgs";
 
-// Define some colors and gradients for styling
 const colors = ["#5DFA48", "#005BAC", "#BA8B1D"];
 const gradients = [
     { top: "#5DFA48", bottom: "#38E274" },
@@ -687,6 +688,31 @@ const Page = () => {
                         >
                             {t("cta.text")}
                         </Typography>
+                        <Box
+                            component="ul"
+                            sx={{
+                                mt: 3,
+                                textAlign: "left",
+                                maxWidth: "600px",
+                                color: theme.palette.mode === "dark" ? "#D5D5D5" : "#000"
+                            }}
+                        >
+                            <Typography component="li" sx={{fontSize: "1.4rem", lineHeight: 1.5, mb: 1}}>
+                                {t("cta.points.0")}
+                            </Typography>
+                            <Typography component="li" sx={{fontSize: "1.4rem", lineHeight: 1.5, mb: 1}}>
+                                {t("cta.points.1")}
+                            </Typography>
+                            <Typography component="li" sx={{fontSize: "1.4rem", lineHeight: 1.5, mb: 1}}>
+                                {t("cta.points.2")}
+                            </Typography>
+                            <Typography component="li" sx={{fontSize: "1.4rem", lineHeight: 1.5, mb: 1}}>
+                                {t("cta.points.3")}
+                            </Typography>
+                            <Typography component="li" sx={{fontSize: "1.4rem", lineHeight: 1.5, mb: 1}}>
+                                {t("cta.points.4")}
+                            </Typography>
+                        </Box>
                     </Box>
                 </Box>
             </Container>
@@ -696,6 +722,9 @@ const Page = () => {
                         <PackageCard key={index} pkg={pkg} index={index} highlightColor={colors[index % 3]} />
                     ))}
                 </SubscriptionsContainer>
+            </Box>
+            <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>
+                <Questions />
             </Box>
             <DecorativeBackgroundImage top={"60%"} right={"0"} width="90rem" height="65rem" />
             <RadialCircle top={"20rem"} right={"20rem"} sx={{ width: "10rem !important", height: "10rem !important" }} />
