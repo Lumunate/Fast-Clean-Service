@@ -601,18 +601,67 @@
         "name": "Name",
         "email": "Email",
         "vehicle_type": "Vehicle Type",
-        "fleet_size": "Fleet Size",
+        "fleet_size": "Number of Vehicles",
         "vehicle_types": {
           "none": "None",
-          "cars": "Cars (all types)",
+          "hatchback": "Hatchback",
+          "bus": "Bus",
           "suvs": "SUVs",
-          "bikes": "Bikes (all types)",
+          "bikes": "Motocycle",
           "trucks": "Trucks",
+          "wagen": "Station Wagon",
           "campers": "Campers",
-          "boats": "Boats"
+          "boats": "Boats",
+          "other": "Others"
         }
       },
       "button": "Submit"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions (FAQ)",
+      "questions": [
+        {
+          "question": "Can I schedule fixed appointments for my fleet?",
+          "answer": "Yes, we offer flexible subscriptions and fixed maintenance times."
+        },
+        {
+          "question": "How does billing work for business customers?",
+          "answer": "Business customers receive a single, clear monthly invoice with VAT details. Payment can be made via iDEAL, invoice, or direct debit."
+        },
+        {
+          "question": "Can you work on-site?",
+          "answer": "Absolutely. Our mobile service works at your business location or event venue."
+        },
+        {
+          "question": "What types of vehicles do you clean?",
+          "answer": "We clean and detail all vehicle types, including cars, vans, trucks, and more."
+        },
+        {
+          "question": "Can I get customized packages?",
+          "answer": "Yes, we are happy to create customized packages that meet your needs and budget."
+        },
+        {
+          "question": "Can you efficiently service large fleets?",
+          "answer": "Yes, we are fully equipped to professionally clean and maintain medium to very large fleets, with tight scheduling and consistent quality."
+        },
+        {
+          "question": "Do you also offer protective treatments for commercially used vehicles?",
+          "answer": "Yes, we offer paint sealants, ceramic coatings, and interior treatments that are perfect for vehicles that are used intensively or need to remain presentable."
+        },
+        {
+          "question": "Is it possible to temporarily register additional vehicles or one-off assignments?",
+          "answer": "Absolutely. Whether it's for peak periods, seasonal changes, or one-off projects – we flexibly adapt our services to your situation."
+
+        },
+        {
+          "question": "How quickly can I get started?",
+          "answer": "Depending on our schedule, you can start using our services within a few days."
+        },
+        {
+          "question": "Are there any benefits for regular customers?",
+          "answer": "Yes, business customers benefit from customized packages that meet their needs and budget."
+        }
+      ]
     }
   },
   "other_vehicles": {

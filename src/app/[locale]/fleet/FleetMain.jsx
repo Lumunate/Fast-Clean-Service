@@ -9,6 +9,7 @@ import RadialCircle from "../../../components/Decorative/RadialCircle";
 import Image from "next/image";
 import HeadingLinesAnimation from "../../../components/Home/HeadingLinesAnimation/HeadingLinesAnimation";
 import {useTranslations} from "next-intl";
+import Questions from "./questions";
 
 export const FleetSubheading = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === "light" ? "#232E4A" : "#fff",
@@ -328,6 +329,9 @@ export default function FleetMain() {
         </Typography>
       </Box>
       <Form />
+        <Box sx={{display: "flex", alignItems:"center", justifyContent:"center", margin: "auto"}}>
+            <Questions />
+        </Box>
     </Container>
   );
 }
