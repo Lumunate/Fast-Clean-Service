@@ -38,7 +38,9 @@ const beforeAfterImages = [
 
 const StyledImageBox = styled(Box)`
     width: 100%;
+    max-width: 450px;
     height: 100%;
+    max-height: 450px;
     border-radius: 40px;
     object-fit: cover;
     @media (max-width: 900px) {
@@ -75,13 +77,16 @@ const BeforeAfterSwiper = () => {
       if (!swiperRef.current) return;
 
     const viewportHeight = window.innerHeight;
-    const ninetyVH = window.innerWidth > 900 ? viewportHeight * 0.43 : viewportHeight * 0.35;
-      const swiperWidth = swiperRef.current.clientWidth;
+        const ninetyVH = window.innerWidth > 900
+            ? viewportHeight * 0.3
+            : viewportHeight * 0.25;
+        const swiperWidth = swiperRef.current.clientWidth;
       let newSlidesPerView;
       if(swiperWidth < 900) {
-        newSlidesPerView = swiperWidth / (ninetyVH + 16);
+          newSlidesPerView = Math.floor(swiperWidth / (boxSize * 0.8));
       } else {
-        newSlidesPerView = swiperWidth / (ninetyVH + 16); 
+          newSlidesPerView = Math.floor((swiperWidth / (boxSize * 0.8))+1);
+
       }
 
     setBoxSize(ninetyVH);
@@ -103,7 +108,7 @@ const BeforeAfterSwiper = () => {
         delay: 3000,
         disableOnInteraction: false,
         }}
-        spaceBetween={32}
+        spaceBetween={16}
         slidesPerView={slidesPerView} // Default for mobile
         allowTouchMove={true}
       >
