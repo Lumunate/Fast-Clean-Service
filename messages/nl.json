@@ -605,16 +605,64 @@
         "vehicle_type": "Voertuigtype",
         "fleet_size": "Vlootgrootte",
         "vehicle_types": {
-          "none": "Geen",
-          "cars": "Auto's (alle typen)",
+          "none": "None",
+          "hatchback": "Hatchback",
+          "bus": "Bus",
           "suvs": "SUVs",
-          "bikes": "Motoren (alle typen)",
-          "trucks": "Vrachtauto's",
+          "bikes": "Motor",
+          "trucks": "Vrachtwagen",
+          "wagen": "Stationwagen",
           "campers": "Campers",
-          "boats": "Boten"
+          "boats": "Boten",
+          "other": "Anders"
         }
       },
       "button": "Verzenden"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen (FAQ)",
+      "questions": [
+        {
+          "question": "Kan ik vaste afspraken plannen voor mijn wagenpark?",
+          "answer": "Ja, wij bieden flexibele abonnementen en vaste onderhoudsmomenten aan."
+        },
+        {
+          "question": "Hoe werkt de facturatie voor zakelijke klanten?",
+          "answer": "Zakelijke klanten ontvangen maandelijks één overzichtelijke factuur met btw-specificatie. Betalen kan via iDEAL, factuur of automatische incasso."
+        },
+        {
+          "question": "Kunnen jullie op locatie werken?",
+          "answer": "Absoluut. Onze mobiele service werkt op jouw bedrijfslocatie of evenemententerrein."
+        },
+        {
+          "question": "Wat voor voertuigen reinigen jullie?",
+          "answer": "Wij reinigen en detailen alle voertuigtypen, inclusief auto’s, bestelwagens, vrachtwagens en meer."
+        },
+        {
+          "question": "Kan ik aangepaste pakketten krijgen?",
+          "answer": "Ja, wij stellen graag maatwerkpakketten samen die aansluiten op jouw wensen en budget."
+        },
+        {
+          "question": "Kunnen jullie grote wagenparken efficiënt bedienen?",
+          "answer": "Ja, wij zijn volledig ingericht op het professioneel reinigen en onderhouden van middelgrote tot zeer grote wagenparken, met strakke planning en consistente kwaliteit."
+        },
+        {
+          "question": "Bieden jullie ook beschermende behandelingen voor zakelijk gebruikte voertuigen?",
+          "answer": "Ja, we bieden onder andere lakverzegeling, keramische coating en interieur behandelingen die perfect zijn voor voertuigen die intensief gebruikt worden of representatief moeten blijven."
+        },
+        {
+          "question": "Is het mogelijk om tijdelijk extra voertuigen of eenmalige opdrachten aan te melden?",
+          "answer": "Zeker. Of het nu gaat om piekmomenten, seizoenswisselingen of eenmalige projecten – wij passen onze diensten flexibel aan op jouw situatie."
+        },
+        {
+          "question": "Hoe snel kan ik starten?",
+          "answer": "Afhankelijk van onze agenda kan je binnen enkele dagen al gebruik maken van onze diensten."
+        },
+        {
+          "question": "Zijn er voordelen voor vaste klanten?",
+          "answer": "Ja, zakelijke klanten profiteren van maatwerk pakketten die aansluiten op jouw wensen en budget."
+        }
+      ]
     }
   },
   "other_vehicles": {
