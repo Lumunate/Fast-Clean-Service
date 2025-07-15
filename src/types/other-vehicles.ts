@@ -5,6 +5,8 @@ const VehicleType = z.enum([
     "bicycle",
     "scooter",
     "motorcycle",
+    "camper",
+    "caravan",
     "boat",
     "truck",
     "airplane"
