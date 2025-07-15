@@ -2246,6 +2246,13 @@
     ],
     "cta": {
       "text": "Choose one of our subscription options and enjoy convenience and quality, without a hassle!",
+      "points": [
+        "Cheaper than individual appointments",
+        "Prioritized in your calendar",
+        "Always a clean and well-maintained car, hassle-free",
+        "Cancelable on a monthly basis (or more affordable with an annual subscription)",
+        "Perfect for those who want to keep their car in top condition consistently."
+      ],
       "button": "Book Now"
     },
     "plans": [
@@ -2333,7 +2340,52 @@
           "Upholstery stain removal + €15"
         ]
       }
-    ]
+    ],
+    "faq": {
+      "title": "Frequently Asked Questions (FAQ)",
+      "questions": [
+        {
+          "question": "How often is my car cleaned with a subscription?",
+          "answer": "You choose: every 4, 8, or 12 weeks."
+        },
+        {
+          "question": "How do I schedule an appointment?",
+          "answer": "Via your own customer account on our website. Choose the location, day, and time yourself."
+        },
+        {
+          "question": "Can I cancel before the end?",
+          "answer": "Yes. Monthly subscriptions can be canceled monthly after 3 cleanings. Annual subscriptions automatically expire after the end."
+        },
+        {
+          "question": "Can I share my subscription with someone else?",
+          "answer": "No, each subscription is linked to a single license plate and owner."
+
+        },
+        {
+          "question": "What if I'm unable to attend?",
+          "answer": "You can reschedule your appointment free of charge up to 24 hours beforehand. After that, we charge a fixed no-show fee of €150."
+        },
+        {
+          "question": "How do I pay for my cleaning subscription?",
+          "answer": "After completing the application form, payment will be processed via direct debit."
+        },
+        {
+          "question": "On which days can I make an appointment?",
+          "answer": "You can make an appointment during our business hours. See the contact page for more information."
+        },
+        {
+          "question": "Can I switch between locations?",
+          "answer": "Yes, you can choose for each appointment whether you want service on-site or at our location." },
+        {
+          "question": "What happens if I miss my appointment?",
+          "answer": "Then your appointment will be canceled and we will charge a no-show fee."
+        },
+        {
+          "question": "Do I receive an invoice with a subscription?",
+          "answer": "Yes, you automatically receive an invoice with every payment. Also suitable for business customers."
+        }
+      ]
+    }
   },
   "booking": {
     "title": "Booking - On Location",

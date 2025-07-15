@@ -5,7 +5,7 @@ export const SubscriptionsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   gap: "2.6rem",
-  marginTop: "14rem",
+  marginTop: "8rem",
   marginBottom: "20rem",
 
   "@media (max-width: 1300px)": {

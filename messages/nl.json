@@ -2250,6 +2250,13 @@
     ],
     "cta": {
       "text": "Kies een van onze abonnementsvormen en geniet van gemak en kwaliteit, zonder gedoe!",
+      "points": [
+        "Voordeliger dan losse afspraken",
+        "Prioriteit in de agenda",
+        "Altijd een schone en verzorgde auto, zonder gedoe",
+        "Maandelijks opzegbaar (of voordeliger met jaarabonnement)",
+        "Perfect voor wie zijn auto structureel in topconditie wil houden."
+      ],
       "button": "Boek nu"
     },
     "plans": [
@@ -2337,8 +2344,53 @@
           "Upholstery stain removal + €15"
         ]
       }
+    ],
+  "faq": {
+    "title": "Veelgestelde Vragen (FAQ)",
+    "questions": [
+      {
+        "question": "Hoe vaak wordt mijn auto schoongemaakt met een abonnement?",
+        "answer": "Je kiest zelf: elke 4, 8 of 12 weken."
+      },
+      {
+        "question": "Hoe plan ik een afspraak?",
+        "answer": "Via je eigen klant account op onze website. Kies zelf locatie, dag en tijd."
+      },
+      {
+        "question": "Kan ik tussentijds opzeggen?",
+        "answer": "Ja. Maandabonnementen zijn maandelijks opzegbaar na 3 reinigingen. Jaar abonnementen stoppen automatisch na afloop."
+      },
+      {
+        "question": "Kan ik mijn abonnement delen met iemand anders?",
+        "answer": "Nee, elk abonnement is gekoppeld aan één kenteken en eigenaar."
+      },
+      {
+        "question": "Wat als ik een keer verhinderd ben?",
+        "answer": "Tot 24 uur voor je afspraak kun je kosteloos verplaatsen. Daarna rekenen we een vaste no-show vergoeding van €150."
+      },
+      {
+        "question": "Hoe betaal ik mijn reinigings abonnement?",
+        "answer": "Na het invullen van het aanvraagformulier verloopt de betaling via automatische incasso."
+      },
+      {
+        "question": "Op welke dagen kan ik een afspraak maken?",
+        "answer": "Een afspraak maken kan binnen onze werktijden, zie hiervoor de contact pagina."
+      },
+      {
+        "question": "Kan ik wisselen tussen locatie en vestiging?",
+        "answer": "Ja, je kunt per afspraak kiezen of je service op locatie of bij onze vestiging wil."
+      },
+      {
+        "question": "Wat gebeurt er als ik mijn afspraak vergeet?",
+        "answer": "Dan vervalt je afspraak en brengen we een no-show vergoeding in rekening."
+      },
+      {
+        "question": "Krijg ik een factuur bij een abonnement?",
+        "answer": "Ja, je ontvangt automatisch een factuur bij iedere betaling. Ook geschikt voor zakelijke klanten."
+      }
     ]
-  },
+  }
+},
   "booking": {
     "title": "Booking - On Location",
     "toggle": [
