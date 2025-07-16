@@ -105,7 +105,7 @@ export default function Footer() {
                         "@media (max-width: 992px)": { display: "none" },
                     }}
                 >
-                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                    {["visa", "mastercard", "apple", "google", "coin", "ideal2"].map((name) => {
                         const needsInvert = name === "visa" || name === "apple";
                         return (
                             <Image
@@ -183,7 +183,7 @@ export default function Footer() {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
-                    {["visa", "mastercard", "apple", "google", "coin"].map((name) => {
+                    {["visa", "mastercard", "apple", "google", "coin", "ideal2"].map((name) => {
                         const needsInvert = name === "visa" || name === "apple";
                         return (
                             <Image

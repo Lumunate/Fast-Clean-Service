@@ -18,8 +18,13 @@ import {
 } from "../../mui/HomePkgs";
 import { useTheme } from "../../../contexts/themeContext";
 import { useLocale, useTranslations } from "next-intl";
+import { useAutocarePackages } from "../../../hooks/useAutocarePackages";
 
 export default function Autocare() {
+
+  const { packages, loading, error, fetchPackages } = useAutocarePackages();
+      const packagesAll = packages?.packages;
+
   const t = useTranslations("home.anywhere_autocare_section");
   const { theme } = useTheme();
   const locale = useLocale();
@@ -66,7 +71,7 @@ export default function Autocare() {
                           fontWeight: 500,
                         }}
                       >
-                        €74.95
+                         {packagesAll?.standard[0]?.price}
                       </span>
                     </div>
                   </Box>
@@ -220,7 +225,7 @@ export default function Autocare() {
                           fontWeight: 500,
                         }}
                       >
-                        €149.95
+                         {packagesAll?.deluxe[0]?.price}
                       </span>
                     </div>
                   </Box>
@@ -343,7 +348,7 @@ export default function Autocare() {
                           fontWeight: 500,
                         }}
                       >
-                        €189.95
+                        {packagesAll?.premium[0]?.price}
                       </span>
                     </div>
                   </Box>

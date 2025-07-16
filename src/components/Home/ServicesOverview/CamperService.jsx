@@ -99,7 +99,7 @@ export default function CamperService() {
             <Box sx={{display:'flex', flexDirection:'column', alignItems:'center',height:'100%', "@media (max-width: 1107px)": {height:'auto'}}}>
             <Box>
               <ServiceHeading>{t("services.0.titlemain")}</ServiceHeading>
-              <ServiceHeading sx={{ fontSize: {xs:"1.6rem",sm:"2rem"} }}>{t("services.0.titlesub")}</ServiceHeading>
+              <ServiceHeading sx={{ fontSize: {xs:"1.6rem",sm:"2rem", textTransform: 'uppercase'} }}>{t("services.0.titlesub")}</ServiceHeading>
               <ServiceItemDesciptionB>{t("services.0.description")}</ServiceItemDesciptionB>
 
               <ServiceItemHighlight>

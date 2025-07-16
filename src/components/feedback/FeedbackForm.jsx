@@ -25,7 +25,7 @@ const defaultValues = {
   lastName: '',
   Service: '',
     Appointment: null,
-  experience: '4',
+  experience: '5',
   feedback: '',
 }
 
@@ -35,11 +35,7 @@ export default function FeedbackForm() {
 
     const theme = useTheme()
 
-    const snackbarContext = useSnackbar();
-
-    console.log(snackbarContext);
-
-    const { showSnackbar } = snackbarContext || {};
+    const { openSnackbar } = useSnackbar();
 
     const [successMessage, setSuccessMessage] = useState(false);
 
@@ -61,12 +57,10 @@ export default function FeedbackForm() {
 
         try {
             await submitForm(formattedData);
-            if (showSnackbar) showSnackbar('Form submitted successfully!');
-            setSuccessMessage(true);
-            setTimeout(() => setSuccessMessage(false), 5000);
+            openSnackbar("Form submitted successfully!");
             reset();
         } catch (err) {
-            if (showSnackbar) showSnackbar('Failed to submit Contact Form. Please try again later!');
+             openSnackbar('Failed to submit Contact Form. Please try again later!');
         }
     };
 

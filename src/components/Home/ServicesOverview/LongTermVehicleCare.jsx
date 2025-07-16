@@ -228,7 +228,7 @@ export default function LongTermVehicleCare() {
             description: t("categories.2.description"),
         },
         {
-            imgSrc: "/truck.webp",
+            imgSrc: "/truck2.png",
             name: t("categories.3.name"),
             pkgs: [
                 t("categories.3.services.0"),
@@ -389,7 +389,7 @@ export default function LongTermVehicleCare() {
                       animation: "fadeIn 0.5s ease-in-out forwards",
                       animationDelay: "1s",
                     }}
-                    onClick={() => (window.location.href = "/other-vehicles")}
+                    onClick={() => (window.location.href = index === 0 ? "/booking" : "/other-vehicles")}
                   >
                       {t("button.text")}
                   </ServiceBtn1>
