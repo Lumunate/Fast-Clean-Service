@@ -93,7 +93,7 @@
       ]
     },
     "auto": {
-      "title": "Premium Zorgdiensten\""
+      "title": "Onze Pakketten"
     },
     "gallery_section": {
       "title": "Voor en na"
@@ -112,8 +112,8 @@
           "description2": "📅 Boek nu en geef uw auto de frisse start die hij verdient."
         },
         {
-          "title": "Verfbescherming en coatings",
-          "description": "Geef je auto extra aandacht aan de buitenkant. Van cabriodak- en schuifdakreiniging tot het reinigen van de tankklep en motorkap. Ook het verwijderen van vliegroest, hars of mos uit naden behoort tot de opties. Kunststofdelen kunnen extra worden gepoetst, en dorpels en deurranden worden grondig meegenomen.",
+          "title": "lakbescherming en coatings",
+          "description": "Wil je langdurige bescherming én een diepe glans? Dan is keramische coating dé oplossing. Na een grondige voorbereiding van het lakwerk brengen wij een hoogwaardige coating aan die je auto beschermt tegen UV, vuil, zure regen en krassen. Deze duurzame bescherming zorgt ervoor dat jouw voertuig langer schoon blijft en minder onderhoud nodig heeft.",
           "bullets": [
             "Diepe glans en waterafstotend effect",
             "Voorkomt vervaging en slijtage"
@@ -122,10 +122,10 @@
         },
         {
           "title": "Polijsten & Koplamprestauratie",
-          "description": "Maak je behandeling compleet met professionele detailing. Denk aan het polijsten van koplampen of chromen delen, een claybar behandeling voor gladde lak, of een beschermende lakverzegeling. Kies uit 1-, 2- of 3-staps polijsten voor het beste resultaat, of ga voor een duurzame glascoating die je auto langdurig beschermt.",
+          "description": "Maak je behandeling compleet met professionele detailing. Denk aan het polijsten van koplampen of chromen delen, een claybar behandeling voor gladde lak, of een beschermende lakverzegeling. Kies uit 1-, 2- of 3-staps polijsten voor het beste resultaat. De perfecte voorbereiding voor een coating of als opfrisser voor je voertuig.",
           "bullets": [
-            "Verwijdert doffe plekken en vergeling voor helderder licht",
-            "Beter zicht en een frissere uitstraling"
+            "Herstelt de glans van de lak.",
+            "Herstelt de helderheid van doffe koplampen."
           ],
           "description2": "📅 Professioneel polijsten voor een optimaal resultaat"
         }
@@ -170,8 +170,8 @@
       "description": "Elke auto vraagt om een aanpak op maat. Laat je voertuig behandelen waar en wanneer het jou uitkomt – bij ons op locatie of gewoon bij jou thuis.",
       "services": [
         {
-          "title": "In de winkel",
-          "description": "Breng je auto naar onze vestiging in Assendelft. Hier behandelen we elk detail met de juiste technieken en hoogwaardige producten voor een langdurig resultaat."
+          "title": "Onze Vestiging",
+          "description": "Breng je auto naar onze vestiging in Wormerveer. Hier behandelen we elk detail met de juiste technieken en hoogwaardige producten voor een langdurig resultaat."
         },
         {
           "title": "Op Locatie",
@@ -180,16 +180,16 @@
       ],
       "packages": [
         {
-          "name": "Standard",
-          "category": "Basic Cleaning",
+          "name": "Standaard",
+          "category": "Basis reiniging",
           "price": "Vanaf",
-          "title": "Included",
+          "title": "Inbegrepen:",
           "features": [
             "Stoomreiniging interieur en of exterieur",
             "Velgen dorpels en ramen reinigen",
             "Basisbescherming"
           ],
-          "description": "Voor wie? Ideaal voor een efficiënte, globale reiniging.",
+          "description": "Ideaal voor een efficiënte, globale reiniging.",
           "buttons": {
             "learn_more": "Meer info",
             "book_now": "Boek nu"
@@ -205,14 +205,14 @@
             "Dieptereiniging / Leerbehandeling ",
             "Verwijdert mos, hars & vliegroest"
           ],
-          "description": "Voor wie? Kies Deluxe voor een complete behandeling van uw auto.",
+          "description": "Kies Deluxe voor een complete behandeling van uw auto.",
           "buttons": {
             "learn_more": "Meer info",
             "book_now": "Boek nu"
           }
         },
         {
-          "name": "Premium",
+          "name": "Premie",
           "category": "Showroom Afwerking",
           "price": "Vanaf",
           "features": [
@@ -220,7 +220,7 @@
             "Motorkap reiniging ",
             "1-staps polijsten + koplampen"
           ],
-          "description": "Voor wie? Boek nu voor de ultieme showroomafwerking.",
+          "description": "Boek nu voor de ultieme showroom afwerking!",
           "buttons": {
             "learn_more": "Meer info",
             "book_now": "Boek nu"
@@ -232,14 +232,14 @@
       "services": [
         {
           "id": "fleet-care-pro",
-          "titlemain": "FleetCare Pro",
-          "titlesub": "ALTIJD EEN REPRESENTATIEVE VLOOT",
+          "titlemain": "Zakelijke diensten",
+          "titlesub": "Altijd een representatief wagenpark",
           "description": "Houd uw bedrijfsvoertuigen in topconditie met onze mobiele reinigingsservice. Wij komen naar uw locatie en bieden maatoplossingen voor elke vloot, van basisreiniging tot volledige detailing.",
           "highlight": [
             "Pakketten op maat – Op maat gemaakt voor uw wagenpark",
             "Mobiele service – Schoonmaak op locatie, wanneer het u uitkomt",
             "Consistente uitstraling – Uw wagenpark altijd representatief",
-            "Efficiënt en professioneel – Minimale downtime, maximale resultaten"
+            "Efficiënt en professioneel – Minimale stilstand, maximale resultaten"
           ],
           "button": {
             "text": "Boek Nu",
@@ -301,12 +301,12 @@
         {
           "name": "Vrachtwagens",
           "services": [
-            "Grondige stoomreiniging van de kajuit",
+            "Grondige stoomreiniging van de cabine",
             "Reiniging van dorpels, ramen en spiegels",
             "Professioneel reinigen van dashboard en cockpit",
             "Voeren van de kunststof onderdelen"
           ],
-          "description": "Houd uw kajuit fris, schoon en representatief - van binnen en van buiten.\n"
+          "description": "Houd uw cabine fris, schoon en representatief - van binnen en van buiten.\n"
         },
         {
           "name": "Boten",
@@ -2879,9 +2879,10 @@
         "options": [
           "FleetCare Pro",
           "Anywhere Autocare",
-          "Subscriptions",
-          "Other Vehicles",
-          "Store"
+          "Abonnementen",
+          "Andere voertuigen",
+          "Webshop",
+          "Binnenkort beschikbaar"
         ]
       },
       "contact": "Contact"
@@ -2928,13 +2929,36 @@
     }
   },
   "admin_dashboard": {
-    "title":"Pakket- en prijsbeheer",
-    "subTitle1":"Servicepakketten",
-    "description1":"Beheer uw servicepakketten, prijsstructuur en add-ons",
-    "subTitle2":"Abonnement Pakketten",
-    "description2":"Beheer uw abonnementen en prijzen",
-    "edit":"Pakket bewerken",
-    "description3" :"Wijzig hieronder de pakketdetails, prijzen en add-ons.",
-    "button":"Wijzigingen opslaan"
+    "booking_profile_card":[
+      "Telefoonnummer:",
+      "Pakketnaam:",
+      "Bedrijf:",
+      "Adres:",
+      "Gepland:"
+    ],
+    "admin_booking":[
+    "Boekingsgegevens",
+    "Status:",
+    "Persoonlijke gegevens",
+    "Naam",
+    "Telefoonnummer",
+    "E-mailadres",
+    "Bedrijf",
+    "Adres",
+    "Voertuiggegevens",
+    "Voertuig",
+    "Kenteken",
+    "Service",
+    "Extra's:",
+    "Details",
+    "Pakketdetails",
+    "Geselecteerd pakket",
+    "Servicetype",
+    "Prijs",
+    "Duur",
+    "Betalingsstatus",
+    "Voltooid"
+  ]
+
   }
 }

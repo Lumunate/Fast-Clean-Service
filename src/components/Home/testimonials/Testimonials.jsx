@@ -372,8 +372,7 @@ export default function Testimonials() {
                 {renderSwiper(googleReviews)}
                 <Box sx={{ textAlign: "center" }}>
                     <Link
-                        href="https://www.google.com/search?...
-            "
+                        href="https://www.google.com/search?sa=X&sca_esv=4c7d959afae51832&rlz=1C1CHZN_nlNL938NL938&tbm=lcl&q=Fast+Clean+Service+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NjYxMTcwMTQzNzI2MzM1tDQz3MDI-IpRyi2xuETBOSc1MU8hOLWoLDM5VSEotSwztbx4ESseSQBXE9S7VAAAAA&rldimm=3344704167236651961&hl=nl-DK&ved=2ahUKEwiP37--trKOAxV_hP0HHVS7IwoQ9fQKegQITBAH&biw=1920&bih=911&dpr=1#lkt=LocalPoiReviews"
                         passHref
                     >
                         <Button
