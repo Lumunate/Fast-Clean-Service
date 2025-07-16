@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Grid, Typography} from '@mui/material';
 import {ButtonLearnMore, StyledCard, StyledPattern} from '../mui/AdminPkgs';
+import Link from 'next/link';
 
-const CardOffer = ({ title, subtitle, backgroundColor }) => {
+const CardOffer = ({ title, subtitle, backgroundColor, path }) => {
     return (
         <StyledCard sx={{ background: backgroundColor, padding: '20px', height: 'auto', maxHeight: "300px", position: 'relative' }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -15,7 +16,7 @@ const CardOffer = ({ title, subtitle, backgroundColor }) => {
                 </Typography>
 
                 <Box sx={{ mt: 2 }}>
-                    <ButtonLearnMore>Learn more</ButtonLearnMore>
+                    <ButtonLearnMore><Link href={path}>Learn more</Link></ButtonLearnMore>
                 </Box>
             </Box>
             <StyledPattern />
@@ -48,6 +49,7 @@ const StatsCards = ({ bookingLenght }) => {
                     title="Number of Bookings"
                     subtitle={bookingLenght || 0}
                     backgroundColor="#FEF4C3"
+                    path="/admin/booking"
                 />
             </Grid>
 
@@ -56,6 +58,7 @@ const StatsCards = ({ bookingLenght }) => {
                     title="FleetCare Pro Services"
                     subtitle={fleetcare || 0}
                     backgroundColor="#E3D0FF"
+                    path="/admin/fleetpro"
                 />
             </Grid>
 
@@ -64,6 +67,7 @@ const StatsCards = ({ bookingLenght }) => {
                     title="Other Vehicle Services"
                     subtitle="85"
                     backgroundColor="#C6F7E2"
+                    path="/admin/othervehicles"
                 />
             </Grid>
         </Grid>

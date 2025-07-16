@@ -27,36 +27,41 @@ export default function CarService() {
             title: t("packages.0.title"),
             anchor: "anywhere-auto-care",
             description: t("packages.0.description"),
+            path:"/aboutus"
         },
         {
             img: UnionIcon,
             title: t("packages.1.title"),
             anchor: "fleet-care-pro",
             description: t("packages.1.description"),
+             path:"/subscribe"
         },
         {
             img: paint,
             anchor: "subscriptions",
             title: t("packages.2.title"),
             description: t("packages.2.description"),
+             path:"/aboutus"
         },
         {
             img: Coating,
             title: t("packages.3.title"),
             anchor: "long-term-vehicle-care",
             description: t("packages.3.description"),
+             path:"/contact"
         },
     ];
 
     return (
         <CarServicesContainer>
-            {servicesData.map(({ img, title, description, anchor }, index) => (
+            {servicesData.map(({ img, title, description, anchor, path }, index) => (
                 <CarServiceItem
                     key={index}
                     anchor={anchor}
                     icon={img}
                     title={title}
                     description={description}
+                    path={path}
                     isSecondBox={index === 1} // Pass a prop to identify the second box
                 />
             ))}
@@ -64,7 +69,7 @@ export default function CarService() {
     );
 }
 
-const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
+const CarServiceItem = ({ icon, title, description, anchor, isSecondBox, path }) => {
     const t = useTranslations('home.packages_section');
     const locale = useLocale();
     const { theme } = useTheme();
@@ -107,7 +112,7 @@ const CarServiceItem = ({ icon, title, description, anchor, isSecondBox }) => {
                 <ServiceItemDescription variant={"p"}>{description}</ServiceItemDescription>
 
                 <Link
-                    href="/aboutus"
+                    href={path}
                     onClick={(e) => e.stopPropagation()}
                     style={{
                         position: "absolute",

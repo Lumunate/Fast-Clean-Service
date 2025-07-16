@@ -188,7 +188,7 @@
             "Rim and window cleaning",
             "Basic protection"
           ],
-          "description": "For whom? Ideal for a quick, global cleaning.",
+          "description": "Ideal for a quick, global cleaning.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -204,7 +204,7 @@
             "Paint sealant & protective wax",
             "Steam cleaning of upholstery"
           ],
-          "description": "For whom? Perfect for those who really want to maintain their car well and thoroughly.",
+          "description": "Perfect for those who really want to maintain their car well and thoroughly.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -233,12 +233,12 @@
           "id": "fleet-care-pro",
           "titlemain": "FLEET PRO",
           "titlesub": "ALWAYS A REPRESENTATIVE FLEET",
-          "description": "Keep your company vehicles in top condition with our mobile cleaning service. We come to your location and offer tailor-made solutions for every fleet, from basic cleaning to full detailing.",
+          "description": "Keep your commercial vehicles in top condition with our mobile cleaning service. We come to your location and offer customized solutions for every fleet, from basic cleaning to full detailing.",
           "highlight": [
-            "Tailor-made packages – Tailored to your fleet",
-            "Mobile service – Cleaning on location, when it suits you",
+            "Customized packages – Tailored to your fleet",
+            "Mobile service – On-site cleaning, whenever it suits you",
             "Consistent appearance – Your fleet always presentable",
-            "Efficient & professional – Minimal downtime, maximum results"
+            "Efficient and professional – Minimal downtime, maximum results"
           ],
           "button": {
             "text": "Plan your fleet cleaning now",
@@ -2881,7 +2881,8 @@
           "Anywhere Autocare",
           "Subscriptions",
           "Other Vehicles",
-          "Store"
+          "Webshop",
+          "Coming Soon"
         ]
       },
       "contact": "Contact"
@@ -2928,13 +2929,36 @@
     }
   },
   "admin_dashboard": {
-    "title":"Package & Pricing Management",
-    "subTitle1":"Service Packages",
-    "description1":"Manage your service packages, pricing structure, and add-ons",
-    "subTitle2":"Subscription Packages",
-    "description2":"Manage your subscription packages and pricing",
-    "edit":"Edit Package",
-    "description3" :"Make changes to the package details, pricing, and add-ons below.",
-    "button":"Save Changes"
+    "booking_profile_card":[
+      "Phone Number:",
+      "Package Name:",
+      "Company:",
+      "Address:",
+      "Scheduled:"
+    ],
+    "admin_booking":[
+    "Booking Details",
+    "Status",
+    "Personal details",
+    "Name",
+    "Phone Number",
+    "Email",
+    "Company",
+    "Address",
+    "Vehicle details",
+    "Vehicle",
+    "License Plate",
+    "Service",
+    "Add-ons:",
+    "Detailing",
+    "Package Details",
+    "Selected package",
+    "Service type",
+    "Price",
+    "Duration",
+    "Payment Status",
+    "Complete"
+  ]
   }
+
 }

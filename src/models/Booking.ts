@@ -51,6 +51,7 @@ const bookingSchema: Schema = new Schema({
   street: String,
   zipCode: String,
   city: String,
+  vehicleType: String,
   calendarEventId: { type: String, required: false },
   email: { type: String, required: true },
   phoneNumber: { type: String, required: true },

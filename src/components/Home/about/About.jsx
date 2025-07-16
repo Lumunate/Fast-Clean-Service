@@ -34,9 +34,9 @@ export default function About() {
         // Switch the top image source below 768px
         const handleResize = () => {
             if (window.innerWidth < 768) {
-                setImageSrc("/owner.png");
+                setImageSrc("/care2.jpg");
             } else {
-                setImageSrc("/g1.jpg");
+                setImageSrc("/care1.jpg");
             }
         };
 
@@ -411,7 +411,7 @@ export default function About() {
                     }}
                 >
                     <Image
-                        src="/owner.png"
+                        src="/care2.jpg"
                         alt="Big car image"
                         width={976}
                         height={702}

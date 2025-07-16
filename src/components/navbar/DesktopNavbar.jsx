@@ -143,13 +143,13 @@ const DesktopNavbar = () => {
           <CustomLink href="mailto:info@fastcleanservice.nl">
             <NavLinkButton sx={{ display:'flex', gap:'8px'}}><FontAwesomeIcon icon={faEnvelope} />info@fastcleanservice.nl</NavLinkButton>
           </CustomLink>
-          <CustomLink href="/">
+          <CustomLink href="https://wa.me/1234567890">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faWhatsapp} /></NavLinkButton>
           </CustomLink>
-          <CustomLink href="/">
+          <CustomLink href="https://www.facebook.com/FastCleanServiceNL/">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faFacebookF} /></NavLinkButton>
           </CustomLink>
-          <CustomLink href="/">
+          <CustomLink href="https://www.instagram.com/fastcleanservice/">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faInstagram} /></NavLinkButton>
           </CustomLink>
           <LanguageSwitcher currentLocale={locale} />
@@ -210,7 +210,7 @@ const DesktopNavbar = () => {
                     xs: "18rem",
                     sm: "20rem",
                     md: "23.4rem",
-                    xl: "28.4rem",
+                    xl: "34.4rem",
                   },
                   display: "flex",
                   flexDirection: "column",
@@ -238,9 +238,10 @@ const DesktopNavbar = () => {
                     display: "flex",
                     justifyContent: "space-between",
                     cursor: "not-allowed",
+                    text:"12px"
                   }}
                 >
-                  {t("navigation.services.options.4")} <Badge sx={{ whiteSpace: "nowrap" }}>Coming Soon</Badge>
+                  {t("navigation.services.options.4")} <Badge sx={{ whiteSpace: "nowrap" }}>{t("navigation.services.options.5")}</Badge>
                 </DropDownLink>
               </Box>
             )}
