@@ -38,9 +38,7 @@ const beforeAfterImages = [
 
 const StyledImageBox = styled(Box)`
     width: 100%;
-    max-width: 450px;
     height: 100%;
-    max-height: 450px;
     border-radius: 40px;
     object-fit: cover;
     @media (max-width: 900px) {
@@ -51,7 +49,7 @@ const StyledImageBox = styled(Box)`
 const SwiperContainer = styled(Box)`
     width: 100%;
     padding: 2rem 0;
- height: auto;
+    height: auto;
     margin-top: 9rem;
 
     @media (max-width: 900px) {
@@ -68,176 +66,173 @@ const SwiperContainer = styled(Box)`
 const BeforeAfterSwiper = () => {
     const { theme } = useTheme();
     const t = useTranslations('about.gallery_section');
-  const [slidesPerView, setSlidesPerView] = useState(3);
-  const [boxSize, setBoxSize] = useState(600); // Default size
-  const swiperRef = useRef(null);
+    const [slidesPerView, setSlidesPerView] = useState(3);
+    const [boxSize, setBoxSize] = useState(600); // Default size
+    const swiperRef = useRef(null);
 
-  useEffect(() => {
-    const updateBoxSize = () => {
-      if (!swiperRef.current) return;
+    useEffect(() => {
+        const updateBoxSize = () => {
+            if (!swiperRef.current) return;
 
-    const viewportHeight = window.innerHeight;
-        const ninetyVH = window.innerWidth > 900
-            ? viewportHeight * 0.3
-            : viewportHeight * 0.25;
-        const swiperWidth = swiperRef.current.clientWidth;
-      let newSlidesPerView;
-      if(swiperWidth < 900) {
-          newSlidesPerView = Math.floor(swiperWidth / (boxSize * 0.8));
-      } else {
-          newSlidesPerView = Math.floor((swiperWidth / (boxSize * 0.8))+1);
+            const viewportHeight = window.innerHeight;
+            const ninetyVH = window.innerWidth > 900 ? viewportHeight * 0.43 : viewportHeight * 0.35;
+            const swiperWidth = swiperRef.current.clientWidth;
+            let newSlidesPerView;
+            if(swiperWidth < 900) {
+                newSlidesPerView = swiperWidth / (ninetyVH + 16);
+            } else {
+                newSlidesPerView = swiperWidth / (ninetyVH + 16);
+            }
 
-      }
+            setBoxSize(ninetyVH);
+            setSlidesPerView(newSlidesPerView);
+        };
 
-    setBoxSize(ninetyVH);
-      setSlidesPerView(newSlidesPerView);
-    };
+        updateBoxSize(); // Set initial size
+        window.addEventListener("resize", updateBoxSize);
+        return () => window.removeEventListener("resize", updateBoxSize);
+    }, []);
 
-    updateBoxSize(); // Set initial size
-    window.addEventListener("resize", updateBoxSize);
-    return () => window.removeEventListener("resize", updateBoxSize);
-  }, []);
-
-  return (
-    <SwiperContainer ref={swiperRef}>
-      {/* Before Images */}
-      <Swiper
-        modules={[Autoplay]}
-        loop={true}
-        autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-        }}
-        spaceBetween={16}
-        slidesPerView={slidesPerView} // Default for mobile
-        allowTouchMove={true}
-      >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((_, index) => (
-          <SwiperSlide width={`${boxSize}px`} height={`${boxSize}px`} key={index}>
-            <Stack sx={{
-            }}>
-              <Box
-                sx={{
-                  width: `${boxSize}px`,
-                  height: `${boxSize}px`,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+    return (
+        <SwiperContainer ref={swiperRef}>
+            {/* Before Images */}
+            <Swiper
+                modules={[Autoplay]}
+                loop={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
                 }}
-              >
-                <StyledImageBox component="img" src={beforeAfterImages[0][index].src} alt={`Before ${index + 1}`} loading="lazy" decoding="async"/>
-              </Box>
+                spaceBetween={32}
+                slidesPerView={slidesPerView} // Default for mobile
+                allowTouchMove={true}
+            >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((_, index) => (
+                    <SwiperSlide width={`${boxSize}px`} height={`${boxSize}px`} key={index}>
+                        <Stack sx={{
+                        }}>
+                            <Box
+                                sx={{
+                                    width: `${boxSize}px`,
+                                    height: `${boxSize}px`,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <StyledImageBox component="img" src={beforeAfterImages[0][index].src} alt={`Before ${index + 1}`} loading="lazy" decoding="async"/>
+                            </Box>
 
-              <Box sx={{ height: `32px` }} />
+                            <Box sx={{ height: `32px` }} />
 
-              <Box
-                sx={{
-                  width: `${boxSize}px`,
-                  height: `${boxSize}px`,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <StyledImageBox component="img" src={beforeAfterImages[1][index].src} alt={`After ${index + 1}`} loading="lazy" decoding="async" />
-              </Box>
-            </Stack>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-        <Box
-            sx={{
-                width: "100%",
-                marginTop: "2rem",
-                "@media (max-width: 600px)": {
-                    marginTop: "3rem",
-                    padding: "2rem",
-                },
-                "@media (max-width: 1400px)": {
-                    marginTop: "2rem",
-                },
-            }}
-        >
+                            <Box
+                                sx={{
+                                    width: `${boxSize}px`,
+                                    height: `${boxSize}px`,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <StyledImageBox component="img" src={beforeAfterImages[1][index].src} alt={`After ${index + 1}`} loading="lazy" decoding="async" />
+                            </Box>
+                        </Stack>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
             <Box
                 sx={{
                     width: "100%",
-                    margin: "0 auto",
-                    textAlign: "center", // Ensure center alignment within the parent box
+                    marginTop: "2rem",
+                    "@media (max-width: 600px)": {
+                        marginTop: "3rem",
+                        padding: "2rem",
+                    },
+                    "@media (max-width: 1400px)": {
+                        marginTop: "2rem",
+                    },
                 }}
             >
-                {/* Typography */}
                 <Box
                     sx={{
-                        marginBottom: "2rem", // Add spacing between the text and buttons
+                        width: "100%",
+                        margin: "0 auto",
+                        textAlign: "center", // Ensure center alignment within the parent box
                     }}
                 >
-                    <Typography
-                        variant="h6"
+                    {/* Typography */}
+                    <Box
                         sx={{
-                            color: theme.palette.text.primary,
-                            fontWeight: 500,
-                            fontSize: "1.55rem",
-                            "@media (max-width: 600px)": {
-                                fontSize: "1.4rem",
-                            },
+                            marginBottom: "2rem", // Add spacing between the text and buttons
                         }}
                     >
-                        {t("cta.text")}
-                    </Typography>
-                </Box>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                color: theme.palette.text.primary,
+                                fontWeight: 500,
+                                fontSize: "1.55rem",
+                                "@media (max-width: 600px)": {
+                                    fontSize: "1.4rem",
+                                },
+                            }}
+                        >
+                            {t("cta.text")}
+                        </Typography>
+                    </Box>
 
-                {/* Buttons */}
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "2rem", // Gap between buttons
-                        flexWrap: "wrap", // Wrap buttons on smaller screens
-                    }}
-                >
-                    <Link href="/booking" passHref>
-                        <Button
-                            variant="contained"
-                            sx={{
-                                padding: "1.5rem 3rem",
-                                fontSize: "1.5rem",
-                                fontWeight: 500,
-                                borderRadius: "50px",
-                                backgroundColor: "primary.accentDark",
-                                color: "white",
-                                fontFamily: "DMSans",
-                                "&:hover": {
-                                    backgroundColor: theme.palette.primary.accent,
-                                },
-                            }}
-                        >
-                            {t("cta.buttons.book_now")}
-                        </Button>
-                    </Link>
-                    <Link href="/aboutus" passHref>
-                        <Button
-                            variant="contained"
-                            sx={{
-                                padding: "1.5rem 3rem",
-                                fontSize: "1.5rem",
-                                fontWeight: 500,
-                                borderRadius: "50px",
-                                backgroundColor: "#B8B8B8",
-                                color: "white",
-                                fontFamily: "DMSans",
-                                "&:hover": {
-                                    backgroundColor: theme.palette.primary.accent,
-                                },
-                            }}
-                        >
-                            {t("cta.buttons.learn_more")}
-                        </Button>
-                    </Link>
+                    {/* Buttons */}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            gap: "2rem", // Gap between buttons
+                            flexWrap: "wrap", // Wrap buttons on smaller screens
+                        }}
+                    >
+                        <Link href="/booking" passHref>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    padding: "1.5rem 3rem",
+                                    fontSize: "1.5rem",
+                                    fontWeight: 500,
+                                    borderRadius: "50px",
+                                    backgroundColor: "primary.accentDark",
+                                    color: "white",
+                                    fontFamily: "DMSans",
+                                    "&:hover": {
+                                        backgroundColor: theme.palette.primary.accent,
+                                    },
+                                }}
+                            >
+                                {t("cta.buttons.book_now")}
+                            </Button>
+                        </Link>
+                        <Link href="/aboutus" passHref>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    padding: "1.5rem 3rem",
+                                    fontSize: "1.5rem",
+                                    fontWeight: 500,
+                                    borderRadius: "50px",
+                                    backgroundColor: "#B8B8B8",
+                                    color: "white",
+                                    fontFamily: "DMSans",
+                                    "&:hover": {
+                                        backgroundColor: theme.palette.primary.accent,
+                                    },
+                                }}
+                            >
+                                {t("cta.buttons.learn_more")}
+                            </Button>
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
-        </Box>
-    </SwiperContainer>
-  );
+        </SwiperContainer>
+    );
 };
 
 export default BeforeAfterSwiper;

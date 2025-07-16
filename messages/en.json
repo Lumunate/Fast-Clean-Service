@@ -745,9 +745,7 @@
         "location": {
           "label": "Location",
           "options": {
-            "none": "None",
-            "onsite": "Onsite",
-            "your_place": "Your Place"
+            "chosen_location": "Chossen Location"
           }
         },
         "address": "Address",
