@@ -746,9 +746,7 @@
         "location": {
           "label": "Locatie",
           "options": {
-            "none": "Geen",
-            "onsite": "Onsite",
-            "your_place": "Uw plek"
+            "chosen_location": "Gekozen locatie"
           }
         },
         "address": "Adres",

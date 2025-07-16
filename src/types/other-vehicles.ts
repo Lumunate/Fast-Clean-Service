@@ -37,11 +37,10 @@ export const otherVehiclesSchema = z.object({
     ]),
 
     location: z.enum([
-        "onsite",
-        "your_place"
+        "chosen_location"
     ]),
 
-    address: z.string().optional(),
+    address: z.string(),
 
     numVehicles: z
         .string()
@@ -56,17 +55,17 @@ export const otherVehiclesSchema = z.object({
         .string()
         .min(1, "Please specify your desired services")
 })
-    .superRefine((data, ctx) => {
-        // if they chose “your_place”, address must be present and non-empty
-        if (data.location === "your_place") {
-            if (!data.address || data.address.trim() === "") {
-                ctx.addIssue({
-                    path: ["address"],
-                    code: z.ZodIssueCode.custom,
-                    message: "Address is required when location is 'Your Place'",
-                });
-            }
-        }
-    });
+    // .superRefine((data, ctx) => {
+    //     // if they chose “your_place”, address must be present and non-empty
+    //     if (data.location === "your_place") {
+    //         if (!data.address || data.address.trim() === "") {
+    //             ctx.addIssue({
+    //                 path: ["address"],
+    //                 code: z.ZodIssueCode.custom,
+    //                 message: "Address is required when location is 'Your Place'",
+    //             });
+    //         }
+    //     }
+    // });
 
 export type IOtherVehicles = z.infer<typeof otherVehiclesSchema>;
