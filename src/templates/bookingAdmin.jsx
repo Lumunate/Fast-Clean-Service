@@ -11,7 +11,7 @@ const AdminBookingNotificationEmail = ({ userName, userEmail, packageName, date,
     <Html>
       <Head />
       <Preview>
-        New booking notification: {packageName} for {userName}
+        Melding nieuwe boeking: {packageName} voor {userName}
       </Preview>
       <Body style={main}>
         <Container style={container}>
@@ -24,45 +24,45 @@ const AdminBookingNotificationEmail = ({ userName, userEmail, packageName, date,
               style={img}
             />
           </Section>
-          <Heading style={{ ...heading, color: "#00c3ff" }}>New Booking Notification</Heading>
-          <Text style={paragraph}>A new booking has been made. Details are below:</Text>
+          <Heading style={{ ...heading, color: "#00c3ff" }}>Melding Nieuwe Boeking</Heading>
+          <Text style={paragraph}>Er is een nieuwe boeking gemaakt. Details staan hieronder</Text>
           <Section style={bookingDetails}>
             <Heading as="h2" style={{ ...subheading, color: "#00c3ff" }}>
               {packageName}
             </Heading>
             <Text style={detailText}>
-              <strong>Date:</strong> {date}
+              <strong>Datum:</strong> {date}
             </Text>
             <Text style={detailText}>
-              <strong>Time:</strong> {time}
+              <strong>Tijd:</strong> {time}
             </Text>
             <Text style={detailText}>
-              <strong>Location:</strong> {location}
+              <strong>Locatie:</strong> {location}
             </Text>
             <Text style={detailText}>
-              <strong>Price:</strong> {price}
+              <strong>Prijs:</strong> {price}
             </Text>
           </Section>
           <Section style={customerDetails}>
             <Heading as="h3" style={sectionTitle}>
-              Customer Details
+              Klantgegevens
             </Heading>
             <Text style={detailText}>
-              <strong>Name:</strong> {userName}
+              <strong>Naam:</strong> {userName}
             </Text>
             <Text style={detailText}>
-              <strong>Email:</strong> {userEmail}
+              <strong>E-mailadres:</strong> {userEmail}
             </Text>
           </Section>
           <Section style={actionSection}>
-            <Button style={actionButton} href={`${process.env.NEXT_PUBLIC_BASE_URL}/admin/bookings`}>
-              View Booking
+            <Button style={actionButton} href={`${process.env.NEXT_PUBLIC_BASE_URL}/nl/admin/bookings`}>
+              Boeking bekijken
             </Button>
-            <Button style={actionButton} href={`mailto:${userEmail}?subject=Regarding your booking`}>
-              Contact Customer
+            <Button style={actionButton} href={`mailto:${userEmail}?subject=Over uw boeking`}>
+              Neem contact op met klant
             </Button>
           </Section>
-          <Text style={footer}>This is an automated notification for Fast Clean Service administration.</Text>
+          <Text style={footer}>Dit is een geautomatiseerde melding voor de administratie van Fast Clean Service.</Text>
         </Container>
       </Body>
     </Html>
