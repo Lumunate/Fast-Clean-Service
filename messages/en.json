@@ -2560,6 +2560,7 @@
           "Please review your selections.",
           "Get ready for a pristine clean at your convenience!"
         ],
+        "warning": "Travelling costs are added as per your location.",
         "sections": [
           "Vehicle Information",
           "Add Ons",

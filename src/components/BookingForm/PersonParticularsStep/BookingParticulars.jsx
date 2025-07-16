@@ -26,8 +26,20 @@ import { useValidation } from '../../../contexts/ValidationContext';
 import { useSession } from 'next-auth/react';
 import SelectLocationInput from '../SelectCityStep/SelectLocationInput';
 import {useTranslations} from "next-intl";
+import useSnackbar from '../../../hooks/useSnackbar';
+
+export function isValidEmail(email) {
+    if (typeof email !== 'string') return false;
+
+    const trimmed = email.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    return emailRegex.test(trimmed);
+}
 
 const BookingParticulars = () => {
+    const { openSnackbar } = useSnackbar();
   const t = useTranslations('booking');
   const form = useMultiStepForm();
   const { data: session, status } = useSession();
@@ -105,13 +117,30 @@ const BookingParticulars = () => {
     form.updateFormData({ makeModel });
   }, []);
 
-  useEffect(() => {
-    const isValid =
-        isChecked && Object.values(bookingForm).every((value) => value !== '');
-    updateValidation(isValid);
-  }, [bookingForm, isChecked, updateValidation]);
+    useEffect(() => {
+        const location = bookingForm.location || formData.location || '';
 
-  const handleChange = (e) => {
+        const hasValidLocation =
+            typeof location === 'string' && location.trim() !== '';
+
+        const allFilled =
+            Object.entries(bookingForm)
+                .every(([key, value]) => {
+                    if (key === 'location') return true;
+                    return value !== '';
+                });
+
+        const isValid =
+            isChecked && hasValidLocation && allFilled;
+        updateValidation(isValid);
+    }, [bookingForm, isChecked, formData.location, updateValidation]);
+
+    if (!isValidEmail(formData.email)) {
+        openSnackbar("Please enter a valid email address.");
+        return;
+    }
+
+    const handleChange = (e) => {
     const { name, value } = e.target;
     setBookingForm({
       ...bookingForm,
@@ -258,7 +287,6 @@ const BookingParticulars = () => {
                     label={t("steps.9.form_fields.6")}
                     name="bookingMessage"
                     value={bookingForm.bookingMessage}
-                    required
                     onChange={handleChange}
                     fullWidth
                     multiline

@@ -35,7 +35,6 @@ import {error} from "next/dist/build/output/log";
 
 const BookingsPage = ({}) => {
     const { bookings: bookingsData } = useBookings();
-    console.log("this is booking data:",bookingsData);
     
     const isMobile = useMediaQuery("(max-width:600px)");
     const [selectedBooking, setSelectedBooking] = useState(null);
@@ -233,7 +232,6 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     };
 
     if (!open) return null;
-    console.log("aaaaaaaaa", selectedBooking.status);
 
     return (
         <>

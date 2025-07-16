@@ -20,6 +20,9 @@ const Index = () => {
         <BookingFormSubHeading>
             {t("steps.9.description.1")}
         </BookingFormSubHeading>
+        <BookingFormSubHeading sx={{ color: 'red', marginTop: "1rem !important" }}>
+            {t("steps.8.warning")}
+        </BookingFormSubHeading>
       <Box>
         <BookingParticulars />
       </Box>

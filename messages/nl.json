@@ -2559,6 +2559,7 @@
           "Controleer uw keuzes voordat u doorgaat.",
           "Uw voertuig wordt op het afgesproken moment met zorg gereinigd!"
         ],
+        "warning": "Reiskosten worden toegevoegd op basis van uw locatie.",
         "sections": [
           "Voertuiginformatie",
           "Add-ons",
