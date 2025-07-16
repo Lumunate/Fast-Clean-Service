@@ -72,7 +72,7 @@ const CheckoutSelection = () => {
         />
       ),
       disabled: false,
-      tagline: "Use Stripe for checkout.",
+      tagline: "Betaal met o.a.: IDeal, PayPal, ApplePay, GooglePay, Visa, Mastercard, American Express, , Amazonpay, Revolut Pay, Link, etc",
       service: "Stripe",
     },
     {
@@ -89,7 +89,7 @@ const CheckoutSelection = () => {
         />
       ),
       disabled: formData.selectedPackageType === "Subscription Plans",
-      tagline: "Use coinbase for checkout.",
+      tagline: "gebruik coinbase als betaal methode met je gewenste crypto\n",
       service: "Coinbase",
     },
   ];

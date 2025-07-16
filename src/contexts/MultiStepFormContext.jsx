@@ -44,6 +44,7 @@ export const FormProvider = ({ children }) => {
     let duration = 0;
 
     const pkg = formData.selectedPackage;
+    console.log("package selected:", pkg);
     const carType = formData.carType;
 
     if (
@@ -56,9 +57,13 @@ export const FormProvider = ({ children }) => {
     }
 
     duration += pkg.vehicleOptions[carType]?.additionalTime || 0;
+    console.log("vehicle duration:", duration);
     newPrice += pkg.vehicleOptions[carType]?.additionalCost || 0;
+    console.log("vehicle price added:", newPrice);
+
 
     newPrice += parseFloat(pkg.price.replace('€', '').trim());
+    console.log("package price added:", newPrice);
     duration += parseHighestDuration(pkg.duration);
 
     if (formData.selectedPackageType === 'Subscription Plans') {
@@ -227,6 +232,12 @@ export const FormProvider = ({ children }) => {
     });
 
     if (currentStep === 10) {
+      const location =
+          formData.location || '';
+      if (location === '' || location === undefined) {
+        openSnackbar("Please complete all required fields before submitting.");
+        return;
+      }
       try {
         const data = {
           type: formData.service,

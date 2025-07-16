@@ -77,8 +77,6 @@ const SubscriptionPackages = () => {
       ? options
       : subscriptionPackages;
 
-  console.log(packages);
-
   return (
     <SubscriptionPkgsContainer isMobile={isMobile}>
       {isMobile ? (
