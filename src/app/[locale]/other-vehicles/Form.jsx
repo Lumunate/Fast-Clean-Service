@@ -49,15 +49,31 @@ export default function Form() {
       desiredServices: ""
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
 
-  const handleSubmit = async (e) => {
+        if (name === "serviceType" && value === "one_time_our_location") {
+            setFormData({
+                ...formData,
+                [name]: value,
+                address: "Oude Blaauwweg 14, 1521 RN Wormerveer", // Auto-fill
+            });
+        } else if (name === "serviceType" && value !== "one_time_our_location") {
+            setFormData({
+                ...formData,
+                [name]: value,
+                address: "", // Clear it if switching away
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
+    };
+
+
+    const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await submitForm(formData);
@@ -382,13 +398,11 @@ export default function Form() {
                     },
                   }}
                 >
-                    <MenuItem value="onsite">{t("fields.location.options.onsite")}</MenuItem>
-                    <MenuItem value="your_place">{t("fields.location.options.your_place")}</MenuItem>
+                    <MenuItem value="chosen_location">{t("fields.location.options.chosen_location")}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            {formData.location === "your_place" && (
               <Grid item xs={12}>
                 <CustomFormTextField
                     required
@@ -414,7 +428,6 @@ export default function Form() {
                   }}
                 />
               </Grid>
-            )}
 
               <Grid item xs={12}>
                   <CustomFormTextField
