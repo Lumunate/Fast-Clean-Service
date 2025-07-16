@@ -2442,7 +2442,7 @@
     ],
     "toggleInfo": [
       "We come to you, wherever you are.",
-      "Visit our location: Omweg 38, Assendelft."
+      "Visit our location: Oude Blaauwweg 14, 1521 RN Wormerveer"
     ],
     "stepbar": [
       "Location",
@@ -2471,14 +2471,14 @@
           "Please select your cleaning location.",
           "Whether it’s on-site or at our branch, we’re ready to clean!"
         ],
-        "options": ["On Location", "On Branch", "We'll come to you, wherever you are.", "Come and visit our branch, Samsonweg 1A, Wormerveer."]
+        "options": ["On Location", "On Branch", "We'll come to you, wherever you are.", "Come and visit our branch, Oude Blaauwweg 14, 1521 RN Wormerveer"]
       },
       {
         "step": 2,
         "title": "License Plate",
         "description": [
-          "Please enter your license plate.",
-          "We’ll make sure your vehicle is on our care list!"
+          "Enter your license plate number to identify your vehicle.",
+          "No license plate? Check the box to continue without a license plate.\n"
         ],
         "option": "Proceed without license plate"
       },
@@ -2492,7 +2492,7 @@
         "vehicle_types": [
           "Hatchback",
           "Coupe",
-          "Convertible",
+          "Cabriolet",
           "Sedan",
           "Station Wagon",
           "SUV",
@@ -2507,7 +2507,7 @@
         "title": "Service Type",
         "description": [
           "Please select a cleaning package.",
-          "Tailored solutions for spotless spaces!"
+          " "
         ],
         "options": ["Anywhere Autocare", "Subscription Plans"],
         "subscriptionDisabledNote": "You already have an active subscription.",
@@ -2544,8 +2544,8 @@
         "step": 8,
         "title": "Schedule Appointment",
         "description": [
-          "Please select an appointment time.",
-          "We’re ready to clean when it’s most convenient for you!"
+          "Please note, times may vary due to traffic, travel time or weather conditions.",
+          "You will be contacted for the exact time"
         ],
         "error": [
           "Invalid data received from server",

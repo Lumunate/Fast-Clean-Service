@@ -8,8 +8,9 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const ServiceToggle = () => {
     const t = useTranslations("booking");
-    const { updateFormData, formData } = useMultiStepForm();
+    const { updateFormData, formData, currentStep } = useMultiStepForm();
     const [service, setService] = useState(formData.service || "Remote");
+    const isDisabled = currentStep >= 8;
 
     useEffect(() => {
         if (formData.service && formData.service !== service) {
@@ -18,10 +19,12 @@ const ServiceToggle = () => {
     }, [formData.service, service]);
 
     const handleChange = (event, newService) => {
-        if (newService === service) return;
+        if (!newService) return; // ignore null (deselect)
+        if (newService === service) return; // already selected
         updateFormData({ service: newService });
         setService(newService);
     };
+
 
     return (
         <Box>
@@ -31,7 +34,7 @@ const ServiceToggle = () => {
                 onChange={handleChange}
                 aria-label="service type"
             >
-                <StyledToggleButton value="Remote" aria-label="on-location service">
+                <StyledToggleButton value="Remote" disabled={isDisabled} aria-label="on-location service">
                     {t("toggle.0")}
                     <Tooltip title={t("toggleInfo.0")} arrow componentsProps={{
                         tooltip: {
@@ -44,7 +47,7 @@ const ServiceToggle = () => {
                         <InfoOutlinedIcon fontSize="small" sx={{ ml: 1, opacity: 0.6 }} />
                     </Tooltip>
                 </StyledToggleButton>
-                <StyledToggleButton value="Onsite" aria-label="onsite service">
+                <StyledToggleButton value="Onsite" disabled={isDisabled} aria-label="onsite service">
                     {t("toggle.1")}
                     <Tooltip title={t("toggleInfo.1")} arrow componentsProps={{
                         tooltip: {

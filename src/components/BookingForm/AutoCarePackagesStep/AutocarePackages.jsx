@@ -16,7 +16,6 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useAutocarePackages } from '../../../hooks/useAutocarePackages';
-import { englishPackages } from '../../../lib/enData.js';
 import { useLocale } from 'next-intl';
 
 const AutocarePackages = () => {
@@ -30,6 +29,7 @@ const AutocarePackages = () => {
     useEffect(() => {
         updateValidation(!!selectedPackage);
     }, [selectedPackage, updateValidation]);
+
     useEffect(() => {
         if (isMobile) {
             const adjustCardHeights = () => {

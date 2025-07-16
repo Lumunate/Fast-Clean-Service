@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import useMultiStepForm from '../../../hooks/useMultiStepForm';
 import { useValidation } from '../../../contexts/ValidationContext';
 import Image from 'next/image';
-import bg1 from '../../../../public/1.png';
-import bg2 from '../../../../public/voor1.jpg';
-import bg3 from '../../../../public/2.png';
+import bg1 from '../../../../public/toyotasteering.jpg';
+import bg2 from '../../../../public/mercedessteering.jpg';
+import bg3 from '../../../../public/ferraristeering.jpg';
 import { options } from '../../../app/[locale]/autocare/data';
 import {
   SubscriptionPkgsContainer,
@@ -76,6 +76,8 @@ const SubscriptionPackages = () => {
     form.formData?.selectedPackageType === 'Anywhere Autocare'
       ? options
       : subscriptionPackages;
+
+  console.log(packages);
 
   return (
     <SubscriptionPkgsContainer isMobile={isMobile}>
@@ -194,7 +196,7 @@ const SubscriptionPackagesCard = ({
 
       <SubscriptionCardHeader color={color}>
         <Box className="highlight" />
-        <Image src={image} alt="Subscription Package" width={207} height={-1} />
+        <Image src={image} alt="Subscription Package" width={207} height={220} />
         <Typography className="heading">{packageType}</Typography>
       </SubscriptionCardHeader>
 

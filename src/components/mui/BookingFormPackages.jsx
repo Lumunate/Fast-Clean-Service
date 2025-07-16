@@ -702,6 +702,7 @@ export const StepImageContainer = styled(Box)(({ theme, selected = false, curren
 export const StepLabel = styled(Typography)(({ theme, current }) => ({
   marginTop: "10px",
   fontFamily: "Unbounded",
+  textAlign: "center",
   fontSize: "12px",
   color: current ? theme.palette.mode === "dark" ? "#fff" : "black" : theme.palette.mode === "dark" ? "#FFFFFF" : "#A4A4A4",
   "@media (max-width: 1080px)": {
