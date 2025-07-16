@@ -18,7 +18,8 @@ import {
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import 'dayjs/locale/en';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import 'dayjs/locale/nl';
 import useMultiStepForm from '../../../hooks/useMultiStepForm';
 import useSnackbar from '../../../hooks/useSnackbar';
 import { useValidation } from '../../../contexts/ValidationContext';
@@ -28,7 +29,14 @@ import { useTranslations } from "next-intl";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
+dayjs.extend(updateLocale);
 dayjs.tz.setDefault('UTC');
+
+dayjs.updateLocale('nl', {
+    weekStart: 1,
+    weekdaysMin: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+});
+dayjs.locale('nl');
 
 const StyledCalendarContainer = styled(Box)(({ theme }) => ({
     '& .MuiPickersDay-root': {
@@ -77,13 +85,14 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
     const form = useMultiStepForm();
     const { updateValidation } = useValidation();
     const { openSnackbar } = useSnackbar();
-
+    const nowUtc = dayjs.utc();
     const [selectedDate, setSelectedDate] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [timeSlots, setTimeSlots] = useState([]);
     const [availableDates, setAvailableDates] = useState([]);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTodayUtc = selectedDate?.isSame(nowUtc, 'day');
 
     useEffect(() => {
         const fetchTimeSlots = async (offset) => {
@@ -124,6 +133,17 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
       fetchInitialData();
     }
     }, [form.formData.service, form.duration, form.currentStep, openSnackbar, forceFetchInitialData,t]);
+
+    const filteredSlots = (selectedDateTimeslots?.slots || []).filter(({ start }) => {
+        const slotUtc = dayjs.utc(
+            `${selectedDate.format('YYYY-MM-DD')}T${start}:00Z`
+        );
+        if (isTodayUtc) {
+            return slotUtc.isAfter(nowUtc);
+        }
+        return true;
+    });
+
 
     const handleDateChange = (newDate) => {
         setSelectedDate(newDate);
@@ -228,7 +248,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
     );
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="nl">
             <StyledCalendarContainer>
                 <Box p={isSmallScreen ? 2 : 4}>
                     <Typography variant="h6" gutterBottom textAlign="center" sx={{display:"none"}}>
@@ -302,8 +322,8 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                             <Typography variant="body1" sx={{ textAlign: 'center', mb: 2, fontSize:'1.6rem' }}>
                                 {selectedDate?.format('ddd, MMMM D')}
                             </Typography>
-                            {selectedDateTimeslots ? (
-                                selectedDateTimeslots.slots.map((slot, slotIndex) => (
+                            {filteredSlots.length
+                                ? filteredSlots.map((slot, slotIndex) => (
                                     <Button
                                         key={slotIndex}
                                         variant="outlined"

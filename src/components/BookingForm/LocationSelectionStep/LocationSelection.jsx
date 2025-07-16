@@ -271,7 +271,7 @@ const LocationSelection = () => {
               variant="h6"
               sx={{ fontWeight: 'bold', fontFamily: 'Unbounded' }}
             >
-              {modalInfo.includes('come to you') ? 'On Location' : 'On Branch'}
+                {modalInfo.includes('come to you') || modalInfo.includes('komen naar u') ? t("steps.0.options.0") : t("steps.0.options.1")}
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '14px', mt: 1 }}>
               {modalInfo}

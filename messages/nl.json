@@ -603,7 +603,7 @@
         "name": "Naam",
         "email": "Email",
         "vehicle_type": "Voertuigtype",
-        "fleet_size": "Vlootgrootte",
+        "fleet_size": "Aantal Voertuigen",
         "vehicle_types": {
           "none": "None",
           "hatchback": "Hatchback",
@@ -2445,7 +2445,7 @@
     ],
     "toggleInfo": [
       "Wij komen naar jou toe, waar je ook bent.",
-      "Bezoek onze locatie: Omweg 38, Assendelft."
+      "Bezoek onze locatie: Oude Blaauwweg 14, 1521 RN Wormerveer"
     ],
     "stepbar": [
       "Locatie",
@@ -2474,7 +2474,7 @@
           "Kies uw gewenste locatie voor de service",
           "Of het nu op locatie is of in ons filiaal, wij staan klaar om schoon te maken!"
         ],
-        "options": ["Op Locatie", "Onze vestiging", "Wij komen naar u toe, waar u ook bent.", "Kom langs bij ons filiaal, Samsonweg 1A, Wormerveer."]
+        "options": ["Op Locatie", "Onze vestiging", "Wij komen naar u toe, waar u ook bent.", "Kom langs bij ons filiaal, Oude Blaauwweg 14, 1521 RN Wormerveer"]
       },
       {
         "step": 2,
@@ -2495,14 +2495,14 @@
         "vehicle_types": [
           "Hatchback",
           "Coupé",
-          "Convertible",
+          "Cabrio",
           "Sedan",
-          "Station Wagon",
+          "Station Wagen",
           "SUV",
           "MPV",
           "Pick-up Truck",
-          "Van",
-          "Motorbike"
+          "Bestelwagen",
+          "Motorfiets"
         ]
       },
       {
@@ -2510,9 +2510,9 @@
         "title": "Service Type",
        "description": [
        "Selecteer een schoonmaakpakket.",
-       "Op maat gemaakte oplossingen voor vlekkeloze ruimtes!"
+       " "
        ],
-        "options": ["Anywhere Autocare", "Subscription Plans"]
+        "options": ["Autoreiniging", "Subscriptions"]
       },
       {
         "step": 5,
@@ -2543,8 +2543,8 @@
         "step": 8,
         "title": "Afspraak inplannen",
         "description": [
-          "Kies een datum en tijd die u het beste uitkomt.",
-          "Wij zorgen ervoor dat uw voertuig op het gewenste moment gereinigd wordt!"
+          "Let op, tijdstippen kunnen afwijken door verkeer, reistijd of weersomstandigheden.",
+          "Er wordt contact opgenomen voor de precieze tijd."
         ],
         "error": [
           "Ongeldige gegevens ontvangen van server",
