@@ -189,9 +189,6 @@ export default function Autocare() {
               sx={{
                 "@media (max-width: 600px)": {
                   bottom: cardBottom,
-                },
-                "@media (max-width: 600px)": {
-                  bottom: cardBottom,
                   "&:hover": {
                     bottom: locale === "en" ? "0%" : "-7% !important",
                   },
