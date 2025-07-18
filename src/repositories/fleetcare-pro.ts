@@ -3,7 +3,7 @@ import { IFleetCarePro } from "../types/fleetcare-pro";
 
 class FleetCareProRepository {
   static async getAllFleetCarePro(): Promise<any[]> {
-    return await FleetCarePro.find({ $or: [{ isComplete: false }, { isComplete: undefined }] });
+    return await FleetCarePro.find({ $or: [] });
   }
 
   static async completeFleetCarePro(id: string): Promise<any> {

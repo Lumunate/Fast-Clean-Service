@@ -40,7 +40,7 @@ export interface IBooking extends Document {
   vehicleDetails?: LicensePlateData | undefined | null;
   serviceAddons: { addons: string[]; detailing: string[] };
   lockTime: ILockTime;
-  bookingStatus: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+  bookingStatus: 'PENDING' | 'COMPLETED' | 'CANCELLED';
   payment: IPayment;
 }
 
@@ -82,7 +82,7 @@ const bookingSchema: Schema = new Schema({
   },
   bookingStatus: {
     type: String,
-    enum: ['PENDING', 'CONFIRMED', 'CANCELLED'],
+    enum: ['PENDING', 'COMPLETED', 'CANCELLED'],
     default: 'PENDING',
   },
   payment: {

@@ -67,3 +67,25 @@ export async function DELETE(req: NextRequest, res: NextApiResponse<ResponseData
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
 }
+
+export async function PATCH(req: NextRequest, res: NextApiResponse<ResponseData>) {
+  await dbConnect();
+
+  try {
+    const id = req.nextUrl.searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ success: false, message: "Missing booking ID" }, { status: 400 });
+    }
+
+    const updateData = await req.json(); // e.g., { bookingStatus: "COMPLETED" }
+    console.log(3333, updateData);
+    
+
+    const updatedBooking = await bookingService.editBooking(id, updateData);
+
+    return NextResponse.json({ success: true, data: updatedBooking });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, message: error.message }, { status: 500 });
+  }
+}
