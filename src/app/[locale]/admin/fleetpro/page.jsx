@@ -29,7 +29,7 @@ export default function FleetProCareAppointments() {
     try {
       const response = await fetch(`/api/fleetcare-pro`);
       const data = await response.json();
-      setData(data.data);
+      setData(data.data.reverse());
     } catch (error) {
       console.error(error);
     } finally {
@@ -132,7 +132,7 @@ export default function FleetProCareAppointments() {
       item.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.vehicleType?.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  
   return (
       <Box sx={{ padding: "16px" }}>
         <SectionHeading sx={{ marginBottom: "2rem" }}>FleetCare Pro Appointments</SectionHeading>
@@ -179,10 +179,10 @@ export default function FleetProCareAppointments() {
                           <TableCellCustom>{row.vehicleType}</TableCellCustom>
                           <TableCellCustom>{row.fleetSize}</TableCellCustom>
                           <TableCellCustom sx={{
-                            color: row.status === 'completed' ? 'success.main' : 'warning.main',
+                            color: row.isComplete === true ? 'success.main' : 'warning.main',
                             fontWeight: 'bold'
                           }}>
-                            {row.status === 'completed' ? 'Completed' : 'Pending'}
+                            {row.isComplete === true ? 'Completed' : 'Pending'}{console.log(3333, row.isComplete)}
                           </TableCellCustom>
                           <TableCellCustom>
                             <IconButton

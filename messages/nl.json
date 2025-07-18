@@ -2957,7 +2957,8 @@
     "Prijs",
     "Duur",
     "Betalingsstatus",
-    "Voltooid"
+    "Voltooid",
+    "Gepland"
   ]
 
   }
