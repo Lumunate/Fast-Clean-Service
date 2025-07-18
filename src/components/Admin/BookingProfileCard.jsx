@@ -15,6 +15,8 @@ import { useTranslations } from "next-intl";
 const BookingProfileCard = ({ handleOpenModal, booking }) => {
   const address = booking.street + ", " + booking.city + ", " + booking.zipCode;
   const t = useTranslations("admin_dashboard.booking_profile_card")
+  const bookingStatus = booking?.bookingStatus
+  
 
   return (
     <ProfileCard
@@ -43,7 +45,7 @@ const BookingProfileCard = ({ handleOpenModal, booking }) => {
           position: "absolute",
           top: "0",
           left: "0",
-          backgroundColor: "primary.accent",
+          backgroundColor: bookingStatus === "COMPLETED" ? "green" : "primary.accent",
           width: "100%",
           height: "5.5rem",
         }}

@@ -158,12 +158,17 @@ export default BookingsPage;
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useAutocarePackages } from "../../hooks/useAutocarePackages";
 const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBookingWithId }) => {
     const [rescheduleOpen, setResceduleOpen] = useState(false);
     const [editBooking, setEditBooking] = useState(null);
     const { openSnackbar } = useSnackbar();
     const t = useTranslations("admin_dashboard.admin_booking")
+
+    const locale = useLocale()
+
+     const { packages: apiPackages, loading, error, fetchPackages } = useAutocarePackages();
 
     async function handleDeleteBooking(id) {
         try {
@@ -191,11 +196,11 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     async function handleCompleteBooking() {
   try {
     const response = await fetch(`/api/booking?id=${selectedBooking._id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ status: "COMPLETED" }),
+      body: JSON.stringify({ bookingStatus: "COMPLETED" }),
     });
 
     if (!response.ok) {
@@ -203,7 +208,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     }
 
     openSnackbar("Booking marked as Completed", "success");
-    selectedBooking.status = "COMPLETED"; // Update local state (optional)
+    selectedBooking.bookingStatus = "COMPLETED"; // Update local state (optional)
   } catch (error) {
     openSnackbar("Error updating status: " + error.message, "error");
   }
@@ -232,6 +237,29 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     const handleCloseEditModal = () => {
         setEditBooking(null);
     };
+// First make sure these are defined in the same scope
+const pkgsType = selectedBooking?.packageType?.toLowerCase();
+const packagesArray = apiPackages?.packages[pkgsType];
+const matchedPackage = packagesArray?.find(pkg => pkg.id === selectedBooking?.packageName);
+
+// Get all additional options
+const addOns = matchedPackage?.additionalOptions || {};
+const addOnsBooking = selectedBooking?.serviceAddons || {};
+//Get all detailing options and match
+const detailingOptions = addOns?.detailing || [];
+const selectedDetailingIds = addOnsBooking?.detailing || [];
+const matchedDetails = detailingOptions.filter(option =>
+  selectedDetailingIds.includes(option._id)
+);
+const matchedNames = matchedDetails.map(option => option.name[locale]);
+
+//to find name of addons by ids which are matching
+const matchedInteriorExteriorAddons = [
+  ...(matchedPackage?.additionalOptions?.interior || []),
+  ...(matchedPackage?.additionalOptions?.exterior || [])
+].filter(addon => addOnsBooking?.addons?.includes(addon._id));
+
+const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => addon.name[locale]);
 
     if (!open) return null;
 
@@ -273,7 +301,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
 
                 <DialogContent>
                     <ModalLabel sx={{ fontSize: "1.4rem", marginBottom: "1.2rem" }}>
-                        {t("1")}: {selectedBooking.status === "COMPLETED" ? "Completed" : "Pending"}
+                        {t("1")}: {selectedBooking.bookingStatus === "COMPLETED" ? "Completed" : "Pending"}
                     </ModalLabel>
                     {/* Outer Bordered Card for Glassmorph effect */}
                     <Box>
@@ -327,15 +355,15 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("12")}</ModalLabel>
-                                    <ModalValue>
-                                        {selectedBooking.serviceAddons.addons && selectedBooking.serviceAddons?.addons?.join(", ")}
+                                    <ModalValue style={{ whiteSpace: 'pre-line' }}>
+                                        {matchedInteriorExteriorNames?.join("\n")}
                                     </ModalValue>
                                 </ModalContentBox>
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("13")}</ModalLabel>
-                                    <ModalValue>
-                                        {selectedBooking.serviceAddons.detailing && `, ${selectedBooking.serviceAddons?.detailing?.join(", ")}`}
+                                    <ModalValue style={{ whiteSpace: 'pre-line' }}>
+                                        {matchedNames?.join("\n")}
                                     </ModalValue>
                                 </ModalContentBox>
                             </Box>
@@ -363,6 +391,17 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                 </ModalContentBox>
 
                                 <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("21")}</ModalLabel>
+                                    <ModalValue>{new Date(selectedBooking.lockTime.start).toLocaleString("en-GB", {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    })}</ModalValue>
+                                </ModalContentBox>
+
+                                <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("19")}</ModalLabel>
                                     <ModalValue>
                                         {selectedBooking.payment?.status?.toUpperCase() || 'PENDING'}
@@ -373,7 +412,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                     </Box>
 
                     {/* Complete Button */}
-                    {selectedBooking.status !== "COMPLETED" && (
+                    {selectedBooking.bookingStatus !== "COMPLETED" && (
                     <Box
                         sx={{
                             display: "flex",

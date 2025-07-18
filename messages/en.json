@@ -2957,7 +2957,8 @@
     "Price",
     "Duration",
     "Payment Status",
-    "Complete"
+    "Complete",
+    "Scheduled"
   ]
   }
 
