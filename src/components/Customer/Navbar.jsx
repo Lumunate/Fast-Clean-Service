@@ -110,6 +110,12 @@ const Navbar = ({ toggleDrawer, handleTabChange }) => {
                 >
                     {t("title")}
                 </Typography>
+
+                <Box sx={{ flexGrow: 1 }} />
+
+                <IconButton edge="end" color="inherit" onClick={() => router.push("/")}>
+                    <HomeIcon />
+                </IconButton>
             </Toolbar>
         </AppBar>
     );
