@@ -2864,7 +2864,8 @@
           "Addons",
           "Detailing",
           "Lock Time Start",
-          "Lock Time End"
+          "Lock Time End",
+          "Payment Status"
         ]
       }
     ]
