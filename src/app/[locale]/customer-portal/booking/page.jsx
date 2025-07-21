@@ -51,6 +51,7 @@ const BookingsPage = () => {
         t("table_headers.18"),
         t("table_headers.19"),
         t("table_headers.20"),
+        t("table_headers.21"),
     ];
 
     const handleSearchChange = (event) => {
@@ -194,6 +195,7 @@ const BookingsPage = () => {
                                         <TableCellCustom>
                                             {new Date(booking.lockTime.end).toLocaleString()}
                                         </TableCellCustom>
+                                        <TableCellCustom>{booking.payment.status}</TableCellCustom>
                                     </TableRowCustom>
                                 ))}
                             </TableBody>
