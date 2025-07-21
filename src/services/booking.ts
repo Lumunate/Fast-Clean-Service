@@ -84,41 +84,13 @@ class BookingService {
 
   async editBooking(id: string, bookingData: Partial<IBooking>): Promise<IBooking> {
     const booking = await bookingRepository.findById(id);
-    if (!booking) {
-      throw new Error("Booking not found");
-    }
+    if (!booking) throw new Error("Booking not found");
 
-    Object.keys(bookingRepository).forEach((key) => {
-      if (bookingData[key]) {
-        booking[key] = bookingData[key];
-      }
+    Object.entries(bookingData).forEach(([field, value]) => {
+      (booking as any)[field] = value;
     });
 
-    const appointment = new Date(bookingData.appointmentTimestamp);
-    const price = this.calculatePrice(booking);
-
-    await this.sendConfirmationEmail(
-      booking.email,
-      booking.firstName,
-      booking.serviceName,
-      appointment.toLocaleDateString("en-US", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
-      appointment.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }),
-      `${booking.street}, ${booking.city}, ${booking.zipCode}`,
-      price
-    );
-
-    await booking.save();
-
-    return booking;
+    return booking.save();
   }
 
   async getAllBookingsByUserId(userEmail: string): Promise<IBooking[]> {
