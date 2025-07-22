@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 import { translatedString, vehicleOptionSchema } from "./SubscriptionPackage";
 
-const translatedString = {
-  nl: { type: String, required: true },
-  en: { type: String, default: "" },        // you can default to empty
-};
-
 const optionSchema = new mongoose.Schema({
   name: translatedString,
   additionalCost: mongoose.Schema.Types.Mixed,
