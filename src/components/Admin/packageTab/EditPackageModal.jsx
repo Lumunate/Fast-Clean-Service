@@ -56,7 +56,7 @@ const EditPackageModal = ({
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth="lg">
       <StyledDialogTitle>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem", marginBottom: "0.5rem" }}>Edit Package</Typography>
+        <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem", marginBottom: "0.5rem" }}>{t("edit_packages.0")}</Typography>
           <Typography sx={{ fontWeight: 600, color: "#A7A5B0", fontSize: "1.4rem", marginBottom: "2rem" }}>
            {t("description3")}
           </Typography>
@@ -68,7 +68,7 @@ const EditPackageModal = ({
       <StyledDialogContent dividers>
         {/* Package Name */}
         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "2.5rem" }}>
-          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>Package Name:</Typography>
+          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>{t("edit_packages.1")}</Typography>
           <TextField
               variant="outlined"
               label="Package Name"
@@ -88,7 +88,7 @@ const EditPackageModal = ({
 
         {/* Base Price */}
         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "2.5rem" }}>
-          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>Base Price (€):</Typography>
+          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>{t("edit_packages.2")}</Typography>
           <TextField
             variant="outlined"
             type="number"
@@ -109,7 +109,7 @@ const EditPackageModal = ({
 
         {/* Duration */}
         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "2.5rem" }}>
-          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>Duration (min):</Typography>
+          <Typography sx={{ width: "200px", fontSize: "1.6rem", fontWeight: "500" }}>{t("edit_packages.3")}</Typography>
           <TextField
             variant="outlined"
             type="number"
@@ -131,13 +131,13 @@ const EditPackageModal = ({
           <SubSectionTitle>Vehicle-Specific Pricing</SubSectionTitle>
           <Grid container spacing={2} sx={{ marginBottom: "1rem" }}>
             <Grid item xs={12} sm={4}>
-              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>Vehicle Type</Typography>
+              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>{t("edit_packages.4")}</Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>Additional Price (€)</Typography>
+              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>{t("edit_packages.5")}</Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>Additional Time (min)</Typography>
+              <Typography sx={{ fontWeight: "500", fontSize: "1.4rem" }}>{t("edit_packages.6")}</Typography>
             </Grid>
           </Grid>
           {Object.keys(selectedPackage.vehicleOptions).map((vehicle, index) => (
@@ -198,7 +198,7 @@ const EditPackageModal = ({
 
         {/* Included Services */}
         <Box sx={{ mb: "2.5rem", mt: "2rem" }}>
-          <SubSectionTitle>Included Services</SubSectionTitle>
+          <SubSectionTitle>{t("edit_packages.7")}</SubSectionTitle>
 
           {services.map((service, idx) => {
             const nameObj = typeof service === "string"
@@ -498,9 +498,9 @@ const EditPackageModal = ({
                   marginBottom: "2rem",
                 }}
               >
-                <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem" }}>Detailing Options</Typography>
+                <Typography sx={{ fontWeight: "bold", fontSize: "1.8rem" }}>{t("edit_packages.8")}</Typography>
                 <StyledButton variant="contained" onClick={() => handleAddAdditionalOption("detailing")}>
-                  Add Detailing Option
+                  {t("edit_packages.9")}
                 </StyledButton>
               </Box>
               <Grid container spacing={2}>
