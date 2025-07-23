@@ -52,14 +52,19 @@ const PackageSelection = () => {
         });
   }, [session]);
 
-  // 2) Mark this step valid only once they've selected something
   useEffect(() => {
     updateValidation(!!selectedOption);
   }, [selectedOption, updateValidation]);
 
   const handlePackageSelect = (pkgName) => {
-    // If this is the subscription card and they already have one…
-    if (pkgName === t("steps.3.options.1") && hasSubscription) {
+    let mappedName = pkgName;
+
+    if (pkgName === 'Autoreiniging') {
+      mappedName = 'Anywhere Autocare';
+    } else if (pkgName === 'Subscriptions') {
+      mappedName = 'Subscription Plans';
+    }
+    if (mappedName === 'Subscription Plans' && hasSubscription) {
       openSnackbar(
           t('steps.3.errors.subscriptionExists'),
           { severity: 'info' }
@@ -67,10 +72,11 @@ const PackageSelection = () => {
       return;
     }
 
-    setSelectedOption(pkgName);
-    form.updateFormData({ selectedPackageType: pkgName });
+    setSelectedOption(mappedName);
+    form.updateFormData({ selectedPackageType: mappedName });
     form.nextStep();
   };
+
 
   return (
     <Box

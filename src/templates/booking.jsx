@@ -37,9 +37,32 @@ const BookingConfirmationEmail = ({ name, packageName, date, time, location, pri
             </Text>
           </Section>
           <Text style={paragraph}>If you have any questions or need to make changes, please contact us.</Text>
+          <Text
+              style={{
+                ...paragraph,
+                fontSize: "14px",
+                color: "#aa0000",
+                textAlign: "center",
+                marginTop: "10px",
+              }}
+          >
+            Please note: appointments where we come to your location are approximate and may vary by up to 60–120 minutes.
+          </Text>
           <Button px={20} py={12} style={btn} href={process.env.NEXT_PUBLIC_BASE_URL}>
             View Booking Details
           </Button>
+          <Text style={paragraph}>
+            By booking with us, you agree to our{" "}
+            <a
+                href={`${baseUrl}/terms-and-conditions`}
+                style={{
+                  color: accentColor,
+                  textDecoration: "underline",
+                }}
+            >
+              Terms & Conditions
+            </a>.
+          </Text>
           <Text style={footer}>This is an automated email. Please do not reply directly to this message.</Text>
         </Container>
       </Body>

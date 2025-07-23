@@ -2512,7 +2512,11 @@
        "Selecteer een schoonmaakpakket.",
        " "
        ],
-        "options": ["Autoreiniging", "Subscriptions"]
+        "options": ["Autoreiniging", "Subscriptions"],
+        "subscriptionDisabledNote": "Je hebt al een actief abonnement.",
+        "errors": {
+          "subscriptionExists": "Je hebt al een abonnement. Neem contact met ons op via de contactpagina om je abonnement te wijzigen of op te zeggen."
+        }
       },
       {
         "step": 5,
