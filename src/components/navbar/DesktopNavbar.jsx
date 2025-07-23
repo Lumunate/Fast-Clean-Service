@@ -143,7 +143,7 @@ const DesktopNavbar = () => {
           <CustomLink href="mailto:info@fastcleanservice.nl">
             <NavLinkButton sx={{ display:'flex', gap:'8px'}}><FontAwesomeIcon icon={faEnvelope} />info@fastcleanservice.nl</NavLinkButton>
           </CustomLink>
-          <CustomLink href="https://wa.me/1234567890">
+          <CustomLink href="https://wa.me/message/M7UOKFDWKTAUI1">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faWhatsapp} /></NavLinkButton>
           </CustomLink>
           <CustomLink href="https://www.facebook.com/FastCleanServiceNL/">

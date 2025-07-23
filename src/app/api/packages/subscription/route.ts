@@ -58,6 +58,8 @@ export async function PUT(req: NextRequest) {
     }
     return NextResponse.json(pkg);
   } catch (error) {
+    console.log(error);
+    
     if (error instanceof ZodError) {
       return NextResponse.json({ message: 'Validation error', errors: error.errors }, { status: 400 });
     }
