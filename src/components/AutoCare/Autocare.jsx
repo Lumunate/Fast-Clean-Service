@@ -1072,7 +1072,7 @@ const AutoCare = () => {
                       fontWeight: 300,
                     }}
                   >
-                    {pkg?.description}
+                    {pkg?.description[locale]}
                   </Typography>
 
                   <Typography
@@ -1117,7 +1117,7 @@ const AutoCare = () => {
                           marginTop: "0.25rem",
                         }}
                       />
-                      {point}
+                      {point[locale]}
                     </ListItem>
                   ))}
                 </CardDetails>
@@ -1148,17 +1148,15 @@ const AutoCare = () => {
                   <CardButton
                     onClick={() => handleSubCatChange(pkg?.name)}
 
-                    disabled= {pkg?.name === "Compleet" || pkg?.name === "Complete"}
-
                     sx={{
                       backgroundColor: subCat === pkg?.name ? color : "",
                       color: "black !important",
                       justifyContent: "center",
 
-                      cursor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "not-allowed !important" : "pointer",
-                      pointerEvents: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "visible !important" : "pointer",
+                      cursor: "pointer",
+                      pointerEvents: "pointer",
                       "&:hover": {
-                        backgroundColor: pkg?.name === "Compleet" || pkg?.name === "Complete" ? "#dedede" : `${color} !important`,
+                        backgroundColor: `${color} !important`,
 
                         color: "primary.main !important",
                       },

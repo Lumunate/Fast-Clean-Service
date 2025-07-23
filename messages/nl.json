@@ -2930,6 +2930,14 @@
     }
   },
   "admin_dashboard": {
+    "title":"Pakket- en prijsbeheer",
+    "subTitle1":"Servicepakketten",
+    "description1":"Beheer uw servicepakketten, prijsstructuur en add-ons",
+    "subTitle2":"Abonnement Pakketten",
+    "description2":"Beheer uw abonnementen en prijzen",
+    "edit":"Pakket bewerken",
+    "description3" :"Wijzig hieronder de pakketdetails, prijzen en add-ons.",
+    "button":"Wijzigingen opslaan",
     "booking_profile_card":[
       "Telefoonnummer:",
       "Pakketnaam:",

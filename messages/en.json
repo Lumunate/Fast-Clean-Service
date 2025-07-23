@@ -2930,6 +2930,14 @@
     }
   },
   "admin_dashboard": {
+    "title":"Package & Pricing Management",
+    "subTitle1":"Service Packages",
+    "description1":"Manage your service packages, pricing structure, and add-ons",
+    "subTitle2":"Subscription Packages",
+    "description2":"Manage your subscription packages and pricing",
+    "edit":"Edit Package",
+    "description3" :"Make changes to the package details, pricing, and add-ons below.",
+    "button":"Save Changes",
     "booking_profile_card":[
       "Phone Number:",
       "Package Name:",
