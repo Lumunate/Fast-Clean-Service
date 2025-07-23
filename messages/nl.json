@@ -2845,6 +2845,7 @@
         "search_placeholder": "Zoeken op voertuig, service of stad",
         "table_headers": [
           "Klantnaam",
+          "Kenteken",
           "Bedrijfsnaam",
           "Straat",
           "Postcode",
@@ -2863,9 +2864,9 @@
           "Type",
           "Aanvullingen",
           "Details",
-          "Start vergrendelingstijd",
-          "Einde vergrendelingstijd",
-          "Betalingsstatus"
+          "Betalingsstatus",
+          "Betalingsaanbieder",
+          "Bericht"
         ]
       }
     ]

@@ -2845,13 +2845,14 @@
         "search_placeholder": "Search by Vehicle, Service, or City",
         "table_headers": [
           "Customer Name",
+          "License Plate",
           "Company Name",
           "Street",
           "Zip Code",
           "City",
           "Email",
           "Phone Number",
-          "Vehicle",
+          "Vehicle Make/Model",
           "Vehicle Type",
           "Service Name",
           "Package",
@@ -2863,9 +2864,9 @@
           "Type",
           "Addons",
           "Detailing",
-          "Lock Time Start",
-          "Lock Time End",
-          "Payment Status"
+          "Payment Status",
+          "Payment Provider",
+          "Message"
         ]
       }
     ]

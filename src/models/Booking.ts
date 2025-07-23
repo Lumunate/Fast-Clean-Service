@@ -48,6 +48,7 @@ const bookingSchema: Schema = new Schema({
   firstName: { type: String, required: true },
   surname: { type: String, required: true },
   companyName: String,
+  licensePlate: String,
   street: String,
   zipCode: String,
   city: String,
