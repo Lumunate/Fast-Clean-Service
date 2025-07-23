@@ -7,7 +7,7 @@ import { ModalButton, ModalCard, StyledCard } from "../../mui/AdminPkgs";
 import { useCoupons } from "../../../hooks/useCoupons";
 import dayjs from "dayjs";
 
-const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
+const NewCouponModal = ({ openModal, setOpenModal, setCoupons, t }) => {
   const { createCoupon } = useCoupons();
 
   const [formData, setFormData] = useState({
@@ -77,12 +77,12 @@ const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
             <CloseIcon />
           </IconButton>
           <Typography variant="h6" component="h2" sx={{ fontSize: "1.4rem", marginBottom: "20px" }}>
-            Add New Service
+            {t("10")}
           </Typography>
           <StyledCard sx={{ backgroundColor: "#f0f0f0", backdropFilter: "blur(10px)" }}>
             <form onSubmit={handleCreateCoupon}>
               <CustomFormTextField
-                label="Code"
+                label={t("11")}
                 name="code"
                 value={formData.code}
                 onChange={handleFormChange}
@@ -90,7 +90,7 @@ const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
                 margin="normal"
               />
               <CustomFormTextField
-                label="Discount Percentage"
+                label={t("12")}
                 name="discountPercentage"
                 value={formData.discountPercentage}
                 onChange={handleFormChange}
@@ -98,7 +98,7 @@ const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
                 margin="normal"
               />
               <CustomFormDateField
-                label="Valid From"
+                label={t("13")}
                 name="validFrom"
                 value={formData.validFrom}
                 onChange={(d) => {
@@ -112,7 +112,7 @@ const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
                 }}
               />
               <CustomFormDateField
-                label="Valid Until"
+                label={t("14")}
                 name="validUntil"
                 value={formData.validUntil}
                 onChange={(d) => {
@@ -126,14 +126,14 @@ const NewCouponModal = ({ openModal, setOpenModal, setCoupons }) => {
                 }}
               />
               <CustomFormTextField
-                label="Max Uses"
+                label={t("15")}
                 name="maxUses"
                 value={formData.maxUses}
                 onChange={handleFormChange}
                 fullWidth
               />
               <ModalButton type="submit" sx={{ fontSize: "1.4rem", width: "max-content", margin: "20px auto" }}>
-                Submit
+                {t("16")}
               </ModalButton>
             </form>
           </StyledCard>

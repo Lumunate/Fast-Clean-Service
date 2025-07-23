@@ -22,6 +22,7 @@ import {
   TableHeaderCell,
   TableRowCustom,
 } from "../../../../components/mui/AdminPkgs";
+import { useTranslations } from "next-intl";
 
 const otherVehiclesData = [
   {
@@ -174,6 +175,7 @@ const OtherVehiclesPage = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const t = useTranslations("admin_dashboard.other_vehicle")
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
@@ -204,7 +206,7 @@ const OtherVehiclesPage = () => {
 
   return (
     <Box sx={{ padding: "16px" }}>
-      <SectionHeading>Other Vehicles Management</SectionHeading>
+      <SectionHeading>{t("0")}</SectionHeading>
 
       <Grid container spacing={3}>
         {/* <Grid item xs={12} md={5}>
@@ -267,9 +269,9 @@ const OtherVehiclesPage = () => {
         <Grid item xs={12} md={7}>
           <StyledCard>
             <CardBody>
-              <CardHeading>Vehicles List</CardHeading>
+              <CardHeading>{t("1")}</CardHeading>
               <TextField
-                label="Search by License Plate"
+                label={t("2")}
                 variant="outlined"
                 value={searchQuery}
                 onChange={handleSearch}
@@ -287,10 +289,10 @@ const OtherVehiclesPage = () => {
                 <Table>
                   <TableHead>
                     <TableRowCustom>
-                      <TableHeaderCell>License Plate</TableHeaderCell>
-                      <TableHeaderCell>Vehicle Model</TableHeaderCell>
-                      <TableHeaderCell>Vehicle Type</TableHeaderCell>
-                      <TableHeaderCell>Owner</TableHeaderCell>
+                      <TableHeaderCell>{t("3")}</TableHeaderCell>
+                      <TableHeaderCell>{t("4")}</TableHeaderCell>
+                      <TableHeaderCell>{t("5")}</TableHeaderCell>
+                      <TableHeaderCell>{t("6")}</TableHeaderCell>
                     </TableRowCustom>
                   </TableHead>
                   <TableBody>

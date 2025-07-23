@@ -17,27 +17,30 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import NewCouponModal from "./NewCouponModal";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { useTranslations } from "next-intl";
 
-const tableHeaders = ["ID", "Code", "Current Uses", "Discount Percentage", "Valid From", "Valid To", "Actions"];
 
 const CouponsCard = () => {
   const { getCoupons, deleteCoupon } = useCoupons();
   const [coupons, setCoupons] = useState([]);
 
+  const t = useTranslations("admin_dashboard.coupons")
+  
   useEffect(() => {
     const loadCoupons = async () => {
       const data = await getCoupons();
       setCoupons(data);
     };
-
+    
     loadCoupons();
   }, []);
-
+  
   const handleDelete = (id) => {
     setCoupons(coupons.filter((_, i) => i !== id));
     deleteCoupon(id);
   };
-
+  const tableHeaders = [t("3"), t("4"), t("5"), t("6"), t("7"), t("8"), t("9")];
+  
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -46,11 +49,11 @@ const CouponsCard = () => {
         <CardBody>
           <Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "1.5rem" }}>
             <Box>
-              <CardHeading>All Coupons</CardHeading>
-              <CardSubheading>Manage all your Coupons.</CardSubheading>
+              <CardHeading>{t("0")}</CardHeading>
+              <CardSubheading>{t("1")}</CardSubheading>
             </Box>
             <ButtonLearnMore onClick={() => setOpenModal(true)} sx={{ marginLeft: "1rem", height: "max-content", p: 2 }}>
-              Add Coupon
+              {t("2")}
             </ButtonLearnMore>
           </Box>
 
@@ -103,7 +106,7 @@ const CouponsCard = () => {
       </StyledCard>
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <NewCouponModal openModal={openModal} setOpenModal={setOpenModal} setCoupons={setCoupons} />
+        <NewCouponModal openModal={openModal} setOpenModal={setOpenModal} setCoupons={setCoupons} t={t} />
       </LocalizationProvider>
     </>
   );

@@ -35,6 +35,7 @@ import {error} from "next/dist/build/output/log";
 
 const BookingsPage = ({}) => {
     const { bookings: bookingsData } = useBookings();
+    const t = useTranslations("admin_dashboard.admin_booking")
     
     const isMobile = useMediaQuery("(max-width:600px)");
     const [selectedBooking, setSelectedBooking] = useState(null);
@@ -94,7 +95,7 @@ const BookingsPage = ({}) => {
                         width: "100%",
                     }}
                 >
-                    <SectionHeading>Bookings</SectionHeading>
+                    <SectionHeading>{t("23")}</SectionHeading>
 
                     {isMobile && (
                         <Box sx={{ display: "flex", gap: 1 }}>
@@ -148,7 +149,7 @@ const BookingsPage = ({}) => {
                 selectedBooking={selectedBooking}
                 removeBookingWithId={removeBookingwithId}
             />
-            <NewBookingFormModal open={!!newBooking} handleCloseModal={handleCloseNewBookingModal} />
+            <NewBookingFormModal t={t} open={!!newBooking} handleCloseModal={handleCloseNewBookingModal} />
         </Box>
     );
 };
@@ -468,7 +469,7 @@ const BookingPageTextField = ({ searchQuery, handleSearchChange }) => {
     );
 };
 
-const NewBookingFormModal = ({ handleCloseModal, open }) => {
+const NewBookingFormModal = ({ handleCloseModal, open, t }) => {
     if (!open) return null;
 
     return (
@@ -481,7 +482,7 @@ const NewBookingFormModal = ({ handleCloseModal, open }) => {
                     fontSize: "1.6rem",
                 }}
             >
-                Make a new Booking
+                {t("22")}
                 <IconButton onClick={handleCloseModal}>
                     <CloseIcon />
                 </IconButton>
