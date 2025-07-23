@@ -17,17 +17,19 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import useSnackbar from "../../../../hooks/useSnackbar";
 import { ModalContainer, ModalHeading } from "../../../../components/BookingForm/ScheduleAppointmentStep/ScheduleAppointment.style";
+import { useTranslations } from "next-intl";
 
 const ShopManagementPage = () => {
+  const t = useTranslations("admin_dashboard.shop_management")
   return (
     <Box sx={{ padding: "16px" }}>
-      <SectionHeading>Shop Management</SectionHeading>
+      <SectionHeading>{t("0")}</SectionHeading>
 
       <Grid container spacing={3}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <NumberOfVehicles />
+          <NumberOfVehicles t={t} />
         </LocalizationProvider>
-        <ShopOpen />
+        <ShopOpen t={t}/>
       </Grid>
     </Box>
   );
@@ -35,13 +37,14 @@ const ShopManagementPage = () => {
 
 export default ShopManagementPage;
 
-const NumberOfVehicles = () => {
+const NumberOfVehicles = ({t}) => {
   const { openSnackbar } = useSnackbar();
 
   const [numVehicles, setNumVehicles] = useState(5);
   const [vehiclesDate, setVehiclesDate] = useState(dayjs());
   const [refetchNumVehicles, setRefetchNumVehicles] = useState(false);
   const [ShowingNumVehicles, setShowingNumVehicles] = useState("Loading...");
+
 
   useEffect(() => {
     fetch(`/api/booking/cars?date=${new Date().toISOString()}`)
@@ -91,19 +94,19 @@ const NumberOfVehicles = () => {
     <Grid item xs={12} md={8}>
       <StyledCard>
         <CardBody>
-          <CardHeading>Available Vehicles</CardHeading>
+          <CardHeading>{t("1")}</CardHeading>
 
           <Box>
             <ModalContentBox>
-              <ModalLabel sx={{ fontSize: "1.4rem" }}>Currently Available Vehicles</ModalLabel>
+              <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("2")}</ModalLabel>
               <ModalValue>{ShowingNumVehicles}</ModalValue>
             </ModalContentBox>
 
             <Box sx={{ marginTop: "3rem" }}>
-              <CardHeading>Change Available Vehicles</CardHeading>
+              <CardHeading>{t("3")}</CardHeading>
               <form onSubmit={handleNumVehiclesSubmit}>
                 <CustomFormTextField
-                  label="Number of Vehicles"
+                  label={t("4")}
                   name="vehicles"
                   value={numVehicles}
                   onChange={handleNumVehiclesChange}
@@ -114,7 +117,7 @@ const NumberOfVehicles = () => {
                   }}
                 />
                 <CustomFormDateField
-                  label="Date (optional)"
+                  label={t("5")}
                   name="date"
                   value={vehiclesDate}
                   onChange={handleVehiclesDateChange}
@@ -132,7 +135,7 @@ const NumberOfVehicles = () => {
                   }}
                 >
                   <ModalButton sx={{}} type="submit">
-                    Save
+                    {t("6")}
                   </ModalButton>
                 </Box>
               </form>
@@ -144,7 +147,7 @@ const NumberOfVehicles = () => {
   );
 };
 
-const ShopOpen = () => {
+const ShopOpen = ({t}) => {
   const [availableDates, setAvailableDates] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -191,7 +194,7 @@ const ShopOpen = () => {
     <Grid item xs={12} md={4}>
       <StyledCard>
         <CardBody>
-          <CardHeading>Shop Open</CardHeading>
+          <CardHeading> {t("7")}</CardHeading>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateCalendar

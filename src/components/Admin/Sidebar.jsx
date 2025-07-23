@@ -9,34 +9,37 @@ import PackageIcon from "@mui/icons-material/Category";
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import {useState} from 'react';
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Sidebar = ({ drawerOpen, handleSignOut }) => {
   const [selectedTab, setSelectedTab] = useState("Dashboard");
+
+  const  t = useTranslations("admin_dashboard.sidebar")
 
   const router = useRouter();
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
     let route;
     switch (tab) {
-      case "Dashboard":
+      case t("0"):
         route = "/admin/dashboard";
         break;
-      case "Bookings":
+      case t("1"):
         route = "/admin/booking";
         break;
-      case "FleetCare Pro":
+      case t("2"):
         route = "/admin/fleetpro";
         break;
-      case "Other Vehicles Management":
+      case t("3"):
         route = "/admin/othervehicles";
         break;
-      case "Shop Management":
+      case t("4"):
         route = "/admin/shop";
         break;
-      case "Package Management":
+      case t("5"):
         route = "/admin/package-management";
         break;
-      case "Coupon Management":
+      case t("6"):
         route = "/admin/coupons";
         break;
       default:
@@ -68,13 +71,13 @@ const Sidebar = ({ drawerOpen, handleSignOut }) => {
           <Box sx={{ flexGrow: 1, overflowY: "auto" }}>
             <List>
               {[
-                { text: "Dashboard", icon: <HomeIcon /> },
-                { text: "Bookings", icon: <EventIcon /> },
-                { text: "FleetCare Pro", icon: <DirectionsCarIcon /> },
-                { text: "Other Vehicles Management", icon: <DirectionsBoatIcon /> },
-                { text: "Shop Management", icon: <StoreIcon /> },
-                { text: "Package Management", icon: <PackageIcon /> },
-                { text: "Coupon Management", icon: <LocalActivityIcon /> },
+                { text: t("0"), icon: <HomeIcon /> },
+                { text: t("1"), icon: <EventIcon /> },
+                { text: t("2"), icon: <DirectionsCarIcon /> },
+                { text: t("3"), icon: <DirectionsBoatIcon /> },
+                { text: t("4"), icon: <StoreIcon /> },
+                { text: t("5"), icon: <PackageIcon /> },
+                { text: t("6"), icon: <LocalActivityIcon /> },
               ].map((item) => (
                   <ListItem
                       button
