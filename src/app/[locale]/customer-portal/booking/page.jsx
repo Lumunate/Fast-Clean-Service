@@ -52,7 +52,15 @@ const BookingsPage = () => {
         t("table_headers.19"),
         t("table_headers.20"),
         t("table_headers.21"),
+        t("table_headers.22")
     ];
+
+    function toTitleCase(str) {
+        return str
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+    }
 
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
@@ -161,6 +169,7 @@ const BookingsPage = () => {
                                         <TableCellCustom>
                                             {`${booking.firstName} ${booking.surname}`}
                                         </TableCellCustom>
+                                        <TableCellCustom>{booking.licensePlate || "N/A"}</TableCellCustom>
                                         <TableCellCustom>{booking.companyName || "N/A"}</TableCellCustom>
                                         <TableCellCustom>{booking.street || "N/A"}</TableCellCustom>
                                         <TableCellCustom>{booking.zipCode || "N/A"}</TableCellCustom>
@@ -170,7 +179,9 @@ const BookingsPage = () => {
                                         <TableCellCustom>{booking.vehicleMakeAndModel}</TableCellCustom>
                                         <TableCellCustom>{booking.vehicleType}</TableCellCustom>
                                         <TableCellCustom>{booking.serviceName}</TableCellCustom>
-                                        <TableCellCustom>{booking.packageName}</TableCellCustom>
+                                        <TableCellCustom>
+                                            {toTitleCase(booking.packageName)}
+                                        </TableCellCustom>
                                         <TableCellCustom>
                                             {new Date(booking.appointmentTimestamp).toLocaleString()}
                                         </TableCellCustom>
@@ -189,13 +200,9 @@ const BookingsPage = () => {
                                         <TableCellCustom>
                                             {booking.serviceAddons.detailing?.join(", ") || "None"}
                                         </TableCellCustom>
-                                        <TableCellCustom>
-                                            {new Date(booking.lockTime.start).toLocaleString()}
-                                        </TableCellCustom>
-                                        <TableCellCustom>
-                                            {new Date(booking.lockTime.end).toLocaleString()}
-                                        </TableCellCustom>
                                         <TableCellCustom>{booking.payment.status}</TableCellCustom>
+                                        <TableCellCustom>{booking.payment.provider || "N/A"}</TableCellCustom>
+                                        <TableCellCustom>{booking.message || "N/A"}</TableCellCustom>
                                     </TableRowCustom>
                                 ))}
                             </TableBody>
