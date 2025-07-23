@@ -2972,8 +2972,94 @@
     "Duur",
     "Betalingsstatus",
     "Voltooid",
-    "Gepland"
-  ]
+    "Gepland",
+    "Maak een nieuwe boeking",
+    "Reservering"
+  ],
+  "dashboard":[
+    "Aantal boekingen",
+    "FleetCare Pro-services",
+    "Andere voertuigservices",
+    "Meer informatie",
+    "Alle afspraken",
+    "Beheer al uw autowas- en schoonmaakboekingen.",
+    "Klantnaam",
+    "Voertuig",
+    "Kenteken",
+    "Locatie",
+    "Service",
+    "Pakket",
+    "Extra's",
+    "Detailgegevens",
+    "Afspraak",
+    "Prijs",
+    "Betaalstatus"
+  ],
+  "fleet_pro":[
+    "FleetCare Pro Afspraken",
+    "Service toevoegen",
+    "Bedrijf",
+    "Adres",
+    "Naam",
+    "E-mailadres",
+    "Voertuigtype",
+    "Vlootgrootte",
+    "Status",
+    "Acties",
+    "Laden...",
+    "Geen afspraken gevonden",
+    "Nieuwe service toevoegen",
+    "Bedrijfsnaam",
+    "Contactpersoon",
+    "Verzenden"
+],
+"other_vehicle":[
+"Beheer van andere voertuigen",
+"Voertuigenlijst",
+"Zoeken op kenteken",
+"Kenteken",
+"Voertuigmodel",
+"Voertuigtype",
+"Eigenaar"
+],
+"shop_management":[
+"Winkelbeheer",
+"Beschikbare voertuigen",
+"Momenteel beschikbare voertuigen",
+"Beschikbare voertuigen wijzigen",
+"Aantal voertuigen",
+"Datum (optioneel)",
+"Opslaan",
+"Winkel geopend"
+],
+"coupons":[
+"Alle coupons",
+"Beheer al uw coupons.",
+"Coupon toevoegen",
+"ID",
+"Code",
+"Huidig gebruik",
+"Kortingspercentage",
+"Geldig vanaf",
+"Geldig tot",
+"Acties",
+"Nieuwe service toevoegen",
+"Code",
+"Kortingspercentage",
+"Geldig vanaf",
+"Geldig tot",
+"Max. gebruik",
+"Verzenden"
+],
+"sidebar":[
+"Dashboard",
+"Boekingen",
+"FleetCare Pro",
+"Beheer van andere voertuigen",
+"Winkelbeheer",
+"Pakketbeheer",
+"Couponbeheer"
+]
 
   }
 }

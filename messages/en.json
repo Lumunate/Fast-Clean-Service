@@ -92,7 +92,7 @@
       ]
     },
     "auto": {
-      "title": "Premium Care Services"
+      "title": "Our Packages"
     },
     "gallery_section": {
       "title": "Before And After"
@@ -2968,8 +2968,94 @@
     "Duration",
     "Payment Status",
     "Complete",
-    "Scheduled"
-  ]
+    "Scheduled",
+    "Make a new Booking",
+    "Booking"
+  ],
+  "dashboard":[
+    "Number of Bookings",
+    "FleetCare Pro Services",
+    "Other Vehicle Services",
+    "Learn more",
+    "All Appointments",
+    "Manage all your car wash and cleaning bookings.",
+    "Customer Name",
+    "Vehicle",
+    "License Plate",
+    "Location",
+    "Service",
+    "Package",
+    "Add-ons",
+    "Detailing",
+    "Appointment",
+    "Price",
+    "Payment Status"
+],
+"fleet_pro":[
+    "FleetCare Pro Appointments",
+    "Add Service",
+    "Business",
+    "Address",
+    "Name",
+    "Email",
+    "Vehicle Type",
+    "Fleet Size",
+    "Status",
+    "Actions",
+    "Loading...",
+    "No appointments found",
+    "Add New Service",
+    "Business Name",
+    "Contact Name",
+    "Submit"
+],
+"other_vehicle":[
+"Other Vehicles Management",
+"Vehicles List",
+"Search by License Plate",
+"License Plate",
+"Vehicle Model",
+"Vehicle Type",
+"Owner"
+],
+"shop_management":[
+"Shop Management",
+"Available Vehicles",
+"Currently Available Vehicles",
+"Change Available Vehicles",
+"Number of Vehicles",
+"Date (optional)",
+"Save",
+"Shop Open"
+],
+"coupons":[
+"All Coupons",
+"Manage all your Coupons.",
+"Add Coupon",
+"ID", 
+"Code", 
+"Current Uses", 
+"Discount Percentage", 
+"Valid From", 
+"Valid To", 
+"Actions",
+"Add New Service",
+"Code",
+"Discount Percentage",
+"Valid From",
+"Valid Until",
+"Max Uses",
+"Submit"
+],
+"sidebar":[
+"Dashboard",
+"Bookings",
+"FleetCare Pro",
+"Other Vehicles Management",
+"Shop Management",
+"Package Management",
+"Coupon Management"
+]
   }
 
 }

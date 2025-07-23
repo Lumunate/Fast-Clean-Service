@@ -17,6 +17,7 @@ import {
   TableHead,
   TablePagination,
 } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 // const bookings = [
 //     {
@@ -301,41 +302,42 @@ import {
 //     },
 // ];
 
-const tableHeaders = [
-  "Customer Name",
-  "Vehicle",
-  "License Plate",
-  "Location",
-  "Service",
-  "Package",
-  "Add-ons",
-  "Detailing",
-  "Appointment",
-  "Price",
-  "Payment Status",
-];
 
 const BookingsCard = ({ bookings }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
-
+  const t = useTranslations("admin_dashboard.dashboard")
+  
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
+  
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+  
+  const tableHeaders = [
+  t("6"),
+  t("7"),
+  t("8"),
+  t("9"),
+  t("10"),
+  t("11"),
+  t("12"),
+  t("13"),
+  t("14"),
+  t("15"),
+  t("16"),
+  ];
 
   return (
     <StyledCard>
       <CardBody>
-        <CardHeading>All Appointmemnts</CardHeading>
+        <CardHeading>{t("4")}</CardHeading>
         <CardSubheading>
-          Manage all your car wash and cleaning bookings.
+          {t("5")}
         </CardSubheading>
 
         <StyledTable component={Paper}>
@@ -412,7 +414,7 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.paymentStatus}
+                      {booking.payment.status}
                     </TableCellCustom>
                   </TableRowCustom>
                 ))}

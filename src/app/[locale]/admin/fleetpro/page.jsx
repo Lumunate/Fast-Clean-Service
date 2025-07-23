@@ -19,10 +19,13 @@ import { CustomFormTextField } from "../../../../components/mui/FormPkgs";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import useSnackbar from "../../../../hooks/useSnackbar";
+import { useTranslations } from "next-intl";
 
 export default function FleetProCareAppointments() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const t = useTranslations("admin_dashboard.fleet_pro")
 
   const getData = async () => {
     setLoading(true);
@@ -135,14 +138,14 @@ export default function FleetProCareAppointments() {
   
   return (
       <Box sx={{ padding: "16px" }}>
-        <SectionHeading sx={{ marginBottom: "2rem" }}>FleetCare Pro Appointments</SectionHeading>
+        <SectionHeading sx={{ marginBottom: "2rem" }}>{t("0")}</SectionHeading>
         <StyledCard sx={{ marginBottom: "2rem" }}>
           <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", marginBottom: "1.5rem" }}>
             <NavbarSearch sx={{ width: "250px" }}>
               <SearchInput placeholder="Search" value={searchTerm} onChange={handleSearch} />
             </NavbarSearch>
             <ButtonLearnMore onClick={handleOpen} sx={{ marginLeft: "1rem" }}>
-              Add Service
+              {t("1")}
             </ButtonLearnMore>
           </Box>
 
@@ -150,24 +153,24 @@ export default function FleetProCareAppointments() {
             <Table>
               <TableHead>
                 <TableRowCustom>
-                  <TableHeaderCell>Business</TableHeaderCell>
-                  <TableHeaderCell>Address</TableHeaderCell>
-                  <TableHeaderCell>Name</TableHeaderCell>
-                  <TableHeaderCell>Email</TableHeaderCell>
-                  <TableHeaderCell>Vehicle Type</TableHeaderCell>
-                  <TableHeaderCell>Fleet Size</TableHeaderCell>
-                  <TableHeaderCell>Status</TableHeaderCell>
-                  <TableHeaderCell>Actions</TableHeaderCell>
+                  <TableHeaderCell>{t("2")}</TableHeaderCell>
+                  <TableHeaderCell>{t("3")}</TableHeaderCell>
+                  <TableHeaderCell>{t("4")}</TableHeaderCell>
+                  <TableHeaderCell>{t("5")}</TableHeaderCell>
+                  <TableHeaderCell>{t("6")}</TableHeaderCell>
+                  <TableHeaderCell>{t("7")}</TableHeaderCell>
+                  <TableHeaderCell>{t("8")}</TableHeaderCell>
+                  <TableHeaderCell>{t("9")}</TableHeaderCell>
                 </TableRowCustom>
               </TableHead>
               <TableBody>
                 {loading ? (
                     <TableRowCustom>
-                      <TableCellCustom colSpan={8} sx={{ textAlign: 'center' }}>Loading...</TableCellCustom>
+                      <TableCellCustom colSpan={8} sx={{ textAlign: 'center' }}>{t("10")}</TableCellCustom>
                     </TableRowCustom>
                 ) : filteredData.length === 0 ? (
                     <TableRowCustom>
-                      <TableCellCustom colSpan={8} sx={{ textAlign: 'center' }}>No appointments found</TableCellCustom>
+                      <TableCellCustom colSpan={8} sx={{ textAlign: 'center' }}>{t("11")}</TableCellCustom>
                     </TableRowCustom>
                 ) : (
                     filteredData.map((row) => (
@@ -182,7 +185,7 @@ export default function FleetProCareAppointments() {
                             color: row.isComplete === true ? 'success.main' : 'warning.main',
                             fontWeight: 'bold'
                           }}>
-                            {row.isComplete === true ? 'Completed' : 'Pending'}{console.log(3333, row.isComplete)}
+                            {row.isComplete === true ? 'Completed' : 'Pending'}
                           </TableCellCustom>
                           <TableCellCustom>
                             <IconButton
@@ -215,12 +218,12 @@ export default function FleetProCareAppointments() {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" component="h2" sx={{ fontSize: "1.4rem", marginBottom: "20px" }}>
-                Add New Service
+                {t("12")}
               </Typography>
               <StyledCard sx={{ backgroundColor: "#f0f0f0", backdropFilter: "blur(10px)" }}>
                 <form onSubmit={handleSubmit}>
                   <CustomFormTextField
-                      label="Business Name"
+                      label={t("13")}
                       name="business"
                       value={formData.business}
                       onChange={handleFormChange}
@@ -229,7 +232,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <CustomFormTextField
-                      label="Address"
+                      label={t("3")}
                       name="address"
                       value={formData.address}
                       onChange={handleFormChange}
@@ -238,7 +241,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <CustomFormTextField
-                      label="Contact Name"
+                      label={t("14")}
                       name="name"
                       value={formData.name}
                       onChange={handleFormChange}
@@ -247,7 +250,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <CustomFormTextField
-                      label="Email"
+                      label={t("5")}
                       name="email"
                       type="email"
                       value={formData.email}
@@ -257,7 +260,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <CustomFormTextField
-                      label="Vehicle Type"
+                      label={t("6")}
                       name="vehicleType"
                       value={formData.vehicleType}
                       onChange={handleFormChange}
@@ -266,7 +269,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <CustomFormTextField
-                      label="Fleet Size"
+                      label={t("7")}
                       name="numVehicles"
                       type="number"
                       value={formData.numVehicles}
@@ -276,7 +279,7 @@ export default function FleetProCareAppointments() {
                       required
                   />
                   <ModalButton type="submit" sx={{ margin: "20px auto" }}>
-                    Submit
+                    {t("15")}
                   </ModalButton>
                 </form>
               </StyledCard>
