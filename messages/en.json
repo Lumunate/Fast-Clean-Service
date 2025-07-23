@@ -2468,7 +2468,7 @@
         "step": 1,
         "title": "Location Selection",
         "description": [
-          "Please select your cleaning location.",
+          "Choose your location for the service.",
           "Whether it’s on-site or at our branch, we’re ready to clean!"
         ],
         "options": ["On Location", "On Branch", "We'll come to you, wherever you are.", "Come and visit our branch, Oude Blaauwweg 14, 1521 RN Wormerveer"]
