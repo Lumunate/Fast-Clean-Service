@@ -3055,6 +3055,18 @@
 "Shop Management",
 "Package Management",
 "Coupon Management"
+],
+"edit_packages":[
+  "Edit Package",
+"Package Name:",
+"Base Price (€):",
+"Duration (min):",
+"Vehicle Type",
+"Additional Price (€)",
+"Additional Time (min)",
+"Included Services",
+"Detailing Options",
+"Add Detailing Option"
 ]
   }
 
