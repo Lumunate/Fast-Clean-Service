@@ -109,7 +109,7 @@ const Summary = () => {
                             </>
                         )}
                     </Box>
-                    <Box>{console.log(123123,formData.selectedAdditionalOptions)}
+                    <Box>
                         <SummaryHeading>{t("steps.8.sections.1")}</SummaryHeading>
                         {formData?.selectedAdditionalOptions?.length ? (
                             formData.selectedAdditionalOptions.map((option, index) => (

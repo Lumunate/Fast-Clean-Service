@@ -14,14 +14,14 @@ const translatedStringValidation = z.object({
 
 export const subscriptionPackageValidation = z.object({
   id: z.string(),
-  name: translatedStringValidation,
+  name:  z.string(),
   packages: z.array(translatedStringValidation),
   description: translatedStringValidation,
   totalDuration: z.string(),
   duration: z.string(),
   price: z.string(),
   vehicleOptions: z.record(z.string(), vehicleOptionValidation),
-  additionalOptions: z.array(z.any()).default([]),
+  // additionalOptions: z.array(z.any()).default([]),
   durationOptions: z.array(z.any()).default([]),
   cleaningFrequencyOptions: z.array(z.any()).default([])
 });
