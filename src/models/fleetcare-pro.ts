@@ -1,5 +1,5 @@
-import mongoose, {Document, Model} from "mongoose";
-import {IFleetCarePro as IFleetCareProSchema} from "../types/fleetcare-pro";
+import mongoose, { Document, Model } from "mongoose";
+import { IFleetCarePro as IFleetCareProSchema } from "../types/fleetcare-pro";
 
 interface IFleetCarePro extends Document, IFleetCareProSchema {
   createdAt: Date;
@@ -13,7 +13,17 @@ export const FleetCareProSchema = new mongoose.Schema<IFleetCarePro>({
   vehicleType: {
     type: String,
     required: true,
-    enum: ["Cars (all types)", "SUVs", "Bikes (all types)", "Trucks", "Campers", "Boats"],
+    enum: [
+      "Hatchback",
+      "Bus",
+      "SUVs",
+      "Motorcycle",
+      "Trucks",
+      "Station Wagon",
+      "Campers",
+      "Boats",
+      "Others",
+    ],
   },
   fleetSize: {
     type: String,
@@ -25,4 +35,5 @@ export const FleetCareProSchema = new mongoose.Schema<IFleetCarePro>({
 });
 
 export const FleetCarePro: Model<IFleetCarePro> =
-  mongoose.models.FleetCarePro || mongoose.model<IFleetCarePro>("FleetCarePro", FleetCareProSchema);
+  mongoose.models.FleetCarePro ||
+  mongoose.model<IFleetCarePro>("FleetCarePro", FleetCareProSchema);
