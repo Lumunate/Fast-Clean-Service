@@ -64,15 +64,15 @@ export default function Footer() {
                     <MuiLink href="/" sx={linkStyles}>{t("links.home")}</MuiLink>
                     <MuiLink href="/aboutus" sx={linkStyles}>{t("links.about")}</MuiLink>
                     <MuiLink href="/contact" sx={linkStyles}>{t("links.contact")}</MuiLink>
-                    <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink>
+                    {/* <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink> */}
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
-                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
-                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
-                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
-                    <SocialIcon href="mailto:support@fastclean.com" Icon={Email} />
+                    <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
+                    <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
+                    <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
+                    <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
+                    <SocialIcon target="_blank"  href="mailto:support@fastclean.com" Icon={Email} />
                 </Box>
             </Box>
 
@@ -175,11 +175,11 @@ export default function Footer() {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
-                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
-                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                     <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
-                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
-                    <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                    <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
+                    <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
+                     <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
+                    <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
+                    <SocialIcon target="_blank"  href="mailto:info@fastcleanservice.nl" Icon={Email} />
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
@@ -234,8 +234,8 @@ const copyrightStyle = {
     }
 };
 
-const SocialIcon = ({ href, Icon }) => (
-    <IconButton href={href} sx={{ color: "#FFF", "&:hover": { color: "primary.accentDark" } }}>
+const SocialIcon = ({ href, Icon, target }) => (
+    <IconButton href={href}  target={target}  sx={{ color: "#FFF", "&:hover": { color: "primary.accentDark" } }}>
         <Icon sx={{ fontSize: "1.8rem" }} />
     </IconButton>
 );

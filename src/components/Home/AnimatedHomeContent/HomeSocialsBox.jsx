@@ -25,6 +25,9 @@ const HomeSocialsBox = () => {
       }}
     >
       <IconButton
+       component="a"
+  href="https://www.facebook.com/FastCleanServiceNL/"
+  target="_blank"
         sx={{
           color: "white",
           "& svg": {
@@ -44,6 +47,9 @@ const HomeSocialsBox = () => {
         <FacebookIcon />
       </IconButton>
       <IconButton
+       component="a"
+  href="https://www.instagram.com/fastcleanservice/"
+  target="_blank"
         sx={{
           color: "white",
           "& svg": {
@@ -82,6 +88,9 @@ const HomeSocialsBox = () => {
         <TwitterIcon />
       </IconButton>
       <IconButton
+       component="a"
+  href="https://www.facebook.com/FastCleanServiceNL/"
+  target="_blank"
         sx={{
           color: "white",
           "& svg": {

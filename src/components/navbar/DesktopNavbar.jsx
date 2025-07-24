@@ -143,13 +143,13 @@ const DesktopNavbar = () => {
           <CustomLink href="mailto:info@fastcleanservice.nl">
             <NavLinkButton sx={{ display:'flex', gap:'8px'}}><FontAwesomeIcon icon={faEnvelope} />info@fastcleanservice.nl</NavLinkButton>
           </CustomLink>
-          <CustomLink href="https://wa.me/message/M7UOKFDWKTAUI1">
+          <CustomLink target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faWhatsapp} /></NavLinkButton>
           </CustomLink>
-          <CustomLink href="https://www.facebook.com/FastCleanServiceNL/">
+          <CustomLink target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faFacebookF} /></NavLinkButton>
           </CustomLink>
-          <CustomLink href="https://www.instagram.com/fastcleanservice/">
+          <CustomLink target="_blank"  href="https://www.instagram.com/fastcleanservice/">
             <NavLinkButton><FontAwesomeIcon style={{fontSize:'20px'}} icon={faInstagram} /></NavLinkButton>
           </CustomLink>
           <LanguageSwitcher currentLocale={locale} />
