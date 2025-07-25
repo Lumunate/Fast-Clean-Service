@@ -64,15 +64,15 @@ export default function Footer() {
                     <MuiLink href="/" sx={linkStyles}>{t("links.home")}</MuiLink>
                     <MuiLink href="/aboutus" sx={linkStyles}>{t("links.about")}</MuiLink>
                     <MuiLink href="/contact" sx={linkStyles}>{t("links.contact")}</MuiLink>
-                    <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink>
+                    {/* <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink> */}
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
-                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
-                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                    <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
-                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
-                    <SocialIcon href="mailto:support@fastclean.com" Icon={Email} />
+                    <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
+                    <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
+                    <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
+                    <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
+                    <SocialIcon target="_blank"  href="mailto:support@fastclean.com" Icon={Email} />
                 </Box>
             </Box>
 
@@ -100,7 +100,7 @@ export default function Footer() {
                         gap: "1rem",
                         "@media (max-width: 1366px)": { right: "7rem", bottom: "4.5rem" },
                         "@media (min-width: 992px) and (max-width: 1365.98px)": {
-                        bottom: "0rem",
+                            bottom: "0rem",
                         },
                         "@media (max-width: 992px)": { display: "none" },
                     }}
@@ -122,45 +122,45 @@ export default function Footer() {
             </Box>
 
             <Box
-  sx={{
-    position: "absolute",
-    bottom: "4rem",
-    left: "11rem",
-    display: "flex",
-    alignItems: "center",
-    gap: "1rem",
-    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
-    "@media (min-width: 992px) and (max-width: 1082px)": {
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: "0.5rem", 
-       bottom: "1.5rem",
-    },
-    "@media (min-width: 1083px) and (max-width: 1365.98px)": {
-      bottom: "4rem",
-    },
-    "@media (max-width: 992px)": {
-      display: "none",
-    },
-  }}
->
-  <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>
-    {t("terms_privacy.terms")}
-  </MuiLink>
-  <Divider
-    orientation="vertical"
-    flexItem
-    sx={{
-      bgcolor: "#FFF",
-      "@media (min-width: 992px) and (max-width: 1082px)": {
-        display: "none", // Hide divider when links are stacked
-      },
-    }}
-  />
-  <MuiLink href="/privacy-policy" sx={smallLinkStyles}>
-    {t("terms_privacy.privacy")}
-  </MuiLink>
-</Box>
+                sx={{
+                    position: "absolute",
+                    bottom: "4rem",
+                    left: "11rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    "@media (max-width: 1366px)": { left: "7rem", bottom: "4.5rem" },
+                    "@media (min-width: 992px) and (max-width: 1082px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        gap: "0.5rem",
+                        bottom: "1.5rem",
+                    },
+                    "@media (min-width: 1083px) and (max-width: 1365.98px)": {
+                        bottom: "4rem",
+                    },
+                    "@media (max-width: 992px)": {
+                        display: "none",
+                    },
+                }}
+            >
+                <MuiLink href="/terms-and-conditions" sx={smallLinkStyles}>
+                    {t("terms_privacy.terms")}
+                </MuiLink>
+                <Divider
+                    orientation="vertical"
+                    flexItem
+                    sx={{
+                        bgcolor: "#FFF",
+                        "@media (min-width: 992px) and (max-width: 1082px)": {
+                            display: "none", // Hide divider when links are stacked
+                        },
+                    }}
+                />
+                <MuiLink href="/privacy-policy" sx={smallLinkStyles}>
+                    {t("terms_privacy.privacy")}
+                </MuiLink>
+            </Box>
 
 
             <Box sx={{ display: "none", "@media (max-width: 992px)": { display: "flex", flexDirection: "column", alignItems: "center", padding: "1rem"} }}>
@@ -175,11 +175,11 @@ export default function Footer() {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
-                    <SocialIcon href="https://facebook.com" Icon={Facebook} />
-                    <SocialIcon href="https://instagram.com" Icon={Instagram} />
-                     <SocialIcon href="https://wa.me/0202440994" Icon={WhatsApp} />
-                    <SocialIcon href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
-                    <SocialIcon href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                    <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
+                    <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
+                    <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
+                    <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
+                    <SocialIcon target="_blank"  href="mailto:info@fastcleanservice.nl" Icon={Email} />
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
@@ -229,13 +229,13 @@ const copyrightStyle = {
     fontFamily: "DMSans",
     textAlign: "center",
     "@media (max-width: 992px)":{
-         fontSize: "1.2rem",
-         marginTop:"1rem"
+        fontSize: "1.2rem",
+        marginTop:"1rem"
     }
 };
 
-const SocialIcon = ({ href, Icon }) => (
-    <IconButton href={href} sx={{ color: "#FFF", "&:hover": { color: "primary.accentDark" } }}>
+const SocialIcon = ({ href, Icon, target }) => (
+    <IconButton href={href}  target={target}  sx={{ color: "#FFF", "&:hover": { color: "primary.accentDark" } }}>
         <Icon sx={{ fontSize: "1.8rem" }} />
     </IconButton>
 );
