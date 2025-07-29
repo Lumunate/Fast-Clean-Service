@@ -2604,7 +2604,16 @@
           "Message",
           "I certify that I have read and agree to the",
           "Search Location"
-        ]
+        ],
+        "postClean": {
+          "label": "What would you like to do while we clean your car?",
+          "options": {
+            "rentalCar": "🚗 Rental car – I want to reserve a rental car.",
+            "loanBike": "🚲 Loan bike – I'd like to use a loaner bike.",
+            "waitBranch": "🪑 Wait at the branch – I'll wait there.",
+            "none": "❌ None of the above – I'll arrange this myself."
+          }
+        }
       },
       {
         "step": 11,
