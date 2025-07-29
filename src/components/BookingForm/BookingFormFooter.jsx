@@ -213,12 +213,6 @@ const BookingFormFooter = () => {
     };
 
   const handleNext = async () => {
-    console.log("handleNext triggered for step:", step);
-      if (!session) {
-          setError("You must be logged in to Proceed!.");
-          setTimeout(openLoginModal, 2000);
-          return;
-      }
       if (currentStep === 11) {
           await initiatePayment();
           return;

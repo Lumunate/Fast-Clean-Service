@@ -4,6 +4,11 @@ import { translatedString, vehicleOptionSchema } from "./SubscriptionPackage";
 const optionSchema = new mongoose.Schema({
   name: translatedString,
   additionalCost: mongoose.Schema.Types.Mixed,
+  additionalTime: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   available: Boolean,
   options: [String],
 });

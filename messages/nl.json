@@ -2444,7 +2444,7 @@
       "Onze vestiging"
     ],
     "toggleInfo": [
-      "Wij komen naar jou toe, waar je ook bent.",
+      "Kies uw gewenste locatie voor de service",
       "Bezoek onze locatie: Oude Blaauwweg 14, 1521 RN Wormerveer"
     ],
     "stepbar": [
@@ -2598,7 +2598,6 @@
           "We zorgen ervoor dat uw voertuig perfect wordt gereinigd!"
         ],
         "form_fields": [
-
           "Voornaam",
           "Achternaam",
           "Telefoonnummer",
@@ -2608,7 +2607,16 @@
           "Bericht",
           "Ik verklaar dat ik de voorwaarden heb gelezen en ermee akkoord ga",
           "Zoek locatie"
-        ]
+        ],
+        "postClean": {
+          "label": "Wat wilt u doen terwijl wij uw auto schoonmaken?",
+          "options": {
+            "rentalCar": "🚗 Huurauto – Ik wil een huurauto reserveren.",
+            "loanBike": "🚲 Leenfiets – Ik wil graag een leenfiets gebruiken.",
+            "waitBranch": "🪑 Wacht bij de vestiging – ik wacht daar.",
+            "none": "❌ Geen van bovenstaande – ik regel dit zelf."
+          }
+        }
       },
       {
         "step": 11,
