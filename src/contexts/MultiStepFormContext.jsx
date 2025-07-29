@@ -231,7 +231,12 @@ export const FormProvider = ({ children }) => {
       return newSet;
     });
 
+
     if (currentStep === 10) {
+      if (status !== 'authenticated') {
+        openSnackbar('You must be logged in to submit your booking.');
+        return;
+      }
       const location =
           formData.location || '';
       if (location === '' || location === undefined) {
@@ -258,7 +263,7 @@ export const FormProvider = ({ children }) => {
           appointmentTimestamp: formData.selectedTime,
           vehicleDetails: formData.vehicleDetails,
           vehicleType: formData.carType,
-
+          postCleanAction: formData.postCleanAction,
           travelDistance: formData.travelDistance,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length

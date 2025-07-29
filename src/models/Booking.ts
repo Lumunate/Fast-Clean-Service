@@ -18,6 +18,7 @@ export interface IBooking extends Document {
   firstName: string;
   surname: string;
   companyName?: string;
+  licensePlate?: string,
   street?: string;
   zipCode?: string;
   city?: string;
@@ -39,6 +40,7 @@ export interface IBooking extends Document {
   type: "Onsite" | "Remote";
   vehicleDetails?: LicensePlateData | undefined | null;
   serviceAddons: { addons: string[]; detailing: string[] };
+  postCleanAction: 'Rental car' | 'Loan bike' | 'Wait at the branch' | 'None of the above';
   lockTime: ILockTime;
   bookingStatus: 'PENDING' | 'COMPLETED' | 'CANCELLED';
   payment: IPayment;
@@ -72,6 +74,11 @@ const bookingSchema: Schema = new Schema({
     enum: ["Onsite", "Remote"],
     required: true,
     default: "Onsite",
+  },
+  postCleanAction: {
+    type: String,
+    enum: ['Rental car', 'Loan bike', 'Wait at the branch', 'None of the above'],
+    default: 'None of the above',
   },
   serviceAddons: {
     addons: { type: [String], default: [] },

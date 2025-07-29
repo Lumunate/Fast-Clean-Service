@@ -10,33 +10,33 @@ const BookingConfirmationEmail = ({ name, packageName, date, time, location, pri
   return (
     <Html>
       <Head />
-      <Preview>Your booking for Fast Clean Service - {packageName} has been confirmed!</Preview>
+      <Preview>Uw boeking voor Fast Clean Service - {packageName} is bevestigd!</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={imgSection}>
             <Img src={`https://res.cloudinary.com/diiafjy31/image/upload/v1730861547/Final-05_vlcqut.svg`} width="200" height="90" alt="Fast Clean Service" style={img} />
           </Section>
-          <Heading style={{ ...heading, color: accentColor }}>Booking Confirmation</Heading>
-          <Text style={paragraph}>Dear {name},</Text>
-          <Text style={paragraph}>Thank you for booking with Fast Clean Service. Your booking details are as follows:</Text>
+          <Heading style={{ ...heading, color: accentColor }}>Boekingsbevestiging</Heading>
+          <Text style={paragraph}>Geachte {name},</Text>
+          <Text style={paragraph}>Bedankt voor uw boeking bij Fast Clean Service. Uw boekingsgegevens zijn als volgt: volgt:</Text>
           <Section style={bookingDetails}>
             <Heading as="h2" style={{ ...subheading, color: accentColor }}>
               {packageName}
             </Heading>
             <Text style={{ ...detailText, color: textColor }}>
-              <strong>Date:</strong> {date}
+              <strong>Datum:</strong> {date}
             </Text>
             <Text style={{ ...detailText, color: textColor }}>
-              <strong>Time:</strong> {time}
+              <strong>Tijd:</strong> {time}
             </Text>
             <Text style={{ ...detailText, color: textColor }}>
-              <strong>Location:</strong> {location}
+              <strong>Locatie:</strong> {location}
             </Text>
             <Text style={{ ...detailText, color: textColor }}>
-              <strong>Price:</strong> {price}
+              <strong>Prijs:</strong> {price}
             </Text>
           </Section>
-          <Text style={paragraph}>If you have any questions or need to make changes, please contact us.</Text>
+          <Text style={paragraph}>Als u vragen heeft of iets wilt laten weten, Neem contact met ons op voor wijzigingen.</Text>
           <Text
               style={{
                 ...paragraph,
@@ -46,13 +46,13 @@ const BookingConfirmationEmail = ({ name, packageName, date, time, location, pri
                 marginTop: "10px",
               }}
           >
-            Please note: appointments where we come to your location are approximate and may vary by up to 60–120 minutes.
+            Let op: afspraken waarbij we bij u op locatie komen, zijn bij benadering en kunnen 60 tot 120 minuten afwijken.
           </Text>
           <Button px={20} py={12} style={btn} href={process.env.NEXT_PUBLIC_BASE_URL}>
-            View Booking Details
+            Bekijk boekingsgegevens
           </Button>
           <Text style={paragraph}>
-            By booking with us, you agree to our{" "}
+            Door bij ons te boeken, gaat u akkoord met onze{" "}
             <a
                 href={`${baseUrl}/terms-and-conditions`}
                 style={{
@@ -60,10 +60,10 @@ const BookingConfirmationEmail = ({ name, packageName, date, time, location, pri
                   textDecoration: "underline",
                 }}
             >
-              Terms & Conditions
+              Algemene voorwaarden
             </a>.
           </Text>
-          <Text style={footer}>This is an automated email. Please do not reply directly to this message.</Text>
+          <Text style={footer}>Dit is een geautomatiseerde e-mail. Beantwoord dit bericht niet rechtstreeks.</Text>
         </Container>
       </Body>
     </Html>
