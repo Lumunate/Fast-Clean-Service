@@ -2976,13 +2976,16 @@
     "Pakketdetails",
     "Geselecteerd pakket",
     "Servicetype",
-    "Prijs",
+      "Totale prijs",
     "Duur",
     "Betalingsstatus",
     "Voltooid",
     "Gepland",
     "Maak een nieuwe boeking",
-    "Reservering"
+    "Reservering",
+      "Wachten op actie",
+      "Betalingsaanbieder",
+      "Reiskosten"
   ],
   "dashboard":[
     "Aantal boekingen",
@@ -3021,14 +3024,18 @@
     "Contactpersoon",
     "Verzenden"
 ],
-"other_vehicle":[
+"other_vehicles":[
 "Beheer van andere voertuigen",
-"Voertuigenlijst",
-"Zoeken op kenteken",
-"Kenteken",
-"Voertuigmodel",
-"Voertuigtype",
-"Eigenaar"
+  "Naam",
+  "E-mailadres",
+  "Adres",
+  "Voertuigtype",
+  "Telefoon",
+  "Servicetype",
+  "Locatie",
+  "Aantal voertuigen",
+  "Status",
+  "Acties"
 ],
 "shop_management":[
 "Winkelbeheer",
