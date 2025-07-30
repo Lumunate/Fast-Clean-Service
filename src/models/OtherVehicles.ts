@@ -15,6 +15,7 @@ const OtherVehiclesSchema: Schema = new Schema({
   serviceType: { type: String, required: true },
   location: { type: String, required: true },
   numVehicles: { type: Number, required: true },
+  isComplete: { type: Boolean, default: false, required: false },
   createdAt: { type: Date, default: Date.now },
 });
 

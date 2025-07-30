@@ -37,6 +37,7 @@ export interface IBooking extends Document {
   duration: number;
   travelDistance?: number;
   travelDuration?: number;
+  travelCost?: number;
   type: "Onsite" | "Remote";
   vehicleDetails?: LicensePlateData | undefined | null;
   serviceAddons: { addons: string[]; detailing: string[] };
@@ -69,6 +70,7 @@ const bookingSchema: Schema = new Schema({
   price: { type: Number, required: true },
   duration: { type: Number, required: true },
   travelDuration: { type: Number, default: null },
+  travelCost: { type: Number, default: null },
   type: {
     type: String,
     enum: ["Onsite", "Remote"],

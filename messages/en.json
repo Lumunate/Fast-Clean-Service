@@ -2973,13 +2973,16 @@
     "Package Details",
     "Selected package",
     "Service type",
-    "Price",
+    "Total Price",
     "Duration",
     "Payment Status",
     "Complete",
     "Scheduled",
     "Make a new Booking",
-    "Booking"
+    "Booking",
+      "Waiting Action",
+      "Payment Provider",
+      "Travel Cost"
   ],
   "dashboard":[
     "Number of Bookings",
@@ -3018,14 +3021,18 @@
     "Contact Name",
     "Submit"
 ],
-"other_vehicle":[
+"other_vehicles":[
 "Other Vehicles Management",
-"Vehicles List",
-"Search by License Plate",
-"License Plate",
-"Vehicle Model",
-"Vehicle Type",
-"Owner"
+"Name",
+  "Email",
+  "Address",
+  "Vehicle Type",
+  "Phone",
+  "Service Type",
+  "Location",
+  "Number of Vehicles",
+  "Status",
+  "Actions"
 ],
 "shop_management":[
 "Shop Management",
