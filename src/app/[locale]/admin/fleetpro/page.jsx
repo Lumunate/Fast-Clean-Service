@@ -235,13 +235,14 @@ export default function FleetProCareAppointments() {
                             >
                               <DeleteIcon />
                             </IconButton>
-                            <IconButton
-                                onClick={() => handleComplete(row._id)}
-                                disabled={row.status === 'completed'}
-                                color="success"
-                            >
-                              <DoneIcon />
-                            </IconButton>
+                            { !row.isComplete && (
+                                <IconButton
+                                    onClick={() => handleComplete(row._id)}
+                                    color="success"
+                                >
+                                  <DoneIcon />
+                                </IconButton>
+                            ) }
                           </TableCellCustom>
                         </TableRowCustom>
                     ))

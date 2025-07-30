@@ -19,6 +19,7 @@ export const FormProvider = ({ children }) => {
     selectedAdditionalOptions: [],
     selectedDetailingOptions: [],
     selectedTime: new Date(2023, 0, 1),
+    travelCost: null,
     bookingId: null,
   });
   const [price, setPrice] = useState(0);
@@ -116,7 +117,7 @@ export const FormProvider = ({ children }) => {
       } else if (formData.travelDistance > 75) {
         travelCost = formData.travelDistance * 0.6;
       }
-
+      formData.travelCost = travelCost;
       newPrice += travelCost;
     }
 
@@ -265,6 +266,7 @@ export const FormProvider = ({ children }) => {
           vehicleType: formData.carType,
           postCleanAction: formData.postCleanAction,
           travelDistance: formData.travelDistance,
+          travelCost: formData.travelCost,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length
                 ? formData.selectedAdditionalOptions
