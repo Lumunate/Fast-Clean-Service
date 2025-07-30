@@ -367,6 +367,10 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                         {matchedNames?.join("\n")}
                                     </ModalValue>
                                 </ModalContentBox>
+                                <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("24")}</ModalLabel>
+                                    <ModalValue>{selectedBooking.postCleanAction || "N/A"}</ModalValue>
+                                </ModalContentBox>
                             </Box>
                             <Box>
                                 <Typography sx={{ fontSize: "1.5rem", mb: "2rem" }}>{t("14")}</Typography>
@@ -384,6 +388,13 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("17")}</ModalLabel>
                                     <ModalValue>{selectedBooking.price}</ModalValue>
+                                </ModalContentBox>
+
+                                <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("26")}</ModalLabel>
+                                    <ModalValue>
+                                        {selectedBooking.travelCost || 0}
+                                    </ModalValue>
                                 </ModalContentBox>
 
                                 <ModalContentBox>
@@ -406,6 +417,12 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("19")}</ModalLabel>
                                     <ModalValue>
                                         {selectedBooking.payment?.status?.toUpperCase() || 'PENDING'}
+                                    </ModalValue>
+                                </ModalContentBox>
+                                <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("25")}</ModalLabel>
+                                    <ModalValue>
+                                        {selectedBooking.payment?.provider || "N/A"}
                                     </ModalValue>
                                 </ModalContentBox>
                             </Box>
