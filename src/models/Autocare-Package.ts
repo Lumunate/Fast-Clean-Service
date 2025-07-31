@@ -5,6 +5,7 @@ const optionSchema = new mongoose.Schema({
   name: translatedString,
   additionalCost: mongoose.Schema.Types.Mixed,
   available: Boolean,
+  additionalTime: { type: Number, required: true },
   options: [String],
 });
 

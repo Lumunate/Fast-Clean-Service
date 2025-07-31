@@ -209,7 +209,7 @@ const DesktopNavbar = () => {
                                     width: {
                                         xs: "18rem",
                                         sm: "20rem",
-                                        md: "23.4rem",
+                                        md: "33.4rem",
                                         xl: "34.4rem",
                                     },
                                     display: "flex",

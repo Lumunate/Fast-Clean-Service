@@ -317,7 +317,7 @@ const BookingsCard = ({ bookings }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
+
   const tableHeaders = [
   t("6"),
   t("7"),
@@ -330,6 +330,7 @@ const BookingsCard = ({ bookings }) => {
   t("14"),
   t("15"),
   t("16"),
+  t("17"),
   ];
 
   return (
@@ -374,12 +375,12 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.vehicleDetails?.kenteken}
+                      {booking.vehicleDetails?.kenteken || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.city}
+                      {booking.city || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
@@ -394,12 +395,12 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.addons?.join(", ")}
+                      {booking.serviceAddons?.addons?.join(", ") || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.detailing?.join(", ")}
+                      {booking.serviceAddons?.detailing?.join(", ") || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
@@ -415,6 +416,11 @@ const BookingsCard = ({ bookings }) => {
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
                       {booking.payment.status}
+                    </TableCellCustom>
+                    <TableCellCustom
+                      sx={{ fontSize: "1.1rem", color: "black" }}
+                    >
+                      {booking.bookingStatus}
                     </TableCellCustom>
                   </TableRowCustom>
                 ))}
