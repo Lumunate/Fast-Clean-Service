@@ -139,7 +139,7 @@
       "title": "Wat onze klanten zeggen",
       "description": "Bij Fast Clean Service hebben we al vele tevreden klanten geholpen. Laat een review achter en vertel ons hoe we u geholpen hebben!",
       "description2": "Laat een beoordeling achter en vertel ons hoe wij u geholpen hebben!",
-      "button": "Stuur een recensie",
+      "button": "Schrijf een review!",
       "trustpilotBtn":"Bekijk alle Trustpilot-recensies",
       "googleBtn":"Bekijk alle Google-recensies"
     },
@@ -212,7 +212,7 @@
           }
         },
         {
-          "name": "Premie",
+          "name": "Premium",
           "category": "Showroom Afwerking",
           "price": "Vanaf",
           "features": [
@@ -304,7 +304,7 @@
             "Grondige stoomreiniging van de cabine",
             "Reiniging van dorpels, ramen en spiegels",
             "Professioneel reinigen van dashboard en cockpit",
-            "Voeren van de kunststof onderdelen"
+            "Voeden van de kunststof onderdelen"
           ],
           "description": "Houd uw cabine fris, schoon en representatief - van binnen en van buiten.\n"
         },
@@ -313,7 +313,7 @@
           "services": [
             "Antikalk- en antiroestbehandeling",
             "Stoomreiniging van dek en interieur",
-            "Polijsten van metalen en kunststof onderdelen",
+            "Poetsen van metalen en kunststof onderdelen",
             "Coating tegen zout, zon en water"
           ],
           "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
@@ -762,15 +762,16 @@
     "button":"Boek nu",
     "packageNames":["Exterieur","Interieur","Compleet"],
 
-    "detailing":"Detaillering",
+    "detailing":"Detailing",
     "standardHeading":"Standaard",
     "showroom":"Toonzaal",
     "premiumHeading":"Premie",
 
     "from":"Van",
     "duration":"Duur",
-    "choice":"Keuze van het volk",
-    "economy":"Economie",
+    "choice":"Meest gekozen",
+    "economy":"Essentieel",
+    "exclusive":"Exclusief",
 
      "description":["Complete exterieurverzorging voor uw voertuig","Premium exterieurverzorging voor uw voertuig","Ultieme showroomkwaliteit voor uw voertuig"],
      "packages":{
@@ -2891,8 +2892,8 @@
       "services": {
         "title": "Services",
         "options": [
-          "FleetCare Pro",
-          "Anywhere Autocare",
+          "Zakelijke diensten",
+          "Tarieven",
           "Abonnementen",
           "Andere voertuigen",
           "Webshop",
@@ -2985,7 +2986,10 @@
     "Reservering",
       "Wachten op actie",
       "Betalingsaanbieder",
-      "Reiskosten"
+      "Reiskosten",
+    "Bericht klant",
+    "Voertuigtype",
+    "Eindtijd"
   ],
   "dashboard":[
     "Aantal boekingen",
@@ -3004,7 +3008,8 @@
     "Detailgegevens",
     "Afspraak",
     "Prijs",
-    "Betaalstatus"
+    "Betaalstatus",
+    "Boekingsstatus"
   ],
   "fleet_pro":[
     "FleetCare Pro Afspraken",
@@ -3022,7 +3027,8 @@
     "Nieuwe service toevoegen",
     "Bedrijfsnaam",
     "Contactpersoon",
-    "Verzenden"
+    "Verzenden",
+    "Datum"
 ],
 "other_vehicles":[
 "Beheer van andere voertuigen",
