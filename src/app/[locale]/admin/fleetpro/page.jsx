@@ -168,13 +168,29 @@ export default function FleetProCareAppointments() {
     handleClose();
   };
 
-  const filteredData = data.filter(item =>
-      item.businessName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.address?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.vehicleType?.toLowerCase().includes(searchTerm.toLowerCase())
+ const filteredData = data.filter((item) => {
+  const query = searchTerm.toLowerCase();
+
+  // Format the createdAt date similar to what you display
+  const formattedDate = item.createdAt
+    ? new Date(item.createdAt).toLocaleString("en-GB", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).toLowerCase()
+    : "";
+
+  return (
+    item.businessName?.toLowerCase().includes(query) ||
+    formattedDate.includes(query) ||
+    item.address?.toLowerCase().includes(query) ||
+    item.name?.toLowerCase().includes(query) ||
+    item.email?.toLowerCase().includes(query) ||
+    item.vehicleType?.toLowerCase().includes(query)
   );
+});
 
   return (
       <Box sx={{ padding: "16px" }}>
@@ -194,13 +210,14 @@ export default function FleetProCareAppointments() {
               <TableHead>
                 <TableRowCustom>
                   <TableHeaderCell>{t("2")}</TableHeaderCell>
+                  <TableHeaderCell>{t("16")}</TableHeaderCell>
                   <TableHeaderCell>{t("3")}</TableHeaderCell>
                   <TableHeaderCell>{t("4")}</TableHeaderCell>
                   <TableHeaderCell>{t("5")}</TableHeaderCell>
                   <TableHeaderCell>{t("6")}</TableHeaderCell>
                   <TableHeaderCell>{t("7")}</TableHeaderCell>
                   <TableHeaderCell>{t("8")}</TableHeaderCell>
-                  <TableHeaderCell>{t("9")}</TableHeaderCell>
+                  <TableHeaderCell>{t("9")}</TableHeaderCell> 
                 </TableRowCustom>
               </TableHead>
               <TableBody>
@@ -216,6 +233,13 @@ export default function FleetProCareAppointments() {
                     filteredData.map((row) => (
                         <TableRowCustom key={row._id}>
                           <TableCellCustom>{row.businessName}</TableCellCustom>
+                          <TableCellCustom>{new Date(row.createdAt).toLocaleString("en-GB", {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    })}</TableCellCustom>
                           <TableCellCustom>{row.address}</TableCellCustom>
                           <TableCellCustom>{row.name}</TableCellCustom>
                           <TableCellCustom>{row.email}</TableCellCustom>

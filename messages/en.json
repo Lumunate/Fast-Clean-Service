@@ -138,7 +138,7 @@
       "title": "What Our Customers Say",
       "description": "Want to share an experience?",
       "description2": "Leave your review and help others choose quality!",
-      "button": "Submit a Review",
+      "button": "Write a review!",
       "trustpilotBtn":"View All Trustpilot Reviews",
       "googleBtn":"View All Google Reviews"
     },
@@ -312,7 +312,7 @@
           "services": [
             "Anti-limescale & anti-rust treatment",
             "Steam cleaning of deck & interior",
-            "Polishing of metal & plastic parts",
+            "Polishing metal & plastic parts",
             "Coating against salt, sun & water"
           ],
           "description": "From sloop to speedboat: we ensure that your boat shines and is protected at every sailing moment.\n"
@@ -768,8 +768,9 @@
 
     "from":"From",
     "duration":"Duration",
-    "choice":"Peoples Choice",
-    "economy":"Economy",
+    "choice":"Most Popular",
+    "economy":"Essential",
+    "exclusive":"Exclusive",
 
     "description":["Complete exterior care for your vehicle","Premium exterior care for your vehicle","Ultimate showroom quality care for your vehicle"],
     "packages":{
@@ -2982,7 +2983,10 @@
     "Booking",
       "Waiting Action",
       "Payment Provider",
-      "Travel Cost"
+      "Travel Cost",
+    "Customer Message",
+    "Vehicle Type",
+    "End time"
   ],
   "dashboard":[
     "Number of Bookings",
@@ -3001,7 +3005,8 @@
     "Detailing",
     "Appointment",
     "Price",
-    "Payment Status"
+    "Payment Status",
+    "Booking Status"
 ],
 "fleet_pro":[
     "FleetCare Pro Appointments",
@@ -3019,7 +3024,8 @@
     "Add New Service",
     "Business Name",
     "Contact Name",
-    "Submit"
+    "Submit",
+    "Date"
 ],
 "other_vehicles":[
 "Other Vehicles Management",

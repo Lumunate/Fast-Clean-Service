@@ -211,7 +211,7 @@ export default function Autocare() {
                 <ServiceName sx={{ color: "#2998ff" }}>
                   {t("packages.1.name")}
                 </ServiceName>
-                <ServiceCat>{t("packages.1.category")}</ServiceCat>
+                <ServiceCat sx={{border:"1px solid rgba(255, 255, 255, 0.11)", px:"8px", borderRadius:'20px',backdropFilter: "blur(6px)",backgroundColor: "rgba(255, 255, 255, 0.06)",}}>{t("packages.1.category")}</ServiceCat>
               </Box>
               <ServiceDetails>
                 <ServiceDetail>

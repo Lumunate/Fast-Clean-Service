@@ -68,13 +68,21 @@ const BookingsPage = ({}) => {
     };
 
     const filteredBookings = bookingsData
-        ?.filter((booking) => {
-            return (
-                booking.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                booking.surname.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        })
-        .filter((booking) => !removed.includes(booking._id));
+  ?.filter((booking) => {
+    const query = searchQuery.toLowerCase();
+
+    return (
+      booking.firstName?.toLowerCase().includes(query) ||
+      booking.surname?.toLowerCase().includes(query) ||
+      booking.phoneNumber?.toLowerCase().includes(query) ||
+      booking.packageName?.toLowerCase().includes(query) ||
+      booking.serviceName?.toLowerCase().includes(query) ||
+      booking.email?.toLowerCase().includes(query) ||
+      booking.vehicleType?.toLowerCase().includes(query) ||
+      booking.vehicleDetails?.kenteken?.toLowerCase().includes(query)
+    );
+  })
+  .filter((booking) => !removed.includes(booking._id));
 
     return (
         <Box sx={{ padding: isMobile? "0" : "16px" }}>
@@ -225,6 +233,8 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     };
 
     const handleDelete = () => {
+         const confirmed = window.confirm("Are you sure you want to delete this booking?");
+    if (!confirmed) return;
         handleDeleteBooking(selectedBooking._id).then(() => {
             removeBookingWithId(selectedBooking._id);
             handleCloseModal();
@@ -261,6 +271,9 @@ const matchedInteriorExteriorAddons = [
 ].filter(addon => addOnsBooking?.addons?.includes(addon._id));
 
 const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => addon.name[locale]);
+
+console.log(123, selectedBooking);
+
 
     if (!open) return null;
 
@@ -345,6 +358,11 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                 </ModalContentBox>
 
                                 <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("25")}</ModalLabel>
+                                    <ModalValue>{selectedBooking.vehicleType || "..."}</ModalValue>
+                                </ModalContentBox>
+
+                                <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("10")}</ModalLabel>
                                     <ModalValue>{selectedBooking.vehicleDetails?.kenteken || "..."}</ModalValue>
                                 </ModalContentBox>
@@ -357,14 +375,14 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("12")}</ModalLabel>
                                     <ModalValue style={{ whiteSpace: 'pre-line' }}>
-                                        {matchedInteriorExteriorNames?.join("\n")}
+                                        {matchedInteriorExteriorNames?.join("\n") || "..."}
                                     </ModalValue>
                                 </ModalContentBox>
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("13")}</ModalLabel>
                                     <ModalValue style={{ whiteSpace: 'pre-line' }}>
-                                        {matchedNames?.join("\n")}
+                                        {matchedNames?.join("\n") || "..." }
                                     </ModalValue>
                                 </ModalContentBox>
                                 <ModalContentBox>
@@ -414,6 +432,17 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                 </ModalContentBox>
 
                                 <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("26")}</ModalLabel>
+                                    <ModalValue>{new Date(selectedBooking.lockTime.end).toLocaleString("en-GB", {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    })}</ModalValue>
+                                </ModalContentBox>
+
+                                <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("19")}</ModalLabel>
                                     <ModalValue>
                                         {selectedBooking.payment?.status?.toUpperCase() || 'PENDING'}
@@ -424,6 +453,11 @@ const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => 
                                     <ModalValue>
                                         {selectedBooking.payment?.provider || "N/A"}
                                     </ModalValue>
+                                </ModalContentBox>
+
+                                <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("24")}</ModalLabel>
+                                    <ModalValue>{selectedBooking.message || "..."}</ModalValue>
                                 </ModalContentBox>
                             </Box>
                         </Box>

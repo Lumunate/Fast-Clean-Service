@@ -360,7 +360,7 @@ const AutoCare = () => {
                                 style={{
                                     marginTop: "-60px",
                                     marginBottom: "60px",
-                                    backgroundImage: `url("/autocare-card1.png")`,
+                                    backgroundImage: `url("/toyotasteering.jpg")`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -632,7 +632,7 @@ const AutoCare = () => {
                 style={{
                   marginTop: "-60px",
                   marginBottom: "60px",
-                  backgroundImage: `url("/autocare-card2.png")`,
+                  backgroundImage: `url("/mercedessteering.jpg")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -888,7 +888,7 @@ const AutoCare = () => {
                     fontSize: "18px",
                   }}
                 >
-                  Bespoke
+                 {t("exclusive")}
                 </Typography>
               </Box>
               <div
@@ -896,7 +896,7 @@ const AutoCare = () => {
                 style={{
                   marginTop: "-60px",
                   marginBottom: "60px",
-                  backgroundImage: `url("/autocare-card3.png")`,
+                  backgroundImage: `url("/ferraristeering.jpg")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
