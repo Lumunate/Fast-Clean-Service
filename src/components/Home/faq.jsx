@@ -81,7 +81,7 @@ const Questions = () => {
                                         "& .MuiSvgIcon-root": { fontSize: 32 },
                                     }}
                                 >
-                                    {openIndex.includes(index) ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                    {openIndex.includes(index) ? <ExpandLessIcon onClick={() => handleToggle(index)} /> : <ExpandMoreIcon onClick={() => handleToggle(index)} />}
                                 </IconButton>
                             </Typography>
                             <Collapse in={openIndex.includes(index)}>
