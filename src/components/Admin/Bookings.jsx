@@ -248,32 +248,6 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     const handleCloseEditModal = () => {
         setEditBooking(null);
     };
-// First make sure these are defined in the same scope
-const pkgsType = selectedBooking?.packageType?.toLowerCase();
-const packagesArray = apiPackages?.packages[pkgsType];
-const matchedPackage = packagesArray?.find(pkg => pkg.id === selectedBooking?.packageName);
-
-// Get all additional options
-const addOns = matchedPackage?.additionalOptions || {};
-const addOnsBooking = selectedBooking?.serviceAddons || {};
-//Get all detailing options and match
-const detailingOptions = addOns?.detailing || [];
-const selectedDetailingIds = addOnsBooking?.detailing || [];
-const matchedDetails = detailingOptions.filter(option =>
-  selectedDetailingIds.includes(option._id)
-);
-const matchedNames = matchedDetails.map(option => option.name[locale]);
-
-//to find name of addons by ids which are matching
-const matchedInteriorExteriorAddons = [
-  ...(matchedPackage?.additionalOptions?.interior || []),
-  ...(matchedPackage?.additionalOptions?.exterior || [])
-].filter(addon => addOnsBooking?.addons?.includes(addon._id));
-
-const matchedInteriorExteriorNames = matchedInteriorExteriorAddons.map(addon => addon.name[locale]);
-
-console.log(123, selectedBooking);
-
 
     if (!open) return null;
 
@@ -375,14 +349,18 @@ console.log(123, selectedBooking);
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("12")}</ModalLabel>
                                     <ModalValue style={{ whiteSpace: 'pre-line' }}>
-                                        {matchedInteriorExteriorNames?.join("\n") || "..."}
+                                        {selectedBooking?.serviceAddons?.addons?.map(
+                                            (addon) => addon?.name?.[locale])?.join("\n") || "..."} 
                                     </ModalValue>
                                 </ModalContentBox>
 
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("13")}</ModalLabel>
                                     <ModalValue style={{ whiteSpace: 'pre-line' }}>
-                                        {matchedNames?.join("\n") || "..." }
+                                        {selectedBooking?.serviceAddons?.detailing?.length > 0
+                                        ? selectedBooking?.serviceAddons?.detailing?.map((addon) => addon?.name?.[locale])
+                                            .join("\n")
+                                        : "..."}
                                     </ModalValue>
                                 </ModalContentBox>
                                 <ModalContentBox>
