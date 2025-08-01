@@ -17,7 +17,7 @@ import {
   TableHead,
   TablePagination,
 } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 // const bookings = [
 //     {
@@ -308,7 +308,7 @@ const BookingsCard = ({ bookings }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
   const t = useTranslations("admin_dashboard.dashboard")
-  
+  const locale = useLocale()
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -395,12 +395,14 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.addons?.join(", ") || "..."}
+                      {booking.serviceAddons?.addons?.map(
+                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."} 
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.detailing?.join(", ") || "..."}
+                      {booking.serviceAddons?.detailing?.map(
+                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}

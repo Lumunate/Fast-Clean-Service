@@ -146,41 +146,42 @@ class BookingService {
 
     if (bookingData.serviceName === "Subscription Plans") {
       if (bookingData.serviceAddons.addons?.length > 0) {
-        bookingData.serviceAddons.addons.forEach((addon) => {
-          const _addon = pkg.additionalOptions.find((a) => a._id === addon);
-          const addonPrice = _addon?.additionalCost;
+         bookingData.serviceAddons.addons.forEach((addon) => {
+          const addonPrice = addon.additionalCost;
           // const addonDuration = _addon?.additionalTime;
 
           if (!addonPrice) throw new Error("Addon not found");
-          price += addonPrice;
+                    const parsedPrice = Number(addonPrice);
+          if (!isNaN(parsedPrice)) {
+            price += parsedPrice;
+          }
           // duration += addonDuration;
         });
       }
     } else {
       if (bookingData.serviceAddons.addons?.length > 0) {
         bookingData.serviceAddons.addons.forEach((addon) => {
-          const addonPrice =
-            pkg.additionalOptions.interior.find((a) => a._id.toString() === addon)?.additionalCost ||
-            pkg.additionalOptions.exterior.find((a) => a._id.toString() === addon)?.additionalCost;
-          // const addonDuration =
-          // pkg.additionalOptions.interior.find((a) => a.name === addon)?.additionalTime ||
-          // pkg.additionalOptions.exterior.find((a) => a.name === addon)?.additionalTime;
-
+          const addonPrice = addon.additionalCost;
           if (!addonPrice) throw new Error("Addon not found");
-          price += addonPrice;
-          // duration += addonDuration;
+         const parsedPrice = Number(addonPrice);
+        if (!isNaN(parsedPrice)) {
+         price += parsedPrice;
+}
         });
       }
 
       // Detailing exists only for autocare and doesn't have extra duration
       if (bookingData.serviceAddons.detailing?.length > 0) {
         bookingData.serviceAddons.detailing.forEach((addon) => {
-          const addonPrice = pkg.additionalOptions.detailing.find((a) => a._id.toString() === addon)?.additionalCost;
+          const addonPrice = addon?.additionalCost;
 
           if (!addonPrice) throw new Error("Detailing not found");
           else if (addonPrice === "On Request") return;
 
-          price += addonPrice;
+          const parsedPrice = Number(addonPrice);
+          if (!isNaN(parsedPrice)) {
+            price += parsedPrice;
+          }
         });
       }
     }
