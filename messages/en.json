@@ -2531,6 +2531,10 @@
         "description": [
           "Please choose your add-ons",
           "Enhance your service for extra sparkle!"
+        ],
+        "no_options":[
+          "No Additional Options",
+          "No Add-ons Available"
         ]
       },
       {
@@ -2539,7 +2543,8 @@
         "description": [
           "Please pick your detailing extras",
           "The finer the detail, the better the clean!"
-        ]
+        ],
+        "no_options": "No Detailing Add-ons"
       },
       {
         "step": 8,
