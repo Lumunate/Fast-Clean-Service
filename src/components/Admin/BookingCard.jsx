@@ -407,7 +407,15 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.appointmentTimestamp.toLocaleString()}
+                      {new Date(booking.appointmentTimestamp).toLocaleString("en-US", {
+  month: "numeric",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hour12: true,
+})}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
