@@ -2534,6 +2534,10 @@
         "description": [
           "Kies aanvullende services om uw voertuig nog grondiger te laten reinigen.",
           "Upgrade uw schoonmaakbeurt voor een perfect resultaat!"
+        ],
+        "no_options":[
+          "Geen extra opties",
+          "Geen add-ons beschikbaar"
         ]
       },
       {
@@ -2542,7 +2546,8 @@
         "description": [
           "Kies uw detailing-opties voor een showroom-afwerking.",
           "Hoe fijner de details, hoe beter het eindresultaat!"
-        ]
+        ],
+        "no_options": "Geen extra details"
       },
       {
         "step": 8,
