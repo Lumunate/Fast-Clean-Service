@@ -15,7 +15,7 @@ import Image from "next/image";
 import CheckMark from "../../../../public/bookingFormIcons/CheckMark.svg";
 import { calculateFilter } from "../../../lib/colorFilters";
 import { alpha } from "@mui/material/styles";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 const AdditionalOptionsBox = ({
                                 color,
                                 selected,
@@ -95,6 +95,7 @@ const AdditionalOptions = () => {
   const { updateValidation } = useValidation();
   const pkg = form.formData.selectedPackage;
   const { theme } = useTheme();
+  const t = useTranslations("booking.steps.5.no_options")
   const locale = useLocale();
   const isSubscriptionPackage =
     form.formData.selectedPackageType === "Subscription Plans";
@@ -143,7 +144,7 @@ const AdditionalOptions = () => {
                     marginBottom: '1.2rem',
                   }}
               >
-                No Additional Options
+                {t("0")}
               </Typography>
             </AdditionalContent>
         ) : (
@@ -176,7 +177,7 @@ const AdditionalOptions = () => {
                                 )
                             )
                         ) : (
-                            <AdditionalNoOption>No Add-ons Available</AdditionalNoOption>
+                            <AdditionalNoOption>{t("1")}</AdditionalNoOption>
                         )}
                       </AdditionalContent>
                     </Box>
