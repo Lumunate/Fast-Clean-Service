@@ -134,9 +134,9 @@ const Detailing = () => {
                         price={option.additionalCost}
                         available={option.available}
                         options={option.options}
-                        selected={form.formData.selectedDetailingOptions?.includes(option._id)}
-                        expanded={form.formData.expandedDetailingOption === option._id}
-                        onClick={() => handleClick(option._id)}
+                        selected={form.formData.selectedDetailingOptions?.includes(option)}
+                        expanded={form.formData.expandedDetailingOption === option}
+                        onClick={() => handleClick(option)}
                     />
                 ))}
             </AdditionalContent>
