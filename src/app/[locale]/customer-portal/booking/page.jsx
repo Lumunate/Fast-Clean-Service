@@ -84,13 +84,26 @@ const BookingsPage = () => {
     }, []);
 
     const filteredBookings = userBookings.filter((booking) => {
-        const searchText = searchQuery.toLowerCase();
-        return (
-            booking.vehicleMakeAndModel.toLowerCase().includes(searchText) ||
-            booking.serviceName.toLowerCase().includes(searchText) ||
-            booking.city?.toLowerCase().includes(searchText)
-        );
-    });
+  const searchText = searchQuery.toLowerCase();
+
+  const formattedDate = new Date(booking.appointmentTimestamp).toLocaleString("en-US", {
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  }).toLowerCase();
+
+  return (
+    booking.vehicleMakeAndModel.toLowerCase().includes(searchText) ||
+    booking.serviceName.toLowerCase().includes(searchText) ||
+    booking.city?.toLowerCase().includes(searchText) ||
+    booking.packageName?.toLowerCase().includes(searchText) ||
+    formattedDate.includes(searchText)
+  );
+});
 
     return (
         <Box sx={{ padding: "16px", marginTop: {xs: "1rem", sm: "0"} }}>
