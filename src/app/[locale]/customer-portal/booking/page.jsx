@@ -20,7 +20,7 @@ import {
     TableRowCustom,
 } from "../../../../components/mui/AdminPkgs";
 import {useSession} from "next-auth/react";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 const BookingsPage = () => {
     const { data: session } = useSession();
@@ -28,6 +28,7 @@ const BookingsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const userEmail = session?.user?.email;
     const t = useTranslations('customer_dashboard.sections.1');
+    const locale = useLocale()
 
     const tableHeaders = [
         t("table_headers.0"),
@@ -83,13 +84,26 @@ const BookingsPage = () => {
     }, []);
 
     const filteredBookings = userBookings.filter((booking) => {
-        const searchText = searchQuery.toLowerCase();
-        return (
-            booking.vehicleMakeAndModel.toLowerCase().includes(searchText) ||
-            booking.serviceName.toLowerCase().includes(searchText) ||
-            booking.city?.toLowerCase().includes(searchText)
-        );
-    });
+  const searchText = searchQuery.toLowerCase();
+
+  const formattedDate = new Date(booking.appointmentTimestamp).toLocaleString("en-US", {
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  }).toLowerCase();
+
+  return (
+    booking.vehicleMakeAndModel.toLowerCase().includes(searchText) ||
+    booking.serviceName.toLowerCase().includes(searchText) ||
+    booking.city?.toLowerCase().includes(searchText) ||
+    booking.packageName?.toLowerCase().includes(searchText) ||
+    formattedDate.includes(searchText)
+  );
+});
 
     return (
         <Box sx={{ padding: "16px", marginTop: {xs: "1rem", sm: "0"} }}>
@@ -195,10 +209,18 @@ const BookingsPage = () => {
                                         </TableCellCustom>
                                         <TableCellCustom>{booking.type}</TableCellCustom>
                                         <TableCellCustom>
-                                            {booking.serviceAddons.addons?.join(", ") || "None"}
+                                            {booking.serviceAddons.addons && booking.serviceAddons.addons.length > 0
+                                             ? booking.serviceAddons.addons
+                                                 .map((addon) => `${addon.name?.[locale]}`)
+                                                 .join(", ")
+                                             : "None"}
                                         </TableCellCustom>
                                         <TableCellCustom>
-                                            {booking.serviceAddons.detailing?.join(", ") || "None"}
+                                            {booking.serviceAddons.addons && booking.serviceAddons.detailing.length > 0
+                                                ? booking.serviceAddons.detailing
+                                                    .map((addon) => `${addon.name?.[locale]}`)
+                                                    .join(", ")
+                                                : "None"}
                                         </TableCellCustom>
                                         <TableCellCustom>{booking.payment.status}</TableCellCustom>
                                         <TableCellCustom>{booking.payment.provider || "N/A"}</TableCellCustom>

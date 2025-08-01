@@ -14,6 +14,18 @@ export interface IPayment {
   lastUpdated: Date | null;
 }
 
+ export interface Addon {
+  _id: string;
+  name: {
+    en: string;
+    nl: string;
+    [key: string]: string;
+  };
+  additionalCost: number | string;
+  additionalTime?: number;
+  options?: string[];
+}
+
 export interface IBooking extends Document {
   firstName: string;
   surname: string;
@@ -38,11 +50,25 @@ export interface IBooking extends Document {
   travelDuration?: number;
   type: "Onsite" | "Remote";
   vehicleDetails?: LicensePlateData | undefined | null;
-  serviceAddons: { addons: string[]; detailing: string[] };
+  serviceAddons: {
+    addons: Addon[];
+    detailing: Addon[];
+  };
   lockTime: ILockTime;
   bookingStatus: 'PENDING' | 'COMPLETED' | 'CANCELLED';
   payment: IPayment;
 }
+
+const AddonSchema = new mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+  name: {
+    en: { type: String, required: true },
+    nl: { type: String, required: true },
+  },
+  additionalCost: { type: mongoose.Schema.Types.Mixed, required: true },
+  additionalTime: { type: Number },
+  options: { type: [String], default: [] },
+}, { _id: false });
 
 const bookingSchema: Schema = new Schema({
   firstName: { type: String, required: true },
@@ -74,9 +100,9 @@ const bookingSchema: Schema = new Schema({
     default: "Onsite",
   },
   serviceAddons: {
-    addons: { type: [String], default: [] },
-    detailing: { type: [String], default: [] },
-  },
+  addons: { type: [AddonSchema], default: [] },
+  detailing: { type: [AddonSchema], default: [] },
+},
   lockTime: {
     start: { type: Date, default: null },
     end: { type: Date, required: true },
