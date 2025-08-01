@@ -13,7 +13,7 @@ import {
 } from "../../mui/BookingFormPackages";
 import { useTheme } from "../../../contexts/themeContext";
 import { alpha } from "@mui/material/styles";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 const DetailingBox = ({ color, selected, expanded, name, price, available, options, onClick }) => {
     const { theme } = useTheme();
     const formatEuro = (amount) => `€${parseFloat(amount).toFixed(2)}`;
@@ -84,6 +84,7 @@ const DetailingBox = ({ color, selected, expanded, name, price, available, optio
 };
 
 const Detailing = () => {
+    const t = useTranslations("booking.steps.6")
     const locale = useLocale()
     const form = useMultiStepForm();
     const { updateValidation } = useValidation();
@@ -123,7 +124,7 @@ const Detailing = () => {
                             textAlign:'center',
                         }}
                     >
-                        No Detailing Add-ons
+                        {t("no_options")}
                     </Typography>
                 )}
                 {selectedPackage?.additionalOptions?.detailing?.map((option, index) => (
