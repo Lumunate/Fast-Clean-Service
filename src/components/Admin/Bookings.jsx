@@ -426,6 +426,11 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                         {selectedBooking.payment?.status?.toUpperCase() || 'PENDING'}
                                     </ModalValue>
                                 </ModalContentBox>
+
+                                <ModalContentBox>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("24")}</ModalLabel>
+                                    <ModalValue>{selectedBooking.message || "..."}</ModalValue>
+                                     </ModalContentBox>
                                 <ModalContentBox>
                                     <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("25")}</ModalLabel>
                                     <ModalValue>
