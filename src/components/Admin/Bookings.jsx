@@ -332,7 +332,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                 </ModalContentBox>
 
                                 <ModalContentBox>
-                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("25")}</ModalLabel>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("28")}</ModalLabel>
                                     <ModalValue>{selectedBooking.vehicleType || "..."}</ModalValue>
                                 </ModalContentBox>
 
@@ -410,7 +410,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                 </ModalContentBox>
 
                                 <ModalContentBox>
-                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("26")}</ModalLabel>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("29")}</ModalLabel>
                                     <ModalValue>{new Date(selectedBooking.lockTime.end).toLocaleString("en-GB", {
                                         year: "numeric",
                                         month: "short",
@@ -428,7 +428,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                 </ModalContentBox>
 
                                 <ModalContentBox>
-                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("24")}</ModalLabel>
+                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("27")}</ModalLabel>
                                     <ModalValue>{selectedBooking.message || "..."}</ModalValue>
                                      </ModalContentBox>
                                 <ModalContentBox>
@@ -438,10 +438,6 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
                                     </ModalValue>
                                 </ModalContentBox>
 
-                                <ModalContentBox>
-                                    <ModalLabel sx={{ fontSize: "1.4rem" }}>{t("24")}</ModalLabel>
-                                    <ModalValue>{selectedBooking.message || "..."}</ModalValue>
-                                </ModalContentBox>
                             </Box>
                         </Box>
                     </Box>

@@ -284,11 +284,11 @@ const BookingParticulars = () => {
             </Grid>
 
               {form.formData.service === 'Onsite' && (
-                  <Grid item xs={12}>
+                  <Grid sx={{marginTop:"16px"}} item xs={12}>
                       <FormControl fullWidth sx={{ mt: 2 }}>
                           <InputLabel sx={{
                               fontFamily: "Inter",
-                              fontSize: "1rem",
+                              fontSize: {xs:"1rem",md:"1.4rem"},
                               transform: "translate(10px, -19px) scale(1.2)",
 
                               "& label": {
@@ -304,6 +304,10 @@ const BookingParticulars = () => {
                               "& label.Mui-focused": {
                                   color: theme.palette.primary.contrastText,
                               },
+
+                               "&.Mui-focused": {
+                                 color: theme.palette.mode === "light" ? "#818181 " : "#fff", 
+                                },
 
                               "& .MuiOutlinedInput-root": {
                                   padding: '5px',
@@ -328,20 +332,23 @@ const BookingParticulars = () => {
                               value={bookingForm.postCleanAction}
                               onChange={handleChange}
                               label="What would you like to do while we clean your car?"
+                               MenuProps={{ disableScrollLock: true }}
                               required
                               sx={{
                                   backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
                                   "& .MuiOutlinedInput-input": {
-                                      padding: "1rem 1.5rem",
-                                      color: theme.palette.mode === "dark" ? "#fff" : "#050505",
-                                      fontSize: "1.2rem",
+                                      padding: "2rem 1.5rem 1rem 1.5rem ",
+                                      color: theme.palette.mode === "dark" ? "#fff" : "#818181",
+                                      fontSize: "1.8rem",
                                       fontWeight: "300",
+                                      // marginTop: "1.5rem !important",
                                   },
                                   "& .MuiOutlinedInput-notchedOutline": {
                                       borderRadius: "6px",
                                       borderColor: "transparent",
                                       backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
                                       boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
+                                      marginTop: "0.5rem",
                                   },
                                   "& .MuiSelect-icon": {
                                       color: theme.palette.mode === "dark" ? "#fff" : "#050505",
@@ -357,16 +364,16 @@ const BookingParticulars = () => {
                                   },
                               }}
                           >
-                              <MenuItem value="Rental car">
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Rental car">
                                   {t('steps.9.postClean.options.rentalCar')}
                               </MenuItem>
-                              <MenuItem value="Loan bike">
+                              <MenuItem ssx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Loan bike">
                                   {t('steps.9.postClean.options.loanBike')}
                               </MenuItem>
-                              <MenuItem value="Wait at the branch">
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Wait at the branch">
                                   {t('steps.9.postClean.options.waitBranch')}
                               </MenuItem>
-                              <MenuItem value="None of the above">
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="None of the above">
                                   {t('steps.9.postClean.options.none')}
                               </MenuItem>
                           </Select>
