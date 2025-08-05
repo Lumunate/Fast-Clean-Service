@@ -4,7 +4,8 @@ import Box from '@mui/material/Box';
 const StepBox = ({ currentStep, stepIndex, children, transStyles, packageTypeName,  carType  }) => {
 
     const value = ( window.innerWidth > 400 ? "-7rem" : "1rem")
-    const forSummery = ( window.innerWidth > 400 ? "-7rem" : "-10rem")
+    const forSummery = ( window.innerWidth > 400 ? "-3rem" : "-5rem")
+    const bookingConformation = ( window.innerWidth > 400 ? "-7rem" : "0rem")
 
 
     const getCustomMargin = () => {
@@ -17,7 +18,7 @@ const StepBox = ({ currentStep, stepIndex, children, transStyles, packageTypeNam
             6: '-5rem',
             7: '-7rem',
             9: forSummery,
-            10: forSummery,
+            10: bookingConformation,
             11: forSummery
         };
 
@@ -28,7 +29,7 @@ const StepBox = ({ currentStep, stepIndex, children, transStyles, packageTypeNam
         <Box
             className={currentStep === stepIndex ? 'active' : ''}
             sx={{
-                 width: currentStep === 8 || currentStep === 7 ? 'calc(100% / 12)' : 'calc(100% / 11)',
+                 width: currentStep === 8 || currentStep === 7 || currentStep === 10 ? 'calc(100% / 12)' : 'calc(100% / 11)',
                 transition: 'all 300ms ease-in-out',
                 opacity: 0,
                 marginLeft: {

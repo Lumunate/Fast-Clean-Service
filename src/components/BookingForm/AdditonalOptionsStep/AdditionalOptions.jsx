@@ -142,6 +142,7 @@ const AdditionalOptions = () => {
                     fontSize: '1.2rem',
                     lineHeight: '2.4rem',
                     marginBottom: '1.2rem',
+                    textAlign: 'center',
                   }}
               >
                 {t("0")}
