@@ -367,7 +367,7 @@ const BookingParticulars = () => {
                               <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Rental car">
                                   {t('steps.9.postClean.options.rentalCar')}
                               </MenuItem>
-                              <MenuItem ssx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Loan bike">
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Loan bike">
                                   {t('steps.9.postClean.options.loanBike')}
                               </MenuItem>
                               <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Wait at the branch">
