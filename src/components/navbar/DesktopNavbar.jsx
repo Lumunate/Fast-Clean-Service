@@ -85,7 +85,8 @@ const DesktopNavbar = () => {
 
     const handleLogout = async () => {
         setLoading(true);
-        await signOut();
+        await signOut({ redirect: false });
+        router.push("/");
         setLoading(false);
     };
 

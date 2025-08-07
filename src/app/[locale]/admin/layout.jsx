@@ -5,11 +5,13 @@ import Sidebar from "../../../components/Admin/Sidebar";
 import Navbar from "../../../components/Admin/Navbar";
 import { signOut } from "next-auth/react";
 import BookingsProvider from "../../../contexts/BookingsContext";
+import { useRouter } from "next/navigation";
 
 const AdminDashboardLayout = ({ children }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     // Check if screen is below 600px
     const isMobile = useMediaQuery("(max-width:600px)");
+    const router = useRouter();
 
     const toggleDrawer = () => {
         setDrawerOpen((prev) => !prev);
