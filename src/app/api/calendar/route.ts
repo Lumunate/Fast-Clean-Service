@@ -12,21 +12,3 @@ export async function GET(req: Request, res: Response) {
   }
 }
 
-export async function POST(req: Request, res: Response) {
-  try {
-    const calendar = new GoogleCalendar();
-
-    const data = await calendar.createEvent({
-      summary: `Appointment - Test`,
-      description: "Testing",
-      startTime: new Date().toISOString(),
-      endTime: new Date().toISOString(),
-      attendees: [{ email: "info@fastcleanservice.nl" }, { email: "info@fastcleanservice.nl" }],
-      location: `Testing Land`,
-    });
-
-    return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ error: "An error occurred while making events." });
-  }
-}
