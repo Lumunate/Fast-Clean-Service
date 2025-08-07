@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
       description: "Testing",
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
-      attendees: [{ email: "fizoneechan@gmail.com" }, { email: "faizanknight5@gmail.com" }],
+      attendees: [{ email: "info@fastcleanservice.nl" }, { email: "info@fastcleanservice.nl" }],
       location: `Testing Land`,
     });
 
