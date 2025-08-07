@@ -395,14 +395,20 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.addons?.map(
-                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."} 
+                      {booking.serviceAddons?.addons?.length > 0
+  ? booking.serviceAddons.addons.map((addon, idx) => (
+      <div key={idx}>{addon?.name?.[locale]}</div>
+    ))
+  : "..."} 
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.detailing?.map(
-                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."}
+                     {booking.serviceAddons?.detailing?.length > 0
+  ? booking.serviceAddons.detailing.map((addon, idx) => (
+      <div key={idx}>{addon?.name?.[locale]}</div>
+    ))
+  : "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
