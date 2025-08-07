@@ -16,7 +16,8 @@ import UnionIcon from "../../../../public/servicesicons/Union.svg";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@mui/material";
 import React from "react";
-import Link from "next/link";
+import { Link } from "../../../i18n/routing";
+// import Link from "next/link";
 
 export default function CarService() {
     const t = useTranslations('home.packages_section');
@@ -41,7 +42,7 @@ export default function CarService() {
             anchor: "subscriptions",
             title: t("packages.2.title"),
             description: t("packages.2.description"),
-             path:"/aboutus"
+             path:"/fleet"
         },
         {
             img: Coating,
