@@ -17,7 +17,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@mui/material";
 import React from "react";
 import { Link } from "../../../i18n/routing";
-// import Link from "next/link";
 
 export default function CarService() {
     const t = useTranslations('home.packages_section');
