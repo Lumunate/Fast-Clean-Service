@@ -411,7 +411,7 @@ export default function About() {
                     }}
                 >
                     <Image
-                        src="/care2.jpg"
+                        src="/about_care2.png"
                         alt="Big car image"
                         width={976}
                         height={702}
