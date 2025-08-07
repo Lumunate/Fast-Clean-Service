@@ -15,8 +15,9 @@ const AdminDashboardLayout = ({ children }) => {
         setDrawerOpen((prev) => !prev);
     };
 
-    const handleSignOut = () => {
-        signOut();
+    const handleSignOut = async() => {
+       await signOut({ redirect: false });
+        router.push("/");
     };
 
     return (
