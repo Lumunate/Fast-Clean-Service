@@ -2,19 +2,19 @@ export const options = [
   {
     id: "autocare-standard",
     name: "Standard",
-    duration: "± 36 min.",
-    price: "From € 74",
+    duration: "± 60 min.",
+    price: "From € 99.95",
   },
   {
     id: "autocare-deluxe",
     name: "Deluxe",
-    duration: "± 45 min.",
-    price: "From € 94",
+    duration: "± 90 min.",
+    price: "From € 139.95",
   },
   {
     id: "autocare-premium",
     name: "Premium",
-    duration: "± 101 min.",
-    price: "From € 149",
+    duration: "± 240 min.",
+    price: "From € 549.95",
   },
 ];

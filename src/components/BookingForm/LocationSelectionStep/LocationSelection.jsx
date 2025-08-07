@@ -86,11 +86,6 @@ const LocationSelection = () => {
   }, [selectedOption, updateValidation]);
 
   const handlePackageSelect = (pkg) => {
-      if (!session) {
-          openSnackbar("You must be logged in to proceed!");
-          setTimeout(openLoginModal, 2000);
-          return;
-      }
     setSelectedOption(pkg.name);
     updateFormData({ service: pkg.service });
     nextStep();

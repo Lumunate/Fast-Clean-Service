@@ -237,15 +237,15 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
     );
 
 
-    const filteredSlots = (selectedDateTimeslots?.slots || []).filter(({ start }) => {
+    const allSlots = selectedDateTimeslots?.slots || [];
+    const slots = allSlots.map((slot) => {
         const slotUtc = dayjs.utc(
-            `${selectedDate.format('YYYY-MM-DD')}T${start}:00Z`
+            `${selectedDate.format('YYYY-MM-DD')}T${slot.start}:00Z`
         );
-        if (isTodayUtc) {
-            return slotUtc.isAfter(nowUtc);
-        }
-        return true;
+        const isPastSlot = isTodayUtc && slotUtc.isBefore(nowUtc);
+        return { ...slot, isPast: isPastSlot };
     });
+
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en">
@@ -322,37 +322,38 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
                             <Typography variant="body1" sx={{ textAlign: 'center', mb: 2, fontSize:'1.6rem' }}>
                                 {selectedDate?.format('ddd, MMMM D')}
                             </Typography>
-                            {filteredSlots? (
-                                filteredSlots.map((slot, slotIndex) => (
-                                    <Button
-                                        key={slotIndex}
-                                        variant="outlined"
-                                        sx={{
-                                            margin: '0.5rem 0',
-                                            fontSize: isSmallScreen ? '1rem' : '1.4rem',
-                                            backgroundColor:
-                                                selectedTimeSlot === slot.start ? '#348feb' : 'inherit',
-                                            color:
-                                                selectedTimeSlot === slot.start ? 'white' : 'inherit',
-                                            border: `1px solid ${theme.palette.mode === 'dark' ? '#C2C2C2' : '#e0e0e0'}`,
-                                            boxShadow: 'none',
-                                            '&:hover': {
-                                                backgroundColor:
-                                                    selectedTimeSlot === slot.start
-                                                        ? '#348feb'
-                                                        : 'inherit',
-                                            },
-                                        }}
-                                        onClick={() => handleTimeSlotClick(slot.start)}
-                                    >
-                                        {slot.start}
-                                    </Button>
-                                ))
-                            ) : (
-                                <Typography sx={{ textAlign: 'center', fontSize: '0.85rem' }}>
-                                    {t("steps.7.unavailable")}
-                                </Typography>
-                            )}
+                            {slots.map(({ start, isPast }, idx) => (
+                                <Button
+                                    key={idx}
+                                    disabled={isPast}
+                                    onClick={() => !isPast && handleTimeSlotClick(start)}
+                                    sx={{
+                                        margin: '0.5rem 0',
+                                        fontSize: isSmallScreen ? '1rem' : '1.4rem',
+                                        backgroundColor: isPast
+                                            ? theme.palette.action.disabledBackground
+                                            : selectedTimeSlot === start
+                                                ? '#348feb'
+                                                : 'inherit',
+                                        color: isPast
+                                            ? theme.palette.text.disabled
+                                            : selectedTimeSlot === start
+                                                ? '#fff'
+                                                : 'inherit',
+                                        border: `1px solid ${theme.palette.mode === 'dark' ? '#C2C2C2' : '#e0e0e0'}`,
+                                        boxShadow: 'none',
+                                        '&:hover': {
+                                            backgroundColor: isPast
+                                                ? undefined
+                                                : selectedTimeSlot === start
+                                                    ? '#348feb'
+                                                    : 'inherit',
+                                        },
+                                    }}
+                                >
+                                    {start}
+                                </Button>
+                            ))}
                         </Box>
                     </Box>
                 </Box>

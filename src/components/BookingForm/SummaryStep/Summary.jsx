@@ -27,23 +27,9 @@ const Summary = () => {
         return null;
     }
     const getOptionPrice = (optionName, category) => {
-        const { _id, __v, ...relevantPackages } = packages.packages;
-        for (const pkgCategory of Object.values(relevantPackages)) {
-            for (const pkg of pkgCategory) {
-                const optionsList =
-                    pkg.additionalOptions?.[category] ||
-                    pkg.additionalOptions?.detailing ||
-                    [];
-                const matchedOption = optionsList.find(
-                    (option) => option._id === optionName
-                );
-                if (matchedOption) {
-                    return matchedOption.additionalCost || 0;
-                }
-            }
-        }
-        return 0;
+        return optionName?.additionalCost || 0;
     };
+
     return (
         <Box
             sx={{
@@ -115,7 +101,7 @@ const Summary = () => {
                             formData.selectedAdditionalOptions.map((option, index) => (
                                 <SummaryItem
                                     key={index}
-                                    label={[...formData.selectedPackage.additionalOptions.interior, ...formData.selectedPackage.additionalOptions.exterior].find(a => a._id === option).name?.[locale === 'en' ? 'en' : 'nl']}
+                                    label={option?.name[locale]}
                                     value={
                                         getOptionPrice(option, 'interior') +
                                         getOptionPrice(option, 'exterior')
@@ -158,7 +144,7 @@ const Summary = () => {
                             formData.selectedDetailingOptions.map((option, index) => (
                                 <SummaryItem
                                     key={index}
-                                    label={formData.selectedPackage.additionalOptions.detailing.find(a => a._id === option).name?.[locale === 'en' ? 'en' : 'nl']}
+                                    label={option?.name[locale]}
                                     value={getOptionPrice(option, 'detailing')}
                                 />
                             ))

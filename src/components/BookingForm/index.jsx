@@ -21,16 +21,6 @@ const Index = () => {
     const { openLoginModal } = useLoginModal();
     const { openSnackbar } = useSnackbar();
 
-    useEffect(() => {
-        if (status === 'authenticated' || status === 'loading') return;
-        openSnackbar("You must be logged in to book!");
-        openLoginModal();
-    }, [status, session, openSnackbar, openLoginModal, router]);
-
-    if (status !== 'authenticated') {
-        return null;
-    }
-
   return (
     <ValidationProvider>
       <FormProvider>

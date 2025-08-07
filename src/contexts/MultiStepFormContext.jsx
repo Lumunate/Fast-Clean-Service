@@ -19,6 +19,7 @@ export const FormProvider = ({ children }) => {
     selectedAdditionalOptions: [],
     selectedDetailingOptions: [],
     selectedTime: new Date(2023, 0, 1),
+    travelCost: null,
     bookingId: null,
   });
   const [price, setPrice] = useState(0);
@@ -69,7 +70,7 @@ export const FormProvider = ({ children }) => {
     if (formData.selectedPackageType === 'Subscription Plans') {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
-          const _addon = pkg.additionalOptions.find((a) => a._id === addon);
+          const _addon = pkg?.find((a) => a.additionalOptions === addon);
           const addonPrice = _addon?.additionalCost;
           const addonDuration = _addon?.additionalTime;
 
@@ -82,21 +83,14 @@ export const FormProvider = ({ children }) => {
     } else {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
-          const addonPrice =
-              pkg.additionalOptions?.interior?.find((a) => a._id === addon)
-                  ?.additionalCost ||
-              pkg.additionalOptions?.exterior?.find((a) => a._id === addon)
-                  ?.additionalCost ||
-              0;
+          const addonPrice = addon.additionalCost
 
           newPrice += addonPrice;
         });
       }
       if (formData.selectedDetailingOptions?.length > 0) {
         Object.values(formData.selectedDetailingOptions).forEach((addon) => {
-          const addonPrice = pkg.additionalOptions?.detailing?.find(
-              (a) => a._id === addon
-          )?.additionalCost;
+          const addonPrice = addon.additionalCost;
 
           if (addonPrice === 'On Request') {
             return price;
@@ -116,7 +110,7 @@ export const FormProvider = ({ children }) => {
       } else if (formData.travelDistance > 75) {
         travelCost = formData.travelDistance * 0.6;
       }
-
+      formData.travelCost = travelCost;
       newPrice += travelCost;
     }
 
@@ -231,7 +225,12 @@ export const FormProvider = ({ children }) => {
       return newSet;
     });
 
+
     if (currentStep === 10) {
+      if (status !== 'authenticated') {
+        openSnackbar('You must be logged in to submit your booking.');
+        return;
+      }
       const location =
           formData.location || '';
       if (location === '' || location === undefined) {
@@ -258,8 +257,9 @@ export const FormProvider = ({ children }) => {
           appointmentTimestamp: formData.selectedTime,
           vehicleDetails: formData.vehicleDetails,
           vehicleType: formData.carType,
-
+          postCleanAction: formData.postCleanAction,
           travelDistance: formData.travelDistance,
+          travelCost: formData.travelCost,
           serviceAddons: {
             addons: formData.selectedAdditionalOptions?.length
                 ? formData.selectedAdditionalOptions

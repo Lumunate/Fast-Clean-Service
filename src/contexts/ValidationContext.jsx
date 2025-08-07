@@ -1,17 +1,17 @@
 "use client";
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useState, useCallback, useMemo} from 'react';
 
 const ValidationContext = createContext(null);
 
 export const ValidationProvider = ({ children }) => {
     const [isValid, setIsValid] = useState(false);
-
-    const updateValidation = (valid) => {
+    const updateValidation = useCallback((valid) => {
         setIsValid(valid);
-    };
+        }, []);
 
+    const value = useMemo(() => ({ isValid, updateValidation }), [isValid, updateValidation]);
     return (
-        <ValidationContext.Provider value={{ isValid, updateValidation }}>
+        <ValidationContext.Provider value={value}>
             {children}
         </ValidationContext.Provider>
     );

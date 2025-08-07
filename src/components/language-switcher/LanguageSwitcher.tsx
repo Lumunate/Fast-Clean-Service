@@ -5,7 +5,13 @@ import { useRouter, usePathname } from "next/navigation";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import { GB, NL } from "country-flag-icons/react/3x2";
 
-export default function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
+interface LanguageSwitcherProps {
+    currentLocale: string,
+    width?:string,
+    height?:string
+}
+
+export default function LanguageSwitcher({ currentLocale, width = "24px", height = "24pxx" }: LanguageSwitcherProps) {
     const router = useRouter();
     const pathname = usePathname();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -43,9 +49,9 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
                 }}
             >
                 {currentLocale === "en" ? (
-                   <GB style={{ width: "24px", height: "24px" }} />
+                   <GB style={{ width, height }} />
                 ) : (
-                    <NL style={{ width: "24px", height: "24px" }} />
+                    <NL style={{ width, height }} />
                 )}
             </IconButton>
 

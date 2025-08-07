@@ -60,6 +60,7 @@ const BookingParticulars = () => {
     location: '',
     travelDistance: 0,
     bookingMessage: '',
+      postCleanAction: 'None of the above',
   });
 
     const isChecked = formData?.termsAccepted ?? false;
@@ -135,10 +136,11 @@ const BookingParticulars = () => {
         updateValidation(isValid);
     }, [bookingForm, isChecked, formData.location, updateValidation]);
 
-    if (!isValidEmail(formData.email)) {
-        openSnackbar("Please enter a valid email address.");
-        return;
-    }
+    useEffect(() => {
+        if (!isValidEmail(formData.email)) {
+            openSnackbar("Please enter a valid email address.");
+        }
+    }, [formData.email, openSnackbar]);
 
     const handleChange = (e) => {
     const { name, value } = e.target;
@@ -281,7 +283,105 @@ const BookingParticulars = () => {
               </Grid>
             </Grid>
 
-            <Grid container spacing={2}>
+              {form.formData.service === 'Onsite' && (
+                  <Grid sx={{marginTop:"16px"}} item xs={12}>
+                      <FormControl fullWidth sx={{ mt: 2 }}>
+                          <InputLabel sx={{
+                              fontFamily: "Inter",
+                              fontSize: {xs:"1rem",md:"1.4rem"},
+                              transform: "translate(10px, -19px) scale(1.2)",
+
+                              "& label": {
+                                  marginTop: '1.5rem',
+                                  color: theme.palette.mode === "light" ? "#818181" : "#fff",
+                                  fontSize: "1.4rem",
+                                  fontWeight: 400,
+                                  lineHeight: 1.21,
+                                  position: "relative",
+                                  transform: "translate(0%, -30%) scale(1)",
+                              },
+
+                              "& label.Mui-focused": {
+                                  color: theme.palette.primary.contrastText,
+                              },
+
+                               "&.Mui-focused": {
+                                 color: theme.palette.mode === "light" ? "#818181 " : "#fff", 
+                                },
+
+                              "& .MuiOutlinedInput-root": {
+                                  padding: '5px',
+                                  borderRadius: "6px",
+                                  fontSize: "1.8rem",
+                                  boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
+                                  backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "white",
+                                  backdropFilter: theme.palette.mode === "dark" ? "blur(8px)" : "none",
+                                  fontWeight: 300,
+                                  color: theme.palette.mode === "light" ? "#818181" : "#fff",
+
+                                  "& fieldset *": {
+                                      display: 'hidden',
+                                      border: 'none'
+                                  },
+                              },
+                          }}>
+                              {t('steps.9.postClean.label')}
+                          </InputLabel>
+                          <Select
+                              name="postCleanAction"
+                              value={bookingForm.postCleanAction}
+                              onChange={handleChange}
+                              label="What would you like to do while we clean your car?"
+                               MenuProps={{ disableScrollLock: true }}
+                              required
+                              sx={{
+                                  backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                                  "& .MuiOutlinedInput-input": {
+                                      padding: "2rem 1.5rem 1rem 1.5rem ",
+                                      color: theme.palette.mode === "dark" ? "#fff" : "#818181",
+                                      fontSize: "1.8rem",
+                                      fontWeight: "300",
+                                      // marginTop: "1.5rem !important",
+                                  },
+                                  "& .MuiOutlinedInput-notchedOutline": {
+                                      borderRadius: "6px",
+                                      borderColor: "transparent",
+                                      backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                                      boxShadow: "0 2px 11.9px 0 rgba(0, 0, 0, 0.25)",
+                                      marginTop: "0.5rem",
+                                  },
+                                  "& .MuiSelect-icon": {
+                                      color: theme.palette.mode === "dark" ? "#fff" : "#050505",
+                                  },
+                                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                                      borderColor: "transparent",
+                                  },
+                                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                      borderColor: "transparent",
+                                  },
+                                  "& .MuiInputLabel-root": {
+                                      color: theme.palette.mode === "dark" ? "#fff" : "#050505",
+                                  },
+                              }}
+                          >
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Rental car">
+                                  {t('steps.9.postClean.options.rentalCar')}
+                              </MenuItem>
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Loan bike">
+                                  {t('steps.9.postClean.options.loanBike')}
+                              </MenuItem>
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="Wait at the branch">
+                                  {t('steps.9.postClean.options.waitBranch')}
+                              </MenuItem>
+                              <MenuItem sx={{fontSize: {xs:"1rem",md:"1.4rem"}}} value="None of the above">
+                                  {t('steps.9.postClean.options.none')}
+                              </MenuItem>
+                          </Select>
+                      </FormControl>
+                  </Grid>
+              )}
+
+              <Grid container spacing={2}>
               <Grid item xs={12}>
                 <CustomFormTextField
                     label={t("steps.9.form_fields.6")}

@@ -17,7 +17,7 @@ import {
   TableHead,
   TablePagination,
 } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 // const bookings = [
 //     {
@@ -308,7 +308,7 @@ const BookingsCard = ({ bookings }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
   const t = useTranslations("admin_dashboard.dashboard")
-  
+  const locale = useLocale()
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -317,7 +317,7 @@ const BookingsCard = ({ bookings }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
+
   const tableHeaders = [
   t("6"),
   t("7"),
@@ -330,6 +330,7 @@ const BookingsCard = ({ bookings }) => {
   t("14"),
   t("15"),
   t("16"),
+  t("17"),
   ];
 
   return (
@@ -374,12 +375,12 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.vehicleDetails?.kenteken}
+                      {booking.vehicleDetails?.kenteken || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.city}
+                      {booking.city || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
@@ -394,17 +395,27 @@ const BookingsCard = ({ bookings }) => {
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.addons?.join(", ")}
+                      {booking.serviceAddons?.addons?.map(
+                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."} 
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.serviceAddons?.detailing?.join(", ")}
+                      {booking.serviceAddons?.detailing?.map(
+                                            (addon) => addon?.name?.[locale] )?.join(", ") || "..."}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
-                      {booking.appointmentTimestamp.toLocaleString()}
+                      {new Date(booking.appointmentTimestamp).toLocaleString("en-US", {
+  month: "numeric",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hour12: true,
+})}
                     </TableCellCustom>
                     <TableCellCustom
                       sx={{ fontSize: "1.1rem", color: "black" }}
@@ -415,6 +426,11 @@ const BookingsCard = ({ bookings }) => {
                       sx={{ fontSize: "1.1rem", color: "black" }}
                     >
                       {booking.payment.status}
+                    </TableCellCustom>
+                    <TableCellCustom
+                      sx={{ fontSize: "1.1rem", color: "black" }}
+                    >
+                      {booking.bookingStatus}
                     </TableCellCustom>
                   </TableRowCustom>
                 ))}

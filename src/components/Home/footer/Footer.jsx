@@ -5,11 +5,13 @@ import { Facebook, Instagram, Twitter, YouTube, Email, WhatsApp, Star } from "@m
 import { useTheme } from "../../../contexts/themeContext";
 import Image from "next/image";
 import Logo from "../../../../public/newlogo.svg";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
+import LanguageSwitcher from "../../language-switcher/LanguageSwitcher";
 
 export default function Footer() {
     const { theme } = useTheme();
     const t = useTranslations('footer');
+    const locale = useLocale
 
     return (
         <footer
@@ -67,12 +69,16 @@ export default function Footer() {
                     {/* <MuiLink href="/" sx={linkStyles}>{t("links.services")}</MuiLink> */}
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "1rem" }}>
+                <Box sx={{ display: "flex", gap: "4px" }}>
                     <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
                     <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
                     <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
                     <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon target="_blank"  href="mailto:support@fastclean.com" Icon={Email} />
+                    <Box sx={{padding:"8px", marginTop:"4px"}}>
+
+                    <LanguageSwitcher currentLocale={locale} width="18px" height="18px"/>
+                    </Box>
                 </Box>
             </Box>
 
@@ -97,8 +103,8 @@ export default function Footer() {
                         right: "120px",
                         transform: "translateY(-50%)",
                         display: "flex",
-                        gap: "1rem",
-                        "@media (max-width: 1366px)": { right: "7rem", bottom: "4.5rem" },
+                        gap: "1.4rem",
+                        "@media (max-width: 1366px)": { right: "6.4rem", bottom: "4.5rem" },
                         "@media (min-width: 992px) and (max-width: 1365.98px)": {
                             bottom: "0rem",
                         },
@@ -174,15 +180,19 @@ export default function Footer() {
                     <MuiLink href="/privacy-policy" sx={smallLinkStyles}>{t("terms_privacy.privacy")}</MuiLink>
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "1rem", marginBottom: "1.2rem" }}>
+                <Box sx={{ display: "flex", gap: "4px", marginBottom: "1.2rem" }}>
                     <SocialIcon target="_blank"  href="https://www.facebook.com/FastCleanServiceNL/" Icon={Facebook} />
                     <SocialIcon target="_blank"  href="https://www.instagram.com/fastcleanservice/" Icon={Instagram} />
                     <SocialIcon target="_blank"  href="https://wa.me/message/M7UOKFDWKTAUI1" Icon={WhatsApp} />
                     <SocialIcon target="_blank"  href="https://www.trustpilot.com/review/www.fastcleanservice.nl" Icon={Star} />
                     <SocialIcon target="_blank"  href="mailto:info@fastcleanservice.nl" Icon={Email} />
+                    <Box sx={{padding:"8px", marginTop:"4px"}}>
+
+                    <LanguageSwitcher currentLocale={locale} width="18px" height="18px"/>
+                    </Box>
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "1rem", justifySelf: "end" }}>
+                <Box sx={{ display: "flex", gap: "1.4rem", justifySelf: "end" }}>
                     {["visa", "mastercard", "apple", "google", "coin", "ideal2"].map((name) => {
                         const needsInvert = name === "visa" || name === "apple";
                         return (

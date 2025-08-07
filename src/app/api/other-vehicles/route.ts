@@ -5,6 +5,7 @@ import dbConnect from "../../../lib/dbConnect";
 import {NextRequest, NextResponse} from "next/server";
 import {otherVehiclesSchema} from "../../../types/other-vehicles";
 import OtherVehiclesService from "../../../services/other-vehicles";
+import { OtherVehicles } from "../../../models/OtherVehicles";
 
 type ContactResponse =
   | {
@@ -13,6 +14,32 @@ type ContactResponse =
   | {
       error: string;
     };
+
+export async function GET() {
+  await dbConnect();
+  const all = await OtherVehicles.find().sort({ createdAt: -1 });
+  return NextResponse.json({ data: all });
+}
+
+export async function DELETE(req: NextRequest) {
+  await dbConnect();
+  const id = req.nextUrl.searchParams.get("id");
+  if (!id) {
+    return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  }
+  await OtherVehicles.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Deleted" });
+}
+
+export async function PUT(req: NextRequest) {
+  await dbConnect();
+  const id = req.nextUrl.searchParams.get("id");
+  if (!id) {
+    return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  }
+  await OtherVehicles.findByIdAndUpdate(id, { isComplete: true });
+  return NextResponse.json({ message: "Marked complete" });
+}
 
 export async function POST(req: NextRequest, res: NextApiResponse<ContactResponse>) {
   await dbConnect();
