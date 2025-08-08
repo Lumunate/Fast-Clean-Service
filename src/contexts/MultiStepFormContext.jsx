@@ -239,6 +239,7 @@ export const FormProvider = ({ children }) => {
       }
       try {
         const data = {
+          userId: session.user.id,
           type: formData.service,
           firstName: formData.firstName,
           surname: formData.surname,

@@ -43,8 +43,8 @@ const Modal = ({ booking, serviceType, duration, handleCloseModal, open }) => {
         body: JSON.stringify({
           id,
           dateTime,
-          userId: session.user.id
-        }),
+          userId: booking.userId,
+    }),
       });
 
       if (!response.ok) {
