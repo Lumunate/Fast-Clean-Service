@@ -27,6 +27,7 @@ export interface IPayment {
 }
 
 export interface IBooking extends Document {
+  userId?: string;
   firstName: string;
   surname: string;
   companyName?: string;
@@ -74,6 +75,7 @@ const AddonSchema = new mongoose.Schema({
 }, { _id: false });
 
 const bookingSchema: Schema = new Schema({
+  userId: { type: String, required: false },
   firstName: { type: String, required: true },
   surname: { type: String, required: true },
   companyName: String,
