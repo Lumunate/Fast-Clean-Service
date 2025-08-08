@@ -87,6 +87,7 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
     const { openSnackbar } = useSnackbar();
     const nowUtc = dayjs.utc();
     const [selectedDate, setSelectedDate] = useState(null);
+    const [closedDates, setClosedDates] = useState([]);
     const isTodayUtc = selectedDate?.isSame(nowUtc, 'day');
     const [isLoading, setIsLoading] = useState(true);
     const [timeSlots, setTimeSlots] = useState([]);
@@ -114,11 +115,26 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
 
         const fetchInitialData = async () => {
             setIsLoading(true);
+
+            // Fetch time slots
             const initialData = await fetchTimeSlots(0);
             setTimeSlots(initialData);
             setAvailableDates(initialData.map((slot) => dayjs(slot.time)));
+
+            // Fetch closed dates
+            try {
+                const closedRes = await fetch('/api/booking/shop/closed');
+                const closedData = await closedRes.json();
+                if (closedData.success && Array.isArray(closedData.dates)) {
+                    setClosedDates(closedData.dates.map(d => dayjs(d.date).local().startOf('day')));
+                }
+            } catch (error) {
+                openSnackbar("Error fetching closed shop dates.");
+            }
+
             setIsLoading(false);
 
+            // Fetch next weeks' data
             for (let i = 1; i < 9; i++) {
                 const additionalData = await fetchTimeSlots(i);
                 setTimeSlots((prev) => [...prev, ...additionalData]);
@@ -129,7 +145,8 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
             }
         };
 
-       if (form.currentStep === 8 || forceFetchInitialData) {
+
+        if (form.currentStep === 8 || forceFetchInitialData) {
       fetchInitialData();
     }
     }, [form.formData.service, form.duration, form.currentStep, openSnackbar, forceFetchInitialData,t]);
@@ -150,9 +167,11 @@ const SmallScreenView = ({forceFetchInitialData = false}) => {
     };
 
     const shouldDisableDate = (date) => {
-        return !availableDates.some((availableDate) =>
+        const isClosed = closedDates.some((d) => d.isSame(date.startOf('day'), 'day'));
+        const isUnavailable = !availableDates.some((availableDate) =>
             availableDate.isSame(date, 'day')
         );
+        return isClosed || isUnavailable;
     };
 
     const CustomDay = (props) => {

@@ -110,138 +110,29 @@ const Index = () => {
 
   const { theme } = useTheme();
 
-  const carTypes = [
-    {
-      name: t("steps.2.vehicle_types.0"),
-      icon: (
-        <Image
-          src={HatchBack}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.1"),
-      icon: (
-        <Image
-          src={Subtract2}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.2"),
-      icon: (
-        <Image
-          src={UnionIcon}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.3"),
-      icon: (
-        <Image
-          src={Subtract1}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.4"),
-      icon: (
-        <Image
-          src={WagonIcon}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.5"),
-      icon: (
-        <Image
-          src={SuvIcon}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.6"),
-      icon: (
-        <Image
-          src={Union3}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.7"),
-      icon: (
-        <Image
-          src={Union2}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.8"),
-      icon: (
-        <Image
-          src={Subtract}
-          alt={'car type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-    {
-      name: t("steps.2.vehicle_types.9"),
-      icon: (
-        <Image
-          src={BikeIcon}
-          alt={'Motor type'}
-          width={40}
-          height={40}
-          style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }}
-        />
-      ),
-    },
-  ];
+    const carTypes = [
+        { key: "Hatchback", label: t("steps.2.vehicle_types.0"), icon: <Image src={HatchBack} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Coupe", label: t("steps.2.vehicle_types.1"), icon: <Image src={Subtract2} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Cabriolet", label: t("steps.2.vehicle_types.2"), icon: <Image src={UnionIcon} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Sedan", label: t("steps.2.vehicle_types.3"), icon: <Image src={Subtract1} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Station Wagon", label: t("steps.2.vehicle_types.4"), icon: <Image src={WagonIcon} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "SUV", label: t("steps.2.vehicle_types.5"), icon: <Image src={SuvIcon} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "MPV", label: t("steps.2.vehicle_types.6"), icon: <Image src={Union3} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Pick-up Truck", label: t("steps.2.vehicle_types.7"), icon: <Image src={Union2} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Van", label: t("steps.2.vehicle_types.8"), icon: <Image src={Subtract} alt="car" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+        { key: "Motorbike", label: t("steps.2.vehicle_types.9"), icon: <Image src={BikeIcon} alt="motor" width={40} height={40} style={{ filter: theme.palette.mode === 'dark' ? 'invert(1)' : '' }} /> },
+    ];
 
-  useEffect(() => {
-    updateValidation(!!selectedCarType);
-  }, [selectedCarType, updateValidation]);
+    useEffect(() => {
+        updateValidation(!!selectedCarType);
+    }, [selectedCarType, updateValidation]);
 
-  const handleCarTypeClick = (carType) => {
-    setSelectedCarType(carType);
-    form.updateFormData({ carType });
-    form.nextStep();
-  };
+    // Always store English key in form
+    const handleCarTypeClick = (carTypeKey) => {
+        setSelectedCarType(carTypeKey);
+        form.updateFormData({ carType: carTypeKey });
+        form.nextStep();
+    };
 
   return (
     <Box
@@ -293,21 +184,21 @@ const Index = () => {
           gap: '1rem',
         }}
       >
-        {carTypes.map((carType, index) => (
-          <Box
-            key={carType.name}
-            onClick={() => handleCarTypeClick(carType.name)}
-            sx={{
-              gridColumn: index >= 6 ? 'span 1' : undefined,
-            }}
-          >
-            <CarTypeBox
-              name={carType.name}
-              icon={carType.icon}
-              selected={form?.formData?.carType === carType.name}
-            />
-          </Box>
-        ))}
+          {carTypes.map((carType, index) => (
+              <Box
+                  key={carType.key}
+                  onClick={() => handleCarTypeClick(carType.key)}
+                  sx={{
+                      gridColumn: index >= 6 ? 'span 1' : undefined,
+                  }}
+              >
+                  <CarTypeBox
+                      name={carType.label}
+                      icon={carType.icon}
+                      selected={form?.formData?.carType === carType.key}
+                  />
+              </Box>
+          ))}
       </CarTypeContainer>
     </Box>
   );

@@ -21,14 +21,14 @@ const Index = () => {
                     marginBottom: "0",
                 }}
             >
-                {t("steps.1.description.0")}
+                {t("steps.0.description.0")}
             </BookingFormSubHeading>
             <BookingFormSubHeading
                 sx={{
                     display: { xs: "none", sm: "block" },
                 }}
             >
-                {t("steps.1.description.1")}
+                {t("steps.0.description.1")}
             </BookingFormSubHeading>
 
             <Box

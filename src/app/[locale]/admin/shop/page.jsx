@@ -255,7 +255,6 @@ const ShopOpenCloseModal = ({ isOpen, handleClose, selectedDate, availableDates,
         console.error(err);
         openSnackbar("Error saving shop");
       });
-
     handleClose();
   };
 
