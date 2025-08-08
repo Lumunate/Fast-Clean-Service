@@ -312,7 +312,7 @@ class BookingService {
     sendEmail(
       {
         to: email,
-        from: "fizoneechan@gmail.com",
+        from: "info@fastcleanservice.nl",
         subject: "Fast Clean Service - Booking Acknowledgement",
       },
       BookingConfirmationEmail,
