@@ -27,7 +27,7 @@ class ContactService {
     await sendEmail(
         {
           to: data.email,
-          from: "fizoneechan@gmail.com",
+          from: "info@fastcleanservice.nl",
           subject: "Thank you for contacting Fast Clean Service",
         },
         ContactConfirmationEmail,

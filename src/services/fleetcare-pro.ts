@@ -49,7 +49,7 @@ class FleetCareProService {
     sendEmail(
       {
         to: email, // Change to your recipient
-        from: "fizoneechan@gmail.com", // Change to your verified sender
+        from: "info@fastcleanservice.nl",
         subject: "Fast Clean Service - Booking Acknowledgement",
       },
       FleetCareConfirmationEmail,
