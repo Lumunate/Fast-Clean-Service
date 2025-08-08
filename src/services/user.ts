@@ -70,7 +70,7 @@ class UserService {
     await sendEmail(
       {
         to: user.email,
-        from: "fizoneechan@gmail.com",
+        from: "info@fastcleanservice.nl",
         subject: "Email Verification Link",
       },
       EmailVerificationEmail,
