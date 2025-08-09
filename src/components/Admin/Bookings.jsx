@@ -35,6 +35,7 @@ import {error} from "next/dist/build/output/log";
 
 const BookingsPage = ({}) => {
     const { bookings: bookingsData } = useBookings();
+    console.log(bookingsData);
     const t = useTranslations("admin_dashboard.admin_booking")
     
     const isMobile = useMediaQuery("(max-width:600px)");
