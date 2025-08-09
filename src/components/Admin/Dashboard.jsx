@@ -1,38 +1,48 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import StatsCards from "./StatsCards";
 import BookingsCard from "./BookingCard";
-import { useBookings } from "../../contexts/BookingsContext";
 import { useSession } from "next-auth/react";
 
-const Dashboard = ({}) => {
-  const { bookings } = useBookings();
-    const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
+const Dashboard = () => {
+    const [bookingLength, setBookingLength] = useState(0);
+    const [bookings, setBookings] = useState([]);
     const { data: session, status } = useSession();
 
-    useEffect(() => {
-        console.log("🟡 Session status:", status);
-        if (session) {
-            console.log("🔐 Session object:", session);
-        } else {
-            console.log("❌ No session available");
+    const fetchBookings = async () => {
+        try {
+            const response = await fetch('/api/booking');
+            const data = await response.json();
+
+            if (Array.isArray(data.data)) {
+                setBookings(data.data); // ✅ Set full list
+                setBookingLength(data.data.length); // ✅ Set count
+            } else {
+                console.warn("Unexpected response format from /api/booking");
+            }
+        } catch (error) {
+            console.error("Failed to fetch bookings:", error);
         }
-    }, [session, status]);
+    };
 
-  return (
-    <Box sx={{ padding: "16px" }}>
-        <StatsCards bookingLenght={bookingLength} />
+    useEffect(() => {
+        fetchBookings();
+    }, []);
 
-      <Box sx={{ marginTop: "30px" }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <BookingsCard bookings={bookings} />
-          </Grid>
-        </Grid>
-      </Box>
-    </Box>
-  );
+    return (
+        <Box sx={{ padding: "16px" }}>
+            <StatsCards bookingLenght={bookingLength} />
+
+            <Box sx={{ marginTop: "30px" }}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <BookingsCard bookings={bookings} /> {/* ✅ Pass full list */}
+                    </Grid>
+                </Grid>
+            </Box>
+        </Box>
+    );
 };
 
 export default Dashboard;
