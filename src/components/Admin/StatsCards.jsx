@@ -26,7 +26,7 @@ const CardOffer = ({ title, subtitle, backgroundColor, path, t }) => {
 };
 
 const StatsCards = ({ bookingLenght }) => {
-
+    const [otherVehicles, setOtherVehicles] = useState(0);
     const [fleetcare, setFleetcare] = useState(0);
 
      const t = useTranslations("admin_dashboard.dashboard")
@@ -40,9 +40,20 @@ const StatsCards = ({ bookingLenght }) => {
             console.error(error);
         }
     };
+    const getSetOtherVehicles = async () => {
+        try {
+            const response = await fetch(`/api/other-vehicles`);
+            const data = await response.json();
+            setOtherVehicles(data.data.length); // or adjust if the structure differs
+        } catch (error) {
+            console.error("Failed to fetch other vehicles:", error);
+        }
+    };
+
 
     useEffect(() => {
         getSetFleetcare();
+        getSetOtherVehicles();
     }, []);
 
     return (
@@ -70,7 +81,7 @@ const StatsCards = ({ bookingLenght }) => {
             <Grid item xs={12} sm={6} md={4}>
                 <CardOffer
                     title={t("2")}
-                    subtitle="85"
+                    subtitle={otherVehicles || 0} // ← dynamic value here
                     backgroundColor="#C6F7E2"
                     path="/admin/othervehicles"
                     t={t}
