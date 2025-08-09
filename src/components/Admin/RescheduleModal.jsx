@@ -16,6 +16,7 @@ import useMultiStepForm from "../../hooks/useMultiStepForm";
 import useSnackbar from "../../hooks/useSnackbar";
 import { useSession } from "next-auth/react";
 import { ModalButton } from "../mui/AdminPkgs";
+import {useRouter} from "next/navigation";
 
 const RescheduleModal = ({ booking, serviceType, duration, handleCloseModal, open }) => {
     return (
@@ -35,6 +36,7 @@ const RescheduleModalInner = ({ booking, serviceType, duration, handleCloseModal
     const form = useMultiStepForm();
     const { openSnackbar } = useSnackbar();
     const { data: session } = useSession();
+    const router = useRouter();
 
     useEffect(() => {
         if (booking) {
@@ -68,6 +70,7 @@ const RescheduleModalInner = ({ booking, serviceType, duration, handleCloseModal
             }
 
             openSnackbar("Booking successfully rescheduled.", "success");
+            router.refresh();
             handleCloseModal();
         } catch (err) {
             openSnackbar("Error rescheduling: " + err.message, "error");
