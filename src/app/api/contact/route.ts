@@ -1,4 +1,3 @@
-// pages/api/contact.ts
 import type {NextApiResponse} from "next";
 import {z} from "zod";
 import dbConnect from "../../../lib/dbConnect";
@@ -26,11 +25,11 @@ export async function POST(req: NextRequest, res: NextApiResponse<ContactRespons
     await ContactService.submitContactForm(validatedData);
 
     return NextResponse.json({ message: "Contact form submitted successfully" }, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
+    console.error("Contact POST failed:", error);
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: error.errors.map((e) => e.message).join(", ") }, { status: 400 });
-    } else {
-      return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
+      return NextResponse.json({ error: error.errors.map(e => e.message).join(", ") }, { status: 400 });
     }
+    return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
   }
 }

@@ -14,9 +14,13 @@ class ContactService {
 
     await ContactRepository.createContact(data);
 
-    //! - Send a confirmation email
-    await this.sendConfirmationEmail(data);
-  }
+      try {
+          await this.sendConfirmationEmail(data);
+      } catch (err) {
+          console.error("sendConfirmationEmail failed:", err);
+          // optionally report to Sentry etc.
+      }
+  };
 
   private static isSpam(message: string): boolean {
     // Implement spam detection logic
