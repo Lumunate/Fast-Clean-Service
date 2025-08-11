@@ -371,7 +371,7 @@ export default function About() {
                                                 {t("cta.buttons.book_now")}
                                             </Button>
                                         </Link>
-                                        <Link href="/aboutus" passHref>
+                                        <Link href="/contact" passHref>
                                             <Button
                                                 variant="contained"
                                                 sx={{

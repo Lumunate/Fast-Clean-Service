@@ -200,6 +200,7 @@
           "category": "MEEST POPULAIR!",
           "popular": "MEEST POPULAIR!",
           "price": "Vanaf",
+          "title": "Inclusief:",
           "features": [
             "Inclusief alle diensten van het Standard Pakket",
             "Dieptereiniging / Leerbehandeling ",
@@ -215,6 +216,7 @@
           "name": "Premium",
           "category": "Showroom Afwerking",
           "price": "Vanaf",
+          "title": "Inclusief:",
           "features": [
             "Inclusief alle diensten van het Standard & Deluxe Pakket",
             "Motorkap reiniging ",
@@ -311,10 +313,10 @@
         {
           "name": "Boten",
           "services": [
-            "Antikalk- en antiroestbehandeling",
-            "Stoomreiniging van dek en interieur",
-            "Poetsen van metalen en kunststof onderdelen",
-            "Coating tegen zout, zon en water"
+            "Antikalk- & antiroestbehandeling",
+            "Stoomreiniging dek & interieur",
+            "Poetsen van metaal & kunststofdelen",
+            "Coating tegen zout, zon & water"
           ],
           "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
         }
@@ -598,7 +600,7 @@
     "quote_form": {
       "title": "Zakelijke aanvraag",
       "fields": {
-        "business": "Zakelijk",
+        "business": "bedrijfsnaam",
         "address": "Adres",
         "name": "Naam",
         "email": "Email",
