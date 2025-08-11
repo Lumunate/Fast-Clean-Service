@@ -15,6 +15,7 @@ import { useTheme } from "../../contexts/themeContext";
 import { CustomFormTextField } from "../../components/mui/NewFormPkgs";
 import { CustomCard } from "../../components/mui/CardPackages";
 import { isValidEmail } from "../../lib/utils.js";
+import { useTranslations } from "next-intl";
 
 const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
     const { theme } = useTheme();
@@ -22,6 +23,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
     const [error, setError] = useState("");
     const { data: session, status: sessionStatus } = useSession();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const t = useTranslations('sign_up');
 
     useEffect(() => {
         if (sessionStatus === "authenticated") {
@@ -137,7 +139,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                 fontSize: "2.8rem",
               }}
             >
-              Sign Up
+              {t("10")}
             </Typography>
             <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3, width: "100%", maxWidth: "80%" }}>
               <Grid container spacing={isSmallScreen ? 1 : 4}>
@@ -148,7 +150,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     required
                     fullWidth
                     id="firstName"
-                    label="First Name"
+                    label={t("0")}
                     autoFocus
                   />
                 </Grid>
@@ -157,7 +159,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     required
                     fullWidth
                     id="lastName"
-                    label="Last Name"
+                    label={t("1")}
                     name="lastName"
                     autoComplete="family-name"
                   />
@@ -167,7 +169,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     required
                     fullWidth
                     id="companyName"
-                    label="Company"
+                    label={t("2")}
                     name="companyName"
                     autoComplete="company-name"
                   />
@@ -179,27 +181,27 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     required
                     fullWidth
                     id="street"
-                    label="Street"
+                    label={t("3")}
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <CustomFormTextField autoComplete="phone" name="phoneNumber" required fullWidth id="phone" label="Phone" />
+                  <CustomFormTextField autoComplete="phone" name="phoneNumber" required fullWidth id="phone" label={t("4")} />
                 </Grid>
                 <Grid item xs={12} sm={8}>
-                  <CustomFormTextField required fullWidth id="City" label="City" name="city" autoComplete="city" />
+                  <CustomFormTextField required fullWidth id="City" label={t("5")} name="city" autoComplete="city" />
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <CustomFormTextField required fullWidth id="zipCode" label="Zip Code" name="zipCode" autoComplete="zip-code" />
+                  <CustomFormTextField required fullWidth id="zipCode" label={t("6")} name="zipCode" autoComplete="zip-code" />
                 </Grid>
                 <Grid item xs={12}>
-                  <CustomFormTextField required fullWidth id="email" label="Email Address" name="email" autoComplete="email" />
+                  <CustomFormTextField required fullWidth id="email" label={t("7")} name="email" autoComplete="email" />
                 </Grid>
                 <Grid item xs={12}>
                   <CustomFormTextField
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label={t("8")}
                     type="password"
                     id="password"
                     autoComplete="new-password"
@@ -217,7 +219,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                       },
                     }}
                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                    label="I want to receive inspiration, marketing promotions and updates via email."
+                    label={t("9")}
                   />
                 </Grid>
               </Grid>
@@ -238,7 +240,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                     },
                   }}
                 >
-                  Sign Up
+                  {t("10")}
                 </Button>
               </Box>
               <Grid container justifyContent="center" sx={{ margin: "2rem 0 0" }}>
@@ -249,7 +251,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                       fontSize: "1.8rem",
                     }}
                   >
-                    Already have an account?{" "}
+                   {t("11")}{" "}
                     <span
                       onClick={() => {
                         setOpenSignup(false);
@@ -257,7 +259,7 @@ const SignUpModal = ({ setOpenSignup, setOpenLogin }) => {
                       }}
                       style={{ cursor: "pointer", color: "#00BEFF" }}
                     >
-                      Sign In
+                      {t("12")}
                     </span>
                   </Typography>
                 </Grid>

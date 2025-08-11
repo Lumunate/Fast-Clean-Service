@@ -9,7 +9,7 @@ import axios from "axios";
 import { useTheme } from "../../../contexts/themeContext";
 import {useTranslations} from "next-intl";
 
-const submitFleetCareProForm = async (formData) => {
+const submitFleetCareProForm = async (formData,t) => {
   try {
     const response = await axios.post("/api/contact", formData, {
       headers: {
@@ -21,11 +21,11 @@ const submitFleetCareProForm = async (formData) => {
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
-      console.error("Error submitting form:", error.response.data.error);
+      console.error(t("Form_messages.0"), error.response.data.error);
       throw new Error(error.response.data.error);
     } else {
-      console.error("Error submitting form:", error);
-      throw new Error("An unexpected error occurred");
+      console.error(t("Form_messages.0"), error);
+      throw new Error(t("Form_messages.1"));
     }
   }
 };
@@ -53,8 +53,8 @@ export default function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await submitFleetCareProForm(formData);
-      openSnackbar("Form submitted successfully!");
+      await submitFleetCareProForm(formData, t);
+      openSnackbar(t("Form_messages.2"));
 
       // Reset form
       setFormData({
@@ -64,7 +64,7 @@ export default function Form() {
         message: "",
       });
     } catch (error) {
-      openSnackbar(`Error: ${error instanceof Error ? error.message : "An unexpected error occurred"}`);
+      openSnackbar(`${t("Form_messages.3")} ${error instanceof Error ? error.message : t("Form_messages.1")}`);
     }
   };
 

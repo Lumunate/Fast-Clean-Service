@@ -44,6 +44,7 @@ const NumberOfVehicles = ({t}) => {
   const [vehiclesDate, setVehiclesDate] = useState(dayjs());
   const [refetchNumVehicles, setRefetchNumVehicles] = useState(false);
   const [ShowingNumVehicles, setShowingNumVehicles] = useState("Loading...");
+  const t1 = useTranslations("admin_dashboard.snackbar_message.shop")
 
 
   useEffect(() => {
@@ -86,7 +87,7 @@ const NumberOfVehicles = ({t}) => {
       })
       .catch((err) => {
         console.error(err);
-        openSnackbar("Error saving vehicles");
+        openSnackbar(t1("0"));
       });
   };
 
@@ -231,6 +232,7 @@ const ShopOpen = ({t}) => {
 const ShopOpenCloseModal = ({ isOpen, handleClose, selectedDate, availableDates, setAvailableDates }) => {
   const isShopOpen = availableDates.some((date) => date.isSame(selectedDate, "day"));
   const { openSnackbar } = useSnackbar();
+  const t1 = useTranslations("admin_dashboard.snackbar_message.shop")
 
   const handleChange = (event) => {
     if (isShopOpen) {
@@ -253,7 +255,7 @@ const ShopOpenCloseModal = ({ isOpen, handleClose, selectedDate, availableDates,
       })
       .catch((err) => {
         console.error(err);
-        openSnackbar("Error saving shop");
+        openSnackbar(t1("1"));
       });
 
     handleClose();

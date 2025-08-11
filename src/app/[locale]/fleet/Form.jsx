@@ -70,7 +70,7 @@ export default function FleetCareProForm() {
     e.preventDefault();
     try {
       await submitFleetCareProForm(formData);
-      openSnackbar("Form submitted successfully!");
+      openSnackbar(t("Form_messages.2"));
       setFormData({
         businessName: "",
         address: "",
@@ -81,7 +81,7 @@ export default function FleetCareProForm() {
       });
     } catch (error) {
       openSnackbar(
-        `Error: ${error instanceof Error ? error.message : "An unexpected error occurred"}`
+        `${t("Form_messages.3")} ${error instanceof Error ? error.message : t("Form_messages.1")}`
       );
     }
   };

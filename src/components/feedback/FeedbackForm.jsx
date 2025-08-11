@@ -57,10 +57,10 @@ export default function FeedbackForm() {
 
         try {
             await submitForm(formattedData);
-            openSnackbar("Form submitted successfully!");
+            openSnackbar(t("form_fields.snackbar_text.0"));
             reset();
         } catch (err) {
-             openSnackbar('Failed to submit Contact Form. Please try again later!');
+             openSnackbar(t("form_fields.snackbar_text.1"));
         }
     };
 

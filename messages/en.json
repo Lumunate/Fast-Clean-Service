@@ -513,7 +513,13 @@
       "email": "Email",
       "phone":"phone number",
       "message": "message / question*",
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "Error submitting form:",
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     },
     "contact_details": {
       "title":"Our Contact Options:",
@@ -617,7 +623,13 @@
           "other": "Others"
         }
       },
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "Error submitting form:",
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     },
     "faq": {
       "title": "Frequently Asked Questions (FAQ)",
@@ -755,7 +767,12 @@
         "desired_services_placeholder": "Write your wishes here, cleaning of the interior, applying a coating etc.",
         "number_of_vehicles": "Number of Vehicles"
       },
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     }
   },
   "anywhere_autocare": {
@@ -2631,6 +2648,14 @@
           "only supports one-time payments. Therefore, our subscription plans can only be purchased via"
         ]
       }
+    ],
+    "multi_step_form_snackbar":[
+      "You must be logged in to submit your booking.",
+      "Please complete all required fields before submitting.",
+      "Failed to create booking",
+      "Server rejected booking",
+      "Form submitted successfully!",
+      "Error submitting form"
     ]
   },
   "feedback": {
@@ -2642,7 +2667,11 @@
       "service": "Service",
       "date_of_appointment": "Date of Appointment",
       "rating": "Rate Your Experience",
-      "review": "Share Your Experience Here..."
+      "review": "Share Your Experience Here...",
+      "snackbar_text":[
+        "Form submitted successfully!",
+        "Failed to submit Contact Form. Please try again later!"
+      ]
     },
     "buttons": {
       "submit": "Submit Feedback"
@@ -2956,6 +2985,39 @@
     "edit":"Edit Package",
     "description3" :"Make changes to the package details, pricing, and add-ons below.",
     "button":"Save Changes",
+    "snackbar_message":{
+      "fleet_pro":[
+        "Deleted form successfully",
+        "Error deleting form",
+        "Marked as completed successfully",
+        "Error completing form",
+        "Form submitted successfully!",
+        "Error:",
+        "An unexpected error occurred"
+      ],
+      "other_vehicles":[
+        "Error fetching records",
+        "Deleted record successfully",
+        "Error deleting record",
+        "Marked as completed successfully",
+        "Error marking as complete"
+      ],
+      "package_management":[
+        "Failed to update package"
+      ],
+      "shop":[
+        "Error saving vehicles",
+        "Error saving shop"
+      ],
+      "booking":[
+        "error",
+        "Error delete booking: ",
+        "Booking deleted successfully",
+        "Booking marked as Completed",
+        "Error updating status: ",
+        "Are you sure you want to delete this booking?" 
+      ]
+    },
     "booking_profile_card":[
       "Phone Number:",
       "Package Name:",
@@ -3097,6 +3159,31 @@
 "Detailing Options",
 "Add Detailing Option"
 ]
-  }
+  },
+  "login":[
+    "Login",
+    "Email Address",
+    "Password",
+    "Don't have an account?",
+    "Sign Up",
+    "Invalid email",
+    "Password is invalid",
+    "Invalid Email or Password"
+  ],
+  "sign_up":[
+    "First Name",
+    "Last Name",
+    "Company",
+    "Street",
+    "Phone",
+    "City",
+    "Email Address",
+    "Zip Code",
+    "Password",
+    "I want to receive inspiration, marketing promotions and updates via email.",
+    "Sign Up",
+    "Already have an account?",
+    "Sign In"
+  ]
 
 }
