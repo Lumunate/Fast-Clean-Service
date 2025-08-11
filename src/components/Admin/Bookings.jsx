@@ -190,7 +190,14 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
             });
 
             if (!response.ok) {
-                openSnackbar(t1("1") + error, t1("0"));
+                let errorMsg = t1("1");
+                try {
+                    const errorData = await response.json();
+                    if (errorData && (errorData.error || errorData.message)) {
+                        errorMsg += " " + (errorData.error || errorData.message);
+                    }
+                } catch (e) {}
+                openSnackbar(errorMsg, t1("0"));
                 return;
             }
 

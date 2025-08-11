@@ -2452,7 +2452,12 @@
           "answer": "Yes, you automatically receive an invoice with every payment. Also suitable for business customers."
         }
       ]
-    }
+    },
+     "packageNames": {
+    "EXTERIOR": "EXTERIOR",
+    "INTERIOR": "INTERIOR",
+    "TOTAL": "TOTAL"
+  }
   },
   "booking": {
     "title": "Booking - On Location",
