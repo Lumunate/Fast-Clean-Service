@@ -7,6 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { CustomCard } from "../../components/mui/CardPackages";
 import { CustomFormTextField } from "../../components/mui/NewFormPkgs";
 import { useTheme } from "../../contexts/themeContext";
+import { useTranslations } from "next-intl";
 
 const isValidEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -19,6 +20,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
     const [loading, setLoading] = useState(false);
     const { data: session, status: sessionStatus } = useSession();
     const { theme } = useTheme();
+    const t = useTranslations('login');
 
 
     // useEffect(() => {
@@ -36,13 +38,13 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
         const password = document.getElementById("password").value;
 
         if (!isValidEmail(email)) {
-            setError("Invalid email");
+            setError(t("5"));
             setLoading(false);
             return;
         }
 
         if (!password || password.length < 8) {
-            setError("Password is invalid");
+            setError(t("6"));
             setLoading(false);
             return;
         }
@@ -53,10 +55,10 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                 email,
                 password,
             });
-            if (!res.ok) throw new Error("Invalid Email or Password");
+            if (!res.ok) throw new Error(t("7"));
             // if (res?.url) router.replace("/customer-portal");
         } catch (err) {
-            setError("Invalid Email or password");
+            setError(t("7"));
         }
         setLoading(false);
     };
@@ -115,7 +117,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                 fontSize: "2.8rem",
               }}
             >
-              Login
+              {t("0")}
             </Typography>
 
             <Box
@@ -144,7 +146,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={t("1")}
                 name="email"
                 autoComplete="email"
                 sx={{ marginBottom: "2rem" }}
@@ -154,7 +156,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={t("2")}
                 type="password"
                 id="password"
                 autoComplete="new-password"
@@ -179,7 +181,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                   type="submit"
                   disabled={loading}
                 >
-                  {loading ? <CircularProgress /> : "Login"}
+                  {loading ? <CircularProgress /> : t("0")}
                 </Button>
               </Box>
 
@@ -191,7 +193,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                       fontSize: "1.8rem",
                     }}
                   >
-                    Don’t have an account?{" "}
+                    {t("3")}{" "}
                     <span
                       onClick={() => {
                           onClose();
@@ -199,7 +201,7 @@ const LoginModal = ({ onClose, setOpenSignup }) => {
                       }}
                       style={{ cursor: "pointer", color: "#00BEFF" }}
                     >
-                      Sign Up
+                      {t("4")}
                     </span>
                   </Typography>
                 </Grid>

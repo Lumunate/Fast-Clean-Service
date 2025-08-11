@@ -30,6 +30,8 @@ const Page = () => {
   const { openSnackbar } = useSnackbar();
   const locale = useLocale();
   const t = useTranslations("admin_dashboard")
+  const t1 = useTranslations("admin_dashboard.snackbar_message.package_management")
+
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -335,7 +337,7 @@ const Page = () => {
       handleCloseModal();
     } catch (error) {
       console.log(error);
-      openSnackbar("Failed to update package", 5000);
+      openSnackbar(t1("0"), 5000);
     }
   };
 
