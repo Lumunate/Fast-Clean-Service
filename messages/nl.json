@@ -2455,6 +2455,11 @@
         "answer": "Ja, je ontvangt automatisch een factuur bij iedere betaling. Ook geschikt voor zakelijke klanten."
       }
     ]
+  },
+  "packageNames": {
+    "EXTERIOR": "Exterieur",
+    "INTERIOR": "INTERIEUR",
+    "TOTAL": "TOTAAL"
   }
 },
   "booking": {
