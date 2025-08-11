@@ -90,7 +90,13 @@ const PackageCard = ({ pkg, index, highlightColor }) => {
                 <StyledImageContainer highlightColor={highlightColor} />
             </Box>
 
-            <GradientBox gradient={gradients[index]}>{pkg.name}</GradientBox>
+            <GradientBox gradient={gradients[index]}>{locale === "nl" ? {
+                        EXTERIOR: "Exterieur",
+                        INTERIOR: "INTERIEUR",
+                        TOTAL: "TOTAAL"
+                    }[pkg.name] || pkg.name
+                    : pkg.name
+                }</GradientBox>
 
             {/* Inner content area is a flex column with space-between */}
             <Box
