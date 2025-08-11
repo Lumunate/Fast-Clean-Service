@@ -77,7 +77,7 @@ export default function Form() {
     e.preventDefault();
     try {
       await submitForm(formData);
-      openSnackbar("Form submitted successfully!");
+      openSnackbar(t("Form_messages.1"));
 
       // Reset form
       setFormData({
@@ -91,7 +91,7 @@ export default function Form() {
         numVehicles: "",
       });
     } catch (error) {
-      openSnackbar(`Error: ${error instanceof Error ? error.message : "An unexpected error occurred"}`);
+      openSnackbar(`${t("Form_messages.2")} ${error instanceof Error ? error.message : t("Form_messages.0")}`);
     }
   };
 

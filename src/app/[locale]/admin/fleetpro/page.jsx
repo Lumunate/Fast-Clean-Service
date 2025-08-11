@@ -18,7 +18,7 @@ import { CustomFormTextField } from "../../../../components/mui/FormPkgs";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import useSnackbar from "../../../../hooks/useSnackbar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "../../../../contexts/themeContext";
 import axios from "axios";
 
@@ -49,6 +49,9 @@ export default function FleetProCareAppointments() {
 
   const t = useTranslations("admin_dashboard.fleet_pro")
   const t2 = useTranslations('fleetcare.quote_form');
+  const t3 = useTranslations("admin_dashboard.snackbar_message.fleet_pro")
+  const locale = useLocale();
+
 
   const getData = async () => {
     setLoading(true);
@@ -110,11 +113,11 @@ export default function FleetProCareAppointments() {
           "Content-Type": "application/json",
         },
       });
-      openSnackbar("Deleted form successfully");
+      openSnackbar(t3("0"));
       await getData();
     } catch (err) {
       console.error(err);
-      openSnackbar("Error deleting form");
+      openSnackbar(t3("1"));
     }
   };
 
@@ -126,11 +129,11 @@ export default function FleetProCareAppointments() {
           "Content-Type": "application/json",
         },
       });
-      openSnackbar("Marked as completed successfully");
+      openSnackbar(t3("2"));
       await getData();
     } catch (err) {
       console.error(err);
-      openSnackbar("Error completing form");
+      openSnackbar(t3("3"));
     }
   };
 
@@ -150,7 +153,7 @@ export default function FleetProCareAppointments() {
     e.preventDefault();
     try {
       await submitFleetCareProForm(formData);
-      openSnackbar("Form submitted successfully!");
+      openSnackbar(t3("4"));
       setFormData({
         businessName: "",
         address: "",
@@ -161,7 +164,7 @@ export default function FleetProCareAppointments() {
       });
     } catch (error) {
       openSnackbar(
-          `Error: ${error instanceof Error ? error.message : "An unexpected error occurred"}`
+          `${t3("5")} ${error instanceof Error ? error.message : t3("6")}`
       );
     }
 
@@ -249,7 +252,14 @@ export default function FleetProCareAppointments() {
                             color: row.isComplete === true ? 'success.main' : 'warning.main',
                             fontWeight: 'bold'
                           }}>
-                            {row.isComplete === true ? 'Completed' : 'Pending'}
+                            {row.isComplete === true
+                              ? locale === 'en' 
+                                ? 'Completed' 
+                                : 'Voltooid'
+                              : locale === 'en' 
+                                ? 'Pending' 
+                                : 'In afwachting'
+                            }
                           </TableCellCustom>
                           <TableCellCustom>
                             <IconButton
