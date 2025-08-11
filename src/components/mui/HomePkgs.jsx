@@ -387,7 +387,7 @@ export const CardDesc = styled(Typography)(({ theme }) => ({
   alignItems: "center",
   color: "#FFFFFF",
   "@media (max-width:1258px)": { fontSize: "1.6rem", lineHeight: "2rem", width: "85%" },
-  "@media (max-width:900px)": { alignItems: "flex-start", fontSize: "1.4rem" },
+  "@media (max-width:900px)": { alignItems: "flex-start", fontSize: "1.2rem" },
 
 }));
 

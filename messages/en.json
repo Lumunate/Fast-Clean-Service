@@ -121,10 +121,10 @@
         },
         {
           "title": "Polishing & Headlight Restoration",
-          "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
+          "description": "Complete your treatment with professional detailing. Think headlight or chrome polishing, a clay bar treatment for smooth paint, or a protective sealant. Choose from 1-, 2-, or 3-step polishing for the best results. The perfect preparation for a coating or as a vehicle refresher.",
           "bullets": [
-            "Removes dullness and yellowing for brighter light",
-            "Better visibility and a fresher look"
+            "Restores the shine of your paint.",
+            "Restores the clarity of dull headlights."
           ],
           "description2": "📅 Professional polishing for optimal results"
         }
@@ -182,7 +182,7 @@
           "name": "Standard",
           "category": "Basic Cleaningc",
           "price": "From",
-          "title": "Included",
+          "title": "Included:",
           "features": [
             "Interior or exterior steam cleaning",
             "Rim and window cleaning",
@@ -199,6 +199,7 @@
           "category": "MOST POPULAR!",
           "popular": "MOST POPULAR!",
           "price": "From",
+          "title": "Inclusive:",
           "features": [
             "Thorough deep cleaning",
             "Paint sealant & protective wax",
@@ -214,6 +215,7 @@
           "name": "Premium",
           "category": "Showroom Finish",
           "price": "From",
+          "title": "Inclusive:",
           "features": [
             "Interior & exterior Premium",
             "Headlight polishing",
@@ -596,7 +598,7 @@
     "quote_form": {
       "title": "Business application",
       "fields": {
-        "business": "Business",
+        "business": "company name",
         "address": "Address",
         "name": "Name",
         "email": "Email",
