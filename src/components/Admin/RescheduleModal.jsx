@@ -16,7 +16,6 @@ import useMultiStepForm from "../../hooks/useMultiStepForm";
 import useSnackbar from "../../hooks/useSnackbar";
 import { useSession } from "next-auth/react";
 import { ModalButton } from "../mui/AdminPkgs";
-import {useRouter} from "next/navigation";
 
 const RescheduleModal = ({ booking, serviceType, duration, handleCloseModal, open }) => {
     return (
