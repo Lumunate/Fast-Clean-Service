@@ -27,28 +27,28 @@ export default function CarService() {
             title: t("packages.0.title"),
             anchor: "anywhere-auto-care",
             description: t("packages.0.description"),
-            path:"/autocare"
+            path:"/aboutus"
         },
         {
             img: UnionIcon,
             title: t("packages.1.title"),
             anchor: "fleet-care-pro",
             description: t("packages.1.description"),
-             path:"/fleet"
+             path:"/subscribe"
         },
         {
             img: paint,
             anchor: "subscriptions",
             title: t("packages.2.title"),
             description: t("packages.2.description"),
-             path:"/subscribe"
+             path:"/fleet"
         },
         {
             img: Coating,
             title: t("packages.3.title"),
             anchor: "long-term-vehicle-care",
             description: t("packages.3.description"),
-             path:"/other-vehicles"
+             path:"/contact"
         },
     ];
 

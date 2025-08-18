@@ -21,7 +21,7 @@ import {
   SearchInput
 } from "../../../../components/mui/AdminPkgs";
 import useSnackbar from "../../../../hooks/useSnackbar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "../../../../contexts/themeContext";
 
 export default function OtherVehiclesAdmin() {
@@ -30,8 +30,10 @@ export default function OtherVehiclesAdmin() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const t = useTranslations("admin_dashboard.other_vehicles");
+  const t1 = useTranslations("admin_dashboard.snackbar_message.other_vehicles");
   const { openSnackbar } = useSnackbar();
   const { theme } = useTheme();
+  const locale = useLocale()
 
   const getData = async () => {
     setLoading(true);
@@ -45,7 +47,7 @@ export default function OtherVehiclesAdmin() {
       setData(sorted);
     } catch (err) {
       console.error(err);
-      openSnackbar("Error fetching records");
+      openSnackbar(t1("0"));
     } finally {
       setLoading(false);
     }
@@ -61,11 +63,11 @@ export default function OtherVehiclesAdmin() {
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
       });
-      openSnackbar("Deleted record successfully");
+      openSnackbar(t1("1"));
       await getData();
     } catch (err) {
       console.error(err);
-      openSnackbar("Error deleting record");
+      openSnackbar(t1("2"));
     }
   };
 
@@ -75,11 +77,11 @@ export default function OtherVehiclesAdmin() {
         method: "PUT",
         headers: { "Content-Type": "application/json" }
       });
-      openSnackbar("Marked as completed successfully");
+      openSnackbar(t1("3"));
       await getData();
     } catch (err) {
       console.error(err);
-      openSnackbar("Error marking as complete");
+      openSnackbar(t1("4"));
     }
   };
 
@@ -155,7 +157,12 @@ export default function OtherVehiclesAdmin() {
                             color: row.isComplete ? 'success.main' : 'warning.main',
                             fontWeight: 'bold'
                           }}>
-                            {row.isComplete ? 'Completed' : 'Pending'}
+                            {row.isComplete ?  locale === 'en' 
+                                ? 'Completed' 
+                                : 'Voltooid'
+                              : locale === 'en' 
+                                ? 'Pending' 
+                                : 'In afwachting'}
                           </TableCellCustom>
                           <TableCellCustom>
                             <IconButton onClick={() => handleDelete(row._id)} color="error">

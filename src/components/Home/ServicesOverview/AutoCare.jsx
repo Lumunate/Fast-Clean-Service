@@ -241,7 +241,7 @@ export default function Autocare() {
                       }}
                       className="innerdeet"
                     >
-                      {t("packages.0.title")}
+                      {t("packages.1.title")}
                     </div>
                     <List
                       sx={{
@@ -364,7 +364,7 @@ export default function Autocare() {
                       }}
                       className="innerdeet"
                     >
-                      {t("packages.0.title")}
+                      {t("packages.2.title")}
                     </div>
                     <List
                       sx={{

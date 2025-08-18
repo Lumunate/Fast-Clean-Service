@@ -200,6 +200,7 @@
           "category": "MEEST POPULAIR!",
           "popular": "MEEST POPULAIR!",
           "price": "Vanaf",
+          "title": "Inclusief:",
           "features": [
             "Inclusief alle diensten van het Standard Pakket",
             "Dieptereiniging / Leerbehandeling ",
@@ -215,6 +216,7 @@
           "name": "Premium",
           "category": "Showroom Afwerking",
           "price": "Vanaf",
+          "title": "Inclusief:",
           "features": [
             "Inclusief alle diensten van het Standard & Deluxe Pakket",
             "Motorkap reiniging ",
@@ -311,10 +313,10 @@
         {
           "name": "Boten",
           "services": [
-            "Antikalk- en antiroestbehandeling",
-            "Stoomreiniging van dek en interieur",
-            "Poetsen van metalen en kunststof onderdelen",
-            "Coating tegen zout, zon en water"
+            "Antikalk- & antiroestbehandeling",
+            "Stoomreiniging dek & interieur",
+            "Poetsen van metaal & kunststofdelen",
+            "Coating tegen zout, zon & water"
           ],
           "description": "Van sloep tot speedboot: wij zorgen ervoor dat uw boot glanst en beschermd is op elk vaarmoment.\n"
         }
@@ -513,7 +515,13 @@
       "email": "Email",
       "phone":"telefoonnummer",
       "message": "bericht / vraag",
-      "button": "Verzenden"
+      "button": "Verzenden",
+      "Form_messages":[
+      "Fout bij het verzenden van het formulier:",
+      "Er is een onverwachte fout opgetreden",
+      "Formulier succesvol verzonden!",
+      "Fout:"
+    ]
     },
     "contact_details": {
       "title":"Onze contactmogelijkheden :",
@@ -598,7 +606,7 @@
     "quote_form": {
       "title": "Zakelijke aanvraag",
       "fields": {
-        "business": "Zakelijk",
+        "business": "bedrijfsnaam",
         "address": "Adres",
         "name": "Naam",
         "email": "Email",
@@ -617,7 +625,13 @@
           "other": "Anders"
         }
       },
-      "button": "Verzenden"
+      "button": "Verzenden",
+      "Form_messages":[
+      "Fout bij het verzenden van het formulier:",
+      "Er is een onverwachte fout opgetreden",
+      "Formulier succesvol verzonden!",
+      "Fout:"
+    ]
     },
     "faq": {
       "title": "Veelgestelde Vragen (FAQ)",
@@ -754,7 +768,12 @@
         "desired_services_placeholder": "schrijf hier uw wensen, reiniging van het interieur, aanbrengen van een coating etc.",
         "number_of_vehicles": "Aantal voertuigen"
       },
-      "button": "Verzenden"
+      "button": "Verzenden",
+      "Form_messages":[
+      "Er is een onverwachte fout opgetreden",
+      "Formulier succesvol verzonden!",
+      "Fout:"
+    ]
     }
   },
   "anywhere_autocare": {
@@ -2436,6 +2455,11 @@
         "answer": "Ja, je ontvangt automatisch een factuur bij iedere betaling. Ook geschikt voor zakelijke klanten."
       }
     ]
+  },
+  "packageNames": {
+    "EXTERIOR": "Exterieur",
+    "INTERIOR": "INTERIEUR",
+    "TOTAL": "TOTAAL"
   }
 },
   "booking": {
@@ -2632,6 +2656,14 @@
           "ondersteunt alleen eenmalige betalingen. Onze abonnementen kunnen daarom alleen worden aangeschaft via"
         ]
       }
+    ],
+    "multi_step_form_snackbar":[
+      "U moet ingelogd zijn om uw boeking te kunnen indienen.",
+      "Vul alle verplichte velden in voordat u de boeking verzendt.",
+      "Boeking mislukt",
+      "Server heeft boeking afgewezen",
+      "Formulier succesvol verzonden!",
+      "Fout bij het verzenden van het formulier"
     ]
   },
   "feedback": {
@@ -2643,7 +2675,11 @@
       "service": "Service",
       "date_of_appointment": "Datum van de Afspraak",
       "rating": "Beoordeel uw Ervaring",
-      "review": "Deel hier uw Ervaring..."
+      "review": "Deel hier uw Ervaring...",
+      "snackbar_text":[
+        "Formulier succesvol verzonden!",
+        "Contactformulier verzenden mislukt. Probeer het later opnieuw!"
+      ]
     },
     "buttons": {
       "submit": "Feedback indienen"
@@ -2957,6 +2993,39 @@
     "edit":"Pakket bewerken",
     "description3" :"Wijzig hieronder de pakketdetails, prijzen en add-ons.",
     "button":"Wijzigingen opslaan",
+    "snackbar_message":{
+  "fleet_pro":[
+    "Formulier succesvol verwijderd",
+    "Fout bij het verwijderen van het formulier",
+    "Gemarkeerd als voltooid",
+    "Fout bij het invullen van het formulier",
+    "Formulier succesvol verzonden!",
+    "Fout:",
+    "Er is een onverwachte fout opgetreden"
+  ],
+  "other_vehicles":[
+        "Fout bij het ophalen van records",
+        "Record succesvol verwijderd",
+        "Fout bij het verwijderen van record",
+        "Gemarkeerd als voltooid",
+        "Fout bij het markeren als voltooid"
+      ],
+      "package_management":[
+        "Kan pakket niet updaten"
+      ],
+      "shop":[
+        "Fout bij opslaan van voertuigen",
+        "Fout bij opslaan van winkel"
+      ],
+      "booking":[
+        "fout",
+        "Fout bij het verwijderen van de boeking: ",
+        "Boeking succesvol verwijderd",
+        "Boeking gemarkeerd als voltooid",
+        "Fout bij het bijwerken van de status: ",
+        "Weet u zeker dat u deze boeking wilt verwijderen?"
+]
+},
     "booking_profile_card":[
       "Telefoonnummer:",
       "Pakketnaam:",
@@ -3099,5 +3168,30 @@
 "Detailoptie toevoegen"
 ]
 
-  }
+  },
+  "login":[
+    "Inloggen",
+    "E-mailadres",
+    "Wachtwoord",
+    "Heeft u nog geen account?",
+    "Aanmelden",
+    "Ongeldig e-mailadres",
+    "Wachtwoord is ongeldig",
+    "Ongeldig e-mailadres of wachtwoord"
+  ],
+  "sign_up":[
+    "Voornaam",
+    "Achternaam",
+    "Bedrijf",
+    "Straat",
+    "Telefoonnummer",
+    "Plaats",
+    "E-mailadres",
+    "Postcode",
+    "Wachtwoord",
+    "Ik wil graag inspiratie, marketingacties en updates per e-mail ontvangen.",
+    "Aanmelden",
+    "Heeft u al een account?",
+    "Inloggen"
+  ]
 }

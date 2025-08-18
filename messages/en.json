@@ -121,10 +121,10 @@
         },
         {
           "title": "Polishing & Headlight Restoration",
-          "description": "Dull or yellowed headlights age your car and reduce visibility. With our headlight restoration service, we thoroughly polish your headlights, remove yellowing and restore the original brightness.",
+          "description": "Complete your treatment with professional detailing. Think headlight or chrome polishing, a clay bar treatment for smooth paint, or a protective sealant. Choose from 1-, 2-, or 3-step polishing for the best results. The perfect preparation for a coating or as a vehicle refresher.",
           "bullets": [
-            "Removes dullness and yellowing for brighter light",
-            "Better visibility and a fresher look"
+            "Restores the shine of your paint.",
+            "Restores the clarity of dull headlights."
           ],
           "description2": "📅 Professional polishing for optimal results"
         }
@@ -146,20 +146,20 @@
       "title": "Additional Services",
       "packages": [
         {
-          "title": "Steam Cleaning & Detailing",
-          "description": "On-site or in our workshop. Interior and exterior thoroughly cleaned and protected."
+          "title": "Machine Rental",
+          "description": "Rent professional detailing equipment for temporary use – ideal for DIY enthusiasts, hobbyists, or freelancers."
         },
         {
-          "title": "Commercial Fleet Service",
-          "description": " Professional maintenance for commercial vehicles and fleets."
+          "title": "Subscriptions",
+          "description": "Fixed cleaning times at an affordable rate. Never worry about your car care again."
         },
         {
-          "title": "Detailing & Paint Correction",
-          "description": "Removes swirls and micro-scratches. Restores deep gloss and paint seal.\n"
+          "title": "Business Services",
+          "description": "Fleet maintenance for businesses, leasing companies, and mobility services. Efficient, scalable, and professional."
         },
         {
-          "title": "Paint Protection & Coating",
-          "description": "Long-lasting protection against dirt, UV and weather influences. Keeps your car in top condition for longer."
+          "title": "Training & Coaching",
+          "description": "Learn to detail like a pro or start your own detailing business with our e-books, practical training, and guidance."
         }
       ],
       "btn":" More Information"
@@ -182,7 +182,7 @@
           "name": "Standard",
           "category": "Basic Cleaningc",
           "price": "From",
-          "title": "Included",
+          "title": "Included:",
           "features": [
             "Interior or exterior steam cleaning",
             "Rim and window cleaning",
@@ -199,6 +199,7 @@
           "category": "MOST POPULAR!",
           "popular": "MOST POPULAR!",
           "price": "From",
+          "title": "Inclusive:",
           "features": [
             "Thorough deep cleaning",
             "Paint sealant & protective wax",
@@ -214,6 +215,7 @@
           "name": "Premium",
           "category": "Showroom Finish",
           "price": "From",
+          "title": "Inclusive:",
           "features": [
             "Interior & exterior Premium",
             "Headlight polishing",
@@ -511,7 +513,13 @@
       "email": "Email",
       "phone":"phone number",
       "message": "message / question*",
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "Error submitting form:",
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     },
     "contact_details": {
       "title":"Our Contact Options:",
@@ -596,7 +604,7 @@
     "quote_form": {
       "title": "Business application",
       "fields": {
-        "business": "Business",
+        "business": "company name",
         "address": "Address",
         "name": "Name",
         "email": "Email",
@@ -615,7 +623,13 @@
           "other": "Others"
         }
       },
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "Error submitting form:",
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     },
     "faq": {
       "title": "Frequently Asked Questions (FAQ)",
@@ -753,7 +767,12 @@
         "desired_services_placeholder": "Write your wishes here, cleaning of the interior, applying a coating etc.",
         "number_of_vehicles": "Number of Vehicles"
       },
-      "button": "Submit"
+      "button": "Submit",
+      "Form_messages":[
+      "An unexpected error occurred",
+      "Form submitted successfully!",
+      "Error:"
+    ]
     }
   },
   "anywhere_autocare": {
@@ -2433,7 +2452,12 @@
           "answer": "Yes, you automatically receive an invoice with every payment. Also suitable for business customers."
         }
       ]
-    }
+    },
+     "packageNames": {
+    "EXTERIOR": "EXTERIOR",
+    "INTERIOR": "INTERIOR",
+    "TOTAL": "TOTAL"
+  }
   },
   "booking": {
     "title": "Booking - On Location",
@@ -2629,6 +2653,14 @@
           "only supports one-time payments. Therefore, our subscription plans can only be purchased via"
         ]
       }
+    ],
+    "multi_step_form_snackbar":[
+      "You must be logged in to submit your booking.",
+      "Please complete all required fields before submitting.",
+      "Failed to create booking",
+      "Server rejected booking",
+      "Form submitted successfully!",
+      "Error submitting form"
     ]
   },
   "feedback": {
@@ -2640,7 +2672,11 @@
       "service": "Service",
       "date_of_appointment": "Date of Appointment",
       "rating": "Rate Your Experience",
-      "review": "Share Your Experience Here..."
+      "review": "Share Your Experience Here...",
+      "snackbar_text":[
+        "Form submitted successfully!",
+        "Failed to submit Contact Form. Please try again later!"
+      ]
     },
     "buttons": {
       "submit": "Submit Feedback"
@@ -2954,6 +2990,39 @@
     "edit":"Edit Package",
     "description3" :"Make changes to the package details, pricing, and add-ons below.",
     "button":"Save Changes",
+    "snackbar_message":{
+      "fleet_pro":[
+        "Deleted form successfully",
+        "Error deleting form",
+        "Marked as completed successfully",
+        "Error completing form",
+        "Form submitted successfully!",
+        "Error:",
+        "An unexpected error occurred"
+      ],
+      "other_vehicles":[
+        "Error fetching records",
+        "Deleted record successfully",
+        "Error deleting record",
+        "Marked as completed successfully",
+        "Error marking as complete"
+      ],
+      "package_management":[
+        "Failed to update package"
+      ],
+      "shop":[
+        "Error saving vehicles",
+        "Error saving shop"
+      ],
+      "booking":[
+        "error",
+        "Error delete booking: ",
+        "Booking deleted successfully",
+        "Booking marked as Completed",
+        "Error updating status: ",
+        "Are you sure you want to delete this booking?" 
+      ]
+    },
     "booking_profile_card":[
       "Phone Number:",
       "Package Name:",
@@ -3095,6 +3164,31 @@
 "Detailing Options",
 "Add Detailing Option"
 ]
-  }
+  },
+  "login":[
+    "Login",
+    "Email Address",
+    "Password",
+    "Don't have an account?",
+    "Sign Up",
+    "Invalid email",
+    "Password is invalid",
+    "Invalid Email or Password"
+  ],
+  "sign_up":[
+    "First Name",
+    "Last Name",
+    "Company",
+    "Street",
+    "Phone",
+    "City",
+    "Email Address",
+    "Zip Code",
+    "Password",
+    "I want to receive inspiration, marketing promotions and updates via email.",
+    "Sign Up",
+    "Already have an account?",
+    "Sign In"
+  ]
 
 }

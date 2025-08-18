@@ -174,6 +174,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     const [editBooking, setEditBooking] = useState(null);
     const { openSnackbar } = useSnackbar();
     const t = useTranslations("admin_dashboard.admin_booking")
+    const t1 = useTranslations("admin_dashboard.snackbar_message.booking")
 
     const locale = useLocale()
 
@@ -189,15 +190,22 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
             });
 
             if (!response.ok) {
-                openSnackbar("Error delete booking: " + error, "error");
+                let errorMsg = t1("1");
+                try {
+                    const errorData = await response.json();
+                    if (errorData && (errorData.error || errorData.message)) {
+                        errorMsg += " " + (errorData.error || errorData.message);
+                    }
+                } catch (e) {}
+                openSnackbar(errorMsg, t1("0"));
                 return;
             }
 
             const booking = await response.json();
-            openSnackbar("Booking deleted successfully");
+            openSnackbar(t1("2"));
             return booking;
         } catch (error) {
-            openSnackbar("Error delete booking: " + error, "error");
+            openSnackbar(t1("1") + error, t1("0"));
             throw error;
         }
     }
@@ -216,10 +224,10 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
       throw new Error("Failed to update status");
     }
 
-    openSnackbar("Booking marked as Completed", "success");
+    openSnackbar(t1("3"), "success");
     selectedBooking.bookingStatus = "COMPLETED"; // Update local state (optional)
   } catch (error) {
-    openSnackbar("Error updating status: " + error.message, "error");
+    openSnackbar(t1("4") + error.message, t1("0"));
   }
 }
 
@@ -233,7 +241,7 @@ const BookingInfoModal = ({ open, handleCloseModal, selectedBooking, removeBooki
     };
 
     const handleDelete = () => {
-         const confirmed = window.confirm("Are you sure you want to delete this booking?");
+         const confirmed = window.confirm(t1("5"));
     if (!confirmed) return;
         handleDeleteBooking(selectedBooking._id).then(() => {
             removeBookingWithId(selectedBooking._id);

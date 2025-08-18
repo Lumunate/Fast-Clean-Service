@@ -2,11 +2,13 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import useSnackbar from '../hooks/useSnackbar';
+import { useTranslations } from 'next-intl';
 
 export const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
   const { openSnackbar } = useSnackbar();
+  const t = useTranslations("booking.multi_step_form_snackbar")
   const { data: session, status } = useSession();
   const [formData, setFormData] = useState({
     service: '',
@@ -228,13 +230,13 @@ export const FormProvider = ({ children }) => {
 
     if (currentStep === 10) {
       if (status !== 'authenticated') {
-        openSnackbar('You must be logged in to submit your booking.');
+        openSnackbar(t("0"));
         return;
       }
       const location =
           formData.location || '';
       if (location === '' || location === undefined) {
-        openSnackbar("Please complete all required fields before submitting.");
+        openSnackbar(t("1"));
         return;
       }
       try {
@@ -283,24 +285,24 @@ export const FormProvider = ({ children }) => {
 
         if (!response.ok) {
           const err = await response.json();
-          openSnackbar(err.message || 'Failed to create booking');
+          openSnackbar(err.message || t("2"));
           return;            // ←— prevent setCurrentStep
         }
 
         const res = await response.json();
         if (!res.success) {
-          openSnackbar(res.error || 'Server rejected booking');
+          openSnackbar(res.error || t("3"));
           return;            // ←— prevent setCurrentStep
         }
         if (res.success) {
-          openSnackbar('Form submitted successfully!');
+          openSnackbar(t("4"));
           setFormData(prev => ({
             ...prev,
             bookingId: res.data._id,
           }));
         }
       } catch (err) {
-        openSnackbar('Error submitting form');
+        openSnackbar(t("5"));
         return;
       }
     }
