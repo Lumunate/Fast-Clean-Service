@@ -87,20 +87,11 @@ export default function AnimatedHomeContent() {
             {/* video background */}
             <Box
                 component="video"
-                src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
+                src="https://res.cloudinary.com/dowzbef4i/video/upload/v1755546684/InShot_20250819_002948696_v6jlbj.mp4"
                 autoPlay
                 muted
                 // loop
                 playsInline
-                onLoadedMetadata={(e) => (e.currentTarget.currentTime = 10)}
-                onTimeUpdate={(e) => {
-                    const video = e.currentTarget;
-                        // When near end, reset to 10s
-                        if (video.duration - video.currentTime < 0.1) {
-                            video.currentTime = 10;
-                            video.play();
-                         }
-                     }}
                 sx={{
                     position: "absolute",
                     top: 0,
