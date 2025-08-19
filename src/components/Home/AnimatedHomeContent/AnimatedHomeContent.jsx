@@ -87,7 +87,7 @@ export default function AnimatedHomeContent() {
             {/* video background */}
             <Box
                 component="video"
-                src="https://res.cloudinary.com/diiafjy31/video/upload/v1737749000/video_hero_section_website_copy_8C37CC69-DDE3-4F55-AEF7-682AF7A03A3D_zbkp9k.mov"
+                src="https://res.cloudinary.com/dowzbef4i/video/upload/v1755546684/InShot_20250819_002948696_v6jlbj.mp4"
                 autoPlay
                 muted
                 // loop
