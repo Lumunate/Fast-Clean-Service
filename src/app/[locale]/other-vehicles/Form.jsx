@@ -357,8 +357,6 @@ export default function Form() {
                   }}
                 >
                     {t("fields.location.label")}
-                    {formData.serviceType === "one_time_our_location" &&
-                    ` — Oude Blaauwweg 14, 1521 RN Wormerveer`}
                 </InputLabel>
                 <Select
                   labelId="location-label"
@@ -398,7 +396,8 @@ export default function Form() {
                     },
                   }}
                 >
-                    <MenuItem value="chosen_location">{t("fields.location.options.chosen_location")}</MenuItem>
+                    <MenuItem value="chosen_location"> {formData.serviceType === "one_time_our_location" ?
+                    "Oude Blaauwweg 14, 1521 RN Wormerveer" : t("fields.location.options.chosen_location")} </MenuItem>
                 </Select>
               </FormControl>
             </Grid>

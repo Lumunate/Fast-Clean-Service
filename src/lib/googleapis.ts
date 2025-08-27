@@ -10,6 +10,7 @@ export const oauth2Client = new OAuth2Client(
 export function getAuthUrl() {
   return oauth2Client.generateAuthUrl({
     access_type: "offline", // This will give us a refresh token
+    prompt: "consent",
     scope: ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.events"],
   });
 }

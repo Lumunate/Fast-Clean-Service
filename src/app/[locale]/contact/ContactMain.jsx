@@ -234,7 +234,7 @@ export default function ContactMain() {
         }}
       >
         <Box sx={{ marginBottom: "1.5rem", textAlign: "center" }}>
-          <HeadingLinesAnimation text="CONTACT US" />
+          <HeadingLinesAnimation text={t("title")} />
         </Box>
 
         <Box sx={{ marginBottom: "2rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -248,8 +248,7 @@ export default function ContactMain() {
               },
             }}
           >
-            {" "}
-            Always Available for You
+            {t("subtitle")}
           </Typography>
           <Box sx={{ textAlign: "left" }}>
             <Typography
@@ -267,8 +266,7 @@ export default function ContactMain() {
                 },
               }}
             >
-              Do you have a question or would you like to make an appointment? Simply contact us! Fast Clean Service are ready to
-              help you with professional steam cleaning and car detailing, both on location and at our branch.
+              {t("description")}
             </Typography>
           </Box>
         </Box>

@@ -524,7 +524,7 @@
     ]
     },
     "contact_details": {
-      "title":"Onze contactmogelijkheden :",
+      "title":"Onze contactmogelijkheden",
       "phone": "Telefoon:",
       "email": "Emailadres:",
       "address": "Locatie:"
@@ -2537,7 +2537,7 @@
        "Selecteer een schoonmaakpakket.",
        " "
        ],
-        "options": ["Autoreiniging", "Subscriptions"],
+        "options": ["Autoreiniging", "Abonnementen"],
         "subscriptionDisabledNote": "Je hebt al een actief abonnement.",
         "errors": {
           "subscriptionExists": "Je hebt al een abonnement. Neem contact met ons op via de contactpagina om je abonnement te wijzigen of op te zeggen."

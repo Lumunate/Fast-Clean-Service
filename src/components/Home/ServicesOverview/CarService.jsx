@@ -27,7 +27,7 @@ export default function CarService() {
             title: t("packages.0.title"),
             anchor: "anywhere-auto-care",
             description: t("packages.0.description"),
-            path:"/aboutus"
+            path:"/contact"
         },
         {
             img: UnionIcon,
