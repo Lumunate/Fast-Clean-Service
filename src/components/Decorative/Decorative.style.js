@@ -17,7 +17,7 @@ export const FoggyBackgroundImage = styled(Box)(({ top, left, right, zIndex, wid
   top: top,
   left: left,
   right: right,
-  zIndex: zIndex || 1,
+  zIndex: zIndex || -1,
   width: width || "600px",
   height: height || "500px",
   backgroundImage: "url('/fogg.png')",

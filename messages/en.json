@@ -112,7 +112,7 @@
         },
         {
           "title": "Paint Protection & Coatings",
-          "description": "Protect your car's paint and make it shine like new again. Our professional wax and coating treatments provide long‑lasting protection against dirt, UV radiation and weather influences.",
+          "description": "Want long-lasting protection and a deep shine? Then ceramic coating is the solution. After thoroughly preparing the paintwork, we apply a high-quality coating that protects your car from UV rays, dirt, acid rain, and scratches. This durable protection ensures your vehicle stays clean longer and requires less maintenance.",
           "bullets": [
             "Deep shine and water‑repellent effect",
             "Prevents fading and wear"
@@ -180,7 +180,7 @@
       "packages": [
         {
           "name": "Standard",
-          "category": "Basic Cleaningc",
+          "category": "Basic Cleaning",
           "price": "From",
           "title": "Included:",
           "features": [
@@ -188,7 +188,7 @@
             "Rim and window cleaning",
             "Basic protection"
           ],
-          "description": "Ideal for a quick, global cleaning.",
+          "description": "Ideal for efficient, all-around cleaning.",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -205,7 +205,7 @@
             "Paint sealant & protective wax",
             "Steam cleaning of upholstery"
           ],
-          "description": "Perfect for those who really want to maintain their car well and thoroughly.",
+          "description": "Choose Deluxe for a complete treatment of your car",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -221,7 +221,7 @@
             "Headlight polishing",
             "Polishing and scratch removal"
           ],
-          "description": "For whom?  The ultimate treatment for a luxurious look and perfect condition.",
+          "description": "Book now for the ultimate showroom finish!",
           "buttons": {
             "learn_more": "Learn More",
             "book_now": "Book Now"
@@ -522,7 +522,7 @@
     ]
     },
     "contact_details": {
-      "title":"Our Contact Options:",
+      "title":"Our Contact Options",
       "phone": "Telephone :",
       "email": "E-mail:",
       "address": "Location:"
