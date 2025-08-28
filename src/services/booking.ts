@@ -8,11 +8,10 @@ import subscriptionPackageService from "./subscription-package";
 import AutocarService from "./autocare-package";
 import { GoogleCalendar } from "../repositories/google-calendar";
 
-const calendar = new GoogleCalendar();
+const calendar = new GoogleCalendar("fast-clean-service-website");
 
 class BookingService {
   async createBooking(bookingData: Partial<IBooking>): Promise<IBooking> {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     const { price, duration } = await this.calculatePrice(bookingData);
     // Ensure userId is included in the bookingData
     // if (!bookingData.userId) {

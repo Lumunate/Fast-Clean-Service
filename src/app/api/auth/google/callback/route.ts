@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { oauth2Client } from "../../../../../lib/googleapis";
+import { makeOAuthClient } from "../../../../../lib/googleapis";
 import googleTokensRepository from "../../../../../repositories/google-tokens";
 
 export async function GET(request: Request) {
@@ -11,10 +11,9 @@ export async function GET(request: Request) {
   }
 
   try {
-    // Get tokens from Google
-    const { tokens } = await oauth2Client.getToken(code);
+    const oauth2Client = makeOAuthClient();
+    const { tokens } = await oauth2Client.getToken({ code, redirect_uri: process.env.REDIRECT_URL! });
 
-    // Store tokens in database
     await googleTokensRepository.storeTokens("fast-clean-service-website", {
       access_token: tokens.access_token!,
       refresh_token: tokens.refresh_token!,
