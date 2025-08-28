@@ -3,7 +3,7 @@ import { GoogleCalendar } from "../../../repositories/google-calendar";
 
 export async function GET(req: Request, res: Response) {
   try {
-    const calendar = new GoogleCalendar();
+    const calendar = new GoogleCalendar("fast-clean-service-website");
     const events = await calendar.listEvents();
 
     return NextResponse.json({ events });
