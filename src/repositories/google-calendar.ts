@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-import { getAuthUrl, getTokens, oauth2Client } from "../lib/googleapis";
+import { getAuthedClient } from "../lib/googleapis";
 import googleTokensRepository from "./google-tokens";
 
 export interface CalendarEvent {
@@ -20,27 +20,24 @@ export interface CalendarFilter {
 }
 
 export class GoogleCalendar {
-  private calendar;
   private calendarId: string;
+  private userId: string;
 
-  constructor(calendarId: string = "primary") {
-    this.calendar = google.calendar({
-      version: "v3",
-      auth: oauth2Client,
-    });
-
-    googleTokensRepository.getTokens("fast-clean-service-website").then((tokens) => {
-      if (tokens) {
-        oauth2Client.setCredentials(tokens);
-      }
-    });
-
+  constructor(userId: string, calendarId: string = "primary") {
+    this.userId = userId;
     this.calendarId = calendarId;
   }
 
+  async getCalendarInstance() {
+    const client = await getAuthedClient(() => googleTokensRepository.getTokens(this.userId));
+    return google.calendar({ version: "v3", auth: client });
+  }
+
   async listEvents(filter: CalendarFilter = {}) {
+    const calendar = await this.getCalendarInstance();
+
     try {
-      const response = await this.calendar.events.list({
+      const response = await calendar.events.list({
         calendarId: this.calendarId,
         timeMin: filter.timeMin || new Date().toISOString(),
         timeMax: filter.timeMax,
@@ -58,8 +55,10 @@ export class GoogleCalendar {
   }
 
   async getEvent(eventId: string) {
+    const calendar = await this.getCalendarInstance();
+
     try {
-      const response = await this.calendar.events.get({
+      const response = await calendar.events.get({
         calendarId: this.calendarId,
         eventId,
       });
@@ -72,8 +71,10 @@ export class GoogleCalendar {
   }
 
   async createEvent(event: CalendarEvent) {
+    const calendar = await this.getCalendarInstance();
+
     try {
-      const response = await this.calendar.events.insert({
+      const response = await calendar.events.insert({
         calendarId: this.calendarId,
         requestBody: {
           summary: event.summary,
@@ -99,8 +100,10 @@ export class GoogleCalendar {
   }
 
   async updateEvent(eventId: string, event: Partial<CalendarEvent>) {
+    const calendar = await this.getCalendarInstance();
+
     try {
-      const response = await this.calendar.events.patch({
+      const response = await calendar.events.patch({
         calendarId: this.calendarId,
         eventId,
         requestBody: {
@@ -131,8 +134,10 @@ export class GoogleCalendar {
   }
 
   async deleteEvent(eventId: string) {
+    const calendar = await this.getCalendarInstance();
+
     try {
-      await this.calendar.events.delete({
+      await calendar.events.delete({
         calendarId: this.calendarId,
         eventId,
       });
