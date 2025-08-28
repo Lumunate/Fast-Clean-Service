@@ -1,6 +1,6 @@
 import {OAuth2Client} from "google-auth-library";
 import {GoogleToken, IGoogleToken} from "../models/GoogleToken";
-import {oauth2Client} from "../lib/googleapis";
+import { makeOAuthClient } from "../lib/googleapis";
 
 class GoogleTokensRepository {
   private oauth2Client: OAuth2Client;
@@ -13,27 +13,31 @@ class GoogleTokensRepository {
     userId: string,
     tokens: {
       access_token: string;
-      refresh_token: string;
+      refresh_token?: string;
       scope: string;
       token_type?: string;
       expiry_date: number;
     }
   ): Promise<IGoogleToken> {
     try {
+      // Fetch existing token to preserve refresh_token if missing
+      const existing = await GoogleToken.findOne({ userId });
+      const refresh_token = tokens.refresh_token || existing?.refresh_token;
+      if (!refresh_token) throw new Error("No refresh_token available to store");
       // Update or create token document
       return await GoogleToken.findOneAndUpdate(
-          {userId},
-          {
-            access_token: tokens.access_token,
-            refresh_token: tokens.refresh_token,
-            scope: tokens.scope,
-            token_type: tokens.token_type || "Bearer",
-            expiry_date: tokens.expiry_date,
-          },
-          {
-            new: true,
-            upsert: true,
-          }
+        { userId },
+        {
+          access_token: tokens.access_token,
+          refresh_token,
+          scope: tokens.scope,
+          token_type: tokens.token_type || "Bearer",
+          expiry_date: tokens.expiry_date,
+        },
+        {
+          new: true,
+          upsert: true,
+        }
       );
     } catch (error) {
       console.error("Error storing tokens:", error);
@@ -93,5 +97,5 @@ class GoogleTokensRepository {
   }
 }
 
-const googleTokensRepository = new GoogleTokensRepository(oauth2Client);
+const googleTokensRepository = new GoogleTokensRepository(makeOAuthClient());
 export default googleTokensRepository;
