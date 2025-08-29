@@ -47,6 +47,7 @@ export async function POST(request) {
             ],
             client_reference_id: userId,
             customer_email: userEmail,
+            locale: "nl",
             metadata: {
                 userEmail,
                 userId,

@@ -86,13 +86,16 @@ export const FormProvider = ({ children }) => {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
           const addonPrice = addon.additionalCost
+          const addonDuration = addon.additionalTime || 0;
 
           newPrice += addonPrice;
+           duration += addonDuration;
         });
       }
       if (formData.selectedDetailingOptions?.length > 0) {
         Object.values(formData.selectedDetailingOptions).forEach((addon) => {
           const addonPrice = addon.additionalCost;
+          const addonDuration = addon.additionalTime || 0;
 
           if (addonPrice === 'On Request') {
             return price;
@@ -100,6 +103,7 @@ export const FormProvider = ({ children }) => {
 
           if (addonPrice !== undefined) {
             newPrice += addonPrice;
+            duration += addonDuration;
           }
         });
       }

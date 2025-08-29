@@ -46,7 +46,7 @@ const BookingForm = () => {
         if (list.includes('active') && currentStep === 8) {
           setActiveHeight('auto');
         } else if (list.includes('active'))
-          setActiveHeight(el.childNodes[0].clientHeight + 20);
+          setActiveHeight(el.childNodes[0]?.clientHeight + 20);
       });
     }
   }, [currentStep]);
