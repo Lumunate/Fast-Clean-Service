@@ -137,8 +137,8 @@ class BookingService {
     }
 
     const carType = bookingData.vehicleType;
-    price += pkg.vehicleOptions[carType]?.additionalCost || 0;
-    price += pkg.vehicleOptions[carType]?.additionalTime || 0;
+      price += pkg.vehicleOptions[carType]?.additionalCost || 0;
+      duration += pkg.vehicleOptions[carType]?.additionalTime || 0;
 
     price += parseFloat(pkg.price.replace("€", "").trim());
     duration += this.parseHighestDuration(pkg.duration);
@@ -185,16 +185,15 @@ class BookingService {
       }
     }
 
-    if (bookingData.travelDistance) {
-      let travelCost = 0;
-      if (bookingData.travelDistance > 20) {
-        travelCost = (bookingData.travelDistance - 20) * 0.5;
-      } else if (bookingData.travelDistance > 75) {
-        travelCost = bookingData.travelDistance * 0.6;
+      if (bookingData.type === "Remote" && bookingData.travelDistance) {
+          let travelCost = 0;
+          if (bookingData.travelDistance > 75) {
+              travelCost = bookingData.travelDistance * 0.6;
+          } else if (bookingData.travelDistance > 20) {
+              travelCost = (bookingData.travelDistance - 20) * 0.5;
+          }
+          price += travelCost;
       }
-
-      price += travelCost;
-    }
 
     return { price, duration };
   }

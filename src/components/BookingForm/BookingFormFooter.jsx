@@ -241,6 +241,7 @@ const BookingFormFooter = () => {
       formData?.selectedPackageType === 'Subscription Plans'
     ) {
       nextStep(2);
+      prevStep(2);
       scrollToTop();
       return;
     }
@@ -281,8 +282,8 @@ const BookingFormFooter = () => {
         <NextPrevButton onClick={handleNext} disabled={loading || isBtnInvalid || payLoading}>
             {currentStep === 11
                 ? payLoading
-                    ? 'Processing…'
-                    : 'Pay Now'
+                    ? t('footer.6')
+                    : t('footer.5')
                 : t('footer.3')}
         </NextPrevButton>
       </ButtonContainer>

@@ -119,10 +119,9 @@ const BookingParticulars = () => {
   }, []);
 
     useEffect(() => {
+        const requiresLocation = form.formData.service === 'Remote';
         const location = bookingForm.location || formData.location || '';
-
-        const hasValidLocation =
-            typeof location === 'string' && location.trim() !== '';
+        const hasValidLocation = !requiresLocation || (typeof location === 'string' && location.trim() !== '');
 
         const allFilled =
             Object.entries(bookingForm)
@@ -233,18 +232,18 @@ const BookingParticulars = () => {
                 />
               </Grid>
             </Grid>
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={12}>
-                <SelectLocationInput
-                    hoist={({ ...data }) =>
-                        setBookingForm((prevBookingForm) => ({
-                          ...prevBookingForm,
-                          ...data,
-                        }))
-                    }
-                />
-              </Grid>
-            </Grid>
+              {form.formData.service === 'Remote' && (
+                  <Grid container spacing={2}>
+                      <Grid item xs={12} md={12}>
+                        <SelectLocationInput
+                            hoist={({ ...data }) =>
+                            setBookingForm((prev) => ({
+                                ...prev,
+                                ...data,
+                            }))}/>
+                      </Grid>
+                  </Grid>
+              )}
 
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>

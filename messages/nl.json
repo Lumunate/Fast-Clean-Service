@@ -2489,7 +2489,9 @@
       "Duur",
       "Terug",
       "Volgende",
-      "Verzenden"
+      "Verzenden",
+      "Nu betalen",
+      "Verwerken..."
     ],
     "steps": [
       {

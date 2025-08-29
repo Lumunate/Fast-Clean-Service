@@ -86,13 +86,16 @@ export const FormProvider = ({ children }) => {
       if (formData.selectedAdditionalOptions?.length > 0) {
         Object.values(formData.selectedAdditionalOptions).forEach((addon) => {
           const addonPrice = addon.additionalCost
+          const addonDuration = addon.additionalTime || 0;
 
           newPrice += addonPrice;
+           duration += addonDuration;
         });
       }
       if (formData.selectedDetailingOptions?.length > 0) {
         Object.values(formData.selectedDetailingOptions).forEach((addon) => {
           const addonPrice = addon.additionalCost;
+          const addonDuration = addon.additionalTime || 0;
 
           if (addonPrice === 'On Request') {
             return price;
@@ -100,20 +103,23 @@ export const FormProvider = ({ children }) => {
 
           if (addonPrice !== undefined) {
             newPrice += addonPrice;
+            duration += addonDuration;
           }
         });
       }
     }
 
-    if (formData.travelDistance) {
+    if (formData.service === 'Remote' && formData.travelDistance) {
       let travelCost = 0;
-      if (formData.travelDistance > 20) {
-        travelCost = (formData.travelDistance - 20) * 0.5;
-      } else if (formData.travelDistance > 75) {
-        travelCost = formData.travelDistance * 0.6;
-      }
+        if (formData.travelDistance > 75) {
+          travelCost = formData.travelDistance * 0.6;
+        } else if (formData.travelDistance > 20) {
+          travelCost = (formData.travelDistance - 20) * 0.5;
+        }
       formData.travelCost = travelCost;
       newPrice += travelCost;
+      } else {
+      formData.travelCost = 0;
     }
 
     if (formData.discount) {
@@ -179,6 +185,13 @@ export const FormProvider = ({ children }) => {
         updatedData.selectedDetailingOptions = [];
       }
 
+      if (typeof newData.service !== 'undefined' && newData.service !== prevData.service) {
+        if (newData.service === 'Onsite') {
+          updatedData.travelDistance = 0;
+          updatedData.travelCost = 0;
+        }
+      }
+
       return updatedData;
     });
   };
@@ -233,11 +246,13 @@ export const FormProvider = ({ children }) => {
         openSnackbar(t("0"));
         return;
       }
-      const location =
-          formData.location || '';
-      if (location === '' || location === undefined) {
-        openSnackbar(t("1"));
-        return;
+      const requiresLocation = formData.service === 'Remote';
+      if (requiresLocation) {
+        const location = formData.location || '';
+        if (!location.trim()) {
+          openSnackbar(t("1")); // your "please pick a location" message
+          return;
+        }
       }
       try {
         const data = {

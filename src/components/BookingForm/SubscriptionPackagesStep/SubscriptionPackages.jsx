@@ -114,9 +114,9 @@ const SubscriptionPackages = () => {
                 id={pkg.id}
                 tagline={subscriptionTaglines[pkg.id]}
                 descriptionItems={[
-                  { label: 'Price', value: pkg.price, highlighted: true },
+                  { label: t("footer.0"), value: pkg.price, highlighted: true },
                   {
-                    label: 'Duration',
+                    label: t("footer.1"),
                     value: pkg.duration,
                     highlighted: false,
                   },
@@ -137,8 +137,8 @@ const SubscriptionPackages = () => {
             id={pkg.id}
             tagline={subscriptionTaglines[pkg.id]}
             descriptionItems={[
-              { label: 'Price', value: pkg.price, highlighted: true },
-              { label: 'Duration', value: pkg.duration, highlighted: false },
+              { label: t("footer.0"), value: pkg.price, highlighted: true },
+              { label: t("footer.1"), value: pkg.duration, highlighted: false },
             ]}
             onClick={() => handleClick(pkg, pkg)}
           />
