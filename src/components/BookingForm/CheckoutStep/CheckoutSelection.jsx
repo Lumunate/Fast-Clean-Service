@@ -64,8 +64,8 @@ const CheckoutSelection = () => {
         <Image
           src="/stripe.webp"
           alt="Stripe"
-          width={30}
-          height={30}
+          width={20}
+          height={20}
           style={{
             animation: "shake 2s infinite",
           }}
@@ -167,15 +167,34 @@ const CheckoutSelection = () => {
                   height: "50px",
                   margin: "0 auto",
                   gap: "4px",
-                  "@media (max-width: 600px)": {
-                    border: "0.5px solid",
-                    borderRadius: "50%",
-                    width: "30px",
-                    height: "30px",
-                  },
                 }}
               >
                 {pkg.icon}
+                {
+                  index === 0 && (<>
+                    <Image 
+                      src="/ideal2.svg"
+                      alt="Stripe"
+                      width={25}
+                      height={25}
+                      style={{
+                        animation: "shake 2s infinite",
+                      }}
+                      />
+                    <Image 
+                      src="/mastercard.svg"
+                      alt="Stripe"
+                      width={30}
+                      height={30}
+                      style={{
+                        animation: "shake 2s infinite",
+                        marginLeft: "-4px",
+                        marginTop: "2px",
+                      }}
+                      />
+                      </>
+                      )
+                }
                  {index === 1 && (
                   <>
                     <Image

@@ -2486,7 +2486,9 @@
       "Duration",
       "Back",
       "Next",
-      "Submit"
+      "Submit",
+      "Pay now",
+      "Processing..."
     ],
     "steps": [
       {
