@@ -3,8 +3,10 @@ import React from "react";
 import BookingParticulars from "./BookingParticulars";
 import {BookingFormHeading, BookingFormSubHeading } from "../../mui/BookingFormPackages";
 import {useTranslations} from "next-intl";
+import useMultiStepForm from "../../../hooks/useMultiStepForm";
 
 const Index = () => {
+  const form = useMultiStepForm()
     const t = useTranslations('booking');
   return (
     <Box>
@@ -20,9 +22,11 @@ const Index = () => {
         <BookingFormSubHeading>
             {t("steps.9.description.1")}
         </BookingFormSubHeading>
+        {form?.formData?.service === 'Remote' && (
         <BookingFormSubHeading sx={{ color: 'red', marginTop: "1rem !important" }}>
             {t("steps.8.warning")}
         </BookingFormSubHeading>
+        )}
       <Box>
         <BookingParticulars />
       </Box>
