@@ -124,7 +124,7 @@ class BookingService {
     let duration: number = 0;
 
     let pkg;
-    if (bookingData.serviceName === "Subscription Plans") {
+    if (bookingData.serviceName === "Subscription Plans" || "Abonnementen") {
       pkg = subscriptionPackages.find((pkg) => pkg.id.toLowerCase() === bookingData.packageName.toLowerCase());
     } else {
       pkg = packages.packages[bookingData?.packageType?.toLowerCase()]?.find((pkg) => pkg?.id === bookingData.packageName);
