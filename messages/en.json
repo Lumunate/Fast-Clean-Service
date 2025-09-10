@@ -2992,6 +2992,7 @@
     "edit":"Edit Package",
     "description3" :"Make changes to the package details, pricing, and add-ons below.",
     "button":"Save Changes",
+    "cvsButton":"Download CSV file",
     "snackbar_message":{
       "fleet_pro":[
         "Deleted form successfully",

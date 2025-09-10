@@ -18,13 +18,14 @@ import NewCouponModal from "./NewCouponModal";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useTranslations } from "next-intl";
-
+import { CSVLink } from "react-csv";
 
 const CouponsCard = () => {
   const { getCoupons, deleteCoupon } = useCoupons();
   const [coupons, setCoupons] = useState([]);
 
   const t = useTranslations("admin_dashboard.coupons")
+  const t2 = useTranslations("admin_dashboard")
   
   useEffect(() => {
     const loadCoupons = async () => {
@@ -43,6 +44,25 @@ const CouponsCard = () => {
   
   const [openModal, setOpenModal] = useState(false);
 
+  const csvHeaders = [
+    { label: "ID", key: "_id" },
+    { label: "Code", key: "code" },
+    { label: "Current Uses", key: "currentUses" },
+    { label: "Discount (%)", key: "discountPercentage" },
+    { label: "Valid From", key: "validFrom" },
+    { label: "Valid Until", key: "validUntil" },
+  ];
+
+  // 👇 prepare CSV data
+  const csvData = coupons.map((coupon) => ({
+    _id: coupon._id,
+    code: coupon.code,
+    currentUses: coupon.currentUses,
+    discountPercentage: coupon.discountPercentage,
+    validFrom: new Date(coupon.validFrom).toLocaleDateString(),
+    validUntil: new Date(coupon.validUntil).toLocaleDateString(),
+  }));
+
   return (
     <>
       <StyledCard>
@@ -52,9 +72,31 @@ const CouponsCard = () => {
               <CardHeading>{t("0")}</CardHeading>
               <CardSubheading>{t("1")}</CardSubheading>
             </Box>
+
+            <Box sx={{ gap: "10px", display: "flex", alignItems: "center" }}>
+              
             <ButtonLearnMore onClick={() => setOpenModal(true)} sx={{ marginLeft: "1rem", height: "max-content", p: 2 }}>
               {t("2")}
             </ButtonLearnMore>
+             <ButtonLearnMore>
+               <CSVLink
+                data={csvData}
+                headers={csvHeaders}
+                filename="coupons.csv"
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                >
+                {t2("cvsButton")}
+              </CSVLink>
+
+             </ButtonLearnMore>
+                </Box>
           </Box>
 
           <StyledTable component={Paper}>

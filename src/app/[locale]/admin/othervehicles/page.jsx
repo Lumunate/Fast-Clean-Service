@@ -18,11 +18,13 @@ import {
   TableHeaderCell,
   TableRowCustom,
   NavbarSearch,
-  SearchInput
+  SearchInput,
+  ButtonLearnMore
 } from "../../../../components/mui/AdminPkgs";
 import useSnackbar from "../../../../hooks/useSnackbar";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "../../../../contexts/themeContext";
+import { CSVLink } from "react-csv";
 
 export default function OtherVehiclesAdmin() {
   const [data, setData] = useState([]);
@@ -31,6 +33,8 @@ export default function OtherVehiclesAdmin() {
 
   const t = useTranslations("admin_dashboard.other_vehicles");
   const t1 = useTranslations("admin_dashboard.snackbar_message.other_vehicles");
+  const t2 = useTranslations("admin_dashboard");
+
   const { openSnackbar } = useSnackbar();
   const { theme } = useTheme();
   const locale = useLocale()
@@ -95,6 +99,19 @@ export default function OtherVehiclesAdmin() {
       item.location?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const csvHeaders = [
+  { label: "Name", key: "name" },
+  { label: "Address", key: "address" },
+  { label: "Email", key: "email" },
+  { label: "Vehicle Type", key: "vehicleType" },
+  { label: "Phone", key: "phone" },
+  { label: "Service Type", key: "serviceType" },
+  { label: "Location", key: "location" },
+  { label: "Number of Vehicles", key: "numVehicles" },
+  { label: "Status", key: "status" },
+];
+
+
   return (
       <Box sx={{ padding: "16px" }}>
         <SectionHeading sx={{ marginBottom: "2rem" }}>
@@ -102,7 +119,7 @@ export default function OtherVehiclesAdmin() {
         </SectionHeading>
 
         <StyledCard sx={{ marginBottom: "2rem" }}>
-          <Box sx={{ display: "flex", alignItems: "center", marginBottom: "1.5rem" }}>
+          <Box sx={{ display: "flex", alignItems: "center", marginBottom: "1.5rem", justifyContent: "space-between" }}>
             <NavbarSearch sx={{ width: "250px" }}>
               <SearchInput
                   placeholder="Search"
@@ -110,6 +127,39 @@ export default function OtherVehiclesAdmin() {
                   onChange={(e) => setSearchTerm(e.target.value)}
               />
             </NavbarSearch>
+             <ButtonLearnMore>
+              <CSVLink
+    data={data.map(row => ({
+      name: row.name,
+      address: row.address || "N/A",
+      email: row.email,
+      vehicleType: row.vehicleType,
+      phone: row.phone,
+      serviceType: row.serviceType,
+      location: row.location,
+      numVehicles: row.numVehicles ? `'${row.numVehicles}'` : "0",
+      status: row.isComplete
+        ? locale === "en"
+          ? "Completed"
+          : "Voltooid"
+        : locale === "en"
+        ? "Pending"
+        : "In afwachting",
+    }))}
+    headers={csvHeaders}
+    filename="other-vehicles.csv"
+    className="btn btn-primary"
+    style={{
+      marginLeft: "1rem",
+      padding: "8px 16px",
+      borderRadius: "6px",
+      textDecoration: "none",
+      fontWeight: "bold",
+    }}
+  >
+    {t2("cvsButton")}
+  </CSVLink>
+             </ButtonLearnMore>
           </Box>
 
           <StyledTable component="div">
