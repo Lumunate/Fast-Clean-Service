@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import {
+  ButtonLearnMore,
   CardBody,
   CardHeading,
   CardSubheading,
@@ -11,6 +12,7 @@ import {
   TableRowCustom,
 } from "../mui/AdminPkgs";
 import {
+  Box,
   Paper,
   Table,
   TableBody,
@@ -18,6 +20,8 @@ import {
   TablePagination,
 } from "@mui/material";
 import { useLocale, useTranslations } from "next-intl";
+import { CSVLink } from "react-csv";
+
 
 // const bookings = [
 //     {
@@ -308,6 +312,7 @@ const BookingsCard = ({ bookings }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const bookingLength = Array.isArray(bookings) ? bookings.length : 0;
   const t = useTranslations("admin_dashboard.dashboard")
+  const t2 = useTranslations("admin_dashboard")
   const locale = useLocale()
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -333,10 +338,69 @@ const BookingsCard = ({ bookings }) => {
   t("17"),
   ];
 
+  const csvHeaders = [
+  { label: "Name", key: "name" },
+  { label: "Vehicle Make and Model", key: "vehicleMakeAndModel" },
+  { label: "License Plate", key: "licensePlate" },
+  { label: "Location", key: "city" },
+  { label: "Service", key: "serviceName" },
+  { label: "Package", key: "packageName" },
+  { label: "Add-ons", key: "addons" },
+  { label: "Detailing", key: "detailing" },
+  { label: "Appointment", key: "appointment" },
+  { label: "Price", key: "price" },
+  { label: "Payment", key: "payment" },
+  { label: "Status", key: "bookingStatus" },
+];
+
   return (
     <StyledCard>
       <CardBody>
-        <CardHeading>{t("4")}</CardHeading>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <CardHeading >{t("4")}</CardHeading>
+        <Box>
+
+          <ButtonLearnMore>
+            <CSVLink 
+  data={bookings.map(b => ({
+    name: `${b.firstName} ${b.surname}`,
+    vehicleMakeAndModel: b.vehicleMakeAndModel,
+    licensePlate: b.vehicleDetails?.kenteken || "...",
+    city: b.city,
+    serviceName: b.serviceName,
+    packageName: b.packageName,
+    addons: b.serviceAddons?.addons?.length
+      ? b.serviceAddons.addons.map(a => a?.name?.[locale]).join(", ")
+      : "...",
+    detailing: b.serviceAddons?.detailing?.length
+      ? b.serviceAddons.detailing.map(d => d?.name?.[locale]).join(", ")
+      : "...",
+    appointment: b.appointmentTimestamp
+      ? new Date(b.appointmentTimestamp).toLocaleString("en-US", {
+          month: "numeric",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+          hour12: true,
+        })
+      : "...",
+    price: b.price,
+    payment: b.payment?.status,
+    bookingStatus: b.bookingStatus,
+  }))} 
+  headers={csvHeaders}
+  filename="bookings.csv"
+  className="btn btn-primary"
+>
+  {t2("cvsButton")}
+</CSVLink>
+          </ButtonLearnMore>
+
+          
+        </Box>
+        </Box>
         <CardSubheading>
           {t("5")}
         </CardSubheading>

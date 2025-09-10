@@ -2995,6 +2995,7 @@
     "edit":"Pakket bewerken",
     "description3" :"Wijzig hieronder de pakketdetails, prijzen en add-ons.",
     "button":"Wijzigingen opslaan",
+    "cvsButton":"CSV-bestand downloaden",
     "snackbar_message":{
   "fleet_pro":[
     "Formulier succesvol verwijderd",

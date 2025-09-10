@@ -21,6 +21,7 @@ import useSnackbar from "../../../../hooks/useSnackbar";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "../../../../contexts/themeContext";
 import axios from "axios";
+import { CSVLink } from "react-csv";
 
 const submitFleetCareProForm = async (formData) => {
   try {
@@ -50,6 +51,7 @@ export default function FleetProCareAppointments() {
   const t = useTranslations("admin_dashboard.fleet_pro")
   const t2 = useTranslations('fleetcare.quote_form');
   const t3 = useTranslations("admin_dashboard.snackbar_message.fleet_pro")
+  const t4 = useTranslations("admin_dashboard")
   const locale = useLocale();
 
 
@@ -195,17 +197,73 @@ export default function FleetProCareAppointments() {
   );
 });
 
+const csvHeaders = [
+  { label: "Business Name", key: "businessName" },
+  { label: "Created At", key: "createdAt" },
+  { label: "Address", key: "address" },
+  { label: "Contact Person", key: "name" },
+  { label: "Email", key: "email" },
+  { label: "Vehicle Type", key: "vehicleType" },
+  { label: "Fleet Size", key: "fleetSize" },
+  { label: "Status", key: "status" },
+];
+
   return (
       <Box sx={{ padding: "16px" }}>
         <SectionHeading sx={{ marginBottom: "2rem" }}>{t("0")}</SectionHeading>
         <StyledCard sx={{ marginBottom: "2rem" }}>
-          <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", marginBottom: "1.5rem" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+            <Box sx={{ display : "flex"}}>
+
             <NavbarSearch sx={{ width: "250px" }}>
               <SearchInput placeholder="Search" value={searchTerm} onChange={handleSearch} />
             </NavbarSearch>
             <ButtonLearnMore onClick={handleOpen} sx={{ marginLeft: "1rem" }}>
               {t("1")}
             </ButtonLearnMore>
+            </Box>
+            <Box>
+               <ButtonLearnMore>
+              <CSVLink
+  data={data.map((row) => ({
+    businessName: row.businessName,
+    createdAt: row.createdAt
+      ? new Date(row.createdAt).toLocaleString("en-GB", {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      : "",
+    address: row.address,
+    name: row.name,
+    email: row.email,
+    vehicleType: row.vehicleType,
+    fleetSize: row.fleetSize ? `'${row.fleetSize}'` : "N/A",
+    status: row.isComplete
+      ? locale === "en"
+        ? "Completed"
+        : "Voltooid"
+      : locale === "en"
+      ? "Pending"
+      : "In afwachting",
+  }))}
+  headers={csvHeaders}
+  filename="fleetcare-pro-appointments.csv"
+  className="btn btn-primary"
+  style={{
+    marginLeft: "1rem",
+    padding: "8px 16px",
+    borderRadius: "6px",
+    textDecoration: "none",
+    fontWeight: "bold",
+  }}
+>
+ {t4("cvsButton")}
+</CSVLink>
+</ButtonLearnMore>
+            </Box>
           </Box>
 
           <StyledTable component="div">
