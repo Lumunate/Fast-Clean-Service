@@ -27,6 +27,7 @@ import { useSession } from 'next-auth/react';
 import SelectLocationInput from '../SelectCityStep/SelectLocationInput';
 import {useTranslations} from "next-intl";
 import useSnackbar from '../../../hooks/useSnackbar';
+import { Link } from '../../../i18n/routing';
 
 export function isValidEmail(email) {
     if (typeof email !== 'string') return false;
@@ -407,7 +408,7 @@ const BookingParticulars = () => {
               <TermsLabel variant="body2">
                 {t("steps.9.form_fields.7")}{' '}
                 <span>
-                <a href="/terms_and_conditions">Terms and Conditions</a>
+                <Link target='blank' href="terms-and-conditions">Terms and Conditions</Link>
               </span>
               </TermsLabel>
             </TermsContainer>
